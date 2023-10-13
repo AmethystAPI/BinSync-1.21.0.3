@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvyqq7wvquwo0"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_bpd3h"]
+[ext_resource type="Texture2D" uid="uid://dhli88siajnt7" path="res://Sprites/Player.png" id="2_hcqgy"]
+[ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://Projectile.tscn" id="2_qbaia"]
+[ext_resource type="Script" path="res://Scripts/Sword.gd" id="3_7k655"]
+[ext_resource type="Texture2D" uid="uid://brp1hnbdx0prq" path="res://Sprites/Weapons.png" id="4_4e2tv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxjgm"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dunj"]
+atlas = ExtResource("2_hcqgy")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a56ji"]
+atlas = ExtResource("2_hcqgy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsmvv"]
+atlas = ExtResource("2_hcqgy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgk7i"]
+atlas = ExtResource("2_hcqgy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3v5e"]
+atlas = ExtResource("2_hcqgy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2j80"]
+atlas = ExtResource("2_hcqgy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rq82j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dunj")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a56ji")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsmvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgk7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3v5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2j80")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Entities", "Players"]]
+y_sort_enabled = true
+texture_filter = 1
+collision_mask = 2
+script = ExtResource("1_bpd3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_lxjgm")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+light_mask = 0
+sprite_frames = SubResource("SpriteFrames_rq82j")
+animation = &"idle"
+offset = Vector2(0, -8)
+
+[node name="Dash Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="Sword" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(0, -7)
+script = ExtResource("3_7k655")
+PROJECTILE_RESOURCE = ExtResource("2_qbaia")
+
+[node name="Swing" type="Node2D" parent="Sword"]
+rotation = -0.785398
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword/Swing"]
+position = Vector2(7, 0)
+texture = ExtResource("4_4e2tv")
+offset = Vector2(0, -4)
+hframes = 5
+
+[connection signal="timeout" from="Dash Timer" to="." method="_on_dash_timer_timeout"]

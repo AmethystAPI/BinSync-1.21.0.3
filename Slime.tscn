@@ -1,0 +1,212 @@
+[gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
+
+[ext_resource type="Script" path="res://Scripts/Slime.gd" id="1_h1ogj"]
+[ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://Sprites/Slime.png" id="2_w44pw"]
+[ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="3_0gnaj"]
+[ext_resource type="Script" path="res://Scripts/Damage Area.gd" id="3_uglmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jym8g"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eirpj"]
+size = Vector2(12, 9)
+
+[sub_resource type="Animation" id="Animation_4cwjh"]
+resource_name = "hurt"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_cplr4"]
+resource_name = "run"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t2hpo"]
+resource_name = "jump"
+length = 0.90001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_land_jump"
+}, {
+"args": [],
+"method": &"_end_jump"
+}]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Damage Area/Sprite:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.2, -0.871138, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 0.9)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damage Area:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.92699]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damage Area/Sprite:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.1, 1.00153, 2, -0.2, 0.00153112, 0.25, 0),
+"times": PackedFloat32Array(0.6, 0.9)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Damage Area/Sprite:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.1, 1.00153, 2, -0.2, 0.00153112, 0.25, 0),
+"times": PackedFloat32Array(0.6, 0.9)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite:offset:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.1, -23.167, -5, -0.1, -23.167, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Damage Area/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_skoua"]
+_data = {
+"hurt": SubResource("Animation_4cwjh"),
+"idle": SubResource("Animation_cplr4"),
+"jump": SubResource("Animation_t2hpo")
+}
+
+[node name="Slime" type="CharacterBody2D" groups=["Enemies", "Entities"]]
+y_sort_enabled = true
+collision_mask = 0
+motion_mode = 1
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_on_leave = 2
+platform_floor_layers = 0
+script = ExtResource("1_h1ogj")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.384314)
+z_index = -2
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("2_w44pw")
+hframes = 3
+frame = 2
+
+[node name="Damage Area" type="Area2D" parent="."]
+position = Vector2(0, -2)
+rotation = 3.92699
+script = ExtResource("3_uglmi")
+
+[node name="Sprite" type="Sprite2D" parent="Damage Area"]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_0gnaj")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
+shape = SubResource("RectangleShape2D_jym8g")
+disabled = true
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_eirpj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_w44pw")
+offset = Vector2(0, -5)
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_skoua")
+}
+
+[node name="Jump Delay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Damage Area" to="Damage Area" method="_on_body_entered"]
+[connection signal="timeout" from="Jump Delay" to="." method="_on_jump_delay_timeout"]

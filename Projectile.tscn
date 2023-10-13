@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://i7w0k64eq2hy"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_vxg6q"]
+[ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="2_bqh31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvld3"]
+size = Vector2(6, 16)
+
+[node name="Projectile" type="CharacterBody2D" groups=["Projectiles"]]
+script = ExtResource("1_vxg6q")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("2_bqh31")
+hframes = 3
+frame = 2
+
+[node name="Damage Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
+shape = SubResource("RectangleShape2D_jvld3")
+
+[node name="Destroy Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Damage Area" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Destroy Timer" to="." method="_on_destroy_timer_timeout"]
