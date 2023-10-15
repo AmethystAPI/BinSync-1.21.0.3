@@ -105,6 +105,9 @@ texture = ExtResource("4_4e2tv")
 offset = Vector2(0, -4)
 hframes = 5
 
+[node name="NetworkNode" type="Node" parent="Sword"]
+script = ExtResource("6_dsrha")
+
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("6_dsrha")
 

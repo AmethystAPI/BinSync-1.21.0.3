@@ -94,6 +94,8 @@ func _on_tick(state):
 	_hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
 	_dash()
 
+	move_and_slide()
+
 
 func _default(state):
 	if _state != State.DEFAULT:
@@ -137,10 +139,6 @@ func _dash():
 		return
 
 	$AnimatedSprite.play("idle")
-
-
-func _physics_process(_delta):
-	move_and_slide()
 
 
 func _on_dash_timer_timeout():

@@ -178,15 +178,15 @@ func _send_state_updates():
 		var node = _network_nodes[id]
 
 		if node.has_authority():
-			# _update_state.rpc(id, current_tick, _get_state(current_tick)[id].state)
+			_update_state.rpc(id, current_tick, _get_state(current_tick)[id].state)
 			
-			var tick = current_tick
+			# var tick = current_tick
 
-			var delay = func():
-				await get_tree().create_timer(0.1).timeout
-				_update_state.rpc(id, tick, _get_state(tick)[id].state)
+			# var delay = func():
+			# 	await get_tree().create_timer(0.1).timeout
+			# 	_update_state.rpc(id, tick, _get_state(tick)[id].state)
 			
-			delay.call()
+			# delay.call()
 
 
 func _tick_nodes():
