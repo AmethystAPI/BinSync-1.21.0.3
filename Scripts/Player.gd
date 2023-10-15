@@ -35,7 +35,7 @@ func _go_to_state(state: State):
 
 
 func _input(event):
-	if event.is_action_pressed("shoot"):		
+	if event.is_action_pressed("shoot"):
 		_shoot_presses += 1
 
 	if event.is_action_pressed("dash"):
@@ -45,9 +45,7 @@ func _input(event):
 func _ready():
 	GameManager.Players.append(self)
 
-	$NetworkNode.on_tick(_on_tick)
-	$NetworkNode.on_record_state(_record_state)
-
+	
 func _record_state(state, old_state):
 	state.state = _state
 	state.position = global_position

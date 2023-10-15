@@ -2,28 +2,27 @@ extends Node
 class_name NetworkNode
 
 
+signal recorded_state(state: Dictionary, old_state: Variant)
+signal ticked(state: Dictionary)
+
+
 var id = -1
+
 var authority = 1
+
 var created_tick = -1
 var despawned_tick = -1
-var scene_child = false
-var spawned = true
-var old_parent = null
 
-var _tick_events = []
-var _record_state_events = []
+var scene_child = false
+
+var spawned = true
+
+
+var _old_parent = null
 
 
 func _ready():
-	NetworkManager.register_network_node(self)
-
-
-func on_tick(event) -> void:
-	_tick_events.append(event)
-
-
-func on_record_state(event) -> void:
-	_record_state_events.append(event)
+	NetworkManager._register_network_node(self)
 
 
 func has_registered() -> bool:
@@ -31,29 +30,21 @@ func has_registered() -> bool:
 
 
 func has_authority() -> bool:
-	return authority == NetworkManager.local_client_id
+	return authority == NetworkManager.local_player
 
 
-func tick(state) -> void:
-	for event in _tick_events:
-		event.call(state)
+func give_authority(client_id: int) -> void:
+	authority = client_id
 
 
-func record_state(old_state):
-	var state = {}
+func input_state(state_name: String, value, default_value, state: Dictionary, old_state: Variant) -> void:
+	if has_authority():
+		state[state_name] = value
+	elif old_state != null:
+		state[state_name] = old_state[state_name]
+	else:
+		state[state_name] = default_value
 
-	for event in _record_state_events:
-		event.call(state, old_state)
-
-	return state
-
-func respawn() -> void:
-	if spawned:
-		return
-
-	spawned = true
-
-	old_parent.add_child(get_parent())
 
 func despawn() -> void:
 	if not spawned:
@@ -63,6 +54,27 @@ func despawn() -> void:
 
 	despawned_tick = NetworkManager.current_tick
 
-	old_parent = get_parent().get_parent()
+	_old_parent = get_parent().get_parent()
 
-	old_parent.remove_child(get_parent())
+	_old_parent.remove_child(get_parent())
+
+
+func _record_state(old_state):
+	var state = {}
+
+	recorded_state.emit(state, old_state)
+
+	return state
+
+
+func _tick(state):
+	ticked.emit(state)
+
+
+func _respawn() -> void:
+	if spawned:
+		return
+
+	spawned = true
+
+	_old_parent.add_child(get_parent())

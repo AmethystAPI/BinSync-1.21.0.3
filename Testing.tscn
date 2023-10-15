@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgoh7yplcwivb"]
+[gd_scene load_steps=7 format=3 uid="uid://bgoh7yplcwivb"]
 
 [ext_resource type="Texture2D" uid="uid://6xllwl7l2ah7" path="res://Sprites/Dungeon.png" id="2_n6ya2"]
-[ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://Player.tscn" id="2_y0cc0"]
 [ext_resource type="Script" path="res://Scripts/pixel_camera.gd" id="3_n6veh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_bv3ym"]
@@ -274,15 +273,7 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(-196611, 1, 4, -196610, 1, 4, -196609, 1, 4, -262144, 1, 4, -262143, 1, 4, -262142, 1, 4, 65539, 131073, 5, 131075, 131073, 5, 3, 131073, 5, -65533, 131073, 5, -131069, 131073, 5, -196605, 131073, 5, -131076, 196609, 5, -65540, 196609, 5, -4, 196609, 5, 65532, 196609, 5, 131068, 196609, 5, 196604, 196609, 5)
 
-[node name="Player" parent="." instance=ExtResource("2_y0cc0")]
-position = Vector2(240, 135)
-motion_mode = 1
-slide_on_ceiling = false
-floor_stop_on_slope = false
-floor_block_on_wall = false
-platform_on_leave = 2
-platform_floor_layers = 0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
 visible = false
+position = Vector2(240, 135)
 script = ExtResource("3_n6veh")

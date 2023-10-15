@@ -15,4 +15,4 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_destroy_timer_timeout():
-	queue_free()
+	$NetworkNode.despawn()

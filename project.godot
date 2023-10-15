@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 [autoload]
 
 GameManager="*res://Scripts/GameManager.gd"
-NetworkManager="*res://cito/network_manager.gd"
+NetworkManager="*res://Cito/network_manager.gd"
 
 [display]
 

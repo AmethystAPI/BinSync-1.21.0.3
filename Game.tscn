@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dod2lcso1cujg"]
+[gd_scene load_steps=5 format=3 uid="uid://dod2lcso1cujg"]
 
 [ext_resource type="PackedScene" uid="uid://bgoh7yplcwivb" path="res://Testing.tscn" id="1_8216l"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_hfwar"]
+[ext_resource type="Script" path="res://Scripts/testing_ui.gd" id="3_542hm"]
+[ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://Player.tscn" id="4_lb7t4"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -46,3 +48,39 @@ grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="Control"]
 script = ExtResource("2_hfwar")
+
+[node name="Control2" type="Control" parent="." node_paths=PackedStringArray("SpawnNode")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_542hm")
+PlayerScene = ExtResource("4_lb7t4")
+SpawnNode = NodePath("../SubViewportContainer/SubViewport/Node2D")
+
+[node name="HostButton" type="Button" parent="Control2"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="Control2"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 44.0
+offset_bottom = 62.0
+text = "Join"
+
+[node name="StartButton" type="Button" parent="Control2"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 44.0
+offset_bottom = 93.0
+text = "Start"
+
+[connection signal="pressed" from="Control2/HostButton" to="Control2" method="_on_host_button_pressed"]
+[connection signal="pressed" from="Control2/JoinButton" to="Control2" method="_on_join_button_pressed"]
+[connection signal="pressed" from="Control2/StartButton" to="Control2" method="_on_start_button_pressed"]

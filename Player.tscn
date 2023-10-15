@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://Projectile.tscn" id="2_qbaia"]
 [ext_resource type="Script" path="res://Scripts/Sword.gd" id="3_7k655"]
 [ext_resource type="Texture2D" uid="uid://brp1hnbdx0prq" path="res://Sprites/Weapons.png" id="4_4e2tv"]
-[ext_resource type="Script" path="res://cito/network_node.gd" id="6_dsrha"]
+[ext_resource type="Script" path="res://Cito/network_node.gd" id="6_p40mr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxjgm"]
 radius = 3.0
@@ -105,10 +105,11 @@ texture = ExtResource("4_4e2tv")
 offset = Vector2(0, -4)
 hframes = 5
 
-[node name="NetworkNode" type="Node" parent="Sword"]
-script = ExtResource("6_dsrha")
-
 [node name="NetworkNode" type="Node" parent="."]
-script = ExtResource("6_dsrha")
+script = ExtResource("6_p40mr")
 
 [connection signal="timeout" from="Dash Timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="recorded_state" from="NetworkNode" to="." method="_record_state"]
+[connection signal="recorded_state" from="NetworkNode" to="Sword" method="_record_state"]
+[connection signal="ticked" from="NetworkNode" to="." method="_on_tick"]
+[connection signal="ticked" from="NetworkNode" to="Sword" method="_on_tick"]
