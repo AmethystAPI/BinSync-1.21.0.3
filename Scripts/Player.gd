@@ -18,6 +18,9 @@ var _state = State.DEFAULT
 var _health = 6
 var _knockback = Vector2.ZERO
 
+var _shoot_presses = 0
+var _dash_pressed = false
+
 
 func _go_to_state(state: State):
 	_state = state
@@ -31,30 +34,76 @@ func _go_to_state(state: State):
 		$"Dash Timer".start()
 
 
-func _ready():
-	GameManager.Players.append(self)
-	
-
 func _input(event):
 	if event.is_action_pressed("shoot"):		
-		$Sword.shoot()
+		_shoot_presses += 1
 
 	if event.is_action_pressed("dash"):
+		_dash_pressed = true
+
+
+func _ready():
+	GameManager.Players.append(self)
+
+	$NetworkNode.on_tick(_on_tick)
+	$NetworkNode.on_record_state(_record_state)
+
+func _record_state(state, old_state):
+	state.state = _state
+	state.position = global_position
+	state.knockback = _knockback
+	state.health = _health
+
+	if $NetworkNode.has_authority():
+		state.movement = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
+		state.mouse_position_offset = get_global_mouse_position() - global_position
+		
+		state.shoot_presses = _shoot_presses
+		_shoot_presses = 0
+
+		state.dash_pressed = _dash_pressed
+		_dash_pressed = false
+	elif old_state != null:
+		state.movement = old_state.movement
+		state.mouse_position_offset = old_state.mouse_position_offset
+		state.shoot_presses = 0
+		state.dash_pressed = false
+	else:
+		state.movement = Vector2.ZERO
+		state.mouse_position_offset = Vector2.ZERO
+		state.shoot_presses = 0
+		state.dash_pressed = false
+
+
+func _on_tick(state):
+	_state = state.state
+	global_position = state.position
+	_knockback = state.knockback
+	_health = state.health
+
+	if state.dash_pressed:
 		if _state != State.DEFAULT:
 			return
 
 		_go_to_state(State.DASH)
 
+	for i in range(state.shoot_presses):
+		$Sword.shoot()
 
-func _default():
+	_default(state)
+	_hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
+	_dash()
+
+
+func _default(state):
 	if _state != State.DEFAULT:
 		return
 		
-	var movement = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
+	var movement = state.movement
 	
 	velocity = movement * SPEED
 
-	var mouse_position_offset = get_global_mouse_position() - global_position
+	var mouse_position_offset = state.mouse_position_offset
 	
 	if mouse_position_offset.x > 0:
 		$AnimatedSprite.scale.x = 1
@@ -90,11 +139,7 @@ func _dash():
 	$AnimatedSprite.play("idle")
 
 
-func _physics_process(delta):
-	_default()
-	_hurt(delta)
-	_dash()
-
+func _physics_process(_delta):
 	move_and_slide()
 
 

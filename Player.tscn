@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvyqq7wvquwo0"]
+[gd_scene load_steps=15 format=3 uid="uid://cvyqq7wvquwo0"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_bpd3h"]
 [ext_resource type="Texture2D" uid="uid://dhli88siajnt7" path="res://Sprites/Player.png" id="2_hcqgy"]
 [ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://Projectile.tscn" id="2_qbaia"]
 [ext_resource type="Script" path="res://Scripts/Sword.gd" id="3_7k655"]
 [ext_resource type="Texture2D" uid="uid://brp1hnbdx0prq" path="res://Sprites/Weapons.png" id="4_4e2tv"]
+[ext_resource type="Script" path="res://cito/network_node.gd" id="6_dsrha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxjgm"]
 radius = 3.0
@@ -103,5 +104,8 @@ position = Vector2(7, 0)
 texture = ExtResource("4_4e2tv")
 offset = Vector2(0, -4)
 hframes = 5
+
+[node name="NetworkNode" type="Node" parent="."]
+script = ExtResource("6_dsrha")
 
 [connection signal="timeout" from="Dash Timer" to="." method="_on_dash_timer_timeout"]
