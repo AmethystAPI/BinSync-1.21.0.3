@@ -1,100 +1,132 @@
 extends Node
 
 
+signal recorded_input(input: TrackedValue)
 signal started
 
 
-const ADDRESS = "127.0.0.1"
-const PORT = 25566
-const MAX_PLAYERS = 2
 const TICKS_PER_SECOND: float = 60
-const MAX_MESSAGE_DELAY: float = 2
+const MAX_MESSAGE_DELAY: float = 1
+
 
 var players = []
-var local_player: int:
-	get:
-		return multiplayer.get_unique_id()
-
-var is_host: bool:
-	get:
-		return multiplayer.is_server()
-
 var current_tick: int = 0
 
 
+var _player_tracked_inputs = []
+
 var _initial_tick_time: float = -1
-var _earliest_updated_tick = 0
-var _simulation_running = false
+var _earliest_updated_tick = 1
+
+var _is_setup = false
 
 var _network_nodes = {}
-var _last_network_node_id = -1
+var _next_network_node_id
 
-var _states = []
-var _pruned_states = 0
+var _debug_is_host = false
+
+
+func _ready():
+	_next_network_node_id = TrackedValue.new(0)
 
 
 func _process(_delta):
 	var current_tick_time = Time.get_ticks_msec()
 
-	if not _simulation_running:
-		return
-		
-	if current_tick_time < _initial_tick_time:
+	if not _is_setup:
 		return
 
-	var target_tick: int = floor((current_tick_time - _initial_tick_time) / 1000.0 * TICKS_PER_SECOND)
+	var newest_tick = floor((current_tick_time - _initial_tick_time) / 1000.0 * TICKS_PER_SECOND) + 1
 
-	if current_tick == target_tick:
+	var start_tick = min(current_tick + 1, _earliest_updated_tick)
+
+	if start_tick > newest_tick:
 		return
 
-	var start_tick = min(current_tick, _earliest_updated_tick)
+	if current_tick > start_tick - 1:
+		# print(_id_debug(), 'Rolling back from ', current_tick, ' to ', start_tick - 1)
 
-	for tick in range(start_tick, target_tick):
+		current_tick = start_tick - 1
+
+		for node in _network_nodes.values():
+			node._apply_state()
+
+	for tick in range(start_tick, newest_tick + 1):
+		# print(_id_debug(), 'Tick: ', tick)
+
 		current_tick = tick
-		
-		_tick()
 
-	current_tick = target_tick
-	_earliest_updated_tick = target_tick
+		_next_network_node_id.value = _next_network_node_id.old_value
 
-	while _states.size() > MAX_MESSAGE_DELAY * TICKS_PER_SECOND:
-		_states.remove_at(0)
-		_pruned_states += 1
+		for index in range(players.size()):
+			var tracked_input = _player_tracked_inputs[index]
 
-	for id in _network_nodes.keys():
-		var node = _network_nodes[id]
+			if players[index] == local_player():
+				if tick == newest_tick:
+					recorded_input.emit(tracked_input)
 
-		if node.spawned:
-			continue
+					tracked_input._set_updated()
 
-		if node.despawned_tick > _pruned_states:
-			continue
+					if tracked_input._should_update():
+						# _update_input.rpc(tick, local_player(), tracked_input.value)
 
-		_network_nodes.erase(id)
-		node.get_parent().queue_free()
+						var stored_tick = NetworkManager.current_tick
+						var stored_value = tracked_input.value
+
+						var delay = func():
+							await get_tree().create_timer(RandomNumberGenerator.new().randf_range(0, 0.08)).timeout
+							
+							_update_input.rpc(stored_tick, local_player(), stored_value)
+						
+						delay.call()
+
+			tracked_input.value = tracked_input.old_value
+
+		for node in _network_nodes.values():
+			node._handle_early_state()
+				
+		for node in _network_nodes.values():
+			node._update()
+
+		for node in _network_nodes.values():
+			node._record_state()
+
+	_earliest_updated_tick = newest_tick + 1
+
+
+func local_player() -> int:
+		return multiplayer.get_unique_id()
+
+
+func is_host() -> bool:
+		return multiplayer.is_server()
+
+
+func delta() -> float:
+	return 1.0 / TICKS_PER_SECOND
 
 
 func host() -> void:
 	var peer = ENetMultiplayerPeer.new()
 	
-	var error = peer.create_server(PORT, MAX_PLAYERS)
+	var error = peer.create_server(25566, 2)
 	if error != OK:
-		print("Error hosting: " + str(error))
+		print('Error hosting: ' + str(error))
 		return
 
 	peer.get_host().compress(ENetConnection.COMPRESS_ZLIB)
  
 	multiplayer.set_multiplayer_peer(peer)
 
-	is_host = true
+	_debug_is_host = true
 
 
 func join() -> void:
 	var peer = ENetMultiplayerPeer.new()
 	
-	var error = peer.create_client(ADDRESS, PORT)
+	var error = peer.create_client('127.0.0.1', 25566)
 	if error != OK:
-		print("Error joining: " + str(error))
+		print('Error joining: ' + str(error))
 		return
 		
 	peer.get_host().compress(ENetConnection.COMPRESS_ZLIB)
@@ -106,171 +138,48 @@ func start() -> void:
 	_setup.rpc(Time.get_ticks_msec(), [1] + Array(multiplayer.get_peers()))
 
 
-func spawn(scene: PackedScene) -> Node:
-	var id = _last_network_node_id + 1
-
-	if _network_nodes.has(id):
-		_network_nodes[id].spawned = true
-		_register_network_node(_network_nodes[id])
-
-		return _network_nodes[id].get_parent()
-
+func spawn(scene: PackedScene, authority: int = 1) -> Node:
 	var node = scene.instantiate()
+	var network_node = node.get_node('NetworkNode')
+
+	if _next_network_node_id.value == null:
+		print(_next_network_node_id._values)
+
+	network_node.id = _next_network_node_id.value
+	_next_network_node_id.value += 1
+
+	_network_nodes[network_node.id] = network_node
+
+	network_node.give_authority(authority)
+	network_node._spawn()
 
 	return node
 
 
-func spawn_with_authority(scene: PackedScene, authority: int) -> Node:
-	var node = spawn(scene)
+@rpc('any_peer', 'call_local', 'reliable')
+func _setup(host_initial_tick_time, current_players):
+	_initial_tick_time = host_initial_tick_time
 
-	node.get_node("NetworkNode").give_authority(authority)
+	players = current_players
 
-	return node
+	for player in current_players:
+		_player_tracked_inputs.append(TrackedValue.new(null))
+
+	started.emit()
+	
+	_is_setup = true
+
+
+@rpc('any_peer', 'call_remote', 'reliable')
+func _update_input(tick, player, input):
+	if tick < current_tick - MAX_MESSAGE_DELAY * TICKS_PER_SECOND:
+		return
+
+	var player_index = players.find(player)
+	var tracked_input = _player_tracked_inputs[player_index]
+
+	tracked_input._update_value(tick, input)
 
 
 func _id_debug():
-	return "(" + str(multiplayer.get_unique_id()) + ") "
-
-
-@rpc("any_peer", "call_local", "reliable")
-func _setup(host_initial_tick_time: float, joined_clients: Array):
-	_initial_tick_time = host_initial_tick_time
-
-	players = joined_clients
-
-	started.emit()
-
-	_simulation_running = true
-
-
-func _get_state(tick: int):
-	return _states[tick - _pruned_states]
-
-
-func _set_state(tick: int, state):
-	_states[tick - _pruned_states] = state
-
-
-func _states_count():
-	return _states.size() + _pruned_states
-
-# This tick is currently from a roleback and this node had not been created yet so we'll despawn it untill it is created again
-func _despawn_future_nodes():
-	for node in _network_nodes.values():
-		if node.created_tick >= current_tick and not node.scene_child:
-			print(_id_debug() + "Despawning node " + str(node.id) + " because it was created on tick " + str(node.created_tick) + " and we're on tick " + str(current_tick))
-
-			node.despawn()
-			
-			_last_network_node_id = min(_last_network_node_id, node.id - 1)
-
-# This tick is currently a roleback and the node has be despawned after this tick so we'll respawn it for the roleback
-func _respawn_current_nodes():
-	if current_tick >= _states_count():
-		return
-
-	for id in _get_state(current_tick).keys():
-		if not _network_nodes.has(id):
-			print("Tried to respawn node that doesn't exist?")
-			
-		_network_nodes[id]._respawn()
-
-
-func _record_state():
-	# print(_id_debug() + "Recording state for tick " + str(current_tick))
-
-	var tick_state = {}
-
-	for node in _network_nodes.values():
-		if not node.spawned:
-			continue
-
-		var old_state = null
-
-		if current_tick > 0 and _get_state(current_tick - 1).has(node.id):
-			old_state = _get_state(current_tick - 1)[node.id].state
-
-		if current_tick < _states_count() and _get_state(current_tick).has(node.id) and not _get_state(current_tick)[node.id].prediction:
-			tick_state[node.id] = _get_state(current_tick)[node.id]
-
-			continue
-
-		tick_state[node.id] = {
-			"prediction": not node.has_authority(),
-			"state": node._record_state(old_state),
-		}
-
-	if current_tick >= _states_count():
-		_states.append(tick_state)
-	else:
-		_set_state(current_tick, tick_state)
-
-
-@rpc("any_peer", "call_remote", "reliable")
-func _update_state(network_node_id, tick, state):
-	if tick < _pruned_states:
-		print("Received too old state update from " + str(tick) + " but now on tick " + str(current_tick))
-		
-		return
-
-	if tick >= _states_count():
-		for i in range(tick, _states_count() + 1):
-			_states.append({})
-
-	if not _get_state(tick).has(network_node_id):
-		_get_state(tick)[network_node_id] = {
-			"prediction": false,
-			"state": null,
-		}
-
-	if  _get_state(tick)[network_node_id].state != null and _get_state(tick)[network_node_id].state.hash() != state.hash():
-		_earliest_updated_tick = min(_earliest_updated_tick, tick)
-
-	_get_state(tick)[network_node_id].state = state
-	_get_state(tick)[network_node_id].prediction = false
-
-# send updates but only when not rolling back
-func _send_state_updates():
-	if current_tick < _states_count() - 1:
-		return
-
-	for id in _get_state(current_tick).keys():
-		var node = _network_nodes[id]
-
-		if node.has_authority():
-			# _update_state.rpc(id, current_tick, _get_state(current_tick)[id].state)
-			
-			var tick = current_tick
-
-			var delay = func():
-				await get_tree().create_timer(0.05).timeout
-				_update_state.rpc(id, tick, _get_state(tick)[id].state)
-			
-			delay.call()
-
-
-func _tick_nodes():
-	for id in _get_state(current_tick).keys():
-		var node = _network_nodes[id]
-
-		node._tick(_get_state(current_tick)[id].state)
-
-
-func _tick():
-	# print(_id_debug() + "Tick: " + str(current_tick))
-
-	_despawn_future_nodes()
-	_respawn_current_nodes()
-	_record_state()
-	_send_state_updates()
-	_tick_nodes()
-
-
-func _register_network_node(node):
-	node.id = _last_network_node_id + 1
-	node.created_tick = current_tick
-	node.scene_child = not _simulation_running
-
-	_last_network_node_id += 1
-
-	_network_nodes[node.id] = node
+	return '(' + str(multiplayer.get_unique_id()) + ') '

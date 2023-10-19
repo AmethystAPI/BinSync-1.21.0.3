@@ -2,79 +2,129 @@ extends Node
 class_name NetworkNode
 
 
-signal recorded_state(state: Dictionary, old_state: Variant)
-signal ticked(state: Dictionary)
+signal updated(input: TrackedValue)
+signal applied_state
+signal recorded_state
 
 
 var id = -1
 
-var authority = 1
 
-var created_tick = -1
-var despawned_tick = -1
+var _tracked_states = []
 
-var scene_child = false
+var _tracked_authority = tracked_state(1)
+var _tracked_spawned = tracked_state(true)
+var _spawned_tick = -1
+var _despawned_tick = -1
 
-var spawned = true
-
-
-var _old_parent = null
-
-
-func _ready():
-	NetworkManager._register_network_node(self)
+var _old_parent
+var _spawned_cache = true
 
 
-func has_registered() -> bool:
-	return id != -1
-
-
-func has_authority() -> bool:
-	return authority == NetworkManager.local_player
-
-
-func give_authority(client_id: int) -> void:
-	authority = client_id
-
-
-func input_state(state_name: String, value, default_value, state: Dictionary, old_state: Variant) -> void:
-	if has_authority():
-		state[state_name] = value
-	elif old_state != null:
-		state[state_name] = old_state[state_name]
-	else:
-		state[state_name] = default_value
-
-
-func despawn() -> void:
-	if not spawned:
+func _process(delta):
+	if not _tracked_spawned.value:
 		return
 
-	spawned = false
+	for value in _tracked_states:
+		value._process(delta)
 
-	despawned_tick = NetworkManager.current_tick
+
+func tracked_state(initial_value, interpolate_event = null) -> TrackedValue:	
+	var value = TrackedValue.new(initial_value, interpolate_event)
+
+	_tracked_states.append(value)
+
+	return value
+
+	
+func has_authority() -> bool:
+	return _tracked_authority.value == NetworkManager.local_player()
+
+
+func give_authority(new_authority):
+	_tracked_authority.value = new_authority
+
+
+func despawn():
+	print('Despawn')
+
+	_tracked_spawned.value = false
+
+	_despawned_tick = NetworkManager.current_tick
+	
+	_spawned_cache = false
 
 	_old_parent = get_parent().get_parent()
 
-	_old_parent.remove_child(get_parent())
+	if _old_parent != null:
+		_old_parent.remove_child(get_parent())
 
+var respawned = false
 
-func _record_state(old_state):
-	var state = {}
-
-	recorded_state.emit(state, old_state)
-
-	return state
-
-
-func _tick(state):
-	ticked.emit(state)
-
-
-func _respawn() -> void:
-	if spawned:
+func _respawn():
+	if _spawned_cache:
 		return
 
-	spawned = true
+	respawned = true
 
-	_old_parent.add_child(get_parent())
+	if _old_parent != null:
+		_old_parent.add_child(get_parent())
+	
+	_spawned_cache = true
+
+
+func _spawn():
+	_spawned_tick = NetworkManager.current_tick
+	
+
+func _handle_early_state():
+	_tracked_spawned.value = _tracked_spawned.old_value
+	_tracked_authority.value = _tracked_authority.old_value
+
+
+func _apply_state():
+	if NetworkManager.current_tick < _spawned_tick:
+		print('Free Early')
+
+		NetworkManager._network_nodes.erase(id)
+
+		get_parent().queue_free()
+
+		return
+
+	if not _tracked_spawned.value:
+		return
+
+	_respawn()
+
+	applied_state.emit()
+
+
+func _update():
+	if not _tracked_spawned.value:
+		return
+
+	var player_index = NetworkManager.players.find(_tracked_authority.value)
+	var tracked_input = NetworkManager._player_tracked_inputs[player_index]
+
+	updated.emit(tracked_input)
+
+
+func _record_state():
+	if _tracked_authority.value == null:
+		_tracked_authority.value = _tracked_authority.old_value
+	
+	if _tracked_spawned.value == null:
+		_tracked_spawned.value = _tracked_spawned.old_value
+
+	if not _tracked_spawned.value:
+		print('Free Late')
+
+		if NetworkManager.current_tick - _despawned_tick > floor(NetworkManager.MAX_MESSAGE_DELAY * NetworkManager.TICKS_PER_SECOND):
+			get_parent().queue_free()
+
+			NetworkManager._network_nodes.erase(id)
+
+		return
+
+	recorded_state.emit()

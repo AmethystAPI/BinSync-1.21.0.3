@@ -14,12 +14,12 @@ const KNOCKBACK_DECAY = 12.0
 const KNOCKBACK_MINIMUM = 10
 
 
+var _tracked_position
+
+
 var _state = State.DEFAULT
 var _health = 6
 var _knockback = Vector2.ZERO
-
-var _shoot_presses = 0
-var _dash_pressed = false
 
 
 func _go_to_state(state: State):
@@ -29,91 +29,55 @@ func _go_to_state(state: State):
 		$AnimatedSprite.play("hurt")
 
 	if _state == State.DASH:
-		velocity = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized() * DASH_SPEED
+		# velocity = state.movement * DASH_SPEED
 
 		$"Dash Timer".start()
 
 
-func _input(event):
-	if event.is_action_pressed("shoot"):
-		_shoot_presses += 1
-
-	if event.is_action_pressed("dash"):
-		_dash_pressed = true
-
-
 func _ready():
+	_tracked_position = $NetworkNode.tracked_state(global_position, _interpolate_position)
+	print(global_position)
+
 	GameManager.Players.append(self)
 
-	
-func _record_state(state, old_state):
-	state.state = _state
-	state.position = global_position
-	state.knockback = _knockback
-	state.health = _health
 
-	if $NetworkNode.has_authority():
-		state.movement = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
-		state.mouse_position_offset = get_global_mouse_position() - global_position
-		
-		state.shoot_presses = _shoot_presses
-		_shoot_presses = 0
-
-		state.dash_pressed = _dash_pressed
-		_dash_pressed = false
-	elif old_state != null:
-		state.movement = old_state.movement
-		state.mouse_position_offset = old_state.mouse_position_offset
-		state.shoot_presses = 0
-		state.dash_pressed = false
-	else:
-		state.movement = Vector2.ZERO
-		state.mouse_position_offset = Vector2.ZERO
-		state.shoot_presses = 0
-		state.dash_pressed = false
+func _process(delta):
+	$ClientPlayer.global_position = _tracked_position.interpolated_value
 
 
-func _on_tick(state):
-	_state = state.state
-	global_position = state.position
-	_knockback = state.knockback
-	_health = state.health
+func _on_updated(input: TrackedValue):
+	if input.value == null:
+		return
 
-	if state.dash_pressed:
-		if _state != State.DEFAULT:
-			return
-
-		_go_to_state(State.DASH)
-
-	for i in range(state.shoot_presses):
-		$Sword.shoot()
-
-	_default(state)
-	_hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
-	_dash()
+	_default(input)
+	# _hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
+	# _dash()
 
 	move_and_slide()
+	
+func _on_recorded_state():
+	_tracked_position.value = global_position
 
+func _on_applied_state():
+	global_position = _tracked_position.value
 
-func _default(state):
+func _default(input: TrackedValue):
 	if _state != State.DEFAULT:
 		return
 		
-	var movement = state.movement
-	
-	velocity = movement * SPEED
+	velocity = input.value.movement * SPEED
 
-	var mouse_position_offset = state.mouse_position_offset
+	# var mouse_position_offset = state.mouse_position_offset
 	
-	if mouse_position_offset.x > 0:
-		$AnimatedSprite.scale.x = 1
-	elif mouse_position_offset.x < 0:
-		$AnimatedSprite.scale.x = -1
+	# if mouse_position_offset.x > 0:
+	# 	$AnimatedSprite.scale.x = 1
+	# elif mouse_position_offset.x < 0:
+	# 	$AnimatedSprite.scale.x = -1
 	
 	if velocity.length() > 0:
-		$AnimatedSprite.play("run")
+		$ClientPlayer/AnimatedSprite.play("run")
 	else:
-		$AnimatedSprite.play("idle")
+		$ClientPlayer/AnimatedSprite.play("idle")
 
 
 func _hurt(delta):
@@ -151,3 +115,6 @@ func hurt(damage, source_position):
 	_knockback = (global_position - source_position).normalized() * KNOCKBACK_POWER
 
 	_go_to_state(State.HURT)
+
+func _interpolate_position(real_value, current_value, ticks_since_update, delta):
+	return current_value.lerp(real_value, min(delta * 24, 1))
