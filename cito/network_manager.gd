@@ -74,7 +74,7 @@ func _process(_delta):
 						var stored_value = tracked_input.value
 
 						var delay = func():
-							await get_tree().create_timer(RandomNumberGenerator.new().randf_range(0, 0.08)).timeout
+							await get_tree().create_timer(0.08).timeout
 							
 							_update_input.rpc(stored_tick, local_player(), stored_value)
 						
@@ -141,9 +141,6 @@ func start() -> void:
 func spawn(scene: PackedScene, authority: int = 1) -> Node:
 	var node = scene.instantiate()
 	var network_node = node.get_node('NetworkNode')
-
-	if _next_network_node_id.value == null:
-		print(_next_network_node_id._values)
 
 	network_node.id = _next_network_node_id.value
 	_next_network_node_id.value += 1

@@ -2,6 +2,7 @@ extends Node
 class_name NetworkNode
 
 
+signal handled_early_state
 signal updated(input: TrackedValue)
 signal applied_state
 signal recorded_state
@@ -46,8 +47,6 @@ func give_authority(new_authority):
 
 
 func despawn():
-	print('Despawn')
-
 	_tracked_spawned.value = false
 
 	_despawned_tick = NetworkManager.current_tick
@@ -81,11 +80,11 @@ func _handle_early_state():
 	_tracked_spawned.value = _tracked_spawned.old_value
 	_tracked_authority.value = _tracked_authority.old_value
 
+	handled_early_state.emit()
+
 
 func _apply_state():
 	if NetworkManager.current_tick < _spawned_tick:
-		print('Free Early')
-
 		NetworkManager._network_nodes.erase(id)
 
 		get_parent().queue_free()
@@ -118,8 +117,6 @@ func _record_state():
 		_tracked_spawned.value = _tracked_spawned.old_value
 
 	if not _tracked_spawned.value:
-		print('Free Late')
-
 		if NetworkManager.current_tick - _despawned_tick > floor(NetworkManager.MAX_MESSAGE_DELAY * NetworkManager.TICKS_PER_SECOND):
 			get_parent().queue_free()
 

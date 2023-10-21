@@ -14,43 +14,61 @@ const KNOCKBACK_MINIMUM = 10
 
 var _tracked_position
 var _tracked_knockback
-
-
-var _state = State.IDLE
+var _tracked_state
+var _tracked_jump_timer
 
 var _health = 8
-
-
-func _go_to_state(state: State):
-	_state = state
-
-	if _state == State.IDLE:
-		# $"Jump Delay".start(RandomNumberGenerator.new().randf_range(0.5, 1))
-		$"AnimationPlayer".play("idle")
-
-	if _state == State.JUMP:
-		$"AnimationPlayer".play("jump")
-
-	if _state == State.HURT:
-		$"AnimationPlayer".play("hurt")
-		$"Jump Delay".stop()
 
 
 func _ready():
 	_tracked_position = $NetworkNode.tracked_state(global_position)
 	_tracked_knockback = $NetworkNode.tracked_state(Vector2.ZERO)
+	_tracked_state = $NetworkNode.tracked_state(State.IDLE)
+	_tracked_jump_timer = $NetworkNode.tracked_state(1.0)
 
 	_go_to_state(State.IDLE)
 
 
+func _go_to_state(state: State):
+	if state == State.IDLE:
+		_tracked_jump_timer.value = 1.0
+		$"AnimationPlayer".play("idle")
+
+	if state == State.JUMP:
+		_tracked_jump_timer.value = 0.6
+		$"AnimationPlayer".play("jump")
+
+	if state == State.LANDED:
+		_tracked_jump_timer.value = 0.3
+		$"AnimationPlayer".play("jump")
+
+	if state == State.HURT:
+		$"AnimationPlayer".play("hurt")
+
+	_tracked_state.value = state
+
+
+func _resume_state():
+	if _tracked_state.value == State.IDLE:
+		$"AnimationPlayer".play("idle")
+
+	if _tracked_state.value == State.JUMP:
+		$"AnimationPlayer".play("jump")
+
+	if _tracked_state.value == State.HURT:
+		$"AnimationPlayer".play("hurt")
+
+
 func _on_handled_early_state():
 	_tracked_knockback.value = _tracked_knockback.old_value
+	_tracked_state.value = _tracked_state.old_value
+	_tracked_jump_timer.value = _tracked_jump_timer.old_value
 
 
 func _on_updated(input: TrackedValue):
 	_idle()
-	# _jump()
-	# _landed()
+	_jump()
+	_landed()
 	_hurt(NetworkManager.delta())
 
 	move_and_slide()
@@ -63,16 +81,23 @@ func _on_recorded_state():
 func _on_applied_state():
 	global_position = _tracked_position.value
 
+	_resume_state()
+
 
 func _idle():
-	if _state != State.IDLE:
+	if _tracked_state.value != State.IDLE:
 		return
 
 	velocity = Vector2.ZERO
 
+	_tracked_jump_timer.value -= NetworkManager.delta()
+
+	if _tracked_jump_timer.value <= 0:
+		_go_to_state(State.JUMP)
+
 
 func _jump():
-	if _state != State.JUMP:
+	if _tracked_state.value != State.JUMP:
 		return
 		
 	var closestPlayer: CharacterBody2D = null
@@ -89,17 +114,27 @@ func _jump():
 		$Sprite.scale.x = 1
 	elif velocity.x < 0:
 		$Sprite.scale.x = -1
+
+	_tracked_jump_timer.value -= NetworkManager.delta()
+
+	if _tracked_jump_timer.value <= 0:
+		_go_to_state(State.LANDED)
 	
 
 func _landed():
-	if _state != State.LANDED:
+	if _tracked_state.value != State.LANDED:
 		return
 
 	velocity = Vector2.ZERO
 
+	_tracked_jump_timer.value -= NetworkManager.delta()
+
+	if _tracked_jump_timer.value <= 0:
+		_go_to_state(State.IDLE)
+
 
 func _hurt(delta):
-	if _state != State.HURT:
+	if _tracked_state.value != State.HURT:
 		return
 	
 	velocity = _tracked_knockback.value
@@ -114,26 +149,14 @@ func _hurt(delta):
 		_go_to_state(State.IDLE)
 
 
-func _on_jump_delay_timeout():
-	_go_to_state(State.JUMP)
-
-
-func _land_jump():
-	_go_to_state(State.LANDED)
-
-
-func _end_jump():
-	_go_to_state(State.IDLE)
-
-
 func hurt(damage, source_position):	
-	if _state != State.IDLE and _state != State.LANDED:
+	if _tracked_state.value != State.IDLE and _tracked_state.value != State.LANDED:
 		return
 
 	_health -= damage
 	_tracked_knockback.value = (global_position - source_position).normalized() * KNOCKBACK_POWER
 	
-	if _health <= 0:
-		$NetworkNode.despawn()
+	# if _health <= 0:
+	# 	$NetworkNode.despawn()
 
 	_go_to_state(State.HURT)
