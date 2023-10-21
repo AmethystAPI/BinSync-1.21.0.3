@@ -19,29 +19,18 @@ const KNOCKBACK_MINIMUM = 10
 
 
 var _tracked_position
-
-
-var _state = State.DEFAULT
+var _tracked_state
+var _tracked_dash_timer
 
 var _health = 6
 
 var _knockback = Vector2.ZERO
 
 
-func _go_to_state(state: State):
-	_state = state
-
-	if _state == State.HURT:
-		$ClientPlayer/AnimatedSprite.play("hurt")
-
-	if _state == State.DASH:
-		# velocity = state.movement * DASH_SPEED
-
-		$"Dash Timer".start()
-
-
 func _ready():
-	_tracked_position = $NetworkNode.tracked_state(global_position, _interpolate_position)
+	_tracked_position = $NetworkNode.tracked_state(global_position)
+	_tracked_state = $NetworkNode.tracked_state(State.DEFAULT)
+	_tracked_dash_timer = $NetworkNode.tracked_state(0.0)
 
 	if $NetworkNode.has_authority():
 		LocalPlayer = self
@@ -49,8 +38,28 @@ func _ready():
 	Players.append(self)
 
 
-func _process(delta):
-	$ClientPlayer.global_position = _tracked_position.interpolated_value
+# func _process(delta):
+	# $ClientPlayer.global_position = _tracked_position.interpolated_value
+
+
+func _go_to_state(state: State):
+	if state == State.HURT:
+		$ClientPlayer/AnimatedSprite.play("hurt")
+
+	if state == State.DASH:
+		_tracked_dash_timer.value = 0.15
+
+	_tracked_state.value = state
+
+
+func _resume_to_state():
+	if _tracked_state.value == State.HURT:
+		$ClientPlayer/AnimatedSprite.play("hurt")
+
+
+func _on_handled_state_early():
+	_tracked_state.value = _tracked_state.old_value
+	_tracked_dash_timer.value = _tracked_dash_timer.old_value
 
 
 func _on_updated(input: TrackedValue):
@@ -58,8 +67,8 @@ func _on_updated(input: TrackedValue):
 		return
 
 	_default(input)
-	# _hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
-	# _dash()
+	_hurt(NetworkManager.delta())
+	_dash(input)
 
 	if input.value.shoot and not input.old_value.shoot:
 		$ClientPlayer/Sword.shoot()
@@ -74,19 +83,19 @@ func _on_recorded_state():
 func _on_applied_state():
 	global_position = _tracked_position.value
 
+	_resume_to_state()
+
 
 func _default(input: TrackedValue):
-	if _state != State.DEFAULT:
+	if _tracked_state.value != State.DEFAULT:
 		return
 		
 	velocity = input.value.movement * SPEED
 
-	# var mouse_position_offset = state.mouse_position_offset
-	
-	# if mouse_position_offset.x > 0:
-	# 	$ClientPlayer/AnimatedSprite.scale.x = 1
-	# elif mouse_position_offset.x < 0:
-	# 	$ClientPlayer/AnimatedSprite.scale.x = -1
+	if input.value.point_direction.x > 0:
+		$ClientPlayer/AnimatedSprite.scale.x = 1
+	elif input.value.point_direction.x < 0:
+		$ClientPlayer/AnimatedSprite.scale.x = -1
 	
 	if velocity.length() > 0:
 		$ClientPlayer/AnimatedSprite.play("run")
@@ -95,7 +104,7 @@ func _default(input: TrackedValue):
 
 
 func _hurt(delta):
-	if _state != State.HURT:
+	if _tracked_state.value != State.HURT:
 		return
 	
 	velocity = _knockback
@@ -110,27 +119,29 @@ func _hurt(delta):
 		_go_to_state(State.DEFAULT)
 
 
-func _dash():
-	if _state != State.DASH:
+func _dash(input: TrackedValue):
+	if _tracked_state.value != State.DASH:
 		return
+
+	velocity = input.movement * DASH_SPEED
 
 	$ClientPlayer/AnimatedSprite.play("idle")
 
+	_tracked_dash_timer.value -= NetworkManager.delta()
 
-func _on_dash_timer_timeout():
-	_go_to_state(State.DEFAULT)
+	if _tracked_dash_timer.value <= 0:
+		_go_to_state(State.DEFAULT)
 
 
 func hurt(damage, source_position):
-	return
-	
-	if _state != State.DEFAULT:
+	if _tracked_state.value != State.DEFAULT:
 		return
 
 	_health -= damage
 	_knockback = (global_position - source_position).normalized() * KNOCKBACK_POWER
 
 	_go_to_state(State.HURT)
+
 
 func _interpolate_position(real_value, current_value, ticks_since_update, delta):
 	return current_value.lerp(real_value, min(delta * 24, 1))

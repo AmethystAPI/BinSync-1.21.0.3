@@ -103,15 +103,11 @@ hframes = 5
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_lxjgm")
 
-[node name="Dash Timer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
-
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("6_p40mr")
 
-[connection signal="timeout" from="Dash Timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
+[connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_state_early"]
 [connection signal="handled_early_state" from="NetworkNode" to="ClientPlayer/Sword" method="_on_handled_early_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
 [connection signal="updated" from="NetworkNode" to="." method="_on_updated"]

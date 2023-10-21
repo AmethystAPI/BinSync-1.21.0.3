@@ -44,5 +44,6 @@ func _on_recorded_input(input: TrackedValue):
 	input.value = {
 		"movement": Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized(),
 		"shoot": Input.is_action_pressed("shoot"),
+		"dash": Input.is_action_pressed("dash"),
 		"point_direction": (Player.LocalPlayer.get_global_mouse_position() - Player.LocalPlayer.global_position).normalized()
 	}

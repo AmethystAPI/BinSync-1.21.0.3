@@ -40,6 +40,8 @@ func shoot():
 	instance.global_position = global_position
 	instance.global_rotation = global_rotation
 	instance.global_position.y -= 6
+
+	instance.global_position += global_transform.x * 14
 	
 	get_parent().add_child(instance)
 

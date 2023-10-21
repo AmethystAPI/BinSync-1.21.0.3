@@ -16,8 +16,7 @@ var _tracked_position
 var _tracked_knockback
 var _tracked_state
 var _tracked_jump_timer
-
-var _health = 8
+var _tracked_health
 
 
 func _ready():
@@ -25,6 +24,7 @@ func _ready():
 	_tracked_knockback = $NetworkNode.tracked_state(Vector2.ZERO)
 	_tracked_state = $NetworkNode.tracked_state(State.IDLE)
 	_tracked_jump_timer = $NetworkNode.tracked_state(1.0)
+	_tracked_health = $NetworkNode.tracked_state(3)
 
 	_go_to_state(State.IDLE)
 
@@ -63,6 +63,7 @@ func _on_handled_early_state():
 	_tracked_knockback.value = _tracked_knockback.old_value
 	_tracked_state.value = _tracked_state.old_value
 	_tracked_jump_timer.value = _tracked_jump_timer.old_value
+	_tracked_health.value = _tracked_health.old_value
 
 
 func _on_updated(input: TrackedValue):
@@ -70,6 +71,8 @@ func _on_updated(input: TrackedValue):
 	_jump()
 	_landed()
 	_hurt(NetworkManager.delta())
+
+	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value == State.LANDED
 
 	move_and_slide()
 
@@ -150,13 +153,15 @@ func _hurt(delta):
 
 
 func hurt(damage, source_position):	
+	print(NetworkManager._id_debug(), "Hit on tick ", NetworkManager.current_tick, " from ", source_position)
+
 	if _tracked_state.value != State.IDLE and _tracked_state.value != State.LANDED:
 		return
 
-	_health -= damage
+	_tracked_health.value -= damage
 	_tracked_knockback.value = (global_position - source_position).normalized() * KNOCKBACK_POWER
 	
-	# if _health <= 0:
-	# 	$NetworkNode.despawn()
+	if _tracked_health.value <= 0:
+		$NetworkNode.despawn()
 
 	_go_to_state(State.HURT)
