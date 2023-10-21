@@ -5,6 +5,10 @@ class_name Player
 enum State { DEFAULT, HURT, DASH }
 
 
+static var LocalPlayer: Player
+static var Players = []
+
+
 const SPEED = 100.0
 const DASH_SPEED = 300.0
 
@@ -26,7 +30,7 @@ func _go_to_state(state: State):
 	_state = state
 
 	if _state == State.HURT:
-		$AnimatedSprite.play("hurt")
+		$ClientPlayer/AnimatedSprite.play("hurt")
 
 	if _state == State.DASH:
 		# velocity = state.movement * DASH_SPEED
@@ -36,9 +40,11 @@ func _go_to_state(state: State):
 
 func _ready():
 	_tracked_position = $NetworkNode.tracked_state(global_position, _interpolate_position)
-	print(global_position)
 
-	GameManager.Players.append(self)
+	if $NetworkNode.has_authority():
+		LocalPlayer = self
+
+	Players.append(self)
 
 
 func _process(delta):
@@ -53,7 +59,7 @@ func _on_updated(input: TrackedValue):
 	# _hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
 	# _dash()
 
-	for i in range(input.value.shoot):
+	if input.value.shoot and not input.old_value.shoot:
 		$ClientPlayer/Sword.shoot()
 
 	move_and_slide()
@@ -73,9 +79,9 @@ func _default(input: TrackedValue):
 	# var mouse_position_offset = state.mouse_position_offset
 	
 	# if mouse_position_offset.x > 0:
-	# 	$AnimatedSprite.scale.x = 1
+	# 	$ClientPlayer/AnimatedSprite.scale.x = 1
 	# elif mouse_position_offset.x < 0:
-	# 	$AnimatedSprite.scale.x = -1
+	# 	$ClientPlayer/AnimatedSprite.scale.x = -1
 	
 	if velocity.length() > 0:
 		$ClientPlayer/AnimatedSprite.play("run")
@@ -91,9 +97,9 @@ func _hurt(delta):
 	_knockback = _knockback.lerp(Vector2.ZERO, delta * KNOCKBACK_DECAY)
 	
 	if velocity.x > 0:
-		$AnimatedSprite.scale.x = -1
+		$ClientPlayer/AnimatedSprite.scale.x = -1
 	elif velocity.x < 0:
-		$AnimatedSprite.scale.x = 1
+		$ClientPlayer/AnimatedSprite.scale.x = 1
 
 	if _knockback.length() < KNOCKBACK_MINIMUM:
 		_go_to_state(State.DEFAULT)
@@ -103,7 +109,7 @@ func _dash():
 	if _state != State.DASH:
 		return
 
-	$AnimatedSprite.play("idle")
+	$ClientPlayer/AnimatedSprite.play("idle")
 
 
 func _on_dash_timer_timeout():

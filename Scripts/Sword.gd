@@ -39,12 +39,8 @@ func shoot():
 
 	instance.global_position = global_position
 	instance.global_rotation = global_rotation
-	instance.global_position += instance.global_transform.x * 10
+	instance.global_position.y -= 6
 	
 	get_parent().add_child(instance)
-
-	print(_tracked_target_swing_rotation._values)
-
-	print(NetworkManager.current_tick)
 
 	_tracked_target_swing_rotation.value = -_tracked_target_swing_rotation.value
