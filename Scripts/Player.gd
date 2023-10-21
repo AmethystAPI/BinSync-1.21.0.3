@@ -53,6 +53,9 @@ func _on_updated(input: TrackedValue):
 	# _hurt(1.0 / NetworkManager.TICKS_PER_SECOND)
 	# _dash()
 
+	for i in range(input.value.shoot):
+		$ClientPlayer/Sword.shoot()
+
 	move_and_slide()
 	
 func _on_recorded_state():

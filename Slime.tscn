@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
 
-[ext_resource type="Script" path="res://Scripts/Slime.gd" id="1_h1ogj"]
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_h1ogj"]
 [ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://Sprites/Slime.png" id="2_w44pw"]
 [ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="3_0gnaj"]
 [ext_resource type="Script" path="res://Scripts/Damage Area.gd" id="3_uglmi"]

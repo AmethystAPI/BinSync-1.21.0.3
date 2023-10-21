@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvyqq7wvquwo0"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_bpd3h"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_bpd3h"]
 [ext_resource type="Texture2D" uid="uid://dhli88siajnt7" path="res://Sprites/Player.png" id="2_hcqgy"]
-[ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://Projectile.tscn" id="2_qbaia"]
-[ext_resource type="Script" path="res://Scripts/Sword.gd" id="3_7k655"]
+[ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://projectile.tscn" id="2_qbaia"]
+[ext_resource type="Script" path="res://Scripts/sword.gd" id="3_7k655"]
 [ext_resource type="Texture2D" uid="uid://brp1hnbdx0prq" path="res://Sprites/Weapons.png" id="4_4e2tv"]
 [ext_resource type="Script" path="res://Cito/network_node.gd" id="6_p40mr"]
 
@@ -112,5 +112,7 @@ script = ExtResource("6_p40mr")
 
 [connection signal="timeout" from="Dash Timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
+[connection signal="handled_early_state" from="NetworkNode" to="ClientPlayer/Sword" method="_on_handled_early_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
 [connection signal="updated" from="NetworkNode" to="." method="_on_updated"]
+[connection signal="updated" from="NetworkNode" to="ClientPlayer/Sword" method="_on_updated"]

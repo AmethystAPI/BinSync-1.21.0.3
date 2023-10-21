@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Project Squad"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.gd"
+GameManager="*res://Scripts/game_manager.gd"
 NetworkManager="*res://Cito/network_manager.gd"
 
 [display]

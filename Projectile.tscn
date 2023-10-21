@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://i7w0k64eq2hy"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_vxg6q"]
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_vxg6q"]
 [ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="2_bqh31"]
 [ext_resource type="Script" path="res://Cito/network_node.gd" id="3_dtosi"]
 
@@ -23,13 +23,10 @@ frame = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
 shape = SubResource("RectangleShape2D_jvld3")
 
-[node name="Destroy Timer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
-autostart = true
-
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("3_dtosi")
 
 [connection signal="body_entered" from="Damage Area" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Destroy Timer" to="." method="_on_destroy_timer_timeout"]
+[connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
+[connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
+[connection signal="updated" from="NetworkNode" to="." method="_on_updated"]
