@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dod2lcso1cujg"]
+[gd_scene load_steps=6 format=3 uid="uid://dod2lcso1cujg"]
 
 [ext_resource type="PackedScene" uid="uid://bgoh7yplcwivb" path="res://testing.tscn" id="1_8216l"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="2_hfwar"]
 [ext_resource type="Script" path="res://Scripts/testing_ui.gd" id="3_542hm"]
 [ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://player.tscn" id="4_lb7t4"]
+[ext_resource type="PackedScene" uid="uid://yqqwdjapmgrh" path="res://slime.tscn" id="5_gfv2y"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -59,6 +60,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_542hm")
 PlayerScene = ExtResource("4_lb7t4")
+SlimeScene = ExtResource("5_gfv2y")
 SpawnNode = NodePath("../SubViewportContainer/SubViewport/Node2D")
 
 [node name="HostButton" type="Button" parent="Control2"]

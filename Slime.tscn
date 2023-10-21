@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
+[gd_scene load_steps=12 format=3 uid="uid://yqqwdjapmgrh"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_h1ogj"]
 [ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://Sprites/Slime.png" id="2_w44pw"]
 [ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="3_0gnaj"]
-[ext_resource type="Script" path="res://Scripts/Damage Area.gd" id="3_uglmi"]
+[ext_resource type="Script" path="res://Scripts/damage_area.gd" id="3_uglmi"]
+[ext_resource type="Script" path="res://Cito/network_node.gd" id="5_cu5xc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jym8g"]
 size = Vector2(16, 16)
@@ -208,5 +209,12 @@ libraries = {
 [node name="Jump Delay" type="Timer" parent="."]
 one_shot = true
 
+[node name="NetworkNode" type="Node" parent="."]
+script = ExtResource("5_cu5xc")
+
 [connection signal="body_entered" from="Damage Area" to="Damage Area" method="_on_body_entered"]
 [connection signal="timeout" from="Jump Delay" to="." method="_on_jump_delay_timeout"]
+[connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
+[connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_early_state"]
+[connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
+[connection signal="updated" from="NetworkNode" to="." method="_on_updated"]

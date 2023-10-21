@@ -12,18 +12,20 @@ const KNOCKBACK_DECAY = 12.0
 const KNOCKBACK_MINIMUM = 10
 
 
+var _tracked_position
+var _tracked_knockback
+
+
 var _state = State.IDLE
 
-
-var _health = 2
-var _knockback = Vector2.ZERO
+var _health = 8
 
 
 func _go_to_state(state: State):
 	_state = state
 
 	if _state == State.IDLE:
-		$"Jump Delay".start(RandomNumberGenerator.new().randf_range(0.5, 1))
+		# $"Jump Delay".start(RandomNumberGenerator.new().randf_range(0.5, 1))
 		$"AnimationPlayer".play("idle")
 
 	if _state == State.JUMP:
@@ -35,7 +37,31 @@ func _go_to_state(state: State):
 
 
 func _ready():
+	_tracked_position = $NetworkNode.tracked_state(global_position)
+	_tracked_knockback = $NetworkNode.tracked_state(Vector2.ZERO)
+
 	_go_to_state(State.IDLE)
+
+
+func _on_handled_early_state():
+	_tracked_knockback.value = _tracked_knockback.old_value
+
+
+func _on_updated(input: TrackedValue):
+	_idle()
+	# _jump()
+	# _landed()
+	_hurt(NetworkManager.delta())
+
+	move_and_slide()
+
+
+func _on_recorded_state():
+	_tracked_position.value = global_position
+
+
+func _on_applied_state():
+	global_position = _tracked_position.value
 
 
 func _idle():
@@ -51,7 +77,7 @@ func _jump():
 		
 	var closestPlayer: CharacterBody2D = null
 	
-	for player in GameManager.Players:
+	for player in Player.Players:
 		if closestPlayer == null or player.global_position.distance_to(global_position) < closestPlayer.global_position.distance_to(global_position):
 			closestPlayer = player
 			
@@ -76,25 +102,16 @@ func _hurt(delta):
 	if _state != State.HURT:
 		return
 	
-	velocity = _knockback
-	_knockback = _knockback.lerp(Vector2.ZERO, delta * KNOCKBACK_DECAY)
+	velocity = _tracked_knockback.value
+	_tracked_knockback.value = _tracked_knockback.value.lerp(Vector2.ZERO, delta * KNOCKBACK_DECAY)
 	
 	if velocity.x > 0:
 		$Sprite.scale.x = -1
 	elif velocity.x < 0:
 		$Sprite.scale.x = 1
 
-	if _knockback.length() < KNOCKBACK_MINIMUM:
+	if _tracked_knockback.value.length() < KNOCKBACK_MINIMUM:
 		_go_to_state(State.IDLE)
-
-
-func _physics_process(delta):
-	_idle()
-	_jump()
-	_landed()
-	_hurt(delta)
-
-	move_and_slide()
 
 
 func _on_jump_delay_timeout():
@@ -106,7 +123,6 @@ func _land_jump():
 
 
 func _end_jump():
-	pass
 	_go_to_state(State.IDLE)
 
 
@@ -115,9 +131,9 @@ func hurt(damage, source_position):
 		return
 
 	_health -= damage
-	_knockback = (global_position - source_position).normalized() * KNOCKBACK_POWER
+	_tracked_knockback.value = (global_position - source_position).normalized() * KNOCKBACK_POWER
 	
 	if _health <= 0:
-		queue_free()
+		$NetworkNode.despawn()
 
 	_go_to_state(State.HURT)

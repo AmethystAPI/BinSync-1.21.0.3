@@ -22,7 +22,9 @@ var _tracked_position
 
 
 var _state = State.DEFAULT
+
 var _health = 6
+
 var _knockback = Vector2.ZERO
 
 
@@ -64,11 +66,14 @@ func _on_updated(input: TrackedValue):
 
 	move_and_slide()
 	
+
 func _on_recorded_state():
 	_tracked_position.value = global_position
 
+
 func _on_applied_state():
 	global_position = _tracked_position.value
+
 
 func _default(input: TrackedValue):
 	if _state != State.DEFAULT:
@@ -117,6 +122,8 @@ func _on_dash_timer_timeout():
 
 
 func hurt(damage, source_position):
+	return
+	
 	if _state != State.DEFAULT:
 		return
 

@@ -2,6 +2,7 @@ extends Control
 
 
 @export var PlayerScene: PackedScene
+@export var SlimeScene: PackedScene
 @export var SpawnNode: Node
 
 
@@ -22,16 +23,22 @@ func _on_start_button_pressed():
 	NetworkManager.start()
 
 func _on_started():
-	var spawn_x = 200
+	var spawn_x = 150
 
 	for id in NetworkManager.players:
 		var player = NetworkManager.spawn(PlayerScene, id)
 
-		player.global_position = Vector2(spawn_x, 200)
+		player.global_position = Vector2(spawn_x, 150)
 		
 		SpawnNode.add_child(player)
 
-		spawn_x += 100
+		spawn_x += 50
+
+	var slime = NetworkManager.spawn(SlimeScene)
+
+	slime.global_position = Vector2(spawn_x, 150)
+	
+	SpawnNode.add_child(slime)
 
 func _on_recorded_input(input: TrackedValue):
 	input.value = {

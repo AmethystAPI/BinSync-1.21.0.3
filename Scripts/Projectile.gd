@@ -36,4 +36,4 @@ func _on_area_2d_body_entered(body):
 	if not body.is_in_group("Entities"):
 		return
 		
-	# body.hurt(1, global_position)
+	body.hurt(1, global_position)
