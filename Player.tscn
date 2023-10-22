@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvyqq7wvquwo0"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_bpd3h"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gicgf"]
 [ext_resource type="Texture2D" uid="uid://dhli88siajnt7" path="res://Sprites/Player.png" id="2_hcqgy"]
 [ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://projectile.tscn" id="2_qbaia"]
 [ext_resource type="Script" path="res://Scripts/sword.gd" id="3_7k655"]
@@ -74,7 +74,7 @@ radius = 3.0
 y_sort_enabled = true
 texture_filter = 1
 collision_mask = 2
-script = ExtResource("1_bpd3h")
+script = ExtResource("1_gicgf")
 
 [node name="ClientPlayer" type="Node2D" parent="."]
 

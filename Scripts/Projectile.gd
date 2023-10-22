@@ -20,9 +20,17 @@ func _on_updated(input: TrackedValue):
 
 	if _tracked_timer.value <= 0:
 		$NetworkNode.despawn()
+
+	print(NetworkManager._id_debug(), "Looking for body on tick ", NetworkManager.current_tick)
+	for body in $"Damage Area".get_overlapping_bodies():
+		if not body.is_in_group("Entities"):
+			continue
+
+		print("found body ", body)
+			
+		body.hurt(1, global_position)
 	
 	move_and_slide()
-
 
 func _on_recorded_state():
 	_tracked_position.value = global_position
@@ -30,10 +38,3 @@ func _on_recorded_state():
 
 func _on_applied_state():
 	global_position = _tracked_position.value
-
-
-func _on_area_2d_body_entered(body):
-	if not body.is_in_group("Entities"):
-		return
-		
-	body.hurt(1, global_position)
