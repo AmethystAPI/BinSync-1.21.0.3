@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="2_bqh31"]
 [ext_resource type="Script" path="res://Cito/network_node.gd" id="3_dtosi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvld3"]
-size = Vector2(6, 16)
+[sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_haxje"]
+extents_x = 239310
+extents_y = 507736
 
-[node name="Projectile" type="CharacterBody2D" groups=["Projectiles"]]
+[node name="Projectile" type="SGCharacterBody2D" groups=["Projectiles"]]
 script = ExtResource("1_vxg6q")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -18,15 +19,16 @@ texture = ExtResource("2_bqh31")
 hframes = 3
 frame = 2
 
-[node name="Damage Area" type="Area2D" parent="."]
+[node name="Damage Area" type="SGArea2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
-shape = SubResource("RectangleShape2D_jvld3")
+[node name="CollisionShape2D" type="SGCollisionShape2D" parent="Damage Area"]
+shape = SubResource("SGRectangleShape2D_haxje")
 
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("3_dtosi")
 
-[connection signal="body_entered" from="Damage Area" to="." method="_on_area_2d_body_entered"]
+[node name="SGCollisionShape2D" type="SGCollisionShape2D" parent="."]
+
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
 [connection signal="updated" from="NetworkNode" to="." method="_on_updated"]

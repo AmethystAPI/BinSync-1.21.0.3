@@ -1,7 +1,7 @@
-extends CharacterBody2D
+extends SGCharacterBody2D
 
 
-@export var SPEED = 200
+@export var SPEED = SGFixed.from_int(200)
 
 
 var _tracked_position
@@ -14,20 +14,24 @@ func _ready():
 
 
 func _on_updated(input: TrackedValue):
-	velocity = global_transform.x * SPEED
+	velocity = get_global_fixed_transform().x.mul(SPEED).mul(NetworkManager.delta())
 
-	_tracked_timer.value = _tracked_timer.old_value - NetworkManager.delta()
+	_tracked_timer.value = _tracked_timer.old_value - SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_timer.value <= 0:
 		$NetworkNode.despawn()
+
+	move_and_slide()
+
+	$"Damage Area".sync_to_physics_engine()
+	sync_to_physics_engine()
 
 	for body in $"Damage Area".get_overlapping_bodies():
 		if not body.is_in_group("Entities"):
 			continue
 			
-		body.hurt(1, global_position)
-	
-	move_and_slide()
+		body.hurt(1, get_global_fixed_position())
+
 
 func _on_recorded_state():
 	_tracked_position.value = global_position

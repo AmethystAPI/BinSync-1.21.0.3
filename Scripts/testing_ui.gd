@@ -26,17 +26,17 @@ func _on_started():
 	var spawn_x = 150
 
 	for id in NetworkManager.players:
-		var player = NetworkManager.spawn(PlayerScene, id)
+		var player: SGCharacterBody2D = NetworkManager.spawn(PlayerScene, id)
 
-		player.global_position = Vector2(spawn_x, 150)
+		player.set_global_fixed_position(SGFixed.from_float_vector2(Vector2(spawn_x, 150)))
 		
 		SpawnNode.add_child(player)
 
 		spawn_x += 50
 
-	var slime = NetworkManager.spawn(SlimeScene)
+	var slime: SGCharacterBody2D = NetworkManager.spawn(SlimeScene)
 
-	slime.global_position = Vector2(spawn_x, 150)
+	slime.set_global_fixed_position(SGFixed.from_float_vector2(Vector2(spawn_x, 150)))
 	
 	SpawnNode.add_child(slime)
 

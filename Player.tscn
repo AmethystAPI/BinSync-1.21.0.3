@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvyqq7wvquwo0"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gicgf"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_qgtm4"]
 [ext_resource type="Texture2D" uid="uid://dhli88siajnt7" path="res://Sprites/Player.png" id="2_hcqgy"]
 [ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://projectile.tscn" id="2_qbaia"]
 [ext_resource type="Script" path="res://Scripts/sword.gd" id="3_7k655"]
@@ -67,14 +67,15 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lxjgm"]
-radius = 3.0
+[sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_sjxy0"]
+extents_x = 243586
+extents_y = 193780
 
-[node name="Player" type="CharacterBody2D" groups=["Entities", "Players"]]
+[node name="Player" type="SGCharacterBody2D" groups=["Entities", "Players"]]
+collision_mask = 2
 y_sort_enabled = true
 texture_filter = 1
-collision_mask = 2
-script = ExtResource("1_gicgf")
+script = ExtResource("1_qgtm4")
 
 [node name="ClientPlayer" type="Node2D" parent="."]
 
@@ -84,7 +85,8 @@ sprite_frames = SubResource("SpriteFrames_rq82j")
 animation = &"idle"
 offset = Vector2(0, -8)
 
-[node name="Sword" type="Node2D" parent="ClientPlayer"]
+[node name="Sword" type="SGFixedNode2D" parent="ClientPlayer"]
+fixed_position_y = -458752
 z_index = 1
 position = Vector2(0, -7)
 script = ExtResource("3_7k655")
@@ -99,9 +101,9 @@ texture = ExtResource("4_4e2tv")
 offset = Vector2(0, -4)
 hframes = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="SGCollisionShape2D" parent="."]
+shape = SubResource("SGRectangleShape2D_sjxy0")
 position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_lxjgm")
 
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("6_p40mr")

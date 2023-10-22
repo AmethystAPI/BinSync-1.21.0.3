@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends SGCharacterBody2D
 class_name Player
 
 
@@ -9,28 +9,28 @@ static var LocalPlayer: Player
 static var Players = []
 
 
-const SPEED = 100.0
+var SPEED = SGFixed.from_int(100)
 const DASH_SPEED = 300.0
 
 
-const KNOCKBACK_POWER = 300.0
-const KNOCKBACK_DECAY = 12.0
-const KNOCKBACK_MINIMUM = 10
+var KNOCKBACK_POWER = SGFixed.from_int(300)
+var KNOCKBACK_DECAY = SGFixed.from_int(12)
+var KNOCKBACK_MINIMUM = SGFixed.from_int(10)
 
 
 var _tracked_position
 var _tracked_state
 var _tracked_dash_timer
+var _tracked_knockback
 
 var _health = 6
-
-var _knockback = Vector2.ZERO
 
 
 func _ready():
 	_tracked_position = $NetworkNode.tracked_state(global_position)
 	_tracked_state = $NetworkNode.tracked_state(State.DEFAULT)
 	_tracked_dash_timer = $NetworkNode.tracked_state(0.0)
+	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
 
 	if $NetworkNode.has_authority():
 		LocalPlayer = self
@@ -60,6 +60,7 @@ func _resume_to_state():
 func _on_handled_state_early():
 	_tracked_state.value = _tracked_state.old_value
 	_tracked_dash_timer.value = _tracked_dash_timer.old_value
+	_tracked_knockback.value = _tracked_knockback.old_value
 
 
 func _on_updated(input: TrackedValue):
@@ -74,6 +75,8 @@ func _on_updated(input: TrackedValue):
 		$ClientPlayer/Sword.shoot()
 
 	move_and_slide()
+
+	sync_to_physics_engine()
 	
 
 func _on_recorded_state():
@@ -90,7 +93,7 @@ func _default(input: TrackedValue):
 	if _tracked_state.value != State.DEFAULT:
 		return
 		
-	velocity = input.value.movement * SPEED
+	velocity = SGFixed.from_float_vector2(input.value.movement).mul(SPEED).mul(NetworkManager.delta())
 
 	if input.value.point_direction.x > 0:
 		$ClientPlayer/AnimatedSprite.scale.x = 1
@@ -107,15 +110,15 @@ func _hurt(delta):
 	if _tracked_state.value != State.HURT:
 		return
 	
-	velocity = _knockback
-	_knockback = _knockback.lerp(Vector2.ZERO, delta * KNOCKBACK_DECAY)
+	velocity = _tracked_knockback.value.mul(NetworkManager.delta())
+	_tracked_knockback.value = _tracked_knockback.value.linear_interpolate(SGFixedVector2.new(), SGFixed.mul(NetworkManager.delta(), KNOCKBACK_DECAY))
 	
 	if velocity.x > 0:
 		$ClientPlayer/AnimatedSprite.scale.x = -1
 	elif velocity.x < 0:
 		$ClientPlayer/AnimatedSprite.scale.x = 1
 
-	if _knockback.length() < KNOCKBACK_MINIMUM:
+	if _tracked_knockback.value.length() < KNOCKBACK_MINIMUM:
 		_go_to_state(State.DEFAULT)
 
 
@@ -138,7 +141,7 @@ func hurt(damage, source_position):
 		return
 
 	_health -= damage
-	_knockback = (global_position - source_position).normalized() * KNOCKBACK_POWER
+	_tracked_knockback.value = get_global_fixed_position().sub(source_position).normalized().mul(KNOCKBACK_POWER)
 
 	_go_to_state(State.HURT)
 

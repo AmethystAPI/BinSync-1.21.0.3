@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends SGCharacterBody2D
 
 
 enum State { IDLE, JUMP, HURT, LANDED }
@@ -7,9 +7,9 @@ enum State { IDLE, JUMP, HURT, LANDED }
 const SPEED = 30.0
 
 
-const KNOCKBACK_POWER = 300.0
-const KNOCKBACK_DECAY = 12.0
-const KNOCKBACK_MINIMUM = 10
+var KNOCKBACK_POWER = SGFixed.from_int(300)
+var KNOCKBACK_DECAY = SGFixed.from_int(12)
+var KNOCKBACK_MINIMUM = SGFixed.from_int(10)
 
 
 var _tracked_position
@@ -21,7 +21,7 @@ var _tracked_health
 
 func _ready():
 	_tracked_position = $NetworkNode.tracked_state(global_position)
-	_tracked_knockback = $NetworkNode.tracked_state(Vector2.ZERO)
+	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
 	_tracked_state = $NetworkNode.tracked_state(State.IDLE)
 	_tracked_jump_timer = $NetworkNode.tracked_state(1.0)
 	_tracked_health = $NetworkNode.tracked_state(3)
@@ -76,6 +76,8 @@ func _on_updated(input: TrackedValue):
 
 	move_and_slide()
 
+	sync_to_physics_engine()
+
 
 func _on_recorded_state():
 	_tracked_position.value = global_position
@@ -91,12 +93,12 @@ func _idle():
 	if _tracked_state.value != State.IDLE:
 		return
 
-	velocity = Vector2.ZERO
+	velocity = SGFixedVector2.new()
 
 	_tracked_jump_timer.value -= NetworkManager.delta()
 
-	if _tracked_jump_timer.value <= 0:
-		_go_to_state(State.JUMP)
+	# if _tracked_jump_timer.value <= 0:
+	# 	_go_to_state(State.JUMP)
 
 
 func _jump():
@@ -128,7 +130,7 @@ func _landed():
 	if _tracked_state.value != State.LANDED:
 		return
 
-	velocity = Vector2.ZERO
+	velocity = SGFixedVector2.new()
 
 	_tracked_jump_timer.value -= NetworkManager.delta()
 
@@ -140,8 +142,8 @@ func _hurt(delta):
 	if _tracked_state.value != State.HURT:
 		return
 	
-	velocity = _tracked_knockback.value
-	_tracked_knockback.value = _tracked_knockback.value.lerp(Vector2.ZERO, delta * KNOCKBACK_DECAY)
+	velocity = _tracked_knockback.value.mul(NetworkManager.delta())
+	_tracked_knockback.value = _tracked_knockback.value.linear_interpolate(SGFixedVector2.new(), SGFixed.mul(NetworkManager.delta(), KNOCKBACK_DECAY))
 	
 	if velocity.x > 0:
 		$Sprite.scale.x = -1
@@ -157,7 +159,8 @@ func hurt(damage, source_position):
 		return
 
 	_tracked_health.value -= damage
-	_tracked_knockback.value = (global_position - source_position).normalized() * KNOCKBACK_POWER
+
+	_tracked_knockback.value = get_global_fixed_position().sub(source_position).normalized().mul(KNOCKBACK_POWER)
 	
 	if _tracked_health.value <= 0:
 		$NetworkNode.despawn()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://yqqwdjapmgrh"]
+[gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_h1ogj"]
 [ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://Sprites/Slime.png" id="2_w44pw"]
@@ -6,11 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/damage_area.gd" id="3_uglmi"]
 [ext_resource type="Script" path="res://Cito/network_node.gd" id="5_cu5xc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jym8g"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eirpj"]
-size = Vector2(12, 9)
+[sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_djfvx"]
+extents_x = 410079
+extents_y = 304940
 
 [sub_resource type="Animation" id="Animation_4cwjh"]
 resource_name = "hurt"
@@ -142,15 +140,9 @@ _data = {
 "jump": SubResource("Animation_t2hpo")
 }
 
-[node name="Slime" type="CharacterBody2D" groups=["Enemies", "Entities"]]
-y_sort_enabled = true
+[node name="Slime" type="SGCharacterBody2D" groups=["Enemies", "Entities"]]
 collision_mask = 0
-motion_mode = 1
-slide_on_ceiling = false
-floor_stop_on_slope = false
-floor_block_on_wall = false
-platform_on_leave = 2
-platform_floor_layers = 0
+y_sort_enabled = true
 script = ExtResource("1_h1ogj")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -162,9 +154,9 @@ texture = ExtResource("2_w44pw")
 hframes = 3
 frame = 2
 
-[node name="Damage Area" type="Area2D" parent="."]
+[node name="Damage Area" type="SGArea2D" parent="."]
 position = Vector2(0, -2)
-rotation = 3.92699
+rotation = -2.3562
 script = ExtResource("3_uglmi")
 
 [node name="Sprite" type="Sprite2D" parent="Damage Area"]
@@ -175,13 +167,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_0gnaj")
 hframes = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
-shape = SubResource("RectangleShape2D_jym8g")
+[node name="CollisionShape2D" type="SGCollisionShape2D" parent="Damage Area"]
 disabled = true
 
-[node name="Collider" type="CollisionShape2D" parent="."]
+[node name="Collider" type="SGCollisionShape2D" parent="."]
+shape = SubResource("SGRectangleShape2D_djfvx")
 position = Vector2(0, -4.5)
-shape = SubResource("RectangleShape2D_eirpj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -197,7 +188,6 @@ libraries = {
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("5_cu5xc")
 
-[connection signal="body_entered" from="Damage Area" to="Damage Area" method="_on_body_entered"]
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
 [connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_early_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]

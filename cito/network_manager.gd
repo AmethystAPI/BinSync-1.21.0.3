@@ -102,8 +102,8 @@ func is_host() -> bool:
 		return multiplayer.is_server()
 
 
-func delta() -> float:
-	return 1.0 / TICKS_PER_SECOND
+func delta() -> int:
+	return SGFixed.div(SGFixed.ONE, SGFixed.from_float(TICKS_PER_SECOND))
 
 
 func host() -> void:
