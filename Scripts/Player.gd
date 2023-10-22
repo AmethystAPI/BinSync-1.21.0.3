@@ -38,8 +38,8 @@ func _ready():
 	Players.append(self)
 
 
-func _process(delta):
-	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
+# func _process(delta):
+# 	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
 
 
 func _go_to_state(state: State):
@@ -72,7 +72,7 @@ func _on_updated(input: TrackedValue):
 	_dash(input)
 
 	if input.value.shoot and not input.old_value.shoot:
-		$ClientPlayer/Sword.shoot()
+		$Sword.shoot()
 
 	move_and_slide()
 

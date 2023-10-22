@@ -19,12 +19,18 @@ func _on_updated(input: TrackedValue):
 	_tracked_timer.value = _tracked_timer.old_value - SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_timer.value <= 0:
+		print(NetworkManager._id_debug(), 'data on despawn on tick ', NetworkManager.current_tick, ' of id ', $NetworkNode.id)
+		for tick in _tracked_position._values.keys():
+			print(tick, ' ', _tracked_position._values[tick].value.to_float())
+
 		$NetworkNode.despawn()
 
 	move_and_slide()
 
 	$"Damage Area".sync_to_physics_engine()
 	sync_to_physics_engine()
+
+	# print(NetworkManager._id_debug(), 'position at', NetworkManager.current_tick, ' ', get_global_fixed_position().to_float(), ' ', SGFixed.to_float(get_global_fixed_rotation()))
 
 	for body in $"Damage Area".get_overlapping_bodies():
 		if not body.is_in_group("Entities"):
@@ -42,3 +48,5 @@ func _on_applied_state():
 
 	$"Damage Area".sync_to_physics_engine()
 	sync_to_physics_engine()
+
+	# print(NetworkManager._id_debug(), 'rewind to ', NetworkManager.current_tick, ' ', get_global_fixed_position().to_float(), ' ', SGFixed.to_float(get_global_fixed_rotation()))

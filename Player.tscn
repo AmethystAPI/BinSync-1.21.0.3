@@ -85,32 +85,32 @@ sprite_frames = SubResource("SpriteFrames_rq82j")
 animation = &"idle"
 offset = Vector2(0, -8)
 
-[node name="Sword" type="SGFixedNode2D" parent="ClientPlayer"]
+[node name="CollisionShape2D" type="SGCollisionShape2D" parent="."]
+shape = SubResource("SGRectangleShape2D_sjxy0")
+position = Vector2(0, -3)
+
+[node name="Sword" type="SGFixedNode2D" parent="."]
 fixed_position_y = -458752
 z_index = 1
 position = Vector2(0, -7)
 script = ExtResource("3_7k655")
 PROJECTILE_RESOURCE = ExtResource("2_qbaia")
 
-[node name="Swing" type="Node2D" parent="ClientPlayer/Sword"]
+[node name="Swing" type="Node2D" parent="Sword"]
 rotation = -0.785398
 
-[node name="Sprite2D" type="Sprite2D" parent="ClientPlayer/Sword/Swing"]
+[node name="Sprite2D" type="Sprite2D" parent="Sword/Swing"]
 position = Vector2(7, 0)
 texture = ExtResource("4_4e2tv")
 offset = Vector2(0, -4)
 hframes = 5
-
-[node name="CollisionShape2D" type="SGCollisionShape2D" parent="."]
-shape = SubResource("SGRectangleShape2D_sjxy0")
-position = Vector2(0, -3)
 
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("6_p40mr")
 
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
 [connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_state_early"]
-[connection signal="handled_early_state" from="NetworkNode" to="ClientPlayer/Sword" method="_on_handled_early_state"]
+[connection signal="handled_early_state" from="NetworkNode" to="Sword" method="_on_handled_early_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
 [connection signal="updated" from="NetworkNode" to="." method="_on_updated"]
-[connection signal="updated" from="NetworkNode" to="ClientPlayer/Sword" method="_on_updated"]
+[connection signal="updated" from="NetworkNode" to="Sword" method="_on_updated"]

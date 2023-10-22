@@ -11,7 +11,7 @@ var _tracked_target_swing_rotation
 
 
 func _ready():
-	_tracked_target_swing_rotation = get_parent().get_parent().get_node("NetworkNode").tracked_state(-45.0)
+	_tracked_target_swing_rotation = get_parent().get_node("NetworkNode").tracked_state(-45.0)
 
 
 func _on_handled_early_state():
@@ -35,6 +35,8 @@ func _process(_delta):
 
 
 func shoot():
+	print(NetworkManager._id_debug(), ' ', NetworkManager.current_tick, ' shoot ', get_global_fixed_position().to_float())
+
 	var instance: SGCharacterBody2D = NetworkManager.spawn(PROJECTILE_RESOURCE)
 
 	instance.set_global_fixed_position(get_global_fixed_position().add(get_global_fixed_transform().x.mul(SGFixed.from_int(14))))
