@@ -27,7 +27,7 @@ var _health = 6
 
 
 func _ready():
-	_tracked_position = $NetworkNode.tracked_state(global_position)
+	_tracked_position = $NetworkNode.tracked_state(get_global_fixed_position())
 	_tracked_state = $NetworkNode.tracked_state(State.DEFAULT)
 	_tracked_dash_timer = $NetworkNode.tracked_state(0.0)
 	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
@@ -52,7 +52,7 @@ func _go_to_state(state: State):
 	_tracked_state.value = state
 
 
-func _resume_to_state():
+func _resume_state():
 	if _tracked_state.value == State.HURT:
 		$ClientPlayer/AnimatedSprite.play("hurt")
 
@@ -80,13 +80,15 @@ func _on_updated(input: TrackedValue):
 	
 
 func _on_recorded_state():
-	_tracked_position.value = global_position
+	_tracked_position.value = get_global_fixed_position()
 
 
 func _on_applied_state():
-	global_position = _tracked_position.value
+	set_global_fixed_position(_tracked_position.value)
 
-	_resume_to_state()
+	_resume_state()
+
+	sync_to_physics_engine()
 
 
 func _default(input: TrackedValue):

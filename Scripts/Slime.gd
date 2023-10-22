@@ -20,7 +20,7 @@ var _tracked_health
 
 
 func _ready():
-	_tracked_position = $NetworkNode.tracked_state(global_position)
+	_tracked_position = $NetworkNode.tracked_state(get_global_fixed_position())
 	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
 	_tracked_state = $NetworkNode.tracked_state(State.IDLE)
 	_tracked_jump_timer = $NetworkNode.tracked_state(1.0)
@@ -80,14 +80,15 @@ func _on_updated(input: TrackedValue):
 
 
 func _on_recorded_state():
-	_tracked_position.value = global_position
+	_tracked_position.value = get_global_fixed_position()
 
 
 func _on_applied_state():
-	global_position = _tracked_position.value
+	set_global_fixed_position(_tracked_position.value)
 
 	_resume_state()
 
+	sync_to_physics_engine()
 
 func _idle():
 	if _tracked_state.value != State.IDLE:
