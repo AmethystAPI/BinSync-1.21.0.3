@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://bro0mcqr8xgy6"]
+
+[ext_resource type="Script" path="res://Scripts/combat_test_dungeon.gd" id="1_knh7s"]
+[ext_resource type="Texture2D" uid="uid://6xllwl7l2ah7" path="res://Sprites/Dungeon.png" id="1_x7n6v"]
+[ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://player.tscn" id="2_krnao"]
+[ext_resource type="Script" path="res://Scripts/pixel_camera.gd" id="3_rcdla"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bq5i"]
+resource_name = "Walls"
+texture = ExtResource("1_x7n6v")
+margins = Vector2i(0, 8)
+separation = Vector2i(0, 8)
+texture_region_size = Vector2i(16, 24)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 4)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 4)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 4)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 4)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 4)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 4)
+5:1/0 = 0
+5:1/0/texture_origin = Vector2i(0, 4)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 4)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 4)
+5:2/0 = 0
+5:2/0/texture_origin = Vector2i(0, 4)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 4)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 4)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 4)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fhwfx"]
+resource_name = "Floors"
+texture = ExtResource("1_x7n6v")
+5:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ofe5x"]
+sources/0 = SubResource("TileSetAtlasSource_7bq5i")
+sources/1 = SubResource("TileSetAtlasSource_fhwfx")
+
+[node name="combat_test_dungeon" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_knh7s")
+PlayerScene = ExtResource("2_krnao")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ofe5x")
+format = 2
+layer_0/name = "Floor"
+layer_0/tile_data = PackedInt32Array(131074, 327681, 7, 131073, 327681, 7, 131072, 327681, 7, 196607, 327681, 7, 196606, 327681, 7, 131070, 327681, 7, 131071, 327681, 7, 65536, 327681, 7, 65537, 327681, 7, 65538, 327681, 7, 2, 327681, 7, 1, 327681, 7, 0, 327681, 7, 65535, 327681, 7, 65534, 327681, 7, -2, 327681, 7, -1, 327681, 7, -65536, 327681, 7, -65535, 327681, 7, -65534, 327681, 7, -131070, 327681, 7, -131071, 327681, 7, -131072, 327681, 7, -65537, 327681, 7, -65538, 327681, 7)
+layer_1/name = "Wall"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(-131073, 65536, 0, -196608, 65536, 0, -196607, 65536, 0, -131074, 65536, 0, -196606, 65536, 0)
+layer_2/name = "Wall Blocking"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array(-196605, 131072, 0, -131075, 0, 0, -131069, 131072, 1, -65533, 131072, 1, 3, 131072, 1, 65539, 131072, 1, 131075, 131072, 1, -65539, 0, 1, -3, 0, 1, 65533, 0, 1, 131069, 0, 1, 196605, 0, 1, 262141, 0, 2, 196611, 131072, 2, 196610, 65536, 2, 196609, 65536, 2, 196608, 65536, 2, 262143, 65536, 2, 262142, 65536, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+script = ExtResource("3_rcdla")
