@@ -6,7 +6,7 @@ signal started
 
 
 const TICKS_PER_SECOND: float = 20
-const MAX_MESSAGE_DELAY: float = 1
+const MAX_MESSAGE_DELAY: float = 10
 
 
 var players = []
@@ -24,16 +24,57 @@ var _network_nodes = {}
 var _next_network_node_id
 
 var _debug_is_host = false
+var _debug_mode = false
+var _enter_debug_tick = 0
 
 
 func _ready():
 	_next_network_node_id = TrackedValue.new(0)
 
 
+func _input(event):
+	if event.is_action_pressed("network_debug"):
+		_debug_mode = not _debug_mode
+
+		if _debug_mode:
+			_enter_debug_tick = current_tick
+			print('Debug mode enabled')
+		else:
+			print('Debug mode disabled')
+
+	if not _debug_mode:
+		return
+
+	if event.is_action_pressed("rewind_tick"):
+		if current_tick == _enter_debug_tick - MAX_MESSAGE_DELAY * TICKS_PER_SECOND:
+			return
+
+		current_tick -= 1
+
+		print('Rewound to tick: ', current_tick, ' out of ', _enter_debug_tick)
+
+		for node in _network_nodes.values():
+			node._apply_state()
+
+	if event.is_action_pressed("step_tick"):
+		if current_tick == _enter_debug_tick:
+			return
+
+		current_tick += 1
+
+		print('Stepped to tick: ', current_tick, ' out of ', _enter_debug_tick)
+				
+		for node in _network_nodes.values():
+			node._update()
+
+
 func _process(_delta):
 	var current_tick_time = Time.get_ticks_msec()
 
 	if not _is_setup:
+		return
+
+	if _debug_mode:
 		return
 
 	var newest_tick = floor((current_tick_time - _initial_tick_time) / 1000.0 * TICKS_PER_SECOND) + 1

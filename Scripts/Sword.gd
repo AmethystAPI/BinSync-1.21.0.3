@@ -7,10 +7,12 @@ extends SGFixedNode2D
 const SWING_SPEED = 24.0
 
 
+var _tracked_rotation
 var _tracked_target_swing_rotation
 
 
 func _ready():
+	_tracked_rotation = get_parent().get_node("NetworkNode").tracked_state(get_global_fixed_rotation())
 	_tracked_target_swing_rotation = get_parent().get_node("NetworkNode").tracked_state(-45.0)
 
 
@@ -35,7 +37,7 @@ func _process(_delta):
 
 
 func shoot():
-	print(NetworkManager._id_debug(), ' ', NetworkManager.current_tick, ' shoot ', get_global_fixed_position().to_float())
+	# print(NetworkManager._id_debug(), ' ', NetworkManager.current_tick, ' shoot ', get_global_fixed_position().to_float(), ' ', SGFixed.to_float(get_global_fixed_rotation()))
 
 	var instance: SGCharacterBody2D = NetworkManager.spawn(PROJECTILE_RESOURCE)
 

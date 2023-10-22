@@ -19,9 +19,9 @@ func _on_updated(input: TrackedValue):
 	_tracked_timer.value = _tracked_timer.old_value - SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_timer.value <= 0:
-		print(NetworkManager._id_debug(), 'data on despawn on tick ', NetworkManager.current_tick, ' of id ', $NetworkNode.id)
-		for tick in _tracked_position._values.keys():
-			print(tick, ' ', _tracked_position._values[tick].value.to_float())
+		# print(NetworkManager._id_debug(), 'data on despawn on tick ', NetworkManager.current_tick, ' of id ', $NetworkNode.id)
+		# for tick in _tracked_position._values.keys():
+		# 	print(tick, ' ', _tracked_position._values[tick].value.to_float())
 
 		$NetworkNode.despawn()
 

@@ -97,8 +97,8 @@ func _idle():
 
 	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
-	if _tracked_jump_timer.value <= 0:
-		_go_to_state(State.JUMP)
+	# if _tracked_jump_timer.value <= 0:
+	# 	_go_to_state(State.JUMP)
 
 
 func _jump():
@@ -155,7 +155,7 @@ func _hurt():
 
 
 func hurt(damage, source_position):	
-	print(NetworkManager._id_debug(), ' ', NetworkManager.current_tick, ' hit ', source_position.to_float())
+	# print(NetworkManager._id_debug(), ' ', NetworkManager.current_tick, ' hit ', source_position.to_float())
 
 	if _tracked_state.value != State.IDLE and _tracked_state.value != State.LANDED:
 		return

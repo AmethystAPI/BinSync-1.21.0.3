@@ -114,8 +114,6 @@ func _update():
 
 @rpc("any_peer", "call_remote", "reliable")
 func _update_state(tick, states_to_update, updated_values):
-	print("Updating state")
-
 	for index in range(states_to_update.size()):
 		_tracked_states[states_to_update[index]]._update_value(tick, updated_values[index])
 
