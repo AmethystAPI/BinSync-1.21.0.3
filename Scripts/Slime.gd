@@ -153,8 +153,6 @@ func _hurt(delta):
 
 
 func hurt(damage, source_position):	
-	print(NetworkManager._id_debug(), "Hit on tick ", NetworkManager.current_tick, " from ", source_position)
-
 	if _tracked_state.value != State.IDLE and _tracked_state.value != State.LANDED:
 		return
 
