@@ -83,7 +83,7 @@ func _on_recorded_state():
 	_tracked_position.value = get_global_fixed_position()
 
 
-func _on_applied_state():
+func _on_applied_state(input: TrackedValue):
 	set_global_fixed_position(_tracked_position.value)
 
 	_resume_state()

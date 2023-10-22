@@ -82,7 +82,7 @@ func _on_recorded_state():
 	_tracked_position.value = get_global_fixed_position()
 
 
-func _on_applied_state():
+func _on_applied_state(input: TrackedValue):
 	set_global_fixed_position(_tracked_position.value)
 
 	_resume_state()
@@ -97,8 +97,8 @@ func _idle():
 
 	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
-	# if _tracked_jump_timer.value <= 0:
-	# 	_go_to_state(State.JUMP)
+	if _tracked_jump_timer.value <= 0:
+		_go_to_state(State.JUMP)
 
 
 func _jump():
@@ -155,8 +155,6 @@ func _hurt():
 
 
 func hurt(damage, source_position):	
-	# print(NetworkManager._id_debug(), ' ', NetworkManager.current_tick, ' hit ', source_position.to_float())
-
 	if _tracked_state.value != State.IDLE and _tracked_state.value != State.LANDED:
 		return
 
@@ -164,7 +162,7 @@ func hurt(damage, source_position):
 
 	_tracked_knockback.value = get_global_fixed_position().sub(source_position).normalized().mul(KNOCKBACK_POWER)
 	
-	# if _tracked_health.value <= 0:
-	# 	$NetworkNode.despawn()
+	if _tracked_health.value <= 0:
+		$NetworkNode.despawn()
 
 	_go_to_state(State.HURT)

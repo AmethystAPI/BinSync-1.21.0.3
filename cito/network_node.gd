@@ -4,7 +4,7 @@ class_name NetworkNode
 
 signal handled_early_state
 signal updated(input: TrackedValue)
-signal applied_state
+signal applied_state(input: TrackedValue)
 signal recorded_state
 
 
@@ -99,7 +99,10 @@ func _apply_state():
 
 	_respawn()
 
-	applied_state.emit()
+	var player_index = NetworkManager.players.find(_tracked_authority.value)
+	var tracked_input = NetworkManager._player_tracked_inputs[player_index]
+
+	applied_state.emit(tracked_input)
 
 
 func _update():

@@ -109,6 +109,7 @@ hframes = 5
 script = ExtResource("6_p40mr")
 
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
+[connection signal="applied_state" from="NetworkNode" to="Sword" method="_on_applied_state"]
 [connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_state_early"]
 [connection signal="handled_early_state" from="NetworkNode" to="Sword" method="_on_handled_early_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]

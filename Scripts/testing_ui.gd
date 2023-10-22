@@ -34,7 +34,7 @@ func _on_started():
 
 		spawn_x += 50
 
-	for i in range(1):
+	for i in range(20):
 		var slime: SGCharacterBody2D = NetworkManager.spawn(SlimeScene)
 
 		slime.set_global_fixed_position(SGFixed.from_float_vector2(Vector2(spawn_x, 150)))
