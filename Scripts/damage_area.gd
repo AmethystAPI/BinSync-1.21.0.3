@@ -1,16 +1,22 @@
 extends SGArea2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+# func _ready():
+# 	var target = get_parent().get_parent()
+# 	get_parent().remove_child(self)
+# 	target.add_child(self)
+	
+# 	print(target.name)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_applied_state(input: TrackedValue):
+	sync_to_physics_engine()
 
 
-func _on_body_entered(body):
-	if body is Player:
-		body.hurt(1, global_position)
+func _on_updated(input: TrackedValue):
+	sync_to_physics_engine()
+
+
+	for body in get_overlapping_bodies():
+		if body is Player:
+			body.hurt(1, get_global_fixed_position())

@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
+[gd_scene load_steps=12 format=3 uid="uid://yqqwdjapmgrh"]
 
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_h1ogj"]
 [ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://Sprites/Slime.png" id="2_w44pw"]
 [ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://Sprites/Projectiles.png" id="3_0gnaj"]
 [ext_resource type="Script" path="res://Scripts/damage_area.gd" id="3_uglmi"]
 [ext_resource type="Script" path="res://Cito/network_node.gd" id="5_cu5xc"]
+
+[sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_g17mr"]
 
 [sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_djfvx"]
 extents_x = 410079
@@ -176,7 +178,7 @@ _data = {
 "jump": SubResource("Animation_t2hpo")
 }
 
-[node name="Slime" type="SGCharacterBody2D" groups=["Enemies", "Entities"]]
+[node name="slime" type="SGCharacterBody2D" groups=["Enemies", "Entities"]]
 collision_mask = 0
 y_sort_enabled = true
 script = ExtResource("1_h1ogj")
@@ -203,6 +205,7 @@ texture = ExtResource("3_0gnaj")
 hframes = 3
 
 [node name="CollisionShape2D" type="SGCollisionShape2D" parent="Damage Area"]
+shape = SubResource("SGRectangleShape2D_g17mr")
 disabled = true
 
 [node name="Collider" type="SGCollisionShape2D" parent="."]
@@ -224,6 +227,8 @@ libraries = {
 script = ExtResource("5_cu5xc")
 
 [connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
+[connection signal="applied_state" from="NetworkNode" to="Damage Area" method="_on_applied_state"]
 [connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_early_state"]
 [connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
 [connection signal="updated" from="NetworkNode" to="." method="_on_updated"]
+[connection signal="updated" from="NetworkNode" to="Damage Area" method="_on_updated"]

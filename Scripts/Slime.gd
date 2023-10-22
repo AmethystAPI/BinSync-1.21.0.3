@@ -71,7 +71,7 @@ func _on_updated(input: TrackedValue):
 	_landed()
 	_hurt()
 
-	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value == State.LANDED
+	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value != State.LANDED
 
 	move_and_slide()
 
@@ -86,6 +86,8 @@ func _on_applied_state(input: TrackedValue):
 	set_global_fixed_position(_tracked_position.value)
 
 	_resume_state()
+
+	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value != State.LANDED
 
 	sync_to_physics_engine()
 
