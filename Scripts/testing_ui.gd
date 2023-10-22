@@ -34,11 +34,14 @@ func _on_started():
 
 		spawn_x += 50
 
-	var slime: SGCharacterBody2D = NetworkManager.spawn(SlimeScene)
+	for i in range(4):
+		var slime: SGCharacterBody2D = NetworkManager.spawn(SlimeScene)
 
-	slime.set_global_fixed_position(SGFixed.from_float_vector2(Vector2(spawn_x, 150)))
-	
-	SpawnNode.add_child(slime)
+		slime.set_global_fixed_position(SGFixed.from_float_vector2(Vector2(spawn_x, 150)))
+		
+		SpawnNode.add_child(slime)
+
+		spawn_x += 50
 
 func _on_recorded_input(input: TrackedValue):
 	input.value = {

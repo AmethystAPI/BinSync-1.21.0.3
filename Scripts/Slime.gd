@@ -4,8 +4,7 @@ extends SGCharacterBody2D
 enum State { IDLE, JUMP, HURT, LANDED }
 
 
-const SPEED = 30.0
-
+var SPEED = SGFixed.from_int(30)
 
 var KNOCKBACK_POWER = SGFixed.from_int(300)
 var KNOCKBACK_DECAY = SGFixed.from_int(12)
@@ -70,7 +69,7 @@ func _on_updated(input: TrackedValue):
 	_idle()
 	_jump()
 	_landed()
-	_hurt(NetworkManager.delta())
+	_hurt()
 
 	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value == State.LANDED
 
@@ -96,32 +95,32 @@ func _idle():
 
 	velocity = SGFixedVector2.new()
 
-	_tracked_jump_timer.value -= NetworkManager.delta()
+	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
-	# if _tracked_jump_timer.value <= 0:
-	# 	_go_to_state(State.JUMP)
+	if _tracked_jump_timer.value <= 0:
+		_go_to_state(State.JUMP)
 
 
 func _jump():
 	if _tracked_state.value != State.JUMP:
 		return
 		
-	var closestPlayer: CharacterBody2D = null
+	var closestPlayer: SGCharacterBody2D = null
 	
 	for player in Player.Players:
-		if closestPlayer == null or player.global_position.distance_to(global_position) < closestPlayer.global_position.distance_to(global_position):
+		if closestPlayer == null or player.get_global_fixed_position().distance_to(get_global_fixed_position()) < closestPlayer.get_global_fixed_position().distance_to(get_global_fixed_position()):
 			closestPlayer = player
 			
-	var direction = (closestPlayer.global_position - global_position).normalized()
+	var direction = closestPlayer.get_global_fixed_position().sub(get_global_fixed_position()).normalized()
 	
-	velocity = direction * SPEED
+	velocity = direction.mul(SPEED).mul(NetworkManager.delta())
 
 	if velocity.x > 0:
 		$Sprite.scale.x = 1
 	elif velocity.x < 0:
 		$Sprite.scale.x = -1
 
-	_tracked_jump_timer.value -= NetworkManager.delta()
+	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_jump_timer.value <= 0:
 		_go_to_state(State.LANDED)
@@ -133,13 +132,13 @@ func _landed():
 
 	velocity = SGFixedVector2.new()
 
-	_tracked_jump_timer.value -= NetworkManager.delta()
+	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_jump_timer.value <= 0:
 		_go_to_state(State.IDLE)
 
 
-func _hurt(delta):
+func _hurt():
 	if _tracked_state.value != State.HURT:
 		return
 	

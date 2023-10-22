@@ -27,7 +27,7 @@ var _health = 6
 
 
 func _ready():
-	_tracked_position = $NetworkNode.tracked_state(get_global_fixed_position())
+	_tracked_position = $NetworkNode.tracked_state(get_global_fixed_position(), _interpolate_position)
 	_tracked_state = $NetworkNode.tracked_state(State.DEFAULT)
 	_tracked_dash_timer = $NetworkNode.tracked_state(0.0)
 	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
@@ -38,8 +38,8 @@ func _ready():
 	Players.append(self)
 
 
-# func _process(delta):
-	# $ClientPlayer.global_position = _tracked_position.interpolated_value
+func _process(delta):
+	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
 
 
 func _go_to_state(state: State):
@@ -149,4 +149,4 @@ func hurt(damage, source_position):
 
 
 func _interpolate_position(real_value, current_value, ticks_since_update, delta):
-	return current_value.lerp(real_value, min(delta * 24, 1))
+	return current_value.linear_interpolate(real_value, SGFixed.from_float(min(delta * 24, 1)))
