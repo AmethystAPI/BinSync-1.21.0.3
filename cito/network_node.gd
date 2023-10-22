@@ -30,8 +30,11 @@ func _process(delta):
 		value._process(delta)
 
 
-func tracked_state(initial_value, interpolate_event = null) -> TrackedValue:	
-	var value = TrackedValue.new(initial_value, interpolate_event)
+func tracked_state(initial_value, interpolate_event = null, should_update_provider = null) -> TrackedValue:	
+	if should_update_provider == null:
+		should_update_provider = func(value, old_value): return false
+
+	var value = TrackedValue.new(initial_value, interpolate_event, should_update_provider)
 
 	_tracked_states.append(value)
 
@@ -109,6 +112,14 @@ func _update():
 	updated.emit(tracked_input)
 
 
+@rpc("any_peer", "call_remote", "reliable")
+func _update_state(tick, states_to_update, updated_values):
+	print("Updating state")
+
+	for index in range(states_to_update.size()):
+		_tracked_states[states_to_update[index]]._update_value(tick, updated_values[index])
+
+
 func _record_state():
 	if _tracked_authority.value == null:
 		_tracked_authority.value = _tracked_authority.old_value
@@ -125,3 +136,18 @@ func _record_state():
 		return
 
 	recorded_state.emit()
+
+	var states_to_update = []
+	var updated_values = []
+
+	for index in range(_tracked_states.size()):
+		var state = _tracked_states[index]
+
+		if state._should_update():
+			state._set_updated()
+
+			states_to_update.append(index)
+			updated_values.append(state.value)
+
+	if not states_to_update.is_empty():
+		_update_state.rpc(NetworkManager.current_tick, states_to_update, updated_values)
