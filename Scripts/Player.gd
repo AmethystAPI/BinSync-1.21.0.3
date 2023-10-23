@@ -40,6 +40,9 @@ func _ready():
 
 	Players.append(self)
 
+	if $NetworkNode.has_authority():
+		LocalPlayer = self
+
 
 func _process(delta):
 	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
