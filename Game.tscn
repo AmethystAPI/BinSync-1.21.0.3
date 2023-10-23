@@ -45,4 +45,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="Control"]
+process_priority = 2
 script = ExtResource("2_hfwar")

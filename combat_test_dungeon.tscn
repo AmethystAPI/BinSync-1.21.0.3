@@ -78,5 +78,6 @@ layer_2/tile_data = PackedInt32Array(-524281, 131072, 0, -458760, 0, 0, -458745,
 script = ExtResource("4_gnvfs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_priority = 1
 visible = false
 script = ExtResource("3_rcdla")
