@@ -41,8 +41,8 @@ func _ready():
 	Players.append(self)
 
 
-# func _process(delta):
-# 	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
+func _process(delta):
+	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
 
 
 func _go_to_state(state: State):

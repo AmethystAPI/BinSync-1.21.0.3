@@ -27,6 +27,9 @@ func _on_updated(input: TrackedValue):
 	sync_to_physics_engine()
 
 	for body in $"Damage Area".get_overlapping_bodies():
+		if body is RID:
+			continue
+
 		if not body.is_in_group("Entities"):
 			continue
 			
