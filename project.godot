@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Squad"
-run/main_scene="res://game.tscn"
+run/main_scene="res://combat_test_dungeon.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
 [autoload]
@@ -20,11 +20,13 @@ NetworkManager="*res://Cito/network_manager.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=4
 window/size/window_width_override=1080
 window/size/window_height_override=720
-window/stretch/aspect="ignore"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -100,4 +102,5 @@ spawn={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.0509804, 0.054902, 0.0705882, 1)

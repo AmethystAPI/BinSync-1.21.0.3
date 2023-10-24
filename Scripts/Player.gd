@@ -45,10 +45,9 @@ func _ready():
 
 
 func _process(delta):
+	pass 
 	# $ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
-	$ClientPlayer.global_position += Vector2(16, 0) * delta
-	print("update client player ", $ClientPlayer.global_position)
-
+	# $ClientPlayer.global_position
 
 func _go_to_state(state: State):
 	if state == State.HURT:
@@ -92,8 +91,6 @@ func _on_updated(input: TrackedValue):
 	move_and_slide()
 
 	sync_to_physics_engine()
-
-	print("updated player physics")
 	
 
 func _on_recorded_state():
