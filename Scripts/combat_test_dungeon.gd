@@ -8,13 +8,21 @@ func _ready():
 	NetworkManager.started.connect(_on_started)
 	NetworkManager.recorded_input.connect(_on_recorded_input)
 
+	multiplayer.connection_failed.connect(func():
+		NetworkManager.join("127.0.0.1")
+	)
+
+	multiplayer.peer_connected.connect(func(id):
+		print("Peer connected: ", id)
+	)
+
 
 func _input(event):
 	if event.is_action_pressed("host"):
 		NetworkManager.host()
 	
 	if event.is_action_pressed("join"):
-		NetworkManager.join()
+		NetworkManager.join("104.33.194.150")
 
 	if event.is_action_pressed("start"):
 		NetworkManager.start()

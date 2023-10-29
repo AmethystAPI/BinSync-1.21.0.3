@@ -38,9 +38,9 @@ func _input(event):
 
 		if _debug_mode:
 			_enter_debug_tick = current_tick
-			print('Debug mode enabled')
+			print("Debug mode enabled")
 		else:
-			print('Debug mode disabled')
+			print("Debug mode disabled")
 
 	if not _debug_mode:
 		return
@@ -51,7 +51,7 @@ func _input(event):
 
 		current_tick -= 1
 
-		print('Rewound to tick: ', current_tick, ' out of ', _enter_debug_tick)
+		print("Rewound to tick: ", current_tick, " out of ", _enter_debug_tick)
 
 		for node in _network_nodes.values():
 			node._apply_state()
@@ -62,7 +62,7 @@ func _input(event):
 
 		current_tick += 1
 
-		print('Stepped to tick: ', current_tick, ' out of ', _enter_debug_tick)
+		print("Stepped to tick: ", current_tick, " out of ", _enter_debug_tick)
 				
 		for node in _network_nodes.values():
 			node._update()
@@ -85,7 +85,7 @@ func _process(_delta):
 		return
 
 	if current_tick > start_tick - 1:
-		# print(_id_debug(), 'Rolling back from ', current_tick, ' to ', start_tick - 1)
+		# print(_id_debug(), "Rolling back from ", current_tick, " to ", start_tick - 1)
 
 		current_tick = start_tick - 1
 
@@ -93,7 +93,7 @@ func _process(_delta):
 			node._apply_state()
 
 	for tick in range(start_tick, newest_tick + 1):
-		# print(_id_debug(), 'Tick: ', tick)
+		# print(_id_debug(), "Tick: ", tick)
 
 		current_tick = tick
 
@@ -149,10 +149,12 @@ func delta() -> int:
 
 func host() -> void:
 	var peer = ENetMultiplayerPeer.new()
+
+	print("Hosting on port 8080")
 	
-	var error = peer.create_server(25566, 2)
+	var error = peer.create_server(8080, 2)
 	if error != OK:
-		print('Error hosting: ' + str(error))
+		print("Error hosting: " + str(error))
 		return
 
 	peer.get_host().compress(ENetConnection.COMPRESS_ZLIB)
@@ -162,14 +164,16 @@ func host() -> void:
 	_debug_is_host = true
 
 
-func join() -> void:
+func join(address: String) -> void:
 	var peer = ENetMultiplayerPeer.new()
+
+	print("Connecting to ", address, " with port 8080")
 	
-	var error = peer.create_client('127.0.0.1', 25566)
+	var error = peer.create_client(address, 8080)
 	if error != OK:
-		print('Error joining: ' + str(error))
+		print("Error joining: " + str(error))
 		return
-		
+
 	peer.get_host().compress(ENetConnection.COMPRESS_ZLIB)
 	
 	multiplayer.set_multiplayer_peer(peer)
@@ -181,7 +185,7 @@ func start() -> void:
 
 func spawn(scene: PackedScene, authority: int = 1) -> Node:
 	var node = scene.instantiate()
-	var network_node = node.get_node('NetworkNode')
+	var network_node = node.get_node("NetworkNode")
 
 	network_node.id = _next_network_node_id.value
 	_next_network_node_id.value += 1
@@ -194,7 +198,7 @@ func spawn(scene: PackedScene, authority: int = 1) -> Node:
 	return node
 
 
-@rpc('any_peer', 'call_local', 'reliable')
+@rpc("any_peer", "call_local", "reliable")
 func _setup(host_initial_tick_time, current_players):
 	_initial_tick_time = host_initial_tick_time
 
@@ -208,7 +212,7 @@ func _setup(host_initial_tick_time, current_players):
 	_is_setup = true
 
 
-@rpc('any_peer', 'call_remote', 'reliable')
+@rpc("any_peer", "call_remote", "reliable")
 func _update_input(tick, player, input):
 	if tick < current_tick - MAX_MESSAGE_DELAY * TICKS_PER_SECOND:
 		return
@@ -220,4 +224,4 @@ func _update_input(tick, player, input):
 
 
 func _id_debug():
-	return '(' + str(multiplayer.get_unique_id()) + ') '
+	return "(" + str(multiplayer.get_unique_id()) + ") "
