@@ -150,9 +150,9 @@ func delta() -> int:
 func host() -> void:
 	var peer = ENetMultiplayerPeer.new()
 
-	print("Hosting on port 8080")
+	print("Hosting on port 25566")
 	
-	var error = peer.create_server(8080, 2)
+	var error = peer.create_server(25566, 2)
 	if error != OK:
 		print("Error hosting: " + str(error))
 		return
@@ -167,9 +167,9 @@ func host() -> void:
 func join(address: String) -> void:
 	var peer = ENetMultiplayerPeer.new()
 
-	print("Connecting to ", address, " with port 8080")
+	print("Connecting to ", address, " with port 25566")
 	
-	var error = peer.create_client(address, 8080)
+	var error = peer.create_client(address, 25566)
 	if error != OK:
 		print("Error joining: " + str(error))
 		return

@@ -24,6 +24,9 @@ func _input(event):
 	if event.is_action_pressed("join"):
 		NetworkManager.join("104.33.194.150")
 
+	if event.is_action_pressed("join_local"):
+		NetworkManager.join("192.168.86.37")
+
 	if event.is_action_pressed("start"):
 		NetworkManager.start()
 
