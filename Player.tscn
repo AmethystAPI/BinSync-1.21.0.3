@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cvyqq7wvquwo0"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qgtm4"]
-[ext_resource type="PackedScene" uid="uid://yqqwdjapmgrh" path="res://slime.tscn" id="2_2w5mx"]
+[ext_resource type="PackedScene" uid="uid://yqqwdjapmgrh" path="res://enemies/slime.tscn" id="2_2w5mx"]
 [ext_resource type="Texture2D" uid="uid://dhli88siajnt7" path="res://Sprites/Player.png" id="2_hcqgy"]
 [ext_resource type="PackedScene" uid="uid://i7w0k64eq2hy" path="res://projectile.tscn" id="2_qbaia"]
 [ext_resource type="Script" path="res://Scripts/sword.gd" id="3_7k655"]

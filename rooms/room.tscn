@@ -59,7 +59,7 @@ texture_region_size = Vector2i(16, 24)
 sources/0 = SubResource("TileSetAtlasSource_kig7d")
 sources/1 = SubResource("TileSetAtlasSource_dtie1")
 
-[node name="golden_grove_concept" type="Node2D"]
+[node name="room" type="Node2D"]
 y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -122,55 +122,46 @@ region_enabled = true
 region_rect = Rect2(0, 38, 48, 37)
 
 [node name="Trees" type="Node2D" parent="."]
-visible = false
 y_sort_enabled = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Trees"]
-position = Vector2(-7, -40)
+position = Vector2(-21, -67)
 texture = ExtResource("1_3katd")
 offset = Vector2(0, -8)
 flip_h = true
 region_enabled = true
 region_rect = Rect2(1, 0, 30, 35)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Trees"]
-position = Vector2(-44, -30)
-texture = ExtResource("1_3katd")
-offset = Vector2(0, -10)
-flip_h = true
-region_enabled = true
-region_rect = Rect2(83, 0, 26, 38)
-
-[node name="Sprite2D8" type="Sprite2D" parent="Trees"]
-position = Vector2(49, 58)
-texture = ExtResource("1_3katd")
-offset = Vector2(0, -10)
-region_enabled = true
-region_rect = Rect2(83, 0, 26, 38)
-
 [node name="Sprite2D12" type="Sprite2D" parent="Trees"]
-position = Vector2(-51, 15)
+position = Vector2(21, -5)
+texture = ExtResource("1_3katd")
+offset = Vector2(0, -10)
+region_enabled = true
+region_rect = Rect2(83, 0, 26, 38)
+
+[node name="Sprite2D13" type="Sprite2D" parent="Trees"]
+position = Vector2(-48, 66)
 texture = ExtResource("1_3katd")
 offset = Vector2(0, -10)
 region_enabled = true
 region_rect = Rect2(83, 0, 26, 38)
 
 [node name="Sprite2D5" type="Sprite2D" parent="Trees"]
-position = Vector2(-41, 54)
+position = Vector2(42, 74)
 texture = ExtResource("1_3katd")
 offset = Vector2(0, -8)
 region_enabled = true
 region_rect = Rect2(1, 0, 30, 35)
 
 [node name="Sprite2D6" type="Sprite2D" parent="Trees"]
-position = Vector2(48, 2)
+position = Vector2(-85, 15)
 texture = ExtResource("1_3katd")
 offset = Vector2(0, -8)
 region_enabled = true
 region_rect = Rect2(1, 0, 30, 35)
 
 [node name="Sprite2D9" type="Sprite2D" parent="Trees"]
-position = Vector2(52, -31)
+position = Vector2(84, -27)
 texture = ExtResource("1_3katd")
 offset = Vector2(0, -8)
 region_enabled = true
