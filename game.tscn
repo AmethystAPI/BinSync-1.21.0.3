@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://kqiq8vox1dc0"]
+[gd_scene load_steps=5 format=3 uid="uid://kqiq8vox1dc0"]
+
+[ext_resource type="PackedScene" uid="uid://cfd24nri7auoe" path="res://rooms/room.tscn" id="1_754f2"]
+[ext_resource type="Script" path="res://game_manager.gd" id="1_e5ylb"]
+[ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://player.tscn" id="2_nhcrr"]
+[ext_resource type="Script" path="res://Scripts/pixel_camera.gd" id="4_nhdu0"]
 
 [node name="game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_e5ylb")
+PlayerScene = ExtResource("2_nhcrr")
+
+[node name="room" parent="." instance=ExtResource("1_754f2")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+script = ExtResource("4_nhdu0")

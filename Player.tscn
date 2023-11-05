@@ -80,6 +80,7 @@ script = ExtResource("1_qgtm4")
 EnemyScene = ExtResource("2_2w5mx")
 
 [node name="ClientPlayer" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="ClientPlayer"]
 light_mask = 0
@@ -93,7 +94,6 @@ position = Vector2(0, -3)
 
 [node name="Sword" type="SGFixedNode2D" parent="."]
 fixed_position_y = -458752
-z_index = 1
 position = Vector2(0, -7)
 script = ExtResource("3_7k655")
 PROJECTILE_RESOURCE = ExtResource("2_qbaia")
