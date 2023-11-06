@@ -15,6 +15,7 @@ var current_tick: int = 0
 
 var _player_tracked_inputs = []
 
+var _local_initial_tick_time: float = -1
 var _initial_tick_time: float = -1
 var _earliest_updated_tick = 1
 
@@ -111,14 +112,14 @@ func _process(_delta):
 					if tracked_input._should_update():
 						# _update_input.rpc(tick, local_player(), tracked_input.value)
 
-						var stored_tick = NetworkManager.current_tick
-						var stored_value = tracked_input.value
+						var stored_tick = tick
+						var stored_input = tracked_input.value
 
 						var delay = func():
-							await get_tree().create_timer(0.08).timeout
-							
-							_update_input.rpc(stored_tick, local_player(), stored_value)
-						
+							await get_tree().create_timer(358 / 1000).timeout
+
+							_update_input.rpc(stored_tick, local_player(), stored_input)
+
 						delay.call()
 
 			tracked_input.value = tracked_input.old_value
@@ -180,7 +181,7 @@ func join(address: String) -> void:
 
 
 func start() -> void:
-	_setup.rpc(Time.get_ticks_msec(), [1] + Array(multiplayer.get_peers()))
+	_setup.rpc([1] + Array(multiplayer.get_peers()))
 
 
 func spawn(scene: PackedScene, authority: int = 1) -> Node:
@@ -197,20 +198,44 @@ func spawn(scene: PackedScene, authority: int = 1) -> Node:
 
 	return node
 
-
+# We need to have an initial tick time that will be relatively identical across clients when doing Time.get_ticks_msec() - initial_tick_time
+# So, we will ping the server and see what their time is. once we recieve their time we know that it is probably half the time since we requested the time out of date
+# So, we can then use a corrected version of that time based on the time since we requested, to offset our initial time to match it up close to the server
+# It won't be perfect but it will be close enough on a good connection
 @rpc("any_peer", "call_local", "reliable")
-func _setup(host_initial_tick_time, current_players):
-	_initial_tick_time = host_initial_tick_time
+func _setup(current_players):
+	await get_tree().create_timer(358.0 / 1000.0).timeout
 
 	players = current_players
 
 	for player in current_players:
-		_player_tracked_inputs.append(TrackedValue.new(null))
+		_player_tracked_inputs.append(TrackedValue.new(null))	
 
-	started.emit()
+	_local_initial_tick_time = Time.get_ticks_msec()
+
+	_ping_server.rpc_id(1, multiplayer.get_unique_id())
+
+
+@rpc("any_peer", "call_local", "reliable")
+func _ping_server(id):
+	await get_tree().create_timer(358.0 / 1000.0).timeout
+
+	_ping_client.rpc_id(id, Time.get_ticks_msec())
+
+
+@rpc("authority", "call_local", "reliable")
+func _ping_client(time):
+	var time_since_ping = Time.get_ticks_msec() - _local_initial_tick_time
+	var predicted_time_offset = time_since_ping / 2
+	var predicted_time = time + predicted_time_offset
 	
+	_initial_tick_time = Time.get_ticks_msec() - predicted_time
+
 	_is_setup = true
 
+	started.emit()
+
+	print("Calculated initial tick time as ", _initial_tick_time, " with a latency of ", time_since_ping)
 
 @rpc("any_peer", "call_remote", "reliable")
 func _update_input(tick, player, input):

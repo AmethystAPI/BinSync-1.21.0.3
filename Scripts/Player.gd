@@ -45,8 +45,8 @@ func _ready():
 
 
 func _process(delta):
-	pass 
-	# $ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
+	# pass 
+	$ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
 	# $ClientPlayer.global_position
 
 func _go_to_state(state: State):
