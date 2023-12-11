@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://co13jmvwscrs4"]
 
-[ext_resource type="Texture2D" uid="uid://56gomk2cljgn" path="res://Sprites/GoldenGroveTileset.png" id="1_v5nxj"]
+[ext_resource type="Texture2D" uid="uid://56gomk2cljgn" path="res://sprites/golden_grove_tileset.png" id="1_v5nxj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kig7d"]
 resource_name = "Tileset"

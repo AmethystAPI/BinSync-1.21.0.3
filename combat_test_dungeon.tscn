@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bro0mcqr8xgy6"]
 
 [ext_resource type="Script" path="res://Scripts/combat_test_dungeon.gd" id="1_knh7s"]
-[ext_resource type="Texture2D" uid="uid://6xllwl7l2ah7" path="res://Sprites/Dungeon.png" id="1_x7n6v"]
+[ext_resource type="Texture2D" uid="uid://6xllwl7l2ah7" path="res://sprites/dungeon.png" id="1_x7n6v"]
 [ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://player.tscn" id="2_krnao"]
 [ext_resource type="Script" path="res://Scripts/pixel_camera.gd" id="3_rcdla"]
 [ext_resource type="Script" path="res://Scripts/tile_map_collision.gd" id="4_gnvfs"]

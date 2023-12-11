@@ -135,8 +135,6 @@ func _process(_delta):
 
 	_earliest_updated_tick = newest_tick + 1
 
-	print(_id_debug(), "Tick: ", newest_tick)
-
 
 func local_player() -> int:
 		return multiplayer.get_unique_id()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6xllwl7l2ah7"
-path="res://.godot/imported/dungeon.png-35603cb897c7cb42b6baaea0122ab565.ctex"
+uid="uid://56gomk2cljgn"
+path="res://.godot/imported/golden_grove_tileset.png-6cfb7818ba65b6829c2c5655150ea892.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/dungeon.png"
-dest_files=["res://.godot/imported/dungeon.png-35603cb897c7cb42b6baaea0122ab565.ctex"]
+source_file="res://sprites/golden_grove_tileset.png"
+dest_files=["res://.godot/imported/golden_grove_tileset.png-6cfb7818ba65b6829c2c5655150ea892.ctex"]
 
 [params]
 

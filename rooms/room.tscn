@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfd24nri7auoe"]
 
-[ext_resource type="Texture2D" uid="uid://56gomk2cljgn" path="res://Sprites/GoldenGroveTileset.png" id="1_3katd"]
+[ext_resource type="Texture2D" uid="uid://56gomk2cljgn" path="res://sprites/golden_grove_tileset.png" id="1_3katd"]
 [ext_resource type="Script" path="res://Scripts/tile_map_collision.gd" id="2_kract"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kig7d"]

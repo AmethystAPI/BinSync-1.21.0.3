@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6xllwl7l2ah7"
-path="res://.godot/imported/dungeon.png-35603cb897c7cb42b6baaea0122ab565.ctex"
+uid="uid://c4yr1lxolpdp4"
+path="res://.godot/imported/Golden Grove Concept.aseprite-801c56522b3e5e3700894f5173ecd9b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/dungeon.png"
-dest_files=["res://.godot/imported/dungeon.png-35603cb897c7cb42b6baaea0122ab565.ctex"]
+source_file="res://sprites/Golden Grove Concept.aseprite"
+dest_files=["res://.godot/imported/Golden Grove Concept.aseprite-801c56522b3e5e3700894f5173ecd9b8.ctex"]
 
 [params]
 

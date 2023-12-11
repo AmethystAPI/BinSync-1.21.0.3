@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://w3jo4ufwp2an"
-path="res://.godot/imported/Golden Grove Concept.png-3d76595425ff9598ff3ff35c32d1538d.ctex"
+path="res://.godot/imported/golden_grove_concept.png-8941e435fb11771aadb5ac9a77669c48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Golden Grove Concept.png"
-dest_files=["res://.godot/imported/Golden Grove Concept.png-3d76595425ff9598ff3ff35c32d1538d.ctex"]
+source_file="res://sprites/golden_grove_concept.png"
+dest_files=["res://.godot/imported/golden_grove_concept.png-8941e435fb11771aadb5ac9a77669c48.ctex"]
 
 [params]
 
