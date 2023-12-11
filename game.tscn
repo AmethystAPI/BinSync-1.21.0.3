@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://kqiq8vox1dc0"]
+[gd_scene load_steps=6 format=3 uid="uid://kqiq8vox1dc0"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_e5ylb"]
 [ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://player.tscn" id="2_nhcrr"]
 [ext_resource type="PackedScene" uid="uid://i05r642ejnia" path="res://rooms/testing.tscn" id="3_3ipuc"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="4_8a6qq"]
 [ext_resource type="PackedScene" uid="uid://c07yie8im4704" path="res://network_debug.tscn" id="5_6j1ed"]
 
 [node name="Game" type="Node2D"]
@@ -13,7 +14,9 @@ PlayerScene = ExtResource("2_nhcrr")
 [node name="Testing" parent="." instance=ExtResource("3_3ipuc")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_priority = 1
 zoom = Vector2(3, 3)
+script = ExtResource("4_8a6qq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
