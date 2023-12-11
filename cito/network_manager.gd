@@ -5,7 +5,7 @@ signal recorded_input(input: TrackedValue)
 signal started
 
 
-const TICKS_PER_SECOND: float = 60
+const TICKS_PER_SECOND: float = 120
 const MAX_MESSAGE_DELAY: float = 10
 
 

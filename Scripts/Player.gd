@@ -12,8 +12,8 @@ static var LocalPlayer: Player
 static var Players = []
 
 
-var SPEED = SGFixed.from_int(100)
-const DASH_SPEED = 300.0
+var SPEED = SGFixed.from_int(70)
+var DASH_SPEED = SGFixed.from_int(600)
 
 
 var KNOCKBACK_POWER = SGFixed.from_int(300)
@@ -54,7 +54,7 @@ func _go_to_state(state: State):
 		$ClientPlayer/AnimatedSprite.play("hurt")
 
 	if state == State.DASH:
-		_tracked_dash_timer.value = 0.15
+		_tracked_dash_timer.value = SGFixed.from_float(0.05)
 
 	_tracked_state.value = state
 
@@ -74,19 +74,19 @@ func _on_updated(input: TrackedValue):
 	if input.value == null:
 		return
 
-	if input.value.spawn and input.old_value != null and not input.old_value.spawn:
-		var enemy: SGCharacterBody2D = NetworkManager.spawn(EnemyScene)
+	# if input.value.spawn and input.old_value != null and not input.old_value.spawn:
+	# 	var enemy: SGCharacterBody2D = NetworkManager.spawn(EnemyScene)
 
-		enemy.set_global_fixed_position(get_global_fixed_position())
+	# 	enemy.set_global_fixed_position(get_global_fixed_position())
 		
-		get_parent().add_child(enemy)
+	# 	get_parent().add_child(enemy)
 
 	_default(input)
 	_hurt(NetworkManager.delta())
 	_dash(input)
 
-	if input.value.shoot and not input.old_value.shoot:
-		$Sword.shoot()
+	# if input.value.shoot and not input.old_value.shoot:
+	# 	$Sword.shoot()
 
 	move_and_slide()
 
@@ -121,6 +121,9 @@ func _default(input: TrackedValue):
 	else:
 		$ClientPlayer/AnimatedSprite.play("idle")
 
+	if input.value.dash and input.old_value != null and not input.old_value.dash:
+		_go_to_state(State.DASH)
+
 
 func _hurt(delta):
 	if _tracked_state.value != State.HURT:
@@ -142,7 +145,7 @@ func _dash(input: TrackedValue):
 	if _tracked_state.value != State.DASH:
 		return
 
-	velocity = input.movement * DASH_SPEED
+	velocity = SGFixed.from_float_vector2(input.value.point_direction).mul(DASH_SPEED).mul(NetworkManager.delta())
 
 	$ClientPlayer/AnimatedSprite.play("idle")
 
