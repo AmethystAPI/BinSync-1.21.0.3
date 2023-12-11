@@ -32,8 +32,6 @@ func _on_started():
 	for id in NetworkManager.players:
 		var player: SGCharacterBody2D = NetworkManager.spawn(PlayerScene, id)
 
-		print('spawned ', player, 'with authority ', id)
-
 		add_child(player)
 
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://i05r642ejnia"]
+
+[ext_resource type="Script" path="res://Scripts/tile_map_collision.gd" id="2_5h2m0"]
+
+[sub_resource type="TileSet" id="TileSet_tud3m"]
+
+[node name="Testing" type="Node2D"]
+y_sort_enabled = true
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_tud3m")
+format = 2
+layer_0/name = "Grass"
+layer_0/z_index = -10
+layer_1/name = "Terrain"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array()
+
+[node name="TileMapCollision" type="Node" parent="TileMap"]
+script = ExtResource("2_5h2m0")
+colliding_layers = ["Terrain"]

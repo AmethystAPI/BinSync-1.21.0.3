@@ -116,7 +116,7 @@ func _process(_delta):
 						var stored_input = tracked_input.value
 
 						var delay = func():
-							await get_tree().create_timer(358 / 1000).timeout
+							await get_tree().create_timer(60.0 / 1000).timeout
 
 							_update_input.rpc(stored_tick, local_player(), stored_input)
 
@@ -134,6 +134,8 @@ func _process(_delta):
 			node._record_state()
 
 	_earliest_updated_tick = newest_tick + 1
+
+	print(_id_debug(), "Tick: ", newest_tick)
 
 
 func local_player() -> int:
@@ -204,7 +206,7 @@ func spawn(scene: PackedScene, authority: int = 1) -> Node:
 # It won't be perfect but it will be close enough on a good connection
 @rpc("any_peer", "call_local", "reliable")
 func _setup(current_players):
-	await get_tree().create_timer(358.0 / 1000.0).timeout
+	# await get_tree().create_timer(60.0 / 1000.0).timeout
 
 	players = current_players
 
@@ -218,7 +220,7 @@ func _setup(current_players):
 
 @rpc("any_peer", "call_local", "reliable")
 func _ping_server(id):
-	await get_tree().create_timer(358.0 / 1000.0).timeout
+	# await get_tree().create_timer(60.0 / 1000.0).timeout
 
 	_ping_client.rpc_id(id, Time.get_ticks_msec())
 
