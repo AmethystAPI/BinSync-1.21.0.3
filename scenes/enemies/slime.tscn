@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://yqqwdjapmgrh"]
+[gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_h1ogj"]
-[ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://sprites/slime.png" id="2_w44pw"]
-[ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://sprites/projectiles.png" id="3_0gnaj"]
+[ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="3_ksiq1"]
 [ext_resource type="Script" path="res://scripts/damage_area.gd" id="3_uglmi"]
 [ext_resource type="Script" path="res://libraries/cito/network_node.gd" id="5_cu5xc"]
 
@@ -184,11 +183,10 @@ y_sort_enabled = true
 script = ExtResource("1_h1ogj")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.384314)
 z_index = -2
 texture_filter = 1
-position = Vector2(0, -5)
-texture = ExtResource("2_w44pw")
+position = Vector2(0, -2)
+texture = ExtResource("3_ksiq1")
 hframes = 3
 frame = 2
 
@@ -197,24 +195,23 @@ position = Vector2(0, -2)
 script = ExtResource("3_uglmi")
 
 [node name="Sprite" type="Sprite2D" parent="Damage Area"]
-visible = false
-modulate = Color(1, 1, 1, 0)
 z_index = -1
 texture_filter = 1
-texture = ExtResource("3_0gnaj")
+texture = ExtResource("3_ksiq1")
 hframes = 3
 
 [node name="CollisionShape2D" type="SGCollisionShape2D" parent="Damage Area"]
 shape = SubResource("SGRectangleShape2D_g17mr")
 disabled = true
+visible = false
 
 [node name="Collider" type="SGCollisionShape2D" parent="."]
 shape = SubResource("SGRectangleShape2D_djfvx")
+visible = false
 position = Vector2(0, -4.5)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_w44pw")
 offset = Vector2(0, -5)
 hframes = 3
 

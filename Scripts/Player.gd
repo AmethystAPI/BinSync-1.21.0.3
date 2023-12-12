@@ -74,13 +74,6 @@ func _on_updated(input: TrackedValue):
 	if input.value == null:
 		return
 
-	# if input.value.spawn and input.old_value != null and not input.old_value.spawn:
-	# 	var enemy: SGCharacterBody2D = NetworkManager.spawn(EnemyScene)
-
-	# 	enemy.set_global_fixed_position(get_global_fixed_position())
-		
-	# 	get_parent().add_child(enemy)
-
 	_default(input)
 	_hurt(NetworkManager.delta())
 	_dash(input)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_e5ylb"]
 [ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://scenes/player.tscn" id="2_nhcrr"]
 [ext_resource type="PackedScene" uid="uid://i05r642ejnia" path="res://scenes/rooms/testing.tscn" id="3_3ipuc"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="4_8a6qq"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="4_8a6qq"]
 [ext_resource type="PackedScene" uid="uid://c07yie8im4704" path="res://scenes/network_debug.tscn" id="5_6j1ed"]
 
 [node name="Game" type="Node2D"]

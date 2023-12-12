@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://i7w0k64eq2hy"]
+[gd_scene load_steps=4 format=3 uid="uid://i7w0k64eq2hy"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_vxg6q"]
-[ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://sprites/projectiles.png" id="2_bqh31"]
 [ext_resource type="Script" path="res://libraries/cito/network_node.gd" id="3_dtosi"]
 
 [sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_haxje"]
@@ -15,7 +14,6 @@ script = ExtResource("1_vxg6q")
 z_index = -1
 y_sort_enabled = true
 texture_filter = 1
-texture = ExtResource("2_bqh31")
 hframes = 3
 frame = 2
 

@@ -1,5 +1,5 @@
 extends Camera2D
-class_name PixelCamera
+class_name PlayerCamera
 
 
 const SCREEN_OFFSET_FRACTION = 8
