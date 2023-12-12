@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://yqqwdjapmgrh"]
 
-[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_h1ogj"]
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_h1ogj"]
 [ext_resource type="Texture2D" uid="uid://caiqh3767p55h" path="res://sprites/slime.png" id="2_w44pw"]
 [ext_resource type="Texture2D" uid="uid://bsvmyrjbwn516" path="res://sprites/projectiles.png" id="3_0gnaj"]
-[ext_resource type="Script" path="res://Scripts/damage_area.gd" id="3_uglmi"]
-[ext_resource type="Script" path="res://Cito/network_node.gd" id="5_cu5xc"]
+[ext_resource type="Script" path="res://scripts/damage_area.gd" id="3_uglmi"]
+[ext_resource type="Script" path="res://libraries/cito/network_node.gd" id="5_cu5xc"]
 
 [sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_g17mr"]
 

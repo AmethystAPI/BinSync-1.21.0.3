@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4egrmcb0j61i"
-path="res://.godot/imported/icon_s_g_fixed_rect_2.svg-c027f10715e565a77e51df6dca16e6de.ctex"
+uid="uid://lhq5kt6p13gb"
+path="res://.godot/imported/icon_s_g_static_body_2_d.svg-985b03784d72deaec607354ece083db4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sg-physics-2d/icons/icon_s_g_fixed_rect_2.svg"
-dest_files=["res://.godot/imported/icon_s_g_fixed_rect_2.svg-c027f10715e565a77e51df6dca16e6de.ctex"]
+source_file="res://libraries/sg-physics-2d/icons/icon_s_g_static_body_2_d.svg"
+dest_files=["res://.godot/imported/icon_s_g_static_body_2_d.svg-985b03784d72deaec607354ece083db4.ctex"]
 
 [params]
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Squad"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -22,7 +22,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 [autoload]
 
-NetworkManager="*res://Cito/network_manager.gd"
+NetworkManager="*res://libraries/cito/network_manager.gd"
 
 [display]
 
