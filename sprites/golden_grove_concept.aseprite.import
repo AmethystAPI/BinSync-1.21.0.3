@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caiqh3767p55h"
-path="res://.godot/imported/slime.png-9174b73a36c340e3a8e0980a533060e0.ctex"
+uid="uid://c4yr1lxolpdp4"
+path="res://.godot/imported/golden_grove_concept.aseprite-5f83c5a38120079b6bb75fb624c0e6cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/slime.png"
-dest_files=["res://.godot/imported/slime.png-9174b73a36c340e3a8e0980a533060e0.ctex"]
+source_file="res://sprites/golden_grove_concept.aseprite"
+dest_files=["res://.godot/imported/golden_grove_concept.aseprite-5f83c5a38120079b6bb75fb624c0e6cd.ctex"]
 
 [params]
 
