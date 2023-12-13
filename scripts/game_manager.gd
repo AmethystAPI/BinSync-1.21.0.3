@@ -2,6 +2,7 @@ extends Node2D
 
 
 @export var PlayerScene: PackedScene
+@export var EnemyScene: PackedScene
 
 
 func _ready():
@@ -33,6 +34,10 @@ func _on_started():
 		var player: SGCharacterBody2D = NetworkManager.spawn(PlayerScene, id)
 
 		add_child(player)
+
+	var enemy: SGCharacterBody2D = NetworkManager.spawn(EnemyScene, multiplayer.get_unique_id())
+
+	add_child(enemy)
 
 
 func _on_recorded_input(input: TrackedValue):
