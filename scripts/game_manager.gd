@@ -9,24 +9,24 @@ func _ready():
 	NetworkManager.started.connect(_on_started)
 	NetworkManager.recorded_input.connect(_on_recorded_input)
 
-	NetworkManager.host()
-	NetworkManager.start()
+	# NetworkManager.host()
+	# NetworkManager.start()
 
 	# NetworkManager.join("104.33.194.150")
 
 
-# func _input(event):
-# 	if event.is_action_pressed("host"):
-# 		NetworkManager.host()
+func _input(event):
+	if event.is_action_pressed("host"):
+		NetworkManager.host()
 	
-# 	if event.is_action_pressed("join"):
-# 		NetworkManager.join("104.33.194.150")
+	if event.is_action_pressed("join"):
+		NetworkManager.join("104.33.194.150")
 
-# 	if event.is_action_pressed("join_local"):
-# 		NetworkManager.join("192.168.86.37")
+	if event.is_action_pressed("join_local"):
+		NetworkManager.join("192.168.86.37")
 
-# 	if event.is_action_pressed("start"):
-# 		NetworkManager.start()
+	if event.is_action_pressed("start"):
+		NetworkManager.start()
 
 
 func _on_started():

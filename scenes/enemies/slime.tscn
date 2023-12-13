@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://yqqwdjapmgrh"]
+[gd_scene load_steps=10 format=3 uid="uid://yqqwdjapmgrh"]
 
-[ext_resource type="Script" path="res://scripts/slime.gd" id="1_h1ogj"]
 [ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="3_ksiq1"]
-[ext_resource type="Script" path="res://scripts/damage_area.gd" id="3_uglmi"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_wxog7"]
 [ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="4_ybkj3"]
+[ext_resource type="Script" path="res://scripts/enemies/slime/Idle.gd" id="5_2wlji"]
 [ext_resource type="Script" path="res://libraries/cito/network_node.gd" id="5_cu5xc"]
+[ext_resource type="Script" path="res://scripts/enemies/slime/jump.gd" id="6_1m51y"]
+[ext_resource type="Script" path="res://scripts/enemies/slime/hurt.gd" id="7_wnpfh"]
 
 [sub_resource type="SGRectangleShape2D" id="SGRectangleShape2D_g17mr"]
 
@@ -12,176 +14,9 @@
 extents_x = 410079
 extents_y = 304940
 
-[sub_resource type="Animation" id="Animation_4cwjh"]
-resource_name = "hurt"
-length = 0.10001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Damage Area/Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_cplr4"]
-resource_name = "run"
-length = 0.10001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Damage Area/Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_t2hpo"]
-resource_name = "jump"
-length = 0.90001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"_land_jump"
-}, {
-"args": [],
-"method": &"_end_jump"
-}]
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Damage Area/Sprite:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.2, -0.871138, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.6, 0.9)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Damage Area:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 3.92699]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Damage Area/Sprite:scale:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.1, 1.00153, 2, -0.2, 0.00153112, 0.25, 0),
-"times": PackedFloat32Array(0.6, 0.9)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Damage Area/Sprite:scale:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.1, 1.00153, 2, -0.2, 0.00153112, 0.25, 0),
-"times": PackedFloat32Array(0.6, 0.9)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite:offset:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-5, -0.25, 0, 0.1, -23.167, -5, -0.1, -23.167, 0.25, 0),
-"times": PackedFloat32Array(0, 0.6)
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Damage Area/Sprite:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_skoua"]
-_data = {
-"hurt": SubResource("Animation_4cwjh"),
-"idle": SubResource("Animation_cplr4"),
-"jump": SubResource("Animation_t2hpo")
-}
-
 [node name="slime" type="SGCharacterBody2D" groups=["Enemies", "Entities"]]
 collision_mask = 0
 y_sort_enabled = true
-script = ExtResource("1_h1ogj")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -2
@@ -193,9 +28,9 @@ frame = 2
 
 [node name="Damage Area" type="SGArea2D" parent="."]
 position = Vector2(0, -2)
-script = ExtResource("3_uglmi")
 
 [node name="Sprite" type="Sprite2D" parent="Damage Area"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = -1
 texture_filter = 1
@@ -217,17 +52,19 @@ texture = ExtResource("3_ksiq1")
 offset = Vector2(0, -5)
 hframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_skoua")
-}
-
 [node name="NetworkNode" type="Node" parent="."]
 script = ExtResource("5_cu5xc")
 
-[connection signal="applied_state" from="NetworkNode" to="." method="_on_applied_state"]
-[connection signal="applied_state" from="NetworkNode" to="Damage Area" method="_on_applied_state"]
-[connection signal="handled_early_state" from="NetworkNode" to="." method="_on_handled_early_state"]
-[connection signal="recorded_state" from="NetworkNode" to="." method="_on_recorded_state"]
-[connection signal="updated" from="NetworkNode" to="." method="_on_updated"]
-[connection signal="updated" from="NetworkNode" to="Damage Area" method="_on_updated"]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("network_node")]
+script = ExtResource("4_wxog7")
+network_node = NodePath("../NetworkNode")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_2wlji")
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("network_node")]
+script = ExtResource("6_1m51y")
+network_node = NodePath("../../NetworkNode")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("7_wnpfh")

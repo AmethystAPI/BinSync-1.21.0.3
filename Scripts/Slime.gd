@@ -1,7 +1,7 @@
 extends SGCharacterBody2D
 
 
-enum State { IDLE, JUMP, HURT, LANDED }
+enum States { IDLE, JUMP, HURT, LANDED }
 
 
 var SPEED = SGFixed.from_int(30)
@@ -21,40 +21,40 @@ var _tracked_health
 func _ready():
 	_tracked_position = $NetworkNode.tracked_state(get_global_fixed_position())
 	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
-	_tracked_state = $NetworkNode.tracked_state(State.IDLE)
+	_tracked_state = $NetworkNode.tracked_state(States.IDLE)
 	_tracked_jump_timer = $NetworkNode.tracked_state(1.0)
 	_tracked_health = $NetworkNode.tracked_state(3)
 
-	_go_to_state(State.IDLE)
+	_go_to_state(States.IDLE)
 
 
-func _go_to_state(state: State):
-	if state == State.IDLE:
+func _go_to_state(state: States):
+	if state == States.IDLE:
 		_tracked_jump_timer.value = 1.0
 		$"AnimationPlayer".play("idle")
 
-	if state == State.JUMP:
+	if state == States.JUMP:
 		_tracked_jump_timer.value = 0.6
 		$"AnimationPlayer".play("jump")
 
-	if state == State.LANDED:
+	if state == States.LANDED:
 		_tracked_jump_timer.value = 0.3
 		$"AnimationPlayer".play("jump")
 
-	if state == State.HURT:
+	if state == States.HURT:
 		$"AnimationPlayer".play("hurt")
 
 	_tracked_state.value = state
 
 
 func _resume_state():
-	if _tracked_state.value == State.IDLE:
+	if _tracked_state.value == States.IDLE:
 		$"AnimationPlayer".play("idle")
 
-	if _tracked_state.value == State.JUMP:
+	if _tracked_state.value == States.JUMP:
 		$"AnimationPlayer".play("jump")
 
-	if _tracked_state.value == State.HURT:
+	if _tracked_state.value == States.HURT:
 		$"AnimationPlayer".play("hurt")
 
 
@@ -71,7 +71,7 @@ func _on_updated(input: TrackedValue):
 	_landed()
 	_hurt()
 
-	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value != State.LANDED
+	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value != States.LANDED
 
 	move_and_slide()
 
@@ -87,12 +87,12 @@ func _on_applied_state(input: TrackedValue):
 
 	_resume_state()
 
-	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value != State.LANDED
+	$"Damage Area/CollisionShape2D".disabled = _tracked_state.value != States.LANDED
 
 	sync_to_physics_engine()
 
 func _idle():
-	if _tracked_state.value != State.IDLE:
+	if _tracked_state.value != States.IDLE:
 		return
 
 	velocity = SGFixedVector2.new()
@@ -100,11 +100,11 @@ func _idle():
 	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_jump_timer.value <= 0:
-		_go_to_state(State.JUMP)
+		_go_to_state(States.JUMP)
 
 
 func _jump():
-	if _tracked_state.value != State.JUMP:
+	if _tracked_state.value != States.JUMP:
 		return
 		
 	var closestPlayer: SGCharacterBody2D = null
@@ -125,11 +125,11 @@ func _jump():
 	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_jump_timer.value <= 0:
-		_go_to_state(State.LANDED)
+		_go_to_state(States.LANDED)
 	
 
 func _landed():
-	if _tracked_state.value != State.LANDED:
+	if _tracked_state.value != States.LANDED:
 		return
 
 	velocity = SGFixedVector2.new()
@@ -137,11 +137,11 @@ func _landed():
 	_tracked_jump_timer.value -= SGFixed.to_float(NetworkManager.delta())
 
 	if _tracked_jump_timer.value <= 0:
-		_go_to_state(State.IDLE)
+		_go_to_state(States.IDLE)
 
 
 func _hurt():
-	if _tracked_state.value != State.HURT:
+	if _tracked_state.value != States.HURT:
 		return
 	
 	velocity = _tracked_knockback.value.mul(NetworkManager.delta())
@@ -153,11 +153,11 @@ func _hurt():
 		$Sprite.scale.x = 1
 
 	if _tracked_knockback.value.length() < KNOCKBACK_MINIMUM:
-		_go_to_state(State.IDLE)
+		_go_to_state(States.IDLE)
 
 
 func hurt(damage, source_position):	
-	if _tracked_state.value != State.IDLE and _tracked_state.value != State.LANDED:
+	if _tracked_state.value != States.IDLE and _tracked_state.value != States.LANDED:
 		return
 
 	_tracked_health.value -= damage
@@ -167,4 +167,4 @@ func hurt(damage, source_position):
 	if _tracked_health.value <= 0:
 		$NetworkNode.despawn()
 
-	_go_to_state(State.HURT)
+	_go_to_state(States.HURT)

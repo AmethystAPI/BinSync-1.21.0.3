@@ -2,7 +2,7 @@ extends SGCharacterBody2D
 class_name Player
 
 
-enum State { DEFAULT, HURT, DASH }
+enum States { DEFAULT, HURT, DASH }
 
 
 @export var EnemyScene: PackedScene
@@ -31,7 +31,7 @@ var _health = 6
 
 func _ready():
 	_tracked_position = $NetworkNode.tracked_state(get_global_fixed_position(), _interpolate_position)
-	_tracked_state = $NetworkNode.tracked_state(State.DEFAULT)
+	_tracked_state = $NetworkNode.tracked_state(States.DEFAULT)
 	_tracked_dash_timer = $NetworkNode.tracked_state(0.0)
 	_tracked_knockback = $NetworkNode.tracked_state(SGFixedVector2.new())
 
@@ -49,18 +49,18 @@ func _process(delta):
 	# $ClientPlayer.global_position = _tracked_position.interpolated_value.to_float()
 	# $ClientPlayer.global_position
 
-func _go_to_state(state: State):
-	if state == State.HURT:
+func _go_to_state(state: States):
+	if state == States.HURT:
 		$ClientPlayer/AnimatedSprite.play("hurt")
 
-	if state == State.DASH:
+	if state == States.DASH:
 		_tracked_dash_timer.value = SGFixed.from_float(0.05)
 
 	_tracked_state.value = state
 
 
 func _resume_state():
-	if _tracked_state.value == State.HURT:
+	if _tracked_state.value == States.HURT:
 		$ClientPlayer/AnimatedSprite.play("hurt")
 
 
@@ -99,7 +99,7 @@ func _on_applied_state(input: TrackedValue):
 
 
 func _default(input: TrackedValue):
-	if _tracked_state.value != State.DEFAULT:
+	if _tracked_state.value != States.DEFAULT:
 		return
 		
 	velocity = SGFixed.from_float_vector2(input.value.movement).mul(SPEED).mul(NetworkManager.delta())
@@ -115,11 +115,11 @@ func _default(input: TrackedValue):
 		$ClientPlayer/AnimatedSprite.play("idle")
 
 	if input.value.dash and input.old_value != null and not input.old_value.dash:
-		_go_to_state(State.DASH)
+		_go_to_state(States.DASH)
 
 
 func _hurt(delta):
-	if _tracked_state.value != State.HURT:
+	if _tracked_state.value != States.HURT:
 		return
 	
 	velocity = _tracked_knockback.value.mul(NetworkManager.delta())
@@ -131,11 +131,11 @@ func _hurt(delta):
 		$ClientPlayer/AnimatedSprite.scale.x = 1
 
 	if _tracked_knockback.value.length() < KNOCKBACK_MINIMUM:
-		_go_to_state(State.DEFAULT)
+		_go_to_state(States.DEFAULT)
 
 
 func _dash(input: TrackedValue):
-	if _tracked_state.value != State.DASH:
+	if _tracked_state.value != States.DASH:
 		return
 
 	velocity = SGFixed.from_float_vector2(input.value.point_direction).mul(DASH_SPEED).mul(NetworkManager.delta())
@@ -145,17 +145,17 @@ func _dash(input: TrackedValue):
 	_tracked_dash_timer.value -= NetworkManager.delta()
 
 	if _tracked_dash_timer.value <= 0:
-		_go_to_state(State.DEFAULT)
+		_go_to_state(States.DEFAULT)
 
 
 func hurt(damage, source_position):
-	if _tracked_state.value != State.DEFAULT:
+	if _tracked_state.value != States.DEFAULT:
 		return
 
 	_health -= damage
 	_tracked_knockback.value = get_global_fixed_position().sub(source_position).normalized().mul(KNOCKBACK_POWER)
 
-	_go_to_state(State.HURT)
+	_go_to_state(States.HURT)
 
 
 func _interpolate_position(real_value, current_value, ticks_since_update, delta):
