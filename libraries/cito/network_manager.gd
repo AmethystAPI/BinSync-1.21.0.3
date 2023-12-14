@@ -110,17 +110,17 @@ func _process(_delta):
 					tracked_input._set_updated()
 
 					if tracked_input._should_update():
-						# _update_input.rpc(tick, local_player(), tracked_input.value)
+						_update_input.rpc(tick, local_player(), tracked_input.value)
 
-						var stored_tick = tick
-						var stored_input = tracked_input.value
+						# var stored_tick = tick
+						# var stored_input = tracked_input.value
 
-						var delay = func():
-							await get_tree().create_timer(60.0 / 1000).timeout
+						# var delay = func():
+						# 	await get_tree().create_timer(60.0 / 1000).timeout
 
-							_update_input.rpc(stored_tick, local_player(), stored_input)
+						# 	_update_input.rpc(stored_tick, local_player(), stored_input)
 
-						delay.call()
+						# delay.call()
 
 			tracked_input.value = tracked_input.old_value
 
