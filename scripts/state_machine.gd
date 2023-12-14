@@ -15,7 +15,7 @@ func _ready():
 	network_node.recorded_state.connect(_on_recorded_state)
 	network_node.applied_state.connect(_on_applied_state)
 
-	_tracked_current_state = network_node.tracked_state("none")
+	_tracked_current_state = network_node.tracked_state(default_state)
 	
 	go_to_state(default_state)
 

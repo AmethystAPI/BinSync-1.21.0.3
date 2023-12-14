@@ -37,6 +37,8 @@ func _on_started():
 
 	var enemy: SGCharacterBody2D = NetworkManager.spawn(EnemyScene, multiplayer.get_unique_id())
 
+	enemy.fixed_position = SGFixed.from_float_vector2(Vector2(50, -10))
+
 	add_child(enemy)
 
 

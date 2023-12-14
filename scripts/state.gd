@@ -25,9 +25,9 @@ func _on_recorded_state():
 	pass
 
 
-func _on_reverted_state(_input: TrackedValue):
+func _on_resumed_state(_input: TrackedValue):
 	pass
 
 
-func _on_resumed_state(_input: TrackedValue):
+func _on_reverted_state(_input: TrackedValue):
 	pass

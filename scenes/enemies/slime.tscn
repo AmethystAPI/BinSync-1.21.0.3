@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://yqqwdjapmgrh"]
+[gd_scene load_steps=11 format=3 uid="uid://yqqwdjapmgrh"]
 
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_eg4l4"]
 [ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="3_ksiq1"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_wxog7"]
 [ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="4_ybkj3"]
@@ -17,6 +18,7 @@ extents_y = 304940
 [node name="slime" type="SGCharacterBody2D" groups=["Enemies", "Entities"]]
 collision_mask = 0
 y_sort_enabled = true
+script = ExtResource("1_eg4l4")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -2
@@ -58,6 +60,7 @@ script = ExtResource("5_cu5xc")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("network_node")]
 script = ExtResource("4_wxog7")
 network_node = NodePath("../NetworkNode")
+default_state = "Jump"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_2wlji")

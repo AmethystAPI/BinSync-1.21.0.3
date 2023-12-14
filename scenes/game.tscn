@@ -21,7 +21,6 @@ zoom = Vector2(3, 3)
 script = ExtResource("4_8a6qq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("5_6j1ed")]
 metadata/_edit_use_anchors_ = true
