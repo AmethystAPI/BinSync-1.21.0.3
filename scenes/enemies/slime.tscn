@@ -60,10 +60,10 @@ script = ExtResource("5_cu5xc")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("network_node")]
 script = ExtResource("4_wxog7")
 network_node = NodePath("../NetworkNode")
-default_state = "Jump"
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("network_node")]
 script = ExtResource("5_2wlji")
+network_node = NodePath("../../NetworkNode")
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("network_node")]
 script = ExtResource("6_1m51y")

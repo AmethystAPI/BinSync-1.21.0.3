@@ -43,6 +43,8 @@ func go_to_state(state: String):
 func _on_handled_early_state():
 	_tracked_current_state.value = _tracked_current_state.old_value
 
+	_current_state._on_handled_early_state()
+
 
 func _on_updated(input: TrackedValue):
 	_current_state._on_updated(input)

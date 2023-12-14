@@ -17,6 +17,10 @@ func _exit():
 	pass
 
 
+func _on_handled_early_state():
+	pass
+
+
 func _on_updated(_input: TrackedValue):
 	pass
 
