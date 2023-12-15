@@ -2,6 +2,7 @@ extends State
 
 
 @export var network_node: NetworkNode
+@export var damage_area: PackedScene
 
 
 var SPEED: int = SGFixed.from_int(40)
@@ -50,6 +51,12 @@ func _on_updated(_input: TrackedValue):
 	var jump_timer_over = _tracked_jump_timer.value >= SGFixed.from_float(JUMP_TIME)
 
 	if jump_timer_over:
+		var damage_area_instance: SGArea2D = NetworkManager.spawn(damage_area)
+
+		damage_area_instance.set_global_fixed_position(_slime.get_global_fixed_position())
+
+		_slime.get_parent().add_child(damage_area_instance)
+
 		go_to_state("Idle")
 	else:
 		var direction: SGFixedVector2 = target.get_global_fixed_position().sub(_slime.get_global_fixed_position()).normalized()
