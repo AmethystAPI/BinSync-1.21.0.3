@@ -78,8 +78,8 @@ func _on_updated(input: TrackedValue):
 	_hurt(NetworkManager.delta())
 	_dash(input)
 
-	# if input.value.shoot and not input.old_value.shoot:
-	# 	$Sword.shoot()
+	if input.value.shoot and not input.old_value.shoot:
+		$Sword.shoot()
 
 	move_and_slide()
 
@@ -149,6 +149,8 @@ func _dash(input: TrackedValue):
 
 
 func hurt(damage, source_position):
+	print("Hurt", damage, source_position)
+
 	if _tracked_state.value != States.DEFAULT:
 		return
 

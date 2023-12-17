@@ -9,8 +9,8 @@ func _ready():
 	NetworkManager.started.connect(_on_started)
 	NetworkManager.recorded_input.connect(_on_recorded_input)
 
-	# NetworkManager.host()
-	# NetworkManager.start()
+	NetworkManager.host()
+	NetworkManager.start()
 
 	# NetworkManager.join("104.33.194.150")
 

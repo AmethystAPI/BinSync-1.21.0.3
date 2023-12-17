@@ -13,10 +13,11 @@
 extents_x = 410079
 extents_y = 304940
 
-[node name="slime" type="SGCharacterBody2D" groups=["Enemies", "Entities"]]
+[node name="slime" type="SGCharacterBody2D" node_paths=PackedStringArray("stateMachine") groups=["Enemies", "Entities"]]
 collision_mask = 0
 y_sort_enabled = true
 script = ExtResource("1_eg4l4")
+stateMachine = NodePath("StateMachine")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -2

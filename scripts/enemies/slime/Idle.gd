@@ -36,10 +36,9 @@ func _on_updated(_input: TrackedValue):
 		
 		target = player
 
-	var player_far_enough = _slime.fixed_position.distance_to(target.fixed_position) > SGFixed.from_int(32)
 	var idle_timer_over = _tracked_idle_timer.value >= SGFixed.from_float(1.0)
 
-	if player_far_enough and idle_timer_over:
+	if idle_timer_over:
 		go_to_state("Jump")
 
 	if idle_timer_over:
