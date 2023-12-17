@@ -25,8 +25,6 @@ func _on_updated(input: TrackedValue):
 	sync_to_physics_engine()
 	
 	for body in get_overlapping_bodies():
-		print(body)
-
 		if body is Player:
 			body.hurt(1, get_global_fixed_position())
 
