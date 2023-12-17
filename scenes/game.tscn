@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://kqiq8vox1dc0"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_e5ylb"]
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_cl65p"]
 [ext_resource type="PackedScene" uid="uid://cvyqq7wvquwo0" path="res://scenes/player.tscn" id="2_nhcrr"]
 [ext_resource type="PackedScene" uid="uid://i05r642ejnia" path="res://scenes/rooms/testing.tscn" id="3_3ipuc"]
 [ext_resource type="PackedScene" uid="uid://yqqwdjapmgrh" path="res://scenes/enemies/slime.tscn" id="3_xye87"]
@@ -9,9 +9,9 @@
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_e5ylb")
-PlayerScene = ExtResource("2_nhcrr")
-EnemyScene = ExtResource("3_xye87")
+script = ExtResource("1_cl65p")
+_playerScene = ExtResource("2_nhcrr")
+_slimeScene = ExtResource("3_xye87")
 
 [node name="Testing" parent="." instance=ExtResource("3_3ipuc")]
 
