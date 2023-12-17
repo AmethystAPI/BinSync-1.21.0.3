@@ -149,8 +149,6 @@ func _dash(input: TrackedValue):
 
 
 func hurt(damage, source_position):
-	print("Hurt", damage, source_position)
-
 	if _tracked_state.value != States.DEFAULT:
 		return
 

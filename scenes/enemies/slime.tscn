@@ -56,5 +56,6 @@ script = ExtResource("6_1m51y")
 network_node = NodePath("../../NetworkNode")
 damage_area = ExtResource("7_4prnn")
 
-[node name="Hurt" type="Node" parent="StateMachine"]
+[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("network_node")]
 script = ExtResource("7_wnpfh")
+network_node = NodePath("../../NetworkNode")
