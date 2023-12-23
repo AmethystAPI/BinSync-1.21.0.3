@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Generate Rooms
 - [ ] Spawn Enemies in Rooms
 - [ ] Sword Weapon
 - [ ] Slime Enemy
@@ -19,6 +18,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Generate Rooms
 - [x] Player Character and Movement
 - [x] Setup Simple Multiplayer
 

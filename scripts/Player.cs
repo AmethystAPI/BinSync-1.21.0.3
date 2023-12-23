@@ -14,5 +14,7 @@ public partial class Player : CharacterBody2D
 		Velocity = movement * 100f;
 
 		MoveAndSlide();
+
+		GetParent().GetNode<Camera2D>("Camera").Position = Position;
 	}
 }
