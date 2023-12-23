@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh3awkciiraoa"]
+[gd_scene load_steps=10 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
 [ext_resource type="Script" path="res://scripts/Room.cs" id="1_pherh"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/slime.tscn" id="2_ab8p0"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/sword.tscn" id="3_6spq0"]
+[ext_resource type="PackedScene" uid="uid://om3pvxcs88bm" path="res://scenes/big_slime.tscn" id="3_gb1e2"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/bow.tscn" id="5_f7wxi"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/hammer.tscn" id="5_jgg8f"]
 [ext_resource type="PackedScene" uid="uid://du8fxaf28vqmm" path="res://scenes/item_pickup.tscn" id="6_splcx"]
@@ -14,7 +15,7 @@ size = Vector2(128, 128)
 [node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints")]
 y_sort_enabled = true
 script = ExtResource("1_pherh")
-EnemyScenes = Array[PackedScene]([ExtResource("2_ab8p0")])
+EnemyScenes = Array[PackedScene]([ExtResource("2_ab8p0"), ExtResource("3_gb1e2")])
 LootScenes = Array[PackedScene]([ExtResource("3_6spq0"), ExtResource("5_f7wxi"), ExtResource("5_jgg8f")])
 ItemPickupScene = ExtResource("6_splcx")
 SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4")]

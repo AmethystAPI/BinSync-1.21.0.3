@@ -115,7 +115,7 @@ public partial class Room : Node2D
 
 		foreach (Node2D spawnPoint in SpawnPoints)
 		{
-			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition);
+			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition, new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
 		}
 	}
 
@@ -126,9 +126,9 @@ public partial class Room : Node2D
 	}
 
 	[Rpc(CallLocal = true)]
-	private void SpawnEnemyRpc(Vector2 position)
+	private void SpawnEnemyRpc(Vector2 position, int enemySceneIndex)
 	{
-		Node2D enemy = EnemyScenes[0].Instantiate<Node2D>();
+		Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
 
 		enemy.SetMultiplayerAuthority(1);
 

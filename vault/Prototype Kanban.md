@@ -6,8 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Big Slime
-- [ ] Fast Slime
 - [ ] speed trinket
 - [ ] heal trinket
 - [ ] damage trinket
@@ -16,11 +14,13 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Fast Slime
 
 
 ## Done
 
 **Complete**
+- [x] Big Slime
 - [x] Loot Spawning
 - [x] Hammer Weapon
 - [x] Projectiles inherit velocity

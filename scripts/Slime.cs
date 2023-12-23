@@ -4,8 +4,8 @@ using System;
 public partial class Slime : CharacterBody2D, Damageable
 {
 	[Export] public PackedScene ProjectileScene;
+	[Export] public int Health = 3;
 
-	private int _health = 3;
 	private float _attackTimer = 2f;
 	private Vector2 _knockback;
 
@@ -62,17 +62,24 @@ public partial class Slime : CharacterBody2D, Damageable
 		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority(), projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback);
 	}
 
+	public bool CanDamage(Projectile projectile)
+	{
+		return projectile.Source is Player;
+	}
+
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void DamageRpc(int newAuthority, Vector2 knockback)
+	private void DamageRpc(int newAuthority, Vector2 knockback)
 	{
 		SetMultiplayerAuthority(newAuthority);
 
-		_health--;
+		Health--;
 
 		_knockback = knockback;
 
-		if (_health <= 0)
+		if (Health <= 0)
 		{
+			GetParent().RemoveChild(this);
+
 			GetParent<Room>().RemoveEnemy();
 
 			QueueFree();
@@ -80,7 +87,7 @@ public partial class Slime : CharacterBody2D, Damageable
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void AttackRpc()
+	private void AttackRpc()
 	{
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
@@ -90,10 +97,4 @@ public partial class Slime : CharacterBody2D, Damageable
 
 		projectile.GlobalPosition = GlobalPosition;
 	}
-
-	public bool CanDamage(Projectile projectile)
-	{
-		return projectile.Source is Player;
-	}
-
 }
