@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Player Death
 - [ ] Player Dash
 - [ ] Enemy Knockback
 - [ ] Closing Room Edges
@@ -25,12 +24,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Wall Collision
 
 
 ## Done
 
 **Complete**
+- [x] Player Death
+- [x] Wall Collision
 - [x] Slime Enemy
 - [x] Sword Weapon
 - [x] Spawn Enemies in Rooms

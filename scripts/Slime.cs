@@ -42,6 +42,8 @@ public partial class Slime : CharacterBody2D, Damageable
 
 	public void Damage(Projectile projectile)
 	{
+		if (projectile.GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+
 		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority());
 	}
 

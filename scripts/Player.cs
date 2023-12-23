@@ -8,6 +8,8 @@ public partial class Player : CharacterBody2D, Damageable
 
 	[Export] public Weapon EquippedWeapon;
 
+	private int _health = 3;
+
 	public override void _Ready()
 	{
 		Players.Add(this);
@@ -28,7 +30,15 @@ public partial class Player : CharacterBody2D, Damageable
 
 	public void Damage(Projectile projectile)
 	{
-		GD.Print("Hit!");
+		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+
+		_health--;
+
+		if (_health > 0) return;
+
+		_health = 3;
+
+		GlobalPosition = Vector2.Zero;
 	}
 
 	public bool CanDamage(Projectile projectile)

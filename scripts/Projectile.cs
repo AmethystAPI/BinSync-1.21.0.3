@@ -42,12 +42,11 @@ public partial class Projectile : Node2D
 
 			if (!(body is Damageable)) continue;
 
-			if (!(body as Damageable).CanDamage(this)) continue;
+			Damageable damageable = body as Damageable;
 
-			if (GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
-			{
-				(body as Damageable).Damage(this);
-			}
+			if (!damageable.CanDamage(this)) continue;
+
+			damageable.Damage(this);
 
 			QueueFree();
 
