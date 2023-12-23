@@ -42,6 +42,7 @@ public partial class Room : Node2D
 		Node2D enemy = EnemyScenes[0].Instantiate<Node2D>();
 
 		enemy.Position = position;
+		enemy.SetMultiplayerAuthority(1);
 
 		AddChild(enemy);
 	}

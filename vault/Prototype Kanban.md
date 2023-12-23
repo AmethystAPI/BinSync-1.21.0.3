@@ -10,12 +10,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Slime Enemy
 
 
 ## Done
 
 **Complete**
+- [x] Slime Enemy
 - [x] Sword Weapon
 - [x] Spawn Enemies in Rooms
 - [x] Generate Rooms
