@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=8 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_xr8oe"]
+[ext_resource type="Script" path="res://scripts/Weapon.cs" id="3_3x5ad"]
+[ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_wty7w"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_73pk1"]
 properties/0/path = NodePath(".:position")
@@ -10,6 +12,11 @@ properties/0/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypp2t"]
 size = Vector2(7, 4)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vhxq4"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 0
@@ -28,3 +35,13 @@ vframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 6)
 shape = SubResource("RectangleShape2D_ypp2t")
+
+[node name="Sword" type="Node2D" parent="."]
+script = ExtResource("3_3x5ad")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword"]
+position = Vector2(8, -4)
+texture = ExtResource("3_wty7w")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Sword"]
+replication_config = SubResource("SceneReplicationConfig_vhxq4")

@@ -99,7 +99,7 @@ public partial class Game : Node2D
 
 			AddChild(player);
 
-			player.GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(peerId);
+			player.SetMultiplayerAuthority(peerId, true);
 		}
 	}
 }
