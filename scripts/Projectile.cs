@@ -3,10 +3,11 @@ using System;
 
 public partial class Projectile : Node2D
 {
-	[Export] public float Speed = 100f;
+	[Export] public float Speed = 200f;
 	[Export] public float Lifetime = 5f;
 
 	public Node2D Source;
+	public Vector2 InheritedVelocity;
 
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
@@ -29,7 +30,7 @@ public partial class Projectile : Node2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta;
+		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta;
 
 		foreach (Node2D body in _damageArea.GetOverlappingBodies())
 		{

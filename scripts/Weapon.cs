@@ -28,9 +28,12 @@ public partial class Weapon : Node2D
     projectile.GlobalPosition = GlobalPosition;
     projectile.Rotation = Rotation;
 
-    projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
-    projectile.Source = GetParent().GetParent<Node2D>();
+    Player player = GetParent().GetParent<Player>();
 
-    GetParent().GetParent().GetParent().AddChild(projectile);
+    projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
+    projectile.Source = player;
+    projectile.InheritedVelocity = player.Velocity;
+
+    player.GetParent().AddChild(projectile);
   }
 }

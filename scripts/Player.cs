@@ -42,6 +42,8 @@ public partial class Player : CharacterBody2D, Damageable
 			if (_dashTimer <= 0) _dashing = false;
 		}
 
+		Rpc(nameof(SetVelocityRpc), Velocity);
+
 		MoveAndSlide();
 
 		GetParent().GetNode<Camera2D>("Camera").Position = Position;
@@ -93,5 +95,11 @@ public partial class Player : CharacterBody2D, Damageable
 		weapon.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
 		_equippedWeapon = weapon;
+	}
+
+	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
+	private void SetVelocityRpc(Vector2 velocity)
+	{
+		Velocity = velocity;
 	}
 }

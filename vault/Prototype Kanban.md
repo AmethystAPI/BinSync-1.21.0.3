@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Projectiles inherit velocity
 - [ ] Hammer Weapon
 - [ ] Loot Spawning
 - [ ] Big Slime
@@ -19,12 +18,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Weapon Pickups
 
 
 ## Done
 
 **Complete**
+- [x] Projectiles inherit velocity
+- [x] Weapon Pickups
 - [x] Bow Weapon
 - [x] Close Room Until Enemies Defeated
 - [x] Closing Room Edges
