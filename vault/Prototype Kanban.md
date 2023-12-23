@@ -6,8 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Hammer Weapon
-- [ ] Loot Spawning
 - [ ] Big Slime
 - [ ] Fast Slime
 - [ ] speed trinket
@@ -23,6 +21,8 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Loot Spawning
+- [x] Hammer Weapon
 - [x] Projectiles inherit velocity
 - [x] Weapon Pickups
 - [x] Bow Weapon

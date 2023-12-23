@@ -1,9 +1,12 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class Room : Node2D
 {
 	[Export] public PackedScene[] EnemyScenes;
+	[Export] public PackedScene[] LootScenes;
+	[Export] public PackedScene ItemPickupScene;
 	[Export] public Node2D[] SpawnPoints;
 
 	private bool _spawned = false;
@@ -46,6 +49,24 @@ public partial class Room : Node2D
 		if (_aliveEnemies != 0) return;
 
 		UpdateTileMaps(!_connectedLeft, !_connectedRight, !_connectedTop, !_connectedBottom);
+
+		if (!Game.Me.IsHost) return;
+
+		Rpc(nameof(SpawnLootRpc), LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
+	}
+
+	[Rpc(CallLocal = true)]
+	private void SpawnLootRpc(string lootScenePath)
+	{
+		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
+
+		ItemPickup itemPickup = ItemPickupScene.Instantiate<ItemPickup>();
+
+		AddChild(itemPickup);
+
+		itemPickup.Position = Vector2.Zero;
+
+		itemPickup.Item = lootScene;
 	}
 
 	private void UpdateTileMaps(bool left, bool right, bool top, bool bottom)
