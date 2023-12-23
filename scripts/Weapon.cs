@@ -29,8 +29,8 @@ public partial class Weapon : Node2D
     projectile.Rotation = Rotation;
 
     projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
-    projectile.Source = GetParent<Node2D>();
+    projectile.Source = GetParent().GetParent<Node2D>();
 
-    GetParent().GetParent().AddChild(projectile);
+    GetParent().GetParent().GetParent().AddChild(projectile);
   }
 }

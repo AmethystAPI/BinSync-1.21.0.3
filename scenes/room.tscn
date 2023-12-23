@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh3awkciiraoa"]
+[gd_scene load_steps=9 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
 [ext_resource type="Script" path="res://scripts/Room.cs" id="1_pherh"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/slime.tscn" id="2_ab8p0"]
+[ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="4_4y7bq"]
+[ext_resource type="Script" path="res://scripts/ItemPickup.cs" id="4_pbix2"]
+[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/bow.tscn" id="5_f7wxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
 size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vy0md"]
 
 [node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints")]
 y_sort_enabled = true
@@ -86,3 +91,15 @@ position = Vector2(56, -47)
 
 [node name="Point4" type="Node2D" parent="SpawnPoints"]
 position = Vector2(-55, -47)
+
+[node name="ItemPickup" type="Area2D" parent="."]
+script = ExtResource("4_pbix2")
+Item = ExtResource("5_f7wxi")
+
+[node name="Sprite2D" type="Sprite2D" parent="ItemPickup"]
+texture = ExtResource("4_4y7bq")
+hframes = 5
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickup"]
+shape = SubResource("RectangleShape2D_vy0md")

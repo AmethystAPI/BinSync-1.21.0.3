@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_xr8oe"]
-[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/bow.tscn" id="3_nylmk"]
+[ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/sword.tscn" id="3_aen5w"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_73pk1"]
 properties/0/path = NodePath(".:position")
@@ -18,6 +18,7 @@ collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xr8oe")
+DefaultWeaponScene = ExtResource("3_aen5w")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_73pk1")
@@ -32,5 +33,5 @@ vframes = 4
 position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_ypp2t")
 
-[node name="Bow" parent="." instance=ExtResource("3_nylmk")]
+[node name="WeaponHolder" type="Node2D" parent="."]
 position = Vector2(0, -7)

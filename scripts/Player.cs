@@ -6,16 +6,21 @@ public partial class Player : CharacterBody2D, Damageable
 {
 	public static List<Player> Players = new List<Player>();
 
-	[Export] public Weapon EquippedWeapon;
+	[Export] public PackedScene DefaultWeaponScene;
 
 	private int _health = 3;
 	private bool _dashing = false;
 	private Vector2 _dashDirection = Vector2.Right;
 	private float _dashTimer;
+	private Weapon _equippedWeapon;
 
 	public override void _Ready()
 	{
 		Players.Add(this);
+
+		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+
+		EquipWeapon(DefaultWeaponScene);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -71,4 +76,22 @@ public partial class Player : CharacterBody2D, Damageable
 		return !(projectile.Source is Player);
 	}
 
+	public void EquipWeapon(PackedScene weaponScene)
+	{
+		Rpc(nameof(EquipWeaponRpc), weaponScene.ResourcePath);
+	}
+
+	[Rpc(CallLocal = true)]
+	private void EquipWeaponRpc(string weaponScenePath)
+	{
+		PackedScene weaponScene = ResourceLoader.Load<PackedScene>(weaponScenePath);
+
+		if (_equippedWeapon != null) _equippedWeapon.QueueFree();
+
+		Weapon weapon = weaponScene.Instantiate<Weapon>();
+		GetNode("WeaponHolder").AddChild(weapon);
+		weapon.SetMultiplayerAuthority(GetMultiplayerAuthority());
+
+		_equippedWeapon = weapon;
+	}
 }
