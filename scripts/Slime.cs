@@ -7,6 +7,7 @@ public partial class Slime : CharacterBody2D, Damageable
 
 	private int _health = 3;
 	private float _attackTimer = 2f;
+	private Vector2 _knockback;
 
 	public override void _Process(double delta)
 	{
@@ -24,18 +25,27 @@ public partial class Slime : CharacterBody2D, Damageable
 
 	public override void _PhysicsProcess(double delta)
 	{
+		_knockback = _knockback.Lerp(Vector2.Zero, (float)delta * 12f);
+
 		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
 
-		Vector2 target = Player.Players[0].GlobalPosition;
-
-		foreach (Player player in Player.Players)
+		if (_knockback.LengthSquared() < 0.1f)
 		{
-			if (GlobalPosition.DistanceTo(player.GlobalPosition) >= GlobalPosition.DistanceTo(target)) continue;
+			Vector2 target = Player.Players[0].GlobalPosition;
 
-			target = player.GlobalPosition;
+			foreach (Player player in Player.Players)
+			{
+				if (GlobalPosition.DistanceTo(player.GlobalPosition) >= GlobalPosition.DistanceTo(target)) continue;
+
+				target = player.GlobalPosition;
+			}
+
+			Velocity = (target - GlobalPosition).Normalized() * 10f;
 		}
-
-		Velocity = (target - GlobalPosition).Normalized() * 10f;
+		else
+		{
+			Velocity = _knockback;
+		}
 
 		MoveAndSlide();
 	}
@@ -44,20 +54,22 @@ public partial class Slime : CharacterBody2D, Damageable
 	{
 		if (projectile.GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
 
-		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority());
+		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority(), projectile.GlobalTransform.BasisXform(Vector2.Right) * 400f);
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void DamageRpc(int newAuthority)
+	public void DamageRpc(int newAuthority, Vector2 knockback)
 	{
 		SetMultiplayerAuthority(newAuthority);
 
 		_health--;
 
+		_knockback = knockback;
+
 		if (_health <= 0) QueueFree();
 	}
 
-	[Rpc(CallLocal = true)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	public void AttackRpc()
 	{
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
