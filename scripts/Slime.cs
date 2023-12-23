@@ -59,7 +59,7 @@ public partial class Slime : CharacterBody2D, Damageable
 	{
 		if (projectile.GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
 
-		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority(), projectile.GlobalTransform.BasisXform(Vector2.Right) * 400f);
+		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority(), projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback);
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
