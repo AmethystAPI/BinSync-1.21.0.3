@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Player Character and Movement
 - [ ] Generate Rooms
 - [ ] Spawn Enemies in Rooms
 - [ ] Sword Weapon
@@ -20,6 +19,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Player Character and Movement
 - [x] Setup Simple Multiplayer
 
 

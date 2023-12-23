@@ -6,3 +6,6 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_sq6vk")
 PlayerScene = ExtResource("2_nxqs3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
