@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Player Dash
 - [ ] Enemy Knockback
 - [ ] Closing Room Edges
 - [ ] Close Room Until Enemies Defeated
@@ -24,6 +23,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Player Dash
 
 
 ## Done
