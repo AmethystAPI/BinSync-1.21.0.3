@@ -21,12 +21,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Closing Room Edges
 
 
 ## Done
 
 **Complete**
+- [x] Closing Room Edges
 - [x] Enemy Knockback
 - [x] Player Dash
 - [x] Player Death

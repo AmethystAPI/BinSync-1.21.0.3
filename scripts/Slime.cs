@@ -9,6 +9,11 @@ public partial class Slime : CharacterBody2D, Damageable
 	private float _attackTimer = 2f;
 	private Vector2 _knockback;
 
+	public override void _Ready()
+	{
+		GetParent<Room>().AddEnemy();
+	}
+
 	public override void _Process(double delta)
 	{
 		if (!Game.Me.IsHost) return;
@@ -66,7 +71,12 @@ public partial class Slime : CharacterBody2D, Damageable
 
 		_knockback = knockback;
 
-		if (_health <= 0) QueueFree();
+		if (_health <= 0)
+		{
+			GetParent<Room>().RemoveEnemy();
+
+			QueueFree();
+		}
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

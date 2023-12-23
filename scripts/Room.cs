@@ -7,6 +7,12 @@ public partial class Room : Node2D
 	[Export] public Node2D[] SpawnPoints;
 
 	private bool _spawned = false;
+	private bool _connectedLeft = false;
+	private bool _connectedRight = false;
+	private bool _connectedTop = false;
+	private bool _connectedBottom = false;
+	private int _aliveEnemies = 0;
+	private int _playersEntered = 0;
 
 	public override void _Ready()
 	{
@@ -15,23 +21,48 @@ public partial class Room : Node2D
 		Area2D spawnTriggerArea = GetNode<Area2D>("SpawnTriggerArea");
 
 		spawnTriggerArea.BodyEntered += OnBodyEntered;
+		spawnTriggerArea.BodyExited += OnBodyExited;
 	}
 
 	public void ConnectRooms(bool connectedLeft, bool connectedRight, bool connectedTop, bool connectedBottom)
 	{
-		if (!connectedLeft) EnableTileMap("TileMapLeft");
-		if (!connectedRight) EnableTileMap("TileMapRight");
-		if (!connectedTop) EnableTileMap("TileMapTop");
-		if (!connectedBottom) EnableTileMap("TileMapBottom");
+		_connectedLeft = connectedLeft;
+		_connectedRight = connectedRight;
+		_connectedTop = connectedTop;
+		_connectedBottom = connectedBottom;
+
+		UpdateTileMaps(!_connectedLeft, !_connectedRight, !_connectedTop, !_connectedBottom);
 	}
 
-	private void EnableTileMap(string name)
+	public void AddEnemy()
+	{
+		_aliveEnemies++;
+	}
+
+	public void RemoveEnemy()
+	{
+		_aliveEnemies--;
+
+		if (_aliveEnemies != 0) return;
+
+		UpdateTileMaps(!_connectedLeft, !_connectedRight, !_connectedTop, !_connectedBottom);
+	}
+
+	private void UpdateTileMaps(bool left, bool right, bool top, bool bottom)
+	{
+		SetEnabledTileMap("TileMapLeft", left);
+		SetEnabledTileMap("TileMapRight", right);
+		SetEnabledTileMap("TileMapTop", top);
+		SetEnabledTileMap("TileMapBottom", bottom);
+	}
+
+	private void SetEnabledTileMap(string name, bool enabled)
 	{
 		TileMap tileMap = GetNode<TileMap>(name);
 
 		for (int layerIndex = 0; layerIndex < tileMap.GetLayersCount(); layerIndex++)
 		{
-			tileMap.SetLayerEnabled(layerIndex, true);
+			tileMap.SetLayerEnabled(layerIndex, enabled);
 		}
 	}
 
@@ -39,7 +70,18 @@ public partial class Room : Node2D
 	{
 		if (!(body is Player)) return;
 
+		_playersEntered++;
+
+		if (_playersEntered != Player.Players.Count) return;
+
 		CallDeferred(nameof(SpawnEnemies));
+	}
+
+	private void OnBodyExited(Node2D body)
+	{
+		if (!(body is Player)) return;
+
+		_playersEntered--;
 	}
 
 	private void SpawnEnemies()
@@ -48,10 +90,18 @@ public partial class Room : Node2D
 
 		_spawned = true;
 
+		Rpc(nameof(StartRoomRpc));
+
 		foreach (Node2D spawnPoint in SpawnPoints)
 		{
 			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition);
 		}
+	}
+
+	[Rpc(CallLocal = true)]
+	private void StartRoomRpc()
+	{
+		UpdateTileMaps(true, true, true, true);
 	}
 
 	[Rpc(CallLocal = true)]
