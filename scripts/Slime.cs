@@ -5,6 +5,7 @@ public partial class Slime : CharacterBody2D, Damageable
 {
 	[Export] public PackedScene ProjectileScene;
 	[Export] public int Health = 3;
+	[Export] public float Speed = 10f;
 
 	private float _attackTimer = 2f;
 	private Vector2 _knockback;
@@ -45,7 +46,7 @@ public partial class Slime : CharacterBody2D, Damageable
 				target = player.GlobalPosition;
 			}
 
-			Velocity = (target - GlobalPosition).Normalized() * 10f;
+			Velocity = (target - GlobalPosition).Normalized() * Speed;
 		}
 		else
 		{
@@ -78,8 +79,6 @@ public partial class Slime : CharacterBody2D, Damageable
 
 		if (Health <= 0)
 		{
-			GetParent().RemoveChild(this);
-
 			GetParent<Room>().RemoveEnemy();
 
 			QueueFree();

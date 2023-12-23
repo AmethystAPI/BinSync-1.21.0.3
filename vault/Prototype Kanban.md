@@ -14,12 +14,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Fast Slime
 
 
 ## Done
 
 **Complete**
+- [x] Fast Slime
 - [x] Big Slime
 - [x] Loot Spawning
 - [x] Hammer Weapon
