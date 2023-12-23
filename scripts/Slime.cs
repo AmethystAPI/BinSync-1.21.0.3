@@ -75,9 +75,10 @@ public partial class Slime : CharacterBody2D, Damageable
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
 		projectile.Source = this;
-		projectile.GlobalPosition = GlobalPosition;
 
 		GetParent().AddChild(projectile);
+
+		projectile.GlobalPosition = GlobalPosition;
 	}
 
 	public bool CanDamage(Projectile projectile)
