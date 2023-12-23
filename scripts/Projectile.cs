@@ -33,7 +33,14 @@ public partial class Projectile : Node2D
 
 		foreach (Node2D body in _damageArea.GetOverlappingBodies())
 		{
-			if (!(body is Damageable)) return;
+			if (body is TileMap)
+			{
+				QueueFree();
+
+				return;
+			}
+
+			if (!(body is Damageable)) continue;
 
 			if (!(body as Damageable).CanDamage(this)) continue;
 

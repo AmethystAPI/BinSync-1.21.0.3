@@ -13,7 +13,7 @@ properties/0/replication_mode = 2
 size = Vector2(12, 9)
 
 [node name="Slime" type="CharacterBody2D"]
-collision_mask = 0
+collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_mu0ej")

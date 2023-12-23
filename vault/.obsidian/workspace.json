@@ -11,11 +11,9 @@
             "id": "1765d11976bb43bf",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Daily Notes/2023-12-23.md",
-                "mode": "source",
-                "source": false
+                "file": "Prototype Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/2023-12-23.md",
+                "file": "Prototype Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/2023-12-23.md",
+                "file": "Prototype Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/2023-12-23.md"
+                "file": "Prototype Kanban.md"
               }
             }
           }
@@ -148,8 +146,8 @@
   },
   "active": "1765d11976bb43bf",
   "lastOpenFiles": [
-    "Prototype Kanban.md",
     "Daily Notes/2023-12-23.md",
+    "Prototype Kanban.md",
     "Combat Networking.md",
     "Untitled.canvas",
     "Daily Notes/Untitled.md",
