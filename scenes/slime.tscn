@@ -12,6 +12,8 @@ properties/0/replication_mode = 2
 size = Vector2(12, 9)
 
 [node name="Slime" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_mu0ej")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

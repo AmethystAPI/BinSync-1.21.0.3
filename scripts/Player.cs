@@ -1,9 +1,17 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D
 {
+	public static List<Player> Players = new List<Player>();
+
 	[Export] public Weapon EquippedWeapon;
+
+	public override void _Ready()
+	{
+		Players.Add(this);
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -11,7 +19,7 @@ public partial class Player : CharacterBody2D
 
 		Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
-		Velocity = movement * 100f;
+		Velocity = movement.Normalized() * 100f;
 
 		MoveAndSlide();
 
