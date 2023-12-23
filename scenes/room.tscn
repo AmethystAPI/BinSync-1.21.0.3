@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh3awkciiraoa"]
+[gd_scene load_steps=5 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
+[ext_resource type="Script" path="res://scripts/Room.cs" id="1_pherh"]
+[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/slime.tscn" id="2_ab8p0"]
 
-[node name="Room" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
+size = Vector2(128, 128)
+
+[node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints")]
+script = ExtResource("1_pherh")
+EnemyScenes = Array[PackedScene]([ExtResource("2_ab8p0")])
+SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_cwqgr")
@@ -11,3 +19,22 @@ layer_0/name = "Walls"
 layer_0/tile_data = PackedInt32Array(393211, 589824, 4, 393212, 655360, 4, 393213, 655360, 4, 327681, 589824, 4, 327682, 655360, 4, 327683, 655360, 4, 327684, 720896, 4, 393214, 720896, 4, -5, 720896, 4, -65532, 589824, 4, -196612, 655360, 4, -196611, 655360, 4, -196610, 720896, 4, -262143, 589824, 4, -262142, 655360, 4, -262141, 655360, 4)
 layer_1/name = "Roofs"
 layer_1/tile_data = PackedInt32Array(-262149, 327680, 1, -196613, 327680, 2, -131077, 327680, 2, -65541, 327680, 2, 131067, 327680, 2, 196603, 327680, 2, 262139, 327680, 2, 327675, 327680, 3, -262148, 393216, 1, 327676, 393216, 3, -262147, 393216, 1, 327677, 393216, 3, -262146, 393216, 1, 327678, 393216, 3, -327679, 393216, 1, 262145, 393216, 3, -327678, 393216, 1, 262146, 393216, 3, -327677, 393216, 1, 262147, 393216, 3, -327676, 458752, 1, -262140, 458752, 2, -196604, 458752, 2, -131068, 458752, 2, 65540, 458752, 2, 131076, 458752, 2, 196612, 458752, 2, 262148, 458752, 3)
+
+[node name="SpawnTriggerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnTriggerArea"]
+shape = SubResource("RectangleShape2D_3y62c")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Point1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-55, 56)
+
+[node name="Point2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(56, 57)
+
+[node name="Point3" type="Node2D" parent="SpawnPoints"]
+position = Vector2(56, -47)
+
+[node name="Point4" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-55, -47)

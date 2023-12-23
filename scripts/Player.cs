@@ -9,8 +9,6 @@ public partial class Player : CharacterBody2D
 
 		Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
-		// GD.Print(movement);
-
 		Velocity = movement * 100f;
 
 		MoveAndSlide();

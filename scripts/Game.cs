@@ -4,14 +4,19 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D
 {
+	public static Game Me;
+
 	[Export] public PackedScene PlayerScene;
 	[Export] public PackedScene RoomScene;
 
+	public bool IsHost;
+
 	private ENetMultiplayerPeer _peer;
-	private bool _host;
 
 	public override void _Ready()
 	{
+		Me = this;
+
 		Multiplayer.PeerConnected += (id) => OnPeerConnected(id);
 
 		if (!Host()) Join("127.0.0.1");
@@ -31,7 +36,7 @@ public partial class Game : Node2D
 
 		Multiplayer.MultiplayerPeer = _peer;
 
-		_host = true;
+		IsHost = true;
 
 		return true;
 	}
@@ -55,7 +60,7 @@ public partial class Game : Node2D
 	{
 		GD.Print("Peer connected " + id);
 
-		if (!_host) return;
+		if (!IsHost) return;
 
 		List<int> peers = new List<int>(Multiplayer.GetPeers())
 		{
