@@ -6,9 +6,9 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Close Room Until Enemies Defeated
 - [ ] Bow Weapon
 - [ ] Weapon Pickups
+- [ ] Projectiles inherit velocity
 - [ ] Hammer Weapon
 - [ ] Loot Spawning
 - [ ] Big Slime
@@ -26,6 +26,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Close Room Until Enemies Defeated
 - [x] Closing Room Edges
 - [x] Enemy Knockback
 - [x] Player Dash

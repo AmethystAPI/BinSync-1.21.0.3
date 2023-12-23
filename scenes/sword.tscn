@@ -18,6 +18,7 @@ ProjectileScene = ExtResource("2_pw1hh")
 position = Vector2(8, 0)
 texture = ExtResource("2_7q730")
 offset = Vector2(0, -4)
+hframes = 5
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vhxq4")
