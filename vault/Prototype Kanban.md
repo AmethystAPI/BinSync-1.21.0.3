@@ -6,17 +6,17 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Slime Enemy
 
 
 ## In Progress
 
-- [ ] Sword Weapon
+- [ ] Slime Enemy
 
 
 ## Done
 
 **Complete**
+- [x] Sword Weapon
 - [x] Spawn Enemies in Rooms
 - [x] Generate Rooms
 - [x] Player Character and Movement

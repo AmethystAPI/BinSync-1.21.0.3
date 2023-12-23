@@ -7,7 +7,7 @@
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vhxq4"]
 properties/0/path = NodePath(".:rotation")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/replication_mode = 2
 
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_068pm")
