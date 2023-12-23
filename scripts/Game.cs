@@ -97,9 +97,9 @@ public partial class Game : Node2D
 		{
 			Node2D player = PlayerScene.Instantiate<Node2D>();
 
-			AddChild(player);
-
 			player.SetMultiplayerAuthority(peerId, true);
+
+			AddChild(player);
 		}
 	}
 }

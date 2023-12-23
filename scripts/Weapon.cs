@@ -23,12 +23,13 @@ public partial class Weapon : Node2D
   [Rpc(CallLocal = true)]
   private void ShootRpc()
   {
-    Node2D projectile = ProjectileScene.Instantiate<Node2D>();
+    Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;
     projectile.Rotation = Rotation;
 
     projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
+    projectile.Source = GetParent<Node2D>();
 
     GetParent().GetParent().AddChild(projectile);
   }

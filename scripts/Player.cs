@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, Damageable
 {
 	public static List<Player> Players = new List<Player>();
 
@@ -25,4 +25,15 @@ public partial class Player : CharacterBody2D
 
 		GetParent().GetNode<Camera2D>("Camera").Position = Position;
 	}
+
+	public void Damage(Projectile projectile)
+	{
+		GD.Print("Hit!");
+	}
+
+	public bool CanDamage(Projectile projectile)
+	{
+		return !(projectile.Source is Player);
+	}
+
 }

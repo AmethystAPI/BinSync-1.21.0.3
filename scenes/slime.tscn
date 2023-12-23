@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://biycaes0pxrav"]
+[gd_scene load_steps=6 format=3 uid="uid://biycaes0pxrav"]
 
 [ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="1_g107h"]
 [ext_resource type="Script" path="res://scripts/Slime.cs" id="1_mu0ej"]
+[ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/slime_projectile.tscn" id="2_4goc7"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2fdid"]
 properties/0/path = NodePath(".:position")
@@ -12,9 +13,11 @@ properties/0/replication_mode = 2
 size = Vector2(12, 9)
 
 [node name="Slime" type="CharacterBody2D"]
+collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_mu0ej")
+ProjectileScene = ExtResource("2_4goc7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_g107h")

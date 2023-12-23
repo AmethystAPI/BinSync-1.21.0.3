@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq15cgoix34cv"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_f1l4f"]
+[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_jowx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
+size = Vector2(26, 26)
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_f1l4f")
+Speed = 0.0
+Lifetime = 0.2
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_um2iy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.62603, 1.62603)
+texture = ExtResource("2_jowx5")

@@ -1,8 +1,10 @@
 using Godot;
 using System;
 
-public partial class Slime : CharacterBody2D, Entity
+public partial class Slime : CharacterBody2D, Damageable
 {
+	[Export] public PackedScene ProjectileScene;
+
 	private int _health = 3;
 	private float _attackTimer = 2f;
 
@@ -56,6 +58,17 @@ public partial class Slime : CharacterBody2D, Entity
 	[Rpc(CallLocal = true)]
 	public void AttackRpc()
 	{
+		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
+		projectile.Source = this;
+		projectile.GlobalPosition = GlobalPosition;
+
+		GetParent().AddChild(projectile);
 	}
+
+	public bool CanDamage(Projectile projectile)
+	{
+		return projectile.Source is Player;
+	}
+
 }

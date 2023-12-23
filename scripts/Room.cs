@@ -21,6 +21,11 @@ public partial class Room : Node2D
 	{
 		if (!(body is Player)) return;
 
+		CallDeferred(nameof(SpawnEnemies));
+	}
+
+	private void SpawnEnemies()
+	{
 		if (_spawned) return;
 
 		_spawned = true;
