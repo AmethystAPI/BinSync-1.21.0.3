@@ -17,6 +17,24 @@ public partial class Room : Node2D
 		spawnTriggerArea.BodyEntered += OnBodyEntered;
 	}
 
+	public void ConnectRooms(bool connectedLeft, bool connectedRight, bool connectedTop, bool connectedBottom)
+	{
+		if (!connectedLeft) EnableTileMap("TileMapLeft");
+		if (!connectedRight) EnableTileMap("TileMapRight");
+		if (!connectedTop) EnableTileMap("TileMapTop");
+		if (!connectedBottom) EnableTileMap("TileMapBottom");
+	}
+
+	private void EnableTileMap(string name)
+	{
+		TileMap tileMap = GetNode<TileMap>(name);
+
+		for (int layerIndex = 0; layerIndex < tileMap.GetLayersCount(); layerIndex++)
+		{
+			tileMap.SetLayerEnabled(layerIndex, true);
+		}
+	}
+
 	private void OnBodyEntered(Node2D body)
 	{
 		if (!(body is Player)) return;
@@ -32,7 +50,7 @@ public partial class Room : Node2D
 
 		foreach (Node2D spawnPoint in SpawnPoints)
 		{
-			Rpc(nameof(SpawnEnemyRpc), spawnPoint.Position);
+			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition);
 		}
 	}
 
@@ -41,9 +59,10 @@ public partial class Room : Node2D
 	{
 		Node2D enemy = EnemyScenes[0].Instantiate<Node2D>();
 
-		enemy.Position = position;
 		enemy.SetMultiplayerAuthority(1);
 
 		AddChild(enemy);
+
+		enemy.GlobalPosition = position;
 	}
 }

@@ -24,6 +24,58 @@ layer_1/name = "Roofs"
 layer_1/y_sort_enabled = true
 layer_1/tile_data = PackedInt32Array(-262149, 327680, 1, -196613, 327680, 2, -131077, 327680, 2, -65541, 327680, 2, 131067, 327680, 2, 196603, 327680, 2, 262139, 327680, 2, 327675, 327680, 3, -262148, 393216, 1, 327676, 393216, 3, -262147, 393216, 1, 327677, 393216, 3, -262146, 393216, 1, 327678, 393216, 3, -327679, 393216, 1, 262145, 393216, 3, -327678, 393216, 1, 262146, 393216, 3, -327677, 393216, 1, 262147, 393216, 3, -327676, 458752, 1, -262140, 458752, 2, -196604, 458752, 2, -131068, 458752, 2, 65540, 458752, 2, 131076, 458752, 2, 196612, 458752, 2, 262148, 458752, 3)
 
+[node name="TileMapLeft" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_cwqgr")
+format = 2
+layer_0/name = "Walls"
+layer_0/enabled = false
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(131067, 720896, 3, 65531, 720896, 3, -5, 720896, 3, -65541, 720896, 3)
+layer_1/name = "Roofs"
+layer_1/enabled = false
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(131067, 327680, 2, 65531, 327680, 2, -5, 327680, 2, -65541, 327680, 2)
+
+[node name="TileMapRight" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_cwqgr")
+format = 2
+layer_0/name = "Walls"
+layer_0/enabled = false
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(65540, 589824, 3, 4, 589824, 3, -65532, 589824, 3, -131068, 589824, 3)
+layer_1/name = "Roofs"
+layer_1/enabled = false
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(65540, 458752, 2, 4, 458752, 2, -65532, 458752, 2, -131068, 458752, 2)
+
+[node name="TileMapTop" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_cwqgr")
+format = 2
+layer_0/name = "Walls"
+layer_0/enabled = false
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-196609, 655360, 4, -262144, 655360, 4, -262146, 655360, 3, -262145, 655360, 3, -327680, 655360, 3, -327679, 655360, 3, -196610, 655360, 4, -262143, 655360, 4)
+layer_1/name = "Roofs"
+layer_1/enabled = false
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(-262146, 393216, 1, -262145, 393216, 1, -327680, 393216, 1, -327679, 393216, 1)
+
+[node name="TileMapBottom" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_cwqgr")
+format = 2
+layer_0/name = "Walls"
+layer_0/enabled = false
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(393214, 655360, 4, 393215, 655360, 4, 327680, 655360, 4, 327681, 655360, 4, 327678, 655360, 3, 327679, 655360, 3, 262144, 655360, 3, 262145, 655360, 3)
+layer_1/name = "Roofs"
+layer_1/enabled = false
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(327678, 393216, 3, 327679, 393216, 3, 262144, 393216, 3, 262145, 393216, 3)
+
 [node name="SpawnTriggerArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnTriggerArea"]

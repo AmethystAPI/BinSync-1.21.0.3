@@ -76,16 +76,17 @@ public partial class Game : Node2D
 	{
 		for (int i = 0; i < 5; i++)
 		{
-			Rpc(nameof(SpawnRoomRpc), Vector2.Right * 16 * 10 * i);
+			Rpc(nameof(SpawnRoomRpc), Vector2.Right * 16 * 10 * i, i != 0, i != 4, false, false);
 		}
 	}
 
 	[Rpc(CallLocal = true)]
-	private void SpawnRoomRpc(Vector2 position)
+	private void SpawnRoomRpc(Vector2 position, bool connectedLeft, bool connectedRight, bool connectedTop, bool connectedBottom)
 	{
-		Node2D room = RoomScene.Instantiate<Node2D>();
+		Room room = RoomScene.Instantiate<Room>();
 
 		room.Position = position;
+		room.ConnectRooms(connectedLeft, connectedRight, connectedTop, connectedBottom);
 
 		AddChild(room);
 	}

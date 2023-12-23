@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Closing Room Edges
 - [ ] Close Room Until Enemies Defeated
 - [ ] Bow Weapon
 - [ ] Weapon Pickups
@@ -22,6 +21,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Closing Room Edges
 
 
 ## Done
