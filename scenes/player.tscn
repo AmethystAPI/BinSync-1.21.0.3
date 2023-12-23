@@ -13,6 +13,7 @@ properties/0/replication_mode = 2
 size = Vector2(7, 4)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
@@ -23,11 +24,13 @@ replication_config = SubResource("SceneReplicationConfig_73pk1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_82yba")
+offset = Vector2(0, -8)
 hframes = 8
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 6)
+position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_ypp2t")
 
 [node name="Sword" parent="." instance=ExtResource("3_aen5w")]
+position = Vector2(0, -7)

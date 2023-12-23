@@ -13,6 +13,7 @@ properties/0/replication_mode = 2
 size = Vector2(12, 9)
 
 [node name="Slime" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
@@ -21,6 +22,7 @@ ProjectileScene = ExtResource("2_4goc7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_g107h")
+offset = Vector2(0, -5)
 hframes = 3
 vframes = 3
 
@@ -28,5 +30,5 @@ vframes = 3
 replication_config = SubResource("SceneReplicationConfig_2fdid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_75mpk")

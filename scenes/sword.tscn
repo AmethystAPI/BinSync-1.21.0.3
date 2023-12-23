@@ -10,12 +10,14 @@ properties/0/spawn = true
 properties/0/replication_mode = 2
 
 [node name="Sword" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_068pm")
 ProjectileScene = ExtResource("2_pw1hh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8, -4)
+position = Vector2(8, 0)
 texture = ExtResource("2_7q730")
+offset = Vector2(0, -4)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vhxq4")
