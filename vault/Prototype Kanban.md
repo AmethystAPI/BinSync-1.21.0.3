@@ -6,12 +6,12 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Sword Weapon
 - [ ] Slime Enemy
 
 
 ## In Progress
 
+- [ ] Sword Weapon
 
 
 ## Done
