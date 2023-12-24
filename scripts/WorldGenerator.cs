@@ -53,8 +53,7 @@ public partial class WorldGenerator : Node2D
 
 		room.PlaceEntrance(-direction);
 
-		// List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Left, Vector2.Up, Vector2.Right };
-		List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Up };
+		List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Left, Vector2.Up, Vector2.Right };
 		if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
 
 		Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];

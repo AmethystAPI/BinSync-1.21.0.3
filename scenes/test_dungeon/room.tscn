@@ -17,10 +17,10 @@
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7076x"]
-size = Vector2(32, 14)
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwd80"]
-size = Vector2(32, 14)
+size = Vector2(16, 32)
 
 [node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
 y_sort_enabled = true
@@ -31,10 +31,10 @@ ItemPickupScene = ExtResource("6_splcx")
 SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4")]
 EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)
 EdgeTileMaps = [NodePath("TileMapLeft"), NodePath("TileMapRight"), NodePath("TileMapTop"), NodePath("TileMapBottom")]
-EntranceDirections = PackedVector2Array(0, 1)
-Entrances = [NodePath("Entrances/Down")]
-ExitDirections = PackedVector2Array(0, -1)
-Exits = [NodePath("Exits/Up")]
+EntranceDirections = PackedVector2Array(0, 1, 1, 0, -1, 0)
+Entrances = [NodePath("Entrances/Down"), NodePath("Entrances/Right"), NodePath("Entrances/Left")]
+ExitDirections = PackedVector2Array(0, -1, 1, 0, -1, 0)
+Exits = [NodePath("Exits/Up"), NodePath("Exits/Right"), NodePath("Exits/Left")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -136,6 +136,54 @@ offset = Vector2(0, -12)
 region_enabled = true
 region_rect = Rect2(224, 40, 16, 24)
 
+[node name="Right" type="Node2D" parent="Entrances"]
+position = Vector2(80, 0)
+script = ExtResource("10_u7ees")
+
+[node name="Visuals" type="StaticBody2D" parent="Entrances/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Right/Visuals"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_7076x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entrances/Right/Visuals"]
+position = Vector2(-8, 8)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Right/Visuals"]
+position = Vector2(-8, 24)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Left" type="Node2D" parent="Entrances"]
+position = Vector2(-80, 0)
+script = ExtResource("10_u7ees")
+
+[node name="Visuals" type="StaticBody2D" parent="Entrances/Left"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Left/Visuals"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_7076x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entrances/Left/Visuals"]
+position = Vector2(8, 8)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Left/Visuals"]
+position = Vector2(8, 24)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="Up" type="StaticBody2D" parent="Exits"]
@@ -156,6 +204,52 @@ region_rect = Rect2(224, 40, 16, 24)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Exits/Up"]
 position = Vector2(8, 14)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Right" type="StaticBody2D" parent="Exits"]
+position = Vector2(80, 0)
+script = ExtResource("12_ud78m")
+Direction = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Right"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_gwd80")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/Right"]
+position = Vector2(-8, 8)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Exits/Right"]
+position = Vector2(-8, 24)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Left" type="StaticBody2D" parent="Exits"]
+position = Vector2(-80, 0)
+script = ExtResource("12_ud78m")
+Direction = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Left"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_gwd80")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/Left"]
+position = Vector2(8, 8)
+texture = ExtResource("10_svavk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Exits/Left"]
+position = Vector2(8, 24)
 texture = ExtResource("10_svavk")
 offset = Vector2(0, -12)
 region_enabled = true
