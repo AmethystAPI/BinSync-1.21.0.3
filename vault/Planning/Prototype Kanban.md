@@ -14,12 +14,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Prevent Players From Skipping Rooms
 
 
 ## Done
 
 **Complete**
+- [x] Prevent Players From Skipping Rooms
 - [x] Fast Slime
 - [x] Big Slime
 - [x] Loot Spawning

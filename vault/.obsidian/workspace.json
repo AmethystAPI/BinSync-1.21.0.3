@@ -4,16 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "ed4c41ab622a4c27",
+        "id": "8da34f36d8f49995",
         "type": "tabs",
         "children": [
           {
-            "id": "1765d11976bb43bf",
+            "id": "9301bb54ae5542f2",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "b3087d83277c4890",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Implementation/World Generation.md",
+                "file": "Daily Notes/Day 18-2.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +93,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Implementation/World Generation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +109,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Implementation/World Generation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +130,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Implementation/World Generation.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,18 +150,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1765d11976bb43bf",
+  "active": "9301bb54ae5542f2",
   "lastOpenFiles": [
+    "Implementation/Combat.md",
+    "Daily Notes/Day 18-2.md",
     "Design/World Generation.md",
-    "Implementation/World Generation.md",
-    "Implementation/Combat Networking.md",
-    "Design/Trinkets.md",
+    "Daily Notes/Day 18-1.md",
     "Planning/Prototype Kanban.md",
-    "Daily Notes/2023-12-23.md",
+    "Design/Trinkets.md",
+    "Implementation/World Generation.md",
     "Planning",
     "Design",
     "Implementation",
-    "Daily Notes/2023-12-22.md",
     "Untitled.canvas",
     "Daily Notes/Untitled.md",
     "Daily Notes",
