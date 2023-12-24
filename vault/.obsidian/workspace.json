@@ -11,9 +11,11 @@
             "id": "1765d11976bb43bf",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Prototype Kanban.md"
+                "file": "Implementation/World Generation.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Prototype Kanban.md",
+                "file": "Implementation/World Generation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Prototype Kanban.md",
+                "file": "Implementation/World Generation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Prototype Kanban.md"
+                "file": "Implementation/World Generation.md"
               }
             }
           }
@@ -146,9 +148,16 @@
   },
   "active": "1765d11976bb43bf",
   "lastOpenFiles": [
+    "Design/World Generation.md",
+    "Implementation/World Generation.md",
+    "Implementation/Combat Networking.md",
+    "Design/Trinkets.md",
+    "Planning/Prototype Kanban.md",
     "Daily Notes/2023-12-23.md",
-    "Combat Networking.md",
-    "Prototype Kanban.md",
+    "Planning",
+    "Design",
+    "Implementation",
+    "Daily Notes/2023-12-22.md",
     "Untitled.canvas",
     "Daily Notes/Untitled.md",
     "Daily Notes",

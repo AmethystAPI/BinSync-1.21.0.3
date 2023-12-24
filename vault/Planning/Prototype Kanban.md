@@ -6,14 +6,15 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] speed trinket
-- [ ] heal trinket
-- [ ] damage trinket
+- [ ] swiftness trinket
+- [ ] holy trinket
+- [ ] strength trinket
 - [ ] Slime boss
 
 
 ## In Progress
 
+- [ ] Prevent Players From Skipping Rooms
 
 
 ## Done

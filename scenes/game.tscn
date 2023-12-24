@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=6 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
-[ext_resource type="PackedScene" uid="uid://bh3awkciiraoa" path="res://scenes/room.tscn" id="3_r8net"]
+[ext_resource type="PackedScene" uid="uid://dqa6mjnknyfr7" path="res://scenes/test_dungeon/spawn_room.tscn" id="3_f6wmu"]
+[ext_resource type="PackedScene" uid="uid://bh3awkciiraoa" path="res://scenes/test_dungeon/room.tscn" id="3_r8net"]
+[ext_resource type="Script" path="res://scripts/WorldGenerator.cs" id="4_x66nk"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_sq6vk")
 PlayerScene = ExtResource("2_nxqs3")
-RoomScene = ExtResource("3_r8net")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="WorldGenerator" type="Node2D" parent="."]
+script = ExtResource("4_x66nk")
+SpawnRoomScene = ExtResource("3_f6wmu")
+RoomScene = ExtResource("3_r8net")

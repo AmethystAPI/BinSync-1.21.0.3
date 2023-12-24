@@ -7,11 +7,12 @@ public partial class Game : Node2D
 	public static Game Me;
 
 	[Export] public PackedScene PlayerScene;
-	[Export] public PackedScene RoomScene;
 
 	public bool IsHost;
+	public int Seed;
 
 	private ENetMultiplayerPeer _peer;
+	private WorldGenerator _worldGenerator;
 
 	public override void _Ready()
 	{
@@ -19,7 +20,16 @@ public partial class Game : Node2D
 
 		Multiplayer.PeerConnected += (id) => OnPeerConnected(id);
 
+		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
+
 		if (!Host()) Join("127.0.0.1");
+
+		List<int> peers = new List<int>(Multiplayer.GetPeers())
+		{
+			1
+		};
+
+		Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
 	}
 
 	public bool Host()
@@ -67,33 +77,16 @@ public partial class Game : Node2D
 			1
 		};
 
-		GenerateRooms();
-
-		Rpc(nameof(StartRpc), peers.ToArray());
-	}
-
-	private void GenerateRooms()
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			Rpc(nameof(SpawnRoomRpc), Vector2.Right * 16 * 10 * i, i != 0, i != 4, false, false);
-		}
+		Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
 	}
 
 	[Rpc(CallLocal = true)]
-	private void SpawnRoomRpc(Vector2 position, bool connectedLeft, bool connectedRight, bool connectedTop, bool connectedBottom)
+	private void StartRpc(int[] peers, int seed)
 	{
-		Room room = RoomScene.Instantiate<Room>();
+		Seed = seed;
 
-		room.Position = position;
-		room.ConnectRooms(connectedLeft, connectedRight, connectedTop, connectedBottom);
+		_worldGenerator.Start();
 
-		AddChild(room);
-	}
-
-	[Rpc(CallLocal = true)]
-	private void StartRpc(int[] peers)
-	{
 		foreach (int peerId in peers)
 		{
 			Node2D player = PlayerScene.Instantiate<Node2D>();

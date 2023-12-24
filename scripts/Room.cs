@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class Room : Node2D
@@ -8,12 +9,17 @@ public partial class Room : Node2D
 	[Export] public PackedScene[] LootScenes;
 	[Export] public PackedScene ItemPickupScene;
 	[Export] public Node2D[] SpawnPoints;
+	[Export] public Vector2[] EdgeTileMapDirections;
+	[Export] public TileMap[] EdgeTileMaps;
+	[Export] public Vector2[] EntranceDirections;
+	[Export] public Node2D[] Entrances;
+	[Export] public Vector2[] ExitDirections;
+	[Export] public Node2D[] Exits;
+
+	public Action Started;
+	public Action Completed;
 
 	private bool _spawned = false;
-	private bool _connectedLeft = false;
-	private bool _connectedRight = false;
-	private bool _connectedTop = false;
-	private bool _connectedBottom = false;
 	private int _aliveEnemies = 0;
 	private int _playersEntered = 0;
 
@@ -25,16 +31,30 @@ public partial class Room : Node2D
 
 		spawnTriggerArea.BodyEntered += OnBodyEntered;
 		spawnTriggerArea.BodyExited += OnBodyExited;
+
+		foreach (Node2D entrance in Entrances)
+		{
+			entrance.GetParent().RemoveChild(entrance);
+		}
+
+		foreach (Node2D exit in Exits)
+		{
+			exit.GetParent().RemoveChild(exit);
+		}
 	}
 
-	public void ConnectRooms(bool connectedLeft, bool connectedRight, bool connectedTop, bool connectedBottom)
+	public virtual void PlaceEntrance(Vector2 direction)
 	{
-		_connectedLeft = connectedLeft;
-		_connectedRight = connectedRight;
-		_connectedTop = connectedTop;
-		_connectedBottom = connectedBottom;
+		SetTileMapEnabled(EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)], false);
 
-		UpdateTileMaps(!_connectedLeft, !_connectedRight, !_connectedTop, !_connectedBottom);
+		AddChild(Entrances[EntranceDirections.ToList().IndexOf(direction)]);
+	}
+
+	public virtual void PlaceExit(Vector2 direction)
+	{
+		SetTileMapEnabled(EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)], false);
+
+		AddChild(Exits[ExitDirections.ToList().IndexOf(direction)]);
 	}
 
 	public void AddEnemy()
@@ -48,7 +68,71 @@ public partial class Room : Node2D
 
 		if (_aliveEnemies != 0) return;
 
-		UpdateTileMaps(!_connectedLeft, !_connectedRight, !_connectedTop, !_connectedBottom);
+		End();
+	}
+
+	private void SetTileMapEnabled(TileMap tileMap, bool enabled)
+	{
+		for (int layerIndex = 0; layerIndex < tileMap.GetLayersCount(); layerIndex++)
+		{
+			tileMap.SetLayerEnabled(layerIndex, enabled);
+		}
+	}
+
+	private void OnBodyEntered(Node2D body)
+	{
+		if (!(body is Player)) return;
+
+		_playersEntered++;
+
+		if (_playersEntered != Player.Players.Count) return;
+
+		CallDeferred(nameof(Start));
+	}
+
+	private void OnBodyExited(Node2D body)
+	{
+		if (!(body is Player)) return;
+
+		_playersEntered--;
+	}
+
+	protected virtual void Start()
+	{
+		Started?.Invoke();
+
+		WorldGenerator.DespawnLastRoom();
+
+		SpawnEnemies();
+	}
+
+	private void SpawnEnemies()
+	{
+		if (_spawned) return;
+
+		_spawned = true;
+
+		foreach (Node2D spawnPoint in SpawnPoints)
+		{
+			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition, new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
+		}
+	}
+
+	[Rpc(CallLocal = true)]
+	private void SpawnEnemyRpc(Vector2 position, int enemySceneIndex)
+	{
+		Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
+
+		enemy.SetMultiplayerAuthority(1);
+
+		AddChild(enemy);
+
+		enemy.GlobalPosition = position;
+	}
+
+	protected virtual void End()
+	{
+		Completed?.Invoke();
 
 		if (!Game.Me.IsHost) return;
 
@@ -67,73 +151,5 @@ public partial class Room : Node2D
 		itemPickup.Position = Vector2.Zero;
 
 		itemPickup.Item = lootScene;
-	}
-
-	private void UpdateTileMaps(bool left, bool right, bool top, bool bottom)
-	{
-		SetEnabledTileMap("TileMapLeft", left);
-		SetEnabledTileMap("TileMapRight", right);
-		SetEnabledTileMap("TileMapTop", top);
-		SetEnabledTileMap("TileMapBottom", bottom);
-	}
-
-	private void SetEnabledTileMap(string name, bool enabled)
-	{
-		TileMap tileMap = GetNode<TileMap>(name);
-
-		for (int layerIndex = 0; layerIndex < tileMap.GetLayersCount(); layerIndex++)
-		{
-			tileMap.SetLayerEnabled(layerIndex, enabled);
-		}
-	}
-
-	private void OnBodyEntered(Node2D body)
-	{
-		if (!(body is Player)) return;
-
-		_playersEntered++;
-
-		if (_playersEntered != Player.Players.Count) return;
-
-		CallDeferred(nameof(SpawnEnemies));
-	}
-
-	private void OnBodyExited(Node2D body)
-	{
-		if (!(body is Player)) return;
-
-		_playersEntered--;
-	}
-
-	private void SpawnEnemies()
-	{
-		if (_spawned) return;
-
-		_spawned = true;
-
-		Rpc(nameof(StartRoomRpc));
-
-		foreach (Node2D spawnPoint in SpawnPoints)
-		{
-			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition, new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
-		}
-	}
-
-	[Rpc(CallLocal = true)]
-	private void StartRoomRpc()
-	{
-		UpdateTileMaps(true, true, true, true);
-	}
-
-	[Rpc(CallLocal = true)]
-	private void SpawnEnemyRpc(Vector2 position, int enemySceneIndex)
-	{
-		Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
-
-		enemy.SetMultiplayerAuthority(1);
-
-		AddChild(enemy);
-
-		enemy.GlobalPosition = position;
 	}
 }
