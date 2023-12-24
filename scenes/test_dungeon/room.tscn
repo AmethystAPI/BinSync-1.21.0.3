@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bh3awkciiraoa"]
+[gd_scene load_steps=18 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
 [ext_resource type="Script" path="res://scripts/Room.cs" id="1_pherh"]
@@ -16,8 +16,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcnv7"]
+size = Vector2(32, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7076x"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30ode"]
+size = Vector2(32, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwd80"]
 size = Vector2(16, 32)
@@ -117,10 +123,12 @@ position = Vector2(0, 88)
 script = ExtResource("10_u7ees")
 
 [node name="Visuals" type="StaticBody2D" parent="Entrances/Down"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Down/Visuals"]
-position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_7076x")
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_wcnv7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Entrances/Down/Visuals"]
 position = Vector2(-8, -8)
@@ -141,6 +149,8 @@ position = Vector2(80, 0)
 script = ExtResource("10_u7ees")
 
 [node name="Visuals" type="StaticBody2D" parent="Entrances/Right"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Right/Visuals"]
 position = Vector2(-8, 8)
@@ -165,6 +175,8 @@ position = Vector2(-80, 0)
 script = ExtResource("10_u7ees")
 
 [node name="Visuals" type="StaticBody2D" parent="Entrances/Left"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Left/Visuals"]
 position = Vector2(8, 8)
@@ -188,12 +200,14 @@ region_rect = Rect2(224, 40, 16, 24)
 
 [node name="Up" type="StaticBody2D" parent="Exits"]
 position = Vector2(0, -79)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("12_ud78m")
 Direction = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Up"]
-position = Vector2(0, 7)
-shape = SubResource("RectangleShape2D_gwd80")
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_30ode")
 
 [node name="Sprite2D" type="Sprite2D" parent="Exits/Up"]
 position = Vector2(-8, 14)
@@ -211,6 +225,8 @@ region_rect = Rect2(224, 40, 16, 24)
 
 [node name="Right" type="StaticBody2D" parent="Exits"]
 position = Vector2(80, 0)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("12_ud78m")
 Direction = Vector2(1, 0)
 
@@ -234,6 +250,8 @@ region_rect = Rect2(224, 40, 16, 24)
 
 [node name="Left" type="StaticBody2D" parent="Exits"]
 position = Vector2(-80, 0)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("12_ud78m")
 Direction = Vector2(-1, 0)
 

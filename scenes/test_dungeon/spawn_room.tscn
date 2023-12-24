@@ -55,6 +55,8 @@ position = Vector2(-55, -47)
 
 [node name="Up" type="StaticBody2D" parent="Exits"]
 position = Vector2(0, -79)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_pgmik")
 Direction = Vector2(0, -1)
 
