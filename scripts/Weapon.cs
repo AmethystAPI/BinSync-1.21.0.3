@@ -36,6 +36,8 @@ public partial class Weapon : Node2D, Networking.NetworkNode
 
     if (!Game.IsOwner(this)) return;
 
+    if (!_equipped) return;
+
     LookAt(GetGlobalMousePosition());
   }
 

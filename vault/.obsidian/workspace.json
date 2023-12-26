@@ -11,11 +11,9 @@
             "id": "3120ab4f30536ad5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Daily Notes/Day 18-4.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Prototype Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-4.md",
+                "file": "Planning/Prototype Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-4.md",
+                "file": "Planning/Prototype Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-4.md"
+                "file": "Planning/Prototype Kanban.md"
               }
             }
           }
@@ -146,17 +144,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "711274cd3592b4d7",
+  "active": "3120ab4f30536ad5",
   "lastOpenFiles": [
-    "Daily Notes/Day 18-3.md",
+    "Implementation/World Generation.md",
     "Daily Notes/Day 18-4.md",
+    "Daily Notes/Day 18-3.md",
     "Daily Notes/Day 18-2.md",
     "Planning/Prototype Kanban.md",
     "Implementation/Combat.md",
     "Design/World Generation.md",
     "Daily Notes/Day 18-1.md",
     "Design/Trinkets.md",
-    "Implementation/World Generation.md",
     "Planning",
     "Design",
     "Implementation",
