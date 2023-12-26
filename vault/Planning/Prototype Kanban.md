@@ -14,6 +14,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] fix item pickup visuals
 
 
 ## Done

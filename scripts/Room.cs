@@ -7,7 +7,6 @@ public partial class Room : Node2D
 {
 	[Export] public PackedScene[] EnemyScenes;
 	[Export] public PackedScene[] LootScenes;
-	[Export] public PackedScene ItemPickupScene;
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Vector2[] EdgeTileMapDirections;
 	[Export] public TileMap[] EdgeTileMaps;
@@ -25,13 +24,6 @@ public partial class Room : Node2D
 
 	public override void _Ready()
 	{
-		if (!Game.Me.IsHost) return;
-
-		Area2D spawnTriggerArea = GetNode<Area2D>("SpawnTriggerArea");
-
-		spawnTriggerArea.BodyEntered += OnBodyEntered;
-		spawnTriggerArea.BodyExited += OnBodyExited;
-
 		foreach (Node2D entrance in Entrances)
 		{
 			entrance.GetParent().RemoveChild(entrance);
@@ -41,6 +33,13 @@ public partial class Room : Node2D
 		{
 			exit.GetParent().RemoveChild(exit);
 		}
+
+		if (!Game.Me.IsHost) return;
+
+		Area2D spawnTriggerArea = GetNode<Area2D>("SpawnTriggerArea");
+
+		spawnTriggerArea.BodyEntered += OnBodyEntered;
+		spawnTriggerArea.BodyExited += OnBodyExited;
 	}
 
 	public virtual void PlaceEntrance(Vector2 direction)
@@ -87,7 +86,7 @@ public partial class Room : Node2D
 
 		if (_playersEntered != Player.Players.Count) return;
 
-		CallDeferred(nameof(Start));
+		Rpc(nameof(StartRpc));
 	}
 
 	private void OnBodyExited(Node2D body)
@@ -97,11 +96,19 @@ public partial class Room : Node2D
 		_playersEntered--;
 	}
 
+	[Rpc(CallLocal = true)]
+	private void StartRpc()
+	{
+		Start();
+	}
+
 	protected virtual void Start()
 	{
 		Started?.Invoke();
 
 		WorldGenerator.DespawnLastRoom();
+
+		if (!Game.Me.IsHost) return;
 
 		SpawnEnemies();
 	}
@@ -140,16 +147,14 @@ public partial class Room : Node2D
 	}
 
 	[Rpc(CallLocal = true)]
-	private void SpawnLootRpc(string lootScenePath)
+	protected void SpawnLootRpc(string lootScenePath)
 	{
 		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
 
-		ItemPickup itemPickup = ItemPickupScene.Instantiate<ItemPickup>();
+		Node2D item = lootScene.Instantiate<Node2D>();
 
-		AddChild(itemPickup);
+		AddChild(item);
 
-		itemPickup.Position = Vector2.Zero;
-
-		itemPickup.Item = lootScene;
+		item.Position = Vector2.Zero;
 	}
 }

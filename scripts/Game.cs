@@ -24,13 +24,20 @@ public partial class Game : Node2D
 
 		if (!Host()) Join("127.0.0.1");
 
-		List<int> peers = new List<int>(Multiplayer.GetPeers())
-		{
-			1
-		};
+		// List<int> peers = new List<int>(Multiplayer.GetPeers())
+		// {
+		// 	1
+		// };
 
-		Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
+		// Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
 	}
+
+	// public override void _Input(InputEvent @event)
+	// {
+	// 	if (!@event.IsActionPressed("host")) return;
+
+	// 	if (!Host()) Join("127.0.0.1");
+	// }
 
 	public bool Host()
 	{

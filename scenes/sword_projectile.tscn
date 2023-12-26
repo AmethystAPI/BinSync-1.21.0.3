@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgg04u0yi86gl"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_1r6bq"]
+[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_188y5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
+size = Vector2(6, 6)
+
+[node name="Sword Projectile" type="Node2D"]
+script = ExtResource("1_1r6bq")
+Speed = 300.0
+Lifetime = 0.1
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_um2iy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.381053, 0.381053)
+texture = ExtResource("2_188y5")

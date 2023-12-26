@@ -10,6 +10,6 @@ public partial class SpawnRoom : Room
 
 	protected override void Start()
 	{
-		Completed?.Invoke();
+		CallDeferred(nameof(End));
 	}
 }

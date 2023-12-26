@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bh3awkciiraoa"]
+[gd_scene load_steps=17 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
 [ext_resource type="Script" path="res://scripts/Room.cs" id="1_pherh"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b8edoidtp7am7" path="res://scenes/fast_slime.tscn" id="4_0fnvm"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/bow.tscn" id="5_f7wxi"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/hammer.tscn" id="5_jgg8f"]
-[ext_resource type="PackedScene" uid="uid://du8fxaf28vqmm" path="res://scenes/item_pickup.tscn" id="6_splcx"]
 [ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="10_svavk"]
 [ext_resource type="Script" path="res://scripts/Entrance.cs" id="10_u7ees"]
 [ext_resource type="Script" path="res://scripts/Exit.cs" id="12_ud78m"]
@@ -33,8 +32,7 @@ y_sort_enabled = true
 script = ExtResource("1_pherh")
 EnemyScenes = Array[PackedScene]([ExtResource("2_ab8p0"), ExtResource("3_gb1e2"), ExtResource("4_0fnvm")])
 LootScenes = Array[PackedScene]([ExtResource("3_6spq0"), ExtResource("5_f7wxi"), ExtResource("5_jgg8f")])
-ItemPickupScene = ExtResource("6_splcx")
-SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4")]
+SpawnPoints = [NodePath("SpawnPoints/Point1")]
 EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)
 EdgeTileMaps = [NodePath("TileMapLeft"), NodePath("TileMapRight"), NodePath("TileMapTop"), NodePath("TileMapBottom")]
 EntranceDirections = PackedVector2Array(0, 1, 1, 0, -1, 0)

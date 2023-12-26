@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnsnl644enbf0"]
+[gd_scene load_steps=6 format=3 uid="uid://dnsnl644enbf0"]
 
 [ext_resource type="Script" path="res://scripts/Weapon.cs" id="1_xirkc"]
 [ext_resource type="PackedScene" uid="uid://db51lk1ffg7sc" path="res://scenes/projectile.tscn" id="2_1h1w5"]
@@ -8,6 +8,8 @@
 properties/0/path = NodePath(".:rotation")
 properties/0/spawn = true
 properties/0/replication_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm67q"]
 
 [node name="Bow" type="Node2D"]
 y_sort_enabled = true
@@ -22,3 +24,8 @@ frame = 2
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vhxq4")
+
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_rm67q")

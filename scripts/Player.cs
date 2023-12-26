@@ -7,6 +7,7 @@ public partial class Player : CharacterBody2D, Damageable
 	public static List<Player> Players = new List<Player>();
 
 	[Export] public PackedScene DefaultWeaponScene;
+	[Export] public bool IsLocal;
 
 	private int _health = 3;
 	private bool _dashing = false;
@@ -18,9 +19,15 @@ public partial class Player : CharacterBody2D, Damageable
 	{
 		Players.Add(this);
 
+		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
+
+		AddChild(weapon);
+
+		IsLocal = GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
+
 		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
 
-		EquipWeapon(DefaultWeaponScene);
+		EquipWeapon(weapon);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -78,23 +85,32 @@ public partial class Player : CharacterBody2D, Damageable
 		return !(projectile.Source is Player);
 	}
 
-	public void EquipWeapon(PackedScene weaponScene)
+	public void EquipWeapon(Weapon weapon)
 	{
-		Rpc(nameof(EquipWeaponRpc), weaponScene.ResourcePath);
+		Rpc(nameof(EquipWeaponRpc), weapon.GetPath());
 	}
 
 	[Rpc(CallLocal = true)]
-	private void EquipWeaponRpc(string weaponScenePath)
+	private void EquipWeaponRpc(string weaponPath)
 	{
-		PackedScene weaponScene = ResourceLoader.Load<PackedScene>(weaponScenePath);
+		Weapon weapon = GetNode<Weapon>(weaponPath);
+
+		GD.Print("Equipping " + weaponPath + " " + weapon.GetMultiplayerAuthority() + " " + Multiplayer.GetUniqueId());
 
 		if (_equippedWeapon != null) _equippedWeapon.QueueFree();
 
-		Weapon weapon = weaponScene.Instantiate<Weapon>();
-		GetNode("WeaponHolder").AddChild(weapon);
+		weapon.GetParent().RemoveChild(weapon);
+
+		AddChild(weapon);
+
+		weapon.GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer");
+
+		// GetNode("WeaponHolder").AddChild(weapon);
 		weapon.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
 		_equippedWeapon = weapon;
+
+		weapon.Equip();
 	}
 
 	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]

@@ -1,18 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyh55k213w7y7"]
+[gd_scene load_steps=6 format=3 uid="uid://cyh55k213w7y7"]
 
 [ext_resource type="Script" path="res://scripts/Weapon.cs" id="1_068pm"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="2_7q730"]
-[ext_resource type="PackedScene" uid="uid://db51lk1ffg7sc" path="res://scenes/projectile.tscn" id="2_pw1hh"]
+[ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/sword_projectile.tscn" id="2_cwddm"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vhxq4"]
 properties/0/path = NodePath(".:rotation")
 properties/0/spawn = true
 properties/0/replication_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
+
 [node name="Sword" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_068pm")
-ProjectileScene = ExtResource("2_pw1hh")
+ProjectileScene = ExtResource("2_cwddm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
@@ -22,3 +24,8 @@ hframes = 5
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vhxq4")
+
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_orsoj")
