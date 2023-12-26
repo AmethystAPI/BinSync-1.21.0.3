@@ -23,7 +23,7 @@ public partial class WorldGenerator : Node2D
 	{
 		_randomNumberGenerator = new RandomNumberGenerator
 		{
-			Seed = (ulong)Game.Me.Seed
+			Seed = (ulong)Game.deprecated_Me.Seed
 		};
 
 		SpawnRoom spawnRoom = SpawnRoomScene.Instantiate<SpawnRoom>();

@@ -17,7 +17,7 @@ public partial class Slime : CharacterBody2D, Damageable
 
 	public override void _Process(double delta)
 	{
-		if (!Game.Me.IsHost) return;
+		if (!Game.deprecated_Me.deprecated_IsHost) return;
 
 		_attackTimer -= (float)delta;
 

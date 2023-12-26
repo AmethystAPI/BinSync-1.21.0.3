@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>ProjectSquad</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="RiptideNetworking.Riptide" Version="2.1.2" />
+  </ItemGroup>
 </Project>

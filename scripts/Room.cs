@@ -34,7 +34,7 @@ public partial class Room : Node2D
 			exit.GetParent().RemoveChild(exit);
 		}
 
-		if (!Game.Me.IsHost) return;
+		if (!Game.deprecated_Me.deprecated_IsHost) return;
 
 		Area2D spawnTriggerArea = GetNode<Area2D>("SpawnTriggerArea");
 
@@ -108,7 +108,7 @@ public partial class Room : Node2D
 
 		WorldGenerator.DespawnLastRoom();
 
-		if (!Game.Me.IsHost) return;
+		if (!Game.deprecated_Me.deprecated_IsHost) return;
 
 		SpawnEnemies();
 	}
@@ -141,7 +141,7 @@ public partial class Room : Node2D
 	{
 		Completed?.Invoke();
 
-		if (!Game.Me.IsHost) return;
+		if (!Game.deprecated_Me.deprecated_IsHost) return;
 
 		Rpc(nameof(SpawnLootRpc), LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
 	}

@@ -2,12 +2,17 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Player : CharacterBody2D, Damageable
+public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNode
 {
 	public static List<Player> Players = new List<Player>();
 
 	[Export] public PackedScene DefaultWeaponScene;
 	[Export] public bool IsLocal;
+
+	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
+	public Networking.RpcMap RpcMap => _rpcMap;
+
+	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client, false, 50);
 
 	private int _health = 3;
 	private bool _dashing = false;
@@ -17,22 +22,38 @@ public partial class Player : CharacterBody2D, Damageable
 
 	public override void _Ready()
 	{
+		_rpcMap.Register(_syncedPosition, this);
+
 		Players.Add(this);
 
-		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
+		// Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
 
-		AddChild(weapon);
+		// AddChild(weapon);
 
-		IsLocal = GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
+		// IsLocal = GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
 
-		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+		// if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
 
-		EquipWeapon(weapon);
+		// EquipWeapon(weapon);
+	}
+
+	public override void _Process(double delta)
+	{
+		if (Game.IsOwner(this))
+		{
+			_syncedPosition.Value = GlobalPosition;
+		}
+		else
+		{
+			GlobalPosition = _syncedPosition.Value;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+		_syncedPosition.Sync();
+
+		if (!Game.IsOwner(this)) return;
 
 		if (!_dashing)
 		{
@@ -49,7 +70,7 @@ public partial class Player : CharacterBody2D, Damageable
 			if (_dashTimer <= 0) _dashing = false;
 		}
 
-		Rpc(nameof(SetVelocityRpc), Velocity);
+		// Rpc(nameof(SetVelocityRpc), Velocity);
 
 		MoveAndSlide();
 

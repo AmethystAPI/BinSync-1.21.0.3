@@ -1,24 +1,40 @@
 using Godot;
+using Riptide;
+using Riptide.Utils;
 using System;
 using System.Collections.Generic;
 
-public partial class Game : Node2D
+public partial class Game : Node2D, Networking.NetworkNode
 {
-	public static Game Me;
+	public static Game deprecated_Me;
+
+	public static bool IsHost() => s_Server != null;
+	public static bool IsOwner(Node node) => node.GetMultiplayerAuthority() == s_Client.Id;
+
+	private static Game s_Me;
+	private static Server s_Server;
+	private static Client s_Client;
 
 	[Export] public PackedScene PlayerScene;
 
-	public bool IsHost;
-	public int Seed;
+	public bool deprecated_IsHost;
+	public int[] ClientIds;
+	public uint Seed;
+
+	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
+	public Networking.RpcMap RpcMap => _rpcMap;
 
 	private ENetMultiplayerPeer _peer;
 	private WorldGenerator _worldGenerator;
 
 	public override void _Ready()
 	{
-		Me = this;
+		RiptideLogger.Initialize(GD.Print, GD.Print, GD.PushWarning, GD.PushError, false);
 
-		Multiplayer.PeerConnected += (id) => OnPeerConnected(id);
+		_rpcMap.Register(nameof(StartRpc), StartRpc);
+
+		s_Me = this;
+		deprecated_Me = this;
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
@@ -32,28 +48,67 @@ public partial class Game : Node2D
 		// Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
 	}
 
-	// public override void _Input(InputEvent @event)
-	// {
-	// 	if (!@event.IsActionPressed("host")) return;
+	public override void _PhysicsProcess(double delta)
+	{
+		if (s_Server != null) s_Server.Update();
+		if (s_Client != null) s_Client.Update();
+	}
 
-	// 	if (!Host()) Join("127.0.0.1");
-	// }
+	public static void SendRpcToServer(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
+	{
+		Message message = Message.Create(messageSendMode, 0);
+		message.AddString(source.GetPath());
+		message.AddString(name);
+		messageBuilder.Invoke(message);
+
+		s_Client.Send(message);
+	}
+
+	public static void SendRpcToClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
+	{
+		Message message = Message.Create(messageSendMode, 0);
+		message.AddString(source.GetPath());
+		message.AddString(name);
+		messageBuilder.Invoke(message);
+
+		s_Server.SendToAll(message);
+	}
+
+	public static void SendRpcToClientsExcept(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder, ushort clientId)
+	{
+		Message message = Message.Create(messageSendMode, 0);
+		message.AddString(source.GetPath());
+		message.AddString(name);
+		messageBuilder.Invoke(message);
+
+		s_Server.SendToAll(message, clientId);
+	}
 
 	public bool Host()
 	{
 		GD.Print("Hosting...");
 
-		_peer = new ENetMultiplayerPeer();
+		s_Server = new Server();
 
-		Error error = _peer.CreateServer(25566, 8);
+		try
+		{
+			s_Server.Start(25566, 2, 0, false);
+		}
+		catch
+		{
+			s_Server = null;
 
-		if (error != Error.Ok) return false;
+			return false;
+		}
 
-		_peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
+		s_Server.MessageReceived += MessageRecieved;
+		s_Server.ClientConnected += ClientConnected;
 
-		Multiplayer.MultiplayerPeer = _peer;
+		GD.Print("Successfully started server, starting client!");
 
-		IsHost = true;
+		Join("127.0.0.1");
+
+		deprecated_IsHost = true;
 
 		return true;
 	}
@@ -62,43 +117,57 @@ public partial class Game : Node2D
 	{
 		GD.Print("Joining...");
 
-		_peer = new ENetMultiplayerPeer();
+		s_Client = new Client();
+		s_Client.Connect(address + ":25566", 5, 0, null, false);
 
-		_peer.CreateClient(address, 25566);
-
-		_peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
-
-		Multiplayer.MultiplayerPeer = _peer;
+		s_Client.MessageReceived += MessageRecieved;
 
 		return true;
 	}
 
-	private void OnPeerConnected(long id)
+	private void MessageRecieved(Object _, MessageReceivedEventArgs eventArguments)
 	{
-		GD.Print("Peer connected " + id);
+		string path = eventArguments.Message.GetString();
 
-		if (!IsHost) return;
+		Networking.NetworkNode rpcReceiver = GetNode<Networking.NetworkNode>(path);
 
-		List<int> peers = new List<int>(Multiplayer.GetPeers())
-		{
-			1
-		};
+		string name = eventArguments.Message.GetString();
 
-		Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
+		rpcReceiver.RpcMap.Call(name, eventArguments.Message);
 	}
 
-	[Rpc(CallLocal = true)]
-	private void StartRpc(int[] peers, int seed)
+	private void ClientConnected(Object _, ServerConnectedEventArgs eventArguments)
 	{
-		Seed = seed;
+		if (s_Server.ClientCount != 2 || eventArguments.Client != s_Server.Clients[1]) return;
+
+		if (s_Server.ClientCount != 2) return;
+
+		List<int> clientIds = new List<int>();
+
+		foreach (Connection connection in s_Server.Clients)
+		{
+			clientIds.Add(connection.Id);
+		}
+
+		SendRpcToClients(this, nameof(StartRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddInts(clientIds.ToArray());
+			message.AddUInt(new RandomNumberGenerator().Randi());
+		});
+	}
+
+	private void StartRpc(Message message)
+	{
+		ClientIds = message.GetInts();
+		Seed = message.GetUInt();
 
 		_worldGenerator.Start();
 
-		foreach (int peerId in peers)
+		foreach (int clientId in ClientIds)
 		{
-			Node2D player = PlayerScene.Instantiate<Node2D>();
+			Player player = PlayerScene.Instantiate<Player>();
 
-			player.SetMultiplayerAuthority(peerId, true);
+			player.SetMultiplayerAuthority(clientId, true);
 
 			AddChild(player);
 		}
