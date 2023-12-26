@@ -1,4 +1,5 @@
 using Godot;
+using Riptide;
 using System;
 using System.Collections.Generic;
 
@@ -7,12 +8,12 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	public static List<Player> Players = new List<Player>();
 
 	[Export] public PackedScene DefaultWeaponScene;
-	[Export] public bool IsLocal;
 
 	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
 	public Networking.RpcMap RpcMap => _rpcMap;
 
 	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client, false, 50);
+	private Networking.SyncedVariable<Vector2> _syncedVelocity = new Networking.SyncedVariable<Vector2>(nameof(_syncedVelocity), Vector2.Zero, Networking.Authority.Client);
 
 	private int _health = 3;
 	private bool _dashing = false;
@@ -23,36 +24,39 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	public override void _Ready()
 	{
 		_rpcMap.Register(_syncedPosition, this);
+		_rpcMap.Register(_syncedVelocity, this);
+		_rpcMap.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
 
 		Players.Add(this);
 
-		// Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
+		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
 
-		// AddChild(weapon);
+		AddChild(weapon);
 
-		// IsLocal = GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
+		if (!Game.IsOwner(this)) return;
 
-		// if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
-
-		// EquipWeapon(weapon);
+		EquipWeapon(weapon);
 	}
 
 	public override void _Process(double delta)
 	{
+		_syncedPosition.Sync();
+		_syncedVelocity.Sync();
+
 		if (Game.IsOwner(this))
 		{
 			_syncedPosition.Value = GlobalPosition;
+			_syncedVelocity.Value = Velocity;
 		}
 		else
 		{
-			GlobalPosition = _syncedPosition.Value;
+			GlobalPosition = GlobalPosition.Lerp(_syncedPosition.Value, (float)delta * 20.0f);
+			Velocity = _syncedVelocity.Value;
 		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		_syncedPosition.Sync();
-
 		if (!Game.IsOwner(this)) return;
 
 		if (!_dashing)
@@ -69,8 +73,6 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 			if (_dashTimer <= 0) _dashing = false;
 		}
-
-		// Rpc(nameof(SetVelocityRpc), Velocity);
 
 		MoveAndSlide();
 
@@ -108,35 +110,26 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public void EquipWeapon(Weapon weapon)
 	{
-		Rpc(nameof(EquipWeaponRpc), weapon.GetPath());
+		Game.SendRpcToOtherClients(this, nameof(EquipWeaponRpc), Riptide.MessageSendMode.Reliable, message =>
+		{
+			message.AddString(weapon.GetPath());
+		});
 	}
 
-	[Rpc(CallLocal = true)]
-	private void EquipWeaponRpc(string weaponPath)
+	private void EquipWeaponRpc(Message message)
 	{
-		Weapon weapon = GetNode<Weapon>(weaponPath);
+		string weaponPath = message.GetString();
 
-		GD.Print("Equipping " + weaponPath + " " + weapon.GetMultiplayerAuthority() + " " + Multiplayer.GetUniqueId());
+		Weapon weapon = GetNode<Weapon>(weaponPath);
 
 		if (_equippedWeapon != null) _equippedWeapon.QueueFree();
 
 		weapon.GetParent().RemoveChild(weapon);
-
-		AddChild(weapon);
-
-		weapon.GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer");
-
-		// GetNode("WeaponHolder").AddChild(weapon);
+		GetNode("WeaponHolder").AddChild(weapon);
 		weapon.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
 		_equippedWeapon = weapon;
 
 		weapon.Equip();
-	}
-
-	[Rpc(TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
-	private void SetVelocityRpc(Vector2 velocity)
-	{
-		Velocity = velocity;
 	}
 }

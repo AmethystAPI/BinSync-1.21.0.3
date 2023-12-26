@@ -6,10 +6,17 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D, Networking.NetworkNode
 {
+	public enum Messages
+	{
+		Normal,
+		Propogate,
+	}
+
 	public static Game deprecated_Me;
 
 	public static bool IsHost() => s_Server != null;
 	public static bool IsOwner(Node node) => node.GetMultiplayerAuthority() == s_Client.Id;
+	public static uint Seed;
 
 	private static Game s_Me;
 	private static Server s_Server;
@@ -19,7 +26,6 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public bool deprecated_IsHost;
 	public int[] ClientIds;
-	public uint Seed;
 
 	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
 	public Networking.RpcMap RpcMap => _rpcMap;
@@ -34,7 +40,6 @@ public partial class Game : Node2D, Networking.NetworkNode
 		_rpcMap.Register(nameof(StartRpc), StartRpc);
 
 		s_Me = this;
-		deprecated_Me = this;
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
@@ -56,7 +61,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public static void SendRpcToServer(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
-		Message message = Message.Create(messageSendMode, 0);
+		Message message = Message.Create(messageSendMode, (ushort)Messages.Normal);
 		message.AddString(source.GetPath());
 		message.AddString(name);
 		messageBuilder.Invoke(message);
@@ -66,7 +71,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public static void SendRpcToClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
-		Message message = Message.Create(messageSendMode, 0);
+		Message message = Message.Create(messageSendMode, (ushort)Messages.Normal);
 		message.AddString(source.GetPath());
 		message.AddString(name);
 		messageBuilder.Invoke(message);
@@ -74,14 +79,15 @@ public partial class Game : Node2D, Networking.NetworkNode
 		s_Server.SendToAll(message);
 	}
 
-	public static void SendRpcToClientsExcept(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder, ushort clientId)
+	public static void SendRpcToOtherClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
-		Message message = Message.Create(messageSendMode, 0);
+		Message message = Message.Create(messageSendMode, (ushort)Messages.Propogate);
+		message.AddInt((int)messageSendMode);
 		message.AddString(source.GetPath());
 		message.AddString(name);
 		messageBuilder.Invoke(message);
 
-		s_Server.SendToAll(message, clientId);
+		s_Client.Send(message);
 	}
 
 	public bool Host()
@@ -108,8 +114,6 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 		Join("127.0.0.1");
 
-		deprecated_IsHost = true;
-
 		return true;
 	}
 
@@ -127,7 +131,20 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	private void MessageRecieved(Object _, MessageReceivedEventArgs eventArguments)
 	{
+		if (eventArguments.MessageId == (ushort)Messages.Propogate)
+		{
+			MessageSendMode messageSendMode = (MessageSendMode)eventArguments.Message.GetInt();
+			Message message = Message.Create(messageSendMode, (ushort)Messages.Normal);
+			message.AddBytes(eventArguments.Message.GetBytes(eventArguments.Message.UnreadBits / 8), false);
+
+			s_Server.SendToAll(message);
+
+			return;
+		}
+
 		string path = eventArguments.Message.GetString();
+
+		if (!HasNode(path)) return;
 
 		Networking.NetworkNode rpcReceiver = GetNode<Networking.NetworkNode>(path);
 

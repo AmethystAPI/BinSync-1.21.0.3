@@ -82,7 +82,10 @@ public class Networking
     public void ReceiveUpdate(Message message)
     {
       bool propogate = message.GetBool();
+
       ulong sentTick = message.GetULong();
+
+      // if (Game.IsHost() && !Game.IsOwner(_source)) GD.Print(sentTick);
 
       if (sentTick <= _lastRecievedTick) return;
 

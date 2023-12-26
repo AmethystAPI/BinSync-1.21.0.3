@@ -1,9 +1,9 @@
 using Godot;
+using Riptide;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
-public partial class Room : Node2D
+public partial class Room : Node2D, Networking.NetworkNode
 {
 	[Export] public PackedScene[] EnemyScenes;
 	[Export] public PackedScene[] LootScenes;
@@ -18,12 +18,19 @@ public partial class Room : Node2D
 	public Action Started;
 	public Action Completed;
 
+	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
+	public Networking.RpcMap RpcMap => _rpcMap;
+
 	private bool _spawned = false;
 	private int _aliveEnemies = 0;
 	private int _playersEntered = 0;
 
 	public override void _Ready()
 	{
+		_rpcMap.Register(nameof(StartRpc), StartRpc);
+		_rpcMap.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
+		_rpcMap.Register(nameof(SpawnLootRpc), SpawnLootRpc);
+
 		foreach (Node2D entrance in Entrances)
 		{
 			entrance.GetParent().RemoveChild(entrance);
@@ -34,7 +41,7 @@ public partial class Room : Node2D
 			exit.GetParent().RemoveChild(exit);
 		}
 
-		if (!Game.deprecated_Me.deprecated_IsHost) return;
+		if (!Game.IsHost()) return;
 
 		Area2D spawnTriggerArea = GetNode<Area2D>("SpawnTriggerArea");
 
@@ -86,7 +93,7 @@ public partial class Room : Node2D
 
 		if (_playersEntered != Player.Players.Count) return;
 
-		Rpc(nameof(StartRpc));
+		Game.SendRpcToClients(this, nameof(StartRpc), MessageSendMode.Reliable, message => { });
 	}
 
 	private void OnBodyExited(Node2D body)
@@ -96,8 +103,7 @@ public partial class Room : Node2D
 		_playersEntered--;
 	}
 
-	[Rpc(CallLocal = true)]
-	private void StartRpc()
+	private void StartRpc(Message message)
 	{
 		Start();
 	}
@@ -108,7 +114,7 @@ public partial class Room : Node2D
 
 		WorldGenerator.DespawnLastRoom();
 
-		if (!Game.deprecated_Me.deprecated_IsHost) return;
+		if (!Game.IsHost()) return;
 
 		SpawnEnemies();
 	}
@@ -121,13 +127,21 @@ public partial class Room : Node2D
 
 		foreach (Node2D spawnPoint in SpawnPoints)
 		{
-			Rpc(nameof(SpawnEnemyRpc), spawnPoint.GlobalPosition, new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
+			Game.SendRpcToClients(this, nameof(SpawnEnemyRpc), MessageSendMode.Reliable, message =>
+			{
+				message.AddFloat(spawnPoint.GlobalPosition.X);
+				message.AddFloat(spawnPoint.GlobalPosition.Y);
+
+				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
+			});
 		}
 	}
 
-	[Rpc(CallLocal = true)]
-	private void SpawnEnemyRpc(Vector2 position, int enemySceneIndex)
+	private void SpawnEnemyRpc(Message message)
 	{
+		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
+		int enemySceneIndex = message.GetInt();
+
 		Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
 
 		enemy.SetMultiplayerAuthority(1);
@@ -141,14 +155,18 @@ public partial class Room : Node2D
 	{
 		Completed?.Invoke();
 
-		if (!Game.deprecated_Me.deprecated_IsHost) return;
+		if (!Game.IsHost()) return;
 
-		Rpc(nameof(SpawnLootRpc), LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
+		Game.SendRpcToClients(this, nameof(SpawnLootRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddString(LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
+		});
 	}
 
-	[Rpc(CallLocal = true)]
-	protected void SpawnLootRpc(string lootScenePath)
+	protected void SpawnLootRpc(Message message)
 	{
+		string lootScenePath = message.GetString();
+
 		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
 
 		Node2D item = lootScene.Instantiate<Node2D>();
