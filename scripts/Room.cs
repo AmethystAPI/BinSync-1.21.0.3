@@ -119,11 +119,9 @@ public partial class Room : Node2D, Networking.NetworkNode
 
 		WorldGenerator.DespawnLastRoom();
 
-		End();
+		if (!Game.IsHost()) return;
 
-		// if (!Game.IsHost()) return;
-
-		// SpawnEnemies();
+		SpawnEnemies();
 	}
 
 	private void SpawnEnemies()

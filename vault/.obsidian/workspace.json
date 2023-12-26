@@ -11,9 +11,11 @@
             "id": "3120ab4f30536ad5",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Prototype Kanban.md"
+                "file": "Daily Notes/Day 18-4.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Prototype Kanban.md",
+                "file": "Daily Notes/Day 18-4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Prototype Kanban.md",
+                "file": "Daily Notes/Day 18-4.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Prototype Kanban.md"
+                "file": "Daily Notes/Day 18-4.md"
               }
             }
           }
@@ -146,11 +148,11 @@
   },
   "active": "3120ab4f30536ad5",
   "lastOpenFiles": [
+    "Planning/Prototype Kanban.md",
     "Implementation/World Generation.md",
     "Daily Notes/Day 18-4.md",
     "Daily Notes/Day 18-3.md",
     "Daily Notes/Day 18-2.md",
-    "Planning/Prototype Kanban.md",
     "Implementation/Combat.md",
     "Design/World Generation.md",
     "Daily Notes/Day 18-1.md",
