@@ -14,12 +14,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] fix item pickup visuals
 
 
 ## Done
 
 **Complete**
+- [x] fix item pickup visuals
 - [x] Prevent Players From Skipping Rooms
 - [x] Fast Slime
 - [x] Big Slime

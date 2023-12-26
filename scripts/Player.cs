@@ -110,7 +110,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public void EquipWeapon(Weapon weapon)
 	{
-		Game.SendRpcToOtherClients(this, nameof(EquipWeaponRpc), Riptide.MessageSendMode.Reliable, message =>
+		Game.SendRpcToOtherClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
 		{
 			message.AddString(weapon.GetPath());
 		});

@@ -24,6 +24,7 @@ public partial class Room : Node2D, Networking.NetworkNode
 	private bool _spawned = false;
 	private int _aliveEnemies = 0;
 	private int _playersEntered = 0;
+	private bool _started = false;
 
 	public override void _Ready()
 	{
@@ -93,6 +94,10 @@ public partial class Room : Node2D, Networking.NetworkNode
 
 		if (_playersEntered != Player.Players.Count) return;
 
+		if (_started) return;
+
+		_started = true;
+
 		Game.SendRpcToClients(this, nameof(StartRpc), MessageSendMode.Reliable, message => { });
 	}
 
@@ -114,9 +119,11 @@ public partial class Room : Node2D, Networking.NetworkNode
 
 		WorldGenerator.DespawnLastRoom();
 
-		if (!Game.IsHost()) return;
+		End();
 
-		SpawnEnemies();
+		// if (!Game.IsHost()) return;
+
+		// SpawnEnemies();
 	}
 
 	private void SpawnEnemies()

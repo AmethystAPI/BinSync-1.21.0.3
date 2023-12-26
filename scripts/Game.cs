@@ -6,10 +6,20 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D, Networking.NetworkNode
 {
-	public enum Messages
+	public enum MessageType
 	{
-		Normal,
-		Propogate,
+		Strict,
+		Unreliable,
+		PropogateStrict,
+		PropogateUnreliable,
+		RelayedStrict,
+		RelayedUnreliable,
+	}
+
+	private struct UnhandledMessage
+	{
+		public Message Message;
+		public MessageType MessageType;
 	}
 
 	public static Game deprecated_Me;
@@ -32,6 +42,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	private ENetMultiplayerPeer _peer;
 	private WorldGenerator _worldGenerator;
+	private List<UnhandledMessage> _unhandledMessages = new List<UnhandledMessage>();
 
 	public override void _Ready()
 	{
@@ -57,11 +68,20 @@ public partial class Game : Node2D, Networking.NetworkNode
 	{
 		if (s_Server != null) s_Server.Update();
 		if (s_Client != null) s_Client.Update();
+
+		for (int unhandledMessageIndex = 0; unhandledMessageIndex < _unhandledMessages.Count; unhandledMessageIndex++)
+		{
+			UnhandledMessage unhandledMessage = _unhandledMessages[0];
+
+			_unhandledMessages.RemoveAt(0);
+
+			HandleMessage(unhandledMessage.MessageType, unhandledMessage.Message);
+		}
 	}
 
 	public static void SendRpcToServer(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
-		Message message = Message.Create(messageSendMode, (ushort)Messages.Normal);
+		Message message = Message.Create(messageSendMode, messageSendMode == MessageSendMode.Reliable ? (ushort)MessageType.Strict : (ushort)MessageType.Unreliable);
 		message.AddString(source.GetPath());
 		message.AddString(name);
 		messageBuilder.Invoke(message);
@@ -71,7 +91,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public static void SendRpcToClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
-		Message message = Message.Create(messageSendMode, (ushort)Messages.Normal);
+		Message message = Message.Create(messageSendMode, messageSendMode == MessageSendMode.Reliable ? (ushort)MessageType.Strict : (ushort)MessageType.Unreliable);
 		message.AddString(source.GetPath());
 		message.AddString(name);
 		messageBuilder.Invoke(message);
@@ -81,7 +101,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public static void SendRpcToOtherClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
-		Message message = Message.Create(messageSendMode, (ushort)Messages.Propogate);
+		Message message = Message.Create(messageSendMode, messageSendMode == MessageSendMode.Reliable ? (ushort)MessageType.PropogateStrict : (ushort)MessageType.PropogateUnreliable);
 		message.AddInt((int)messageSendMode);
 		message.AddString(source.GetPath());
 		message.AddString(name);
@@ -129,28 +149,57 @@ public partial class Game : Node2D, Networking.NetworkNode
 		return true;
 	}
 
-	private void MessageRecieved(Object _, MessageReceivedEventArgs eventArguments)
+	private void HandleMessage(MessageType messageType, Message message)
 	{
-		if (eventArguments.MessageId == (ushort)Messages.Propogate)
+		if (messageType == MessageType.PropogateStrict || messageType == MessageType.PropogateUnreliable)
 		{
-			MessageSendMode messageSendMode = (MessageSendMode)eventArguments.Message.GetInt();
-			Message message = Message.Create(messageSendMode, (ushort)Messages.Normal);
-			message.AddBytes(eventArguments.Message.GetBytes(eventArguments.Message.UnreadBits / 8), false);
+			MessageSendMode messageSendMode = (MessageSendMode)message.GetInt();
+			Message relayMessage = Message.Create(messageSendMode, (ushort)(messageType == MessageType.PropogateStrict ? MessageType.RelayedStrict : MessageType.RelayedUnreliable));
 
-			s_Server.SendToAll(message);
+			relayMessage.AddBytes(message.GetBytes(message.UnreadBits / 8));
+
+			s_Server.SendToAll(relayMessage);
 
 			return;
 		}
 
-		string path = eventArguments.Message.GetString();
+		string path = message.GetString();
 
-		if (!HasNode(path)) return;
+		if (path.Length == 0)
+		{
+			GD.PushWarning("Got empty path??? " + message.ReadBits + " " + message.UnreadBits + " " + messageType + " " + message.SendMode);
+
+			return;
+		}
+
+		if (!HasNode(path) || ((messageType == MessageType.Strict || messageType == MessageType.RelayedStrict) && _unhandledMessages.Count > 0))
+		{
+			GD.PushWarning("Unhandled message for node " + path + " " + path.Length);
+
+			Message unhandledMessage = Message.Create(MessageSendMode.Reliable, (ushort)messageType);
+			unhandledMessage.AddString(path);
+
+			unhandledMessage.AddBytes(message.GetBytes(message.UnreadBits / 8));
+
+			_unhandledMessages.Add(new UnhandledMessage
+			{
+				MessageType = messageType,
+				Message = unhandledMessage,
+			});
+
+			return;
+		}
 
 		Networking.NetworkNode rpcReceiver = GetNode<Networking.NetworkNode>(path);
 
-		string name = eventArguments.Message.GetString();
+		string name = message.GetString();
 
-		rpcReceiver.RpcMap.Call(name, eventArguments.Message);
+		rpcReceiver.RpcMap.Call(name, message);
+	}
+
+	private void MessageRecieved(Object _, MessageReceivedEventArgs eventArguments)
+	{
+		HandleMessage((MessageType)eventArguments.MessageId, eventArguments.Message);
 	}
 
 	private void ClientConnected(Object _, ServerConnectedEventArgs eventArguments)
