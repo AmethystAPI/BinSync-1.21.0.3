@@ -1,14 +1,20 @@
 using Godot;
+using Riptide;
 
-public partial class Exit : Node2D, Damageable
+public partial class Exit : Node2D, Damageable, Networking.NetworkNode
 {
 	[Export] public Vector2 Direction;
+
+	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
+	public Networking.RpcMap RpcMap => _rpcMap;
 
 	private bool _locked = true;
 	private bool _destroyed = false;
 
 	public override void _Ready()
 	{
+		_rpcMap.Register(nameof(DamageRpc), DamageRpc);
+
 		GetParent().GetParent<Room>().Completed += OnCompleted;
 	}
 
@@ -23,13 +29,12 @@ public partial class Exit : Node2D, Damageable
 	{
 		if (_destroyed) return;
 
-		if (projectile.GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+		if (!Game.IsOwner(projectile)) return;
 
-		Rpc(nameof(DamageRpc));
+		Game.SendRpcToOtherClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message => { });
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	public void DamageRpc()
+	public void DamageRpc(Message message)
 	{
 		_destroyed = true;
 

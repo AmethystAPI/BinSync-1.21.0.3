@@ -137,6 +137,8 @@ public class Networking
 
     private void SendUpdate()
     {
+      if (_source == null) GD.PushError("Can not send updates for a synched variable that has not been registered!");
+
       if (!Game.IsOwner(_source)) return;
 
       ulong now = Time.GetTicksMsec();

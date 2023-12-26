@@ -1,16 +1,39 @@
-[gd_scene load_steps=17 format=3 uid="uid://bh3awkciiraoa"]
+[gd_scene load_steps=22 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
 [ext_resource type="Script" path="res://scripts/Room.cs" id="1_pherh"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/slime.tscn" id="2_ab8p0"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/sword.tscn" id="3_6spq0"]
-[ext_resource type="PackedScene" uid="uid://om3pvxcs88bm" path="res://scenes/big_slime.tscn" id="3_gb1e2"]
+[ext_resource type="Script" path="res://scripts/Slime.cs" id="3_fv25h"]
 [ext_resource type="PackedScene" uid="uid://b8edoidtp7am7" path="res://scenes/fast_slime.tscn" id="4_0fnvm"]
+[ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/slime_projectile.tscn" id="4_wftgi"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/bow.tscn" id="5_f7wxi"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/hammer.tscn" id="5_jgg8f"]
+[ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="5_w21w5"]
 [ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="10_svavk"]
 [ext_resource type="Script" path="res://scripts/Entrance.cs" id="10_u7ees"]
 [ext_resource type="Script" path="res://scripts/Exit.cs" id="12_ud78m"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2fdid"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
+size = Vector2(36, 21)
+
+[sub_resource type="PackedScene" id="PackedScene_6rgua"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("BigSlime", "CharacterBody2D", "y_sort_enabled", "collision_mask", "motion_mode", "platform_on_leave", "script", "ProjectileScene", "Health", "Sprite2D", "Sprite2D", "scale", "texture", "offset", "hframes", "vframes", "MultiplayerSynchronizer", "MultiplayerSynchronizer", "replication_config", "CollisionShape2D", "CollisionShape2D", "position", "shape"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 5, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 0, 1073741825, 0, 17, 16, -1, 1, 18, 12, 0, 1073741826, 0, 20, 19, -1, 2, 21, 13, 22, 14, 0),
+"variants": [true, 2, 1, 2, ExtResource("3_fv25h"), ExtResource("4_wftgi"), 4, Vector2(3, 3), ExtResource("5_w21w5"), Vector2(0, -5), 3, 3, SubResource("SceneReplicationConfig_2fdid"), Vector2(0, -10.5), SubResource("RectangleShape2D_75mpk")],
+"version": 3
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
 size = Vector2(128, 128)
@@ -30,7 +53,7 @@ size = Vector2(16, 32)
 [node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
 y_sort_enabled = true
 script = ExtResource("1_pherh")
-EnemyScenes = Array[PackedScene]([ExtResource("2_ab8p0"), ExtResource("3_gb1e2"), ExtResource("4_0fnvm")])
+EnemyScenes = Array[PackedScene]([ExtResource("2_ab8p0"), SubResource("PackedScene_6rgua"), ExtResource("4_0fnvm")])
 LootScenes = Array[PackedScene]([ExtResource("3_6spq0"), ExtResource("5_f7wxi"), ExtResource("5_jgg8f")])
 SpawnPoints = [NodePath("SpawnPoints/Point1")]
 EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)

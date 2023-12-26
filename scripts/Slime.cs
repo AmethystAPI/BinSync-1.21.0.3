@@ -1,23 +1,46 @@
 using Godot;
+using Riptide;
 using System;
 
-public partial class Slime : CharacterBody2D, Damageable
+public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 {
 	[Export] public PackedScene ProjectileScene;
 	[Export] public int Health = 3;
 	[Export] public float Speed = 10f;
+
+	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
+	public Networking.RpcMap RpcMap => _rpcMap;
+
+	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client, false, 50);
 
 	private float _attackTimer = 2f;
 	private Vector2 _knockback;
 
 	public override void _Ready()
 	{
+		_rpcMap.Register(nameof(DamageRpc), DamageRpc);
+		_rpcMap.Register(nameof(AttackRpc), AttackRpc);
+		_rpcMap.Register(_syncedPosition, this);
+
+		_syncedPosition.Value = GlobalPosition;
+
 		GetParent<Room>().AddEnemy();
 	}
 
 	public override void _Process(double delta)
 	{
-		if (!Game.deprecated_Me.deprecated_IsHost) return;
+		_syncedPosition.Sync();
+
+		if (Game.IsOwner(this))
+		{
+			_syncedPosition.Value = GlobalPosition;
+		}
+		else
+		{
+			GlobalPosition = GlobalPosition.Lerp(_syncedPosition.Value, (float)delta * 20.0f);
+		}
+
+		if (!Game.IsHost()) return;
 
 		_attackTimer -= (float)delta;
 
@@ -25,7 +48,7 @@ public partial class Slime : CharacterBody2D, Damageable
 		{
 			_attackTimer = 1f;
 
-			Rpc(nameof(AttackRpc));
+			Game.SendRpcToClients(this, nameof(AttackRpc), MessageSendMode.Reliable, message => { });
 		}
 	}
 
@@ -33,7 +56,7 @@ public partial class Slime : CharacterBody2D, Damageable
 	{
 		_knockback = _knockback.Lerp(Vector2.Zero, (float)delta * 12f);
 
-		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+		if (!Game.IsOwner(this)) return;
 
 		if (_knockback.LengthSquared() < 0.1f)
 		{
@@ -58,9 +81,17 @@ public partial class Slime : CharacterBody2D, Damageable
 
 	public void Damage(Projectile projectile)
 	{
-		if (projectile.GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+		if (!Game.IsOwner(projectile)) return;
 
-		Rpc(nameof(DamageRpc), projectile.GetMultiplayerAuthority(), projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback);
+		Game.SendRpcToOtherClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddInt(projectile.GetMultiplayerAuthority());
+
+			Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
+
+			message.AddFloat(knockback.X);
+			message.AddFloat(knockback.Y);
+		});
 	}
 
 	public bool CanDamage(Projectile projectile)
@@ -68,9 +99,11 @@ public partial class Slime : CharacterBody2D, Damageable
 		return projectile.Source is Player;
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	private void DamageRpc(int newAuthority, Vector2 knockback)
+	private void DamageRpc(Message message)
 	{
+		int newAuthority = message.GetInt();
+		Vector2 knockback = new Vector2(message.GetFloat(), message.GetFloat());
+
 		SetMultiplayerAuthority(newAuthority);
 
 		Health--;
@@ -85,8 +118,7 @@ public partial class Slime : CharacterBody2D, Damageable
 		}
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	private void AttackRpc()
+	private void AttackRpc(Message message)
 	{
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 

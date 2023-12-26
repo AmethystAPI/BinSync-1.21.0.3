@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb261ce2j3ht2"]
+[gd_scene load_steps=5 format=3 uid="uid://bb261ce2j3ht2"]
 
 [ext_resource type="Script" path="res://scripts/Weapon.cs" id="1_6xck1"]
 [ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/hammer_projectile.tscn" id="2_cv6x1"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_l5mtf"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vhxq4"]
-properties/0/path = NodePath(".:rotation")
-properties/0/spawn = true
-properties/0/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaem"]
 
@@ -22,9 +17,6 @@ texture = ExtResource("3_l5mtf")
 offset = Vector2(0, -4)
 hframes = 5
 frame = 4
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_vhxq4")
 
 [node name="EquipArea" type="Area2D" parent="."]
 
