@@ -73,7 +73,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 		s_Server.SendToAll(message);
 	}
 
-	public static void SendRpcToOtherClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
+	public static void SendRpcToAllClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
 		Message message = Message.Create(messageSendMode, 1);
 		message.AddString(name);

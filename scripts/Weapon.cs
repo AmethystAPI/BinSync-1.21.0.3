@@ -47,7 +47,7 @@ public partial class Weapon : Item, Networking.NetworkNode
 
       if (!Game.IsOwner(this)) return;
 
-      Game.SendRpcToOtherClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { });
+      Game.SendRpcToAllClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { });
     }
   }
 

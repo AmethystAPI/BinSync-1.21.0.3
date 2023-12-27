@@ -15,13 +15,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] holy trinket
-- [ ] strength trinket
 
 
 ## Done
 
 **Complete**
+- [x] holy trinket
+- [x] strength trinket
 - [x] swiftness trinket
 - [x] fix item pickup visuals
 - [x] Prevent Players From Skipping Rooms

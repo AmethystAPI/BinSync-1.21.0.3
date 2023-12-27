@@ -85,7 +85,7 @@ public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 	{
 		if (!Game.IsOwner(projectile)) return;
 
-		Game.SendRpcToOtherClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message =>
+		Game.SendRpcToAllClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message =>
 		{
 			message.AddInt(projectile.GetMultiplayerAuthority());
 

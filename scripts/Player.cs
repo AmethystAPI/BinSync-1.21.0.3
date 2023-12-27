@@ -22,14 +22,18 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	private Vector2 _dashDirection = Vector2.Right;
 	private float _dashTimer;
 	private Weapon _equippedWeapon;
+	private AnimationPlayer _animationPlayer;
 
 	public override void _Ready()
 	{
 		_rpcMap.Register(_syncedPosition, this);
 		_rpcMap.Register(_syncedVelocity, this);
 		_rpcMap.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
+		_rpcMap.Register(nameof(UpdateHealthRpc), UpdateHealthRpc);
 
 		Players.Add(this);
+
+		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
 		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
 
@@ -42,6 +46,15 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public override void _Process(double delta)
 	{
+		if (Health > 0)
+		{
+			_animationPlayer.Play("idle");
+		}
+		else
+		{
+			_animationPlayer.Play("dead");
+		}
+
 		_syncedPosition.Sync();
 		_syncedVelocity.Sync();
 
@@ -103,28 +116,31 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		Health += change;
 
 		if (Health > 3) Health = 3;
-		if (Health <= 0) Health = 3;
 
 		if (!Game.IsOwner(this)) return;
+
+		Game.SendRpcToAllClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddFloat(Health);
+		});
 
 		GameUI.UpdateHealth(Health);
 	}
 
-	public void Damage(Projectile projectile)
+	public void SetHealth(float health)
 	{
+		Health = health;
+
+		if (Health > 3) Health = 3;
+
 		if (!Game.IsOwner(this)) return;
 
-		ModifyHealth(-projectile.Damage);
-
-		if (Health > 0) return;
-
-		GD.Print("Died");
-
-		Health = 3;
+		Game.SendRpcToAllClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddFloat(Health);
+		});
 
 		GameUI.UpdateHealth(Health);
-
-		// GlobalPosition = Vector2.Zero;
 	}
 
 	public bool CanDamage(Projectile projectile)
@@ -132,12 +148,28 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		return !(projectile.Source is Player);
 	}
 
+	public void Damage(Projectile projectile)
+	{
+		if (!Game.IsOwner(this)) return;
+
+		ModifyHealth(-projectile.Damage);
+	}
+
 	public void Equip(Item item)
 	{
-		Game.SendRpcToOtherClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
+		Game.SendRpcToAllClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
 		{
 			message.AddString(item.GetPath());
 		});
+	}
+
+	private void UpdateHealthRpc(Message message)
+	{
+		if (Game.IsOwner(this)) return;
+
+		float newHealth = message.GetFloat();
+
+		SetHealth(newHealth);
 	}
 
 	private void EquipWeaponRpc(Message message)

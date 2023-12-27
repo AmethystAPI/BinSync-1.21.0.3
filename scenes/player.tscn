@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=8 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_xr8oe"]
@@ -6,6 +6,42 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypp2t"]
 size = Vector2(7, 4)
+
+[sub_resource type="Animation" id="Animation_2htce"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bn6i1"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74xub"]
+_data = {
+"dead": SubResource("Animation_bn6i1"),
+"idle": SubResource("Animation_2htce")
+}
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -29,3 +65,8 @@ shape = SubResource("RectangleShape2D_ypp2t")
 position = Vector2(0, -7)
 
 [node name="Trinkets" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_74xub")
+}
