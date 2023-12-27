@@ -3,7 +3,7 @@ using System;
 
 public partial class Trinket : Item
 {
-	Player _equippingPlayer;
+	internal Player _equippingPlayer;
 
 	public override void Equip(Player player)
 	{

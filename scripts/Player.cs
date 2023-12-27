@@ -98,15 +98,27 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		_dashDirection = (GetGlobalMousePosition() - GlobalPosition).Normalized();
 	}
 
+	public void ModifyHealth(float change)
+	{
+		Health += change;
+
+		if (Health > 3) Health = 3;
+		if (Health <= 0) Health = 3;
+
+		if (!Game.IsOwner(this)) return;
+
+		GameUI.UpdateHealth(Health);
+	}
+
 	public void Damage(Projectile projectile)
 	{
 		if (!Game.IsOwner(this)) return;
 
-		Health -= projectile.Damage;
-
-		GameUI.UpdateHealth(Health);
+		ModifyHealth(-projectile.Damage);
 
 		if (Health > 0) return;
+
+		GD.Print("Died");
 
 		Health = 3;
 
