@@ -38,6 +38,20 @@ public partial class Game : Node2D, Networking.NetworkNode
 		if (!Host()) Join("127.0.0.1");
 	}
 
+	// public override void _Input(InputEvent @event)
+	// {
+	// 	if (@event.IsActionPressed("host"))
+	// 	{
+	// 		Host();
+	// 	}
+
+	// 	if (@event.IsActionPressed("join"))
+	// 	{
+	// 		Join("104.33.194.150");
+	// 		// Join("127.0.0.1");
+	// 	}
+	// }
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (s_Server != null) s_Server.Update();

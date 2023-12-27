@@ -83,11 +83,21 @@ public class Networking
     {
       bool propogate = message.GetBool();
 
+      if (propogate)
+      {
+        if (!Game.IsOwner(_source)) GD.PushWarning("Propogating " + _source.Name);
+      }
+      else
+      {
+        if (!Game.IsHost() && !Game.IsOwner(_source)) GD.PushWarning("Recieved update " + _source.Name);
+      }
+
       ulong sentTick = message.GetULong();
 
-      if (sentTick <= _lastRecievedTick) return;
+      // Removed untill more testing
+      // if (sentTick <= _lastRecievedTick) return;
 
-      _lastRecievedTick = sentTick;
+      // _lastRecievedTick = sentTick;
 
       if (typeof(ValueType) == typeof(int))
       {
