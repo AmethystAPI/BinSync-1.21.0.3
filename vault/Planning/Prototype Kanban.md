@@ -6,14 +6,13 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Slime boss
-- [ ] Full Gameplay Loop
 - [ ] Main Menu
 - [ ] Lobby Menu
 
 
 ## In Progress
 
+- [ ] Full Gameplay Loop
 
 
 ## Done

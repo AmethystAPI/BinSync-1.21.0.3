@@ -87,7 +87,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 	{
 		GD.Print("Hosting...");
 
-		s_Server = new Server();
+		s_Server = new Server(new Riptide.Transports.Tcp.TcpServer());
 
 		try
 		{
@@ -114,7 +114,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 	{
 		GD.Print("Joining...");
 
-		s_Client = new Client();
+		s_Client = new Client(new Riptide.Transports.Tcp.TcpClient());
 		s_Client.Connect(address + ":25566", 5, 0, null, false);
 
 		s_Client.MessageReceived += MessageRecieved;
