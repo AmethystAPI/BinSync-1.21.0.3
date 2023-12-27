@@ -52,16 +52,31 @@ public partial class Room : Node2D, Networking.NetworkNode
 
 	public virtual void PlaceEntrance(Vector2 direction)
 	{
-		SetTileMapEnabled(EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)], false);
+		EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)].QueueFree();
 
 		AddChild(Entrances[EntranceDirections.ToList().IndexOf(direction)]);
 	}
 
 	public virtual void PlaceExit(Vector2 direction)
 	{
-		SetTileMapEnabled(EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)], false);
+		EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)].QueueFree();
 
 		AddChild(Exits[ExitDirections.ToList().IndexOf(direction)]);
+	}
+
+	public virtual void Place()
+	{
+		foreach (Node2D entrance in Entrances)
+		{
+			if (entrance.IsInsideTree()) continue;
+			entrance.QueueFree();
+		}
+
+		foreach (Node2D exit in Exits)
+		{
+			if (exit.IsInsideTree()) continue;
+			exit.QueueFree();
+		}
 	}
 
 	public void AddEnemy()
@@ -76,14 +91,6 @@ public partial class Room : Node2D, Networking.NetworkNode
 		if (_aliveEnemies != 0) return;
 
 		End();
-	}
-
-	private void SetTileMapEnabled(TileMap tileMap, bool enabled)
-	{
-		for (int layerIndex = 0; layerIndex < tileMap.GetLayersCount(); layerIndex++)
-		{
-			tileMap.SetLayerEnabled(layerIndex, enabled);
-		}
 	}
 
 	private void OnBodyEntered(Node2D body)
@@ -161,6 +168,8 @@ public partial class Room : Node2D, Networking.NetworkNode
 		Completed?.Invoke();
 
 		if (!Game.IsHost()) return;
+
+		if (LootScenes.Length == 0) return;
 
 		Game.SendRpcToClients(this, nameof(SpawnLootRpc), MessageSendMode.Reliable, message =>
 		{

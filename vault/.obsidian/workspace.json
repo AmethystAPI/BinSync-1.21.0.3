@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0e789347d06a8001",
+        "id": "d9cd3423e170ba91",
         "type": "tabs",
         "children": [
           {
-            "id": "3120ab4f30536ad5",
+            "id": "3b31b13104c58670",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -144,23 +144,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3120ab4f30536ad5",
+  "active": "3b31b13104c58670",
   "lastOpenFiles": [
-    "Design/Trinkets.md",
+    "Untitled.canvas",
     "Daily Notes/Day 18-5.md",
-    "Planning/Prototype Kanban.md",
     "Daily Notes/Day 18-4.md",
     "Daily Notes/Day 18-3.md",
+    "Daily Notes/Day 18-1.md",
+    "Planning/Prototype Kanban.md",
+    "Design/Trinkets.md",
     "Daily Notes/Untitled.md",
     "Implementation/World Generation.md",
     "Daily Notes/Day 18-2.md",
     "Implementation/Combat.md",
     "Design/World Generation.md",
-    "Daily Notes/Day 18-1.md",
     "Planning",
     "Design",
     "Implementation",
-    "Untitled.canvas",
     "Daily Notes",
     "Daily Notes",
     "Untitled 1.md"

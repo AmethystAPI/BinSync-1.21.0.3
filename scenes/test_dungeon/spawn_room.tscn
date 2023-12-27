@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqa6mjnknyfr7"]
+[gd_scene load_steps=7 format=3 uid="uid://dqa6mjnknyfr7"]
 
 [ext_resource type="Script" path="res://scripts/SpawnRoom.cs" id="1_3rcqa"]
-[ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/trinkets/faith_trinket.tscn" id="2_uv6dr"]
 [ext_resource type="Script" path="res://scripts/Exit.cs" id="3_pgmik"]
 [ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="3_ulsji"]
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="9_138rf"]
@@ -16,7 +15,7 @@ size = Vector2(32, 14)
 y_sort_enabled = true
 script = ExtResource("1_3rcqa")
 EnemyScenes = Array[PackedScene]([])
-LootScenes = Array[PackedScene]([ExtResource("2_uv6dr")])
+LootScenes = Array[PackedScene]([])
 SpawnPoints = Array[PackedScene]([])
 EdgeTileMaps = Array[PackedScene]([])
 Entrances = Array[PackedScene]([])

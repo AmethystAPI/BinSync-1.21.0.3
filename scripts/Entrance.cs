@@ -12,6 +12,8 @@ public partial class Entrance : Node2D
 
 		GetParent().GetParent<Room>().Started += () =>
 		{
+			if (!IsInstanceValid(this)) return;
+
 			AddChild(_visuals);
 		};
 	}

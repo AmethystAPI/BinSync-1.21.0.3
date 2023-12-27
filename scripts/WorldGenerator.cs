@@ -33,6 +33,8 @@ public partial class WorldGenerator : Node2D
 		_currentRoom = spawnRoom;
 
 		_currentRoom.PlaceExit(Vector2.Up);
+
+		_currentRoom.Place();
 	}
 
 	public static void PlaceNextRoom(Vector2 connectionPosition, Vector2 direction)
@@ -59,6 +61,8 @@ public partial class WorldGenerator : Node2D
 		Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
 
 		room.PlaceExit(exitDirection);
+
+		room.Place();
 	}
 
 	public static void DespawnLastRoom()
