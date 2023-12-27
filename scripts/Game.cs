@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D, Networking.NetworkNode
 {
-	public static bool IsHost() => s_Server != null;
+	public static bool IsHost() => Server != null;
 	public static bool IsOwner(Node node) => node.GetMultiplayerAuthority() == s_Client.Id;
 	public static uint Seed;
+	public static Server Server;
 
 	private static Game s_Me;
-	private static Server s_Server;
 	private static Client s_Client;
 
 	[Export] public PackedScene PlayerScene;
@@ -36,7 +36,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		if (!Host()) Join("127.0.0.1");
+		// if (!Host()) Join("127.0.0.1");
 	}
 
 	// public override void _Input(InputEvent @event)
@@ -55,7 +55,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (s_Server != null) s_Server.Update();
+		if (Server != null) Server.Update();
 		if (s_Client != null) s_Client.Update();
 
 		for (int unhandledMessageIndex = 0; unhandledMessageIndex < _unhandledMessages.Count; unhandledMessageIndex++)
@@ -85,7 +85,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 		message.AddString(source.GetPath());
 		messageBuilder.Invoke(message);
 
-		s_Server.SendToAll(message);
+		Server.SendToAll(message);
 	}
 
 	public static void SendRpcToAllClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
@@ -98,25 +98,24 @@ public partial class Game : Node2D, Networking.NetworkNode
 		s_Client.Send(message);
 	}
 
-	public bool Host()
+	public static bool Host()
 	{
 		GD.Print("Hosting...");
 
-		s_Server = new Server(new Riptide.Transports.Tcp.TcpServer());
+		Server = new Server(new Riptide.Transports.Tcp.TcpServer());
 
 		try
 		{
-			s_Server.Start(25566, 2, 0, false);
+			Server.Start(25566, 2, 0, false);
 		}
 		catch
 		{
-			s_Server = null;
+			Server = null;
 
 			return false;
 		}
 
-		s_Server.MessageReceived += MessageRecieved;
-		s_Server.ClientConnected += ClientConnected;
+		Server.MessageReceived += s_Me.MessageRecieved;
 
 		GD.Print("Successfully started server, starting client!");
 
@@ -125,16 +124,32 @@ public partial class Game : Node2D, Networking.NetworkNode
 		return true;
 	}
 
-	public bool Join(string address)
+	public static bool Join(string address)
 	{
 		GD.Print("Joining...");
 
 		s_Client = new Client(new Riptide.Transports.Tcp.TcpClient());
 		s_Client.Connect(address + ":25566", 5, 0, null, false);
 
-		s_Client.MessageReceived += MessageRecieved;
+		s_Client.MessageReceived += s_Me.MessageRecieved;
 
 		return true;
+	}
+
+	public static void Start()
+	{
+		List<int> clientIds = new List<int>();
+
+		foreach (Connection connection in Server.Clients)
+		{
+			clientIds.Add(connection.Id);
+		}
+
+		SendRpcToClients(s_Me, nameof(StartRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddInts(clientIds.ToArray());
+			message.AddUInt(new RandomNumberGenerator().Randi());
+		});
 	}
 
 	public static void Restart()
@@ -143,7 +158,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 		List<int> clientIds = new List<int>();
 
-		foreach (Connection connection in s_Server.Clients)
+		foreach (Connection connection in Server.Clients)
 		{
 			clientIds.Add(connection.Id);
 		}
@@ -212,32 +227,12 @@ public partial class Game : Node2D, Networking.NetworkNode
 				relayMessage.AddBits(bits, bitsToWrite);
 			}
 
-			s_Server.SendToAll(relayMessage);
+			Server.SendToAll(relayMessage);
 
 			return;
 		}
 
 		HandleMessage(eventArguments.Message);
-	}
-
-	private void ClientConnected(Object _, ServerConnectedEventArgs eventArguments)
-	{
-		if (s_Server.ClientCount != 2 || eventArguments.Client != s_Server.Clients[1]) return;
-
-		if (s_Server.ClientCount != 2) return;
-
-		List<int> clientIds = new List<int>();
-
-		foreach (Connection connection in s_Server.Clients)
-		{
-			clientIds.Add(connection.Id);
-		}
-
-		SendRpcToClients(this, nameof(StartRpc), MessageSendMode.Reliable, message =>
-		{
-			message.AddInts(clientIds.ToArray());
-			message.AddUInt(new RandomNumberGenerator().Randi());
-		});
 	}
 
 	private void StartRpc(Message message)

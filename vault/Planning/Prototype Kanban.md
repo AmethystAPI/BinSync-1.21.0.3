@@ -6,18 +6,17 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Main Menu
-- [ ] Lobby Menu
 
 
 ## In Progress
 
-- [ ] Full Gameplay Loop
 
 
 ## Done
 
 **Complete**
+- [x] Main Menu
+- [x] Full Gameplay Loop
 - [x] Improve Death Behaviour
 - [x] holy trinket
 - [x] strength trinket

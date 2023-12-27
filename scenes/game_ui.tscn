@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5284u6x7my5h"]
 
-[ext_resource type="Script" path="res://scenes/GameUI.cs" id="1_s3uii"]
+[ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_s3uii"]
 
 [node name="GameUI" type="Control" node_paths=PackedStringArray("HealthBar")]
 layout_mode = 3
