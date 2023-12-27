@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	private Vector2 _dashDirection = Vector2.Right;
 	private float _dashTimer;
 	private Weapon _equippedWeapon;
+	private List<Trinket> _equippedTrinkets = new List<Trinket>();
 
 	public override void _Ready()
 	{
@@ -35,7 +36,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (!Game.IsOwner(this)) return;
 
-		EquipWeapon(weapon);
+		Equip(weapon);
 	}
 
 	public override void _Process(double delta)
@@ -63,7 +64,13 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		{
 			Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
-			Velocity = movement.Normalized() * 100f;
+			float modifiedSpeed = 100f;
+			foreach (Trinket trinket in _equippedTrinkets)
+			{
+				modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
+			}
+
+			Velocity = movement.Normalized() * modifiedSpeed;
 		}
 		else
 		{
@@ -108,28 +115,41 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		return !(projectile.Source is Player);
 	}
 
-	public void EquipWeapon(Weapon weapon)
+	public void Equip(Item item)
 	{
 		Game.SendRpcToOtherClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
 		{
-			message.AddString(weapon.GetPath());
+			message.AddString(item.GetPath());
 		});
 	}
 
 	private void EquipWeaponRpc(Message message)
 	{
-		string weaponPath = message.GetString();
+		string itemPath = message.GetString();
 
-		Weapon weapon = GetNode<Weapon>(weaponPath);
+		Item item = GetNode<Item>(itemPath);
 
-		if (_equippedWeapon != null) _equippedWeapon.QueueFree();
+		if (item is Weapon)
+		{
+			if (_equippedWeapon != null) _equippedWeapon.QueueFree();
 
-		weapon.GetParent().RemoveChild(weapon);
-		GetNode("WeaponHolder").AddChild(weapon);
-		weapon.SetMultiplayerAuthority(GetMultiplayerAuthority());
+			item.GetParent().RemoveChild(item);
+			GetNode("WeaponHolder").AddChild(item);
+			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
-		_equippedWeapon = weapon;
+			_equippedWeapon = (Weapon)item;
 
-		weapon.Equip();
+		}
+
+		if (item is Trinket)
+		{
+			item.GetParent().RemoveChild(item);
+			GetNode("Trinkets").AddChild(item);
+			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
+
+			_equippedTrinkets.Add((Trinket)item);
+		}
+
+		item.Equip();
 	}
 }

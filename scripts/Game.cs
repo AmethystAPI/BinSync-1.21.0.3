@@ -138,7 +138,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 		string path = message.GetString();
 
-		if (message.SendMode == MessageSendMode.Reliable) GD.PushWarning("Handling " + name + " on " + path);
+		// if (message.SendMode == MessageSendMode.Reliable) GD.PushWarning("Handling " + name + " on " + path);
 
 		if (!HasNode(path))
 		{

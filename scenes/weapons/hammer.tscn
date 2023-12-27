@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb261ce2j3ht2"]
 
 [ext_resource type="Script" path="res://scripts/Weapon.cs" id="1_6xck1"]
-[ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/hammer_projectile.tscn" id="2_cv6x1"]
+[ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/weapons/hammer_projectile.tscn" id="2_cv6x1"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_l5mtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaem"]

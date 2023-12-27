@@ -1,7 +1,7 @@
 using Godot;
 using Riptide;
 
-public partial class Weapon : Node2D, Networking.NetworkNode
+public partial class Weapon : Item, Networking.NetworkNode
 {
   [Export] public PackedScene ProjectileScene;
 
@@ -10,15 +10,11 @@ public partial class Weapon : Node2D, Networking.NetworkNode
 
   private Networking.SyncedVariable<float> _syncedRotation = new Networking.SyncedVariable<float>(nameof(_syncedRotation), 0, Networking.Authority.Client);
 
-  private bool _equipped;
-  private Area2D _equipArea;
 
   public override void _Ready()
   {
     _rpcMap.Register(_syncedRotation, this);
     _rpcMap.Register(nameof(ShootRpc), ShootRpc);
-
-    _equipArea = GetNode<Area2D>("EquipArea");
   }
 
   public override void _Process(double delta)
@@ -43,21 +39,7 @@ public partial class Weapon : Node2D, Networking.NetworkNode
 
   public override void _Input(InputEvent @event)
   {
-    if (@event.IsActionPressed("equip"))
-    {
-      if (_equipped) return;
-
-      foreach (Node2D body in _equipArea.GetOverlappingBodies())
-      {
-        if (!(body is Player)) continue;
-
-        if (!Game.IsOwner(body)) continue;
-
-        (body as Player).EquipWeapon(this);
-
-        break;
-      }
-    }
+    base._Input(@event);
 
     if (@event.IsActionPressed("shoot"))
     {
@@ -67,11 +49,6 @@ public partial class Weapon : Node2D, Networking.NetworkNode
 
       Game.SendRpcToOtherClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { });
     }
-  }
-
-  public void Equip()
-  {
-    _equipped = true;
   }
 
   private void ShootRpc(Message message)
