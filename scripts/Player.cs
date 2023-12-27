@@ -16,7 +16,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
 	public Networking.RpcMap RpcMap => _rpcMap;
 
-	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client, false, 50);
+	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client);
 	private Networking.SyncedVariable<Vector2> _syncedVelocity = new Networking.SyncedVariable<Vector2>(nameof(_syncedVelocity), Vector2.Zero, Networking.Authority.Client);
 
 	private bool _dashing = false;

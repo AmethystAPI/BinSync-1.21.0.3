@@ -56,9 +56,10 @@ public class Networking
     private Node _source;
     private Authority _authority;
     private bool _autoSynchronize;
-    private ulong _lastRecievedTick;
-    private ulong _lastSendTick;
-    private ulong _minimumSendDelay;
+    private int _lastRecievedIndex = -1;
+    private int _lastSentIndex = -1;
+    private ulong _lastSendTick = 0;
+    private ulong _minimumSendDelay = 50;
 
     public SyncedVariable(string name, ValueType intitalValue, Authority authority, bool autoSynchronize = false, ulong minimumSendDelay = 50)
     {
@@ -83,21 +84,20 @@ public class Networking
     {
       bool propogate = message.GetBool();
 
-      // if (propogate)
-      // {
-      //   if (!Game.IsOwner(_source)) GD.PushWarning("Propogating " + _source.Name);
-      // }
-      // else
-      // {
-      //   if (!Game.IsHost() && !Game.IsOwner(_source)) GD.PushWarning("Recieved update " + _source.Name);
-      // }
+      int index = message.GetInt();
 
-      ulong sentTick = message.GetULong();
+      if (propogate)
+      {
+        if (!Game.IsOwner(_source)) GD.PushWarning("Propogating " + _source.Name + " " + index + " " + _lastRecievedIndex);
+      }
+      else
+      {
+        if (!Game.IsHost() && !Game.IsOwner(_source)) GD.PushWarning("Recieved update " + _source.Name + " " + index + " " + _lastRecievedIndex);
+      }
 
-      // Removed untill more testing
-      // if (sentTick <= _lastRecievedTick) return;
+      if (index <= _lastRecievedIndex) return;
 
-      // _lastRecievedTick = sentTick;
+      _lastRecievedIndex = index;
 
       if (typeof(ValueType) == typeof(int))
       {
@@ -122,7 +122,9 @@ public class Networking
       return (Message message) =>
       {
         message.AddBool(propogate);
-        message.AddULong(Time.GetTicksMsec());
+
+        _lastSentIndex++;
+        message.AddInt(_lastSentIndex);
 
         if (typeof(ValueType) == typeof(int))
         {

@@ -15,7 +15,8 @@ public partial class MainMenu : Control
 
 	public void Join()
 	{
-		Game.Join("127.0.0.1");
+		// Game.Join("127.0.0.1");
+		Game.Join("104.33.194.150");
 
 		QueueFree();
 	}
