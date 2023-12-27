@@ -86,15 +86,6 @@ public class Networking
 
       int index = message.GetInt();
 
-      if (propogate)
-      {
-        if (!Game.IsOwner(_source)) GD.PushWarning("Propogating " + _source.Name + " " + index + " " + _lastRecievedIndex);
-      }
-      else
-      {
-        if (!Game.IsHost() && !Game.IsOwner(_source)) GD.PushWarning("Recieved update " + _source.Name + " " + index + " " + _lastRecievedIndex);
-      }
-
       if (index <= _lastRecievedIndex) return;
 
       _lastRecievedIndex = index;

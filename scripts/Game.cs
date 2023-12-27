@@ -6,6 +6,13 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D, Networking.NetworkNode
 {
+	private struct UnhandledRpc
+	{
+		public String Name;
+		public String Path;
+		public Message Message;
+	}
+
 	public static bool IsHost() => Server != null;
 	public static bool IsOwner(Node node) => node.GetMultiplayerAuthority() == s_Client.Id;
 	public static uint Seed;
@@ -23,7 +30,6 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	private ENetMultiplayerPeer _peer;
 	private WorldGenerator _worldGenerator;
-	private List<Message> _unhandledMessages = new List<Message>();
 
 	public override void _Ready()
 	{
@@ -36,36 +42,13 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		// if (!Host()) Join("127.0.0.1");
+		if (!Host()) Join("127.0.0.1");
 	}
-
-	// public override void _Input(InputEvent @event)
-	// {
-	// 	if (@event.IsActionPressed("host"))
-	// 	{
-	// 		Host();
-	// 	}
-
-	// 	if (@event.IsActionPressed("join"))
-	// 	{
-	// 		Join("104.33.194.150");
-	// 		// Join("127.0.0.1");
-	// 	}
-	// }
 
 	public override void _PhysicsProcess(double delta)
 	{
 		if (Server != null) Server.Update();
 		if (s_Client != null) s_Client.Update();
-
-		for (int unhandledMessageIndex = 0; unhandledMessageIndex < _unhandledMessages.Count; unhandledMessageIndex++)
-		{
-			Message unhandledMessage = _unhandledMessages[0];
-
-			_unhandledMessages.RemoveAt(0);
-
-			HandleMessage(unhandledMessage);
-		}
 	}
 
 	public static void SendRpcToServer(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
@@ -116,6 +99,15 @@ public partial class Game : Node2D, Networking.NetworkNode
 		}
 
 		Server.MessageReceived += s_Me.MessageRecieved;
+
+		Server.ClientConnected += (object server, ServerConnectedEventArgs eventArguments) =>
+		{
+			if (Server.ClientCount != 2 || eventArguments.Client != Server.Clients[1]) return;
+
+			if (Server.ClientCount != 2) return;
+
+			Start();
+		};
 
 		GD.Print("Successfully started server, starting client!");
 
@@ -176,31 +168,9 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 		string path = message.GetString();
 
-		// if (message.SendMode == MessageSendMode.Reliable) GD.PushWarning("Handling " + name + " on " + path);
-
 		if (!HasNode(path))
 		{
-			if (message.SendMode == MessageSendMode.Unreliable) return;
-
-			GD.PushWarning("Unhandled message " + name + " for node " + path + " " + path.Length);
-
-			Message unhandledMessage = Message.Create(message.SendMode, 0);
-
-			unhandledMessage.AddString(name);
-			unhandledMessage.AddString(path);
-
-			while (message.UnreadBits > 0)
-			{
-				int bitsToWrite = Math.Min(message.UnreadBits, 8);
-
-				byte bits;
-
-				message.GetBits(bitsToWrite, out bits);
-
-				unhandledMessage.AddBits(bits, bitsToWrite);
-			}
-
-			_unhandledMessages.Add(unhandledMessage);
+			if (message.SendMode == MessageSendMode.Reliable) GD.PushWarning("Ignoring Reliable Rpc " + name + " for node " + path + " because the node does not exist!");
 
 			return;
 		}
