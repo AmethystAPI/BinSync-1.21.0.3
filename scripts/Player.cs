@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNode
 {
 	public static List<Player> Players = new List<Player>();
+	public static List<Player> AlivePlayers = new List<Player>();
 
 	[Export] public PackedScene DefaultWeaponScene;
 
@@ -23,6 +24,11 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	private float _dashTimer;
 	private Weapon _equippedWeapon;
 	private AnimationPlayer _animationPlayer;
+	private float _angelAngle;
+	private float _angelSwapTimer;
+	private int _angelTurn = 1;
+	private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+	private Area2D _ressurectArea;
 
 	public override void _Ready()
 	{
@@ -30,10 +36,13 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		_rpcMap.Register(_syncedVelocity, this);
 		_rpcMap.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
 		_rpcMap.Register(nameof(UpdateHealthRpc), UpdateHealthRpc);
+		_rpcMap.Register(nameof(ReviveRpc), ReviveRpc);
 
 		Players.Add(this);
+		AlivePlayers.Add(this);
 
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		_ressurectArea = GetNode<Area2D>("RessurectArea");
 
 		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
 
@@ -74,7 +83,22 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	{
 		if (!Game.IsOwner(this)) return;
 
-		if (!_dashing)
+		if (Health <= 0)
+		{
+			_angelSwapTimer -= (float)delta;
+
+			if (_angelSwapTimer <= 0)
+			{
+				_angelSwapTimer = _randomNumberGenerator.RandfRange(0.8f, 1.2f);
+
+				if (_randomNumberGenerator.RandfRange(0f, 1f) < 0.5f) _angelTurn = -_angelTurn;
+			}
+
+			_angelAngle += Mathf.Pi * (float)delta * _angelTurn;
+
+			Velocity = Vector2.Right.Rotated(_angelAngle) * 50f;
+		}
+		else if (!_dashing)
 		{
 			Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
@@ -88,6 +112,19 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		}
 		else
 		{
+			foreach (Node2D body in _ressurectArea.GetOverlappingBodies())
+			{
+				if (!(body is Player)) continue;
+
+				if (body == this) continue;
+
+				Player player = (Player)body;
+
+				if (player.Health > 0) continue;
+
+				Game.SendRpcToAllClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
+			}
+
 			Velocity = _dashDirection * 700f;
 
 			_dashTimer -= (float)delta;
@@ -117,6 +154,8 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (Health > 3) Health = 3;
 
+		if (Health <= 0) AlivePlayers.Remove(this);
+
 		if (!Game.IsOwner(this)) return;
 
 		Game.SendRpcToAllClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
@@ -133,6 +172,8 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (Health > 3) Health = 3;
 
+		if (Health <= 0) AlivePlayers.Remove(this);
+
 		if (!Game.IsOwner(this)) return;
 
 		Game.SendRpcToAllClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
@@ -145,7 +186,11 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public bool CanDamage(Projectile projectile)
 	{
-		return !(projectile.Source is Player);
+		if (projectile.Source is Player) return false;
+
+		if (Health <= 0) return false;
+
+		return true;
 	}
 
 	public void Damage(Projectile projectile)
@@ -200,5 +245,14 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		}
 
 		item.Equip(this);
+	}
+
+	private void ReviveRpc(Message message)
+	{
+		if (Health > 0) return;
+
+		AlivePlayers.Add(this);
+
+		SetHealth(1f);
 	}
 }

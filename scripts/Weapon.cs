@@ -45,6 +45,8 @@ public partial class Weapon : Item, Networking.NetworkNode
     {
       if (!_equipped) return;
 
+      if (_equippingPlayer.Health <= 0) return;
+
       if (!Game.IsOwner(this)) return;
 
       Game.SendRpcToAllClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { });
@@ -58,15 +60,13 @@ public partial class Weapon : Item, Networking.NetworkNode
     projectile.GlobalPosition = GlobalPosition;
     projectile.Rotation = Rotation;
 
-    Player player = GetParent().GetParent<Player>();
-
     projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
-    projectile.Source = player;
-    projectile.InheritedVelocity = player.Velocity;
+    projectile.Source = _equippingPlayer;
+    projectile.InheritedVelocity = _equippingPlayer.Velocity;
 
-    player.GetParent().AddChild(projectile);
+    _equippingPlayer.GetParent().AddChild(projectile);
 
-    foreach (Trinket trinket in player.EquippedTrinkets)
+    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets)
     {
       trinket.ModifyProjectile(this, projectile);
     }

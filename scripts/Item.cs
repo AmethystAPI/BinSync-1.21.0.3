@@ -4,6 +4,7 @@ using Riptide;
 public partial class Item : Node2D
 {
   internal bool _equipped;
+  internal Player _equippingPlayer;
 
   private Area2D _equipArea;
 
@@ -24,6 +25,8 @@ public partial class Item : Node2D
 
         if (!Game.IsOwner(body)) continue;
 
+        if ((body as Player).Health <= 0) continue;
+
         (body as Player).Equip(this);
 
         break;
@@ -34,5 +37,6 @@ public partial class Item : Node2D
   public virtual void Equip(Player player)
   {
     _equipped = true;
+    _equippingPlayer = player;
   }
 }

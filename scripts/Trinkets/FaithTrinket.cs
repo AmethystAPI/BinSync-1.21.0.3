@@ -8,6 +8,8 @@ public partial class FaithTrinket : Trinket
   {
     if (!_equipped) return;
 
+    if (_equippingPlayer.Health <= 0) return;
+
     ulong now = Time.GetTicksMsec();
 
     if (now - _lastTick < 100) return;
@@ -15,7 +17,7 @@ public partial class FaithTrinket : Trinket
     _lastTick = now;
 
     bool healedOtherPlayer = false;
-    foreach (Player player in Player.Players)
+    foreach (Player player in Player.AlivePlayers)
     {
       if (_equippingPlayer == player) continue;
 

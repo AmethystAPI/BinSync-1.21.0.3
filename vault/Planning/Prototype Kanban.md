@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Improve Death Behaviour
 - [ ] Slime boss
 - [ ] Full Gameplay Loop
 - [ ] Main Menu
@@ -20,6 +19,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Improve Death Behaviour
 - [x] holy trinket
 - [x] strength trinket
 - [x] swiftness trinket

@@ -62,9 +62,9 @@ public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 
 		if (_knockback.LengthSquared() < 0.1f)
 		{
-			Vector2 target = Player.Players[0].GlobalPosition;
+			Vector2 target = Player.AlivePlayers[0].GlobalPosition;
 
-			foreach (Player player in Player.Players)
+			foreach (Player player in Player.AlivePlayers)
 			{
 				if (GlobalPosition.DistanceTo(player.GlobalPosition) >= GlobalPosition.DistanceTo(target)) continue;
 
