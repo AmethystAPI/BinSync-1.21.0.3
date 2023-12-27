@@ -65,5 +65,10 @@ public partial class Weapon : Item, Networking.NetworkNode
     projectile.InheritedVelocity = player.Velocity;
 
     player.GetParent().AddChild(projectile);
+
+    foreach (Trinket trinket in player.EquippedTrinkets)
+    {
+      trinket.ModifyProjectile(this, projectile);
+    }
   }
 }

@@ -9,18 +9,19 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	[Export] public PackedScene DefaultWeaponScene;
 
+	public List<Trinket> EquippedTrinkets = new List<Trinket>();
+	public float Health = 3f;
+
 	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
 	public Networking.RpcMap RpcMap => _rpcMap;
 
 	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client, false, 50);
 	private Networking.SyncedVariable<Vector2> _syncedVelocity = new Networking.SyncedVariable<Vector2>(nameof(_syncedVelocity), Vector2.Zero, Networking.Authority.Client);
 
-	private int _health = 3;
 	private bool _dashing = false;
 	private Vector2 _dashDirection = Vector2.Right;
 	private float _dashTimer;
 	private Weapon _equippedWeapon;
-	private List<Trinket> _equippedTrinkets = new List<Trinket>();
 
 	public override void _Ready()
 	{
@@ -65,7 +66,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 			Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
 			float modifiedSpeed = 100f;
-			foreach (Trinket trinket in _equippedTrinkets)
+			foreach (Trinket trinket in EquippedTrinkets)
 			{
 				modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
 			}
@@ -99,15 +100,19 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public void Damage(Projectile projectile)
 	{
-		if (GetMultiplayerAuthority() != Multiplayer.GetUniqueId()) return;
+		if (!Game.IsOwner(this)) return;
 
-		_health--;
+		Health -= projectile.Damage;
 
-		if (_health > 0) return;
+		GameUI.UpdateHealth(Health);
 
-		_health = 3;
+		if (Health > 0) return;
 
-		GlobalPosition = Vector2.Zero;
+		Health = 3;
+
+		GameUI.UpdateHealth(Health);
+
+		// GlobalPosition = Vector2.Zero;
 	}
 
 	public bool CanDamage(Projectile projectile)
@@ -147,9 +152,9 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 			GetNode("Trinkets").AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
-			_equippedTrinkets.Add((Trinket)item);
+			EquippedTrinkets.Add((Trinket)item);
 		}
 
-		item.Equip();
+		item.Equip(this);
 	}
 }

@@ -6,8 +6,6 @@ using System.Collections.Generic;
 
 public partial class Game : Node2D, Networking.NetworkNode
 {
-	public static Game deprecated_Me;
-
 	public static bool IsHost() => s_Server != null;
 	public static bool IsOwner(Node node) => node.GetMultiplayerAuthority() == s_Client.Id;
 	public static uint Seed;
@@ -18,7 +16,6 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	[Export] public PackedScene PlayerScene;
 
-	public bool deprecated_IsHost;
 	public int[] ClientIds;
 
 	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
@@ -39,13 +36,6 @@ public partial class Game : Node2D, Networking.NetworkNode
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
 		if (!Host()) Join("127.0.0.1");
-
-		// List<int> peers = new List<int>(Multiplayer.GetPeers())
-		// {
-		// 	1
-		// };
-
-		// Rpc(nameof(StartRpc), peers.ToArray(), new RandomNumberGenerator().Randi());
 	}
 
 	public override void _PhysicsProcess(double delta)

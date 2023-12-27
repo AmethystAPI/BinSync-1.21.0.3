@@ -6,19 +6,23 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] swiftness trinket
-- [ ] holy trinket
-- [ ] strength trinket
+- [ ] Improve Death Behaviour
 - [ ] Slime boss
+- [ ] Full Gameplay Loop
+- [ ] Main Menu
+- [ ] Lobby Menu
 
 
 ## In Progress
 
+- [ ] holy trinket
+- [ ] strength trinket
 
 
 ## Done
 
 **Complete**
+- [x] swiftness trinket
 - [x] fix item pickup visuals
 - [x] Prevent Players From Skipping Rooms
 - [x] Fast Slime

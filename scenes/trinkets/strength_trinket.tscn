@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqbq373kspp30"]
+
+[ext_resource type="Script" path="res://scripts/Trinkets/StrengthTrinket.cs" id="1_xs6gt"]
+[ext_resource type="Texture2D" uid="uid://c2uwj1cf4pws6" path="res://sprites/trinkets.aseprite" id="2_mmuur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdbv5"]
+
+[node name="StrengthTrinket" type="Node2D"]
+script = ExtResource("1_xs6gt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mmuur")
+hframes = 3
+frame = 1
+
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_wdbv5")

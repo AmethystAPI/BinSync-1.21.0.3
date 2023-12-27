@@ -3,6 +3,7 @@ using System;
 
 public partial class Projectile : Node2D
 {
+	[Export] public float Damage = 1f;
 	[Export] public float Speed = 200f;
 	[Export] public float Lifetime = 5f;
 	[Export] public float Knockback = 1f;

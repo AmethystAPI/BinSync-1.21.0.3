@@ -31,7 +31,7 @@ public partial class Item : Node2D
     }
   }
 
-  public void Equip()
+  public virtual void Equip(Player player)
   {
     _equipped = true;
   }

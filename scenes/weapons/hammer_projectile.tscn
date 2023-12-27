@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6cyrpgftmxi0"]
 
-[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_cpwog"]
-[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_bie3h"]
+[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_3623f"]
+[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_ndrd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(6, 6)
 
 [node name="Hammer Projectile" type="Node2D"]
-script = ExtResource("1_cpwog")
+script = ExtResource("1_3623f")
 Speed = 300.0
 Knockback = 3.0
 
@@ -19,4 +19,4 @@ shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.381053, 0.381053)
-texture = ExtResource("2_bie3h")
+texture = ExtResource("2_ndrd5")

@@ -5,7 +5,7 @@ using System;
 public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 {
 	[Export] public PackedScene ProjectileScene;
-	[Export] public int Health = 3;
+	[Export] public float Health = 3f;
 	[Export] public float Speed = 10f;
 
 	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
@@ -93,6 +93,8 @@ public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 
 			message.AddFloat(knockback.X);
 			message.AddFloat(knockback.Y);
+
+			message.AddFloat(projectile.Damage);
 		});
 	}
 
@@ -103,14 +105,11 @@ public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 
 	private void DamageRpc(Message message)
 	{
-		int newAuthority = message.GetInt();
-		Vector2 knockback = new Vector2(message.GetFloat(), message.GetFloat());
+		SetMultiplayerAuthority(message.GetInt());
 
-		SetMultiplayerAuthority(newAuthority);
+		_knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
-		Health--;
-
-		_knockback = knockback;
+		Health -= message.GetFloat();
 
 		if (Health <= 0)
 		{
