@@ -37,6 +37,8 @@ public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 		}
 		else
 		{
+			if (_syncedPosition.Value.DistanceSquaredTo(GlobalPosition) > 64) GlobalPosition = _syncedPosition.Value;
+
 			GlobalPosition = GlobalPosition.Lerp(_syncedPosition.Value, (float)delta * 20.0f);
 		}
 
