@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Riptide;
 
@@ -13,6 +14,8 @@ public partial class Weapon : Item, Networking.NetworkNode
 
   public override void _Ready()
   {
+    base._Ready();
+
     _rpcMap.Register(_syncedRotation, this);
     _rpcMap.Register(nameof(ShootRpc), ShootRpc);
   }
@@ -49,12 +52,14 @@ public partial class Weapon : Item, Networking.NetworkNode
 
       if (!Game.IsOwner(this)) return;
 
-      Game.SendRpcToAllClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { });
+      Game.SendRpcToAllClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { message.AddInt(4); });
     }
   }
 
   private void ShootRpc(Message message)
   {
+    message.GetInt();
+
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;

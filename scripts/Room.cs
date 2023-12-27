@@ -154,13 +154,20 @@ public partial class Room : Node2D, Networking.NetworkNode
 		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
 		int enemySceneIndex = message.GetInt();
 
-		Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
+		try
+		{
+			Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
 
-		enemy.SetMultiplayerAuthority(1);
+			enemy.SetMultiplayerAuthority(1);
 
-		AddChild(enemy);
+			AddChild(enemy);
 
-		enemy.GlobalPosition = position;
+			enemy.GlobalPosition = position;
+		}
+		catch
+		{
+			GD.PushError("HUH? " + enemySceneIndex);
+		}
 	}
 
 	protected virtual void End()
