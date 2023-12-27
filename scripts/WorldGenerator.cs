@@ -37,6 +37,18 @@ public partial class WorldGenerator : Node2D
 		_currentRoom.Place();
 	}
 
+	public void Cleanup()
+	{
+		if (_lastRoom != null && IsInstanceValid(_lastRoom))
+		{
+			_lastRoom.QueueFree();
+			_lastRoom = null;
+		}
+
+		_currentRoom.QueueFree();
+		_currentRoom = null;
+	}
+
 	public static void PlaceNextRoom(Vector2 connectionPosition, Vector2 direction)
 	{
 		s_Me._lastRoom = s_Me._currentRoom;

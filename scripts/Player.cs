@@ -50,6 +50,8 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (!Game.IsOwner(this)) return;
 
+		GameUI.UpdateHealth(Health);
+
 		Equip(weapon);
 	}
 
@@ -154,7 +156,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (Health > 3) Health = 3;
 
-		if (Health <= 0) AlivePlayers.Remove(this);
+		if (Health <= 0) Die();
 
 		if (!Game.IsOwner(this)) return;
 
@@ -172,7 +174,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (Health > 3) Health = 3;
 
-		if (Health <= 0) AlivePlayers.Remove(this);
+		if (Health <= 0) Die();
 
 		if (!Game.IsOwner(this)) return;
 
@@ -206,6 +208,24 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		{
 			message.AddString(item.GetPath());
 		});
+	}
+
+	public void Cleanup()
+	{
+		Players.Remove(this);
+
+		QueueFree();
+	}
+
+	private void Die()
+	{
+		AlivePlayers.Remove(this);
+
+		if (AlivePlayers.Count != 0) return;
+
+		if (!Game.IsHost()) return;
+
+		Game.Restart();
 	}
 
 	private void UpdateHealthRpc(Message message)

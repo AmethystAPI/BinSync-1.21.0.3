@@ -30,6 +30,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 		RiptideLogger.Initialize(GD.Print, GD.Print, GD.PushWarning, GD.PushError, false);
 
 		_rpcMap.Register(nameof(StartRpc), StartRpc);
+		_rpcMap.Register(nameof(CleanupRpc), CleanupRpc);
 
 		s_Me = this;
 
@@ -136,6 +137,24 @@ public partial class Game : Node2D, Networking.NetworkNode
 		return true;
 	}
 
+	public static void Restart()
+	{
+		SendRpcToClients(s_Me, nameof(CleanupRpc), MessageSendMode.Reliable, message => { });
+
+		List<int> clientIds = new List<int>();
+
+		foreach (Connection connection in s_Server.Clients)
+		{
+			clientIds.Add(connection.Id);
+		}
+
+		SendRpcToClients(s_Me, nameof(StartRpc), MessageSendMode.Reliable, message =>
+		{
+			message.AddInts(clientIds.ToArray());
+			message.AddUInt(new RandomNumberGenerator().Randi());
+		});
+	}
+
 	private void HandleMessage(Message message)
 	{
 		string name = message.GetString();
@@ -236,5 +255,15 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 			AddChild(player);
 		}
+	}
+
+	private void CleanupRpc(Message message)
+	{
+		while (Player.Players.Count > 0)
+		{
+			Player.Players[0].Cleanup();
+		}
+
+		_worldGenerator.Cleanup();
 	}
 }

@@ -60,6 +60,8 @@ public partial class Slime : CharacterBody2D, Damageable, Networking.NetworkNode
 
 		if (!Game.IsOwner(this)) return;
 
+		if (Player.AlivePlayers.Count == 0) return;
+
 		if (_knockback.LengthSquared() < 0.1f)
 		{
 			Vector2 target = Player.AlivePlayers[0].GlobalPosition;
