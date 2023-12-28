@@ -16,12 +16,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] State Machine System #code
 
 
 ## Done
 
 **Complete**
+- [x] State Machine System #code
 
 
 

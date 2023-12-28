@@ -32,8 +32,6 @@ public partial class StateMachine : Node
 
   public void GoToState(string name)
   {
-    GD.Print("Going to state " + name);
-
     _currentState.Exit();
 
     _currentState = GetNode<State>(name);
