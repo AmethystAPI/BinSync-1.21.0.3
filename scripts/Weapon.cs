@@ -9,7 +9,6 @@ public partial class Weapon : Item
 
   private NetworkedVariable<float> _syncedRotation = new NetworkedVariable<float>(0);
 
-
   public override void _Ready()
   {
     base._Ready();
@@ -50,14 +49,12 @@ public partial class Weapon : Item
 
       if (!NetworkPoint.IsOwner) return;
 
-      // Game.BounceRpcToClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { message.AddInt(4); });
+      NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
     }
   }
 
   private void ShootRpc(Message message)
   {
-    message.GetInt();
-
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;

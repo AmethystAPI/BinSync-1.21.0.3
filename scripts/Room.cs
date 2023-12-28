@@ -92,9 +92,9 @@ public partial class Room : Node2D, NetworkPointUser
 
 		if (_aliveEnemies != 0) return;
 
-		// if (!Game.IsHost()) return;
+		if (!NetworkManager.IsHost) return;
 
-		// Game.SendRpcToClients(this, nameof(EndRpc), MessageSendMode.Reliable, message => { });
+		NetworkPoint.SendRpcToClients(nameof(EndRpc));
 	}
 
 	private void OnBodyEntered(Node2D body)
@@ -109,7 +109,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		_started = true;
 
-		// Game.SendRpcToClients(this, nameof(StartRpc), MessageSendMode.Reliable, message => { });
+		NetworkPoint.SendRpcToClients(nameof(StartRpc));
 	}
 
 	private void OnBodyExited(Node2D body)
@@ -130,7 +130,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		WorldGenerator.DespawnLastRoom();
 
-		// if (!Game.IsHost()) return;
+		if (!NetworkManager.IsHost) return;
 
 		SpawnEnemies();
 	}
@@ -143,13 +143,13 @@ public partial class Room : Node2D, NetworkPointUser
 
 		foreach (Node2D spawnPoint in SpawnPoints)
 		{
-			// Game.SendRpcToClients(this, nameof(SpawnEnemyRpc), MessageSendMode.Reliable, message =>
-			// {
-			// 	message.AddFloat(spawnPoint.GlobalPosition.X);
-			// 	message.AddFloat(spawnPoint.GlobalPosition.Y);
+			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message =>
+			{
+				message.AddFloat(spawnPoint.GlobalPosition.X);
+				message.AddFloat(spawnPoint.GlobalPosition.Y);
 
-			// 	message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
-			// });
+				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
+			});
 		}
 	}
 
@@ -160,10 +160,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		try
 		{
-			Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
-			// Game.NameSpawnedNetworkNode("Enemy", enemy);
-
-			enemy.SetMultiplayerAuthority(1);
+			Node2D enemy = NetworkManager.SpawnNetworkSafe<Node2D>(EnemyScenes[enemySceneIndex], EnemyScenes[enemySceneIndex].ResourceName);
 
 			AddChild(enemy);
 
@@ -179,14 +176,14 @@ public partial class Room : Node2D, NetworkPointUser
 	{
 		Completed?.Invoke();
 
-		// if (!Game.IsHost()) return;
+		if (!NetworkManager.IsHost) return;
 
 		if (LootScenes.Length == 0) return;
 
-		// Game.SendRpcToClients(this, nameof(SpawnLootRpc), MessageSendMode.Reliable, message =>
-		// {
-		// 	message.AddString(LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
-		// });
+		NetworkPoint.SendRpcToClients(nameof(SpawnLootRpc), message =>
+		{
+			message.AddString(LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
+		});
 	}
 
 	protected void SpawnLootRpc(Message message)
@@ -195,8 +192,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
 
-		Node2D item = lootScene.Instantiate<Node2D>();
-		// Game.NameSpawnedNetworkNode("Loot", item);
+		Node2D item = NetworkManager.SpawnNetworkSafe<Node2D>(lootScene, lootScene.ResourceName);
 
 		AddChild(item);
 

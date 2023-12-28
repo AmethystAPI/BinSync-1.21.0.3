@@ -44,16 +44,15 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		_ressurectArea = GetNode<Area2D>("RessurectArea");
 
-		// Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
-		// Game.NameSpawnedNetworkNode("Weapon", weapon);
+		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(DefaultWeaponScene, DefaultWeaponScene.ResourceName);
 
-		// AddChild(weapon);
+		AddChild(weapon);
 
 		if (!NetworkPoint.IsOwner) return;
 
 		GameUI.UpdateHealth(Health);
 
-		// Equip(weapon);
+		Equip(weapon);
 	}
 
 	public override void _Process(double delta)
@@ -86,61 +85,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 	{
 		if (!NetworkPoint.IsOwner) return;
 
-		if (Health <= 0)
-		{
-			_angelSwapTimer -= (float)delta;
-
-			if (_angelSwapTimer <= 0)
-			{
-				_angelSwapTimer = _randomNumberGenerator.RandfRange(0.8f, 1.2f);
-
-				if (_randomNumberGenerator.RandfRange(0f, 1f) < 0.5f) _angelTurn = -_angelTurn;
-			}
-
-			_angelAngle += Mathf.Pi * (float)delta * _angelTurn;
-
-			Velocity = Vector2.Right.Rotated(_angelAngle) * 50f;
-		}
-		else if (!_dashing)
-		{
-			// Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
-
-			// float modifiedSpeed = 100f;
-			// foreach (Trinket trinket in EquippedTrinkets)
-			// {
-			// 	modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
-			// }
-
-			// Velocity = movement.Normalized() * modifiedSpeed;
-		}
-		else
-		{
-			foreach (Node2D body in _ressurectArea.GetOverlappingBodies())
-			{
-				if (!(body is Player)) continue;
-
-				if (body == this) continue;
-
-				Player player = (Player)body;
-
-				if (player.Health > 0) continue;
-
-				// Game.BounceRpcToClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
-			}
-		}
-
 		GetParent().GetNode<Camera2D>("Camera").Position = Position;
-	}
-
-	public override void _Input(InputEvent @event)
-	{
-		if (!@event.IsActionPressed("dash")) return;
-
-		// _dashing = true;
-
-		// _dashTimer = 0.06f;
-
-		// _dashDirection = (GetGlobalMousePosition() - GlobalPosition).Normalized();
 	}
 
 	public void ModifyHealth(float change)
@@ -153,10 +98,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 		if (!NetworkPoint.IsOwner) return;
 
-		// Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
-		// {
-		// 	message.AddFloat(Health);
-		// });
+		NetworkPoint.BounceRpcToClients(nameof(UpdateHealthRpc), message =>
+		{
+			message.AddFloat(Health);
+		});
 
 		GameUI.UpdateHealth(Health);
 	}
@@ -171,10 +116,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 		if (!NetworkPoint.IsOwner) return;
 
-		// Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
-		// {
-		// 	message.AddFloat(Health);
-		// });
+		NetworkPoint.BounceRpcToClients(nameof(UpdateHealthRpc), message =>
+		{
+			message.AddFloat(Health);
+		});
 
 		GameUI.UpdateHealth(Health);
 	}
@@ -197,10 +142,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 	public void Equip(Item item)
 	{
-		// Game.BounceRpcToClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
-		// {
-		// 	message.AddString(item.GetPath());
-		// });
+		NetworkPoint.BounceRpcToClients(nameof(EquipWeaponRpc), message =>
+		{
+			message.AddString(item.GetPath());
+		});
 	}
 
 	public void Cleanup()

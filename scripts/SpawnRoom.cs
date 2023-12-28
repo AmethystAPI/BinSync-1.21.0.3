@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using Networking;
 using Riptide;
 
 public partial class SpawnRoom : Room
@@ -11,8 +12,8 @@ public partial class SpawnRoom : Room
 
 	protected override void Start()
 	{
-		// if (!Game.IsHost()) return;
+		if (!NetworkManager.IsHost) return;
 
-		// Game.SendRpcToClients(this, nameof(EndRpc), MessageSendMode.Reliable, message => { });
+		NetworkPoint.SendRpcToClients(nameof(EndRpc));
 	}
 }

@@ -33,9 +33,9 @@ public partial class Exit : Node2D, Damageable, NetworkPointUser
 
 	public void Damage(Projectile projectile)
 	{
-		// if (!Game.IsOwner(projectile)) return;
+		if (!NetworkManager.IsOwner(projectile)) return;
 
-		// Game.BounceRpcToClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message => { });
+		NetworkPoint.BounceRpcToClients(nameof(DamageRpc));
 	}
 
 	public void DamageRpc(Message message)

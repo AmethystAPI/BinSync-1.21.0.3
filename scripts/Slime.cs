@@ -52,7 +52,7 @@ public partial class Slime : CharacterBody2D, Damageable, NetworkPointUser
 		{
 			_attackTimer = 1f;
 
-			// Game.SendRpcToClients(this, nameof(AttackRpc), MessageSendMode.Reliable, message => { });
+			NetworkPoint.SendRpcToClients(nameof(AttackRpc));
 		}
 	}
 
@@ -89,17 +89,17 @@ public partial class Slime : CharacterBody2D, Damageable, NetworkPointUser
 	{
 		if (!NetworkPoint.IsOwner) return;
 
-		// Game.BounceRpcToClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message =>
-		// {
-		// 	message.AddInt(projectile.GetMultiplayerAuthority());
+		NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message =>
+		{
+			message.AddInt(projectile.GetMultiplayerAuthority());
 
-		// 	Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
+			Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
 
-		// 	message.AddFloat(knockback.X);
-		// 	message.AddFloat(knockback.Y);
+			message.AddFloat(knockback.X);
+			message.AddFloat(knockback.Y);
 
-		// 	message.AddFloat(projectile.Damage);
-		// });
+			message.AddFloat(projectile.Damage);
+		});
 	}
 
 	public bool CanDamage(Projectile projectile)

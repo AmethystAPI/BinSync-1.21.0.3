@@ -112,6 +112,11 @@ namespace Networking
       return true;
     }
 
+    public static bool IsOwner(Node node)
+    {
+      return node.GetMultiplayerAuthority() == LocalClient.Id;
+    }
+
     private void HandleMessage(Message message)
     {
       string name = message.GetString();

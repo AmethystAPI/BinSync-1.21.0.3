@@ -1,32 +1,20 @@
 using Godot;
-using Riptide;
-using System;
+using Networking;
 
 public partial class MainMenu : Control
 {
 	public void Host()
 	{
-		// Game.Host();
-
-		// Game.Server.ClientConnected += ClientConnected;
+		NetworkManager.Host();
 
 		QueueFree();
 	}
 
 	public void Join()
 	{
-		// Game.Join("127.0.0.1");
-		// Game.Join("104.33.194.150");
+		// NetworkManager.Join("127.0.0.1");
+		NetworkManager.Join("104.33.194.150");
 
 		QueueFree();
-	}
-
-	private void ClientConnected(Object _, ServerConnectedEventArgs eventArguments)
-	{
-		// if (Game.Server.ClientCount != 2 || eventArguments.Client != Game.Server.Clients[1]) return;
-
-		// if (Game.Server.ClientCount != 2) return;
-
-		Game.Start();
 	}
 }
