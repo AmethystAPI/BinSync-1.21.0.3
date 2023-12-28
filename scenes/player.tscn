@@ -1,26 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=13 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_xr8oe"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/weapons/sword.tscn" id="3_aen5w"]
+[ext_resource type="Script" path="res://scripts/StateMachine.cs" id="4_jbh0c"]
+[ext_resource type="Script" path="res://scripts/Player/PlayerNormal.cs" id="5_stky2"]
+[ext_resource type="Script" path="res://scripts/Player/PlayerDash.cs" id="6_mtedp"]
+[ext_resource type="Script" path="res://scripts/Player/PlayerAngel.cs" id="7_4smh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypp2t"]
 size = Vector2(7, 4)
-
-[sub_resource type="Animation" id="Animation_2htce"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_bn6i1"]
 resource_name = "dead"
@@ -35,6 +24,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_2htce"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74xub"]
@@ -78,3 +82,16 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RessurectArea"]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_v6m8y")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_jbh0c")
+DefaultState = "Normal"
+
+[node name="Normal" type="Node" parent="StateMachine"]
+script = ExtResource("5_stky2")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("6_mtedp")
+
+[node name="Angel" type="Node" parent="StateMachine"]
+script = ExtResource("7_4smh0")

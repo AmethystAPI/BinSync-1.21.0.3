@@ -102,15 +102,15 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		}
 		else if (!_dashing)
 		{
-			Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
+			// Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
-			float modifiedSpeed = 100f;
-			foreach (Trinket trinket in EquippedTrinkets)
-			{
-				modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
-			}
+			// float modifiedSpeed = 100f;
+			// foreach (Trinket trinket in EquippedTrinkets)
+			// {
+			// 	modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
+			// }
 
-			Velocity = movement.Normalized() * modifiedSpeed;
+			// Velocity = movement.Normalized() * modifiedSpeed;
 		}
 		else
 		{
@@ -126,15 +126,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 				Game.BounceRpcToClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
 			}
-
-			Velocity = _dashDirection * 700f;
-
-			_dashTimer -= (float)delta;
-
-			if (_dashTimer <= 0) _dashing = false;
 		}
-
-		MoveAndSlide();
 
 		GetParent().GetNode<Camera2D>("Camera").Position = Position;
 	}
@@ -143,11 +135,11 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 	{
 		if (!@event.IsActionPressed("dash")) return;
 
-		_dashing = true;
+		// _dashing = true;
 
-		_dashTimer = 0.06f;
+		// _dashTimer = 0.06f;
 
-		_dashDirection = (GetGlobalMousePosition() - GlobalPosition).Normalized();
+		// _dashDirection = (GetGlobalMousePosition() - GlobalPosition).Normalized();
 	}
 
 	public void ModifyHealth(float change)
