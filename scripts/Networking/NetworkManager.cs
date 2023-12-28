@@ -36,7 +36,7 @@ namespace Networking
 
       if (!s_Me._nameIndexes.ContainsKey(baseName)) s_Me._nameIndexes.Add(baseName, 0);
 
-      node.Name = baseName + s_Me._nameIndexes[baseName];
+      node.Name = baseName + " " + s_Me._nameIndexes[baseName];
 
       node.SetMultiplayerAuthority(authority);
 

@@ -1,31 +1,38 @@
+using Godot;
+
 public partial class PlayerAngel : State
 {
-  // if (Health <= 0)
-  // {
-  // 	_angelSwapTimer -= (float)delta;
+  private Player _player;
+  private float _angelAngle;
+  private float _angelSwapTimer;
+  private int _angelTurn = 1;
+  private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
-  // 	if (_angelSwapTimer <= 0)
-  // 	{
-  // 		_angelSwapTimer = _randomNumberGenerator.RandfRange(0.8f, 1.2f);
 
-  // 		if (_randomNumberGenerator.RandfRange(0f, 1f) < 0.5f) _angelTurn = -_angelTurn;
-  // 	}
+  public override void _Ready()
+  {
+    _player = GetParent().GetParent<Player>();
+  }
 
-  // 	_angelAngle += Mathf.Pi * (float)delta * _angelTurn;
+  public override void PhsysicsUpdate(float delta)
+  {
+    _player.AnimationPlayer.Play("dead");
 
-  // 	Velocity = Vector2.Right.Rotated(_angelAngle) * 50f;
-  // }
+    if (!_player.NetworkPoint.IsOwner) return;
 
-  // foreach (Node2D body in _ressurectArea.GetOverlappingBodies())
-  // 	{
-  // 		if (!(body is Player)) continue;
+    _angelSwapTimer -= delta;
 
-  // 		if (body == this) continue;
+    if (_angelSwapTimer <= 0)
+    {
+      _angelSwapTimer = _randomNumberGenerator.RandfRange(0.8f, 1.2f);
 
-  // 		Player player = (Player)body;
+      if (_randomNumberGenerator.RandfRange(0f, 1f) < 0.5f) _angelTurn = -_angelTurn;
+    }
 
-  // 		if (player.Health > 0) continue;
+    _angelAngle += Mathf.Pi * delta * _angelTurn;
 
-  // 		// Game.BounceRpcToClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
-  // 	}
+    _player.Velocity = Vector2.Right.Rotated(_angelAngle) * 50f;
+
+    _player.MoveAndSlide();
+  }
 }

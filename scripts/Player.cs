@@ -13,20 +13,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
 	public float Health = 3f;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+	public AnimationPlayer AnimationPlayer;
 
 	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
 
-	private bool _dashing = false;
-	private Vector2 _dashDirection = Vector2.Right;
-	private float _dashTimer;
 	private Weapon _equippedWeapon;
-	private AnimationPlayer _animationPlayer;
-	private float _angelAngle;
-	private float _angelSwapTimer;
-	private int _angelTurn = 1;
-	private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
-	private Area2D _ressurectArea;
+	private StateMachine _stateMachine;
 
 	public override void _Ready()
 	{
@@ -35,37 +28,25 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 		NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
 		NetworkPoint.Register(nameof(_networkedVelocity), _networkedVelocity);
 		NetworkPoint.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
-		NetworkPoint.Register(nameof(UpdateHealthRpc), UpdateHealthRpc);
+		NetworkPoint.Register(nameof(DieRpc), DieRpc);
 		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
 
 		Players.Add(this);
 		AlivePlayers.Add(this);
 
-		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		_ressurectArea = GetNode<Area2D>("RessurectArea");
+		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(DefaultWeaponScene, DefaultWeaponScene.ResourceName);
+		_stateMachine = GetNode<StateMachine>("StateMachine");
 
-		AddChild(weapon);
+		EquipDefaultItem();
 
 		if (!NetworkPoint.IsOwner) return;
 
 		GameUI.UpdateHealth(Health);
-
-		Equip(weapon);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (Health > 0)
-		{
-			_animationPlayer.Play("idle");
-		}
-		else
-		{
-			_animationPlayer.Play("dead");
-		}
-
 		_networkedPosition.Sync();
 		_networkedVelocity.Sync();
 
@@ -79,47 +60,19 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
 			Velocity = _networkedVelocity.Value;
 		}
-	}
 
-	public override void _PhysicsProcess(double delta)
-	{
 		if (!NetworkPoint.IsOwner) return;
 
 		GetParent().GetNode<Camera2D>("Camera").Position = Position;
 	}
 
-	public void ModifyHealth(float change)
+	public void Heal(float health)
 	{
-		Health += change;
-
-		if (Health > 3) Health = 3;
-
-		if (Health <= 0) Die();
-
 		if (!NetworkPoint.IsOwner) return;
 
-		NetworkPoint.BounceRpcToClients(nameof(UpdateHealthRpc), message =>
-		{
-			message.AddFloat(Health);
-		});
-
-		GameUI.UpdateHealth(Health);
-	}
-
-	public void SetHealth(float health)
-	{
-		Health = health;
+		Health += health;
 
 		if (Health > 3) Health = 3;
-
-		if (Health <= 0) Die();
-
-		if (!NetworkPoint.IsOwner) return;
-
-		NetworkPoint.BounceRpcToClients(nameof(UpdateHealthRpc), message =>
-		{
-			message.AddFloat(Health);
-		});
 
 		GameUI.UpdateHealth(Health);
 	}
@@ -137,7 +90,29 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 	{
 		if (!NetworkPoint.IsOwner) return;
 
-		ModifyHealth(-projectile.Damage);
+		Health -= projectile.Damage;
+
+		GameUI.UpdateHealth(Health);
+
+		if (Health <= 0) Die();
+	}
+
+	public void Die()
+	{
+		Health = 0;
+
+		GameUI.UpdateHealth(Health);
+
+		AlivePlayers.Remove(this);
+
+		NetworkPoint.BounceRpcToClients(nameof(DieRpc));
+
+		_stateMachine.GoToState("Angel");
+	}
+
+	public void Revive()
+	{
+		NetworkPoint.BounceRpcToClients(nameof(ReviveRpc));
 	}
 
 	public void Equip(Item item)
@@ -148,6 +123,17 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 		});
 	}
 
+	private void EquipDefaultItem()
+	{
+		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(DefaultWeaponScene, "Weapon");
+
+		AddChild(weapon);
+
+		if (!NetworkPoint.IsOwner) return;
+
+		Equip(weapon);
+	}
+
 	public void Cleanup()
 	{
 		Players.Remove(this);
@@ -155,24 +141,21 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 		QueueFree();
 	}
 
-	private void Die()
+	private void DieRpc(Message message)
 	{
+		if (NetworkPoint.IsOwner) return;
+
+		Health = 0;
+
 		AlivePlayers.Remove(this);
+
+		_stateMachine.GoToState("Angel");
 
 		if (AlivePlayers.Count != 0) return;
 
 		if (!NetworkManager.IsHost) return;
 
 		Game.Restart();
-	}
-
-	private void UpdateHealthRpc(Message message)
-	{
-		if (NetworkPoint.IsOwner) return;
-
-		float newHealth = message.GetFloat();
-
-		SetHealth(newHealth);
 	}
 
 	private void EquipWeaponRpc(Message message)
@@ -190,7 +173,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
 			_equippedWeapon = (Weapon)item;
-
 		}
 
 		if (item is Trinket)
@@ -207,10 +189,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 	private void ReviveRpc(Message message)
 	{
-		if (Health > 0) return;
+		_stateMachine.GoToState("Normal");
 
 		AlivePlayers.Add(this);
 
-		SetHealth(1f);
+		Health = 1;
+
+		if (!NetworkPoint.IsOwner) return;
+
+		GameUI.UpdateHealth(Health);
 	}
 }

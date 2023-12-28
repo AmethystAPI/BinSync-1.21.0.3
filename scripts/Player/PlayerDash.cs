@@ -8,10 +8,13 @@ public partial class PlayerDash : State
   private Player _player;
   private Vector2 _dashDirection;
   private float _dashTimer = 0;
+  private Area2D _ressurectArea;
 
   public override void _Ready()
   {
     _player = GetParent().GetParent<Player>();
+
+    _ressurectArea = _player.GetNode<Area2D>("RessurectArea");
   }
 
   public override void Enter()
@@ -34,5 +37,20 @@ public partial class PlayerDash : State
     if (_dashTimer <= 0) GoToState("Normal");
 
     _player.MoveAndSlide();
+
+    foreach (Node2D body in _ressurectArea.GetOverlappingBodies())
+    {
+      if (!(body is Player)) continue;
+
+      if (body == _player) continue;
+
+      Player player = (Player)body;
+
+      if (player.Health > 0) continue;
+
+      player.Revive();
+
+      break;
+    }
   }
 }

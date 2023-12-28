@@ -158,18 +158,11 @@ public partial class Room : Node2D, NetworkPointUser
 		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
 		int enemySceneIndex = message.GetInt();
 
-		try
-		{
-			Node2D enemy = NetworkManager.SpawnNetworkSafe<Node2D>(EnemyScenes[enemySceneIndex], EnemyScenes[enemySceneIndex].ResourceName);
+		Node2D enemy = NetworkManager.SpawnNetworkSafe<Node2D>(EnemyScenes[enemySceneIndex], "Enemy");
 
-			AddChild(enemy);
+		AddChild(enemy);
 
-			enemy.GlobalPosition = position;
-		}
-		catch
-		{
-			GD.PushError("HUH? " + enemySceneIndex);
-		}
+		enemy.GlobalPosition = position;
 	}
 
 	protected virtual void EndRpc(Message message)
@@ -192,7 +185,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
 
-		Node2D item = NetworkManager.SpawnNetworkSafe<Node2D>(lootScene, lootScene.ResourceName);
+		Node2D item = NetworkManager.SpawnNetworkSafe<Node2D>(lootScene, "Loot");
 
 		AddChild(item);
 
