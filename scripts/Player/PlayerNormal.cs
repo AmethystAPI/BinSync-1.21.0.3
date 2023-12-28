@@ -13,7 +13,7 @@ public partial class PlayerNormal : State
 
   public override void PhsysicsUpdate(float delta)
   {
-    if (!Game.IsOwner(this)) return;
+    if (!_player.NetworkPoint.IsOwner) return;
 
     Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
@@ -30,7 +30,7 @@ public partial class PlayerNormal : State
 
   public override void OnInput(InputEvent inputEvent)
   {
-    if (!Game.IsOwner(this)) return;
+    if (!_player.NetworkPoint.IsOwner) return;
 
     if (!inputEvent.IsActionPressed("dash")) return;
 

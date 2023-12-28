@@ -1,8 +1,9 @@
 using Godot;
+using Networking;
 using Riptide;
 using System.Collections.Generic;
 
-public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNode
+public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 {
 	public static List<Player> Players = new List<Player>();
 	public static List<Player> AlivePlayers = new List<Player>();
@@ -11,12 +12,10 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
 	public float Health = 3f;
+	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
-	public Networking.RpcMap RpcMap => _rpcMap;
-
-	private Networking.SyncedVariable<Vector2> _syncedPosition = new Networking.SyncedVariable<Vector2>(nameof(_syncedPosition), Vector2.Zero, Networking.Authority.Client);
-	private Networking.SyncedVariable<Vector2> _syncedVelocity = new Networking.SyncedVariable<Vector2>(nameof(_syncedVelocity), Vector2.Zero, Networking.Authority.Client);
+	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
+	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private bool _dashing = false;
 	private Vector2 _dashDirection = Vector2.Right;
@@ -31,11 +30,13 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public override void _Ready()
 	{
-		_rpcMap.Register(_syncedPosition, this);
-		_rpcMap.Register(_syncedVelocity, this);
-		_rpcMap.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
-		_rpcMap.Register(nameof(UpdateHealthRpc), UpdateHealthRpc);
-		_rpcMap.Register(nameof(ReviveRpc), ReviveRpc);
+		NetworkPoint.Setup(this);
+
+		NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
+		NetworkPoint.Register(nameof(_networkedVelocity), _networkedVelocity);
+		NetworkPoint.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
+		NetworkPoint.Register(nameof(UpdateHealthRpc), UpdateHealthRpc);
+		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
 
 		Players.Add(this);
 		AlivePlayers.Add(this);
@@ -43,16 +44,16 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		_ressurectArea = GetNode<Area2D>("RessurectArea");
 
-		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
-		Game.NameSpawnedNetworkNode("Weapon", weapon);
+		// Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
+		// Game.NameSpawnedNetworkNode("Weapon", weapon);
 
-		AddChild(weapon);
+		// AddChild(weapon);
 
-		if (!Game.IsOwner(this)) return;
+		if (!NetworkPoint.IsOwner) return;
 
 		GameUI.UpdateHealth(Health);
 
-		Equip(weapon);
+		// Equip(weapon);
 	}
 
 	public override void _Process(double delta)
@@ -66,24 +67,24 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 			_animationPlayer.Play("dead");
 		}
 
-		_syncedPosition.Sync();
-		_syncedVelocity.Sync();
+		_networkedPosition.Sync();
+		_networkedVelocity.Sync();
 
-		if (Game.IsOwner(this))
+		if (NetworkPoint.IsOwner)
 		{
-			_syncedPosition.Value = GlobalPosition;
-			_syncedVelocity.Value = Velocity;
+			_networkedPosition.Value = GlobalPosition;
+			_networkedVelocity.Value = Velocity;
 		}
 		else
 		{
-			GlobalPosition = GlobalPosition.Lerp(_syncedPosition.Value, (float)delta * 20.0f);
-			Velocity = _syncedVelocity.Value;
+			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
+			Velocity = _networkedVelocity.Value;
 		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!Game.IsOwner(this)) return;
+		if (!NetworkPoint.IsOwner) return;
 
 		if (Health <= 0)
 		{
@@ -124,7 +125,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 				if (player.Health > 0) continue;
 
-				Game.BounceRpcToClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
+				// Game.BounceRpcToClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
 			}
 		}
 
@@ -150,12 +151,12 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (Health <= 0) Die();
 
-		if (!Game.IsOwner(this)) return;
+		if (!NetworkPoint.IsOwner) return;
 
-		Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
-		{
-			message.AddFloat(Health);
-		});
+		// Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
+		// {
+		// 	message.AddFloat(Health);
+		// });
 
 		GameUI.UpdateHealth(Health);
 	}
@@ -168,12 +169,12 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (Health <= 0) Die();
 
-		if (!Game.IsOwner(this)) return;
+		if (!NetworkPoint.IsOwner) return;
 
-		Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
-		{
-			message.AddFloat(Health);
-		});
+		// Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
+		// {
+		// 	message.AddFloat(Health);
+		// });
 
 		GameUI.UpdateHealth(Health);
 	}
@@ -189,17 +190,17 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public void Damage(Projectile projectile)
 	{
-		if (!Game.IsOwner(this)) return;
+		if (!NetworkPoint.IsOwner) return;
 
 		ModifyHealth(-projectile.Damage);
 	}
 
 	public void Equip(Item item)
 	{
-		Game.BounceRpcToClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
-		{
-			message.AddString(item.GetPath());
-		});
+		// Game.BounceRpcToClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
+		// {
+		// 	message.AddString(item.GetPath());
+		// });
 	}
 
 	public void Cleanup()
@@ -215,14 +216,14 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (AlivePlayers.Count != 0) return;
 
-		if (!Game.IsHost()) return;
+		if (!NetworkManager.IsHost) return;
 
 		Game.Restart();
 	}
 
 	private void UpdateHealthRpc(Message message)
 	{
-		if (Game.IsOwner(this)) return;
+		if (NetworkPoint.IsOwner) return;
 
 		float newHealth = message.GetFloat();
 

@@ -11,8 +11,8 @@ public partial class SpawnRoom : Room
 
 	protected override void Start()
 	{
-		if (!Game.IsHost()) return;
+		// if (!Game.IsHost()) return;
 
-		Game.SendRpcToClients(this, nameof(EndRpc), MessageSendMode.Reliable, message => { });
+		// Game.SendRpcToClients(this, nameof(EndRpc), MessageSendMode.Reliable, message => { });
 	}
 }

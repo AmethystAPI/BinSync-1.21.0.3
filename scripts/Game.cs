@@ -1,151 +1,51 @@
 using Godot;
+using Networking;
 using Riptide;
-using Riptide.Utils;
-using System;
 using System.Collections.Generic;
 
-public partial class Game : Node2D, Networking.NetworkNode
+public partial class Game : Node2D, NetworkPointUser
 {
-	private struct UnhandledRpc
-	{
-		public string Name;
-		public string Path;
-		public Message Message;
-	}
-
-	public static bool IsHost() => Server != null;
-	public static bool IsOwner(Node node) => node.GetMultiplayerAuthority() == s_Client.Id;
 	public static uint Seed;
-	public static Server Server;
 
 	private static Game s_Me;
-	private static Client s_Client;
 
 	[Export] public PackedScene PlayerScene;
 
-	public int[] ClientIds;
+	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
-	public Networking.RpcMap RpcMap => _rpcMap;
-
-	private ENetMultiplayerPeer _peer;
 	private WorldGenerator _worldGenerator;
-	private int _nameIndex = 0;
 
 	public override void _Ready()
 	{
-		RiptideLogger.Initialize(GD.Print, GD.Print, GD.PushWarning, GD.PushError, false);
+		NetworkPoint.Setup(this);
 
-		_rpcMap.Register(nameof(StartRpc), StartRpc);
-		_rpcMap.Register(nameof(CleanupRpc), CleanupRpc);
+		NetworkPoint.Register(nameof(StartRpc), StartRpc);
+		NetworkPoint.Register(nameof(CleanupRpc), CleanupRpc);
 
 		s_Me = this;
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		if (!Host()) Join("127.0.0.1");
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		if (Server != null) Server.Update();
-		if (s_Client != null) s_Client.Update();
-	}
-
-	public static void SendRpcToServer(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
-	{
-		Message message = Message.Create(messageSendMode, 0);
-		message.AddString(name);
-		message.AddString(source.GetPath());
-		messageBuilder.Invoke(message);
-
-		s_Client.Send(message);
-	}
-
-	public static void SendRpcToClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
-	{
-		Message message = Message.Create(messageSendMode, 0);
-		message.AddString(name);
-		message.AddString(source.GetPath());
-		messageBuilder.Invoke(message);
-
-		Server.SendToAll(message);
-	}
-
-	public static void BounceRpcToClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
-	{
-		Message message = Message.Create(messageSendMode, 1);
-		message.AddString(name);
-		message.AddString(source.GetPath());
-		messageBuilder.Invoke(message);
-
-		s_Client.Send(message);
-	}
-
-	public static void NameSpawnedNetworkNode(string baseName, Node node)
-	{
-		node.Name = baseName + " " + s_Me._nameIndex;
-
-		s_Me._nameIndex++;
-	}
-
-	public static bool Host()
-	{
-		GD.Print("Hosting...");
-
-		Server = new Server(new Riptide.Transports.Tcp.TcpServer());
-
-		try
+		NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) =>
 		{
-			Server.Start(25566, 2, 0, false);
-		}
-		catch
-		{
-			Server = null;
-
-			return false;
-		}
-
-		Server.MessageReceived += s_Me.MessageRecieved;
-
-		Server.ClientConnected += (object server, ServerConnectedEventArgs eventArguments) =>
-		{
-			if (Server.ClientCount != 2 || eventArguments.Client != Server.Clients[1]) return;
-
-			if (Server.ClientCount != 2) return;
+			if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
 
 			Start();
 		};
 
-		GD.Print("Successfully started server, starting client!");
-
-		Join("127.0.0.1");
-
-		return true;
-	}
-
-	public static bool Join(string address)
-	{
-		GD.Print("Joining...");
-
-		s_Client = new Client(new Riptide.Transports.Tcp.TcpClient());
-		s_Client.Connect(address + ":25566", 5, 0, null, false);
-
-		s_Client.MessageReceived += s_Me.MessageRecieved;
-
-		return true;
+		if (!NetworkManager.Host()) NetworkManager.Join("127.0.0.1");
 	}
 
 	public static void Start()
 	{
 		List<int> clientIds = new List<int>();
 
-		foreach (Connection connection in Server.Clients)
+		foreach (Connection connection in NetworkManager.LocalServer.Clients)
 		{
 			clientIds.Add(connection.Id);
 		}
 
-		SendRpcToClients(s_Me, nameof(StartRpc), MessageSendMode.Reliable, message =>
+		s_Me.NetworkPoint.SendRpcToClients(nameof(StartRpc), message =>
 		{
 			message.AddInts(clientIds.ToArray());
 			message.AddUInt(new RandomNumberGenerator().Randi());
@@ -154,78 +54,21 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	public static void Restart()
 	{
-		SendRpcToClients(s_Me, nameof(CleanupRpc), MessageSendMode.Reliable, message => { });
+		s_Me.NetworkPoint.SendRpcToClients(nameof(CleanupRpc));
 
-		List<int> clientIds = new List<int>();
-
-		foreach (Connection connection in Server.Clients)
-		{
-			clientIds.Add(connection.Id);
-		}
-
-		SendRpcToClients(s_Me, nameof(StartRpc), MessageSendMode.Reliable, message =>
-		{
-			message.AddInts(clientIds.ToArray());
-			message.AddUInt(new RandomNumberGenerator().Randi());
-		});
-	}
-
-	private void HandleMessage(Message message)
-	{
-		string name = message.GetString();
-
-		string path = message.GetString();
-
-		if (!HasNode(path))
-		{
-			if (message.SendMode == MessageSendMode.Reliable) GD.PushWarning("Ignoring Reliable Rpc " + name + " for node " + path + " because the node does not exist!");
-
-			return;
-		}
-
-		Networking.NetworkNode rpcReceiver = GetNode<Networking.NetworkNode>(path);
-
-		rpcReceiver.RpcMap.Call(name, message);
-	}
-
-	private void MessageRecieved(Object _, MessageReceivedEventArgs eventArguments)
-	{
-		if (eventArguments.MessageId == 1)
-		{
-			Message relayMessage = Message.Create(eventArguments.Message.SendMode, 0);
-
-			while (eventArguments.Message.UnreadBits > 0)
-			{
-				int bitsToWrite = Math.Min(eventArguments.Message.UnreadBits, 8);
-
-				byte bits;
-
-				eventArguments.Message.GetBits(bitsToWrite, out bits);
-
-				relayMessage.AddBits(bits, bitsToWrite);
-			}
-
-			Server.SendToAll(relayMessage);
-
-			return;
-		}
-
-		HandleMessage(eventArguments.Message);
+		Start();
 	}
 
 	private void StartRpc(Message message)
 	{
-		ClientIds = message.GetInts();
+		int[] clientIds = message.GetInts();
 		Seed = message.GetUInt();
 
 		_worldGenerator.Start();
 
-		foreach (int clientId in ClientIds)
+		foreach (int clientId in clientIds)
 		{
-			Player player = PlayerScene.Instantiate<Player>();
-			Game.NameSpawnedNetworkNode("Player", player);
-
-			player.SetMultiplayerAuthority(clientId, true);
+			Player player = NetworkManager.SpawnNetworkSafe<Player>(PlayerScene, "Player", clientId);
 
 			AddChild(player);
 		}

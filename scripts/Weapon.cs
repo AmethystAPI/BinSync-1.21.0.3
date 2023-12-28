@@ -1,30 +1,28 @@
 using System;
 using Godot;
+using Networking;
 using Riptide;
 
-public partial class Weapon : Item, Networking.NetworkNode
+public partial class Weapon : Item
 {
   [Export] public PackedScene ProjectileScene;
 
-  private Networking.RpcMap _rpcMap = new Networking.RpcMap();
-  public Networking.RpcMap RpcMap => _rpcMap;
-
-  private Networking.SyncedVariable<float> _syncedRotation = new Networking.SyncedVariable<float>(nameof(_syncedRotation), 0, Networking.Authority.Client);
+  private NetworkedVariable<float> _syncedRotation = new NetworkedVariable<float>(0);
 
 
   public override void _Ready()
   {
     base._Ready();
 
-    _rpcMap.Register(_syncedRotation, this);
-    _rpcMap.Register(nameof(ShootRpc), ShootRpc);
+    NetworkPoint.Register(nameof(_syncedRotation), _syncedRotation);
+    NetworkPoint.Register(nameof(ShootRpc), ShootRpc);
   }
 
   public override void _Process(double delta)
   {
     _syncedRotation.Sync();
 
-    if (Game.IsOwner(this))
+    if (NetworkPoint.IsOwner)
     {
       _syncedRotation.Value = GlobalRotation;
     }
@@ -33,7 +31,7 @@ public partial class Weapon : Item, Networking.NetworkNode
       GlobalRotation = _syncedRotation.Value;
     }
 
-    if (!Game.IsOwner(this)) return;
+    if (!NetworkPoint.IsOwner) return;
 
     if (!_equipped) return;
 
@@ -50,9 +48,9 @@ public partial class Weapon : Item, Networking.NetworkNode
 
       if (_equippingPlayer.Health <= 0) return;
 
-      if (!Game.IsOwner(this)) return;
+      if (!NetworkPoint.IsOwner) return;
 
-      Game.BounceRpcToClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { message.AddInt(4); });
+      // Game.BounceRpcToClients(this, nameof(ShootRpc), MessageSendMode.Reliable, message => { message.AddInt(4); });
     }
   }
 

@@ -1,14 +1,17 @@
 using Godot;
+using Networking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class WorldGenerator : Node2D
+public partial class WorldGenerator : Node2D, NetworkPointUser
 {
 	private static WorldGenerator s_Me;
 
 	[Export] public PackedScene SpawnRoomScene;
 	[Export] public PackedScene RoomScene;
+
+	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private RandomNumberGenerator _randomNumberGenerator;
 	private Room _currentRoom;
@@ -16,6 +19,8 @@ public partial class WorldGenerator : Node2D
 
 	public override void _Ready()
 	{
+		NetworkPoint.Setup(this);
+
 		s_Me = this;
 	}
 
@@ -26,8 +31,7 @@ public partial class WorldGenerator : Node2D
 			Seed = (ulong)Game.Seed
 		};
 
-		SpawnRoom spawnRoom = SpawnRoomScene.Instantiate<SpawnRoom>();
-		Game.NameSpawnedNetworkNode("SpawnRoom", spawnRoom);
+		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomScene, "SpawnRoom");
 
 		AddChild(spawnRoom);
 
@@ -54,8 +58,7 @@ public partial class WorldGenerator : Node2D
 	{
 		s_Me._lastRoom = s_Me._currentRoom;
 
-		Room room = s_Me.RoomScene.Instantiate<Room>();
-		Game.NameSpawnedNetworkNode("Room", room);
+		Room room = NetworkManager.SpawnNetworkSafe<Room>(s_Me.RoomScene, "Room");
 
 		s_Me.AddChild(room);
 

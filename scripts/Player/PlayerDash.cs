@@ -16,7 +16,7 @@ public partial class PlayerDash : State
 
   public override void Enter()
   {
-    if (!Game.IsOwner(this)) return;
+    if (!_player.NetworkPoint.IsOwner) return;
 
     _dashTimer = Duration;
 
@@ -25,7 +25,7 @@ public partial class PlayerDash : State
 
   public override void PhsysicsUpdate(float delta)
   {
-    if (!Game.IsOwner(this)) return;
+    if (!_player.NetworkPoint.IsOwner) return;
 
     _player.Velocity = _dashDirection * Speed;
 

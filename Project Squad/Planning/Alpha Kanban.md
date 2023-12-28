@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Cleanup Code #code
 - [ ] Player Movement #mechanics
 - [ ] [[Alpha#Rooms]] #content
 - [ ] [[Alpha#Weapons]] #content
@@ -16,6 +15,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Cleanup Code #code
 
 
 ## Done

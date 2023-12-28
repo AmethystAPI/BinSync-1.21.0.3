@@ -1,8 +1,10 @@
 using Godot;
-using Riptide;
+using Networking;
 
-public partial class Item : Node2D
+public partial class Item : Node2D, NetworkPointUser
 {
+  public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+
   internal bool _equipped;
   internal Player _equippingPlayer;
 
@@ -10,6 +12,8 @@ public partial class Item : Node2D
 
   public override void _Ready()
   {
+    NetworkPoint.Setup(this);
+
     _equipArea = GetNode<Area2D>("EquipArea");
   }
 
@@ -23,11 +27,13 @@ public partial class Item : Node2D
       {
         if (!(body is Player)) continue;
 
-        if (!Game.IsOwner(body)) continue;
+        Player player = (Player)body;
 
-        if ((body as Player).Health <= 0) continue;
+        if (!player.NetworkPoint.IsOwner) continue;
 
-        (body as Player).Equip(this);
+        if (player.Health <= 0) continue;
+
+        player.Equip(this);
 
         break;
       }

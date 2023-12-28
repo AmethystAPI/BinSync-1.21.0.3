@@ -1,19 +1,21 @@
 using Godot;
+using Networking;
 using Riptide;
 
-public partial class Exit : Node2D, Damageable, Networking.NetworkNode
+public partial class Exit : Node2D, Damageable, NetworkPointUser
 {
 	[Export] public Vector2 Direction;
 
-	private Networking.RpcMap _rpcMap = new Networking.RpcMap();
-	public Networking.RpcMap RpcMap => _rpcMap;
+	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private bool _locked = true;
 	private bool _destroyed = false;
 
 	public override void _Ready()
 	{
-		_rpcMap.Register(nameof(DamageRpc), DamageRpc);
+		NetworkPoint.Setup(this);
+
+		NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
 
 		GetParent().GetParent<Room>().Completed += OnCompleted;
 	}
@@ -31,9 +33,9 @@ public partial class Exit : Node2D, Damageable, Networking.NetworkNode
 
 	public void Damage(Projectile projectile)
 	{
-		if (!Game.IsOwner(projectile)) return;
+		// if (!Game.IsOwner(projectile)) return;
 
-		Game.BounceRpcToClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message => { });
+		// Game.BounceRpcToClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message => { });
 	}
 
 	public void DamageRpc(Message message)
