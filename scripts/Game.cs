@@ -8,8 +8,8 @@ public partial class Game : Node2D, Networking.NetworkNode
 {
 	private struct UnhandledRpc
 	{
-		public String Name;
-		public String Path;
+		public string Name;
+		public string Path;
 		public Message Message;
 	}
 
@@ -30,6 +30,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 
 	private ENetMultiplayerPeer _peer;
 	private WorldGenerator _worldGenerator;
+	private int _nameIndex = 0;
 
 	public override void _Ready()
 	{
@@ -71,7 +72,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 		Server.SendToAll(message);
 	}
 
-	public static void SendRpcToAllClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
+	public static void BounceRpcToClients(Node source, string name, MessageSendMode messageSendMode, Action<Message> messageBuilder)
 	{
 		Message message = Message.Create(messageSendMode, 1);
 		message.AddString(name);
@@ -79,6 +80,13 @@ public partial class Game : Node2D, Networking.NetworkNode
 		messageBuilder.Invoke(message);
 
 		s_Client.Send(message);
+	}
+
+	public static void NameSpawnedNetworkNode(string baseName, Node node)
+	{
+		node.Name = baseName + " " + s_Me._nameIndex;
+
+		s_Me._nameIndex++;
 	}
 
 	public static bool Host()
@@ -215,6 +223,7 @@ public partial class Game : Node2D, Networking.NetworkNode
 		foreach (int clientId in ClientIds)
 		{
 			Player player = PlayerScene.Instantiate<Player>();
+			Game.NameSpawnedNetworkNode("Player", player);
 
 			player.SetMultiplayerAuthority(clientId, true);
 

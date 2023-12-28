@@ -1,6 +1,5 @@
 using Godot;
 using Riptide;
-using System;
 using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNode
@@ -45,6 +44,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 		_ressurectArea = GetNode<Area2D>("RessurectArea");
 
 		Weapon weapon = DefaultWeaponScene.Instantiate<Weapon>();
+		Game.NameSpawnedNetworkNode("Weapon", weapon);
 
 		AddChild(weapon);
 
@@ -124,7 +124,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 				if (player.Health > 0) continue;
 
-				Game.SendRpcToAllClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
+				Game.BounceRpcToClients(body, nameof(ReviveRpc), MessageSendMode.Reliable, message => { });
 			}
 
 			Velocity = _dashDirection * 700f;
@@ -160,7 +160,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (!Game.IsOwner(this)) return;
 
-		Game.SendRpcToAllClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
+		Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
 		{
 			message.AddFloat(Health);
 		});
@@ -178,7 +178,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 		if (!Game.IsOwner(this)) return;
 
-		Game.SendRpcToAllClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
+		Game.BounceRpcToClients(this, nameof(UpdateHealthRpc), MessageSendMode.Reliable, message =>
 		{
 			message.AddFloat(Health);
 		});
@@ -204,7 +204,7 @@ public partial class Player : CharacterBody2D, Damageable, Networking.NetworkNod
 
 	public void Equip(Item item)
 	{
-		Game.SendRpcToAllClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
+		Game.BounceRpcToClients(this, nameof(EquipWeaponRpc), MessageSendMode.Reliable, message =>
 		{
 			message.AddString(item.GetPath());
 		});

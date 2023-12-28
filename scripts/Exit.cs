@@ -22,16 +22,18 @@ public partial class Exit : Node2D, Damageable, Networking.NetworkNode
 	{
 		if (_locked) return false;
 
-		return projectile.Source is Player;
+		if (_destroyed) return false;
+
+		if (!(projectile.Source is Player)) return false;
+
+		return true;
 	}
 
 	public void Damage(Projectile projectile)
 	{
-		if (_destroyed) return;
-
 		if (!Game.IsOwner(projectile)) return;
 
-		Game.SendRpcToAllClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message => { });
+		Game.BounceRpcToClients(this, nameof(DamageRpc), MessageSendMode.Reliable, message => { });
 	}
 
 	public void DamageRpc(Message message)

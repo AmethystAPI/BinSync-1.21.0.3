@@ -27,6 +27,7 @@ public partial class WorldGenerator : Node2D
 		};
 
 		SpawnRoom spawnRoom = SpawnRoomScene.Instantiate<SpawnRoom>();
+		Game.NameSpawnedNetworkNode("SpawnRoom", spawnRoom);
 
 		AddChild(spawnRoom);
 
@@ -54,6 +55,7 @@ public partial class WorldGenerator : Node2D
 		s_Me._lastRoom = s_Me._currentRoom;
 
 		Room room = s_Me.RoomScene.Instantiate<Room>();
+		Game.NameSpawnedNetworkNode("Room", room);
 
 		s_Me.AddChild(room);
 
@@ -75,6 +77,8 @@ public partial class WorldGenerator : Node2D
 		room.PlaceExit(exitDirection);
 
 		room.Place();
+
+		GD.Print("Placed Room " + room.Name);
 	}
 
 	public static void DespawnLastRoom()

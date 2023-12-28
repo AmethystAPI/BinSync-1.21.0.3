@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using Riptide;
 
 public partial class SpawnRoom : Room
 {
@@ -10,6 +11,8 @@ public partial class SpawnRoom : Room
 
 	protected override void Start()
 	{
-		CallDeferred(nameof(End));
+		if (!Game.IsHost()) return;
+
+		Game.SendRpcToClients(this, nameof(EndRpc), MessageSendMode.Reliable, message => { });
 	}
 }

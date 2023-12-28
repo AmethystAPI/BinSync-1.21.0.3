@@ -29,6 +29,7 @@ public partial class Room : Node2D, Networking.NetworkNode
 	public override void _Ready()
 	{
 		_rpcMap.Register(nameof(StartRpc), StartRpc);
+		_rpcMap.Register(nameof(EndRpc), EndRpc);
 		_rpcMap.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		_rpcMap.Register(nameof(SpawnLootRpc), SpawnLootRpc);
 
@@ -90,7 +91,9 @@ public partial class Room : Node2D, Networking.NetworkNode
 
 		if (_aliveEnemies != 0) return;
 
-		End();
+		if (!Game.IsHost()) return;
+
+		Game.SendRpcToClients(this, nameof(EndRpc), MessageSendMode.Reliable, message => { });
 	}
 
 	private void OnBodyEntered(Node2D body)
@@ -157,6 +160,7 @@ public partial class Room : Node2D, Networking.NetworkNode
 		try
 		{
 			Node2D enemy = EnemyScenes[enemySceneIndex].Instantiate<Node2D>();
+			Game.NameSpawnedNetworkNode("Enemy", enemy);
 
 			enemy.SetMultiplayerAuthority(1);
 
@@ -170,7 +174,7 @@ public partial class Room : Node2D, Networking.NetworkNode
 		}
 	}
 
-	protected virtual void End()
+	protected virtual void EndRpc(Message message)
 	{
 		Completed?.Invoke();
 
@@ -191,6 +195,7 @@ public partial class Room : Node2D, Networking.NetworkNode
 		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
 
 		Node2D item = lootScene.Instantiate<Node2D>();
+		Game.NameSpawnedNetworkNode("Loot", item);
 
 		AddChild(item);
 
