@@ -77,8 +77,6 @@ public partial class WorldGenerator : Node2D
 		room.PlaceExit(exitDirection);
 
 		room.Place();
-
-		GD.Print("Placed Room " + room.Name);
 	}
 
 	public static void DespawnLastRoom()
