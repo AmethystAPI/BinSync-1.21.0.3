@@ -7,7 +7,11 @@
 		{"id":"442daaaeac80f981","type":"file","file":"Attachments/new-main-image-adirondacks-new-york-stock.jpg","x":-20,"y":-48,"width":400,"height":263},
 		{"id":"b191cf4000ebc672","type":"file","file":"Attachments/oakImage-1695332413477-articleLarge.webp","x":-740,"y":-50,"width":400,"height":267},
 		{"id":"af3becdb641df4c2","type":"file","file":"Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg","x":-320,"y":-50,"width":267,"height":400},
-		{"id":"af1c02ff3dbe9c3b","type":"file","file":"Attachments/gettyimages-841380450-170667a.jpg","x":-340,"y":-360,"width":400,"height":266}
+		{"id":"af1c02ff3dbe9c3b","type":"file","file":"Attachments/gettyimages-841380450-170667a.jpg","x":-340,"y":-360,"width":400,"height":266},
+		{"id":"a507cfda1a97bbe1","x":-121,"y":680,"width":363,"height":400,"type":"file","file":"Attachments/Pasted image 20231229043622.png"},
+		{"id":"eaad885f80791f39","x":242,"y":680,"width":371,"height":400,"type":"file","file":"Attachments/Pasted image 20231229044050.png"},
+		{"id":"6dbee6a539a288e1","x":613,"y":680,"width":364,"height":400,"type":"file","file":"Attachments/Pasted image 20231229051318.png"},
+		{"id":"141eb5aa553d3a37","x":977,"y":680,"width":365,"height":400,"type":"file","file":"Attachments/Pasted image 20231229051305.png"}
 	],
 	"edges":[]
 }

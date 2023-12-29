@@ -11,14 +11,11 @@
             "id": "3f976ffb6245f116",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas",
-                "viewState": {
-                  "x": 1001.918791417579,
-                  "y": -92.48667808509799,
-                  "zoom": 0.6666666666666667
-                }
+                "file": "Daily Notes/Day 18-7.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas",
+                "file": "Daily Notes/Day 18-7.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas",
+                "file": "Daily Notes/Day 18-7.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas"
+                "file": "Daily Notes/Day 18-7.md"
               }
             }
           }
@@ -151,6 +148,15 @@
   },
   "active": "3f976ffb6245f116",
   "lastOpenFiles": [
+    "Reference/Locations/Golden Grove.canvas",
+    "Attachments/Pasted image 20231229051318.png.import",
+    "Attachments/Pasted image 20231229051318.png",
+    "Attachments/Pasted image 20231229051305.png.import",
+    "Attachments/Pasted image 20231229051305.png",
+    "Attachments/Pasted image 20231229044050.png.import",
+    "Attachments/Pasted image 20231229044050.png",
+    "Attachments/Pasted image 20231229043622.png.import",
+    "Attachments/Pasted image 20231229043622.png",
     "Attachments/GAwlqolXgAA5GDC.png.import",
     "Attachments/GA5kUMrW4AAGSLG.png.import",
     "Attachments/GA5kUMrW4AAGSLG.png",
@@ -159,21 +165,12 @@
     "Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg.import",
     "Attachments/new-main-image-adirondacks-new-york-stock.jpg.import",
     "Attachments/oakImage-1695332413477-articleLarge.webp.import",
-    "Attachments/gettyimages-841380450-170667a.jpg.import",
-    "Attachments/GA0Uat-XYAAmPp9.png.import",
     "Attachments/GA0Uat-XYAAmPp9.png",
     "Attachments/new-main-image-adirondacks-new-york-stock.jpg",
     "Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg",
     "Attachments/oakImage-1695332413477-articleLarge.webp",
-    "Attachments/gettyimages-841380450-170667a.jpg",
-    "Attachments",
-    "Attachments/Pasted image 20231228222328.png",
-    "Reference/Locations",
-    "Reference",
     "Design/Locations/Golden Grove.md",
-    "Reference/Locations/Golden Grove.canvas",
     "Planning/Alpha.md",
-    "Daily Notes/Pasted image 20231228194438.png",
     "Planning/Alpha Kanban.md",
     "Daily Notes/Day 18-7.md",
     "Implementation/Combat.md",
