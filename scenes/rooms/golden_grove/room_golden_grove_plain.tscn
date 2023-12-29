@@ -1,0 +1,283 @@
+[gd_scene load_steps=19 format=3 uid="uid://co2o42vdmdcna"]
+
+[ext_resource type="Script" path="res://scripts/Rooms/Room.cs" id="1_itp1v"]
+[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="2_78gg5"]
+[ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/weapons/sword.tscn" id="3_lp6rb"]
+[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/weapons/bow.tscn" id="4_nuv6i"]
+[ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/weapons/hammer.tscn" id="5_b2eo7"]
+[ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/trinkets/faith_trinket.tscn" id="6_wdd8f"]
+[ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/trinkets/strength_trinket.tscn" id="7_8a2ih"]
+[ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/trinkets/swiftness_trinket.tscn" id="8_pvr4h"]
+[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_plwlf"]
+[ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="9_qnnil"]
+[ext_resource type="Script" path="res://scripts/Rooms/Entrance.cs" id="10_bu1m6"]
+[ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="11_kfkjv"]
+[ext_resource type="Script" path="res://scripts/Rooms/Exit.cs" id="12_p1x0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcnv7"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7076x"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30ode"]
+size = Vector2(32, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwd80"]
+size = Vector2(16, 32)
+
+[node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
+y_sort_enabled = true
+script = ExtResource("1_itp1v")
+EnemyScenes = Array[PackedScene]([ExtResource("2_78gg5")])
+LootScenes = Array[PackedScene]([ExtResource("3_lp6rb"), ExtResource("4_nuv6i"), ExtResource("5_b2eo7"), ExtResource("6_wdd8f"), ExtResource("7_8a2ih"), ExtResource("8_pvr4h")])
+SpawnPoints = [NodePath("SpawnPoints/Point1")]
+EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)
+EdgeTileMaps = [NodePath("TileMapLeft"), NodePath("TileMapRight"), NodePath("TileMapTop"), NodePath("TileMapBottom")]
+EntranceDirections = PackedVector2Array(0, 1, 1, 0, -1, 0)
+Entrances = [NodePath("Entrances/Down"), NodePath("Entrances/Right"), NodePath("Entrances/Left")]
+ExitDirections = PackedVector2Array(0, -1, 1, 0, -1, 0)
+Exits = [NodePath("Exits/Up"), NodePath("Exits/Right"), NodePath("Exits/Left")]
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("9_plwlf")
+format = 2
+layer_0/name = "Walls"
+layer_0/y_sort_enabled = true
+layer_1/name = "Roofs"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Floor"
+layer_2/tile_data = PackedInt32Array(65535, 589824, 1, 65537, 589824, 1, 131069, 327680, 0, 131068, 589824, 1, 65539, 589824, 1, 65540, 589824, 1, 327679, 589824, 1, -1, 589824, 1, -65537, 589824, 1, -131073, 589824, 1, -196609, 589824, 1, -262145, 589824, 1, 196603, 393216, 0, 262139, 393216, 2, 327675, 589824, 1, 327676, 327680, 1, 327677, 393216, 1, 327678, 458752, 1, 262140, 327680, 4, 262141, 393216, 1, 196605, 327680, 3, 196604, 393216, 0, 65534, 589824, 1, 65533, 589824, 1, 65532, 589824, 1, 65531, 589824, 1, -5, 589824, 1, -65541, 589824, 1, -131077, 393216, 2, -196613, 393216, 1, -262149, 393216, 1, -262148, 393216, 1, -262147, 458752, 1, -262146, 589824, 1, -196610, 589824, 1, -131074, 589824, 1, -65538, 589824, 1, -2, 589824, 1, -3, 589824, 1, -4, 589824, 1, -65540, 589824, 1, -131076, 393216, 2, -196611, 458752, 1, -131075, 458752, 2, -65539, 589824, 1, -196612, 393216, 1, -327680, 589824, 1, -327679, 589824, 1, -327678, 589824, 1, -327677, 589824, 1, -327676, 589824, 1, -262140, 589824, 1, -196604, 589824, 1, -131068, 589824, 1, -65532, 589824, 1, 4, 589824, 1, 131076, 589824, 1, 196612, 393216, 0, 262148, 393216, 1, 262147, 327680, 1, 262146, 589824, 1, 262145, 589824, 1, 262144, 589824, 1, 131073, 589824, 1, 196609, 589824, 1, 196610, 589824, 1, 196611, 327680, 0, 131075, 589824, 1, 131074, 589824, 1, 3, 589824, 1, -131072, 327680, 2, -65536, 589824, 1, -65533, 589824, 1, -196607, 393216, 0, -196606, 327680, 3, -196605, 458752, 1, -131069, 458752, 2, -196608, 327680, 0, -262144, 589824, 1, -262143, 589824, 1, -262142, 327680, 0, -262141, 458752, 0, 196607, 393216, 1, 262142, 393216, 4, 262143, 393216, 2, 196608, 458752, 2, 131072, 458752, 1, 65536, 458752, 0, 131071, 393216, 0, 131070, 393216, 0, 196606, 393216, 1, -65535, 589824, 1, -65534, 589824, 1, -131070, 393216, 2, -131071, 393216, 2, 0, 589824, 1, 1, 589824, 1, 2, 589824, 1, 65538, 589824, 1, 131067, 589824, 1)
+
+[node name="TileMapLeft" type="TileMap" parent="."]
+visible = false
+y_sort_enabled = true
+tile_set = ExtResource("9_qnnil")
+format = 2
+layer_0/name = "Walls"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(131067, 720896, 3, 65531, 720896, 3, -5, 720896, 3, -65541, 720896, 3)
+layer_1/name = "Roofs"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(131067, 196608, 2, 65531, 196608, 2, -5, 196608, 2, -65541, 196608, 2)
+
+[node name="TileMapRight" type="TileMap" parent="."]
+visible = false
+y_sort_enabled = true
+tile_set = ExtResource("9_qnnil")
+format = 2
+layer_0/name = "Walls"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(65540, 589824, 3, 4, 589824, 3, -65532, 589824, 3, -131068, 589824, 3)
+layer_1/name = "Roofs"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(65540, 65536, 2, 4, 65536, 2, -65532, 65536, 2, -131068, 65536, 2)
+
+[node name="TileMapTop" type="TileMap" parent="."]
+visible = false
+y_sort_enabled = true
+tile_set = ExtResource("9_qnnil")
+format = 2
+layer_0/name = "Walls"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-196609, 655360, 4, -262144, 655360, 4, -262146, 655360, 3, -262145, 655360, 3, -327680, 655360, 3, -327679, 655360, 3, -196610, 655360, 4, -262143, 655360, 4)
+layer_1/name = "Roofs"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(-262146, 131072, 3, -262145, 131072, 3, -327680, 131072, 3, -327679, 131072, 3, -327678, 131072, 3)
+
+[node name="TileMapBottom" type="TileMap" parent="."]
+visible = false
+y_sort_enabled = true
+tile_set = ExtResource("9_qnnil")
+format = 2
+layer_0/name = "Walls"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(393214, 655360, 2, 393215, 655360, 2, 327680, 655360, 2, 327681, 655360, 2, 262146, 655360, 0, 262145, 655360, 0, 262144, 655360, 0, 327679, 655360, 0, 327678, 655360, 0, 327677, 655360, 0, 327676, 655360, 0, 262147, 655360, 0)
+layer_1/name = "Roofs"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(327678, 131072, 1, 327679, 131072, 1, 262144, 131072, 1, 262145, 131072, 1, 327677, 131072, 1, 262146, 131072, 1)
+
+[node name="SpawnTriggerArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnTriggerArea"]
+shape = SubResource("RectangleShape2D_3y62c")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+visible = false
+
+[node name="Point1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-55, 56)
+
+[node name="Point2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(56, 57)
+
+[node name="Point3" type="Node2D" parent="SpawnPoints"]
+position = Vector2(56, -47)
+
+[node name="Point4" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-55, -47)
+
+[node name="Entrances" type="Node2D" parent="."]
+visible = false
+
+[node name="Down" type="Node2D" parent="Entrances"]
+position = Vector2(0, 88)
+script = ExtResource("10_bu1m6")
+
+[node name="Visuals" type="StaticBody2D" parent="Entrances/Down"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Down/Visuals"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_wcnv7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entrances/Down/Visuals"]
+position = Vector2(-8, -8)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Down/Visuals"]
+position = Vector2(8, -8)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Right" type="Node2D" parent="Entrances"]
+position = Vector2(80, 0)
+script = ExtResource("10_bu1m6")
+
+[node name="Visuals" type="StaticBody2D" parent="Entrances/Right"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Right/Visuals"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_7076x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entrances/Right/Visuals"]
+position = Vector2(-8, 8)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Right/Visuals"]
+position = Vector2(-8, 24)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Left" type="Node2D" parent="Entrances"]
+position = Vector2(-80, 0)
+script = ExtResource("10_bu1m6")
+
+[node name="Visuals" type="StaticBody2D" parent="Entrances/Left"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Left/Visuals"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_7076x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entrances/Left/Visuals"]
+position = Vector2(8, 8)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Left/Visuals"]
+position = Vector2(8, 24)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Exits" type="Node2D" parent="."]
+visible = false
+
+[node name="Up" type="StaticBody2D" parent="Exits"]
+position = Vector2(0, -79)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("12_p1x0v")
+Direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Up"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_30ode")
+
+[node name="Sprite2D" type="Sprite2D" parent="Exits/Up"]
+position = Vector2(-8, 14)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/Up"]
+position = Vector2(8, 14)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Right" type="StaticBody2D" parent="Exits"]
+position = Vector2(80, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("12_p1x0v")
+Direction = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Right"]
+position = Vector2(-8, 8)
+shape = SubResource("RectangleShape2D_gwd80")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/Right"]
+position = Vector2(-8, 8)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Exits/Right"]
+position = Vector2(-8, 24)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Left" type="StaticBody2D" parent="Exits"]
+position = Vector2(-80, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("12_p1x0v")
+Direction = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Left"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_gwd80")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Exits/Left"]
+position = Vector2(8, 8)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Exits/Left"]
+position = Vector2(8, 24)
+texture = ExtResource("11_kfkjv")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(224, 40, 16, 24)

@@ -6,8 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Player Movement #mechanics
-- [ ] [[Alpha#Rooms]] #content
 - [ ] [[Alpha#Weapons]] #content
 - [ ] [[Alpha#Enemies]] #content
 - [ ] [[Alpha#Visuals]] #visuals
@@ -15,12 +13,14 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Fix Camera #code
+- [ ] [[Alpha#Rooms]] #content
 
 
 ## Done
 
 **Complete**
+- [x] Player Movement #mechanics
+- [x] Fix Camera #code
 - [x] Cleanup Code #code
 - [x] State Machine System #code
 

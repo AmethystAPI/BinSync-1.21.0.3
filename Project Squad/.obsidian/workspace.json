@@ -11,9 +11,11 @@
             "id": "3f976ffb6245f116",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Alpha Kanban.md"
+                "file": "Planning/Alpha.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
+                "file": "Planning/Alpha.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
+                "file": "Planning/Alpha.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Alpha Kanban.md"
+                "file": "Planning/Alpha.md"
               }
             }
           }
@@ -146,8 +148,9 @@
   },
   "active": "3f976ffb6245f116",
   "lastOpenFiles": [
-    "Daily Notes/Day 18-7.md",
+    "Daily Notes/Pasted image 20231228194438.png",
     "Planning/Alpha Kanban.md",
+    "Daily Notes/Day 18-7.md",
     "Implementation/Combat.md",
     "Implementation/World Generation.md",
     "Planning/Alpha.md",
