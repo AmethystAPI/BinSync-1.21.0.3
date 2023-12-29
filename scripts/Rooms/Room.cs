@@ -20,10 +20,9 @@ public partial class Room : Node2D, NetworkPointUser
 	public Action Completed;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	private bool _spawned = false;
+	private bool _started = false;
 	private int _aliveEnemies = 0;
 	private int _playersEntered = 0;
-	private bool _started = false;
 
 	public override void _Ready()
 	{
@@ -94,7 +93,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		if (!NetworkManager.IsHost) return;
 
-		NetworkPoint.SendRpcToClients(nameof(EndRpc));
+		End();
 	}
 
 	private void OnBodyEntered(Node2D body)
@@ -105,11 +104,7 @@ public partial class Room : Node2D, NetworkPointUser
 
 		if (_playersEntered != Player.Players.Count) return;
 
-		if (_started) return;
-
-		_started = true;
-
-		NetworkPoint.SendRpcToClients(nameof(StartRpc));
+		Start();
 	}
 
 	private void OnBodyExited(Node2D body)
@@ -119,28 +114,26 @@ public partial class Room : Node2D, NetworkPointUser
 		_playersEntered--;
 	}
 
-	private void StartRpc(Message message)
-	{
-		Start();
-	}
-
 	protected virtual void Start()
 	{
-		Started?.Invoke();
+		if (_started) return;
 
-		WorldGenerator.DespawnLastRoom();
+		_started = true;
 
-		if (!NetworkManager.IsHost) return;
+		NetworkPoint.SendRpcToClients(nameof(StartRpc));
 
 		SpawnEnemies();
+
+		WorldGenerator.DespawnLastRoom();
+	}
+
+	protected virtual void StartRpc(Message message)
+	{
+		Started?.Invoke();
 	}
 
 	private void SpawnEnemies()
 	{
-		if (_spawned) return;
-
-		_spawned = true;
-
 		foreach (Node2D spawnPoint in SpawnPoints)
 		{
 			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message =>
@@ -165,11 +158,11 @@ public partial class Room : Node2D, NetworkPointUser
 		enemy.GlobalPosition = position;
 	}
 
-	protected virtual void EndRpc(Message message)
+	protected void End()
 	{
-		Completed?.Invoke();
-
 		if (!NetworkManager.IsHost) return;
+
+		NetworkPoint.SendRpcToClients(nameof(EndRpc));
 
 		if (LootScenes.Length == 0) return;
 
@@ -177,6 +170,11 @@ public partial class Room : Node2D, NetworkPointUser
 		{
 			message.AddString(LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
 		});
+	}
+
+	protected virtual void EndRpc(Message message)
+	{
+		Completed?.Invoke();
 	}
 
 	protected void SpawnLootRpc(Message message)

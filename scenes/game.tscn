@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Networking/NetworkManager.cs" id="3_ix04k"]
 [ext_resource type="PackedScene" uid="uid://bh3awkciiraoa" path="res://scenes/test_dungeon/room.tscn" id="3_r8net"]
 [ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/game_ui.tscn" id="3_s7l32"]
-[ext_resource type="Script" path="res://scripts/WorldGenerator.cs" id="4_x66nk"]
+[ext_resource type="Script" path="res://scripts/Rooms/WorldGenerator.cs" id="4_x66nk"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/main_menu.tscn" id="7_gnxd7"]
 
 [node name="Game" type="Node2D"]

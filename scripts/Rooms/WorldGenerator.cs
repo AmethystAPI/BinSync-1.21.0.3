@@ -1,6 +1,6 @@
 using Godot;
 using Networking;
-using System;
+using Riptide;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +20,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 	public override void _Ready()
 	{
 		NetworkPoint.Setup(this);
+
+		NetworkPoint.Register(nameof(PlaceNextRoomRpc), PlaceNextRoomRpc);
+		NetworkPoint.Register(nameof(DespawnLastRoomRpc), DespawnLastRoomRpc);
 
 		s_Me = this;
 	}
@@ -56,13 +59,37 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 	public static void PlaceNextRoom(Vector2 connectionPosition, Vector2 direction)
 	{
-		s_Me._lastRoom = s_Me._currentRoom;
+		if (!NetworkManager.IsHost) return;
 
-		Room room = NetworkManager.SpawnNetworkSafe<Room>(s_Me.RoomScene, "Room");
+		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceNextRoomRpc), message =>
+		{
+			message.AddFloat(connectionPosition.X);
+			message.AddFloat(connectionPosition.Y);
 
-		s_Me.AddChild(room);
+			message.AddFloat(direction.X);
+			message.AddFloat(direction.Y);
+		});
+	}
 
-		s_Me._currentRoom = room;
+	public static void DespawnLastRoom()
+	{
+		if (!NetworkManager.IsHost) return;
+
+		s_Me.NetworkPoint.SendRpcToClients(nameof(DespawnLastRoomRpc));
+	}
+
+	private void PlaceNextRoomRpc(Message message)
+	{
+		Vector2 connectionPosition = new Vector2(message.GetFloat(), message.GetFloat());
+		Vector2 direction = new Vector2(message.GetFloat(), message.GetFloat());
+
+		_lastRoom = _currentRoom;
+
+		Room room = NetworkManager.SpawnNetworkSafe<Room>(RoomScene, "Room");
+
+		AddChild(room);
+
+		_currentRoom = room;
 
 		room.GlobalPosition = connectionPosition;
 
@@ -75,15 +102,17 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 		List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Left, Vector2.Up, Vector2.Right };
 		if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
 
-		Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
+		Vector2 exitDirection = possibleExitDirections[_randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
 
 		room.PlaceExit(exitDirection);
 
 		room.Place();
 	}
 
-	public static void DespawnLastRoom()
+	private void DespawnLastRoomRpc(Message message)
 	{
-		s_Me._lastRoom.QueueFree();
+		if (_lastRoom == null) return;
+
+		_lastRoom.QueueFree();
 	}
 }

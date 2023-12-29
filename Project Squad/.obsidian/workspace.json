@@ -11,9 +11,11 @@
             "id": "3b31b13104c58670",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Alpha Kanban.md"
+                "file": "Daily Notes/Day 18-7.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
+                "file": "Daily Notes/Day 18-7.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
+                "file": "Daily Notes/Day 18-7.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Alpha Kanban.md"
+                "file": "Daily Notes/Day 18-7.md"
               }
             }
           }
@@ -146,11 +148,11 @@
   },
   "active": "3b31b13104c58670",
   "lastOpenFiles": [
+    "Planning/Alpha Kanban.md",
     "Planning/Alpha.md",
     "Daily Notes/Day 18-7.md",
     "Daily Notes/Day 18-5.md",
     "Daily Notes/Day 18-6.md",
-    "Planning/Alpha Kanban.md",
     "Daily Notes/Day 18-4.md",
     "Daily Notes/Day 18-3.md",
     "Daily Notes/Day 18-2.md",

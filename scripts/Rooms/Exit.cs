@@ -42,9 +42,11 @@ public partial class Exit : Node2D, Damageable, NetworkPointUser
 	{
 		_destroyed = true;
 
-		WorldGenerator.PlaceNextRoom(GlobalPosition, Direction);
-
 		QueueFree();
+
+		if (!NetworkManager.IsHost) return;
+
+		WorldGenerator.PlaceNextRoom(GlobalPosition, Direction);
 	}
 
 	private void OnCompleted()
