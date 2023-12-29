@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2ch8e83mu0et"]
 
 [ext_resource type="Texture2D" uid="uid://c2uwj1cf4pws6" path="res://sprites/trinkets.aseprite" id="1_6laci"]
-[ext_resource type="Script" path="res://scripts/Trinkets/SwiftnessTrinket.cs" id="1_omt5b"]
+[ext_resource type="Script" path="res://scripts/Items/Trinkets/SwiftnessTrinket.cs" id="1_omt5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdbv5"]
 

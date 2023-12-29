@@ -7,6 +7,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 {
 	public static List<Player> Players = new List<Player>();
 	public static List<Player> AlivePlayers = new List<Player>();
+	public static Player LocalPlayer;
 
 	[Export] public PackedScene DefaultWeaponScene;
 
@@ -42,6 +43,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 		if (!NetworkPoint.IsOwner) return;
 
+		LocalPlayer = this;
+
 		GameUI.UpdateHealth(Health);
 	}
 
@@ -62,8 +65,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 		}
 
 		if (!NetworkPoint.IsOwner) return;
-
-		GetParent().GetNode<Camera2D>("Camera").Position = Position;
 	}
 
 	public void Heal(float health)

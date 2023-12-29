@@ -15,12 +15,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Cleanup Code #code
+- [ ] Fix Camera #code
 
 
 ## Done
 
 **Complete**
+- [x] Cleanup Code #code
 - [x] State Machine System #code
 
 

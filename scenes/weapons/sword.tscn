@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyh55k213w7y7"]
 
-[ext_resource type="Script" path="res://scripts/Weapon.cs" id="1_068pm"]
+[ext_resource type="Script" path="res://scripts/Items/Weapons/Weapon.cs" id="1_068pm"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="2_7q730"]
 [ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/weapons/sword_projectile.tscn" id="2_cwddm"]
 
