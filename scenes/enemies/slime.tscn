@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://biycaes0pxrav"]
 
 [ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="1_g107h"]
-[ext_resource type="Script" path="res://scripts/Slime.cs" id="1_mu0ej"]
+[ext_resource type="Script" path="res://scripts/Enemies/Slime.cs" id="1_mu0ej"]
 [ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="2_4goc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
