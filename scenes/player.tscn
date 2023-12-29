@@ -89,9 +89,11 @@ DefaultState = "Normal"
 
 [node name="Normal" type="Node" parent="StateMachine"]
 script = ExtResource("5_stky2")
+Speed = 70.0
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("6_mtedp")
+Speed = 400.0
 
 [node name="Angel" type="Node" parent="StateMachine"]
 script = ExtResource("7_4smh0")
