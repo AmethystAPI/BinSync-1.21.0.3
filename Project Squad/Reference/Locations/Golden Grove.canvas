@@ -1,18 +1,22 @@
 {
 	"nodes":[
-		{"id":"c11a69f6360b664f","type":"file","file":"Attachments/GAwlqolXgAA5GDC.png","x":960,"y":-340,"width":400,"height":226},
-		{"id":"05f309e22c2d7e33","type":"file","file":"Attachments/GA0Uat-XYAAmPp9.png","x":960,"y":-83,"width":400,"height":226},
-		{"id":"f897ba69ed1cdeb1","type":"file","file":"Attachments/GA5kUMrW4AAGSLG.png","x":960,"y":180,"width":400,"height":226},
-		{"id":"48c676bceac7d00b","type":"file","file":"Attachments/Pasted image 20231228222328.png","x":500,"y":-340,"width":400,"height":225},
 		{"id":"442daaaeac80f981","type":"file","file":"Attachments/new-main-image-adirondacks-new-york-stock.jpg","x":-20,"y":-48,"width":400,"height":263},
 		{"id":"b191cf4000ebc672","type":"file","file":"Attachments/oakImage-1695332413477-articleLarge.webp","x":-740,"y":-50,"width":400,"height":267},
 		{"id":"af3becdb641df4c2","type":"file","file":"Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg","x":-320,"y":-50,"width":267,"height":400},
 		{"id":"af1c02ff3dbe9c3b","type":"file","file":"Attachments/gettyimages-841380450-170667a.jpg","x":-340,"y":-360,"width":399,"height":266},
-		{"id":"a507cfda1a97bbe1","type":"file","file":"Attachments/Pasted image 20231229043622.png","x":-121,"y":680,"width":363,"height":400},
-		{"id":"eaad885f80791f39","type":"file","file":"Attachments/Pasted image 20231229044050.png","x":242,"y":680,"width":371,"height":400},
-		{"id":"6dbee6a539a288e1","type":"file","file":"Attachments/Pasted image 20231229051318.png","x":613,"y":680,"width":364,"height":400},
-		{"id":"141eb5aa553d3a37","type":"file","file":"Attachments/Pasted image 20231229051305.png","x":977,"y":680,"width":365,"height":400},
-		{"id":"fa298384d2743445","x":1342,"y":680,"width":395,"height":400,"type":"file","file":"Attachments/Pasted image 20231230032304.png"}
+		{"id":"a507cfda1a97bbe1","type":"file","file":"Attachments/Pasted image 20231229043622.png","x":-683,"y":600,"width":363,"height":400},
+		{"id":"eaad885f80791f39","type":"file","file":"Attachments/Pasted image 20231229044050.png","x":-320,"y":600,"width":371,"height":400},
+		{"id":"6dbee6a539a288e1","type":"file","file":"Attachments/Pasted image 20231229051318.png","x":51,"y":600,"width":364,"height":400},
+		{"id":"141eb5aa553d3a37","type":"file","file":"Attachments/Pasted image 20231229051305.png","x":415,"y":600,"width":365,"height":400},
+		{"id":"fa298384d2743445","type":"file","file":"Attachments/Pasted image 20231230032304.png","x":780,"y":600,"width":395,"height":400},
+		{"id":"2b2489bdbd3756fc","type":"file","file":"Attachments/Pasted image 20231230033616.png","x":1175,"y":600,"width":398,"height":400},
+		{"id":"18623cbb563f98f8","type":"text","text":"# Progress","x":348,"y":480,"width":250,"height":60},
+		{"id":"92df88e8f79b10b5","type":"text","text":"# Mood","x":-270,"y":-480,"width":250,"height":60},
+		{"id":"c11a69f6360b664f","type":"file","file":"Attachments/GAwlqolXgAA5GDC.png","x":1038,"y":-333,"width":400,"height":226},
+		{"id":"05f309e22c2d7e33","type":"file","file":"Attachments/GA0Uat-XYAAmPp9.png","x":1038,"y":-76,"width":400,"height":226},
+		{"id":"f897ba69ed1cdeb1","type":"file","file":"Attachments/GA5kUMrW4AAGSLG.png","x":1038,"y":187,"width":400,"height":226},
+		{"id":"eca816cd3557fb93","type":"text","text":"# Style","x":978,"y":-473,"width":250,"height":60},
+		{"id":"48c676bceac7d00b","type":"file","file":"Attachments/Pasted image 20231228222328.png","x":578,"y":-333,"width":400,"height":225}
 	],
 	"edges":[]
 }

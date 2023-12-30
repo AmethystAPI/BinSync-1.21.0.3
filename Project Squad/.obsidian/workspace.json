@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/Day 18-8.md",
+                "file": "Planning/Alpha.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-8.md",
+                "file": "Planning/Alpha.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-8.md",
+                "file": "Planning/Alpha.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-8.md"
+                "file": "Planning/Alpha.md"
               }
             }
           }
@@ -148,13 +148,21 @@
   },
   "active": "3f976ffb6245f116",
   "lastOpenFiles": [
+    "Daily Notes/Day 18-8.md",
+    "Design/Locations/Golden Grove.md",
+    "Attachments/Pasted image 20231230033616.png.import",
+    "Attachments/Pasted image 20231230033604.png.import",
+    "Attachments/Pasted image 20231230033609.png.import",
+    "Daily Notes/Day 18-7.md",
+    "Design/World Generation.md",
+    "Reference/Locations/Golden Grove.canvas",
+    "Attachments/Pasted image 20231230033616.png",
+    "Attachments/Pasted image 20231230033609.png",
+    "Attachments/Pasted image 20231230033604.png",
     "Attachments/Pasted image 20231230032304.png.import",
     "Attachments/Pasted image 20231230032317.png.import",
     "Attachments/Pasted image 20231230032317.png",
-    "Reference/Locations/Golden Grove.canvas",
     "Attachments/Pasted image 20231230032304.png",
-    "Daily Notes/Day 18-8.md",
-    "Daily Notes/Day 18-7.md",
     "Attachments/Pasted image 20231229051318.png.import",
     "Attachments/Pasted image 20231229051318.png",
     "Attachments/Pasted image 20231229051305.png.import",
@@ -164,15 +172,7 @@
     "Attachments/Pasted image 20231229043622.png.import",
     "Attachments/Pasted image 20231229043622.png",
     "Attachments/GAwlqolXgAA5GDC.png.import",
-    "Attachments/GA5kUMrW4AAGSLG.png.import",
     "Attachments/GA5kUMrW4AAGSLG.png",
-    "Attachments/GAwlqolXgAA5GDC.png",
-    "Attachments/Pasted image 20231228222328.png.import",
-    "Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg.import",
-    "Attachments/new-main-image-adirondacks-new-york-stock.jpg.import",
-    "Attachments/GA0Uat-XYAAmPp9.png",
-    "Attachments/new-main-image-adirondacks-new-york-stock.jpg",
-    "Design/Locations/Golden Grove.md",
     "Planning/Alpha.md",
     "Planning/Alpha Kanban.md",
     "Implementation/Combat.md",
@@ -185,7 +185,6 @@
     "Daily Notes/Day 18-2.md",
     "Daily Notes/Day 18-1.md",
     "Design/Enemies.md",
-    "Design/World Generation.md",
     "Design/Trinkets.md",
     "Design/Weapons.md",
     "Design/Team Work.md",

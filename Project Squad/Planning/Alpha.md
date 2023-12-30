@@ -1,5 +1,5 @@
 # Rooms
-The goal here is to have 5 uniquely laid out room variations for the alpha.
+The goal here is to have 3 uniquely laid out room variations for the alpha.
 ## Weapons
 The goal is to have 4 unique [[Weapons]].
 1. Bow
