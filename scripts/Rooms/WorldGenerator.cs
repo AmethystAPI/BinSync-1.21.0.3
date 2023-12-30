@@ -9,7 +9,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 	private static WorldGenerator s_Me;
 
 	[Export] public PackedScene SpawnRoomScene;
-	[Export] public PackedScene RoomScene;
+	[Export] public PackedScene[] RoomScenes;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -68,6 +68,16 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 			message.AddFloat(direction.X);
 			message.AddFloat(direction.Y);
+
+			message.AddInt(s_Me._randomNumberGenerator.RandiRange(0, s_Me.RoomScenes.Length - 1));
+
+			List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Left, Vector2.Up, Vector2.Right };
+			if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
+
+			Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
+
+			message.AddFloat(exitDirection.X);
+			message.AddFloat(exitDirection.Y);
 		});
 	}
 
@@ -85,7 +95,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 		_lastRoom = _currentRoom;
 
-		Room room = NetworkManager.SpawnNetworkSafe<Room>(RoomScene, "Room");
+		int roomIndex = message.GetInt();
+
+		Room room = NetworkManager.SpawnNetworkSafe<Room>(RoomScenes[roomIndex], "Room");
 
 		AddChild(room);
 
@@ -99,10 +111,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 		room.PlaceEntrance(-direction);
 
-		List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Left, Vector2.Up, Vector2.Right };
-		if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
-
-		Vector2 exitDirection = possibleExitDirections[_randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
+		Vector2 exitDirection = new Vector2(message.GetFloat(), message.GetFloat());
 
 		room.PlaceExit(exitDirection);
 
