@@ -29,7 +29,7 @@ size = Vector2(32, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwd80"]
 size = Vector2(16, 32)
 
-[node name="Room" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
+[node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
 y_sort_enabled = true
 script = ExtResource("1_itp1v")
 EnemyScenes = Array[PackedScene]([ExtResource("2_78gg5")])
