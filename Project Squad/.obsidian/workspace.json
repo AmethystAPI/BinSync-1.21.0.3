@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/Day 18-7.md",
+                "file": "Daily Notes/Day 18-8.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-7.md",
+                "file": "Daily Notes/Day 18-8.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-7.md",
+                "file": "Daily Notes/Day 18-8.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-7.md"
+                "file": "Daily Notes/Day 18-8.md"
               }
             }
           }
@@ -148,7 +148,13 @@
   },
   "active": "3f976ffb6245f116",
   "lastOpenFiles": [
+    "Attachments/Pasted image 20231230032304.png.import",
+    "Attachments/Pasted image 20231230032317.png.import",
+    "Attachments/Pasted image 20231230032317.png",
     "Reference/Locations/Golden Grove.canvas",
+    "Attachments/Pasted image 20231230032304.png",
+    "Daily Notes/Day 18-8.md",
+    "Daily Notes/Day 18-7.md",
     "Attachments/Pasted image 20231229051318.png.import",
     "Attachments/Pasted image 20231229051318.png",
     "Attachments/Pasted image 20231229051305.png.import",
@@ -164,15 +170,11 @@
     "Attachments/Pasted image 20231228222328.png.import",
     "Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg.import",
     "Attachments/new-main-image-adirondacks-new-york-stock.jpg.import",
-    "Attachments/oakImage-1695332413477-articleLarge.webp.import",
     "Attachments/GA0Uat-XYAAmPp9.png",
     "Attachments/new-main-image-adirondacks-new-york-stock.jpg",
-    "Attachments/Autumn-road-Tully_NY-Donated-Kelly_Moran-382137.jpg",
-    "Attachments/oakImage-1695332413477-articleLarge.webp",
     "Design/Locations/Golden Grove.md",
     "Planning/Alpha.md",
     "Planning/Alpha Kanban.md",
-    "Daily Notes/Day 18-7.md",
     "Implementation/Combat.md",
     "Implementation/World Generation.md",
     "Planning/Pre Alpha Kanban.md",
