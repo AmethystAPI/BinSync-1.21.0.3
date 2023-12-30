@@ -6,19 +6,20 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] [[Alpha#Weapons]] #content
 - [ ] [[Alpha#Enemies]] #content
+- [ ] [[Difficulty]]
 - [ ] [[Alpha#Visuals]] #visuals
 
 
 ## In Progress
 
-- [ ] [[Alpha#Rooms]] #content
+- [ ] [[Alpha#Weapons]] #content
 
 
 ## Done
 
 **Complete**
+- [x] [[Alpha#Rooms]] #content
 - [x] Player Movement #mechanics
 - [x] Fix Camera #code
 - [x] Cleanup Code #code
