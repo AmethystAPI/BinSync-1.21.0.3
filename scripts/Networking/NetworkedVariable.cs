@@ -125,6 +125,7 @@ namespace Networking
       if (index <= _lastRecievedIndex) return;
 
       _lastRecievedIndex = index;
+      _lastSentIndex = Math.Max(_lastSentIndex, _lastRecievedIndex);
 
       if (typeof(ValueType) == typeof(int))
       {
