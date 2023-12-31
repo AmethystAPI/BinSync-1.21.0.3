@@ -44,13 +44,15 @@ namespace Networking
     private int _lastRecievedIndex = -1;
     private int _lastSentIndex = -1;
 
-    public NetworkedVariable(ValueType intitalValue, uint minimumSendDelay = 50, Authority authority = Authority.Client, UpdateEvent updateEvent = UpdateEvent.Manual, MessageSendMode messageSendMode = MessageSendMode.Unreliable)
+    public NetworkedVariable(ValueType intitalValue, uint minimumSendDelay = 30, Authority authority = Authority.Client, UpdateEvent updateEvent = UpdateEvent.Manual, MessageSendMode messageSendMode = MessageSendMode.Unreliable)
     {
       _value = intitalValue;
       _minimumSendDelay = minimumSendDelay;
       _authority = authority;
       _updateEvent = updateEvent;
       _messageSendMode = messageSendMode;
+
+      if (NetworkManager.SafeMode && _minimumSendDelay < 50) _minimumSendDelay = 50;
     }
 
     public void Register(NetworkPointUser source, string name)

@@ -8,6 +8,8 @@ namespace Networking
 {
   public partial class NetworkManager : Node
   {
+    public static bool SafeMode = false; // If safe mode, use tcp since portforwarding sometime's doesn't work on udp for me.
+
     public static Server LocalServer;
     public static Client LocalClient;
     public static bool IsHost => LocalServer != null;
@@ -80,7 +82,14 @@ namespace Networking
 
     public static bool Host()
     {
-      LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
+      if (SafeMode)
+      {
+        LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
+      }
+      else
+      {
+        LocalServer = new Server(new Riptide.Transports.Udp.UdpServer());
+      }
 
       try
       {
@@ -104,7 +113,15 @@ namespace Networking
 
     public static bool Join(string address)
     {
-      LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
+      if (SafeMode)
+      {
+        LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
+      }
+      else
+      {
+        LocalClient = new Client(new Riptide.Transports.Udp.UdpClient());
+      }
+
       LocalClient.Connect(address + ":25566", 5, 0, null, false);
 
       LocalClient.MessageReceived += s_Me.OnMessageRecieved;
