@@ -78,6 +78,7 @@ libraries = {
 }
 
 [node name="RessurectArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RessurectArea"]
 position = Vector2(0, -6)

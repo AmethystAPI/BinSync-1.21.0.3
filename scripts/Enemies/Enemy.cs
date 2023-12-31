@@ -11,6 +11,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
   internal NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 
   internal Vector2 _knockback;
+  internal StateMachine _stateMachine;
 
   public override void _Ready()
   {
@@ -18,6 +19,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
 
     NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
     NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
+
+    _stateMachine = GetNode<StateMachine>("StateMachine");
 
     GetParent<Room>().AddEnemy();
   }
@@ -69,15 +72,9 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
   {
     SetMultiplayerAuthority(message.GetInt());
 
-    _knockback = new Vector2(message.GetFloat(), message.GetFloat());
+    _stateMachine.GetState<Hurt>("Hurt").Knockback = new Vector2(message.GetFloat(), message.GetFloat());
+    _stateMachine.GoToState("Hurt");
 
     Health -= message.GetFloat();
-
-    if (Health <= 0)
-    {
-      GetParent<Room>().RemoveEnemy();
-
-      QueueFree();
-    }
   }
 }

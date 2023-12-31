@@ -6,19 +6,24 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] [[Alpha#Enemies]] #content
+- [ ] Bow [[Alpha#Weapons]] #content
+- [ ] Hammer  [[Alpha#Weapons]] #content
+- [ ] Spear [[Alpha#Weapons]] #content
+- [ ] Stone Golem [[Alpha#Enemies]] #content
+- [ ] Crow [[Alpha#Enemies]] #content
 - [ ] [[Difficulty]]
 - [ ] [[Alpha#Visuals]] #visuals
 
 
 ## In Progress
 
-- [ ] [[Alpha#Weapons]] #content
+- [ ] Sword  [[Alpha#Weapons]] #content
 
 
 ## Done
 
 **Complete**
+- [x] Slime [[Alpha#Enemies]] #content
 - [x] [[Alpha#Rooms]] #content
 - [x] Player Movement #mechanics
 - [x] Fix Camera #code

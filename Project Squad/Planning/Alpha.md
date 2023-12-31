@@ -9,7 +9,7 @@ The goal is to have 4 unique [[Weapons]].
 ## Trinkets
 I want 6 unique [[Trinkets]]. The reason I want so many is to explore the idea of cooperation and trinkets being such a big part of the game.
 ## Enemies
-I want 4 unique [[Enemies]].
+I want 3 unique [[Enemies]].
 ## Visuals
 The alpha should have visuals that while, not polished, are still acting to enhance the gameplay through visual language. This means simple attack animations for telegraphing, player attacking, and damage.
 

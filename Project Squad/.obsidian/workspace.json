@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5a3553902368373f",
+        "id": "5ad95131bb38822e",
         "type": "tabs",
         "children": [
           {
-            "id": "3f976ffb6245f116",
+            "id": "7f04e61c1b9912ba",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -144,13 +144,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3f976ffb6245f116",
+  "active": "7f04e61c1b9912ba",
   "lastOpenFiles": [
-    "Design/Difficulty.md",
-    "Planning/Alpha Kanban.md",
     "Planning/Pre Alpha Kanban.md",
     "Planning/Alpha.md",
+    "Planning/Alpha Kanban.md",
+    "Design/Trinkets.md",
+    "Design/Enemies.md",
+    "Daily Notes/Day 18-9.md",
     "Daily Notes/Day 18-8.md",
+    "Design/Difficulty.md",
     "Design/Locations/Golden Grove.md",
     "Attachments/Pasted image 20231230033616.png.import",
     "Attachments/Pasted image 20231230033604.png.import",
@@ -183,8 +186,6 @@
     "Daily Notes/Day 18-3.md",
     "Daily Notes/Day 18-2.md",
     "Daily Notes/Day 18-1.md",
-    "Design/Enemies.md",
-    "Design/Trinkets.md",
     "Design/Weapons.md",
     "Design/Team Work.md",
     "Daily.md",

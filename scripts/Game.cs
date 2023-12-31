@@ -28,7 +28,7 @@ public partial class Game : Node2D, NetworkPointUser
 
 		NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) =>
 		{
-			if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
+			// if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
 
 			Start();
 		};

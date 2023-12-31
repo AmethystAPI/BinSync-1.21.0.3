@@ -37,4 +37,9 @@ public partial class StateMachine : Node
 
     _currentState.Enter();
   }
+
+  public StateType GetState<StateType>(string name) where StateType : State
+  {
+    return GetNode<StateType>(name);
+  }
 }
