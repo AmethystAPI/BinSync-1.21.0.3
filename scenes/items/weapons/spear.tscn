@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://blcvj0wy4dq8w"]
+
+[ext_resource type="Script" path="res://scripts/Items/Weapons/Spear.cs" id="1_i77oo"]
+[ext_resource type="PackedScene" uid="uid://isshtmwf2yet" path="res://scenes/items/weapons/spear_projectile.tscn" id="2_1bn4l"]
+[ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_s4lk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
+
+[node name="Spear" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_i77oo")
+ProjectileScene = ExtResource("2_1bn4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+rotation = 1.5708
+texture = ExtResource("3_s4lk4")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(20, 0, 6, 16)
+
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_orsoj")

@@ -8,6 +8,8 @@ public partial class Slime : Enemy
 
 		if (_stateMachine.CurrentState == "Jump") return false;
 
+		if (_stateMachine.CurrentState == "Hurt") return false;
+
 		return true;
 	}
 
