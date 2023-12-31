@@ -170,7 +170,7 @@ public partial class Room : Node2D, NetworkPointUser
 	{
 		if (!NetworkManager.IsHost) return;
 
-		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 2f;
+		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 
 		NetworkPoint.SendRpcToClients(nameof(EndRpc));
 

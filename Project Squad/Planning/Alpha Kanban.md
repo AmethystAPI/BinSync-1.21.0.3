@@ -12,12 +12,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] [[Difficulty]] #code
 
 
 ## Done
 
 **Complete**
+- [x] [[Difficulty]] #code
 - [x] Crow [[Alpha#Enemies]] #content
 - [x] Stone Golem [[Alpha#Enemies]] #content
 - [x] Spear [[Alpha#Weapons]] #content
