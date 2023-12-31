@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bh3awkciiraoa"]
 
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="1_cwqgr"]
-[ext_resource type="Script" path="res://scripts/Rooms/Room.cs" id="1_pherh"]
+[ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_pherh"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="2_ab8p0"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="3_6spq0"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="5_f7wxi"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="8_yy8yn"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="9_18a37"]
 [ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="10_svavk"]
-[ext_resource type="Script" path="res://scripts/Rooms/Entrance.cs" id="10_u7ees"]
-[ext_resource type="Script" path="res://scripts/Rooms/Exit.cs" id="12_ud78m"]
+[ext_resource type="Script" path="res://scripts/rooms/Entrance.cs" id="10_u7ees"]
+[ext_resource type="Script" path="res://scripts/rooms/Exit.cs" id="12_ud78m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
 size = Vector2(128, 128)

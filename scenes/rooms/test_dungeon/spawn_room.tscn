@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqa6mjnknyfr7"]
 
-[ext_resource type="Script" path="res://scripts/Rooms/SpawnRoom.cs" id="1_3rcqa"]
-[ext_resource type="Script" path="res://scripts/Rooms/Exit.cs" id="3_pgmik"]
+[ext_resource type="Script" path="res://scripts/rooms/SpawnRoom.cs" id="1_3rcqa"]
+[ext_resource type="Script" path="res://scripts/rooms/Exit.cs" id="3_pgmik"]
 [ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="3_ulsji"]
 [ext_resource type="TileSet" uid="uid://bld12ktwfgg6s" path="res://TestTileset.tres" id="9_138rf"]
 

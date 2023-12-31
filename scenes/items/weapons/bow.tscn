@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnsnl644enbf0"]
 
-[ext_resource type="Script" path="res://scripts/Items/Weapons/SimpleWeapon.cs" id="1_wcney"]
+[ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_wcney"]
 [ext_resource type="PackedScene" uid="uid://pdger2vckwas" path="res://scenes/items/weapons/bow_projectile.tscn" id="2_1h1w5"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_uyl2f"]
 

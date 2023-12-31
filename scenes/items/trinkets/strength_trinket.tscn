@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqbq373kspp30"]
 
-[ext_resource type="Script" path="res://scripts/Items/Trinkets/StrengthTrinket.cs" id="1_xs6gt"]
+[ext_resource type="Script" path="res://scripts/items/trinkets/StrengthTrinket.cs" id="1_xs6gt"]
 [ext_resource type="Texture2D" uid="uid://c2uwj1cf4pws6" path="res://sprites/trinkets.aseprite" id="2_mmuur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdbv5"]

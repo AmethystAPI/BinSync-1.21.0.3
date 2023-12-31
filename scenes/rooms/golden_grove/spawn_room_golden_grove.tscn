@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsr87fqg2bkd6"]
 
-[ext_resource type="Script" path="res://scripts/Rooms/SpawnRoom.cs" id="1_21dic"]
+[ext_resource type="Script" path="res://scripts/rooms/SpawnRoom.cs" id="1_21dic"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_m773q"]
 [ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="11_0klrw"]
-[ext_resource type="Script" path="res://scripts/Rooms/Exit.cs" id="12_7xwpd"]
+[ext_resource type="Script" path="res://scripts/rooms/Exit.cs" id="12_7xwpd"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_15b68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
