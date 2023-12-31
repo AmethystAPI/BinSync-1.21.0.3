@@ -5,6 +5,7 @@ public partial class Projectile : Node2D
 {
 	[Export] public float Damage = 1f;
 	[Export] public float Speed = 200f;
+	[Export] public float Resistance = 0f;
 	[Export] public float Lifetime = 5f;
 	[Export] public float Knockback = 1f;
 
@@ -36,7 +37,9 @@ public partial class Projectile : Node2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta;
+		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta * 0.8f;
+
+		Speed = Mathf.Lerp(Speed, 0f, Resistance * (float)delta);
 
 		foreach (Node2D body in _damageArea.GetOverlappingBodies())
 		{

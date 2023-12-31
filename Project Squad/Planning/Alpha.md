@@ -17,6 +17,6 @@ Everything will also be getting a very rough initial pass at art. The alpha is g
 
 # Playtest Notes
 - Attacks seem hit and miss
-- Client shoots too many
-- ~~Enemies stuck in wall on double island room~~
+- ~~Client shoots too many~~
+- ~~Enemies stuck in wall on double island room
 - Hard to see where attacks are

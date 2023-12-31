@@ -36,3 +36,4 @@ RoomScenes = Array[PackedScene]([ExtResource("7_f8oc0"), ExtResource("8_x1gs6"),
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
+visible = false
