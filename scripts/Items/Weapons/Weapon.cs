@@ -5,16 +5,14 @@ using Riptide;
 
 public partial class Weapon : Item
 {
-  [Export] public PackedScene ProjectileScene;
-
   private NetworkedVariable<float> _syncedRotation = new NetworkedVariable<float>(0);
+  internal bool _shootPressed = false;
 
   public override void _Ready()
   {
     base._Ready();
 
     NetworkPoint.Register(nameof(_syncedRotation), _syncedRotation);
-    NetworkPoint.Register(nameof(ShootRpc), ShootRpc);
   }
 
   public override void _Process(double delta)
@@ -43,32 +41,32 @@ public partial class Weapon : Item
 
     if (@event.IsActionPressed("shoot"))
     {
+      if (!NetworkPoint.IsOwner) return;
+
       if (!_equipped) return;
 
       if (_equippingPlayer.Health <= 0) return;
 
-      if (!NetworkPoint.IsOwner) return;
+      _shootPressed = true;
 
-      NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
+      ShootPressed();
+    }
+
+    if (@event.IsActionReleased("shoot") && _shootPressed)
+    {
+      _shootPressed = false;
+
+      ShootReleased();
     }
   }
 
-  private void ShootRpc(Message message)
+  public virtual void ShootPressed()
   {
-    Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
-    projectile.GlobalPosition = GlobalPosition;
-    projectile.Rotation = Rotation;
+  }
 
-    projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
-    projectile.Source = _equippingPlayer;
-    projectile.InheritedVelocity = _equippingPlayer.Velocity;
+  public virtual void ShootReleased()
+  {
 
-    _equippingPlayer.GetParent().AddChild(projectile);
-
-    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets)
-    {
-      trinket.ModifyProjectile(this, projectile);
-    }
   }
 }

@@ -1,15 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnsnl644enbf0"]
 
-[ext_resource type="Script" path="res://scripts/Items/Weapons/Weapon.cs" id="1_xirkc"]
-[ext_resource type="PackedScene" uid="uid://db51lk1ffg7sc" path="res://scenes/weapons/projectile.tscn" id="2_1h1w5"]
+[ext_resource type="Script" path="res://scripts/Items/Weapons/SimpleWeapon.cs" id="1_wcney"]
+[ext_resource type="PackedScene" uid="uid://pdger2vckwas" path="res://scenes/items/weapons/bow_projectile.tscn" id="2_1h1w5"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_uyl2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rm67q"]
 
 [node name="Bow" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_xirkc")
+script = ExtResource("1_wcney")
 ProjectileScene = ExtResource("2_1h1w5")
+Delay = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
