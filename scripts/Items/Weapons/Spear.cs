@@ -48,6 +48,8 @@ public partial class Spear : Weapon
 
     if (_shootTimer > 0) return;
 
+    _shootTimer = Delay;
+
     Shoot();
 
     _shootQueue.Add(ProjectileSeperation);
@@ -62,8 +64,6 @@ public partial class Spear : Weapon
 
   private void ShootRpc(Message message)
   {
-    _shootTimer = Delay;
-
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;

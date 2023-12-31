@@ -31,13 +31,13 @@ public partial class SimpleWeapon : Weapon
 
     if (_shootTimer > 0) return;
 
+    _shootTimer = Delay;
+
     NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
   }
 
   private void ShootRpc(Message message)
   {
-    _shootTimer = Delay;
-
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;
