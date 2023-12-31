@@ -144,13 +144,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 	private void DieRpc(Message message)
 	{
-		if (NetworkPoint.IsOwner) return;
+		if (!NetworkPoint.IsOwner)
+		{
+			Health = 0;
 
-		Health = 0;
+			AlivePlayers.Remove(this);
 
-		AlivePlayers.Remove(this);
-
-		_stateMachine.GoToState("Angel");
+			_stateMachine.GoToState("Angel");
+		}
 
 		if (AlivePlayers.Count != 0) return;
 

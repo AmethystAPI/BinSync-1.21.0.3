@@ -11,14 +11,9 @@
             "id": "7f04e61c1b9912ba",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "kanban",
               "state": {
-                "file": "Reference/General.canvas",
-                "viewState": {
-                  "x": 140,
-                  "y": 90.5,
-                  "zoom": 0
-                }
+                "file": "Planning/Alpha Kanban.md"
               }
             }
           }
@@ -88,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Planning/Alpha Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Planning/Alpha Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/General.canvas"
+                "file": "Planning/Alpha Kanban.md"
               }
             }
           }
@@ -151,9 +146,9 @@
   },
   "active": "7f04e61c1b9912ba",
   "lastOpenFiles": [
+    "Reference/General.canvas",
     "Design/Enemies.md",
     "Planning/Alpha Kanban.md",
-    "Reference/General.canvas",
     "Attachments/Pasted image 20231231004025.png.import",
     "Attachments/Pasted image 20231231004105.png.import",
     "Attachments/Pasted image 20231231003204.png.import",
