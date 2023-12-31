@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] [[Alpha#Visuals]] #visuals
 
 
 ## In Progress

@@ -144,7 +144,7 @@ position = Vector2(-55, 56)
 position = Vector2(56, 57)
 
 [node name="Point3" type="Node2D" parent="SpawnPoints"]
-position = Vector2(56, -47)
+position = Vector2(72, -47)
 
 [node name="Point4" type="Node2D" parent="SpawnPoints"]
 position = Vector2(-55, -47)

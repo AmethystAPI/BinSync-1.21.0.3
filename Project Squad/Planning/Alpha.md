@@ -14,3 +14,9 @@ I want 3 unique [[Enemies]].
 The alpha should have visuals that while, not polished, are still acting to enhance the gameplay through visual language. This means simple attack animations for telegraphing, player attacking, and damage.
 
 Everything will also be getting a very rough initial pass at art. The alpha is going to purely take place within the [[Golden Grove]]
+
+# Playtest Notes
+- Attacks seem hit and miss
+- Client shoots too many
+- ~~Enemies stuck in wall on double island room~~
+- Hard to see where attacks are
