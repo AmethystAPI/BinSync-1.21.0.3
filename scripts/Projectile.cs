@@ -8,6 +8,8 @@ public partial class Projectile : Node2D
 	[Export] public float Lifetime = 5f;
 	[Export] public float Knockback = 1f;
 
+	public Action Destroyed;
+
 	public Node2D Source;
 	public Vector2 InheritedVelocity;
 
@@ -27,6 +29,8 @@ public partial class Projectile : Node2D
 
 		if (_lifetimeTimer > 0) return;
 
+		Destroyed?.Invoke();
+
 		QueueFree();
 	}
 
@@ -38,6 +42,8 @@ public partial class Projectile : Node2D
 		{
 			if (body is TileMap)
 			{
+				Destroyed?.Invoke();
+
 				QueueFree();
 
 				return;
@@ -50,6 +56,8 @@ public partial class Projectile : Node2D
 			if (!damageable.CanDamage(this)) continue;
 
 			damageable.Damage(this);
+
+			Destroyed?.Invoke();
 
 			QueueFree();
 

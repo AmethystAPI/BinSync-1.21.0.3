@@ -1,7 +1,5 @@
-using System;
 using Godot;
 using Networking;
-using Riptide;
 
 public partial class Weapon : Item
 {

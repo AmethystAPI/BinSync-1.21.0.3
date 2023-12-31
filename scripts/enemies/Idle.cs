@@ -2,18 +2,20 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class SlimeIdle : State, NetworkPointUser
+public partial class Idle : State, NetworkPointUser
 {
-    public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
+    [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
+    [Export] public string AttackState = "Attack";
+
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-    private Slime _slime;
+    private Enemy _enemy;
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
     public override void _Ready()
     {
-        _slime = GetParent().GetParent<Slime>();
+        _enemy = GetParent().GetParent<Enemy>();
 
         NetworkPoint.Setup(this);
 
@@ -40,6 +42,6 @@ public partial class SlimeIdle : State, NetworkPointUser
 
     private void AttackRpc(Message message)
     {
-        GoToState("Jump");
+        GoToState(AttackState);
     }
 }

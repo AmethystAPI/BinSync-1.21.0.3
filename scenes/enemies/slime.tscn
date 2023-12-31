@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_mu0ej"]
 [ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="2_4goc7"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_phacr"]
-[ext_resource type="Script" path="res://scripts/enemies/slime/SlimeIdle.cs" id="5_3ytew"]
+[ext_resource type="Script" path="res://scripts/enemies/Idle.cs" id="5_3ytew"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/SlimeJump.cs" id="6_i67rn"]
 [ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="7_8dyb3"]
 
@@ -40,19 +40,24 @@ visible = false
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_75mpk")
 
+[node name="ProjectileOrigin" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_phacr")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_3ytew")
+AttackState = "Jump"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals")]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals", "ProjectileOrigin")]
 script = ExtResource("6_i67rn")
 Speed = 30.0
 Duration = 0.75
 Height = 16.0
 ProjectileScene = ExtResource("2_4goc7")
 Visuals = NodePath("../../BodyVisuals/Body")
+ProjectileOrigin = NodePath("../../ProjectileOrigin")
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("7_8dyb3")

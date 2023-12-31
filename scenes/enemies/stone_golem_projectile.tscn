@@ -4,21 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://cuuvfrpv6figp" path="res://sprites/stone_golem.aseprite" id="2_0a1iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlayw"]
-size = Vector2(4, 12)
+size = Vector2(4, 14)
 
 [node name="StoneGolemProjectile" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_o5l7s")
 Speed = 0.0
-Lifetime = 0.2
+Lifetime = 2.0
 
 [node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("RectangleShape2D_rlayw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -5
+z_index = 1
 texture = ExtResource("2_0a1iw")
 region_enabled = true
 region_rect = Rect2(20, 0, 8, 16)

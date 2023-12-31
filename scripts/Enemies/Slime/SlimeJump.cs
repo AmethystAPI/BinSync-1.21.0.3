@@ -7,6 +7,7 @@ public partial class SlimeJump : State
     [Export] public float Height = 80f;
     [Export] public PackedScene ProjectileScene;
     [Export] public Node2D Visuals;
+    [Export] public Node2D ProjectileOrigin;
 
     private Slime _slime;
     private Vector2 _target;
@@ -61,7 +62,7 @@ public partial class SlimeJump : State
 
         _slime.GetParent().AddChild(projectile);
 
-        projectile.GlobalPosition = _slime.GlobalPosition;
+        projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
 
         GoToState("Idle");
     }

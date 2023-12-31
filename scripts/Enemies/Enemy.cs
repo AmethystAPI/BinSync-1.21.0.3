@@ -73,8 +73,9 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
     SetMultiplayerAuthority(message.GetInt());
 
     _stateMachine.GetState<Hurt>("Hurt").Knockback = new Vector2(message.GetFloat(), message.GetFloat());
-    _stateMachine.GoToState("Hurt");
 
     Health -= message.GetFloat();
+
+    _stateMachine.GoToState("Hurt");
   }
 }

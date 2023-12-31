@@ -1,5 +1,3 @@
-using Networking;
-
 public partial class Slime : Enemy
 {
 	public override bool CanDamage(Projectile projectile)
