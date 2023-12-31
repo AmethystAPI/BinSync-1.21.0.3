@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://tqb4da4whyme"]
+[gd_scene load_steps=21 format=3 uid="uid://tqb4da4whyme"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_7cfe8"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="2_27hst"]
+[ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="3_7woth"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="3_w2l6d"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="4_3xyle"]
+[ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="4_tyemd"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="5_mmtfn"]
 [ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/items/trinkets/faith_trinket.tscn" id="6_5nnly"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="7_qs7vc"]
@@ -29,12 +31,12 @@ size = Vector2(32, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwd80"]
 size = Vector2(16, 32)
 
-[node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
+[node name="GoldenGroveRoomDoubleIsland" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
 y_sort_enabled = true
 script = ExtResource("1_7cfe8")
-EnemyScenes = Array[PackedScene]([ExtResource("2_27hst")])
+EnemyScenes = Array[PackedScene]([ExtResource("2_27hst"), ExtResource("3_7woth"), ExtResource("4_tyemd")])
 LootScenes = Array[PackedScene]([ExtResource("3_w2l6d"), ExtResource("4_3xyle"), ExtResource("5_mmtfn"), ExtResource("6_5nnly"), ExtResource("7_qs7vc"), ExtResource("8_mrjay")])
-SpawnPoints = [NodePath("SpawnPoints/Point5")]
+SpawnPoints = [NodePath("SpawnPoints/Point5"), NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4")]
 EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)
 EdgeTileMaps = [NodePath("TileMapLeft"), NodePath("TileMapRight"), NodePath("TileMapTop"), NodePath("TileMapBottom")]
 EntranceDirections = PackedVector2Array(0, 1, 1, 0, -1, 0)

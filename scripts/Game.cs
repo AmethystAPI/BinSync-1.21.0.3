@@ -34,7 +34,7 @@ public partial class Game : Node2D, NetworkPointUser
 			Start();
 		};
 
-		if (!NetworkManager.Host()) NetworkManager.Join("127.0.0.1");
+		// if (!NetworkManager.Host()) NetworkManager.Join("127.0.0.1");
 	}
 
 	public static void Start()

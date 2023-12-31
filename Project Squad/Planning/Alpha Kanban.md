@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Improve Networking Sync #code
 - [ ] [[Alpha#Visuals]] #visuals
 
 
@@ -17,6 +16,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Improve Networking Sync #code
 - [x] [[Difficulty]] #code
 - [x] Crow [[Alpha#Enemies]] #content
 - [x] Stone Golem [[Alpha#Enemies]] #content

@@ -8,7 +8,7 @@ namespace Networking
 {
   public partial class NetworkManager : Node
   {
-    public static bool SafeMode = false; // If safe mode, use tcp since portforwarding sometime's doesn't work on udp for me.
+    public static bool SafeMode = true; // If safe mode, use tcp since portforwarding sometime's doesn't work on udp for me.
 
     public static Server LocalServer;
     public static Client LocalClient;
