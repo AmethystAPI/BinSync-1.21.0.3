@@ -12,6 +12,10 @@ public partial class SpawnRoom : Room
 	{
 		base.Start();
 
+		float originalDifficulty = Game.Difficulty;
+
 		End();
+
+		Game.Difficulty = originalDifficulty;
 	}
 }

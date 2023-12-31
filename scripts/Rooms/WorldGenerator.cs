@@ -47,9 +47,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 	public void Cleanup()
 	{
-		if (_lastRoom != null && IsInstanceValid(_lastRoom))
+		if (_lastRoom != null)
 		{
-			_lastRoom.QueueFree();
+			if (IsInstanceValid(_lastRoom)) _lastRoom.QueueFree();
 			_lastRoom = null;
 		}
 

@@ -134,8 +134,14 @@ public partial class Room : Node2D, NetworkPointUser
 
 	private void SpawnEnemies()
 	{
-		foreach (Node2D spawnPoint in SpawnPoints)
+		if (SpawnPoints.Length == 0) return;
+
+		float points = Game.Difficulty;
+
+		while (points > 0)
 		{
+			Node2D spawnPoint = SpawnPoints[new RandomNumberGenerator().RandiRange(0, SpawnPoints.Length - 1)];
+
 			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message =>
 			{
 				message.AddFloat(spawnPoint.GlobalPosition.X);
@@ -143,6 +149,8 @@ public partial class Room : Node2D, NetworkPointUser
 
 				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
 			});
+
+			points--;
 		}
 	}
 
@@ -161,6 +169,8 @@ public partial class Room : Node2D, NetworkPointUser
 	protected void End()
 	{
 		if (!NetworkManager.IsHost) return;
+
+		Game.Difficulty += 1;
 
 		NetworkPoint.SendRpcToClients(nameof(EndRpc));
 

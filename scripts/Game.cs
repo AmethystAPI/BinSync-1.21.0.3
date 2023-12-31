@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class Game : Node2D, NetworkPointUser
 {
 	public static uint Seed;
+	public static float Difficulty;
 
 	private static Game s_Me;
 
@@ -45,10 +46,13 @@ public partial class Game : Node2D, NetworkPointUser
 			clientIds.Add(connection.Id);
 		}
 
+		Seed = new RandomNumberGenerator().Randi();
+
+		Difficulty = clientIds.Count;
+
 		s_Me.NetworkPoint.SendRpcToClients(nameof(StartRpc), message =>
 		{
 			message.AddInts(clientIds.ToArray());
-			message.AddUInt(new RandomNumberGenerator().Randi());
 		});
 	}
 
@@ -62,7 +66,6 @@ public partial class Game : Node2D, NetworkPointUser
 	private void StartRpc(Message message)
 	{
 		int[] clientIds = message.GetInts();
-		Seed = message.GetUInt();
 
 		_worldGenerator.Start();
 
