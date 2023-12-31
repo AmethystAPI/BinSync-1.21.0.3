@@ -7,7 +7,8 @@ kanban-plugin: basic
 ## To Do
 
 - [ ] Crow [[Alpha#Enemies]] #content
-- [ ] [[Difficulty]]
+- [ ] [[Difficulty]] #code
+- [ ] Improve Networking Sync #code
 - [ ] [[Alpha#Visuals]] #visuals
 
 

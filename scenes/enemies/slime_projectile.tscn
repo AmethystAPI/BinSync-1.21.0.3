@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq15cgoix34cv"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_f1l4f"]
-[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_jowx5"]
+[ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="2_g7pbx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
-size = Vector2(26, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpqck"]
+radius = 18.0
 
 [node name="Slime Projectile" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_f1l4f")
 Speed = 0.0
 Lifetime = 0.2
@@ -14,8 +15,11 @@ Lifetime = 0.2
 [node name="DamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-shape = SubResource("RectangleShape2D_um2iy")
+shape = SubResource("CircleShape2D_gpqck")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
 scale = Vector2(1.62603, 1.62603)
-texture = ExtResource("2_jowx5")
+texture = ExtResource("2_g7pbx")
+region_enabled = true
+region_rect = Rect2(2, 18, 28, 28)
