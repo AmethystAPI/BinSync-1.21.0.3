@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://co2o42vdmdcna"]
 
 [ext_resource type="Script" path="res://scripts/Rooms/Room.cs" id="1_itp1v"]
-[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="2_78gg5"]
+[ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="2_u6as7"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="3_lp6rb"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="4_nuv6i"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="5_b2eo7"]
@@ -32,7 +32,7 @@ size = Vector2(16, 32)
 [node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
 y_sort_enabled = true
 script = ExtResource("1_itp1v")
-EnemyScenes = Array[PackedScene]([ExtResource("2_78gg5")])
+EnemyScenes = Array[PackedScene]([ExtResource("2_u6as7")])
 LootScenes = Array[PackedScene]([ExtResource("3_lp6rb"), ExtResource("4_nuv6i"), ExtResource("5_b2eo7"), ExtResource("6_wdd8f"), ExtResource("7_8a2ih"), ExtResource("8_pvr4h")])
 SpawnPoints = [NodePath("SpawnPoints/Point5")]
 EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)

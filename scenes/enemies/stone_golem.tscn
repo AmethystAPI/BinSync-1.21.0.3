@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://k1sviiopk4x1"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/Slime/Slime.cs" id="1_fs2bq"]
+[ext_resource type="Texture2D" uid="uid://cuuvfrpv6figp" path="res://sprites/stone_golem.aseprite" id="2_qa8jh"]
+[ext_resource type="Script" path="res://scripts/StateMachine/StateMachine.cs" id="3_yrauy"]
+[ext_resource type="Script" path="res://scripts/Enemies/Slime/SlimeIdle.cs" id="4_v6mwm"]
+[ext_resource type="Script" path="res://scripts/Enemies/Slime/SlimeJump.cs" id="5_b8qjn"]
+[ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="6_sv3pm"]
+[ext_resource type="Script" path="res://scripts/Enemies/Hurt.cs" id="7_gq1j7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
+size = Vector2(12, 9)
+
+[node name="StoneGolem" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_mask = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_fs2bq")
+
+[node name="BodyVisuals" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyVisuals"]
+texture = ExtResource("2_qa8jh")
+offset = Vector2(0, -6)
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -8
+position = Vector2(0, 3)
+texture = ExtResource("2_qa8jh")
+offset = Vector2(0, -5)
+region_enabled = true
+region_rect = Rect2(34, 8, 12, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_75mpk")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_yrauy")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_v6mwm")
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals")]
+script = ExtResource("5_b8qjn")
+Speed = 30.0
+Duration = 0.75
+Height = 16.0
+ProjectileScene = ExtResource("6_sv3pm")
+Visuals = NodePath("../../BodyVisuals/Body")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("7_gq1j7")
