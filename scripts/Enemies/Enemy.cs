@@ -13,6 +13,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
   internal Vector2 _knockback;
   internal StateMachine _stateMachine;
 
+  private bool _justHit;
+
   public override void _Ready()
   {
     NetworkPoint.Setup(this);
@@ -40,20 +42,28 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
     }
     else
     {
-      if (_networkedPosition.Value.DistanceSquaredTo(GlobalPosition) > 64) GlobalPosition = _networkedPosition.Value;
+      if (_networkedPosition.Value.DistanceSquaredTo(GlobalPosition) > 100) GlobalPosition = _networkedPosition.Value;
 
-      GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 20.0f);
+      GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 16.0f);
     }
   }
 
   public virtual bool CanDamage(Projectile projectile)
   {
-    return projectile.Source is Player;
+    if (_stateMachine.CurrentState == "Hurt") return false;
+
+    if (!(projectile.Source is Player)) return false;
+
+    return true;
   }
 
   public void Damage(Projectile projectile)
   {
-    if (!NetworkPoint.IsOwner) return;
+    if (!NetworkManager.IsOwner(projectile)) return;
+
+    if (_justHit) return;
+
+    _justHit = true;
 
     NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message =>
     {
@@ -70,6 +80,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
 
   private void DamageRpc(Message message)
   {
+    _justHit = false;
+
     SetMultiplayerAuthority(message.GetInt());
 
     _stateMachine.GetState<Hurt>("Hurt").Knockback = new Vector2(message.GetFloat(), message.GetFloat());

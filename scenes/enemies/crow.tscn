@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctwrqefjr5llm"]
+
+[ext_resource type="Script" path="res://scripts/enemies/crow/Crow.cs" id="1_vkuc5"]
+[ext_resource type="Texture2D" uid="uid://cejt0u8thpy4p" path="res://sprites/crow.aseprite" id="2_dpnd4"]
+[ext_resource type="Texture2D" uid="uid://cuuvfrpv6figp" path="res://sprites/stone_golem.aseprite" id="2_sm357"]
+[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="3_j21au"]
+[ext_resource type="Script" path="res://scripts/enemies/crow/CrowScared.cs" id="5_ky1qb"]
+[ext_resource type="Script" path="res://scripts/enemies/crow/CrowAggressive.cs" id="6_oh67a"]
+[ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="7_fpmii"]
+[ext_resource type="PackedScene" uid="uid://bv8860143w1tl" path="res://scenes/enemies/crow_projectile.tscn" id="7_mu1w5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
+size = Vector2(16, 16)
+
+[node name="Crow" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_mask = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_vkuc5")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_dpnd4")
+offset = Vector2(0, -6)
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -8
+position = Vector2(0, 3)
+texture = ExtResource("2_sm357")
+offset = Vector2(0, -5)
+region_enabled = true
+region_rect = Rect2(34, 8, 12, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(1.00302, 1)
+shape = SubResource("RectangleShape2D_75mpk")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_j21au")
+DefaultState = "Scared"
+
+[node name="Scared" type="Node" parent="StateMachine"]
+script = ExtResource("5_ky1qb")
+Speed = 60.0
+InverseInertia = 3.0
+
+[node name="Aggressive" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin")]
+script = ExtResource("6_oh67a")
+Speed = 100.0
+ProjectileScene = ExtResource("7_mu1w5")
+ProjectileOrigin = NodePath("../../ProjectileOrigin")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("7_fpmii")
+ReturnState = "Scared"
+
+[node name="ProjectileOrigin" type="Node2D" parent="."]
+position = Vector2(5, -5)

@@ -2,6 +2,8 @@ using Godot;
 
 public partial class Hurt : State
 {
+    [Export] public string ReturnState = "Idle";
+
     public Vector2 Knockback;
 
     private Enemy _enemy;
@@ -28,6 +30,6 @@ public partial class Hurt : State
 
         _enemy.MoveAndSlide();
 
-        if (Knockback.Length() < 3.5f) GoToState("Idle");
+        if (Knockback.Length() < 3.5f) GoToState(ReturnState);
     }
 }

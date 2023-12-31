@@ -35,6 +35,8 @@ public partial class Exit : Node2D, Damageable, NetworkPointUser
 	{
 		if (!NetworkManager.IsOwner(projectile)) return;
 
+		_destroyed = true;
+
 		NetworkPoint.BounceRpcToClients(nameof(DamageRpc));
 	}
 

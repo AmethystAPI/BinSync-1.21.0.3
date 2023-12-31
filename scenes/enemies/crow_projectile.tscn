@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv8860143w1tl"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_kn8dq"]
+[ext_resource type="Texture2D" uid="uid://cejt0u8thpy4p" path="res://sprites/crow.aseprite" id="2_1ju0q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv6ss"]
+radius = 3.0
+
+[node name="CrowProjectile" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_kn8dq")
+Speed = 0.0
+Lifetime = 2.0
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_bv6ss")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_1ju0q")
+region_enabled = true
+region_rect = Rect2(19, 3, 10, 10)

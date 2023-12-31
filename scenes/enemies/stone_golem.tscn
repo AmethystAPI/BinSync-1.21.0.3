@@ -18,9 +18,7 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_r5e1k")
 
-[node name="BodyVisuals" type="Node2D" parent="."]
-
-[node name="Body" type="Sprite2D" parent="BodyVisuals"]
+[node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("2_qa8jh")
 offset = Vector2(0, -6)
 hframes = 3
@@ -35,7 +33,6 @@ region_enabled = true
 region_rect = Rect2(34, 8, 12, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_75mpk")
 

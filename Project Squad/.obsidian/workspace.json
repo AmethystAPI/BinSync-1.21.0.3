@@ -15,9 +15,9 @@
               "state": {
                 "file": "Reference/General.canvas",
                 "viewState": {
-                  "x": 208.6231662321992,
-                  "y": -41.21857816863738,
-                  "zoom": 0.6666666666666667
+                  "x": 140,
+                  "y": 90.5,
+                  "zoom": 0
                 }
               }
             }
@@ -151,6 +151,9 @@
   },
   "active": "7f04e61c1b9912ba",
   "lastOpenFiles": [
+    "Design/Enemies.md",
+    "Planning/Alpha Kanban.md",
+    "Reference/General.canvas",
     "Attachments/Pasted image 20231231004025.png.import",
     "Attachments/Pasted image 20231231004105.png.import",
     "Attachments/Pasted image 20231231003204.png.import",
@@ -158,11 +161,8 @@
     "Attachments/GBu6zYhbMAA-aad.png",
     "Attachments/Pasted image 20231231004105.png",
     "Attachments/Pasted image 20231231004025.png",
-    "Design/Enemies.md",
-    "Reference/General.canvas",
     "Attachments/Pasted image 20231231003204.png",
     "Attachments/Pasted image 20231231003122.png",
-    "Planning/Alpha Kanban.md",
     "Daily Notes/Day 18-9.md",
     "Planning/Pre Alpha Kanban.md",
     "Planning/Alpha.md",
@@ -184,7 +184,6 @@
     "Attachments/Pasted image 20231230032317.png",
     "Attachments/Pasted image 20231230032304.png",
     "Attachments/Pasted image 20231229051318.png.import",
-    "Attachments/Pasted image 20231229051305.png.import",
     "Implementation/Combat.md",
     "Implementation/World Generation.md",
     "Daily Notes/Day 18-5.md",

@@ -1,16 +1,5 @@
 public partial class StoneGolem : Enemy
 {
-    public override bool CanDamage(Projectile projectile)
-    {
-        if (!base.CanDamage(projectile)) return false;
-
-        if (_stateMachine.CurrentState == "Roll") return false;
-
-        if (_stateMachine.CurrentState == "Hurt") return false;
-
-        return true;
-    }
-
     public override void SyncPosition(float delta)
     {
         if (NetworkPoint.IsOwner)

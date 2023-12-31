@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Crow [[Alpha#Enemies]] #content
 - [ ] [[Difficulty]] #code
 - [ ] Improve Networking Sync #code
 - [ ] [[Alpha#Visuals]] #visuals
@@ -14,12 +13,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Stone Golem [[Alpha#Enemies]] #content
+- [ ] Crow [[Alpha#Enemies]] #content
 
 
 ## Done
 
 **Complete**
+- [x] Stone Golem [[Alpha#Enemies]] #content
 - [x] Spear [[Alpha#Weapons]] #content
 - [x] Hammer  [[Alpha#Weapons]] #content
 - [x] Bow [[Alpha#Weapons]] #content
