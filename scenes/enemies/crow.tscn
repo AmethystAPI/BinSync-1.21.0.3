@@ -49,7 +49,8 @@ InverseInertia = 3.0
 
 [node name="Aggressive" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin")]
 script = ExtResource("6_oh67a")
-Speed = 100.0
+Speed = 90.0
+InverseInertia = 2.0
 ProjectileScene = ExtResource("7_mu1w5")
 ProjectileOrigin = NodePath("../../ProjectileOrigin")
 

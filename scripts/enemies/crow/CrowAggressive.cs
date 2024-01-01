@@ -41,7 +41,7 @@ public partial class CrowAggressive : State, NetworkPointUser
     {
         if (Player.AlivePlayers.Count == 0)
         {
-            GoToState("Idle");
+            GoToState("Scared");
 
             return;
         }
@@ -57,7 +57,7 @@ public partial class CrowAggressive : State, NetworkPointUser
             target = player.GlobalPosition;
         }
 
-        _crow.Velocity = _crow.Velocity.Slerp((target - _crow.GlobalPosition).Normalized() * Speed, InverseInertia * delta);
+        _crow.Velocity = _crow.Velocity.Lerp((target - _crow.GlobalPosition).Normalized() * Speed, InverseInertia * delta);
 
         _crow.MoveAndSlide();
     }
