@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=12 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dsr87fqg2bkd6" path="res://scenes/rooms/golden_grove/spawn_room_golden_grove.tscn" id="6_4jq36"]
 [ext_resource type="PackedScene" uid="uid://co2o42vdmdcna" path="res://scenes/rooms/golden_grove/room_golden_grove_plain.tscn" id="7_f8oc0"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/main_menu.tscn" id="7_gnxd7"]
+[ext_resource type="PackedScene" uid="uid://tqb4da4whyme" path="res://scenes/rooms/golden_grove/room_golden_grove_double_island.tscn" id="7_rusxf"]
+[ext_resource type="PackedScene" uid="uid://c3pij2in2tbwo" path="res://scenes/rooms/golden_grove/room_golden_grove_island.tscn" id="8_x1gs6"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -27,11 +29,10 @@ script = ExtResource("4_encmg")
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomScene = ExtResource("6_4jq36")
-RoomScenes = Array[PackedScene]([ExtResource("7_f8oc0")])
+RoomScenes = Array[PackedScene]([ExtResource("7_f8oc0"), ExtResource("7_rusxf"), ExtResource("8_x1gs6")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
-visible = false
