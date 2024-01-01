@@ -4,20 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_gv51f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
-size = Vector2(6, 6)
+size = Vector2(10, 3)
 
 [node name="SpearProjectile" type="Node2D"]
 script = ExtResource("1_1r21i")
 Damage = 0.8
-Speed = 300.0
-Lifetime = 0.12
+Speed = 400.0
+Resistance = 8.0
+Lifetime = 0.25
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.381053, 0.381053)
 texture = ExtResource("2_gv51f")
+region_enabled = true
+region_rect = Rect2(65, 3, 14, 8)

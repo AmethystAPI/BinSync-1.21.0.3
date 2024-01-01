@@ -54,7 +54,7 @@ public partial class Spear : Weapon
 
     _shootQueue.Add(ProjectileSeperation);
 
-    _shootQueue.Add(ProjectileSeperation * 2f);
+    // _shootQueue.Add(ProjectileSeperation * 2f);
   }
 
   private void Shoot()

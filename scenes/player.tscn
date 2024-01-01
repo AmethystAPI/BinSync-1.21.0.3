@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
-[ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="2_k8g84"]
+[ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="2_magtg"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_jbh0c"]
 [ext_resource type="Script" path="res://scripts/player/PlayerNormal.cs" id="5_stky2"]
 [ext_resource type="Script" path="res://scripts/player/PlayerDash.cs" id="6_mtedp"]
@@ -55,7 +55,7 @@ collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xr8oe")
-DefaultWeaponScene = ExtResource("2_k8g84")
+DefaultWeaponScene = ExtResource("2_magtg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_82yba")

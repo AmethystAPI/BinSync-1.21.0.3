@@ -10,6 +10,8 @@
 y_sort_enabled = true
 script = ExtResource("1_i77oo")
 ProjectileScene = ExtResource("2_1bn4l")
+Delay = 0.5
+ProjectileSeperation = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6, 0)
