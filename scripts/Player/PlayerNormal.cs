@@ -13,7 +13,14 @@ public partial class PlayerNormal : State
 
   public override void PhsysicsUpdate(float delta)
   {
-    _player.AnimationPlayer.Play("idle");
+    if (_player.Velocity.Length() > 0)
+    {
+      _player.AnimationPlayer.Play("run");
+    }
+    else
+    {
+      _player.AnimationPlayer.Play("idle");
+    }
 
     if (!_player.NetworkPoint.IsOwner) return;
 
