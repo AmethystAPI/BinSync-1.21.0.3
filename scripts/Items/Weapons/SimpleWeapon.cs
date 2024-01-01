@@ -5,6 +5,8 @@ using Riptide;
 
 public partial class SimpleWeapon : Weapon
 {
+  [Signal] public delegate void ShootEventHandler();
+
   [Export] public PackedScene ProjectileScene;
   [Export] public float Delay = 0.25f;
 
@@ -38,6 +40,8 @@ public partial class SimpleWeapon : Weapon
 
   private void ShootRpc(Message message)
   {
+    EmitSignal(SignalName.Shoot);
+
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;

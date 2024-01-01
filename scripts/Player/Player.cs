@@ -84,6 +84,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
 
 		if (Health <= 0) return false;
 
+		if (_stateMachine.CurrentState == "Dash") return false;
+
 		return true;
 	}
 

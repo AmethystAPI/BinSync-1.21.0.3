@@ -11,14 +11,11 @@
             "id": "7f04e61c1b9912ba",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Reference/General.canvas",
-                "viewState": {
-                  "x": 190.24803512817402,
-                  "y": 102.68535437037599,
-                  "zoom": 0.3333333333333333
-                }
+                "file": "Daily Notes/Day 18-10.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Daily Notes/Day 18-10.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Daily Notes/Day 18-10.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/General.canvas"
+                "file": "Daily Notes/Day 18-10.md"
               }
             }
           }
@@ -149,11 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7f04e61c1b9912ba",
+  "active": "711274cd3592b4d7",
   "lastOpenFiles": [
+    "Daily Notes/Day 18-9.md",
+    "Daily Notes/Day 18-10.md",
+    "Reference/General.canvas",
     "Planning/Alpha.md",
     "Planning/Alpha Kanban.md",
-    "Reference/General.canvas",
     "Design/Enemies.md",
     "Attachments/Pasted image 20231231004025.png.import",
     "Attachments/Pasted image 20231231004105.png.import",
@@ -164,7 +163,6 @@
     "Attachments/Pasted image 20231231004025.png",
     "Attachments/Pasted image 20231231003204.png",
     "Attachments/Pasted image 20231231003122.png",
-    "Daily Notes/Day 18-9.md",
     "Planning/Pre Alpha Kanban.md",
     "Design/Trinkets.md",
     "Daily Notes/Day 18-8.md",
