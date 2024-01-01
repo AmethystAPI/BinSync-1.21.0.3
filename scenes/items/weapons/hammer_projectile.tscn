@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_ndrd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
-size = Vector2(6, 6)
+size = Vector2(9, 14)
 
 [node name="HammerProjectile" type="Node2D"]
 script = ExtResource("1_3623f")
@@ -17,8 +17,10 @@ Knockback = 2.5
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.381053, 0.381053)
 texture = ExtResource("2_ndrd5")
+region_enabled = true
+region_rect = Rect2(32, 0, 14, 16)

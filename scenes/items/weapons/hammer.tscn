@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb261ce2j3ht2"]
+[gd_scene load_steps=6 format=3 uid="uid://bb261ce2j3ht2"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_ow422"]
 [ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/items/weapons/hammer_projectile.tscn" id="2_cv6x1"]
+[ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_3jr4r"]
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_l5mtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaem"]
@@ -12,7 +13,12 @@ script = ExtResource("1_ow422")
 ProjectileScene = ExtResource("2_cv6x1")
 Delay = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SwingHandle" type="Node2D" parent="."]
+script = ExtResource("3_3jr4r")
+Speed = 18.0
+Range = 110.0
+
+[node name="Sprite2D" type="Sprite2D" parent="SwingHandle"]
 position = Vector2(8, 0)
 texture = ExtResource("3_l5mtf")
 offset = Vector2(0, -4)
@@ -23,3 +29,5 @@ frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
 shape = SubResource("RectangleShape2D_xbaem")
+
+[connection signal="Shoot" from="." to="SwingHandle" method="Swing"]
