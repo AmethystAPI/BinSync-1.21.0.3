@@ -1,5 +1,8 @@
 See the [[Design/World Generation|Design]]
 
+> [!warning]
+> This implementation is out of date! See new implementation in [[Day 18-11]]
+
 An initial spawn room is placed. This spawn room will have no entrance and will always have an exit in the up direction.
 
 Rooms have doors at exits. These doors can be destroyed by attacking them. Once a door is destroyed, all other doors lock and the next room is generated.
