@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://tqb4da4whyme"]
+[gd_scene load_steps=13 format=3 uid="uid://tqb4da4whyme"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_7cfe8"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="2_27hst"]
@@ -11,27 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="7_qs7vc"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="8_mrjay"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_tr5lr"]
-[ext_resource type="Script" path="res://scripts/rooms/Entrance.cs" id="10_348qu"]
-[ext_resource type="Texture2D" uid="uid://dign4aks2nwf3" path="res://sprites/testing_tileset.aseprite" id="11_04wq0"]
-[ext_resource type="Script" path="res://scripts/rooms/Exit.cs" id="12_fda0d"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_q2cc7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y62c"]
-size = Vector2(160, 160)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcnv7"]
-size = Vector2(32, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7076x"]
-size = Vector2(16, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_30ode"]
-size = Vector2(32, 15)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwd80"]
-size = Vector2(16, 32)
-
-[node name="GoldenGroveRoomDoubleIsland" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Entrances", "Exits")]
+[node name="GoldenGroveRoomDoubleIsland" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Connections") groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_7cfe8")
 EnemyScenes = Array[PackedScene]([ExtResource("2_27hst"), ExtResource("3_7woth"), ExtResource("4_tyemd")])
@@ -39,10 +21,7 @@ LootScenes = Array[PackedScene]([ExtResource("3_w2l6d"), ExtResource("4_3xyle"),
 SpawnPoints = [NodePath("SpawnPoints/Point5"), NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4")]
 EdgeTileMapDirections = PackedVector2Array(-1, 0, 1, 0, 0, -1, 0, 1)
 EdgeTileMaps = [NodePath("TileMapLeft"), NodePath("TileMapRight"), NodePath("TileMapTop"), NodePath("TileMapBottom")]
-EntranceDirections = PackedVector2Array(0, 1, 1, 0, -1, 0)
-Entrances = [NodePath("Entrances/Down"), NodePath("Entrances/Right"), NodePath("Entrances/Left")]
-ExitDirections = PackedVector2Array(0, -1, 1, 0, -1, 0)
-Exits = [NodePath("Exits/Up"), NodePath("Exits/Right"), NodePath("Exits/Left")]
+Connections = []
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -129,12 +108,6 @@ layer_3/name = "Shadow"
 layer_3/z_index = -9
 layer_3/tile_data = PackedInt32Array(-262145, 65536, 10, -327680, 65536, 10)
 
-[node name="SpawnTriggerArea" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnTriggerArea"]
-shape = SubResource("RectangleShape2D_3y62c")
-
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Point1" type="Node2D" parent="SpawnPoints"]
@@ -150,163 +123,6 @@ position = Vector2(72, -47)
 position = Vector2(-55, -47)
 
 [node name="Point5" type="Node2D" parent="SpawnPoints"]
-
-[node name="Entrances" type="Node2D" parent="."]
-
-[node name="Down" type="Node2D" parent="Entrances"]
-position = Vector2(0, 128)
-script = ExtResource("10_348qu")
-
-[node name="Visuals" type="StaticBody2D" parent="Entrances/Down"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Down/Visuals"]
-position = Vector2(0, -40)
-shape = SubResource("RectangleShape2D_wcnv7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Entrances/Down/Visuals"]
-position = Vector2(-8, -32)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Down/Visuals"]
-position = Vector2(8, -32)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Right" type="Node2D" parent="Entrances"]
-position = Vector2(128, 0)
-script = ExtResource("10_348qu")
-
-[node name="Visuals" type="StaticBody2D" parent="Entrances/Right"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Right/Visuals"]
-position = Vector2(-40, 0)
-shape = SubResource("RectangleShape2D_7076x")
-
-[node name="Sprite2D" type="Sprite2D" parent="Entrances/Right/Visuals"]
-position = Vector2(-40, 0)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Right/Visuals"]
-position = Vector2(-40, 16)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Left" type="Node2D" parent="Entrances"]
-position = Vector2(-128, 0)
-script = ExtResource("10_348qu")
-
-[node name="Visuals" type="StaticBody2D" parent="Entrances/Left"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/Left/Visuals"]
-position = Vector2(40, 0)
-shape = SubResource("RectangleShape2D_7076x")
-
-[node name="Sprite2D" type="Sprite2D" parent="Entrances/Left/Visuals"]
-position = Vector2(40, 0)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Entrances/Left/Visuals"]
-position = Vector2(40, 16)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Exits" type="Node2D" parent="."]
-
-[node name="Up" type="StaticBody2D" parent="Exits"]
-position = Vector2(0, -144)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("12_fda0d")
-Direction = Vector2(0, -1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Up"]
-position = Vector2(0, 56.5)
-shape = SubResource("RectangleShape2D_30ode")
-
-[node name="Sprite2D" type="Sprite2D" parent="Exits/Up"]
-position = Vector2(-8, 64)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Exits/Up"]
-position = Vector2(8, 64)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Right" type="StaticBody2D" parent="Exits"]
-position = Vector2(128, 0)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("12_fda0d")
-Direction = Vector2(1, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Right"]
-position = Vector2(-40, 0)
-shape = SubResource("RectangleShape2D_gwd80")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Exits/Right"]
-position = Vector2(-40, 0)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Sprite2D" type="Sprite2D" parent="Exits/Right"]
-position = Vector2(-40, 16)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Left" type="StaticBody2D" parent="Exits"]
-position = Vector2(-128, 0)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("12_fda0d")
-Direction = Vector2(-1, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Left"]
-position = Vector2(40, 0)
-shape = SubResource("RectangleShape2D_gwd80")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Exits/Left"]
-position = Vector2(40, 0)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
-
-[node name="Sprite2D" type="Sprite2D" parent="Exits/Left"]
-position = Vector2(40, 16)
-texture = ExtResource("11_04wq0")
-offset = Vector2(0, -12)
-region_enabled = true
-region_rect = Rect2(224, 40, 16, 24)
 
 [node name="Patch" type="Sprite2D" parent="."]
 z_index = -9

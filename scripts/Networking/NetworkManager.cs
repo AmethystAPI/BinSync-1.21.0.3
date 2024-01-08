@@ -4,10 +4,8 @@ using Godot;
 using Riptide;
 using Riptide.Utils;
 
-namespace Networking
-{
-  public partial class NetworkManager : Node
-  {
+namespace Networking {
+  public partial class NetworkManager : Node {
     public static bool SafeMode = true; // If safe mode, use tcp since portforwarding sometime's doesn't work on udp for me.
 
     public static Server LocalServer;
@@ -19,21 +17,18 @@ namespace Networking
 
     private Dictionary<string, int> _nameIndexes = new Dictionary<string, int>();
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
       s_Me = this;
 
       RiptideLogger.Initialize(GD.Print, GD.Print, GD.PushWarning, GD.PushError, false);
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
+    public override void _PhysicsProcess(double delta) {
       if (LocalServer != null) LocalServer.Update();
       if (LocalClient != null) LocalClient.Update();
     }
 
-    public static NodeType SpawnNetworkSafe<NodeType>(PackedScene packedScene, string baseName, int authority = 1) where NodeType : Node
-    {
+    public static NodeType SpawnNetworkSafe<NodeType>(PackedScene packedScene, string baseName, int authority = 1) where NodeType : Node {
       NodeType node = packedScene.Instantiate<NodeType>();
 
       if (!s_Me._nameIndexes.ContainsKey(baseName)) s_Me._nameIndexes.Add(baseName, 0);
@@ -47,8 +42,7 @@ namespace Networking
       return node;
     }
 
-    public static void SendRpcToServer(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable)
-    {
+    public static void SendRpcToServer(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
       Message message = Message.Create(messageSendMode, 0);
       message.AddString(name);
       message.AddString(source.GetPath());
@@ -58,8 +52,7 @@ namespace Networking
       LocalClient.Send(message);
     }
 
-    public static void SendRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable)
-    {
+    public static void SendRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
       Message message = Message.Create(messageSendMode, 0);
       message.AddString(name);
       message.AddString(source.GetPath());
@@ -69,8 +62,7 @@ namespace Networking
       LocalServer.SendToAll(message);
     }
 
-    public static void BounceRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable)
-    {
+    public static void BounceRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
       Message message = Message.Create(messageSendMode, 1);
       message.AddString(name);
       message.AddString(source.GetPath());
@@ -80,23 +72,16 @@ namespace Networking
       LocalClient.Send(message);
     }
 
-    public static bool Host()
-    {
-      if (SafeMode)
-      {
+    public static bool Host() {
+      if (SafeMode) {
         LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
-      }
-      else
-      {
+      } else {
         LocalServer = new Server(new Riptide.Transports.Udp.UdpServer());
       }
 
-      try
-      {
+      try {
         LocalServer.Start(25566, 2, 0, false);
-      }
-      catch
-      {
+      } catch {
         LocalServer = null;
 
         return false;
@@ -111,14 +96,10 @@ namespace Networking
       return true;
     }
 
-    public static bool Join(string address)
-    {
-      if (SafeMode)
-      {
+    public static bool Join(string address) {
+      if (SafeMode) {
         LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
-      }
-      else
-      {
+      } else {
         LocalClient = new Client(new Riptide.Transports.Udp.UdpClient());
       }
 
@@ -129,19 +110,16 @@ namespace Networking
       return true;
     }
 
-    public static bool IsOwner(Node node)
-    {
+    public static bool IsOwner(Node node) {
       return node.GetMultiplayerAuthority() == LocalClient.Id;
     }
 
-    private void HandleMessage(Message message)
-    {
+    private void HandleMessage(Message message) {
       string name = message.GetString();
 
       string path = message.GetString();
 
-      if (!HasNode(path))
-      {
+      if (!HasNode(path)) {
         if (message.SendMode == MessageSendMode.Reliable) GD.PushWarning("Ignoring Reliable Rpc " + name + " for node " + path + " because the node does not exist!");
 
         return;
@@ -150,14 +128,11 @@ namespace Networking
       GetNode<NetworkPointUser>(path).NetworkPoint.HandleMessage(name, message);
     }
 
-    private void OnMessageRecieved(Object _, MessageReceivedEventArgs eventArguments)
-    {
-      if (eventArguments.MessageId == 1)
-      {
+    private void OnMessageRecieved(Object _, MessageReceivedEventArgs eventArguments) {
+      if (eventArguments.MessageId == 1) {
         Message relayMessage = Message.Create(eventArguments.Message.SendMode, 0);
 
-        while (eventArguments.Message.UnreadBits > 0)
-        {
+        while (eventArguments.Message.UnreadBits > 0) {
           int bitsToWrite = Math.Min(eventArguments.Message.UnreadBits, 8);
 
           byte bits;
@@ -175,8 +150,7 @@ namespace Networking
       HandleMessage(eventArguments.Message);
     }
 
-    private void OnClientConnected(object server, ServerConnectedEventArgs eventArguments)
-    {
+    private void OnClientConnected(object server, ServerConnectedEventArgs eventArguments) {
       ClientConnected?.Invoke(eventArguments);
     }
   }

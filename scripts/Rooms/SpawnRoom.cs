@@ -1,17 +1,18 @@
-using System.Linq;
 using Godot;
+using Riptide;
 
-public partial class SpawnRoom : Room
-{
-	public override void PlaceExit(Vector2 direction)
-	{
-		AddChild(Exits[ExitDirections.ToList().IndexOf(direction)]);
+public partial class SpawnRoom : Room {
+	public override void PlaceEntrance(Vector2 direction) { }
+
+	protected override void EndRpc(Message message) { }
+
+	public override void Place() {
+		base.Place();
+
+		CallDeferred(nameof(ImmediateEnd));
 	}
 
-	protected override void Start()
-	{
-		base.Start();
-
+	private void ImmediateEnd() {
 		float originalDifficulty = Game.Difficulty;
 
 		End();

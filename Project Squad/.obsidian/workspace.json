@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/Day 18-10.md",
+                "file": "Daily Notes/Day 18-11.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-10.md",
+                "file": "Daily Notes/Day 18-11.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-10.md",
+                "file": "Daily Notes/Day 18-11.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-10.md"
+                "file": "Daily Notes/Day 18-11.md"
               }
             }
           }
@@ -146,10 +146,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7f04e61c1b9912ba",
+  "active": "711274cd3592b4d7",
   "lastOpenFiles": [
-    "Daily Notes/Day 18-9.md",
     "Daily Notes/Day 18-10.md",
+    "Daily Notes/Day 18-11.md",
+    "Daily Notes/Day 18-9.md",
     "Reference/General.canvas",
     "Planning/Alpha.md",
     "Planning/Alpha Kanban.md",
@@ -194,7 +195,6 @@
     "Design/Team Work.md",
     "Daily.md",
     "Day.md",
-    "Previous.md",
-    "Daily Notes/Untitled.md"
+    "Previous.md"
   ]
 }

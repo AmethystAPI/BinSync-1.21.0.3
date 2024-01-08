@@ -4,8 +4,7 @@ using Riptide;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class WorldGenerator : Node2D, NetworkPointUser
-{
+public partial class WorldGenerator : Node2D, NetworkPointUser {
 	private static WorldGenerator s_Me;
 
 	[Export] public PackedScene SpawnRoomScene;
@@ -17,21 +16,17 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 	private Room _currentRoom;
 	private Room _lastRoom;
 
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(PlaceNextRoomRpc), PlaceNextRoomRpc);
-		NetworkPoint.Register(nameof(DespawnLastRoomRpc), DespawnLastRoomRpc);
 
 		s_Me = this;
 	}
 
-	public void Start()
-	{
-		_randomNumberGenerator = new RandomNumberGenerator
-		{
-			Seed = (ulong)Game.Seed
+	public void Start() {
+		_randomNumberGenerator = new RandomNumberGenerator {
+			Seed = Game.Seed
 		};
 
 		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomScene, "SpawnRoom");
@@ -40,29 +35,23 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 		_currentRoom = spawnRoom;
 
-		_currentRoom.PlaceExit(Vector2.Up);
-
 		_currentRoom.Place();
+
+		_currentRoom.PlaceExit(Vector2.Up);
 	}
 
-	public void Cleanup()
-	{
-		if (_lastRoom != null)
-		{
-			if (IsInstanceValid(_lastRoom)) _lastRoom.QueueFree();
-			_lastRoom = null;
+	public void Cleanup() {
+		foreach (Node node in GetTree().GetNodesInGroup("Rooms")) {
+			node.QueueFree();
 		}
 
-		_currentRoom.QueueFree();
 		_currentRoom = null;
 	}
 
-	public static void PlaceNextRoom(Vector2 connectionPosition, Vector2 direction)
-	{
+	public static void PlaceNextRoom(Vector2 connectionPosition, Vector2 direction) {
 		if (!NetworkManager.IsHost) return;
 
-		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceNextRoomRpc), message =>
-		{
+		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceNextRoomRpc), message => {
 			message.AddFloat(connectionPosition.X);
 			message.AddFloat(connectionPosition.Y);
 
@@ -81,19 +70,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 		});
 	}
 
-	public static void DespawnLastRoom()
-	{
-		if (!NetworkManager.IsHost) return;
-
-		s_Me.NetworkPoint.SendRpcToClients(nameof(DespawnLastRoomRpc));
-	}
-
-	private void PlaceNextRoomRpc(Message message)
-	{
+	private void PlaceNextRoomRpc(Message message) {
 		Vector2 connectionPosition = new Vector2(message.GetFloat(), message.GetFloat());
 		Vector2 direction = new Vector2(message.GetFloat(), message.GetFloat());
-
-		_lastRoom = _currentRoom;
 
 		int roomIndex = message.GetInt();
 
@@ -105,7 +84,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 
 		room.GlobalPosition = connectionPosition;
 
-		Vector2 roomConnectionPosition = room.Entrances[room.EntranceDirections.ToList().IndexOf(-direction)].Position;
+		Vector2 roomConnectionPosition = room.Connections[room.ConnectionDirections.ToList().IndexOf(-direction)].Position;
 
 		room.GlobalPosition -= roomConnectionPosition;
 
@@ -116,12 +95,5 @@ public partial class WorldGenerator : Node2D, NetworkPointUser
 		room.PlaceExit(exitDirection);
 
 		room.Place();
-	}
-
-	private void DespawnLastRoomRpc(Message message)
-	{
-		if (_lastRoom == null) return;
-
-		_lastRoom.QueueFree();
 	}
 }
