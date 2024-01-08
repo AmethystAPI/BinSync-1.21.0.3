@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "5ad95131bb38822e",
+        "id": "dba1923615fb4986",
         "type": "tabs",
         "children": [
           {
-            "id": "7f04e61c1b9912ba",
+            "id": "71bea1026302501c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Daily Notes/Day 18-11.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-11.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-11.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Daily Notes/Day 18-11.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,11 +138,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7f04e61c1b9912ba",
+  "active": "71bea1026302501c",
   "lastOpenFiles": [
+    "Daily Notes/Day 18-11.md",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
-    "Daily Notes/Day 18-11.md",
     "Daily Notes/Day 18-10.md",
     "Daily Notes/Day 18-9.md",
     "Reference/General.canvas",
