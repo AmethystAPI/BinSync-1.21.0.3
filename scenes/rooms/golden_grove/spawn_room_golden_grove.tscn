@@ -30,7 +30,14 @@ layer_3/name = "Shadow"
 layer_3/z_index = -9
 layer_3/tile_data = PackedInt32Array(-262149, 65536, 10, -327676, 65536, 10)
 
-[node name="Patch" type="Sprite2D" parent="."]
+[node name="Connections" type="Node2D" parent="."]
+
+[node name="Up" type="Node2D" parent="Connections" groups=["Rooms"]]
+position = Vector2(0, -144)
+
+[node name="GrassPatches" type="Node2D" parent="."]
+
+[node name="Patch" type="Sprite2D" parent="GrassPatches"]
 z_index = -9
 y_sort_enabled = true
 position = Vector2(-37, -39)
@@ -38,7 +45,83 @@ texture = ExtResource("13_15b68")
 region_enabled = true
 region_rect = Rect2(84, 4, 68, 62)
 
-[node name="Patch2" type="Sprite2D" parent="."]
+[node name="Patch9" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-72, -43)
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch10" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-57, -77)
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch6" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(38, -29)
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch13" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(81, -36)
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch14" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(81, -71)
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch7" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(50, -63)
+rotation = -1.57079
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch8" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-60, 74)
+rotation = -1.57079
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch15" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-95, 75)
+rotation = -1.57079
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch16" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-71, 91)
+rotation = -1.57079
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch2" type="Sprite2D" parent="GrassPatches"]
 z_index = -9
 y_sort_enabled = true
 position = Vector2(39, 35)
@@ -46,7 +129,46 @@ texture = ExtResource("13_15b68")
 region_enabled = true
 region_rect = Rect2(159, -1, 64, 68)
 
-[node name="Connections" type="Node2D" parent="."]
+[node name="Patch12" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(76, 59)
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
 
-[node name="Up" type="Node2D" parent="Connections" groups=["Rooms"]]
-position = Vector2(0, -144)
+[node name="Patch3" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(2, 44)
+rotation = -3.14159
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="Patch4" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(27, 82)
+rotation = -3.14159
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="Patch11" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(72, 93)
+rotation = -3.14159
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="Patch5" type="Sprite2D" parent="GrassPatches"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-64, -5)
+rotation = -3.14159
+texture = ExtResource("13_15b68")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)

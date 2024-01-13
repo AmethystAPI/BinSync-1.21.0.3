@@ -35,3 +35,14 @@ RoomScenes = Array[PackedScene]([ExtResource("7_f8oc0")])
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
 visible = false
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+modulate = Color(0.541176, 0.211765, 0.117647, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
