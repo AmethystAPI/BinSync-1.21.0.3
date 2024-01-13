@@ -84,7 +84,7 @@ vframes = 4
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
-z_index = -9
+z_index = -6
 position = Vector2(0, -1)
 texture = ExtResource("1_82yba")
 region_enabled = true

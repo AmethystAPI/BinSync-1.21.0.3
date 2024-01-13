@@ -27,8 +27,8 @@ layer_2/name = "Floor"
 layer_2/z_index = -10
 layer_2/tile_data = PackedInt32Array(65535, 262144, 1, 65537, 262144, 3, 131069, 262144, 1, 131068, 262144, 3, 65539, 262144, 0, 65540, 262144, 3, 327679, 262144, 1, -1, 262144, 1, -65537, 262144, 2, -131073, 262144, 2, -196609, 262144, 1, -262145, 262144, 0, 196603, 262144, 0, 262139, 262144, 3, 327675, 262144, 3, 327676, 262144, 2, 327677, 262144, 3, 327678, 262144, 2, 262140, 262144, 1, 262141, 262144, 3, 196605, 262144, 3, 196604, 262144, 1, 65534, 262144, 2, 65533, 262144, 0, 65532, 262144, 3, 65531, 262144, 0, -5, 262144, 2, -65541, 262144, 2, -131077, 262144, 2, -196613, 262144, 1, -262149, 262144, 3, -262148, 262144, 1, -262147, 262144, 1, -262146, 262144, 3, -196610, 262144, 3, -131074, 262144, 3, -65538, 262144, 0, -2, 262144, 2, -3, 262144, 2, -4, 262144, 2, -65540, 262144, 2, -131076, 262144, 2, -196611, 262144, 2, -131075, 262144, 1, -65539, 262144, 2, -196612, 262144, 0, -327680, 262144, 1, -327679, 262144, 3, -327678, 262144, 3, -327677, 262144, 2, -327676, 262144, 2, -262140, 262144, 3, -196604, 262144, 0, -131068, 262144, 3, -65532, 262144, 3, 4, 262144, 3, 131076, 262144, 0, 196612, 262144, 3, 262148, 262144, 0, 262147, 262144, 0, 262146, 262144, 1, 262145, 262144, 0, 262144, 262144, 0, 131073, 262144, 1, 196609, 262144, 3, 196610, 262144, 3, 196611, 262144, 1, 131075, 262144, 2, 131074, 262144, 3, 3, 262144, 3, -131072, 262144, 0, -65536, 262144, 1, -65533, 262144, 1, -196607, 262144, 3, -196606, 262144, 0, -196605, 262144, 1, -131069, 262144, 0, -196608, 262144, 0, -262144, 262144, 1, -262143, 262144, 3, -262142, 262144, 1, -262141, 262144, 3, 196607, 262144, 3, 262142, 262144, 0, 262143, 262144, 2, 196608, 262144, 3, 131072, 262144, 3, 65536, 262144, 3, 131071, 262144, 0, 131070, 262144, 2, 196606, 262144, 2, -65535, 262144, 0, -65534, 262144, 2, -131070, 262144, 1, -131071, 262144, 0, 0, 262144, 3, 1, 262144, 1, 2, 262144, 3, 65538, 262144, 2, 131067, 262144, 3, -327681, 262144, 2, -393217, 262144, 3, -458753, 262144, 3, -524289, 262144, 2, -589824, 262144, 2, -524288, 262144, 0, -458752, 262144, 0, -393216, 262144, 1, -327685, 262144, 3, -327684, 262144, 1, -327683, 262144, 0, -327682, 262144, 0, -393215, 262144, 2, -393214, 262144, 1, -393213, 262144, 1, -393212, 262144, 3, -524292, 262144, 2, -458756, 262144, 2, -393220, 262144, 2, -524291, 262144, 2, -458755, 262144, 0, -393219, 262144, 2, -524290, 262144, 2, -458754, 262144, 0, -393218, 262144, 1, -589823, 262144, 3, -524287, 262144, 2, -458751, 262144, 3, -589822, 262144, 1, -524286, 262144, 0, -458750, 262144, 1, -589821, 262144, 2, -524285, 262144, 1, -458749, 262144, 2, 393213, 262144, 3, 393214, 262144, 3, 393215, 262144, 3, 327680, 262144, 3, 327681, 262144, 3, 327682, 262144, 3, 327683, 262144, 3, 327684, 262144, 3, 327685, 262144, 3, 262149, 262144, 3, 196613, 262144, 3, 131077, 262144, 3, 65541, 262144, 3, 5, 262144, 3, -65531, 262144, 3, -131067, 262144, 3, -196603, 262144, 3, -262139, 262144, 3, -327675, 262144, 3, -262150, 262144, 3, -196614, 262144, 3, -131078, 262144, 3, -65542, 262144, 3, -6, 262144, 3, 65530, 262144, 3, 131066, 262144, 3, 196602, 262144, 3, 262138, 262144, 3, 327674, 262144, 3, 393210, 262144, 3, 393211, 262144, 3, 393212, 262144, 3, -327686, 262144, 3, -393211, 262144, 3, -458748, 262144, 3, -524284, 262144, 3, -589820, 262144, 3, -524293, 262144, 3, -458757, 262144, 3, -393221, 262144, 3)
 layer_3/name = "Shadow"
-layer_3/z_index = -9
-layer_3/tile_data = PackedInt32Array(-262149, 65536, 10, -327676, 65536, 10)
+layer_3/z_index = -6
+layer_3/tile_data = PackedInt32Array(-262149, 131072, 11, -327676, 0, 11, -327686, 65536, 10, -262150, 65536, 11, -327685, 131072, 10, -393212, 0, 10, -393211, 65536, 10, -327675, 65536, 11)
 
 [node name="Connections" type="Node2D" parent="."]
 
@@ -172,3 +172,267 @@ rotation = -3.14159
 texture = ExtResource("13_15b68")
 region_enabled = true
 region_rect = Rect2(159, -1, 64, 68)
+
+[node name="Bushes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bush" type="Sprite2D" parent="Bushes"]
+y_sort_enabled = true
+position = Vector2(-50, -27)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 81, 22, 16)
+
+[node name="Bush2" type="Sprite2D" parent="Bushes"]
+y_sort_enabled = true
+position = Vector2(53, -53)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 81, 22, 16)
+
+[node name="Bush3" type="Sprite2D" parent="Bushes"]
+y_sort_enabled = true
+position = Vector2(-4, -3)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 81, 22, 16)
+
+[node name="Bush4" type="Sprite2D" parent="Bushes"]
+y_sort_enabled = true
+position = Vector2(-28, 53)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 81, 22, 16)
+
+[node name="BushShadow" type="Sprite2D" parent="Bushes"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-50, -18)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 109, 22, 10)
+
+[node name="BushShadow2" type="Sprite2D" parent="Bushes"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(53, -44)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 109, 22, 10)
+
+[node name="BushShadow3" type="Sprite2D" parent="Bushes"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-4, 6)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 109, 22, 10)
+
+[node name="BushShadow4" type="Sprite2D" parent="Bushes"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-28, 62)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 109, 22, 10)
+
+[node name="GrassTufts" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Grass" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(35, 30)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(123, 88, 10, 8)
+
+[node name="Grass5" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-15, -7)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(123, 88, 10, 8)
+
+[node name="Grass2" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(46, 26)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Grass10" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-60, -29)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(123, 88, 10, 8)
+
+[node name="Grass11" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-39, -32)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Grass6" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(62, -50)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Grass3" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(43, 36)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Grass7" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-65, -68)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(123, 88, 10, 8)
+
+[node name="Grass8" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-54, -72)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Grass9" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-57, -62)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Grass4" type="Sprite2D" parent="GrassTufts"]
+y_sort_enabled = true
+position = Vector2(-38, 55)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Shadow" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-65, -62)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(124, 112, 8, 4)
+
+[node name="Shadow5" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-56, -56)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow6" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-55, -66)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow7" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-40, -26)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow8" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-37, 61)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow9" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(44, 42)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow10" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(45, 32)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow11" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(61, -44)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Shadow2" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-60, -23)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(124, 112, 8, 4)
+
+[node name="Shadow3" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-15, -1)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(124, 112, 8, 4)
+
+[node name="Shadow4" type="Sprite2D" parent="GrassTufts"]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(35, 36)
+texture = ExtResource("13_15b68")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(124, 112, 8, 4)
