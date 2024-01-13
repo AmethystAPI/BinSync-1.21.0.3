@@ -178,33 +178,33 @@ y_sort_enabled = true
 
 [node name="Bush" type="Sprite2D" parent="Bushes"]
 y_sort_enabled = true
-position = Vector2(-50, -27)
+position = Vector2(-50, -28)
 texture = ExtResource("13_15b68")
-offset = Vector2(0, -8)
+offset = Vector2(0, -7)
 region_enabled = true
 region_rect = Rect2(94, 81, 22, 16)
 
 [node name="Bush2" type="Sprite2D" parent="Bushes"]
 y_sort_enabled = true
-position = Vector2(53, -53)
+position = Vector2(53, -54)
 texture = ExtResource("13_15b68")
-offset = Vector2(0, -8)
+offset = Vector2(0, -7)
 region_enabled = true
 region_rect = Rect2(94, 81, 22, 16)
 
 [node name="Bush3" type="Sprite2D" parent="Bushes"]
 y_sort_enabled = true
-position = Vector2(-4, -3)
+position = Vector2(-4, -4)
 texture = ExtResource("13_15b68")
-offset = Vector2(0, -8)
+offset = Vector2(0, -7)
 region_enabled = true
 region_rect = Rect2(94, 81, 22, 16)
 
 [node name="Bush4" type="Sprite2D" parent="Bushes"]
 y_sort_enabled = true
-position = Vector2(-28, 53)
+position = Vector2(-28, 52)
 texture = ExtResource("13_15b68")
-offset = Vector2(0, -8)
+offset = Vector2(0, -7)
 region_enabled = true
 region_rect = Rect2(94, 81, 22, 16)
 
