@@ -11,8 +11,15 @@
             "id": "71bea1026302501c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "canvas",
+              "state": {
+                "file": "Reference/General.canvas",
+                "viewState": {
+                  "x": 2.5121443444826923,
+                  "y": 425.47536282260273,
+                  "zoom": 0.6666666666666667
+                }
+              }
             }
           }
         ]
@@ -81,6 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Reference/General.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Reference/General.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +127,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Reference/General.canvas"
+              }
             }
           }
         ]
@@ -140,6 +151,8 @@
   },
   "active": "71bea1026302501c",
   "lastOpenFiles": [
+    "Attachments/Pasted image 20240112004327.png",
+    "Attachments/Pasted image 20240112004150.png",
     "Daily Notes/Day 18-11.md",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
@@ -174,7 +187,6 @@
     "Attachments/Pasted image 20231230032304.png.import",
     "Attachments/Pasted image 20231230032317.png.import",
     "Attachments/Pasted image 20231230032317.png",
-    "Attachments/Pasted image 20231230032304.png",
     "Attachments/Pasted image 20231229051318.png.import",
     "Implementation/Combat.md",
     "Daily Notes/Day 18-5.md",
@@ -186,7 +198,6 @@
     "Design/Weapons.md",
     "Design/Team Work.md",
     "Daily.md",
-    "Day.md",
-    "Previous.md"
+    "Day.md"
   ]
 }

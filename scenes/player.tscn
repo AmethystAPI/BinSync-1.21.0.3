@@ -82,6 +82,14 @@ offset = Vector2(0, -8)
 hframes = 8
 vframes = 4
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -9
+position = Vector2(0, -1)
+texture = ExtResource("1_82yba")
+region_enabled = true
+region_rect = Rect2(98, 26, 12, 6)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_ypp2t")
