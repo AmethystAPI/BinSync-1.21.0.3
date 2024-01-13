@@ -27,7 +27,7 @@ hframes = 3
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
 z_index = -8
-position = Vector2(0, 3)
+position = Vector2(0, 10)
 texture = ExtResource("2_sm357")
 offset = Vector2(0, -5)
 region_enabled = true

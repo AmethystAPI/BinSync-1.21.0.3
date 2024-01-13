@@ -11,14 +11,11 @@
             "id": "71bea1026302501c",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Reference/General.canvas",
-                "viewState": {
-                  "x": 68.02803893901608,
-                  "y": 399.64698129975784,
-                  "zoom": 0.6666666666666667
-                }
+                "file": "Daily Notes/Day 18-12.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Daily Notes/Day 18-12.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Daily Notes/Day 18-12.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/General.canvas"
+                "file": "Daily Notes/Day 18-12.md"
               }
             }
           }
@@ -151,6 +148,8 @@
   },
   "active": "71bea1026302501c",
   "lastOpenFiles": [
+    "Reference/General.canvas",
+    "Daily Notes/Day 18-12.md",
     "Attachments/Pasted image 20240112004327.png",
     "Attachments/Pasted image 20240112004150.png",
     "Daily Notes/Day 18-11.md",
@@ -158,7 +157,6 @@
     "Design/World Generation.md",
     "Daily Notes/Day 18-10.md",
     "Daily Notes/Day 18-9.md",
-    "Reference/General.canvas",
     "Planning/Alpha.md",
     "Planning/Alpha Kanban.md",
     "Design/Enemies.md",
@@ -186,7 +184,6 @@
     "Attachments/Pasted image 20231230033604.png",
     "Attachments/Pasted image 20231230032304.png.import",
     "Attachments/Pasted image 20231230032317.png.import",
-    "Attachments/Pasted image 20231230032317.png",
     "Attachments/Pasted image 20231229051318.png.import",
     "Implementation/Combat.md",
     "Daily Notes/Day 18-5.md",
@@ -197,7 +194,6 @@
     "Daily Notes/Day 18-1.md",
     "Design/Weapons.md",
     "Design/Team Work.md",
-    "Daily.md",
-    "Day.md"
+    "Daily.md"
   ]
 }
