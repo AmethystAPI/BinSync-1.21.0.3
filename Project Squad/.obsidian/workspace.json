@@ -11,11 +11,14 @@
             "id": "71bea1026302501c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Daily Notes/Day 18-12.md",
-                "mode": "source",
-                "source": false
+                "file": "Reference/General.canvas",
+                "viewState": {
+                  "x": -56.58289441219938,
+                  "y": 441.6820803326118,
+                  "zoom": 1
+                }
               }
             }
           }
@@ -85,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-12.md",
+                "file": "Reference/General.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-12.md",
+                "file": "Reference/General.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-12.md"
+                "file": "Reference/General.canvas"
               }
             }
           }
@@ -148,8 +151,10 @@
   },
   "active": "71bea1026302501c",
   "lastOpenFiles": [
-    "Reference/General.canvas",
+    "Attachments/Archvale-001-1024x576.jpg.import",
+    "Attachments/Archvale-001-1024x576.jpg",
     "Daily Notes/Day 18-12.md",
+    "Reference/General.canvas",
     "Attachments/Pasted image 20240112004327.png",
     "Attachments/Pasted image 20240112004150.png",
     "Daily Notes/Day 18-11.md",
@@ -181,7 +186,6 @@
     "Reference/Locations/Golden Grove.canvas",
     "Attachments/Pasted image 20231230033616.png",
     "Attachments/Pasted image 20231230033609.png",
-    "Attachments/Pasted image 20231230033604.png",
     "Attachments/Pasted image 20231230032304.png.import",
     "Attachments/Pasted image 20231230032317.png.import",
     "Attachments/Pasted image 20231229051318.png.import",

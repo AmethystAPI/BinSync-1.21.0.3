@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bsxux4eq0ewo2"
+path="res://.godot/imported/Archvale-001-1024x576.jpg-28d25a56467ae6e2a03a1ebc2f1d72cb.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Project Squad/Attachments/Archvale-001-1024x576.jpg"
+dest_files=["res://.godot/imported/Archvale-001-1024x576.jpg-28d25a56467ae6e2a03a1ebc2f1d72cb.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
