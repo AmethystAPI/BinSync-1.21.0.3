@@ -7,8 +7,6 @@ public partial class Room : Node2D, NetworkPointUser {
 	[Export] public PackedScene[] EnemyScenes;
 	[Export] public PackedScene[] LootScenes;
 	[Export] public Node2D[] SpawnPoints;
-	[Export] public Vector2[] EdgeTileMapDirections;
-	[Export] public TileMap[] EdgeTileMaps;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
 
@@ -44,7 +42,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	public virtual void PlaceEntrance(Vector2 direction) {
-		EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(direction)].QueueFree();
+
 	}
 
 	public virtual void PlaceExit(Vector2 direction) {
@@ -98,7 +96,6 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	protected virtual void EndRpc(Message message) {
-		EdgeTileMaps[EdgeTileMapDirections.ToList().IndexOf(_exitDirection)].QueueFree();
 	}
 
 	protected void SpawnLootRpc(Message message) {

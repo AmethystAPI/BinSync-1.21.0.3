@@ -4,12 +4,11 @@
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_m773q"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_15b68"]
 
-[node name="GoldenGroveSpawnRoom" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "EdgeTileMaps", "Connections")]
+[node name="GoldenGroveSpawnRoom" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "Connections")]
 y_sort_enabled = true
 script = ExtResource("1_21dic")
 LootScenes = Array[PackedScene]([])
 SpawnPoints = Array[PackedScene]([])
-EdgeTileMaps = Array[PackedScene]([])
 Connections = [NodePath("Connections/Up")]
 ConnectionDirections = PackedVector2Array(0, -1)
 

@@ -7,8 +7,8 @@ using System.Linq;
 public partial class WorldGenerator : Node2D, NetworkPointUser {
 	private static WorldGenerator s_Me;
 
-	[Export] public PackedScene SpawnRoomScene;
-	[Export] public PackedScene[] RoomScenes;
+	[Export] public RoomPlacer SpawnRoomPlacer;
+	[Export] public RoomPlacer[] RoomPlacers;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -29,7 +29,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			Seed = Game.Seed
 		};
 
-		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomScene, "SpawnRoom");
+		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomPlacer.RoomScene, "SpawnRoom");
 
 		AddChild(spawnRoom);
 
@@ -58,9 +58,12 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			message.AddFloat(direction.X);
 			message.AddFloat(direction.Y);
 
-			message.AddInt(s_Me._randomNumberGenerator.RandiRange(0, s_Me.RoomScenes.Length - 1));
+			RoomPlacer roomPlacer = s_Me.RoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, s_Me.RoomPlacers.Length - 1)];
 
-			List<Vector2> possibleExitDirections = new List<Vector2>() { Vector2.Left, Vector2.Up, Vector2.Right };
+			message.AddString(roomPlacer.ResourcePath);
+
+			List<Vector2> possibleExitDirections = roomPlacer.GetDirections();
+
 			if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
 
 			Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
@@ -74,9 +77,10 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 		Vector2 connectionPosition = new Vector2(message.GetFloat(), message.GetFloat());
 		Vector2 direction = new Vector2(message.GetFloat(), message.GetFloat());
 
-		int roomIndex = message.GetInt();
+		string roomPlacerPath = message.GetString();
+		RoomPlacer roomPlacer = ResourceLoader.Load<RoomPlacer>(roomPlacerPath);
 
-		Room room = NetworkManager.SpawnNetworkSafe<Room>(RoomScenes[roomIndex], "Room");
+		Room room = NetworkManager.SpawnNetworkSafe<Room>(roomPlacer.RoomScene, "Room");
 
 		AddChild(room);
 

@@ -11,14 +11,11 @@
             "id": "71bea1026302501c",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Reference/General.canvas",
-                "viewState": {
-                  "x": 75.93087650961928,
-                  "y": 400.61361712727967,
-                  "zoom": 0.6666666666666667
-                }
+                "file": "Daily Notes/Day 18-13.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Daily Notes/Day 18-13.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/General.canvas",
+                "file": "Daily Notes/Day 18-13.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/General.canvas"
+                "file": "Daily Notes/Day 18-13.md"
               }
             }
           }
@@ -151,10 +148,13 @@
   },
   "active": "71bea1026302501c",
   "lastOpenFiles": [
+    "Attachments/Pasted image 20240113171250.png.import",
+    "Daily Notes/Day 18-12.md",
+    "Daily Notes/Day 18-13.md",
+    "Attachments/Pasted image 20240113171250.png",
+    "Reference/General.canvas",
     "Attachments/Archvale-001-1024x576.jpg.import",
     "Attachments/Archvale-001-1024x576.jpg",
-    "Daily Notes/Day 18-12.md",
-    "Reference/General.canvas",
     "Attachments/Pasted image 20240112004327.png",
     "Attachments/Pasted image 20240112004150.png",
     "Daily Notes/Day 18-11.md",
@@ -185,10 +185,8 @@
     "Daily Notes/Day 18-7.md",
     "Reference/Locations/Golden Grove.canvas",
     "Attachments/Pasted image 20231230033616.png",
-    "Attachments/Pasted image 20231230033609.png",
     "Attachments/Pasted image 20231230032304.png.import",
     "Attachments/Pasted image 20231230032317.png.import",
-    "Attachments/Pasted image 20231229051318.png.import",
     "Implementation/Combat.md",
     "Daily Notes/Day 18-5.md",
     "Daily Notes/Day 18-6.md",
@@ -197,7 +195,6 @@
     "Daily Notes/Day 18-2.md",
     "Daily Notes/Day 18-1.md",
     "Design/Weapons.md",
-    "Design/Team Work.md",
-    "Daily.md"
+    "Design/Team Work.md"
   ]
 }
