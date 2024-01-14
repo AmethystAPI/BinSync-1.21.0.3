@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djn536tuel8oh"]
+
+[ext_resource type="Texture2D" uid="uid://b2vn3c510whv0" path="res://sprites/ui.aseprite" id="1_nhymw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsjlc"]
+atlas = ExtResource("1_nhymw")
+region = Rect2(2, 2, 13, 12)
+
+[node name="Heart" type="TextureRect"]
+custom_minimum_size = Vector2(52, 48)
+texture = SubResource("AtlasTexture_nsjlc")

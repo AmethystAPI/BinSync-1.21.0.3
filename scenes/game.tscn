@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
 [ext_resource type="Script" path="res://scripts/networking/NetworkManager.cs" id="3_ix04k"]
-[ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/game_ui.tscn" id="3_s7l32"]
+[ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/ui/game_ui.tscn" id="3_s7l32"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="4_encmg"]
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
 [ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="6_mvk5j"]
-[ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/main_menu.tscn" id="7_gnxd7"]
+[ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_wjaw5"]
 [ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/items/trinkets/faith_trinket.tscn" id="8_88fnx"]
 

@@ -81,7 +81,7 @@ texture = ExtResource("1_82yba")
 offset = Vector2(0, -16)
 hframes = 8
 vframes = 2
-frame = 4
+frame = 6
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
@@ -119,7 +119,7 @@ DefaultState = "Normal"
 
 [node name="Normal" type="Node" parent="StateMachine"]
 script = ExtResource("5_stky2")
-Speed = 70.0
+Speed = 80.0
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("6_mtedp")

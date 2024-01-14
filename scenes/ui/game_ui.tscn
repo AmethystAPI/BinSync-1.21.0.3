@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5284u6x7my5h"]
+
+[ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_s3uii"]
+[ext_resource type="PackedScene" uid="uid://djn536tuel8oh" path="res://scenes/ui/heart.tscn" id="2_yg705"]
+[ext_resource type="Texture2D" uid="uid://cq0vyunbicqh0" path="res://sprites/heart_full.tres" id="3_hbeb1"]
+[ext_resource type="Texture2D" uid="uid://c3cnd2s2rm7d4" path="res://sprites/heart_half.tres" id="4_xuih1"]
+[ext_resource type="Texture2D" uid="uid://682dc64042pn" path="res://sprites/heart_empty.tres" id="5_i8bwo"]
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("HeartContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s3uii")
+HeartScene = ExtResource("2_yg705")
+HeartContainer = NodePath("HeartContainer")
+FullHeart = ExtResource("3_hbeb1")
+HalfHeart = ExtResource("4_xuih1")
+EmptyHeart = ExtResource("5_i8bwo")
+
+[node name="HeartContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 411.0
+offset_bottom = 56.0
+theme_override_constants/separation = 4
