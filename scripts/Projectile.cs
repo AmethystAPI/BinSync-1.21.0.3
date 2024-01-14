@@ -1,8 +1,7 @@
 using Godot;
 using System;
 
-public partial class Projectile : Node2D
-{
+public partial class Projectile : Node2D {
 	[Export] public float Damage = 1f;
 	[Export] public float Speed = 200f;
 	[Export] public float Resistance = 0f;
@@ -17,15 +16,13 @@ public partial class Projectile : Node2D
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
 
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		_damageArea = GetNode<Area2D>("DamageArea");
 
 		_lifetimeTimer = Lifetime;
 	}
 
-	public override void _Process(double delta)
-	{
+	public override void _Process(double delta) {
 		_lifetimeTimer -= (float)delta;
 
 		if (_lifetimeTimer > 0) return;
@@ -35,16 +32,15 @@ public partial class Projectile : Node2D
 		QueueFree();
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta * 0.8f;
+	public override void _PhysicsProcess(double delta) {
+		if (Source is CharacterBody2D) InheritedVelocity = (Source as CharacterBody2D).Velocity;
+
+		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta;
 
 		Speed = Mathf.Lerp(Speed, 0f, Resistance * (float)delta);
 
-		foreach (Node2D body in _damageArea.GetOverlappingBodies())
-		{
-			if (body is TileMap)
-			{
+		foreach (Node2D body in _damageArea.GetOverlappingBodies()) {
+			if (body is TileMap) {
 				Destroyed?.Invoke();
 
 				QueueFree();
