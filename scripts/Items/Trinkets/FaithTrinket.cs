@@ -1,11 +1,11 @@
 using Godot;
 
-public partial class FaithTrinket : Trinket
-{
+public partial class FaithTrinket : Trinket {
   private ulong _lastTick;
 
-  public override void _Process(double delta)
-  {
+  public override void _Process(double delta) {
+    base._Process(delta);
+
     if (!_equipped) return;
 
     if (_equippingPlayer.Health <= 0) return;
@@ -17,8 +17,7 @@ public partial class FaithTrinket : Trinket
     _lastTick = now;
 
     bool healedOtherPlayer = false;
-    foreach (Player player in Player.AlivePlayers)
-    {
+    foreach (Player player in Player.AlivePlayers) {
       if (_equippingPlayer == player) continue;
 
       if (_equippingPlayer.GlobalPosition.DistanceSquaredTo(player.GlobalPosition) > 1094) continue;
@@ -28,12 +27,9 @@ public partial class FaithTrinket : Trinket
       player.Heal(0.05f);
     }
 
-    if (healedOtherPlayer)
-    {
+    if (healedOtherPlayer) {
       _equippingPlayer.Heal(0.05f);
-    }
-    else
-    {
+    } else {
       _equippingPlayer.Heal(0.01f);
     }
   }
