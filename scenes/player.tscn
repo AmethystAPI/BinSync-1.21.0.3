@@ -56,7 +56,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 0, 0, 0]
+"values": [1, 2, 3, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74xub"]
@@ -81,6 +81,7 @@ texture = ExtResource("1_82yba")
 offset = Vector2(0, -16)
 hframes = 8
 vframes = 2
+frame = 4
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)

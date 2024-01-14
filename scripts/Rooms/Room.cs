@@ -5,7 +5,6 @@ using System.Linq;
 
 public partial class Room : Node2D, NetworkPointUser {
 	[Export] public PackedScene[] EnemyScenes;
-	[Export] public PackedScene[] LootScenes;
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
@@ -19,7 +18,6 @@ public partial class Room : Node2D, NetworkPointUser {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
-		NetworkPoint.Register(nameof(SpawnLootRpc), SpawnLootRpc);
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
 	}
 
@@ -82,31 +80,15 @@ public partial class Room : Node2D, NetworkPointUser {
 	protected void End() {
 		if (!NetworkManager.IsHost) return;
 
+		WorldGenerator.SpawnTrinkets();
+
 		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 
 		WorldGenerator.PlaceNextRoom(Connections[ConnectionDirections.ToList().IndexOf(_exitDirection)].GlobalPosition, _exitDirection);
 
 		NetworkPoint.SendRpcToClients(nameof(EndRpc));
-
-		if (LootScenes.Length == 0) return;
-
-		NetworkPoint.SendRpcToClients(nameof(SpawnLootRpc), message => {
-			message.AddString(LootScenes[new RandomNumberGenerator().RandiRange(0, LootScenes.Length - 1)].ResourcePath);
-		});
 	}
 
 	protected virtual void EndRpc(Message message) {
-	}
-
-	protected void SpawnLootRpc(Message message) {
-		string lootScenePath = message.GetString();
-
-		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
-
-		Node2D item = NetworkManager.SpawnNetworkSafe<Node2D>(lootScene, "Loot");
-
-		AddChild(item);
-
-		item.Position = Vector2.Zero;
 	}
 }

@@ -59,6 +59,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		}
 
 		if (!NetworkPoint.IsOwner) return;
+
+		GetNode<Sprite2D>("Sprite").Scale = GetGlobalMousePosition().X - GlobalPosition.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
 	public void Heal(float health) {
@@ -127,6 +129,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Players.Remove(this);
 
 		QueueFree();
+	}
+
+	public void RecieveTrinket(Trinket trinket) {
+		Equip(trinket);
 	}
 
 	private void DieRpc(Message message) {
