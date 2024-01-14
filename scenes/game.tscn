@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=15 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -6,10 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/ui/game_ui.tscn" id="3_s7l32"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="4_encmg"]
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
+[ext_resource type="Shader" path="res://etherial.gdshader" id="5_4da55"]
 [ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="6_mvk5j"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_wjaw5"]
 [ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/items/trinkets/faith_trinket.tscn" id="8_88fnx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n6sgs"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ckd7"]
+seamless = true
+noise = SubResource("FastNoiseLite_n6sgs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1o6u"]
+shader = ExtResource("5_4da55")
+shader_parameter/color = Color(0.0392157, 0.0235294, 0.0862745, 1)
+shader_parameter/star_color = Color(0.741176, 0.796078, 1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_7ckd7")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -24,6 +37,15 @@ process_physics_priority = 1
 zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
 
+[node name="ColorRect" type="ColorRect" parent="Camera"]
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+material = SubResource("ShaderMaterial_d1o6u")
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
 [node name="WorldGenerator" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
@@ -33,7 +55,8 @@ LootScenes = Array[PackedScene]([ExtResource("8_88fnx")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
+[node name="GameUI" parent="CanvasLayer" node_paths=PackedStringArray("TrinketBackground") instance=ExtResource("3_s7l32")]
+TrinketBackground = NodePath("../../Camera/ColorRect")
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
 visible = false

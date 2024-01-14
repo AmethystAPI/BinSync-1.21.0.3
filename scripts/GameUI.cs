@@ -8,6 +8,9 @@ public partial class GameUI : Control {
 	[Export] public Texture2D FullHeart;
 	[Export] public Texture2D HalfHeart;
 	[Export] public Texture2D EmptyHeart;
+	[Export] public ColorRect TrinketBackground;
+
+	private float _trinketBackgroundTargetAlpha = 0f;
 
 	public override void _Ready() {
 		s_Me = this;
@@ -16,6 +19,13 @@ public partial class GameUI : Control {
 			Node heart = HeartScene.Instantiate();
 			HeartContainer.AddChild(heart);
 		}
+	}
+
+	public override void _Process(double delta) {
+		Color color = s_Me.TrinketBackground.Modulate;
+		color.A = Mathf.Lerp(color.A, _trinketBackgroundTargetAlpha, 1f * (float)delta);
+
+		s_Me.TrinketBackground.Modulate = color;
 	}
 
 	public static void UpdateHealth(float health) {
@@ -30,5 +40,13 @@ public partial class GameUI : Control {
 				heart.Texture = s_Me.EmptyHeart;
 			}
 		}
+	}
+
+	public static void ShowTrinketBackground() {
+		s_Me._trinketBackgroundTargetAlpha = 1f;
+	}
+
+	public static void HideTrinketBackground() {
+		s_Me._trinketBackgroundTargetAlpha = 0f;
 	}
 }

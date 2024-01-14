@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3cnd2s2rm7d4" path="res://sprites/heart_half.tres" id="4_xuih1"]
 [ext_resource type="Texture2D" uid="uid://682dc64042pn" path="res://sprites/heart_empty.tres" id="5_i8bwo"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("HeartContainer")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("HeartContainer", "TrinketBackground")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ HeartContainer = NodePath("HeartContainer")
 FullHeart = ExtResource("3_hbeb1")
 HalfHeart = ExtResource("4_xuih1")
 EmptyHeart = ExtResource("5_i8bwo")
+TrinketBackground = NodePath("")
 
 [node name="HeartContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

@@ -33,7 +33,7 @@ public partial class Projectile : Node2D {
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		if (Source is CharacterBody2D) InheritedVelocity = (Source as CharacterBody2D).Velocity;
+		if (IsInstanceValid(Source) && Source is CharacterBody2D) InheritedVelocity = (Source as CharacterBody2D).Velocity;
 
 		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta;
 

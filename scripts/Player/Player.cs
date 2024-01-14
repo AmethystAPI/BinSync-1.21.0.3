@@ -132,7 +132,11 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void RecieveTrinket(Trinket trinket) {
-		Equip(trinket);
+		GameUI.ShowTrinketBackground();
+
+		ZIndex = 25;
+
+		// Equip(trinket);
 	}
 
 	private void DieRpc(Message message) {

@@ -8,6 +8,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
+	[Export] public bool Loot = true;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -80,7 +81,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	protected void End() {
 		if (!NetworkManager.IsHost) return;
 
-		WorldGenerator.SpawnTrinkets();
+		if (Loot) WorldGenerator.SpawnTrinkets();
 
 		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 
