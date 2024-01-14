@@ -16,6 +16,7 @@
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_y3leo"]
 seamless = true
+seamless_blend_skirt = 0.3
 noise = SubResource("FastNoiseLite_yfm5y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1o6u"]
@@ -38,6 +39,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
 
 [node name="ColorRect" type="ColorRect" parent="Camera"]
+modulate = Color(1, 1, 1, 0)
 z_index = 20
 material = SubResource("ShaderMaterial_d1o6u")
 offset_left = -960.0
