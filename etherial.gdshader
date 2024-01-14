@@ -1,11 +1,22 @@
 shader_type canvas_item;
 
 uniform vec3 color: source_color;
+uniform vec3 color2: source_color;
 uniform vec3 star_color: source_color;
 uniform sampler3D noise;
 
 float random (vec2 st) {
     return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+vec3 get_nebula_value(float offset, vec2 screen_pixel_size, vec2 screen_uv, float time) {
+	float aspect = screen_pixel_size.x / screen_pixel_size.y;
+	
+	float scale = floor(1.0 / screen_pixel_size.x / 4.0);
+
+	float t = texture(noise, vec3(screen_uv, mod(time  * 0.1, 1.0))).r;
+	
+	return mix(color, color2, t);
 }
 
 float star_value(float offset, vec2 screen_pixel_size, vec2 screen_uv, float time) {
@@ -37,7 +48,9 @@ void fragment() {
 	float star_value1 = star_value(mod(time_base, limit), SCREEN_PIXEL_SIZE, SCREEN_UV, TIME);
 	float star_value2 = star_value(mod(time_base + offset, limit), SCREEN_PIXEL_SIZE, SCREEN_UV, TIME);
 	
+	vec3 nebula_value = get_nebula_value(0.0, SCREEN_PIXEL_SIZE, SCREEN_UV, TIME);
+	
 	float mixed_value = mix(star_value1, star_value2, mod(TIME * transition_speed, 1.0));
 	
-	COLOR = vec4(mix(color, star_color, mixed_value), COLOR.a);
+	COLOR = vec4(mix(nebula_value, star_color, mixed_value), COLOR.a);
 }
