@@ -22,7 +22,7 @@ script = ExtResource("1_mu0ej")
 
 [node name="Body" type="Sprite2D" parent="BodyVisuals"]
 texture = ExtResource("1_g107h")
-offset = Vector2(0, -5)
+offset = Vector2(0, -7)
 hframes = 3
 vframes = 3
 
@@ -33,7 +33,7 @@ position = Vector2(0, 3)
 texture = ExtResource("1_g107h")
 offset = Vector2(0, -5)
 region_enabled = true
-region_rect = Rect2(34, 8, 12, 6)
+region_rect = Rect2(32, 8, 16, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
