@@ -99,9 +99,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		_completed = true;
 
-		if (HasTrinkets) TrinketRealm.EnterTrinketRealm();
-
-		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
+		Game.CompletedRoom();
 
 		WorldGenerator.PlaceNextRoom(Connections[ConnectionDirections.ToList().IndexOf(_exitDirection)].GlobalPosition, _exitDirection);
 

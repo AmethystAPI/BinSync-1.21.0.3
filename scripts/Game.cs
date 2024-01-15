@@ -6,10 +6,12 @@ using System.Collections.Generic;
 public partial class Game : Node2D, NetworkPointUser {
 	public static uint Seed;
 	public static float Difficulty;
+	public static int RoomsTilTrinket;
 
 	private static Game s_Me;
 
 	[Export] public PackedScene PlayerScene;
+	[Export] public int TrinketRoomInterval = 5;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -35,6 +37,8 @@ public partial class Game : Node2D, NetworkPointUser {
 	}
 
 	public static void Start() {
+		RoomsTilTrinket = s_Me.TrinketRoomInterval;
+
 		List<int> clientIds = new List<int>();
 
 		foreach (Connection connection in NetworkManager.LocalServer.Clients) {
@@ -54,6 +58,20 @@ public partial class Game : Node2D, NetworkPointUser {
 		s_Me.NetworkPoint.SendRpcToClients(nameof(CleanupRpc));
 
 		Start();
+	}
+
+	public static void CompletedRoom() {
+		if (!NetworkManager.IsHost) return;
+
+		RoomsTilTrinket--;
+
+		if (RoomsTilTrinket <= 0) {
+			TrinketRealm.EnterTrinketRealm();
+
+			RoomsTilTrinket = s_Me.TrinketRoomInterval;
+		}
+
+		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 	}
 
 	private void StartRpc(Message message) {
