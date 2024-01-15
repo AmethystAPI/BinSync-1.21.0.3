@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="4_mbpgi"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="4_y2ssa"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="5_8rx8k"]
-[ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/items/trinkets/faith_trinket.tscn" id="6_ecpo8"]
+[ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/items/trinkets/trinket_faith.tscn" id="6_ecpo8"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="7_1c4ea"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="8_ise78"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_oh8po"]

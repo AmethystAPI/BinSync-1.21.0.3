@@ -188,7 +188,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			EquippedTrinkets.Add((Trinket)item);
 		}
 
-		item.Equip(this);
+		item.EquipToPlayer(this);
 	}
 
 	private void ReviveRpc(Message message) {
