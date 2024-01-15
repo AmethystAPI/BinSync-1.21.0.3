@@ -130,6 +130,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 		if (NetworkManager.LocalClient.Id != clientId) return;
 
-		Player.LocalPlayer.RecieveTrinket(trinket);
+		Player.LocalPlayer.StartTrinket(trinket);
 	}
 }

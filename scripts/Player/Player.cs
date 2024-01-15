@@ -14,12 +14,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public float Health = 3f;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 	public AnimationPlayer AnimationPlayer;
+	public StateMachine StateMachine;
 
 	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private Weapon _equippedWeapon;
-	public StateMachine StateMachine;
+	private uint _defaultCollisionMask;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -38,6 +39,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		StateMachine = GetNode<StateMachine>("StateMachine");
 
 		EquipDefaultItem();
+
+		_defaultCollisionMask = CollisionMask;
 
 		if (!NetworkPoint.IsOwner) return;
 
@@ -131,7 +134,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		QueueFree();
 	}
 
-	public void RecieveTrinket(Trinket trinket) {
+	public void StartTrinket(Trinket trinket) {
 		StateMachine.GoToState("Trinket");
 
 		GameUI.ShowTrinketBackground();
@@ -145,6 +148,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		trinket.ZIndex += 25;
 
 		trinket.AnimateToPlayer(this);
+
+		CollisionMask = 0;
 
 		// Equip(trinket);
 	}
