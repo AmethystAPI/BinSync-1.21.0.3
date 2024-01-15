@@ -99,7 +99,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		_completed = true;
 
-		if (HasTrinkets) TrinketRealmManager.EnterTrinketRealm();
+		if (HasTrinkets) TrinketRealm.EnterTrinketRealm();
 
 		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 

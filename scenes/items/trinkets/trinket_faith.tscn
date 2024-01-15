@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://duii65kqioaqg"]
+[gd_scene load_steps=6 format=3 uid="uid://duii65kqioaqg"]
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/FaithTrinket.cs" id="1_pmqp0"]
 [ext_resource type="Texture2D" uid="uid://dwbapitnh58x8" path="res://sprites/trinkets/trinket_faith.tres" id="2_nxiye"]
@@ -7,8 +7,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_btcby"]
 shader = ExtResource("3_33nqg")
 
-[node name="Faith Trinket" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd00"]
+
+[node name="Faith Trinket" type="Node2D" node_paths=PackedStringArray("EquipArea")]
 script = ExtResource("1_pmqp0")
+EquipArea = NodePath("EquipArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxiye")
@@ -19,3 +22,11 @@ visible = false
 material = SubResource("ShaderMaterial_btcby")
 texture = ExtResource("2_nxiye")
 offset = Vector2(0, -7)
+
+[node name="EquipArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_3kd00")

@@ -3,12 +3,14 @@ using Networking;
 using Riptide;
 using System.Collections.Generic;
 
-public partial class TrinketRealmManager : Node2D, NetworkPointUser {
-	private static TrinketRealmManager s_Me;
+public partial class TrinketRealm : Node2D, NetworkPointUser {
+	private static TrinketRealm s_Me;
 
 	[Export] public PackedScene[] TrinketScenes = new PackedScene[] { };
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+
+	private Trinket _localNewTrinket;
 
 
 	public override void _Ready() {
@@ -36,10 +38,6 @@ public partial class TrinketRealmManager : Node2D, NetworkPointUser {
 		}
 	}
 
-	public static void LeaveTinketRealm() {
-
-	}
-
 	private void EnterTrinketRealmRpc(Message message) {
 		int clientId = message.GetInt();
 		string lootScenePath = message.GetString();
@@ -52,12 +50,34 @@ public partial class TrinketRealmManager : Node2D, NetworkPointUser {
 
 		if (NetworkManager.LocalClient.Id != clientId) return;
 
+		_localNewTrinket = trinket;
+
 		GameUI.ShowTrinketBackground();
 
-		Camera.EnableTrinketOffset();
+		Camera.EnterTrinketRealm();
 
-		Player.LocalPlayer.EnterTrinketRealm(trinket);
+		Player.LocalPlayer.EnterTrinketRealm();
+
+		trinket.ZIndex += 25;
 
 		trinket.AnimateToPlayer(Player.LocalPlayer);
+
+		GlobalPosition = Player.LocalPlayer.GlobalPosition;
+	}
+
+	public static void LeaveTinketRealm() {
+		GameUI.HideTrinketBackground();
+
+		Camera.LeaveTrinketRealm();
+
+		Player.LocalPlayer.LeaveTrinketRealm();
+
+		Delay.Execute(1.8f, s_Me.AfterBackgroundHidden);
+	}
+
+	private void AfterBackgroundHidden() {
+		s_Me._localNewTrinket.ZIndex -= 25;
+
+		Player.LocalPlayer.LeaveTrinketRealmAfterBackgroundHidden();
 	}
 }
