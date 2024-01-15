@@ -19,7 +19,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private Weapon _equippedWeapon;
-	private StateMachine _stateMachine;
+	public StateMachine StateMachine;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -35,7 +35,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		_stateMachine = GetNode<StateMachine>("StateMachine");
+		StateMachine = GetNode<StateMachine>("StateMachine");
 
 		EquipDefaultItem();
 
@@ -60,7 +60,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (!NetworkPoint.IsOwner) return;
 
-		GetNode<Sprite2D>("Sprite").Scale = GetGlobalMousePosition().X - GlobalPosition.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+		if (StateMachine.CurrentState != "Trinket") GetNode<Sprite2D>("Sprite").Scale = GetGlobalMousePosition().X - GlobalPosition.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
 	public void Heal(float health) {
@@ -78,7 +78,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (Health <= 0) return false;
 
-		if (_stateMachine.CurrentState == "Dash") return false;
+		if (StateMachine.CurrentState == "Dash") return false;
 
 		return true;
 	}
@@ -102,7 +102,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		NetworkPoint.BounceRpcToClients(nameof(DieRpc));
 
-		_stateMachine.GoToState("Angel");
+		StateMachine.GoToState("Angel");
 	}
 
 	public void Revive() {
@@ -132,9 +132,15 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void RecieveTrinket(Trinket trinket) {
+		StateMachine.GoToState("Trinket");
+
 		GameUI.ShowTrinketBackground();
 
-		ZIndex = 25;
+		Camera.StartTrinket();
+
+		ZIndex += 25;
+
+		GetNode<Node2D>("WeaponHolder").ZIndex -= 25;
 
 		// Equip(trinket);
 	}
@@ -145,7 +151,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 			AlivePlayers.Remove(this);
 
-			_stateMachine.GoToState("Angel");
+			StateMachine.GoToState("Angel");
 		}
 
 		if (AlivePlayers.Count != 0) return;
@@ -182,7 +188,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	private void ReviveRpc(Message message) {
-		_stateMachine.GoToState("Normal");
+		StateMachine.GoToState("Normal");
 
 		AlivePlayers.Add(this);
 

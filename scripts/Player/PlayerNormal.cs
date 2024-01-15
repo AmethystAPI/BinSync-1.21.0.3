@@ -1,24 +1,18 @@
 using Godot;
 
-public partial class PlayerNormal : State
-{
+public partial class PlayerNormal : State {
   [Export] public float Speed = 100f;
 
   private Player _player;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _player = GetParent().GetParent<Player>();
   }
 
-  public override void PhsysicsUpdate(float delta)
-  {
-    if (_player.Velocity.Length() > 0)
-    {
+  public override void PhsysicsUpdate(float delta) {
+    if (_player.Velocity.Length() > 0) {
       _player.AnimationPlayer.Play("run");
-    }
-    else
-    {
+    } else {
       _player.AnimationPlayer.Play("idle");
     }
 
@@ -27,8 +21,7 @@ public partial class PlayerNormal : State
     Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
     float modifiedSpeed = Speed;
-    foreach (Trinket trinket in _player.EquippedTrinkets)
-    {
+    foreach (Trinket trinket in _player.EquippedTrinkets) {
       modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
     }
 
@@ -37,12 +30,15 @@ public partial class PlayerNormal : State
     _player.MoveAndSlide();
   }
 
-  public override void OnInput(InputEvent inputEvent)
-  {
+  public override void OnInput(InputEvent inputEvent) {
     if (!_player.NetworkPoint.IsOwner) return;
 
     if (!inputEvent.IsActionPressed("dash")) return;
 
     GoToState("Dash");
+  }
+
+  public override void Exit() {
+    _player.AnimationPlayer.Stop();
   }
 }

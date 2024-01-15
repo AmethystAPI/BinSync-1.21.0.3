@@ -35,6 +35,7 @@ PlayerScene = ExtResource("2_nxqs3")
 script = ExtResource("3_ix04k")
 
 [node name="Camera" type="Camera2D" parent="."]
+process_priority = 1
 process_physics_priority = 1
 zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")

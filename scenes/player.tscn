@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=15 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="2_np1rn"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_jbh0c"]
 [ext_resource type="Script" path="res://scripts/player/PlayerNormal.cs" id="5_stky2"]
+[ext_resource type="Script" path="res://scripts/player/PlayerTrinket.cs" id="6_8jlbs"]
 [ext_resource type="Script" path="res://scripts/player/PlayerDash.cs" id="6_mtedp"]
 [ext_resource type="Script" path="res://scripts/player/PlayerAngel.cs" id="7_4smh0"]
 
@@ -81,7 +82,7 @@ texture = ExtResource("1_82yba")
 offset = Vector2(0, -16)
 hframes = 8
 vframes = 2
-frame = 6
+frame = 1
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
@@ -120,6 +121,11 @@ DefaultState = "Normal"
 [node name="Normal" type="Node" parent="StateMachine"]
 script = ExtResource("5_stky2")
 Speed = 80.0
+
+[node name="Trinket" type="Node" parent="StateMachine" node_paths=PackedStringArray("Sprite")]
+script = ExtResource("6_8jlbs")
+Sprite = NodePath("../../Sprite")
+HoldFrame = 5
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("6_mtedp")
