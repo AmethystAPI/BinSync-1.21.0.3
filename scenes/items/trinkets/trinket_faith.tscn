@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://duii65kqioaqg"]
+[gd_scene load_steps=5 format=3 uid="uid://bmfge0rr6uma6"]
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/FaithTrinket.cs" id="1_pmqp0"]
 [ext_resource type="Texture2D" uid="uid://dwbapitnh58x8" path="res://sprites/trinkets/trinket_faith.tres" id="2_nxiye"]
