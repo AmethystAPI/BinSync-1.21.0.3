@@ -24,7 +24,7 @@ public partial class GameUI : Control {
 
 			if (health >= i + 1) {
 				heart.Texture = s_Me.FullHeart;
-			} else if (health > i) {
+			} else if (health >= i + 0.5f) {
 				heart.Texture = s_Me.HalfHeart;
 			} else {
 				heart.Texture = s_Me.EmptyHeart;
