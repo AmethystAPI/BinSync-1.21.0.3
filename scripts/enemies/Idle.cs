@@ -2,8 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class Idle : State, NetworkPointUser
-{
+public partial class Idle : State, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
     [Export] public string AttackState = "Attack";
 
@@ -13,8 +12,7 @@ public partial class Idle : State, NetworkPointUser
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         _enemy = GetParent().GetParent<Enemy>();
 
         NetworkPoint.Setup(this);
@@ -22,16 +20,16 @@ public partial class Idle : State, NetworkPointUser
         NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
     }
 
-    public override void Enter()
-    {
+    public override void Enter() {
         if (_idleTimer > 0) return;
 
         _idleTimer = _randomNumberGenerator.RandfRange(IdleInterval.X, IdleInterval.Y);
     }
 
-    public override void Update(float delta)
-    {
+    public override void Update(float delta) {
         if (!NetworkManager.IsHost) return;
+
+        if (!_enemy.Activated) return;
 
         _idleTimer -= delta;
 
@@ -40,8 +38,7 @@ public partial class Idle : State, NetworkPointUser
         NetworkPoint.SendRpcToClients(nameof(AttackRpc));
     }
 
-    private void AttackRpc(Message message)
-    {
+    private void AttackRpc(Message message) {
         GoToState(AttackState);
     }
 }

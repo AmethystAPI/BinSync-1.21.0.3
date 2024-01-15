@@ -72,6 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Stars" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 z_index = 20
 material = SubResource("ShaderMaterial_d1o6u")
 offset_left = -963.0

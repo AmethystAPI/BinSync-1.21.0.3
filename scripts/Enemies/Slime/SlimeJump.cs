@@ -1,7 +1,6 @@
 using Godot;
 
-public partial class SlimeJump : State
-{
+public partial class SlimeJump : State {
     [Export] public float Speed = 10f;
     [Export] public float Duration = 0.5f;
     [Export] public float Height = 80f;
@@ -13,15 +12,12 @@ public partial class SlimeJump : State
     private Vector2 _target;
     private float _jumpTimer;
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         _slime = GetParent().GetParent<Slime>();
     }
 
-    public override void Enter()
-    {
-        if (Player.AlivePlayers.Count == 0)
-        {
+    public override void Enter() {
+        if (Player.AlivePlayers.Count == 0) {
             GoToState("Idle");
 
             return;
@@ -31,23 +27,20 @@ public partial class SlimeJump : State
 
         _target = Player.AlivePlayers[0].GlobalPosition;
 
-        foreach (Player player in Player.AlivePlayers)
-        {
+        foreach (Player player in Player.AlivePlayers) {
             if (_slime.GlobalPosition.DistanceTo(player.GlobalPosition) >= _slime.GlobalPosition.DistanceTo(_target)) continue;
 
             _target = player.GlobalPosition;
         }
     }
 
-    public override void PhsysicsUpdate(float delta)
-    {
+    public override void PhsysicsUpdate(float delta) {
         _slime.Velocity = (_target - _slime.GlobalPosition).Normalized() * Speed;
 
         _slime.MoveAndSlide();
     }
 
-    public override void Update(float delta)
-    {
+    public override void Update(float delta) {
         _jumpTimer += delta;
 
         float height = Mathf.Pow(Mathf.Sin(_jumpTimer / Duration * Mathf.Pi), 0.75f) * Height;
@@ -67,8 +60,7 @@ public partial class SlimeJump : State
         GoToState("Idle");
     }
 
-    public override void Exit()
-    {
+    public override void Exit() {
         Visuals.Position = Vector2.Zero;
     }
 }

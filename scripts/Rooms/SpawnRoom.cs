@@ -15,7 +15,7 @@ public partial class SpawnRoom : Room {
 	private void ImmediateEnd() {
 		float originalDifficulty = Game.Difficulty;
 
-		End();
+		Complete();
 
 		Game.Difficulty = originalDifficulty;
 	}

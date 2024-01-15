@@ -9,17 +9,21 @@ public partial class Room : Node2D, NetworkPointUser {
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
 	[Export] public bool Loot = true;
+	[Export] public Area2D ActivateArea;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private int _aliveEnemies = 0;
 	private Vector2 _exitDirection;
+	private bool _completed;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
+
+		if (ActivateArea != null) ActivateArea.BodyEntered += BodyEnteredActivateArea;
 	}
 
 	public void AddEnemy() {
@@ -33,7 +37,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		if (!NetworkManager.IsHost) return;
 
-		End();
+		Complete();
 	}
 
 	public virtual void Place() {
@@ -46,6 +50,18 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	public virtual void PlaceExit(Vector2 direction) {
 		_exitDirection = direction;
+	}
+
+	private void BodyEnteredActivateArea(Node2D body) {
+		if (!NetworkManager.IsHost) return;
+
+		if (_completed) return;
+
+		if (!(body is Player)) return;
+
+		foreach (Enemy enemy in GetTree().GetNodesInGroup("Enemies")) {
+			enemy.Activate();
+		}
 	}
 
 	private void SpawnEnemies() {
@@ -78,8 +94,10 @@ public partial class Room : Node2D, NetworkPointUser {
 		enemy.GlobalPosition = position;
 	}
 
-	protected void End() {
+	protected void Complete() {
 		if (!NetworkManager.IsHost) return;
+
+		_completed = true;
 
 		if (Loot) WorldGenerator.SpawnTrinkets();
 

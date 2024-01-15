@@ -2,9 +2,10 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
-{
+public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   [Export] public float Health = 3f;
+
+  public bool Activated;
 
   public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -15,41 +16,35 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
 
   private bool _justHit;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     NetworkPoint.Setup(this);
 
     NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
     NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
+    NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
     _stateMachine = GetNode<StateMachine>("StateMachine");
 
     GetParent<Room>().AddEnemy();
   }
 
-  public override void _Process(double delta)
-  {
+  public override void _Process(double delta) {
     _networkedPosition.Sync();
 
     SyncPosition((float)delta);
   }
 
-  public virtual void SyncPosition(float delta)
-  {
-    if (NetworkPoint.IsOwner)
-    {
+  public virtual void SyncPosition(float delta) {
+    if (NetworkPoint.IsOwner) {
       _networkedPosition.Value = GlobalPosition;
-    }
-    else
-    {
+    } else {
       if (_networkedPosition.Value.DistanceSquaredTo(GlobalPosition) > 100) GlobalPosition = _networkedPosition.Value;
 
       GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 16.0f);
     }
   }
 
-  public virtual bool CanDamage(Projectile projectile)
-  {
+  public virtual bool CanDamage(Projectile projectile) {
     if (_stateMachine.CurrentState == "Hurt") return false;
 
     if (!(projectile.Source is Player)) return false;
@@ -57,16 +52,14 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
     return true;
   }
 
-  public void Damage(Projectile projectile)
-  {
+  public void Damage(Projectile projectile) {
     if (!NetworkManager.IsOwner(projectile)) return;
 
     if (_justHit) return;
 
     _justHit = true;
 
-    NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message =>
-    {
+    NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
       message.AddInt(projectile.GetMultiplayerAuthority());
 
       Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
@@ -78,8 +71,13 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
     });
   }
 
-  private void DamageRpc(Message message)
-  {
+  public void Activate() {
+    if (!NetworkManager.IsHost) return;
+
+    NetworkPoint.SendRpcToClients(nameof(ActivateRpc));
+  }
+
+  private void DamageRpc(Message message) {
     _justHit = false;
 
     SetMultiplayerAuthority(message.GetInt());
@@ -89,5 +87,9 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser
     Health -= message.GetFloat();
 
     _stateMachine.GoToState("Hurt");
+  }
+
+  private void ActivateRpc(Message message) {
+    Activated = true;
   }
 }
