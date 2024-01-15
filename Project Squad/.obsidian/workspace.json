@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/Day 18-13.md",
+                "file": "Design/Weapons.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-13.md",
+                "file": "Design/Weapons.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-13.md",
+                "file": "Design/Weapons.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-13.md"
+                "file": "Design/Weapons.md"
               }
             }
           }
@@ -148,8 +148,14 @@
   },
   "active": "71bea1026302501c",
   "lastOpenFiles": [
+    "Attachments/Pasted image 20240115170646.png.import",
     "Design/Trinkets.md",
+    "Daily Notes/Day 18-15.md",
+    "Daily Notes/Day 18-14.md",
+    "Attachments/Pasted image 20240115170646.png",
+    "Daily Notes/Day 18-12.md",
     "Daily Notes/Day 18-13.md",
+    "Daily Notes/Day 18-11.md",
     "Attachments/Pasted image 20240113202813.png.import",
     "Attachments/Pasted image 20240113202830.png.import",
     "Attachments/Pasted image 20240113202830.png",
@@ -159,14 +165,12 @@
     "Attachments/Pasted image 20240113184828.png.import",
     "Attachments/Pasted image 20240113184828.png",
     "Attachments/Pasted image 20240113171250.png.import",
-    "Daily Notes/Day 18-12.md",
     "Attachments/Pasted image 20240113171250.png",
     "Reference/General.canvas",
     "Attachments/Archvale-001-1024x576.jpg.import",
     "Attachments/Archvale-001-1024x576.jpg",
     "Attachments/Pasted image 20240112004327.png",
     "Attachments/Pasted image 20240112004150.png",
-    "Daily Notes/Day 18-11.md",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
     "Daily Notes/Day 18-10.md",
@@ -179,7 +183,6 @@
     "Attachments/Pasted image 20231231003204.png.import",
     "Attachments/GBu6zYhbMAA-aad.png.import",
     "Attachments/GBu6zYhbMAA-aad.png",
-    "Attachments/Pasted image 20231231004105.png",
     "Planning/Pre Alpha Kanban.md",
     "Daily Notes/Day 18-8.md",
     "Design/Difficulty.md",
@@ -192,8 +195,6 @@
     "Daily Notes/Day 18-4.md",
     "Daily Notes/Day 18-3.md",
     "Daily Notes/Day 18-2.md",
-    "Daily Notes/Day 18-1.md",
-    "Design/Weapons.md",
-    "Design/Team Work.md"
+    "Daily Notes/Day 18-1.md"
   ]
 }
