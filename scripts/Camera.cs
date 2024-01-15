@@ -27,11 +27,11 @@ public partial class Camera : Camera2D {
 		GlobalPosition = Player.LocalPlayer.GlobalPosition + mouseOffset + trinketOffset;
 	}
 
-	public static void StartTrinket() {
+	public static void EnableTrinketOffset() {
 		s_Me._trinketTargetInfluence = 1f;
 	}
 
-	public static void EndTrinket() {
+	public static void DisableTrinketOffset() {
 		s_Me._trinketTargetInfluence = 0f;
 	}
 }

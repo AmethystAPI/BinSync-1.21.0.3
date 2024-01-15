@@ -134,20 +134,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		QueueFree();
 	}
 
-	public void StartTrinket(Trinket trinket) {
+	public void EnterTrinketRealm(Trinket trinket) {
 		StateMachine.GoToState("Trinket");
-
-		GameUI.ShowTrinketBackground();
-
-		Camera.StartTrinket();
 
 		ZIndex += 25;
 
 		GetNode<Node2D>("WeaponHolder").ZIndex -= 25;
 
 		trinket.ZIndex += 25;
-
-		trinket.AnimateToPlayer(this);
 
 		CollisionMask = 0;
 

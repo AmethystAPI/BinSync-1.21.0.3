@@ -10,7 +10,7 @@ script = ExtResource("1_21dic")
 SpawnPoints = []
 Connections = [NodePath("Connections/Up")]
 ConnectionDirections = PackedVector2Array(0, -1)
-Loot = false
+HasTrinkets = false
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

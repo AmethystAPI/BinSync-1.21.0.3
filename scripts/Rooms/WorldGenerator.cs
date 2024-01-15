@@ -18,12 +18,11 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	private Room _lastRoom;
 
 	public override void _Ready() {
+		s_Me = this;
+
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(PlaceNextRoomRpc), PlaceNextRoomRpc);
-		NetworkPoint.Register(nameof(SpawnTrinketRpc), SpawnTrinketRpc);
-
-		s_Me = this;
 	}
 
 	public void Start() {
@@ -75,21 +74,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 		});
 	}
 
-	public static void SpawnTrinkets() {
-		List<int> clientIds = new List<int>();
-
-		foreach (Connection connection in NetworkManager.LocalServer.Clients) {
-			clientIds.Add(connection.Id);
-		}
-
-		foreach (int clientId in clientIds) {
-			s_Me.NetworkPoint.SendRpcToClients(nameof(SpawnTrinketRpc), message => {
-				message.AddInt(clientId);
-				message.AddString(s_Me.LootScenes[new RandomNumberGenerator().RandiRange(0, s_Me.LootScenes.Length - 1)].ResourcePath);
-			});
-		}
-	}
-
 	private void PlaceNextRoomRpc(Message message) {
 		Vector2 connectionPosition = new Vector2(message.GetFloat(), message.GetFloat());
 		Vector2 direction = new Vector2(message.GetFloat(), message.GetFloat());
@@ -116,20 +100,5 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 		room.PlaceExit(exitDirection);
 
 		room.Place();
-	}
-
-	private void SpawnTrinketRpc(Message message) {
-		int clientId = message.GetInt();
-		string lootScenePath = message.GetString();
-
-		PackedScene lootScene = ResourceLoader.Load<PackedScene>(lootScenePath);
-
-		Trinket trinket = NetworkManager.SpawnNetworkSafe<Trinket>(lootScene, "Loot");
-
-		AddChild(trinket);
-
-		if (NetworkManager.LocalClient.Id != clientId) return;
-
-		Player.LocalPlayer.StartTrinket(trinket);
 	}
 }

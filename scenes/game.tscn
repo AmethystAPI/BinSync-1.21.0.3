@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=16 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_wjaw5"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
+[ext_resource type="Script" path="res://scripts/TrinketRealmManager.cs" id="9_vc1vq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
@@ -51,6 +52,10 @@ script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
 RoomPlacers = Array[Resource]([ExtResource("7_wjaw5")])
 LootScenes = Array[PackedScene]([ExtResource("8_88fnx")])
+
+[node name="TrinketRealmManager" type="Node2D" parent="."]
+script = ExtResource("9_vc1vq")
+TrinketScenes = Array[PackedScene]([ExtResource("8_88fnx")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

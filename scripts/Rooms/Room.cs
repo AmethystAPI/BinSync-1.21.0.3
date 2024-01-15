@@ -8,7 +8,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
-	[Export] public bool Loot = true;
+	[Export] public bool HasTrinkets = true;
 	[Export] public Area2D ActivateArea;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
@@ -99,7 +99,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		_completed = true;
 
-		if (Loot) WorldGenerator.SpawnTrinkets();
+		if (HasTrinkets) TrinketRealmManager.EnterTrinketRealm();
 
 		Game.Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 
