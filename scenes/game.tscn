@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="6_mvk5j"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_wjaw5"]
-[ext_resource type="PackedScene" uid="uid://bmfge0rr6uma6" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
+[ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
@@ -25,7 +25,7 @@ noise = SubResource("FastNoiseLite_yfm5y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1o6u"]
 shader = ExtResource("5_4da55")
-shader_parameter/color = Color(0.0507, 0.0533433, 0.13, 1)
+shader_parameter/color = Color(0.0392157, 0.0235294, 0.0862745, 1)
 shader_parameter/color2 = Color(0, 0, 0, 1)
 shader_parameter/star_color = Color(0.741176, 0.796078, 1, 1)
 shader_parameter/size = Vector2(1920, 1080)
