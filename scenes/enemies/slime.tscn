@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://biycaes0pxrav"]
+[gd_scene load_steps=10 format=3 uid="uid://biycaes0pxrav"]
 
 [ext_resource type="Texture2D" uid="uid://b645soy16tq3n" path="res://sprites/slime.aseprite" id="1_g107h"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_mu0ej"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/Idle.cs" id="5_3ytew"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/SlimeJump.cs" id="6_i67rn"]
 [ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="7_8dyb3"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_j3im5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(12, 9)
@@ -50,7 +51,7 @@ script = ExtResource("4_phacr")
 script = ExtResource("5_3ytew")
 AttackState = "Jump"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals", "ProjectileOrigin")]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals", "ProjectileOrigin", "Sprite", "JumpSquashAndStretch", "LandSquashAndStretch")]
 script = ExtResource("6_i67rn")
 Speed = 30.0
 Duration = 0.75
@@ -58,6 +59,21 @@ Height = 16.0
 ProjectileScene = ExtResource("2_4goc7")
 Visuals = NodePath("../../BodyVisuals/Body")
 ProjectileOrigin = NodePath("../../ProjectileOrigin")
+Sprite = NodePath("../../BodyVisuals/Body")
+JumpSquashAndStretch = NodePath("JumpSquashAndStretch")
+LandSquashAndStretch = NodePath("LandSquashAndStretch")
+
+[node name="JumpSquashAndStretch" type="Node" parent="StateMachine/Jump" node_paths=PackedStringArray("Target")]
+script = ExtResource("8_j3im5")
+Target = NodePath("../../../BodyVisuals")
+Scale = Vector2(0.6, 1.4)
+Speed = 4.0
+
+[node name="LandSquashAndStretch" type="Node" parent="StateMachine/Jump" node_paths=PackedStringArray("Target")]
+script = ExtResource("8_j3im5")
+Target = NodePath("../../../BodyVisuals")
+Scale = Vector2(1.4, 0.6)
+Speed = 6.0
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("7_8dyb3")

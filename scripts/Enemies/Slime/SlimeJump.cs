@@ -7,6 +7,9 @@ public partial class SlimeJump : State {
     [Export] public PackedScene ProjectileScene;
     [Export] public Node2D Visuals;
     [Export] public Node2D ProjectileOrigin;
+    [Export] public Sprite2D Sprite;
+    [Export] public SquashAndStretch JumpSquashAndStretch;
+    [Export] public SquashAndStretch LandSquashAndStretch;
 
     private Slime _slime;
     private Vector2 _target;
@@ -32,6 +35,10 @@ public partial class SlimeJump : State {
 
             _target = player.GlobalPosition;
         }
+
+        Sprite.Scale = new Vector2(_target.X > _slime.GlobalPosition.X ? 1f : -1f, 1f);
+
+        JumpSquashAndStretch.Activate();
     }
 
     public override void PhsysicsUpdate(float delta) {
@@ -56,6 +63,8 @@ public partial class SlimeJump : State {
         _slime.GetParent().AddChild(projectile);
 
         projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
+
+        LandSquashAndStretch.Activate();
 
         GoToState("Idle");
     }

@@ -18,7 +18,7 @@ public partial class Camera : Camera2D {
 		if (Player.LocalPlayer == null) return;
 
 		Vector2 mouseOffset = GetGlobalMousePosition() - Player.LocalPlayer.GlobalPosition;
-		mouseOffset /= 6f;
+		mouseOffset /= 5f;
 		mouseOffset *= 1f - _trinketInfluence;
 
 		Vector2 trinketOffset = Vector2.Up * 60f;
