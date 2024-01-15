@@ -7,11 +7,15 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 	private static TrinketRealm s_Me;
 
 	[Export] public PackedScene[] TrinketScenes = new PackedScene[] { };
+	[Export] public ColorRect TrinketBackground;
+	[Export] public ColorRect Flash;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private Trinket _localNewTrinket;
-
+	private float _trinketBackgroundTargetAlpha = 0f;
+	private float _flashTargetAlpha = 0f;
+	private float _flashSpeed;
 
 	public override void _Ready() {
 		s_Me = this;
@@ -19,6 +23,16 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(EnterTrinketRealmRpc), EnterTrinketRealmRpc);
+	}
+
+	public override void _Process(double delta) {
+		Color color = s_Me.TrinketBackground.Modulate;
+		color.A = Mathf.Lerp(color.A, _trinketBackgroundTargetAlpha, 1f * (float)delta);
+
+		s_Me.TrinketBackground.Modulate = color;
+
+
+		UpdateFlashColor((float)delta);
 	}
 
 	public static void EnterTrinketRealm() {
@@ -52,32 +66,43 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 
 		_localNewTrinket = trinket;
 
-		GameUI.ShowTrinketBackground();
+		_trinketBackgroundTargetAlpha = 1f;
 
 		Camera.EnterTrinketRealm();
 
 		Player.LocalPlayer.EnterTrinketRealm();
 
-		trinket.ZIndex += 25;
-
 		trinket.AnimateToPlayer(Player.LocalPlayer);
 
 		GlobalPosition = Player.LocalPlayer.GlobalPosition;
+
+		Delay.Execute(4f, s_Me.StartFlash);
 	}
 
-	public static void LeaveTinketRealm() {
-		GameUI.HideTrinketBackground();
+	private void StartFlash() {
+		_flashTargetAlpha = 1f;
+		_flashSpeed = 8f;
+
+		Delay.Execute(0.5f, s_Me.LeaveTinketRealm);
+	}
+
+	private void LeaveTinketRealm() {
+		_flashTargetAlpha = 0f;
+		_flashSpeed = 10f;
+
+		_trinketBackgroundTargetAlpha = 0f;
+		TrinketBackground.Modulate = new Color(1, 1, 1, 0);
 
 		Camera.LeaveTrinketRealm();
 
 		Player.LocalPlayer.LeaveTrinketRealm();
-
-		Delay.Execute(1.8f, s_Me.AfterBackgroundHidden);
+		Player.LocalPlayer.Equip(_localNewTrinket);
 	}
 
-	private void AfterBackgroundHidden() {
-		s_Me._localNewTrinket.ZIndex -= 25;
+	private void UpdateFlashColor(float delta) {
+		Color color = s_Me.Flash.Modulate;
+		color.A = Mathf.Lerp(color.A, _flashTargetAlpha, s_Me._flashSpeed * delta);
 
-		Player.LocalPlayer.LeaveTrinketRealmAfterBackgroundHidden();
+		s_Me.Flash.Modulate = color;
 	}
 }

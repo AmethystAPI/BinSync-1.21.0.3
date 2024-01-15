@@ -20,8 +20,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private Weapon _equippedWeapon;
-	private uint _defaultCollisionLayers;
-	private uint _defaultCollisionMask;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -40,9 +38,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		StateMachine = GetNode<StateMachine>("StateMachine");
 
 		EquipDefaultItem();
-
-		_defaultCollisionLayers = CollisionLayer;
-		_defaultCollisionMask = CollisionMask;
 
 		if (!NetworkPoint.IsOwner) return;
 
@@ -142,26 +137,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		ZIndex += 25;
 
 		GetNode<Node2D>("WeaponHolder").ZIndex -= 25;
-
-		CollisionLayer = 0b1000;
-		CollisionMask = 0;
-
-		Delay.Execute(2f, StopAwing);
 	}
 
 	public void LeaveTrinketRealm() {
-		CollisionLayer = _defaultCollisionLayers;
-		CollisionMask = _defaultCollisionMask;
-	}
+		StateMachine.GoToState("Normal");
 
-	public void LeaveTrinketRealmAfterBackgroundHidden() {
 		ZIndex -= 25;
 
 		GetNode<Node2D>("WeaponHolder").ZIndex += 25;
-	}
-
-	private void StopAwing() {
-		StateMachine.GoToState("Normal");
 	}
 
 	private void DieRpc(Message message) {

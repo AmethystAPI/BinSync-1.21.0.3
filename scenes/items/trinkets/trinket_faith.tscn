@@ -9,9 +9,8 @@ shader = ExtResource("3_33nqg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kd00"]
 
-[node name="Faith Trinket" type="Node2D" node_paths=PackedStringArray("EquipArea")]
+[node name="Faith Trinket" type="Node2D"]
 script = ExtResource("1_pmqp0")
-EquipArea = NodePath("EquipArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxiye")
