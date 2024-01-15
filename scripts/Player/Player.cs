@@ -142,6 +142,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		GetNode<Node2D>("WeaponHolder").ZIndex -= 25;
 
+		trinket.ZIndex += 25;
+
+		trinket.AnimateToPlayer(this);
+
 		// Equip(trinket);
 	}
 

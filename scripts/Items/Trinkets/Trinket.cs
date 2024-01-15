@@ -1,7 +1,14 @@
 using Godot;
 
 public partial class Trinket : Item {
+	private bool _animatingToPlayer = false;
+	private Player _playerAnimatingTo;
+
 	public override void _Process(double delta) {
+		if (_animatingToPlayer) {
+			GlobalPosition = GlobalPosition.Lerp(_playerAnimatingTo.GlobalPosition + Vector2.Up * 60f, (float)delta * 0.3f);
+		}
+
 		if (!_equipped) return;
 
 		float time = Time.GetTicksMsec() / 1000f;
@@ -18,5 +25,12 @@ public partial class Trinket : Item {
 
 	public virtual void ModifyProjectile(Weapon weapon, Projectile projectile) {
 
+	}
+
+	public void AnimateToPlayer(Player player) {
+		GlobalPosition = player.GlobalPosition + Vector2.Up * 100f;
+
+		_animatingToPlayer = true;
+		_playerAnimatingTo = player;
 	}
 }
