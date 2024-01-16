@@ -19,4 +19,13 @@ public partial class RoomPlacer : Resource {
 
         return directions;
     }
+
+    public bool CanConnectTo(Vector2 direction) {
+        if (LeftConnection && direction == Vector2.Right) return true;
+        if (RightConnection && direction == Vector2.Left) return true;
+        if (TopConnection && direction == Vector2.Down) return true;
+        if (BottomConnection && direction == Vector2.Up) return true;
+
+        return false;
+    }
 }

@@ -9,7 +9,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 	[Export] public RoomPlacer SpawnRoomPlacer;
 	[Export] public RoomPlacer[] RoomPlacers;
-	[Export] public PackedScene[] LootScenes;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -59,13 +58,17 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			message.AddFloat(direction.X);
 			message.AddFloat(direction.Y);
 
-			RoomPlacer roomPlacer = s_Me.RoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, s_Me.RoomPlacers.Length - 1)];
+			RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => placer.CanConnectTo(direction)).ToArray();
+
+			RoomPlacer roomPlacer = validRoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 
 			message.AddString(roomPlacer.ResourcePath);
 
 			List<Vector2> possibleExitDirections = roomPlacer.GetDirections();
 
 			if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
+
+			GD.Print(roomPlacer.ResourcePath);
 
 			Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
 
