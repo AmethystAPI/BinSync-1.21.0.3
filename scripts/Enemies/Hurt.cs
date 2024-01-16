@@ -4,6 +4,7 @@ public partial class Hurt : State {
     [Export] public string ReturnState = "Idle";
     [Export] public AnimationPlayer AnimationPlayer;
     [Export] public Node2D Visuals;
+    [Export] public PackedScene DeathParticle;
 
     public Vector2 Knockback;
 
@@ -50,6 +51,10 @@ public partial class Hurt : State {
     }
 
     private void Die() {
+        Node2D deathParticle = DeathParticle.Instantiate<Node2D>();
+        _enemy.GetParent().AddChild(deathParticle);
+        deathParticle.GlobalPosition = _enemy.GlobalPosition;
+
         _enemy.GetParent<Room>().RemoveEnemy();
 
         _enemy.QueueFree();
