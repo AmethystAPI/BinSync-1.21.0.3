@@ -10,6 +10,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	[Export] public Vector2[] ConnectionDirections;
 	[Export] public bool HasTrinkets = true;
 	[Export] public Area2D ActivateArea;
+	[Export] public TileMap BarrierTilemap;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -24,6 +25,17 @@ public partial class Room : Node2D, NetworkPointUser {
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
 
 		if (ActivateArea != null) ActivateArea.BodyEntered += BodyEnteredActivateArea;
+	}
+
+	public override void _Process(double delta) {
+		if (!_completed) return;
+
+		if (BarrierTilemap == null) return;
+
+		Color color = BarrierTilemap.Modulate;
+		color.A = 0;
+
+		BarrierTilemap.Modulate = BarrierTilemap.Modulate.Lerp(color, 8f * (float)delta);
 	}
 
 	public void AddEnemy() {
@@ -107,5 +119,12 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	protected virtual void EndRpc(Message message) {
+		_completed = true;
+
+		if (BarrierTilemap == null) return;
+
+		Delay.Execute(0.5f, () => {
+			BarrierTilemap.SetLayerEnabled(0, false);
+		});
 	}
 }
