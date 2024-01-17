@@ -58,7 +58,13 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			message.AddFloat(direction.X);
 			message.AddFloat(direction.Y);
 
-			RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => placer.CanConnectTo(direction)).ToArray();
+			RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
+				if (!placer.CanConnectTo(direction)) return false;
+
+				if (direction != Vector2.Up && placer.CanConnectTo(Vector2.Up) && placer.GetDirections().Count == 2) return false;
+
+				return true;
+			}).ToArray();
 
 			RoomPlacer roomPlacer = validRoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 
