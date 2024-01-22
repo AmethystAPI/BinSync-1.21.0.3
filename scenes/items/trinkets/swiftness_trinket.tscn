@@ -1,18 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2ch8e83mu0et"]
+[gd_scene load_steps=3 format=3 uid="uid://c2ch8e83mu0et"]
 
-[ext_resource type="Texture2D" uid="uid://c2uwj1cf4pws6" path="res://sprites/trinkets.aseprite" id="1_6laci"]
 [ext_resource type="Script" path="res://scripts/items/trinkets/SwiftnessTrinket.cs" id="1_omt5b"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdbv5"]
+[ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/trinkets/trinket_swiftness.tres" id="2_3ic87"]
 
 [node name="SwiftnessTrinket" type="Node2D"]
 script = ExtResource("1_omt5b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6laci")
-hframes = 3
-
-[node name="EquipArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
-shape = SubResource("RectangleShape2D_wdbv5")
+texture = ExtResource("2_3ic87")
+offset = Vector2(0, -6)
