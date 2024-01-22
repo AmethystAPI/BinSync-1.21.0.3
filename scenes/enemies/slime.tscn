@@ -22,7 +22,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodyVisuals/Body:material")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BodyVisuals/Body:texture")
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,7 +50,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodyVisuals/Body:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +76,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BodyVisuals/Body:material")
+tracks/2/path = NodePath("SquashAndStretchTarget/Body:material")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -92,7 +92,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BodyVisuals/Body:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,7 +104,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BodyVisuals/Body:material")
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -128,9 +128,9 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_mu0ej")
 
-[node name="BodyVisuals" type="Node2D" parent="."]
+[node name="SquashAndStretchTarget" type="Node2D" parent="."]
 
-[node name="Body" type="Sprite2D" parent="BodyVisuals"]
+[node name="Body" type="Sprite2D" parent="SquashAndStretchTarget"]
 texture = ExtResource("2_hbhsd")
 offset = Vector2(0, -7)
 
@@ -163,33 +163,33 @@ Speed = 30.0
 Duration = 0.75
 Height = 16.0
 ProjectileScene = ExtResource("2_4goc7")
-Visuals = NodePath("../../BodyVisuals/Body")
+Visuals = NodePath("../../SquashAndStretchTarget/Body")
 ProjectileOrigin = NodePath("../../ProjectileOrigin")
-Sprite = NodePath("../../BodyVisuals/Body")
+Sprite = NodePath("../../SquashAndStretchTarget/Body")
 JumpSquashAndStretch = NodePath("JumpSquashAndStretch")
 LandSquashAndStretch = NodePath("LandSquashAndStretch")
 
 [node name="JumpSquashAndStretch" type="Node" parent="StateMachine/Jump" node_paths=PackedStringArray("Target")]
 script = ExtResource("8_j3im5")
-Target = NodePath("../../../BodyVisuals")
+Target = NodePath("../../../SquashAndStretchTarget")
 Scale = Vector2(0.6, 1.4)
 Speed = 4.0
 
 [node name="LandSquashAndStretch" type="Node" parent="StateMachine/Jump" node_paths=PackedStringArray("Target")]
 script = ExtResource("8_j3im5")
-Target = NodePath("../../../BodyVisuals")
+Target = NodePath("../../../SquashAndStretchTarget")
 Scale = Vector2(1.4, 0.6)
 Speed = 6.0
 
 [node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
 script = ExtResource("7_8dyb3")
 AnimationPlayer = NodePath("../../AnimationPlayer")
-Visuals = NodePath("../../BodyVisuals/Body")
+Visuals = NodePath("../../SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("11_7c4yd")
 
 [node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Hurt" node_paths=PackedStringArray("Target")]
 script = ExtResource("8_j3im5")
-Target = NodePath("../../../BodyVisuals")
+Target = NodePath("../../../SquashAndStretchTarget")
 Scale = Vector2(0.6, 1.4)
 Speed = 8.0
 

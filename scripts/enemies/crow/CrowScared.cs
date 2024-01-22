@@ -9,6 +9,7 @@ public partial class CrowScared : State, NetworkPointUser {
     [Export] public Vector2 ScaredInterval = new Vector2(1f, 2f);
     [Export] public AnimationPlayer AnimationPlayer;
     [Export] public Sprite2D Sprite;
+    [Export] public SquashAndStretch EnterSquashAndStretch;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -31,10 +32,14 @@ public partial class CrowScared : State, NetworkPointUser {
         _scaredTimer = _randomNumberGenerator.RandfRange(ScaredInterval.X, ScaredInterval.Y);
 
         PickFlockOffset();
+
+        EnterSquashAndStretch.Activate();
     }
 
     public override void PhsysicsUpdate(float delta) {
         if (!_crow.NetworkPoint.IsOwner) return;
+
+        if (!_crow.Activated) return;
 
         Vector2 target = Vector2.Zero;
 

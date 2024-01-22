@@ -8,6 +8,7 @@ public partial class CrowAggressive : State, NetworkPointUser {
     [Export] public PackedScene ProjectileScene;
     [Export] public Node2D ProjectileOrigin;
     [Export] public Sprite2D Sprite;
+    [Export] public SquashAndStretch EnterSquashAndStretch;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -31,6 +32,8 @@ public partial class CrowAggressive : State, NetworkPointUser {
         ProjectileOrigin.AddChild(_projectile);
 
         _projectile.Destroyed += () => NetworkPoint.BounceRpcToClients(nameof(ScaredRpc));
+
+        EnterSquashAndStretch.Activate();
     }
 
     public override void PhsysicsUpdate(float delta) {

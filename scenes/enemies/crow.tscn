@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctwrqefjr5llm"]
+[gd_scene load_steps=19 format=3 uid="uid://ctwrqefjr5llm"]
 
 [ext_resource type="Script" path="res://scripts/enemies/crow/Crow.cs" id="1_vkuc5"]
 [ext_resource type="Texture2D" uid="uid://b6hd8oagbgaod" path="res://sprites/enemies/crow/crow_0.tres" id="2_jc2w3"]
@@ -12,9 +12,38 @@
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_hbt65"]
 [ext_resource type="Texture2D" uid="uid://b4naejnmh5svi" path="res://sprites/enemies/crow/crow_1.tres" id="9_s3qqv"]
 [ext_resource type="Texture2D" uid="uid://erjyvt1spirj" path="res://sprites/enemies/crow/crow_hurt.tres" id="10_hpfxe"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="11_kuwtc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
-size = Vector2(16, 16)
+size = Vector2(16, 23)
+
+[sub_resource type="Animation" id="Animation_5eo1p"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualsOrigin/SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jc2w3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualsOrigin/SquashAndStretchTarget/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
 
 [sub_resource type="Animation" id="Animation_pen70"]
 resource_name = "flap"
@@ -24,7 +53,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
+tracks/0/path = NodePath("VisualsOrigin/SquashAndStretchTarget/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,29 +63,13 @@ tracks/0/keys = {
 "values": [ExtResource("2_jc2w3"), ExtResource("2_jc2w3"), ExtResource("9_s3qqv")]
 }
 
-[sub_resource type="Animation" id="Animation_5eo1p"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_jc2w3")]
-}
-
 [sub_resource type="Animation" id="Animation_cpqjf"]
 resource_name = "hurt"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
+tracks/0/path = NodePath("VisualsOrigin/SquashAndStretchTarget/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,7 +81,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:material")
+tracks/1/path = NodePath("VisualsOrigin/SquashAndStretchTarget/Body:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -76,6 +89,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("2_u8mw0"), null]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Hurt/HurtSquashAndStretch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wn2uj"]
@@ -85,30 +112,34 @@ _data = {
 "hurt": SubResource("Animation_cpqjf")
 }
 
-[node name="Crow" type="CharacterBody2D"]
+[node name="Crow" type="CharacterBody2D" groups=["Enemies"]]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_vkuc5")
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="VisualsOrigin" type="Node2D" parent="."]
+
+[node name="SquashAndStretchTarget" type="Node2D" parent="VisualsOrigin"]
+position = Vector2(0, -7)
+
+[node name="Body" type="Sprite2D" parent="VisualsOrigin/SquashAndStretchTarget"]
 texture = ExtResource("2_jc2w3")
 offset = Vector2(0, -5)
 
-[node name="ProjectileOrigin" type="Node2D" parent="Body"]
+[node name="ProjectileOrigin" type="Node2D" parent="VisualsOrigin/SquashAndStretchTarget/Body"]
 position = Vector2(5, -5)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
 z_index = -6
-position = Vector2(0, 13)
 texture = ExtResource("3_0hng1")
-offset = Vector2(0, -5)
 region_rect = Rect2(34, 8, 12, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
+visible = false
+position = Vector2(0, -9.5)
 scale = Vector2(1.00302, 1)
 shape = SubResource("RectangleShape2D_75mpk")
 
@@ -116,27 +147,47 @@ shape = SubResource("RectangleShape2D_75mpk")
 script = ExtResource("3_j21au")
 DefaultState = "Scared"
 
-[node name="Scared" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Sprite")]
+[node name="Scared" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Sprite", "EnterSquashAndStretch")]
 script = ExtResource("5_ky1qb")
 Speed = 70.0
 InverseInertia = 3.0
 AnimationPlayer = NodePath("../../AnimationPlayer")
-Sprite = NodePath("../../Body")
+Sprite = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body")
+EnterSquashAndStretch = NodePath("EnterSquashAndStretch")
 
-[node name="Aggressive" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin", "Sprite")]
+[node name="EnterSquashAndStretch" type="Node" parent="StateMachine/Scared" node_paths=PackedStringArray("Target")]
+script = ExtResource("11_kuwtc")
+Target = NodePath("../../../VisualsOrigin/SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
+
+[node name="Aggressive" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin", "Sprite", "EnterSquashAndStretch")]
 script = ExtResource("6_oh67a")
 Speed = 70.0
 InverseInertia = 2.0
 ProjectileScene = ExtResource("7_mu1w5")
-ProjectileOrigin = NodePath("../../Body/ProjectileOrigin")
-Sprite = NodePath("../../Body")
+ProjectileOrigin = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body/ProjectileOrigin")
+Sprite = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body")
+EnterSquashAndStretch = NodePath("EnterSquashAndStretch")
+
+[node name="EnterSquashAndStretch" type="Node" parent="StateMachine/Aggressive" node_paths=PackedStringArray("Target")]
+script = ExtResource("11_kuwtc")
+Target = NodePath("../../../VisualsOrigin/SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
 
 [node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
 script = ExtResource("7_fpmii")
 ReturnState = "Scared"
 AnimationPlayer = NodePath("../../AnimationPlayer")
-Visuals = NodePath("../../Body")
+Visuals = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("9_hbt65")
+
+[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Hurt" node_paths=PackedStringArray("Target")]
+script = ExtResource("11_kuwtc")
+Target = NodePath("../../../VisualsOrigin/SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
