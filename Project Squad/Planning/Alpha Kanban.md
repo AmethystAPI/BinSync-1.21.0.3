@@ -6,17 +6,17 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Fix Projectiles in Walls #code
 
 
 ## In Progress
 
-- [ ] Polish Strength Trinket #polish
+- [ ] Fix Projectiles in Walls #code
 
 
 ## Done
 
 **Complete**
+- [x] Polish Strength Trinket #polish
 - [x] Polish Swiftness Trinket #polish
 - [x] Polish Crow #polish
 - [x] Polish Roller #polish

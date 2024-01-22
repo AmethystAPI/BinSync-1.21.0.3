@@ -6,8 +6,10 @@ public partial class Projectile : Node2D {
 	[Export] public float Speed = 200f;
 	[Export] public float Resistance = 0f;
 	[Export] public float Lifetime = 5f;
+	[Export] public float Invincibilitytime = 0.2f;
 	[Export] public float Knockback = 1f;
 	[Export] public bool InheritBelocity = true;
+	[Export] public bool Pierce = false;
 
 	public Action Destroyed;
 
@@ -16,15 +18,18 @@ public partial class Projectile : Node2D {
 
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
+	private float _invincibilityTimer;
 
 	public override void _Ready() {
 		_damageArea = GetNode<Area2D>("DamageArea");
 
 		_lifetimeTimer = Lifetime;
+		_invincibilityTimer = Invincibilitytime;
 	}
 
 	public override void _Process(double delta) {
 		_lifetimeTimer -= (float)delta;
+		_invincibilityTimer -= (float)delta;
 
 		if (_lifetimeTimer > 0) return;
 
@@ -41,7 +46,7 @@ public partial class Projectile : Node2D {
 		Speed = Mathf.Lerp(Speed, 0f, Resistance * (float)delta);
 
 		foreach (Node2D body in _damageArea.GetOverlappingBodies()) {
-			if (body is TileMap) {
+			if (body is TileMap && _invincibilityTimer <= 0) {
 				Destroyed?.Invoke();
 
 				QueueFree();
@@ -57,11 +62,13 @@ public partial class Projectile : Node2D {
 
 			damageable.Damage(this);
 
-			Destroyed?.Invoke();
+			if (!Pierce) {
+				Destroyed?.Invoke();
 
-			QueueFree();
+				QueueFree();
 
-			break;
+				break;
+			}
 		}
 	}
 }

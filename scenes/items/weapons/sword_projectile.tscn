@@ -34,6 +34,7 @@ script = ExtResource("1_1r6bq")
 Speed = 300.0
 Resistance = 7.5
 Lifetime = 0.3
+Pierce = true
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 3

@@ -12,6 +12,7 @@ script = ExtResource("1_f1l4f")
 Speed = 0.0
 Lifetime = 0.2
 InheritBelocity = false
+Pierce = true
 
 [node name="DamageArea" type="Area2D" parent="."]
 

@@ -12,6 +12,7 @@ Damage = 0.8
 Speed = 400.0
 Resistance = 8.0
 Lifetime = 0.25
+Pierce = true
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 3
