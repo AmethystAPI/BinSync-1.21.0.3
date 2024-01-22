@@ -2,12 +2,13 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class CrowScared : State, NetworkPointUser
-{
+public partial class CrowScared : State, NetworkPointUser {
     [Export] public float Speed = 10f;
     [Export] public float InverseInertia = 4f;
     [Export] public float FlockOffsetRange = 24f;
     [Export] public Vector2 ScaredInterval = new Vector2(1f, 2f);
+    [Export] public AnimationPlayer AnimationPlayer;
+    [Export] public Sprite2D Sprite;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -16,8 +17,7 @@ public partial class CrowScared : State, NetworkPointUser
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
     private float _scaredTimer = 0;
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         _crow = GetParent().GetParent<Crow>();
 
         NetworkPoint.Setup(this);
@@ -25,21 +25,20 @@ public partial class CrowScared : State, NetworkPointUser
         NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
     }
 
-    public override void Enter()
-    {
+    public override void Enter() {
+        AnimationPlayer.Play("flap");
+
         _scaredTimer = _randomNumberGenerator.RandfRange(ScaredInterval.X, ScaredInterval.Y);
 
         PickFlockOffset();
     }
 
-    public override void PhsysicsUpdate(float delta)
-    {
+    public override void PhsysicsUpdate(float delta) {
         if (!_crow.NetworkPoint.IsOwner) return;
 
         Vector2 target = Vector2.Zero;
 
-        foreach (Crow crow in Crow.Crows)
-        {
+        foreach (Crow crow in Crow.Crows) {
             target += crow.GlobalPosition;
         }
 
@@ -48,6 +47,8 @@ public partial class CrowScared : State, NetworkPointUser
         target += _flockOffset;
 
         _crow.Velocity = _crow.Velocity.Slerp((target - _crow.GlobalPosition).Normalized() * Speed, InverseInertia * delta);
+
+        Sprite.Scale = new Vector2(target.X >= _crow.GlobalPosition.X ? 1f : -1f, 1f);
 
         _crow.MoveAndSlide();
 
@@ -58,13 +59,11 @@ public partial class CrowScared : State, NetworkPointUser
         if (_scaredTimer <= 0) NetworkPoint.BounceRpcToClients(nameof(AttackRpc));
     }
 
-    private void PickFlockOffset()
-    {
+    private void PickFlockOffset() {
         _flockOffset = (Vector2.Right * _randomNumberGenerator.RandfRange(0, FlockOffsetRange)).Rotated(_randomNumberGenerator.RandfRange(0, Mathf.Pi * 2f));
     }
 
-    private void AttackRpc(Message message)
-    {
+    private void AttackRpc(Message message) {
         GoToState("Aggressive");
     }
 }
