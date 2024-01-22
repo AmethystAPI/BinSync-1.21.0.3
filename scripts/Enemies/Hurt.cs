@@ -17,7 +17,7 @@ public partial class Hurt : State {
     }
 
     public override void Enter() {
-        AnimationPlayer.Play("Hurt");
+        AnimationPlayer.Play("hurt");
 
         if (_enemy.Health > 0) return;
 
@@ -25,7 +25,7 @@ public partial class Hurt : State {
 
         Delay.Execute(0.5f, Die);
 
-        Knockback /= 3f;
+        Knockback /= 5f;
     }
 
     public override void PhsysicsUpdate(float delta) {
@@ -40,14 +40,10 @@ public partial class Hurt : State {
         if (_dead) {
             _deadTimer += delta;
 
-            Visuals.Position = Vector2.Up * Mathf.Sin(_deadTimer * Mathf.Pi * 2f) * 24f;
+            Visuals.Position = Vector2.Up * Mathf.Sin(_deadTimer * Mathf.Pi / 0.5f) * 16f;
         } else if (Knockback.Length() < 3.5f) {
             GoToState(ReturnState);
         }
-    }
-
-    public override void Exit() {
-        AnimationPlayer.Play(ReturnState);
     }
 
     private void Die() {

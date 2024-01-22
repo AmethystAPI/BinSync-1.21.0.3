@@ -11,11 +11,9 @@
             "id": "71bea1026302501c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Daily Notes/Day 18-15.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Alpha Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-15.md",
+                "file": "Planning/Alpha Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-15.md",
+                "file": "Planning/Alpha Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-15.md"
+                "file": "Planning/Alpha Kanban.md"
               }
             }
           }
@@ -148,11 +146,11 @@
   },
   "active": "71bea1026302501c",
   "lastOpenFiles": [
+    "Planning/Pre Alpha Kanban.md",
+    "Daily Notes/Day 18-15.md",
     "Planning/Alpha Kanban.md",
     "Planning/Alpha.md",
-    "Planning/Pre Alpha Kanban.md",
     "Reference/General.canvas",
-    "Daily Notes/Day 18-15.md",
     "Design/Weapons.md",
     "Attachments/Pasted image 20240115170646.png.import",
     "Design/Trinkets.md",

@@ -6,20 +6,21 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Polish Roller #polish
 - [ ] Polish Crow #polish
 - [ ] Polish Swiftness Trinket #polish
 - [ ] Polish Strength Trinket #polish
+- [ ] Fix Projectiles in Walls #code
 
 
 ## In Progress
 
-- [ ] Add Turning Rooms #content
+- [ ] Polish Roller #polish
 
 
 ## Done
 
 **Complete**
+- [x] Add Turning Rooms #content
 - [x] Improve Networking Sync #code
 - [x] [[Difficulty]] #code
 - [x] Crow [[Alpha#Enemies]] #content

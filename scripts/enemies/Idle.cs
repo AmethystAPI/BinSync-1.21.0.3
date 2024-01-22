@@ -5,6 +5,8 @@ using Riptide;
 public partial class Idle : State, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
     [Export] public string AttackState = "Attack";
+    [Export] public string Animation = "idle";
+    [Export] public AnimationPlayer AnimationPlayer;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -21,6 +23,8 @@ public partial class Idle : State, NetworkPointUser {
     }
 
     public override void Enter() {
+        AnimationPlayer.Play(Animation);
+
         if (_idleTimer > 0) return;
 
         _idleTimer = _randomNumberGenerator.RandfRange(IdleInterval.X, IdleInterval.Y);

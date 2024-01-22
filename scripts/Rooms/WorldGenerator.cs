@@ -74,8 +74,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 			if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
 
-			GD.Print(roomPlacer.ResourcePath);
-
 			Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
 
 			message.AddFloat(exitDirection.X);
