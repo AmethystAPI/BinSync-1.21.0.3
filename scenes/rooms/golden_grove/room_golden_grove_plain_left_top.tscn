@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxlidgsmaf5bd"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_4dx5r"]
-[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="2_8swsj"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_7qo7k"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="3_xcv78"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="4_f1ft7"]
 
@@ -11,7 +11,7 @@ size = Vector2(188, 246)
 [node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "Connections", "ActivateArea", "BarrierTilemap") groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_4dx5r")
-EnemyScenes = Array[PackedScene]([ExtResource("2_8swsj")])
+EnemyPool = ExtResource("2_7qo7k")
 SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4"), NodePath("SpawnPoints/Point5")]
 Connections = [NodePath("Connections/Up"), NodePath("Connections/Left")]
 ConnectionDirections = PackedVector2Array(0, -1, -1, 0)

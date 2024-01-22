@@ -4,7 +4,7 @@ using Riptide;
 using System.Linq;
 
 public partial class Room : Node2D, NetworkPointUser {
-	[Export] public PackedScene[] EnemyScenes;
+	[Export] public EnemyPool EnemyPool;
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
@@ -88,7 +88,7 @@ public partial class Room : Node2D, NetworkPointUser {
 				message.AddFloat(spawnPoint.GlobalPosition.X);
 				message.AddFloat(spawnPoint.GlobalPosition.Y);
 
-				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyScenes.Length - 1));
+				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1));
 			});
 
 			points--;
@@ -99,7 +99,7 @@ public partial class Room : Node2D, NetworkPointUser {
 		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
 		int enemySceneIndex = message.GetInt();
 
-		Node2D enemy = NetworkManager.SpawnNetworkSafe<Node2D>(EnemyScenes[enemySceneIndex], "Enemy");
+		Node2D enemy = NetworkManager.SpawnNetworkSafe<Node2D>(EnemyPool.EnemyScenes[enemySceneIndex], "Enemy");
 
 		AddChild(enemy);
 

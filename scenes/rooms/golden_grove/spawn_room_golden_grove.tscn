@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsr87fqg2bkd6"]
+[gd_scene load_steps=5 format=3 uid="uid://dsr87fqg2bkd6"]
 
 [ext_resource type="Script" path="res://scripts/rooms/SpawnRoom.cs" id="1_21dic"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_xu6l6"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_m773q"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_15b68"]
 
 [node name="GoldenGroveSpawnRoom" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "Connections") groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_21dic")
+EnemyPool = ExtResource("2_xu6l6")
 SpawnPoints = []
 Connections = [NodePath("Connections/Up")]
 ConnectionDirections = PackedVector2Array(0, -1)
