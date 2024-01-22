@@ -1,7 +1,5 @@
-public partial class SwiftnessTrinket : Trinket
-{
-  public override float ModifySpeed(float speed)
-  {
-    return speed + 30f;
+public partial class SwiftnessTrinket : Trinket {
+  public override float ModifySpeed(float speed) {
+    return speed + 60f;
   }
 }

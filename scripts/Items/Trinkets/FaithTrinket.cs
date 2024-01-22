@@ -24,13 +24,13 @@ public partial class FaithTrinket : Trinket {
 
       healedOtherPlayer = true;
 
-      player.Heal(0.05f);
+      player.Heal(0.1f);
     }
 
     if (healedOtherPlayer) {
-      _equippingPlayer.Heal(0.05f);
+      _equippingPlayer.Heal(0.1f);
     } else {
-      _equippingPlayer.Heal(0.01f);
+      _equippingPlayer.Heal(0.03f);
     }
   }
 }
