@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://k1sviiopk4x1"]
+[gd_scene load_steps=23 format=3 uid="uid://k1sviiopk4x1"]
 
 [ext_resource type="Script" path="res://scripts/enemies/stone_golem/StoneGolem.cs" id="1_r5e1k"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_de7bt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6vxeyr77sovq" path="res://sprites/enemies/stone_golem/stone_golem_0.tres" id="8_bkfxg"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_t223m"]
 [ext_resource type="Texture2D" uid="uid://brc0fk73qt4yu" path="res://sprites/enemies/stone_golem/stone_golem_1.tres" id="9_yp4yc"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="10_kcukc"]
 [ext_resource type="Texture2D" uid="uid://bgkrxsg6qkb8u" path="res://sprites/enemies/stone_golem/stone_golem_2.tres" id="10_q7y6b"]
 [ext_resource type="Texture2D" uid="uid://3bmbj5r1r0eg" path="res://sprites/enemies/stone_golem/stone_golem_3.tres" id="11_d053f"]
 [ext_resource type="Texture2D" uid="uid://t7wvckj3kf25" path="res://sprites/enemies/stone_golem/stone_golem_hurt.tres" id="13_c4kw3"]
@@ -20,46 +21,12 @@ size = Vector2(12, 9)
 
 [sub_resource type="Animation" id="Animation_einas"]
 resource_name = "RESET"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("10_q7y6b")]
-}
-
-[sub_resource type="Animation" id="Animation_l1tma"]
-resource_name = "roll"
-length = 0.500008
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("8_bkfxg"), ExtResource("9_yp4yc"), ExtResource("10_q7y6b"), ExtResource("11_d053f")]
-}
-
-[sub_resource type="Animation" id="Animation_vcocc"]
-resource_name = "idle"
 length = 0.001
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
+tracks/0/path = NodePath("BodyVisuals/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,23 +35,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("8_bkfxg")]
 }
-
-[sub_resource type="Animation" id="Animation_j3613"]
-resource_name = "roll_back"
-length = 0.500008
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyVisuals/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_bkfxg"), ExtResource("11_d053f"), ExtResource("10_q7y6b"), ExtResource("9_yp4yc")]
+"values": [null]
 }
 
 [sub_resource type="Animation" id="Animation_86fut"]
@@ -93,7 +54,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:texture")
+tracks/0/path = NodePath("BodyVisuals/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -105,7 +66,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:material")
+tracks/1/path = NodePath("BodyVisuals/Body:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -113,6 +74,73 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("14_mqesw"), null]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Hurt/HurtSquashAndStretch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vcocc"]
+resource_name = "idle"
+length = 0.001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyVisuals/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_bkfxg")]
+}
+
+[sub_resource type="Animation" id="Animation_l1tma"]
+resource_name = "roll"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyVisuals/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_bkfxg"), ExtResource("9_yp4yc"), ExtResource("10_q7y6b"), ExtResource("11_d053f")]
+}
+
+[sub_resource type="Animation" id="Animation_j3613"]
+resource_name = "roll_back"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyVisuals/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_bkfxg"), ExtResource("11_d053f"), ExtResource("10_q7y6b"), ExtResource("9_yp4yc")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c4lnd"]
@@ -131,8 +159,10 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_r5e1k")
 
-[node name="Body" type="Sprite2D" parent="."]
-texture = ExtResource("10_q7y6b")
+[node name="BodyVisuals" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyVisuals"]
+texture = ExtResource("8_bkfxg")
 offset = Vector2(0, -7)
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -156,19 +186,39 @@ IdleInterval = Vector2(1.4, 1.8)
 AttackState = "Roll"
 AnimationPlayer = NodePath("../../AnimationPlayer")
 
-[node name="Roll" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin", "AnimationPlayer", "Sprite")]
+[node name="Roll" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin", "AnimationPlayer", "Sprite", "StartSquashAndStretch", "EndSquashAndStretch")]
 script = ExtResource("5_26neh")
 Speed = 70.0
 ProjectileScene = ExtResource("6_m7cgh")
 ProjectileOrigin = NodePath("../../ProjectileOrigin")
 AnimationPlayer = NodePath("../../AnimationPlayer")
-Sprite = NodePath("../../Body")
+Sprite = NodePath("../../BodyVisuals/Body")
+StartSquashAndStretch = NodePath("StartSquashAndStretch")
+EndSquashAndStretch = NodePath("EndSquashAndStretch")
+
+[node name="StartSquashAndStretch" type="Node" parent="StateMachine/Roll" node_paths=PackedStringArray("Target")]
+script = ExtResource("10_kcukc")
+Target = NodePath("../../../BodyVisuals")
+Scale = Vector2(0.2, 1.4)
+Speed = 6.0
+
+[node name="EndSquashAndStretch" type="Node" parent="StateMachine/Roll" node_paths=PackedStringArray("Target")]
+script = ExtResource("10_kcukc")
+Target = NodePath("../../../BodyVisuals")
+Scale = Vector2(1.6, 0.6)
+Speed = 6.0
 
 [node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
 script = ExtResource("7_gq1j7")
 AnimationPlayer = NodePath("../../AnimationPlayer")
-Visuals = NodePath("../../Body")
+Visuals = NodePath("../../BodyVisuals/Body")
 DeathParticle = ExtResource("9_t223m")
+
+[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Hurt" node_paths=PackedStringArray("Target")]
+script = ExtResource("10_kcukc")
+Target = NodePath("../../../BodyVisuals")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
 
 [node name="ProjectileOrigin" type="Node2D" parent="."]
 position = Vector2(0, -6)

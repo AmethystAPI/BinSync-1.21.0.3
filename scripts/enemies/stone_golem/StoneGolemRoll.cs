@@ -6,6 +6,8 @@ public partial class StoneGolemRoll : State {
     [Export] public Node2D ProjectileOrigin;
     [Export] public AnimationPlayer AnimationPlayer;
     [Export] public Sprite2D Sprite;
+    [Export] public SquashAndStretch StartSquashAndStretch;
+    [Export] public SquashAndStretch EndSquashAndStretch;
 
     private StoneGolem _stoneGolem;
     private Vector2 _direction;
@@ -16,6 +18,8 @@ public partial class StoneGolemRoll : State {
     }
 
     public override void Enter() {
+        StartSquashAndStretch.Activate();
+
         if (Player.AlivePlayers.Count == 0) {
             GoToState("Idle");
 
@@ -62,5 +66,7 @@ public partial class StoneGolemRoll : State {
 
     public override void Exit() {
         if (IsInstanceValid(_projectile)) _projectile.QueueFree();
+
+        EndSquashAndStretch.Activate();
     }
 }
