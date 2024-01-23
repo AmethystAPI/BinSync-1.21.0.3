@@ -1,45 +1,85 @@
-[gd_scene load_steps=15 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=27 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="2_np1rn"]
+[ext_resource type="Texture2D" uid="uid://dhicxntgn4jgr" path="res://sprites/player/player_run_2.tres" id="3_2g3ik"]
+[ext_resource type="Texture2D" uid="uid://dsvinicnlgf1g" path="res://sprites/player/player.tres" id="3_n1urs"]
+[ext_resource type="Texture2D" uid="uid://c6x0s5psfao4e" path="res://sprites/player/player_hurt.tres" id="4_5v8r7"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_jbh0c"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="5_ibym3"]
 [ext_resource type="Script" path="res://scripts/player/PlayerNormal.cs" id="5_stky2"]
+[ext_resource type="Texture2D" uid="uid://vwjfydnewrqr" path="res://sprites/player/player_run_0.tres" id="5_wli2m"]
 [ext_resource type="Script" path="res://scripts/player/PlayerTrinket.cs" id="6_8jlbs"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="6_i3kc3"]
 [ext_resource type="Script" path="res://scripts/player/PlayerDash.cs" id="6_mtedp"]
+[ext_resource type="Texture2D" uid="uid://cvnpfqwk65srl" path="res://sprites/player/player_run_1.tres" id="6_yvcw5"]
+[ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]
 [ext_resource type="Script" path="res://scripts/player/PlayerAngel.cs" id="7_4smh0"]
+[ext_resource type="Texture2D" uid="uid://biixnhfrbq7e4" path="res://sprites/player/player_awe.tres" id="11_5bhdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypp2t"]
 size = Vector2(7, 4)
 
 [sub_resource type="Animation" id="Animation_bn6i1"]
 resource_name = "dead"
+
+[sub_resource type="Animation" id="Animation_opp1b"]
+resource_name = "hurt"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [ExtResource("4_5v8r7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Sprite:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_ibym3"), null]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Normal/HurtSquashAndStretch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_2htce"]
 resource_name = "idle"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [ExtResource("3_n1urs")]
 }
 
 [sub_resource type="Animation" id="Animation_tnwfc"]
@@ -50,39 +90,86 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 4]
+"values": [ExtResource("5_wli2m"), ExtResource("6_yvcw5"), ExtResource("3_2g3ik"), ExtResource("7_0cf8b")]
+}
+
+[sub_resource type="Animation" id="Animation_8v0u0"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_n1urs")]
+}
+
+[sub_resource type="Animation" id="Animation_8ip8h"]
+resource_name = "awe"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_5bhdx")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74xub"]
 _data = {
+"RESET": SubResource("Animation_8v0u0"),
+"awe": SubResource("Animation_8ip8h"),
 "dead": SubResource("Animation_bn6i1"),
+"hurt": SubResource("Animation_opp1b"),
 "idle": SubResource("Animation_2htce"),
 "run": SubResource("Animation_tnwfc")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6m8y"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite")]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xr8oe")
 DefaultWeaponScene = ExtResource("2_np1rn")
+Sprite = NodePath("SquashAndStretchTarget/Sprite")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_82yba")
-offset = Vector2(0, -16)
-hframes = 8
-vframes = 2
-frame = 2
+[node name="SquashAndStretchTarget" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="SquashAndStretchTarget"]
+texture = ExtResource("3_n1urs")
+offset = Vector2(0, -12)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
@@ -122,10 +209,15 @@ DefaultState = "Normal"
 script = ExtResource("5_stky2")
 Speed = 80.0
 
-[node name="Trinket" type="Node" parent="StateMachine" node_paths=PackedStringArray("Sprite")]
+[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Normal" node_paths=PackedStringArray("Target")]
+script = ExtResource("6_i3kc3")
+Target = NodePath("../../../SquashAndStretchTarget")
+Scale = Vector2(1.4, 0.6)
+Speed = 10.0
+
+[node name="Trinket" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("6_8jlbs")
-Sprite = NodePath("../../Sprite")
-HoldFrame = 5
+AnimationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("6_mtedp")

@@ -11,7 +11,6 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   internal NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 
-  internal Vector2 _knockback;
   internal StateMachine _stateMachine;
 
   private bool _justHit;

@@ -1,10 +1,9 @@
 using Godot;
 
 public partial class PlayerTrinket : State {
-    [Export] public Sprite2D Sprite;
-    [Export] public int HoldFrame;
+    [Export] public AnimationPlayer AnimationPlayer;
 
     public override void Enter() {
-        Sprite.Frame = HoldFrame;
+        AnimationPlayer.Play("awe");
     }
 }

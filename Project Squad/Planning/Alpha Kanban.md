@@ -6,16 +6,19 @@ kanban-plugin: basic
 
 ## To Do
 
+- [ ] Trinket Descriptions #code
+- [ ] Dash Cooldown #code
 
 
 ## In Progress
 
-- [ ] Fix Projectiles in Walls #code
+- [ ] Player Damage #code
 
 
 ## Done
 
 **Complete**
+- [x] Fix Projectiles in Walls #code
 - [x] Polish Strength Trinket #polish
 - [x] Polish Swiftness Trinket #polish
 - [x] Polish Crow #polish

@@ -9,12 +9,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public static Player LocalPlayer;
 
 	[Export] public PackedScene DefaultWeaponScene;
+	[Export] public Sprite2D Sprite;
 
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
 	public float Health = 3f;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 	public AnimationPlayer AnimationPlayer;
 	public StateMachine StateMachine;
+	public Vector2 Knockback;
 
 	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
@@ -27,6 +29,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
 		NetworkPoint.Register(nameof(_networkedVelocity), _networkedVelocity);
 		NetworkPoint.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
+		NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
 		NetworkPoint.Register(nameof(DieRpc), DieRpc);
 		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
 
@@ -47,6 +50,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public override void _Process(double delta) {
+		Knockback = Knockback.Lerp(Vector2.Zero, (float)delta * 12f);
+
 		_networkedPosition.Sync();
 		_networkedVelocity.Sync();
 
@@ -60,7 +65,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (!NetworkPoint.IsOwner) return;
 
-		if (StateMachine.CurrentState != "Trinket") GetNode<Sprite2D>("Sprite").Scale = GetGlobalMousePosition().X - GlobalPosition.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+		if (StateMachine.CurrentState != "Trinket") Sprite.Scale = GetGlobalMousePosition().X - GlobalPosition.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
 	public void Heal(float health) {
@@ -78,6 +83,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (Health <= 0) return false;
 
+		if (Knockback.Length() >= 1f) return false;
+
 		if (StateMachine.CurrentState == "Dash") return false;
 
 		return true;
@@ -91,6 +98,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		GameUI.UpdateHealth(Health);
 
 		if (Health <= 0) Die();
+
+		NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
+			Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
+
+			message.AddFloat(knockback.X);
+			message.AddFloat(knockback.Y);
+		});
 	}
 
 	public void Die() {
@@ -145,6 +159,12 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		ZIndex -= 25;
 
 		GetNode<Node2D>("WeaponHolder").ZIndex += 25;
+	}
+
+	private void DamageRpc(Message message) {
+		Knockback = new Vector2(message.GetFloat(), message.GetFloat());
+
+		AnimationPlayer.Play("hurt");
 	}
 
 	private void DieRpc(Message message) {

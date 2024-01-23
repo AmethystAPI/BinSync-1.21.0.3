@@ -10,10 +10,12 @@ public partial class PlayerNormal : State {
   }
 
   public override void PhsysicsUpdate(float delta) {
-    if (_player.Velocity.Length() > 0) {
-      _player.AnimationPlayer.Play("run");
-    } else {
-      _player.AnimationPlayer.Play("idle");
+    if (_player.Knockback.Length() < 3.5f) {
+      if (_player.Velocity.Length() > 3.5f) {
+        _player.AnimationPlayer.Play("run");
+      } else {
+        _player.AnimationPlayer.Play("idle");
+      }
     }
 
     if (!_player.NetworkPoint.IsOwner) return;
@@ -25,7 +27,7 @@ public partial class PlayerNormal : State {
       modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
     }
 
-    _player.Velocity = movement.Normalized() * modifiedSpeed;
+    _player.Velocity = movement.Normalized() * modifiedSpeed + _player.Knockback;
 
     _player.MoveAndSlide();
   }
@@ -36,9 +38,5 @@ public partial class PlayerNormal : State {
     if (!inputEvent.IsActionPressed("dash")) return;
 
     GoToState("Dash");
-  }
-
-  public override void Exit() {
-    _player.AnimationPlayer.Stop();
   }
 }

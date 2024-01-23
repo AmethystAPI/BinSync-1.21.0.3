@@ -128,7 +128,7 @@ namespace Networking {
       GetNode<NetworkPointUser>(path).NetworkPoint.HandleMessage(name, message);
     }
 
-    private void OnMessageRecieved(Object _, MessageReceivedEventArgs eventArguments) {
+    private void OnMessageRecieved(object _, MessageReceivedEventArgs eventArguments) {
       if (eventArguments.MessageId == 1) {
         Message relayMessage = Message.Create(eventArguments.Message.SendMode, 0);
 

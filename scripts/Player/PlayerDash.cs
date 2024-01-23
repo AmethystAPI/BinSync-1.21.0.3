@@ -1,7 +1,6 @@
 using Godot;
 
-public partial class PlayerDash : State
-{
+public partial class PlayerDash : State {
   [Export] public float Duration = 0.06f;
   [Export] public float Speed = 700f;
 
@@ -10,15 +9,15 @@ public partial class PlayerDash : State
   private float _dashTimer = 0;
   private Area2D _ressurectArea;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _player = GetParent().GetParent<Player>();
 
     _ressurectArea = _player.GetNode<Area2D>("RessurectArea");
   }
 
-  public override void Enter()
-  {
+  public override void Enter() {
+    _player.AnimationPlayer.Play("idle");
+
     if (!_player.NetworkPoint.IsOwner) return;
 
     _dashTimer = Duration;
@@ -26,8 +25,7 @@ public partial class PlayerDash : State
     _dashDirection = (_player.GetGlobalMousePosition() - _player.GlobalPosition).Normalized();
   }
 
-  public override void PhsysicsUpdate(float delta)
-  {
+  public override void PhsysicsUpdate(float delta) {
     if (!_player.NetworkPoint.IsOwner) return;
 
     _player.Velocity = _dashDirection * Speed;
@@ -38,8 +36,7 @@ public partial class PlayerDash : State
 
     _player.MoveAndSlide();
 
-    foreach (Node2D body in _ressurectArea.GetOverlappingBodies())
-    {
+    foreach (Node2D body in _ressurectArea.GetOverlappingBodies()) {
       if (!(body is Player)) continue;
 
       if (body == _player) continue;
