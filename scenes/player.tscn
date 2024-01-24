@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=34 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
@@ -13,9 +13,11 @@
 [ext_resource type="Script" path="res://scripts/player/PlayerTrinket.cs" id="6_8jlbs"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="6_i3kc3"]
 [ext_resource type="Script" path="res://scripts/player/PlayerDash.cs" id="6_mtedp"]
+[ext_resource type="Texture2D" uid="uid://k05kj3mpttba" path="res://sprites/player/player_angel_0.tres" id="6_pop7v"]
 [ext_resource type="Texture2D" uid="uid://cvnpfqwk65srl" path="res://sprites/player/player_run_1.tres" id="6_yvcw5"]
 [ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]
 [ext_resource type="Script" path="res://scripts/player/PlayerAngel.cs" id="7_4smh0"]
+[ext_resource type="Texture2D" uid="uid://dlwt3ei7oi0ul" path="res://sprites/player/player_angel_1.tres" id="7_uai0k"]
 [ext_resource type="Texture2D" uid="uid://biixnhfrbq7e4" path="res://sprites/player/player_awe.tres" id="11_5bhdx"]
 [ext_resource type="Texture2D" uid="uid://djqhjx7eksuj5" path="res://sprites/player/player_dash_0.tres" id="12_jajf2"]
 [ext_resource type="Texture2D" uid="uid://cu2duj6ygfox1" path="res://sprites/player/player_dash_1.tres" id="13_ki2cp"]
@@ -71,6 +73,20 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bn6i1"]
 resource_name = "dead"
+length = 0.20001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_pop7v"), ExtResource("7_uai0k")]
+}
 
 [sub_resource type="Animation" id="Animation_opp1b"]
 resource_name = "hurt"
@@ -151,7 +167,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_l7q6x"]
 resource_name = "dash"
 length = 0.333342
-loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -179,7 +194,7 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6m8y"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "WeaponHolder", "TrinketHolder")]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
@@ -187,6 +202,8 @@ platform_on_leave = 2
 script = ExtResource("1_xr8oe")
 DefaultWeaponScene = ExtResource("2_np1rn")
 Sprite = NodePath("SquashAndStretchTarget/Sprite")
+WeaponHolder = NodePath("WeaponHolder")
+TrinketHolder = NodePath("TrinketsHolder")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
 

@@ -10,6 +10,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 	[Export] public PackedScene DefaultWeaponScene;
 	[Export] public Sprite2D Sprite;
+	[Export] public Node2D WeaponHolder;
+	[Export] public Node2D TrinketHolder;
 
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
 	public float Health = 3f;
@@ -20,6 +22,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
+	private NetworkedVariable<Vector2> _networkedFacing = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private Weapon _equippedWeapon;
 
@@ -28,6 +31,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
 		NetworkPoint.Register(nameof(_networkedVelocity), _networkedVelocity);
+		NetworkPoint.Register(nameof(_networkedFacing), _networkedFacing);
 		NetworkPoint.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
 		NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
 		NetworkPoint.Register(nameof(DieRpc), DieRpc);
@@ -54,18 +58,18 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		_networkedPosition.Sync();
 		_networkedVelocity.Sync();
+		_networkedFacing.Sync();
 
 		if (NetworkPoint.IsOwner) {
 			_networkedPosition.Value = GlobalPosition;
 			_networkedVelocity.Value = Velocity;
+			_networkedFacing.Value = GetGlobalMousePosition() - GlobalPosition;
 		} else {
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
 			Velocity = _networkedVelocity.Value;
 		}
 
-		if (!NetworkPoint.IsOwner) return;
-
-		if (StateMachine.CurrentState != "Trinket") Sprite.Scale = GetGlobalMousePosition().X - GlobalPosition.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+		Sprite.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
 	public void Heal(float health) {
@@ -168,6 +172,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	private void DieRpc(Message message) {
+		WeaponHolder.Visible = false;
+		TrinketHolder.Visible = false;
+
 		if (!NetworkPoint.IsOwner) {
 			Health = 0;
 
@@ -210,6 +217,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	private void ReviveRpc(Message message) {
+		WeaponHolder.Visible = true;
+		TrinketHolder.Visible = true;
+
+
 		StateMachine.GoToState("Normal");
 
 		AlivePlayers.Add(this);

@@ -44,6 +44,7 @@ public partial class Trinket : Item {
 	public override void EquipToPlayer(Player player) {
 		base.EquipToPlayer(player);
 
+		Visible = true;
 		Description.Visible = false;
 	}
 }

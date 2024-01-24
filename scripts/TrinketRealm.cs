@@ -62,7 +62,11 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 
 		AddChild(trinket);
 
-		if (NetworkManager.LocalClient.Id != clientId) return;
+		if (NetworkManager.LocalClient.Id != clientId) {
+			trinket.Visible = false;
+
+			return;
+		}
 
 		_localNewTrinket = trinket;
 

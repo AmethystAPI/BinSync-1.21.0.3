@@ -1,11 +1,19 @@
 using Godot;
+using Networking;
+using Riptide;
 
-public partial class PlayerNormal : State {
+public partial class PlayerNormal : State, NetworkPointUser {
   [Export] public float Speed = 100f;
+
+  public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
   private Player _player;
 
   public override void _Ready() {
+    NetworkPoint.Setup(this);
+
+    NetworkPoint.Register(nameof(DashRpc), DashRpc);
+
     _player = GetParent().GetParent<Player>();
   }
 
@@ -38,6 +46,14 @@ public partial class PlayerNormal : State {
     if (!inputEvent.IsActionPressed("dash")) return;
 
     if (!GetState<PlayerDash>("Dash").CanDash()) return;
+
+    NetworkPoint.BounceRpcToClients(nameof(DashRpc));
+
+    GoToState("Dash");
+  }
+
+  private void DashRpc(Message message) {
+    if (NetworkPoint.IsOwner) return;
 
     GoToState("Dash");
   }

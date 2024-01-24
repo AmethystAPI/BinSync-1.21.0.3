@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Trinket Descriptions #code
 
 
 ## In Progress
@@ -16,6 +15,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Trinket Descriptions #code
 - [x] Dash Cooldown #code
 - [x] Player Damage #code
 - [x] Fix Projectiles in Walls #code

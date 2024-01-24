@@ -20,21 +20,22 @@ public partial class PlayerDash : State {
   public override void Enter() {
     _player.AnimationPlayer.Play("dash");
 
-    if (!_player.NetworkPoint.IsOwner) return;
-
     _dashTimer = Duration;
+
+    if (!_player.NetworkPoint.IsOwner) return;
 
     _dashDirection = (_player.GetGlobalMousePosition() - _player.GlobalPosition).Normalized();
   }
 
   public override void PhsysicsUpdate(float delta) {
-    if (!_player.NetworkPoint.IsOwner) return;
-
-    _player.Velocity = _dashDirection * Speed;
 
     _dashTimer -= delta;
 
     if (_dashTimer <= 0) GoToState("Normal");
+
+    if (!_player.NetworkPoint.IsOwner) return;
+
+    _player.Velocity = _dashDirection * Speed;
 
     _player.MoveAndSlide();
 
