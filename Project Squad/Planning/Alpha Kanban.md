@@ -7,17 +7,17 @@ kanban-plugin: basic
 ## To Do
 
 - [ ] Trinket Descriptions #code
-- [ ] Dash Cooldown #code
 
 
 ## In Progress
 
-- [ ] Player Damage #code
+- [ ] Dash Cooldown #code
 
 
 ## Done
 
 **Complete**
+- [x] Player Damage #code
 - [x] Fix Projectiles in Walls #code
 - [x] Polish Strength Trinket #polish
 - [x] Polish Swiftness Trinket #polish

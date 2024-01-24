@@ -3,11 +3,13 @@ using Godot;
 public partial class PlayerDash : State {
   [Export] public float Duration = 0.06f;
   [Export] public float Speed = 700f;
+  [Export] public float Cooldown = 0.2f;
 
   private Player _player;
   private Vector2 _dashDirection;
   private float _dashTimer = 0;
   private Area2D _ressurectArea;
+  private float _cooldownTimer;
 
   public override void _Ready() {
     _player = GetParent().GetParent<Player>();
@@ -16,7 +18,7 @@ public partial class PlayerDash : State {
   }
 
   public override void Enter() {
-    _player.AnimationPlayer.Play("idle");
+    _player.AnimationPlayer.Play("dash");
 
     if (!_player.NetworkPoint.IsOwner) return;
 
@@ -49,5 +51,17 @@ public partial class PlayerDash : State {
 
       break;
     }
+  }
+
+  public override void Exit() {
+    _cooldownTimer = Cooldown;
+  }
+
+  public override void _Process(double delta) {
+    _cooldownTimer -= (float)delta;
+  }
+
+  public bool CanDash() {
+    return _cooldownTimer <= 0;
   }
 }

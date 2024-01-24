@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=32 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
@@ -17,9 +17,57 @@
 [ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]
 [ext_resource type="Script" path="res://scripts/player/PlayerAngel.cs" id="7_4smh0"]
 [ext_resource type="Texture2D" uid="uid://biixnhfrbq7e4" path="res://sprites/player/player_awe.tres" id="11_5bhdx"]
+[ext_resource type="Texture2D" uid="uid://djqhjx7eksuj5" path="res://sprites/player/player_dash_0.tres" id="12_jajf2"]
+[ext_resource type="Texture2D" uid="uid://cu2duj6ygfox1" path="res://sprites/player/player_dash_1.tres" id="13_ki2cp"]
+[ext_resource type="Texture2D" uid="uid://bdfn43qj4qm6t" path="res://sprites/player/player_dash_2.tres" id="14_7d7w5"]
+[ext_resource type="Texture2D" uid="uid://dr82muqjgt7lt" path="res://sprites/player/player_dash_3.tres" id="15_4agxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypp2t"]
 size = Vector2(7, 4)
+
+[sub_resource type="Animation" id="Animation_8v0u0"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_n1urs")]
+}
+
+[sub_resource type="Animation" id="Animation_8ip8h"]
+resource_name = "awe"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_5bhdx")]
+}
 
 [sub_resource type="Animation" id="Animation_bn6i1"]
 resource_name = "dead"
@@ -100,37 +148,11 @@ tracks/0/keys = {
 "values": [ExtResource("5_wli2m"), ExtResource("6_yvcw5"), ExtResource("3_2g3ik"), ExtResource("7_0cf8b")]
 }
 
-[sub_resource type="Animation" id="Animation_8v0u0"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SquashAndStretchTarget/Sprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_n1urs")]
-}
-
-[sub_resource type="Animation" id="Animation_8ip8h"]
-resource_name = "awe"
-length = 0.001
+[sub_resource type="Animation" id="Animation_l7q6x"]
+resource_name = "dash"
+length = 0.333342
+loop_mode = 1
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -138,16 +160,17 @@ tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("11_5bhdx")]
+"values": [ExtResource("12_jajf2"), ExtResource("13_ki2cp"), ExtResource("14_7d7w5"), ExtResource("15_4agxc")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74xub"]
 _data = {
 "RESET": SubResource("Animation_8v0u0"),
 "awe": SubResource("Animation_8ip8h"),
+"dash": SubResource("Animation_l7q6x"),
 "dead": SubResource("Animation_bn6i1"),
 "hurt": SubResource("Animation_opp1b"),
 "idle": SubResource("Animation_2htce"),
@@ -221,8 +244,9 @@ AnimationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("6_mtedp")
-Duration = 0.1
-Speed = 450.0
+Duration = 0.333
+Speed = 200.0
+Cooldown = 0.4
 
 [node name="Angel" type="Node" parent="StateMachine"]
 script = ExtResource("7_4smh0")

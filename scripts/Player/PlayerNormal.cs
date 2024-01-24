@@ -37,6 +37,8 @@ public partial class PlayerNormal : State {
 
     if (!inputEvent.IsActionPressed("dash")) return;
 
+    if (!GetState<PlayerDash>("Dash").CanDash()) return;
+
     GoToState("Dash");
   }
 }

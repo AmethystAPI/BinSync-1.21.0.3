@@ -5,6 +5,10 @@ public partial class State : Node {
     GetParent<StateMachine>().GoToState(name);
   }
 
+  public StateType GetState<StateType>(string name) where StateType : State {
+    return GetParent<StateMachine>().GetState<StateType>(name);
+  }
+
   public virtual void Enter() {
 
   }
