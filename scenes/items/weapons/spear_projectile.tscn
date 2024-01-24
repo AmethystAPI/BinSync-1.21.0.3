@@ -1,27 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://isshtmwf2yet"]
+[gd_scene load_steps=8 format=3 uid="uid://isshtmwf2yet"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_1r21i"]
-[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_gv51f"]
+[ext_resource type="Texture2D" uid="uid://bmyewggtsn5jv" path="res://sprites/projectiles/spear/projectile_spear_0.tres" id="2_6ia33"]
+[ext_resource type="Texture2D" uid="uid://yxalgm3vgxs1" path="res://sprites/projectiles/spear/projectile_spear_1.tres" id="3_w7264"]
+[ext_resource type="Texture2D" uid="uid://naj7mtu1skke" path="res://sprites/projectiles/spear/projectile_spear_2.tres" id="4_0lbyf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(10, 3)
+
+[sub_resource type="Animation" id="Animation_lxkvg"]
+resource_name = "projectile_spear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_6ia33"), ExtResource("3_w7264"), ExtResource("4_0lbyf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88gx8"]
+_data = {
+"projectile_spear": SubResource("Animation_lxkvg")
+}
 
 [node name="SpearProjectile" type="Node2D"]
 script = ExtResource("1_1r21i")
 Damage = 0.8
 Speed = 400.0
-Resistance = 8.0
-Lifetime = 0.25
+Resistance = 7.5
+Lifetime = 0.3
 Pierce = true
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gv51f")
-region_enabled = true
+texture = ExtResource("2_6ia33")
 region_rect = Rect2(71, 44, 14, 7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_88gx8")
+}
+autoplay = "projectile_spear"

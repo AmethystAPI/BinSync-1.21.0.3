@@ -3,7 +3,8 @@ using Networking;
 using Riptide;
 using System.Collections.Generic;
 
-public partial class Game : Node2D, NetworkPointUser {
+public partial class Game : Node2D, NetworkPointUser
+{
 	public static uint Seed;
 	public static float Difficulty;
 
@@ -19,7 +20,8 @@ public partial class Game : Node2D, NetworkPointUser {
 	private int _roomsTilTrinket;
 	private int _roomsTilLoot;
 
-	public override void _Ready() {
+	public override void _Ready()
+	{
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(StartRpc), StartRpc);
@@ -29,8 +31,9 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
-			if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
+		NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) =>
+		{
+			// if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
 
 			Start();
 		};
@@ -38,13 +41,15 @@ public partial class Game : Node2D, NetworkPointUser {
 		if (!NetworkManager.Host()) NetworkManager.Join("127.0.0.1");
 	}
 
-	public static void Start() {
+	public static void Start()
+	{
 		s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
 		s_Me._roomsTilLoot = s_Me.LootRoomInterval;
 
 		List<int> clientIds = new List<int>();
 
-		foreach (Connection connection in NetworkManager.LocalServer.Clients) {
+		foreach (Connection connection in NetworkManager.LocalServer.Clients)
+		{
 			clientIds.Add(connection.Id);
 		}
 
@@ -52,24 +57,28 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		Difficulty = clientIds.Count;
 
-		s_Me.NetworkPoint.SendRpcToClients(nameof(StartRpc), message => {
+		s_Me.NetworkPoint.SendRpcToClients(nameof(StartRpc), message =>
+		{
 			message.AddInts(clientIds.ToArray());
 		});
 	}
 
-	public static void Restart() {
+	public static void Restart()
+	{
 		s_Me.NetworkPoint.SendRpcToClients(nameof(CleanupRpc));
 
 		Start();
 	}
 
-	public static void CompletedRoom() {
+	public static void CompletedRoom()
+	{
 		if (!NetworkManager.IsHost) return;
 
 		s_Me._roomsTilTrinket--;
 		s_Me._roomsTilLoot--;
 
-		if (s_Me._roomsTilTrinket <= 0) {
+		if (s_Me._roomsTilTrinket <= 0)
+		{
 			TrinketRealm.EnterTrinketRealm();
 
 			s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
@@ -77,7 +86,8 @@ public partial class Game : Node2D, NetworkPointUser {
 			if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = 1;
 		}
 
-		if (s_Me._roomsTilLoot <= 0) {
+		if (s_Me._roomsTilLoot <= 0)
+		{
 			WorldGenerator.SpawnLoot();
 
 			s_Me._roomsTilLoot = s_Me.LootRoomInterval;
@@ -86,20 +96,24 @@ public partial class Game : Node2D, NetworkPointUser {
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 	}
 
-	private void StartRpc(Message message) {
+	private void StartRpc(Message message)
+	{
 		int[] clientIds = message.GetInts();
 
 		_worldGenerator.Start();
 
-		foreach (int clientId in clientIds) {
+		foreach (int clientId in clientIds)
+		{
 			Player player = NetworkManager.SpawnNetworkSafe<Player>(PlayerScene, "Player", clientId);
 
 			AddChild(player);
 		}
 	}
 
-	private void CleanupRpc(Message message) {
-		while (Player.Players.Count > 0) {
+	private void CleanupRpc(Message message)
+	{
+		while (Player.Players.Count > 0)
+		{
 			Player.Players[0].Cleanup();
 		}
 

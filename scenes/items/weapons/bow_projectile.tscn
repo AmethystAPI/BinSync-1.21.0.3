@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pdger2vckwas"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_aoj88"]
-[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/projectiles.aseprite" id="2_sp1rd"]
+[ext_resource type="Texture2D" uid="uid://d3s7j5ulws1db" path="res://sprites/projectiles/bow/projectile_bow.tres" id="2_nalb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(9, 5)
@@ -20,6 +20,5 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_sp1rd")
-region_enabled = true
+texture = ExtResource("2_nalb4")
 region_rect = Rect2(39, 44, 14, 7)
