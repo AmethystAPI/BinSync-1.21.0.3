@@ -11,12 +11,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Dash Cooldown #code
 
 
 ## Done
 
 **Complete**
+- [x] Dash Cooldown #code
 - [x] Player Damage #code
 - [x] Fix Projectiles in Walls #code
 - [x] Polish Strength Trinket #polish

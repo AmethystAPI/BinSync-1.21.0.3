@@ -2,6 +2,8 @@ using Godot;
 using Networking;
 
 public partial class Trinket : Item {
+	[Export] public Label Description;
+
 	private bool _animatingToPlayer = false;
 	private Player _playerAnimatingTo;
 
@@ -37,5 +39,11 @@ public partial class Trinket : Item {
 
 		_animatingToPlayer = true;
 		_playerAnimatingTo = player;
+	}
+
+	public override void EquipToPlayer(Player player) {
+		base.EquipToPlayer(player);
+
+		Description.Visible = false;
 	}
 }

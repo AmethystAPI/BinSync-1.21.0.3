@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2ch8e83mu0et"]
+[gd_scene load_steps=4 format=3 uid="uid://c2ch8e83mu0et"]
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/SwiftnessTrinket.cs" id="1_omt5b"]
 [ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/trinkets/trinket_swiftness.tres" id="2_3ic87"]
+[ext_resource type="FontFile" uid="uid://cmsbkosa0vclu" path="res://Kenney Mini Square.ttf" id="3_cvtit"]
 
-[node name="SwiftnessTrinket" type="Node2D"]
+[node name="SwiftnessTrinket" type="Node2D" node_paths=PackedStringArray("Description")]
 script = ExtResource("1_omt5b")
+Description = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3ic87")
 offset = Vector2(0, -6)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -18.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 47.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_cvtit")
+text = "Hephestus Gives
+You Speed"
+horizontal_alignment = 1
