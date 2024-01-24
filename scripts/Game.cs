@@ -6,16 +6,18 @@ using System.Collections.Generic;
 public partial class Game : Node2D, NetworkPointUser {
 	public static uint Seed;
 	public static float Difficulty;
-	public static int RoomsTilTrinket;
 
 	private static Game s_Me;
 
 	[Export] public PackedScene PlayerScene;
 	[Export] public int TrinketRoomInterval = 5;
+	[Export] public int LootRoomInterval = 7;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private WorldGenerator _worldGenerator;
+	private int _roomsTilTrinket;
+	private int _roomsTilLoot;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -37,7 +39,8 @@ public partial class Game : Node2D, NetworkPointUser {
 	}
 
 	public static void Start() {
-		RoomsTilTrinket = s_Me.TrinketRoomInterval;
+		s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
+		s_Me._roomsTilLoot = s_Me.LootRoomInterval;
 
 		List<int> clientIds = new List<int>();
 
@@ -63,12 +66,21 @@ public partial class Game : Node2D, NetworkPointUser {
 	public static void CompletedRoom() {
 		if (!NetworkManager.IsHost) return;
 
-		RoomsTilTrinket--;
+		s_Me._roomsTilTrinket--;
+		s_Me._roomsTilLoot--;
 
-		if (RoomsTilTrinket <= 0) {
+		if (s_Me._roomsTilTrinket <= 0) {
 			TrinketRealm.EnterTrinketRealm();
 
-			RoomsTilTrinket = s_Me.TrinketRoomInterval;
+			s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
+
+			if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = 1;
+		}
+
+		if (s_Me._roomsTilLoot <= 0) {
+			WorldGenerator.SpawnLoot();
+
+			s_Me._roomsTilLoot = s_Me.LootRoomInterval;
 		}
 
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;

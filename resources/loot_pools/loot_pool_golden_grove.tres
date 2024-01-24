@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://btuna1bpi61i2"]
+
+[ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="1_2hvae"]
+[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="2_gs88a"]
+[ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="3_l4bl2"]
+[ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="4_66pfd"]
+[ext_resource type="Script" path="res://scripts/rooms/LootPool.cs" id="5_ms816"]
+
+[resource]
+script = ExtResource("5_ms816")
+LootScenes = Array[PackedScene]([ExtResource("1_2hvae"), ExtResource("2_gs88a"), ExtResource("3_l4bl2"), ExtResource("4_66pfd")])

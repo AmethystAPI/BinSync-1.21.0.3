@@ -8,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaem"]
 
 [node name="Hammer" type="Node2D"]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ow422")
 ProjectileScene = ExtResource("2_cv6x1")

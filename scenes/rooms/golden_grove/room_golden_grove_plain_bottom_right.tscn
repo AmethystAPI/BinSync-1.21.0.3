@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdndejj6gohd7"]
+[gd_scene load_steps=7 format=3 uid="uid://bdndejj6gohd7"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_sguo7"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_3qff0"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="3_73iui"]
+[ext_resource type="Resource" uid="uid://btuna1bpi61i2" path="res://resources/loot_pools/loot_pool_golden_grove.tres" id="3_kftrl"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="4_705p7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
@@ -12,6 +13,7 @@ size = Vector2(207, 234)
 y_sort_enabled = true
 script = ExtResource("1_sguo7")
 EnemyPool = ExtResource("2_3qff0")
+LootPool = ExtResource("3_kftrl")
 SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4"), NodePath("SpawnPoints/Point5")]
 Connections = [NodePath("Connections/Right"), NodePath("Connections/Down")]
 ConnectionDirections = PackedVector2Array(1, 0, 0, 1)
@@ -368,6 +370,7 @@ region_enabled = true
 region_rect = Rect2(124, 112, 8, 4)
 
 [node name="ActivateArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(10.5, -6)

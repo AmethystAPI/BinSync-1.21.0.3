@@ -1,10 +1,12 @@
 using Godot;
 using Networking;
 using Riptide;
+using System;
 using System.Linq;
 
 public partial class Room : Node2D, NetworkPointUser {
 	[Export] public EnemyPool EnemyPool;
+	[Export] public LootPool LootPool;
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
@@ -23,6 +25,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
+		NetworkPoint.Register(nameof(SpawnLootRpc), SpawnLootRpc);
 
 		if (ActivateArea != null) ActivateArea.BodyEntered += BodyEnteredActivateArea;
 	}
@@ -62,6 +65,19 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	public virtual void PlaceExit(Vector2 direction) {
 		_exitDirection = direction;
+	}
+
+	public void SpawnLoot() {
+		if (SpawnPoints.Length == 0) return;
+
+		Node2D spawnPoint = SpawnPoints[new RandomNumberGenerator().RandiRange(0, SpawnPoints.Length - 1)];
+
+		NetworkPoint.SendRpcToClients(nameof(SpawnLootRpc), message => {
+			message.AddFloat(spawnPoint.GlobalPosition.X);
+			message.AddFloat(spawnPoint.GlobalPosition.Y);
+
+			message.AddInt(new RandomNumberGenerator().RandiRange(0, LootPool.LootScenes.Length - 1));
+		});
 	}
 
 	private void BodyEnteredActivateArea(Node2D body) {
@@ -104,6 +120,17 @@ public partial class Room : Node2D, NetworkPointUser {
 		AddChild(enemy);
 
 		enemy.GlobalPosition = position;
+	}
+
+	private void SpawnLootRpc(Message message) {
+		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
+		int lootSceneIndex = message.GetInt();
+
+		Node2D loot = NetworkManager.SpawnNetworkSafe<Node2D>(LootPool.LootScenes[lootSceneIndex], "Loot");
+
+		AddChild(loot);
+
+		loot.GlobalPosition = position;
 	}
 
 	protected void Complete() {

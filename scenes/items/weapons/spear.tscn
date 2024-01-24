@@ -7,6 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
 
 [node name="Spear" type="Node2D"]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_i77oo")
 ProjectileScene = ExtResource("2_1bn4l")
@@ -19,7 +20,7 @@ rotation = 1.5708
 texture = ExtResource("3_s4lk4")
 offset = Vector2(0, -4)
 region_enabled = true
-region_rect = Rect2(20, 0, 6, 16)
+region_rect = Rect2(20, 8, 7, 16)
 
 [node name="EquipArea" type="Area2D" parent="."]
 

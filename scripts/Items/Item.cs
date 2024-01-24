@@ -12,6 +12,8 @@ public partial class Item : Node2D, NetworkPointUser {
   }
 
   public virtual void EquipToPlayer(Player player) {
+    Position = Vector2.Zero;
+
     _equipped = true;
     _equippingPlayer = player;
   }

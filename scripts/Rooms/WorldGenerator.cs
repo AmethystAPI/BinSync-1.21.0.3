@@ -81,6 +81,10 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 		});
 	}
 
+	public static void SpawnLoot() {
+		s_Me._currentRoom.SpawnLoot();
+	}
+
 	private void PlaceNextRoomRpc(Message message) {
 		Vector2 connectionPosition = new Vector2(message.GetFloat(), message.GetFloat());
 		Vector2 direction = new Vector2(message.GetFloat(), message.GetFloat());

@@ -44,6 +44,7 @@ y_sort_enabled = true
 script = ExtResource("1_sq6vk")
 PlayerScene = ExtResource("2_nxqs3")
 TrinketRoomInterval = 20
+LootRoomInterval = 1
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("3_ix04k")
