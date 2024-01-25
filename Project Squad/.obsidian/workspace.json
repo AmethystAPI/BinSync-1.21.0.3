@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "dba1923615fb4986",
+        "id": "1a9937430a154e52",
         "type": "tabs",
         "children": [
           {
-            "id": "71bea1026302501c",
+            "id": "cb73d6d94ede4eee",
             "type": "leaf",
             "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Planning/Alpha Kanban.md"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -83,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Planning/Alpha Kanban.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -144,17 +138,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "71bea1026302501c",
+  "active": "cb73d6d94ede4eee",
   "lastOpenFiles": [
-    "Planning/Pre Alpha Kanban.md",
+    "Daily Notes/Day 18-19.md",
+    "Daily Notes/Day 18-20.md",
+    "Daily Notes/Day 18-18.md",
+    "Daily Notes/Day 18-17.md",
+    "Daily Notes/Day 18-16.md",
     "Daily Notes/Day 18-15.md",
+    "Daily Notes/Day 18-14.md",
     "Planning/Alpha Kanban.md",
+    "Planning/Pre Alpha Kanban.md",
     "Planning/Alpha.md",
     "Reference/General.canvas",
     "Design/Weapons.md",
     "Attachments/Pasted image 20240115170646.png.import",
     "Design/Trinkets.md",
-    "Daily Notes/Day 18-14.md",
     "Attachments/Pasted image 20240115170646.png",
     "Daily Notes/Day 18-12.md",
     "Daily Notes/Day 18-13.md",
@@ -188,10 +187,6 @@
     "Daily Notes/Day 18-7.md",
     "Reference/Locations/Golden Grove.canvas",
     "Implementation/Combat.md",
-    "Daily Notes/Day 18-5.md",
-    "Daily Notes/Day 18-6.md",
-    "Daily Notes/Day 18-4.md",
-    "Daily Notes/Day 18-3.md",
-    "Daily Notes/Day 18-2.md"
+    "Daily Notes/Day 18-5.md"
   ]
 }
