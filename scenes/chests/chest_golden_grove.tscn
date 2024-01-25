@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1c6lubkdxjhm"]
+
+[ext_resource type="Script" path="res://scripts/Chest.cs" id="1_5undn"]
+[ext_resource type="Texture2D" uid="uid://dfo1k4hxs5cth" path="res://sprites/chest/chest.tres" id="1_qbi1v"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="2_m65vl"]
+[ext_resource type="Texture2D" uid="uid://cw16qhomhqidq" path="res://sprites/chest/chest_open.tres" id="2_soava"]
+[ext_resource type="Resource" uid="uid://btuna1bpi61i2" path="res://resources/loot_pools/loot_pool_golden_grove.tres" id="2_wca7x"]
+[ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player.aseprite" id="5_7ifp7"]
+
+[sub_resource type="Animation" id="Animation_8rog8"]
+resource_name = "open"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_soava")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OpenSquashAndStretch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_phugg"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_qbi1v")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr6wg"]
+_data = {
+"RESET": SubResource("Animation_phugg"),
+"open": SubResource("Animation_8rog8")
+}
+
+[node name="ChestGoldenGrove" type="Node2D" node_paths=PackedStringArray("AnimationPlayer")]
+y_sort_enabled = true
+script = ExtResource("1_5undn")
+LootPool = ExtResource("2_wca7x")
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qbi1v")
+offset = Vector2(0, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mr6wg")
+}
+
+[node name="OpenSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("2_m65vl")
+Target = NodePath("../Sprite2D")
+Scale = Vector2(1.4, 0.8)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -6
+position = Vector2(0, 1)
+texture = ExtResource("5_7ifp7")
+region_enabled = true
+region_rect = Rect2(226, 26, 12, 6)

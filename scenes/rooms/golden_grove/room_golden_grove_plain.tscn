@@ -2,18 +2,19 @@
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_itp1v"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_6g3d5"]
-[ext_resource type="Resource" uid="uid://btuna1bpi61i2" path="res://resources/loot_pools/loot_pool_golden_grove.tres" id="3_1amn3"]
+[ext_resource type="PackedScene" uid="uid://d1c6lubkdxjhm" path="res://scenes/chests/chest_golden_grove.tscn" id="3_ssmil"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_plwlf"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_tulgd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(160, 246)
 
-[node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("SpawnPoints", "Connections", "ActivateArea", "BarrierTilemap") groups=["Rooms"]]
+[node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("LootChestSpawn", "SpawnPoints", "Connections", "ActivateArea", "BarrierTilemap") groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_itp1v")
 EnemyPool = ExtResource("2_6g3d5")
-LootPool = ExtResource("3_1amn3")
+LootChestScene = ExtResource("3_ssmil")
+LootChestSpawn = NodePath("LootChestSpawn")
 SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4"), NodePath("SpawnPoints/Point5")]
 Connections = [NodePath("Connections/Up"), NodePath("Connections/Down")]
 ConnectionDirections = PackedVector2Array(0, -1, 0, 1)
@@ -476,3 +477,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(-1, -12)
 shape = SubResource("RectangleShape2D_7bjp7")
+
+[node name="LootChestSpawn" type="Node2D" parent="."]
+position = Vector2(0, -64)

@@ -1,12 +1,12 @@
 using Godot;
 using Networking;
 using Riptide;
-using System;
 using System.Linq;
 
 public partial class Room : Node2D, NetworkPointUser {
 	[Export] public EnemyPool EnemyPool;
-	[Export] public LootPool LootPool;
+	[Export] public PackedScene LootChestScene;
+	[Export] public Node2D LootChestSpawn;
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
@@ -19,15 +19,22 @@ public partial class Room : Node2D, NetworkPointUser {
 	private int _aliveEnemies = 0;
 	private Vector2 _exitDirection;
 	private bool _completed;
+	private Chest _chest;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
-		NetworkPoint.Register(nameof(SpawnLootRpc), SpawnLootRpc);
+		NetworkPoint.Register(nameof(SpawnChestRpc), SpawnChestRpc);
 
 		if (ActivateArea != null) ActivateArea.BodyEntered += BodyEnteredActivateArea;
+
+		if (LootChestSpawn == null) return;
+
+		if (!Game.ShouldSpawnLootRoom()) return;
+
+		NetworkPoint.SendRpcToClients(nameof(SpawnChestRpc));
 	}
 
 	public override void _Process(double delta) {
@@ -65,19 +72,6 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	public virtual void PlaceExit(Vector2 direction) {
 		_exitDirection = direction;
-	}
-
-	public void SpawnLoot() {
-		if (SpawnPoints.Length == 0) return;
-
-		Node2D spawnPoint = SpawnPoints[new RandomNumberGenerator().RandiRange(0, SpawnPoints.Length - 1)];
-
-		NetworkPoint.SendRpcToClients(nameof(SpawnLootRpc), message => {
-			message.AddFloat(spawnPoint.GlobalPosition.X);
-			message.AddFloat(spawnPoint.GlobalPosition.Y);
-
-			message.AddInt(new RandomNumberGenerator().RandiRange(0, LootPool.LootScenes.Length - 1));
-		});
 	}
 
 	private void BodyEnteredActivateArea(Node2D body) {
@@ -122,21 +116,12 @@ public partial class Room : Node2D, NetworkPointUser {
 		enemy.GlobalPosition = position;
 	}
 
-	private void SpawnLootRpc(Message message) {
-		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
-		int lootSceneIndex = message.GetInt();
-
-		Node2D loot = NetworkManager.SpawnNetworkSafe<Node2D>(LootPool.LootScenes[lootSceneIndex], "Loot");
-
-		AddChild(loot);
-
-		loot.GlobalPosition = position;
-	}
-
 	protected void Complete() {
 		if (!NetworkManager.IsHost) return;
 
 		_completed = true;
+
+		if (_chest != null) _chest.Open();
 
 		Game.CompletedRoom();
 
@@ -153,5 +138,13 @@ public partial class Room : Node2D, NetworkPointUser {
 		Delay.Execute(0.5f, () => {
 			BarrierTilemap.SetLayerEnabled(0, false);
 		});
+	}
+
+	private void SpawnChestRpc(Message message) {
+		_chest = NetworkManager.SpawnNetworkSafe<Chest>(LootChestScene, "Chest");
+
+		AddChild(_chest);
+
+		_chest.GlobalPosition = LootChestSpawn.GlobalPosition;
 	}
 }
