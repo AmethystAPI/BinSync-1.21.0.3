@@ -70,8 +70,6 @@ public partial class Game : Node2D, NetworkPointUser {
 		s_Me._roomsTilLoot--;
 
 		if (s_Me._roomsTilTrinket <= 0) {
-			TrinketRealm.EnterTrinketRealm();
-
 			s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
 
 			if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = 1;
@@ -80,6 +78,10 @@ public partial class Game : Node2D, NetworkPointUser {
 		if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = s_Me.LootRoomInterval;
 
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
+	}
+
+	public static bool ShouldSpawnAltar() {
+		return s_Me._roomsTilTrinket == 1;
 	}
 
 	public static bool ShouldSpawnLootRoom() {

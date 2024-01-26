@@ -7,6 +7,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	[Export] public EnemyPool EnemyPool;
 	[Export] public PackedScene LootChestScene;
 	[Export] public Node2D LootChestSpawn;
+	[Export] public Node2D AltarSpawn;
 	[Export] public Node2D[] SpawnPoints;
 	[Export] public Node2D[] Connections;
 	[Export] public Vector2[] ConnectionDirections;
@@ -20,6 +21,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	private Vector2 _exitDirection;
 	private bool _completed;
 	private Chest _chest;
+	private Altar _altar;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -27,14 +29,15 @@ public partial class Room : Node2D, NetworkPointUser {
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
 		NetworkPoint.Register(nameof(SpawnChestRpc), SpawnChestRpc);
+		NetworkPoint.Register(nameof(SpawnAltarRpc), SpawnAltarRpc);
 
 		if (ActivateArea != null) ActivateArea.BodyEntered += BodyEnteredActivateArea;
 
-		if (LootChestSpawn == null) return;
+		if (!NetworkManager.IsHost) return;
 
-		if (!Game.ShouldSpawnLootRoom()) return;
+		if (LootChestSpawn != null && Game.ShouldSpawnLootRoom()) NetworkPoint.SendRpcToClients(nameof(SpawnChestRpc));
 
-		NetworkPoint.SendRpcToClients(nameof(SpawnChestRpc));
+		if (AltarSpawn != null && Game.ShouldSpawnAltar()) NetworkPoint.SendRpcToClients(nameof(SpawnAltarRpc));
 	}
 
 	public override void _Process(double delta) {
@@ -122,6 +125,7 @@ public partial class Room : Node2D, NetworkPointUser {
 		_completed = true;
 
 		if (_chest != null) _chest.Open();
+		if (_altar != null) _altar.Activate();
 
 		Game.CompletedRoom();
 
@@ -146,5 +150,13 @@ public partial class Room : Node2D, NetworkPointUser {
 		AddChild(_chest);
 
 		_chest.GlobalPosition = LootChestSpawn.GlobalPosition;
+	}
+
+	private void SpawnAltarRpc(Message message) {
+		_altar = NetworkManager.SpawnNetworkSafe<Altar>(ResourceLoader.Load<PackedScene>("scenes/altar.tscn"), "Altar");
+
+		AddChild(_altar);
+
+		_altar.GlobalPosition = AltarSpawn.GlobalPosition;
 	}
 }

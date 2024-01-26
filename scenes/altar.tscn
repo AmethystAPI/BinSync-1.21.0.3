@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxbvcafv66x8o"]
+
+[ext_resource type="Script" path="res://scripts/Altar.cs" id="1_agydh"]
+[ext_resource type="Texture2D" uid="uid://da2ersq78k35r" path="res://sprites/altar/altar.tres" id="2_uc1wc"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="3_a3dw8"]
+[ext_resource type="Texture2D" uid="uid://cgr6vph3adonm" path="res://sprites/altar/altar_activated.tres" id="3_nnu1l"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="4_kgwns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im473"]
+
+[node name="Altar" type="Node2D" node_paths=PackedStringArray("ActivateSquashAndStretch")]
+y_sort_enabled = true
+position = Vector2(0, -57)
+script = ExtResource("1_agydh")
+ActivateSquashAndStretch = NodePath("ActivateSquashAndStretch")
+DeactivatedTexture = ExtResource("2_uc1wc")
+ActivatedTexture = ExtResource("3_nnu1l")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_uc1wc")
+offset = Vector2(0, -13)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(0, 9)
+texture = ExtResource("3_a3dw8")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(94, 109, 22, 10)
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_im473")
+
+[node name="ActivateSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("4_kgwns")
+Target = NodePath("../Sprite")
+Scale = Vector2(0.6, 1.4)
+Speed = 10.0

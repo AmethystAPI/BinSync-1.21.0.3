@@ -9,12 +9,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(216, 255)
 
-[node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("LootChestSpawn", "SpawnPoints", "Connections", "ActivateArea", "BarrierTilemap") groups=["Rooms"]]
+[node name="GoldenGroveRoomPlain" type="Node2D" node_paths=PackedStringArray("LootChestSpawn", "AltarSpawn", "SpawnPoints", "Connections", "ActivateArea", "BarrierTilemap") groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_gi6ca")
 EnemyPool = ExtResource("2_pt1k3")
 LootChestScene = ExtResource("3_anbw8")
 LootChestSpawn = NodePath("LootChestSpawn")
+AltarSpawn = NodePath("AltarSpawn")
 SpawnPoints = [NodePath("SpawnPoints/Point1"), NodePath("SpawnPoints/Point2"), NodePath("SpawnPoints/Point3"), NodePath("SpawnPoints/Point4"), NodePath("SpawnPoints/Point5")]
 Connections = [NodePath("Connections/Up"), NodePath("Connections/Right")]
 ConnectionDirections = PackedVector2Array(0, -1, 1, 0)
@@ -479,4 +480,7 @@ position = Vector2(27, -7.5)
 shape = SubResource("RectangleShape2D_7bjp7")
 
 [node name="LootChestSpawn" type="Node2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="AltarSpawn" type="Node2D" parent="."]
 position = Vector2(0, -64)
