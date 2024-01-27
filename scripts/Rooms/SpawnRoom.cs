@@ -2,21 +2,8 @@ using Godot;
 using Riptide;
 
 public partial class SpawnRoom : Room {
-	public override void PlaceEntrance(Vector2 direction) { }
-
+	public override void _Ready() {
+		base._Ready();
+	}
 	protected override void EndRpc(Message message) { }
-
-	public override void Place() {
-		base.Place();
-
-		CallDeferred(nameof(ImmediateEnd));
-	}
-
-	private void ImmediateEnd() {
-		float originalDifficulty = Game.Difficulty;
-
-		Complete();
-
-		Game.Difficulty = originalDifficulty;
-	}
 }

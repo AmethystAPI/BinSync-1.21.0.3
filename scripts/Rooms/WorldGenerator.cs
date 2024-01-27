@@ -13,15 +13,14 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private RandomNumberGenerator _randomNumberGenerator;
-	private Room _currentRoom;
-	private Room _lastRoom;
+	private List<Room> _rooms = new List<Room>();
 
 	public override void _Ready() {
 		s_Me = this;
 
 		NetworkPoint.Setup(this);
 
-		NetworkPoint.Register(nameof(PlaceNextRoomRpc), PlaceNextRoomRpc);
+		NetworkPoint.Register(nameof(PlaceRoomRpc), PlaceRoomRpc);
 	}
 
 	public void Start() {
@@ -29,62 +28,52 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			Seed = Game.Seed
 		};
 
-		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomPlacer.RoomScene, "SpawnRoom");
+		Game.NextRooms = new List<Room>();
 
-		AddChild(spawnRoom);
+		PlaceSpawnRoom();
 
-		_currentRoom = spawnRoom;
+		if (!NetworkManager.IsHost) return;
 
-		_currentRoom.Place();
-
-		_currentRoom.PlaceExit(Vector2.Up);
+		PlaceRoom();
 	}
 
 	public void Cleanup() {
 		foreach (Node node in GetTree().GetNodesInGroup("Rooms")) {
 			node.QueueFree();
 		}
-
-		_currentRoom = null;
 	}
 
-	public static void PlaceNextRoom(Vector2 connectionPosition, Vector2 direction) {
+	private void PlaceSpawnRoom() {
+		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomPlacer.RoomScene, "SpawnRoom");
+
+		AddChild(spawnRoom);
+
+		_rooms.Add(spawnRoom);
+
+		spawnRoom.Place();
+	}
+
+	public static void PlaceRoom() {
 		if (!NetworkManager.IsHost) return;
 
-		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceNextRoomRpc), message => {
-			message.AddFloat(connectionPosition.X);
-			message.AddFloat(connectionPosition.Y);
+		Room _lastRoom = s_Me._rooms[s_Me._rooms.Count - 1];
 
-			message.AddFloat(direction.X);
-			message.AddFloat(direction.Y);
+		RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
+			if (!placer.CanConnectTo(_lastRoom.ExitDirection)) return false;
 
-			RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
-				if (!placer.CanConnectTo(direction)) return false;
+			if (_lastRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up) && placer.GetDirections().Count == 2) return false;
 
-				if (direction != Vector2.Up && placer.CanConnectTo(Vector2.Up) && placer.GetDirections().Count == 2) return false;
+			return true;
+		}).ToArray();
 
-				return true;
-			}).ToArray();
+		RoomPlacer roomPlacer = validRoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 
-			RoomPlacer roomPlacer = validRoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
-
+		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceRoomRpc), message => {
 			message.AddString(roomPlacer.ResourcePath);
-
-			List<Vector2> possibleExitDirections = roomPlacer.GetDirections();
-
-			if (possibleExitDirections.Contains(-direction)) possibleExitDirections.Remove(-direction);
-
-			Vector2 exitDirection = possibleExitDirections[s_Me._randomNumberGenerator.RandiRange(0, possibleExitDirections.Count - 1)];
-
-			message.AddFloat(exitDirection.X);
-			message.AddFloat(exitDirection.Y);
 		});
 	}
 
-	private void PlaceNextRoomRpc(Message message) {
-		Vector2 connectionPosition = new Vector2(message.GetFloat(), message.GetFloat());
-		Vector2 direction = new Vector2(message.GetFloat(), message.GetFloat());
-
+	private void PlaceRoomRpc(Message message) {
 		string roomPlacerPath = message.GetString();
 		RoomPlacer roomPlacer = ResourceLoader.Load<RoomPlacer>(roomPlacerPath);
 
@@ -92,20 +81,18 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 		AddChild(room);
 
-		_currentRoom = room;
+		Room _lastRoom = _rooms[_rooms.Count - 1];
 
-		room.GlobalPosition = connectionPosition;
+		_rooms.Add(room);
 
-		Vector2 roomConnectionPosition = room.Connections[room.ConnectionDirections.ToList().IndexOf(-direction)].Position;
-
-		room.GlobalPosition -= roomConnectionPosition;
-
-		room.PlaceEntrance(-direction);
-
-		Vector2 exitDirection = new Vector2(message.GetFloat(), message.GetFloat());
-
-		room.PlaceExit(exitDirection);
+		room.GlobalPosition = _lastRoom.Exit.GlobalPosition - room.Entrance.GlobalPosition;
 
 		room.Place();
+
+		if (_rooms.Count == 2) {
+			room.Activate();
+		} else {
+			Game.NextRooms.Add(room);
+		}
 	}
 }

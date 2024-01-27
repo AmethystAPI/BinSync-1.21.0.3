@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class Game : Node2D, NetworkPointUser {
 	public static uint Seed;
 	public static float Difficulty;
+	public static List<Room> NextRooms = new List<Room>();
 
 	private static Game s_Me;
 
@@ -78,6 +79,11 @@ public partial class Game : Node2D, NetworkPointUser {
 		if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = s_Me.LootRoomInterval;
 
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
+
+		Room currentRoom = NextRooms[0];
+		NextRooms.RemoveAt(0);
+
+		currentRoom.Activate();
 	}
 
 	public static bool ShouldSpawnAltar() {
