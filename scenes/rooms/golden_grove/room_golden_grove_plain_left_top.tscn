@@ -64,7 +64,7 @@ visible = false
 position = Vector2(-8.5, -12)
 shape = SubResource("RectangleShape2D_7bjp7")
 
-[node name="LootChestSpawn" type="Node2D" parent="."]
+[node name="ChestSpawn" type="Node2D" parent="."]
 position = Vector2(0, -64)
 
 [node name="AltarSpawn" type="Node2D" parent="."]

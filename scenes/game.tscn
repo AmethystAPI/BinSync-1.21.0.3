@@ -44,7 +44,7 @@ y_sort_enabled = true
 script = ExtResource("1_sq6vk")
 PlayerScene = ExtResource("2_nxqs3")
 TrinketRoomInterval = 15
-LootRoomInterval = 5
+LootRoomInterval = 6
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("3_ix04k")
@@ -108,6 +108,7 @@ mouse_filter = 2
 mouse_filter = 2
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
+visible = false
 
 [node name="Delay" type="Node" parent="."]
 script = ExtResource("13_l8fec")

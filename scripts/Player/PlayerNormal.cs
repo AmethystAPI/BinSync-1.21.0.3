@@ -8,6 +8,7 @@ public partial class PlayerNormal : State, NetworkPointUser {
   public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
   private Player _player;
+  private AnimationPlayer _animationPlayer;
 
   public override void _Ready() {
     NetworkPoint.Setup(this);
@@ -15,6 +16,8 @@ public partial class PlayerNormal : State, NetworkPointUser {
     NetworkPoint.Register(nameof(DashRpc), DashRpc);
 
     _player = GetParent().GetParent<Player>();
+
+    _animationPlayer = _player.GetNode<AnimationPlayer>("AnimationPlayer");
   }
 
   public override void PhsysicsUpdate(float delta) {
@@ -38,6 +41,11 @@ public partial class PlayerNormal : State, NetworkPointUser {
     _player.Velocity = movement.Normalized() * modifiedSpeed + _player.Knockback;
 
     _player.MoveAndSlide();
+  }
+
+  public override void Exit() {
+    _animationPlayer.Play("RESET");
+    _animationPlayer.Advance(1f);
   }
 
   public override void OnInput(InputEvent inputEvent) {

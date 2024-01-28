@@ -28,7 +28,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			Seed = Game.Seed
 		};
 
-		Game.NextRooms = new List<Room>();
+		_rooms = new List<Room>();
 
 		PlaceSpawnRoom();
 

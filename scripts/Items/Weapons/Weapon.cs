@@ -7,6 +7,8 @@ public partial class Weapon : Item {
   private NetworkedVariable<float> _syncedRotation = new NetworkedVariable<float>(0);
 
   private Area2D _equipArea;
+  private Node2D _heldNode;
+  private Node2D _pickupNode;
 
   public override void _Ready() {
     base._Ready();
@@ -14,6 +16,11 @@ public partial class Weapon : Item {
     NetworkPoint.Register(nameof(_syncedRotation), _syncedRotation);
 
     _equipArea = GetNode<Area2D>("EquipArea");
+    _heldNode = GetNode<Node2D>("Held");
+    _pickupNode = GetNode<Node2D>("Pickup");
+
+    _pickupNode.Visible = true;
+    _heldNode.Visible = false;
   }
 
   public override void _Process(double delta) {
@@ -27,9 +34,12 @@ public partial class Weapon : Item {
 
     if (!NetworkPoint.IsOwner) return;
 
-    if (!_equipped) return;
+    if (_equipped) {
+      LookAt(GetGlobalMousePosition());
 
-    LookAt(GetGlobalMousePosition());
+    } else {
+      Rotation = 0f;
+    }
   }
 
   public override void _Input(InputEvent @event) {
@@ -62,6 +72,13 @@ public partial class Weapon : Item {
         ((Player)body).Equip(this);
       }
     }
+  }
+
+  public override void EquipToPlayer(Player player) {
+    base.EquipToPlayer(player);
+
+    _pickupNode.Visible = false;
+    _heldNode.Visible = true;
   }
 
   public virtual void ShootPressed() {

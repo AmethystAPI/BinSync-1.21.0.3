@@ -6,19 +6,31 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_18ogc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
+size = Vector2(10, 20)
 
 [node name="Sword" type="Node2D"]
-z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_sjj6t")
 ProjectileScene = ExtResource("2_cwddm")
 
-[node name="SwingHandle" type="Node2D" parent="."]
+[node name="Held" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SwingHandle" type="Node2D" parent="Held"]
 script = ExtResource("3_18ogc")
 Range = 90.0
 
-[node name="Sprite2D" type="Sprite2D" parent="SwingHandle"]
+[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
+z_index = 1
 position = Vector2(10, 0)
+texture = ExtResource("2_7q730")
+offset = Vector2(0, -4)
+hframes = 5
+
+[node name="Pickup" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup"]
 texture = ExtResource("2_7q730")
 offset = Vector2(0, -4)
 hframes = 5
@@ -26,6 +38,7 @@ hframes = 5
 [node name="EquipArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_orsoj")
 
-[connection signal="Shoot" from="." to="SwingHandle" method="Swing"]
+[connection signal="Shoot" from="." to="Held/SwingHandle" method="Swing"]

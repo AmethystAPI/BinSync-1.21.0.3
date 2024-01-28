@@ -5,21 +5,35 @@
 [ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/weapons.aseprite" id="3_uyl2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rm67q"]
+size = Vector2(10, 21)
 
 [node name="Bow" type="Node2D"]
-z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_wcney")
 ProjectileScene = ExtResource("2_1h1w5")
 Delay = 0.3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Held" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Held"]
+z_index = 1
 position = Vector2(8, 0)
 texture = ExtResource("3_uyl2f")
+hframes = 5
+frame = 2
+
+[node name="Pickup" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup"]
+texture = ExtResource("3_uyl2f")
+offset = Vector2(0, -5)
 hframes = 5
 frame = 2
 
 [node name="EquipArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rm67q")
