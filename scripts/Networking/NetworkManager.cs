@@ -80,7 +80,7 @@ namespace Networking {
       }
 
       try {
-        LocalServer.Start(25566, 2, 0, false);
+        LocalServer.Start(25566, 32, 0, false);
       } catch {
         LocalServer = null;
 

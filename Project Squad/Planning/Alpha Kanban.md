@@ -6,6 +6,7 @@ kanban-plugin: basic
 
 ## To Do
 
+- [ ] Destructible Decorations #polish
 
 
 ## In Progress

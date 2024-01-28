@@ -11,11 +11,9 @@
             "id": "cb73d6d94ede4eee",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Daily Notes/Day 18-22.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Alpha Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/Day 18-22.md",
+                "file": "Planning/Alpha Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/Day 18-22.md",
+                "file": "Planning/Alpha Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/Day 18-22.md"
+                "file": "Planning/Alpha Kanban.md"
               }
             }
           }
@@ -148,10 +146,13 @@
   },
   "active": "cb73d6d94ede4eee",
   "lastOpenFiles": [
+    "Planning/Alpha.md",
+    "Planning/Alpha Kanban.md",
+    "Daily Notes/Day 18-22.md",
+    "Attachments/Pasted image 20240127141844.png.import",
     "Attachments/Pasted image 20240127141844.png",
     "Daily Notes/Day 18-21.md",
     "Daily Notes/Day 18-20.md",
-    "Daily Notes/Day 18-22.md",
     "Reference/General.canvas",
     "Attachments/Pasted image 20240125232312.png.import",
     "Attachments/Pasted image 20240125232312.png",
@@ -161,9 +162,7 @@
     "Daily Notes/Day 18-16.md",
     "Daily Notes/Day 18-15.md",
     "Daily Notes/Day 18-14.md",
-    "Planning/Alpha Kanban.md",
     "Planning/Pre Alpha Kanban.md",
-    "Planning/Alpha.md",
     "Design/Weapons.md",
     "Attachments/Pasted image 20240115170646.png.import",
     "Design/Trinkets.md",
@@ -184,14 +183,12 @@
     "Attachments/Archvale-001-1024x576.jpg.import",
     "Attachments/Archvale-001-1024x576.jpg",
     "Attachments/Pasted image 20240112004327.png",
-    "Attachments/Pasted image 20240112004150.png",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
     "Daily Notes/Day 18-10.md",
     "Daily Notes/Day 18-9.md",
     "Design/Enemies.md",
     "Attachments/Pasted image 20231231004025.png.import",
-    "Attachments/Pasted image 20231231004105.png.import",
     "Daily Notes/Day 18-8.md",
     "Design/Difficulty.md",
     "Design/Locations/Golden Grove.md",
