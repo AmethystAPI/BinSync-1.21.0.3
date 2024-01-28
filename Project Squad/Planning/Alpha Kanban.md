@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] Destructible Decorations #polish
 
 
 ## In Progress
@@ -16,6 +15,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Destructible Decorations #polish
 - [x] Trinket Descriptions #code
 - [x] Dash Cooldown #code
 - [x] Player Damage #code

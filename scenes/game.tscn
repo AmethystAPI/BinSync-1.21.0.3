@@ -76,6 +76,7 @@ offset_left = -963.0
 offset_top = -540.0
 offset_right = 957.0
 offset_bottom = 540.0
+mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="TrinketRealm"]
 layer = 100
@@ -87,13 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
-
-[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
-visible = false
+mouse_filter = 2
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -128
@@ -105,6 +100,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
+mouse_filter = 2
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
 
 [node name="Delay" type="Node" parent="."]
 script = ExtResource("13_l8fec")
