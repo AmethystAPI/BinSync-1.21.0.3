@@ -53,6 +53,8 @@ namespace Networking {
     }
 
     public static void SendRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
+      if (!IsInstanceValid(source as Node)) GD.PushError("Trying to Send RPC From Invalid Instance " + name);
+
       Message message = Message.Create(messageSendMode, 0);
       message.AddString(name);
       message.AddString(source.GetPath());

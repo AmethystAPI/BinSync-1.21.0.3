@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdndejj6gohd7"]
+[gd_scene load_steps=9 format=3 uid="uid://bdndejj6gohd7"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_sguo7"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_3qff0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1c6lubkdxjhm" path="res://scenes/chests/chest_golden_grove.tscn" id="3_c1qaj"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="4_705p7"]
 [ext_resource type="PackedScene" uid="uid://dnigwss1h3sid" path="res://scenes/barrier.tscn" id="6_0rvpv"]
+[ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/bush.tscn" id="7_4s6u7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(207, 219)
@@ -216,60 +217,6 @@ texture = ExtResource("4_705p7")
 region_enabled = true
 region_rect = Rect2(159, -1, 64, 68)
 
-[node name="Bushes" type="Node2D" parent="Decorations"]
-y_sort_enabled = true
-
-[node name="Bush2" type="Sprite2D" parent="Decorations/Bushes"]
-y_sort_enabled = true
-position = Vector2(37, -48)
-texture = ExtResource("4_705p7")
-offset = Vector2(0, -7)
-region_enabled = true
-region_rect = Rect2(94, 81, 22, 16)
-
-[node name="Bush3" type="Sprite2D" parent="Decorations/Bushes"]
-y_sort_enabled = true
-position = Vector2(-12, -3)
-texture = ExtResource("4_705p7")
-offset = Vector2(0, -7)
-region_enabled = true
-region_rect = Rect2(94, 81, 22, 16)
-
-[node name="Bush4" type="Sprite2D" parent="Decorations/Bushes"]
-y_sort_enabled = true
-position = Vector2(-32, 63)
-texture = ExtResource("4_705p7")
-offset = Vector2(0, -7)
-region_enabled = true
-region_rect = Rect2(94, 81, 22, 16)
-
-[node name="BushShadow2" type="Sprite2D" parent="Decorations/Bushes"]
-z_index = -6
-y_sort_enabled = true
-position = Vector2(37, -38)
-texture = ExtResource("4_705p7")
-offset = Vector2(0, -8)
-region_enabled = true
-region_rect = Rect2(94, 109, 22, 10)
-
-[node name="BushShadow3" type="Sprite2D" parent="Decorations/Bushes"]
-z_index = -6
-y_sort_enabled = true
-position = Vector2(-12, 7)
-texture = ExtResource("4_705p7")
-offset = Vector2(0, -8)
-region_enabled = true
-region_rect = Rect2(94, 109, 22, 10)
-
-[node name="BushShadow4" type="Sprite2D" parent="Decorations/Bushes"]
-z_index = -6
-y_sort_enabled = true
-position = Vector2(-32, 73)
-texture = ExtResource("4_705p7")
-offset = Vector2(0, -8)
-region_enabled = true
-region_rect = Rect2(94, 109, 22, 10)
-
 [node name="GrassTufts" type="Node2D" parent="Decorations"]
 y_sort_enabled = true
 
@@ -376,5 +323,14 @@ texture = ExtResource("4_705p7")
 offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(124, 112, 8, 4)
+
+[node name="Bush" parent="Decorations" instance=ExtResource("7_4s6u7")]
+position = Vector2(37, -48)
+
+[node name="Bush2" parent="Decorations" instance=ExtResource("7_4s6u7")]
+position = Vector2(-12, -3)
+
+[node name="Bush3" parent="Decorations" instance=ExtResource("7_4s6u7")]
+position = Vector2(-32, 63)
 
 [editable path="Barrier"]

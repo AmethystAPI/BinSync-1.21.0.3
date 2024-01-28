@@ -15,6 +15,7 @@ InheritBelocity = false
 Pierce = true
 
 [node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("CircleShape2D_gpqck")
