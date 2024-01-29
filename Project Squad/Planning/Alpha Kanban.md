@@ -10,12 +10,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Fix Chests #bug
 
 
 ## Done
 
 **Complete**
+- [x] Fix Chests #bug
 - [x] Fix White Flash #bug
 - [x] Destructible Decorations #polish
 - [x] Trinket Descriptions #code
