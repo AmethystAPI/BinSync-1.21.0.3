@@ -13,6 +13,7 @@ texture = ExtResource("2_nxiye")
 offset = Vector2(0, -7)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -19.0
 offset_top = 4.0
 offset_right = 131.0

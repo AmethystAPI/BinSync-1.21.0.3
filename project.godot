@@ -31,6 +31,10 @@ window/size/window_height_override=800
 
 project/assembly_name="Project Squad"
 
+[editor]
+
+movie_writer/movie_file="D:/Devlogs/Devlog 18/Stars.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")

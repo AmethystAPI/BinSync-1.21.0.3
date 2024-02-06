@@ -4,16 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "1a9937430a154e52",
+        "id": "35450a04120d6581",
         "type": "tabs",
         "children": [
           {
-            "id": "cb73d6d94ede4eee",
+            "id": "42c38701e40208e3",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Alpha Kanban.md"
+                "file": "Devlogs/Prototyping - 18.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
+                "file": "Devlogs/Prototyping - 18.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Alpha Kanban.md",
+                "file": "Devlogs/Prototyping - 18.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Alpha Kanban.md"
+                "file": "Devlogs/Prototyping - 18.md"
               }
             }
           }
@@ -144,12 +146,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cb73d6d94ede4eee",
+  "active": "42c38701e40208e3",
   "lastOpenFiles": [
+    "Attachments/Pasted image 20240201024118.png.import",
+    "Attachments/Pasted image 20240201024115.png.import",
+    "Attachments/Pasted image 20240201024301.png.import",
+    "Devlogs/Prototyping - 18.md",
+    "Design/Weapons.md",
+    "Attachments/Pasted image 20240201024301.png",
+    "Attachments/Pasted image 20240201024118.png",
+    "Attachments/Pasted image 20240201024115.png",
+    "Planning/Alpha Kanban.md",
+    "Devlogs",
     "Planning/Pre Alpha Kanban.md",
     "Planning/Alpha.md",
     "Reference/General.canvas",
-    "Planning/Alpha Kanban.md",
     "Daily Notes/Day 18-22.md",
     "Attachments/Pasted image 20240127141844.png.import",
     "Attachments/Pasted image 20240127141844.png",
@@ -163,7 +174,6 @@
     "Daily Notes/Day 18-16.md",
     "Daily Notes/Day 18-15.md",
     "Daily Notes/Day 18-14.md",
-    "Design/Weapons.md",
     "Attachments/Pasted image 20240115170646.png.import",
     "Design/Trinkets.md",
     "Attachments/Pasted image 20240115170646.png",
@@ -178,20 +188,13 @@
     "Attachments/Pasted image 20240113200904.png",
     "Attachments/Pasted image 20240113184828.png.import",
     "Attachments/Pasted image 20240113184828.png",
-    "Attachments/Pasted image 20240113171250.png.import",
-    "Attachments/Pasted image 20240113171250.png",
-    "Attachments/Archvale-001-1024x576.jpg.import",
-    "Attachments/Archvale-001-1024x576.jpg",
-    "Attachments/Pasted image 20240112004327.png",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
     "Daily Notes/Day 18-10.md",
     "Daily Notes/Day 18-9.md",
     "Design/Enemies.md",
-    "Attachments/Pasted image 20231231004025.png.import",
     "Daily Notes/Day 18-8.md",
     "Design/Difficulty.md",
-    "Design/Locations/Golden Grove.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }
