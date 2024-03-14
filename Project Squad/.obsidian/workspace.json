@@ -4,7 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "35450a04120d6581",
+        "id": "924338332b33ae93",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d95e2c2110efc648",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Devlogs/Devlog 18/Prototyping - 18.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "1baa6e115c8f9f73",
         "type": "tabs",
         "children": [
           {
@@ -13,7 +31,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Devlogs/Prototyping - 18.md",
+                "file": "Devlogs/Devlog 18/Draft 3.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Devlogs/Prototyping - 18.md",
+                "file": "Devlogs/Devlog 18/Draft 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Devlogs/Prototyping - 18.md",
+                "file": "Devlogs/Devlog 18/Draft 3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Devlogs/Prototyping - 18.md"
+                "file": "Devlogs/Devlog 18/Draft 3.md"
               }
             }
           }
@@ -148,19 +166,22 @@
   },
   "active": "42c38701e40208e3",
   "lastOpenFiles": [
+    "Devlogs/Devlog 18/Prototyping - 18.md",
+    "Devlogs/Devlog 18/Draft 3.md",
+    "Devlogs/Devlog 18",
+    "Planning/Alpha.md",
+    "Planning/Alpha Kanban.md",
+    "Planning/Pre Alpha Kanban.md",
+    "Reference/Music.md",
+    "Reference/General.canvas",
     "Attachments/Pasted image 20240201024118.png.import",
     "Attachments/Pasted image 20240201024115.png.import",
     "Attachments/Pasted image 20240201024301.png.import",
-    "Devlogs/Prototyping - 18.md",
     "Design/Weapons.md",
     "Attachments/Pasted image 20240201024301.png",
     "Attachments/Pasted image 20240201024118.png",
     "Attachments/Pasted image 20240201024115.png",
-    "Planning/Alpha Kanban.md",
     "Devlogs",
-    "Planning/Pre Alpha Kanban.md",
-    "Planning/Alpha.md",
-    "Reference/General.canvas",
     "Daily Notes/Day 18-22.md",
     "Attachments/Pasted image 20240127141844.png.import",
     "Attachments/Pasted image 20240127141844.png",
@@ -184,9 +205,7 @@
     "Attachments/Pasted image 20240113202830.png.import",
     "Attachments/Pasted image 20240113202830.png",
     "Attachments/Pasted image 20240113202813.png",
-    "Attachments/Pasted image 20240113200904.png.import",
     "Attachments/Pasted image 20240113200904.png",
-    "Attachments/Pasted image 20240113184828.png.import",
     "Attachments/Pasted image 20240113184828.png",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
@@ -194,7 +213,6 @@
     "Daily Notes/Day 18-9.md",
     "Design/Enemies.md",
     "Daily Notes/Day 18-8.md",
-    "Design/Difficulty.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }
