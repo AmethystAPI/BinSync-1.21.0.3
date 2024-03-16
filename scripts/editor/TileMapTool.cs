@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 [Tool]
@@ -36,20 +37,28 @@ public partial class TileMapTool : Node {
 
         tileMap.ClearLayer(roofsLayer);
 
+
+        int leftBound = wallUsedCells.Min(position => position.X);
+        int rightBound = wallUsedCells.Max(position => position.X);
+        int upBound = wallUsedCells.Min(position => position.Y);
+        int downBound = wallUsedCells.Max(position => position.Y);
+
+        Rect2I rect = new Rect2I(leftBound, upBound, rightBound - leftBound + 1, downBound - upBound + 1);
+
         foreach (Vector2I position in wallUsedCells) {
-            if (tileMap.GetCellTileData(wallsLayer, position + Vector2I.Down) == null) continue;
+            if (tileMap.GetCellTileData(wallsLayer, position + Vector2I.Down) == null && position.Y != downBound) continue;
 
             tileMap.SetCell(roofsLayer, position, 0, new Vector2I(1, 4));
 
-            bool right = RoofTileAt(wallsLayer, position + Vector2I.Right, tileMap);
-            bool left = RoofTileAt(wallsLayer, position + Vector2I.Left, tileMap);
-            bool up = RoofTileAt(wallsLayer, position + Vector2I.Up, tileMap);
-            bool down = RoofTileAt(wallsLayer, position + Vector2I.Down, tileMap);
+            bool right = RoofTileAt(wallsLayer, position + Vector2I.Right, tileMap, rect);
+            bool left = RoofTileAt(wallsLayer, position + Vector2I.Left, tileMap, rect);
+            bool up = RoofTileAt(wallsLayer, position + Vector2I.Up, tileMap, rect);
+            bool down = RoofTileAt(wallsLayer, position + Vector2I.Down, tileMap, rect);
 
-            bool upRight = RoofTileAt(wallsLayer, position + Vector2I.Up + Vector2I.Right, tileMap);
-            bool upLeft = RoofTileAt(wallsLayer, position + Vector2I.Up + Vector2I.Left, tileMap);
-            bool downRight = RoofTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap);
-            bool downLeft = RoofTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap);
+            bool upRight = RoofTileAt(wallsLayer, position + Vector2I.Up + Vector2I.Right, tileMap, rect);
+            bool upLeft = RoofTileAt(wallsLayer, position + Vector2I.Up + Vector2I.Left, tileMap, rect);
+            bool downRight = RoofTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap, rect);
+            bool downLeft = RoofTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap, rect);
 
             if (!right) tileMap.SetCell(roofsLayer, position, 0, new Vector2I(2, 4));
             if (!left) tileMap.SetCell(roofsLayer, position, 0, new Vector2I(0, 4));
@@ -72,22 +81,22 @@ public partial class TileMapTool : Node {
         foreach (Vector2I position in wallUsedCells) {
             tileMap.SetCell(wallsLayer, position, 0, new Vector2I(3, 0));
 
-            bool right = WallTileAt(wallsLayer, position + Vector2I.Right, tileMap);
-            bool left = WallTileAt(wallsLayer, position + Vector2I.Left, tileMap);
-            bool down = WallTileAt(wallsLayer, position + Vector2I.Down, tileMap);
+            bool right = WallTileAt(wallsLayer, position + Vector2I.Right, tileMap, rect);
+            bool left = WallTileAt(wallsLayer, position + Vector2I.Left, tileMap, rect);
+            bool down = WallTileAt(wallsLayer, position + Vector2I.Down, tileMap, rect);
 
-            bool downRight = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap);
-            bool downLeft = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap);
+            bool downRight = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap, rect);
+            bool downLeft = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap, rect);
 
-            bool downDown = WallTileAt(wallsLayer, position + Vector2I.Down * 2, tileMap);
+            bool downDown = WallTileAt(wallsLayer, position + Vector2I.Down * 2, tileMap, rect);
 
             if (!down) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(1, 9));
             if (!down && !right) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(2, 9));
             if (!down && !left) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(0, 9));
 
             if (down && !downDown) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(1, 8));
-            if (down && !downRight) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(2, 8));
-            if (down && !downLeft) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(0, 8));
+            if (down && !downDown && !downRight) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(2, 8));
+            if (down && !downDown && !downLeft) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(0, 8));
 
             if (down && !downRight && right) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(3, 9));
             if (down && !downLeft && left) tileMap.SetCell(wallsLayer, position, 0, new Vector2I(4, 9));
@@ -96,22 +105,22 @@ public partial class TileMapTool : Node {
         tileMap.ClearLayer(shadowLayer);
 
         foreach (Vector2I position in wallUsedCells) {
-            bool right = WallTileAt(wallsLayer, position + Vector2I.Right, tileMap);
-            bool left = WallTileAt(wallsLayer, position + Vector2I.Left, tileMap);
-            bool down = WallTileAt(wallsLayer, position + Vector2I.Down, tileMap);
+            bool right = WallTileAt(wallsLayer, position + Vector2I.Right, tileMap, rect);
+            bool left = WallTileAt(wallsLayer, position + Vector2I.Left, tileMap, rect);
+            bool down = WallTileAt(wallsLayer, position + Vector2I.Down, tileMap, rect);
 
-            bool downRight = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap);
-            bool downLeft = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap);
+            bool downRight = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap, rect);
+            bool downLeft = WallTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap, rect);
 
-            bool downDown = WallTileAt(wallsLayer, position + Vector2I.Down * 2, tileMap);
+            bool downDown = WallTileAt(wallsLayer, position + Vector2I.Down * 2, tileMap, rect);
 
             if (!down) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(1, 11));
             if (!down && !right) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(2, 11));
             if (!down && !left) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(0, 11));
 
             if (down && !downDown) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(1, 10));
-            if (down && !downRight) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(2, 10));
-            if (down && !downLeft) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(0, 10));
+            if (down && !downDown && !downRight) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(2, 10));
+            if (down && !downDown && !downLeft) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(0, 10));
 
             if (down && !downRight && right) {
                 tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, new Vector2I(3, 10));
@@ -125,11 +134,11 @@ public partial class TileMapTool : Node {
         }
     }
 
-    private bool RoofTileAt(int layer, Vector2I position, TileMap tileMap) {
-        return tileMap.GetCellTileData(layer, position) != null && tileMap.GetCellTileData(layer, position + Vector2I.Down) != null;
+    private bool RoofTileAt(int layer, Vector2I position, TileMap tileMap, Rect2I rect) {
+        return (tileMap.GetCellTileData(layer, position) != null || !rect.HasPoint(position)) && (tileMap.GetCellTileData(layer, position + Vector2I.Down) != null || !rect.HasPoint(position + Vector2I.Down));
     }
 
-    private bool WallTileAt(int layer, Vector2I position, TileMap tileMap) {
-        return tileMap.GetCellTileData(layer, position) != null;
+    private bool WallTileAt(int layer, Vector2I position, TileMap tileMap, Rect2I rect) {
+        return tileMap.GetCellTileData(layer, position) != null || !rect.HasPoint(position);
     }
 }
