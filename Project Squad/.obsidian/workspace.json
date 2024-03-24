@@ -6,35 +6,8 @@
       {
         "id": "227b18a336f9e13d",
         "type": "tabs",
+        "dimension": 49.93654822335025,
         "children": [
-          {
-            "id": "5a3dccf01d6b10a7",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Planning/Beta A Kanban.md"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "ae006a7b890ad45c",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "3ef12cc86fcbcf8d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Devlogs/Devlog 18/Prototyping - 18.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
           {
             "id": "80aceb068a1d41ec",
             "type": "leaf",
@@ -47,8 +20,38 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "ae006a7b890ad45c",
+        "type": "tabs",
+        "dimension": 50.06345177664975,
+        "children": [
+          {
+            "id": "3ef12cc86fcbcf8d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Devlogs/Devlog 18/Draft 5.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a6442a0635b391f7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Devlogs/Devlog 18/Quotes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -114,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta A Kanban.md",
+                "file": "Devlogs/Devlog 18/Draft 5.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +134,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta A Kanban.md",
+                "file": "Devlogs/Devlog 18/Draft 5.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta A Kanban.md"
+                "file": "Devlogs/Devlog 18/Draft 5.md"
               }
             }
           }
@@ -175,12 +178,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5a3dccf01d6b10a7",
+  "active": "3ef12cc86fcbcf8d",
   "lastOpenFiles": [
-    "Devlogs/Devlog 18/Draft 5.md",
     "Devlogs/Devlog 18/Draft 4.md",
-    "Devlogs/Devlog 18/Prototyping - 18.md",
+    "Devlogs/Devlog 18/Draft 5.md",
     "Devlogs/Devlog 18/Quotes.md",
+    "Devlogs/Devlog 18/Prototyping - 18.md",
+    "Planning/Beta A Kanban.md",
     "Reference/Devlogs.canvas",
     "Attachments/Pasted image 20240316194450.png",
     "Attachments/Pasted image 20240316194408.png",
@@ -192,7 +196,6 @@
     "Attachments/Pasted image 20240316154618.png.import",
     "Attachments/Pasted image 20240316154618.png",
     "Devlogs/Devlog 18/Draft 3.md",
-    "Planning/Beta A Kanban.md",
     "Planning/Previous/Alpha Kanban.md",
     "Planning/Previous/Alpha.md",
     "Attachments/Pasted image 20240316114550.png",
