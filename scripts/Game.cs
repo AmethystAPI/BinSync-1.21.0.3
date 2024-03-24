@@ -7,6 +7,7 @@ public partial class Game : Node2D, NetworkPointUser {
 	public static uint Seed;
 	public static float Difficulty;
 	public static List<Room> NextRooms = new List<Room>();
+	public static RandomNumberGenerator RandomNumberGenerator;
 
 	private static Game s_Me;
 
@@ -50,6 +51,10 @@ public partial class Game : Node2D, NetworkPointUser {
 		}
 
 		Seed = new RandomNumberGenerator().Randi();
+
+		RandomNumberGenerator = new RandomNumberGenerator {
+			Seed = Seed
+		};
 
 		Difficulty = clientIds.Count;
 

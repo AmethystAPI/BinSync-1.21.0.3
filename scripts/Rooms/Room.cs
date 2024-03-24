@@ -23,7 +23,8 @@ public partial class Room : Node2D, NetworkPointUser {
 	private Area2D _activateArea;
 	private Node2D _chestSpawn;
 	private Node2D _altarSpawn;
-	private List<Node2D> _spawnPoints = new List<Node2D>();
+	private CollisionShape2D _spawnArea;
+	private bool _readyToSpawnEnemies = true;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -40,14 +41,7 @@ public partial class Room : Node2D, NetworkPointUser {
 		_activateArea = GetNodeOrNull<Area2D>("ActivateArea");
 		_chestSpawn = GetNodeOrNull<Node2D>("ChestSpawn");
 		_altarSpawn = GetNodeOrNull<Node2D>("AltarSpawn");
-
-		if (HasNode("SpawnPoints")) {
-			foreach (Node child in GetNodeOrNull<Node2D>("SpawnPoints").GetChildren()) {
-				if (!(child is Node2D)) continue;
-
-				_spawnPoints.Add(child as Node2D);
-			}
-		}
+		_spawnArea = GetNodeOrNull<CollisionShape2D>("SpawnArea");
 
 		if (_activateArea != null) _activateArea.BodyEntered += BodyEnteredActivateArea;
 
@@ -56,6 +50,14 @@ public partial class Room : Node2D, NetworkPointUser {
 		if (_chestSpawn != null && Game.ShouldSpawnLootRoom()) NetworkPoint.SendRpcToClients(nameof(SpawnChestRpc));
 
 		if (_altarSpawn != null && Game.ShouldSpawnAltar()) NetworkPoint.SendRpcToClients(nameof(SpawnAltarRpc));
+	}
+
+	public override void _PhysicsProcess(double delta) {
+		if (_readyToSpawnEnemies) {
+			_readyToSpawnEnemies = false;
+
+			SpawnEnemies();
+		}
 	}
 
 	public void AddEnemy() {
@@ -73,7 +75,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	public void Place() {
-		SpawnEnemies();
+		_readyToSpawnEnemies = true;
 	}
 
 	public void Activate() {
@@ -94,17 +96,41 @@ public partial class Room : Node2D, NetworkPointUser {
 		}
 	}
 
+	private Vector2 GetRandomPointInSpawnArea() {
+		Vector2 position = _spawnArea.GlobalPosition;
+
+		RectangleShape2D shape = _spawnArea.Shape as RectangleShape2D;
+
+		position += Vector2.Right * Game.RandomNumberGenerator.RandfRange(-shape.Size.X / 2, shape.Size.X / 2) + Vector2.Up * Game.RandomNumberGenerator.RandfRange(-shape.Size.Y / 2, shape.Size.Y / 2);
+
+		return position;
+	}
+
+	private Godot.Collections.Array<Godot.Collections.Dictionary> DetectSpawnOverlap(Vector2 position) {
+		return GetWorld2D().DirectSpaceState.IntersectShape(new PhysicsShapeQueryParameters2D {
+			Shape = new CircleShape2D() {
+				Radius = 12f,
+			},
+			Transform = new Transform2D(0f, position),
+			CollisionMask = 2
+		}); ;
+	}
+
 	private void SpawnEnemies() {
-		if (_spawnPoints.Count == 0) return;
+		if (_spawnArea == null) return;
 
 		float points = Game.Difficulty;
 
 		while (points > 0) {
-			Node2D spawnPoint = _spawnPoints[new RandomNumberGenerator().RandiRange(0, _spawnPoints.Count - 1)];
+			Vector2 spawnPoint = GetRandomPointInSpawnArea();
+
+			while (DetectSpawnOverlap(spawnPoint).Count > 0) {
+				spawnPoint = GetRandomPointInSpawnArea();
+			}
 
 			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message => {
-				message.AddFloat(spawnPoint.GlobalPosition.X);
-				message.AddFloat(spawnPoint.GlobalPosition.Y);
+				message.AddFloat(spawnPoint.X);
+				message.AddFloat(spawnPoint.Y);
 
 				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1));
 			});

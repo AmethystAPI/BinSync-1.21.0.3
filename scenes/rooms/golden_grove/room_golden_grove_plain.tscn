@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://co2o42vdmdcna"]
+[gd_scene load_steps=10 format=3 uid="uid://co2o42vdmdcna"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_itp1v"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_6g3d5"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(160, 231)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0yjj"]
+size = Vector2(173, 196)
 
 [node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
@@ -34,22 +37,6 @@ layer_2/tile_data = PackedInt32Array(65535, 262144, 0, 65537, 262144, 0, 131069,
 layer_3/name = "Shadow"
 layer_3/z_index = -6
 layer_3/tile_data = PackedInt32Array(-262138, 131072, 10, -262137, 131072, 10, -4, 131072, 11, 65531, 131072, 10, 131067, 131072, 11, 458755, 0, 10, 524291, 0, 11, -327677, 0, 10, -262141, 0, 11, -5, 65536, 11, 65530, 65536, 10, 131066, 65536, 11, -65541, 65536, 10, -65540, 131072, 10, -327676, 65536, 10, -262140, 65536, 11, -196604, 0, 10, -131068, 0, 11, -196603, 65536, 10, -131067, 65536, 11, 458756, 65536, 10, 524292, 65536, 11)
-
-[node name="SpawnPoints" type="Node2D" parent="."]
-
-[node name="Point1" type="Node2D" parent="SpawnPoints"]
-position = Vector2(-55, 56)
-
-[node name="Point2" type="Node2D" parent="SpawnPoints"]
-position = Vector2(32, 32)
-
-[node name="Point3" type="Node2D" parent="SpawnPoints"]
-position = Vector2(56, -47)
-
-[node name="Point4" type="Node2D" parent="SpawnPoints"]
-position = Vector2(-27, -61)
-
-[node name="Point5" type="Node2D" parent="SpawnPoints"]
 
 [node name="Exit" type="Node2D" parent="."]
 position = Vector2(0, -144)
@@ -420,3 +407,8 @@ position = Vector2(-12, -3)
 
 [node name="Bush4" parent="Decorations" instance=ExtResource("7_n0uqx")]
 position = Vector2(-38, 61)
+
+[node name="SpawnArea" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3.5, -18)
+shape = SubResource("RectangleShape2D_b0yjj")

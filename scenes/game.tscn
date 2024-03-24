@@ -60,7 +60,7 @@ script = ExtResource("4_encmg")
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
-RoomPlacers = Array[Resource]([ExtResource("7_wjaw5"), ExtResource("10_q5d0h"), ExtResource("11_6kr5k"), ExtResource("8_qb27n"), ExtResource("9_whavy"), ExtResource("12_e4ldv")])
+RoomPlacers = Array[Resource]([ExtResource("12_e4ldv"), ExtResource("7_wjaw5"), ExtResource("10_q5d0h"), ExtResource("8_qb27n"), ExtResource("9_whavy"), ExtResource("11_6kr5k")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Flash")]
 z_index = 20

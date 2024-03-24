@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 public partial class WorldGenerator : Node2D, NetworkPointUser {
+
+
 	private static WorldGenerator s_Me;
 
 	[Export] public RoomPlacer SpawnRoomPlacer;
@@ -12,7 +14,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	private RandomNumberGenerator _randomNumberGenerator;
 	private List<Room> _rooms = new List<Room>();
 
 	public override void _Ready() {
@@ -24,10 +25,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	}
 
 	public void Start() {
-		_randomNumberGenerator = new RandomNumberGenerator {
-			Seed = Game.Seed
-		};
-
 		_rooms = new List<Room>();
 
 		PlaceSpawnRoom();
@@ -66,7 +63,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			return true;
 		}).ToArray();
 
-		RoomPlacer roomPlacer = validRoomPlacers[s_Me._randomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
+		RoomPlacer roomPlacer = validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 
 		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceRoomRpc), message => {
 			message.AddString(roomPlacer.ResourcePath);
