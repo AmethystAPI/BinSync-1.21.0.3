@@ -12,6 +12,7 @@ public partial class StoneGolemRoll : State {
     private StoneGolem _stoneGolem;
     private Vector2 _direction;
     private Projectile _projectile;
+    private RandomNumberGenerator _random = new RandomNumberGenerator();
 
     public override void _Ready() {
         _stoneGolem = GetParent().GetParent<StoneGolem>();
@@ -35,6 +36,8 @@ public partial class StoneGolemRoll : State {
         }
 
         _direction = (target - _stoneGolem.GlobalPosition).Normalized();
+
+        _direction = _direction.Rotated(_random.RandfRange(-Mathf.Pi / 6f, Mathf.Pi / 6f));
 
         _projectile = ProjectileScene.Instantiate<Projectile>();
 

@@ -188,7 +188,7 @@ AnimationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="Roll" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin", "AnimationPlayer", "Sprite", "StartSquashAndStretch", "EndSquashAndStretch")]
 script = ExtResource("5_26neh")
-Speed = 70.0
+Speed = 75.0
 ProjectileScene = ExtResource("6_m7cgh")
 ProjectileOrigin = NodePath("../../ProjectileOrigin")
 AnimationPlayer = NodePath("../../AnimationPlayer")
@@ -210,6 +210,7 @@ Speed = 6.0
 
 [node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
 script = ExtResource("7_gq1j7")
+ReturnState = "Roll"
 AnimationPlayer = NodePath("../../AnimationPlayer")
 Visuals = NodePath("../../SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("9_t223m")

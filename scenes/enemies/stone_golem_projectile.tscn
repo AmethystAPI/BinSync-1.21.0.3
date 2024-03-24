@@ -10,7 +10,7 @@ size = Vector2(4, 14)
 y_sort_enabled = true
 script = ExtResource("1_o5l7s")
 Speed = 0.0
-Lifetime = 3.0
+Lifetime = 2.5
 InheritBelocity = false
 Pierce = true
 

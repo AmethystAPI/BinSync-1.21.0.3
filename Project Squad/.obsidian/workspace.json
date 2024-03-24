@@ -6,7 +6,7 @@
       {
         "id": "227b18a336f9e13d",
         "type": "tabs",
-        "dimension": 49.93654822335025,
+        "dimension": 49.93654822335024,
         "children": [
           {
             "id": "80aceb068a1d41ec",
@@ -25,17 +25,15 @@
       {
         "id": "ae006a7b890ad45c",
         "type": "tabs",
-        "dimension": 50.06345177664975,
+        "dimension": 50.06345177664976,
         "children": [
           {
             "id": "3ef12cc86fcbcf8d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Devlogs/Devlog 18/Draft 5.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta A Kanban.md"
               }
             }
           },
@@ -117,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Devlogs/Devlog 18/Draft 5.md",
+                "file": "Planning/Beta A Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Devlogs/Devlog 18/Draft 5.md",
+                "file": "Planning/Beta A Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -157,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Devlogs/Devlog 18/Draft 5.md"
+                "file": "Planning/Beta A Kanban.md"
               }
             }
           }
@@ -180,8 +178,8 @@
   },
   "active": "3ef12cc86fcbcf8d",
   "lastOpenFiles": [
-    "Devlogs/Devlog 18/Draft 4.md",
     "Devlogs/Devlog 18/Draft 5.md",
+    "Devlogs/Devlog 18/Draft 4.md",
     "Devlogs/Devlog 18/Quotes.md",
     "Devlogs/Devlog 18/Prototyping - 18.md",
     "Planning/Beta A Kanban.md",
