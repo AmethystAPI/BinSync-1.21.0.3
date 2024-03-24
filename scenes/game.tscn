@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=24 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://c5jxxc7ceh6f6" path="res://resources/room_placers/room_placer_golden_grove_plain_left_top.tres" id="9_whavy"]
 [ext_resource type="Resource" uid="uid://bwka3vkyp1o8j" path="res://resources/room_placers/room_placer_golden_grove_plain_bottom_left.tres" id="10_q5d0h"]
 [ext_resource type="Resource" uid="uid://c08mxw0ij40ib" path="res://resources/room_placers/room_placer_golden_grove_plain_right_top.tres" id="11_6kr5k"]
+[ext_resource type="Resource" uid="uid://b1mtey8fgm5o5" path="res://resources/room_placers/room_placer_golden_grove_large.tres" id="12_e4ldv"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
@@ -59,7 +60,7 @@ script = ExtResource("4_encmg")
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
-RoomPlacers = Array[Resource]([ExtResource("7_wjaw5"), ExtResource("10_q5d0h"), ExtResource("11_6kr5k"), ExtResource("8_qb27n"), ExtResource("9_whavy")])
+RoomPlacers = Array[Resource]([ExtResource("7_wjaw5"), ExtResource("10_q5d0h"), ExtResource("11_6kr5k"), ExtResource("8_qb27n"), ExtResource("9_whavy"), ExtResource("12_e4ldv")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Flash")]
 z_index = 20
@@ -104,10 +105,14 @@ mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
+[node name="GameUI" parent="CanvasLayer" node_paths=PackedStringArray("HeartContainer") instance=ExtResource("3_s7l32")]
 mouse_filter = 2
+HeartContainer = NodePath("HeartContainer")
 
-[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
+[node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton") instance=ExtResource("7_gnxd7")]
+ipAdressInput = NodePath("TextEdit")
+hostButton = NodePath("Host")
+joinButton = NodePath("Join")
 
 [node name="Delay" type="Node" parent="."]
 script = ExtResource("13_l8fec")

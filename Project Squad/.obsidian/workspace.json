@@ -4,33 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "fd88013c16116611",
+        "id": "227b18a336f9e13d",
         "type": "tabs",
         "children": [
           {
-            "id": "d8b37b6849ce657e",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Planning/Previous/Alpha Kanban.md"
-              }
-            }
-          },
-          {
-            "id": "479007f3468f5f09",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Planning/Previous/Alpha.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0a507757a7a5b748",
+            "id": "5a3dccf01d6b10a7",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -39,8 +17,38 @@
               }
             }
           }
+        ]
+      },
+      {
+        "id": "ae006a7b890ad45c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3ef12cc86fcbcf8d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Devlogs/Devlog 18/Prototyping - 18.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "80aceb068a1d41ec",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Devlogs/Devlog 18/Draft 4.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -167,8 +175,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0a507757a7a5b748",
+  "active": "5a3dccf01d6b10a7",
   "lastOpenFiles": [
+    "Devlogs/Devlog 18/Draft 5.md",
+    "Devlogs/Devlog 18/Draft 4.md",
+    "Devlogs/Devlog 18/Prototyping - 18.md",
+    "Devlogs/Devlog 18/Quotes.md",
+    "Reference/Devlogs.canvas",
+    "Attachments/Pasted image 20240316194450.png",
+    "Attachments/Pasted image 20240316194408.png",
+    "Attachments/Screenshot_05_7cf72c5c-4a1b-4c50-a3f1-7be2af71749e.webp",
+    "Attachments/Screenshot_01_e73c4cef-0ff6-4f60-bd7a-5baee3647307.webp",
+    "Attachments/free_3d_modular_low_poly_assets_for_prototyping_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_4187542_m.png",
+    "Attachments/adrian-meier-highresscreenshot00000.jpg",
+    "Attachments/Prototype-Environment.jpg",
+    "Attachments/Pasted image 20240316154618.png.import",
+    "Attachments/Pasted image 20240316154618.png",
+    "Devlogs/Devlog 18/Draft 3.md",
+    "Planning/Beta A Kanban.md",
+    "Planning/Previous/Alpha Kanban.md",
+    "Planning/Previous/Alpha.md",
+    "Attachments/Pasted image 20240316114550.png",
+    "Attachments/TeleVideo-925.jpg",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
     "Attachments/PasBF2.tmp",
@@ -178,25 +206,13 @@
     "Attachments/Pas28E.tmp",
     "Attachments/Pas25D.tmp",
     "Attachments/Pas217.tmp",
-    "Planning/Previous/Alpha.md",
-    "Planning/Beta A Kanban.md",
-    "Planning/Previous/Alpha Kanban.md",
-    "Planning/Previous",
-    "Devlogs/Devlog 18/Draft 3.md",
-    "Devlogs/Devlog 18/Prototyping - 18.md",
-    "Devlogs/Devlog 18",
     "Planning/Previous/Pre Alpha Kanban.md",
     "Reference/Music.md",
     "Reference/General.canvas",
     "Design/Weapons.md",
-    "Attachments/Pasted image 20240201024301.png",
-    "Attachments/Pasted image 20240201024118.png",
-    "Attachments/Pasted image 20240201024115.png",
     "Daily Notes/Day 18-22.md",
-    "Attachments/Pasted image 20240127141844.png",
     "Daily Notes/Day 18-21.md",
     "Daily Notes/Day 18-20.md",
-    "Attachments/Pasted image 20240125232312.png",
     "Daily Notes/Day 18-19.md",
     "Daily Notes/Day 18-18.md",
     "Daily Notes/Day 18-17.md",
@@ -204,17 +220,11 @@
     "Daily Notes/Day 18-15.md",
     "Daily Notes/Day 18-14.md",
     "Design/Trinkets.md",
-    "Attachments/Pasted image 20240115170646.png",
     "Daily Notes/Day 18-12.md",
     "Daily Notes/Day 18-13.md",
     "Daily Notes/Day 18-11.md",
-    "Attachments/Pasted image 20240113202830.png",
-    "Attachments/Pasted image 20240113202813.png",
-    "Attachments/Pasted image 20240113200904.png",
-    "Attachments/Pasted image 20240113184828.png",
     "Implementation/World Generation.md",
     "Design/World Generation.md",
-    "Daily Notes/Day 18-10.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }

@@ -1,4 +1,4 @@
-# Research
+  # Research
 
 https://www.nintendo.com.au/news-and-articles/nintendo-labo-developer-interview-part-2-prototyping-and-development
 
@@ -248,3 +248,8 @@ First, you should prototype the riskiest part of your game. This will save you t
 Second, resist as much as you can to polish. The game might look like horrendous, but it will allow the fun or lack of fun of the mechanics to clearly shine through.
 
 Thank you so much for watching, and thank you to my subscribers who you can see here on screen. If you would like to learn more about Project Squad or just chat with me, join my discord, link in the description. I'll see you in the next one.
+
+# Draft 4 Research
+https://docs.google.com/presentation/d/17X-Ixrh-2bob-g6fLueRSBDBHvXflAIefkBUrNU4m4k/edit#slide=id.g26bfb980518_3_1176
+
+https://www.chrishecker.com/Advanced_Prototyping

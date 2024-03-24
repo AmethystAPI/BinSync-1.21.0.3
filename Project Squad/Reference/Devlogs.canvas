@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"62822e1d50596882","type":"file","file":"Attachments/Untitled.jpg","x":-540,"y":-200,"width":399,"height":208},
+		{"id":"07cdc788fa0c00a3","type":"file","file":"Attachments/Pasted image 20240316113946.png","x":-120,"y":-200,"width":300,"height":400},
+		{"id":"2a728e94343169b7","type":"file","file":"Attachments/Pasted image 20240316114033.png","x":-442,"y":40,"width":302,"height":400},
+		{"id":"98ecd2974f62208d","type":"file","file":"Attachments/CatOuter.png","x":-120,"y":220,"width":180,"height":180},
+		{"id":"f1ecd672f9fddfd0","type":"file","file":"Attachments/OuterHeadRender.png","x":-860,"y":40,"width":400,"height":300},
+		{"id":"722ce9a24e352ab7","type":"file","file":"Attachments/72f06176b54b1e6abb6edaae81c7c000.jpg","x":-960,"y":-288,"width":400,"height":296},
+		{"id":"197ebe5846430040","type":"file","file":"Attachments/V1-hq.webp","x":-1180,"y":60,"width":283,"height":400},
+		{"id":"a04da203ade950b3","type":"file","file":"Attachments/TeleVideo-925.jpg","x":-1380,"y":-259,"width":400,"height":267},
+		{"id":"c594c5cddba18d19","type":"text","text":"# Aspects\n- Friendly\n- Terminal","x":-540,"y":-420,"width":250,"height":192},
+		{"id":"bfe91aec8cd03dc6","type":"file","file":"Attachments/Pasted image 20240316114550.png","x":-929,"y":-724,"width":339,"height":400},
+		{"id":"629ad06f2cdd8c0a","type":"file","file":"Attachments/Pasted image 20240316154618.png","x":560,"y":-200,"width":400,"height":290},
+		{"id":"c05f7ce0f9dc4a6a","type":"file","file":"Attachments/Prototype-Environment.jpg","x":-1160,"y":880,"width":400,"height":267},
+		{"id":"72b082ae7952b2e4","type":"file","file":"Attachments/adrian-meier-highresscreenshot00000.jpg","x":-1160,"y":1180,"width":400,"height":213},
+		{"id":"4ab73643665a15ed","type":"file","file":"Attachments/free_3d_modular_low_poly_assets_for_prototyping_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_4187542_m.png","x":-720,"y":880,"width":400,"height":300},
+		{"id":"047d85bbf7a71ffc","type":"file","file":"Attachments/Screenshot_01_e73c4cef-0ff6-4f60-bd7a-5baee3647307.webp","x":-700,"y":1240,"width":400,"height":225},
+		{"id":"2087a795fea27f85","type":"file","file":"Attachments/Screenshot_05_7cf72c5c-4a1b-4c50-a3f1-7be2af71749e.webp","x":-1160,"y":1440,"width":400,"height":225},
+		{"id":"1f1c7b7429b2b3a2","type":"file","file":"Attachments/Pasted image 20240316194408.png","x":-700,"y":1520,"width":400,"height":203},
+		{"id":"3c6480d6808cff9e","type":"file","file":"Attachments/Pasted image 20240316194450.png","x":-260,"y":975,"width":400,"height":205}
+	],
+	"edges":[]
+}
