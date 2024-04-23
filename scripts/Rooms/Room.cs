@@ -167,8 +167,6 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	protected virtual void EndRpc(Message message) {
 		_completed = true;
-
-		_barrier.Deactivate();
 	}
 
 	private void SpawnChestRpc(Message message) {
