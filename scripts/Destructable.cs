@@ -3,9 +3,10 @@ using Godot;
 public partial class Destructable : Node2D, Damageable {
 	[Export] public PackedScene Particle;
 	[Export] public int ParticleCount = 6;
+	[Export] public bool Invincible = false;
 
 	public bool CanDamage(Projectile projectile) {
-		return true;
+		return !Invincible;
 	}
 
 	public void Damage(Projectile projectile) {

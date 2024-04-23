@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="11_kuwtc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
-size = Vector2(16, 23)
+size = Vector2(16, 14)
 
 [sub_resource type="Animation" id="Animation_5eo1p"]
 resource_name = "RESET"
@@ -138,8 +138,7 @@ texture = ExtResource("3_0hng1")
 region_rect = Rect2(34, 8, 12, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -9.5)
+position = Vector2(0, -5)
 scale = Vector2(1.00302, 1)
 shape = SubResource("RectangleShape2D_75mpk")
 
