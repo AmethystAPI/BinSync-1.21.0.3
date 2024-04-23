@@ -243,6 +243,7 @@ shape = SubResource("RectangleShape2D_v6m8y")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_jbh0c")
+DefaultState = "Normal"
 
 [node name="Normal" type="Node" parent="StateMachine"]
 script = ExtResource("5_stky2")

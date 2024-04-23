@@ -97,7 +97,7 @@ y_sort_enabled = true
 position = Vector2(-37, -39)
 texture = ExtResource("4_f1ft7")
 region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+region_rect = Rect2(84, 4, 68, 56)
 
 [node name="Patch9" type="Sprite2D" parent="Decorations/GrassPatches"]
 z_index = -9
