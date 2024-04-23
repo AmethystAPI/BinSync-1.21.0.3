@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsmrvxl6w1f8s"]
+[gd_scene load_steps=12 format=3 uid="uid://bsmrvxl6w1f8s"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_jq3js"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_fvmmt"]
 [ext_resource type="PackedScene" uid="uid://d1c6lubkdxjhm" path="res://scenes/chests/chest_golden_grove.tscn" id="3_utyi7"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="4_2dx42"]
 [ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="5_6qi52"]
-[ext_resource type="PackedScene" uid="uid://dnigwss1h3sid" path="res://scenes/barrier.tscn" id="5_tqsd3"]
+[ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="5_tqsd3"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="6_e2d7y"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/bush.tscn" id="7_ir14m"]
+[ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/tree.tscn" id="8_je4sa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(276, 289)
@@ -50,6 +51,7 @@ position = Vector2(0, 144)
 
 [node name="ActivateArea" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(-1, -6.5)
@@ -60,11 +62,6 @@ position = Vector2(0, -64)
 
 [node name="AltarSpawn" type="Node2D" parent="."]
 position = Vector2(0, -64)
-
-[node name="Barrier" parent="." node_paths=PackedStringArray("TileMap", "TileMapFade") instance=ExtResource("5_tqsd3")]
-visible = false
-TileMap = NodePath("TileMap")
-TileMapFade = NodePath("TileMapFade")
 
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -580,7 +577,23 @@ position = Vector2(-55, -93)
 [node name="Bush8" parent="Decorations" instance=ExtResource("7_ir14m")]
 position = Vector2(99, -68)
 
+[node name="Tree" parent="Decorations" instance=ExtResource("8_je4sa")]
+position = Vector2(-8, 21)
+
+[node name="Tree2" parent="Decorations" instance=ExtResource("8_je4sa")]
+position = Vector2(73, -77)
+
+[node name="Tree3" parent="Decorations" instance=ExtResource("8_je4sa")]
+position = Vector2(-78, -110)
+
+[node name="Tree4" parent="Decorations" instance=ExtResource("8_je4sa")]
+position = Vector2(-85, 72)
+
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-2, -18)
 shape = SubResource("RectangleShape2D_gg4k0")
+
+[node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("5_tqsd3")]
+position = Vector2(6, 118)
+Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]

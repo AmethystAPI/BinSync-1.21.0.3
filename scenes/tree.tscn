@@ -16,8 +16,9 @@ ParticleCount = 12
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, 4)
 texture = ExtResource("3_nk0d5")
-offset = Vector2(0, -8)
+offset = Vector2(0, -12)
 region_enabled = true
 region_rect = Rect2(170, 137, 26, 34)
 

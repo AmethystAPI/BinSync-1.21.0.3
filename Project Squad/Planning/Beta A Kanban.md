@@ -13,12 +13,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Rethink how room barriers look #design
 
 
 ## Done
 
 **Complete**
+- [x] Rethink how room barriers look #design
 - [x] Encourage players to enter into the midst of enemies #design
 - [x] Improved enemy spawning #code
 - [x] Larger rooms #design

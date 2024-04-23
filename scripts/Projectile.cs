@@ -46,7 +46,7 @@ public partial class Projectile : Node2D {
 		Speed = Mathf.Lerp(Speed, 0f, Resistance * (float)delta);
 
 		foreach (Node2D body in _damageArea.GetOverlappingBodies()) {
-			if (body is TileMap && _invincibilityTimer <= 0) {
+			if ((body is TileMap || body is Barrier) && _invincibilityTimer <= 0) {
 				Destroyed?.Invoke();
 
 				QueueFree();
