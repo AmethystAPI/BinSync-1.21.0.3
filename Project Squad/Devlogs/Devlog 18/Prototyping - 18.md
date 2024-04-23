@@ -253,3 +253,25 @@ Thank you so much for watching, and thank you to my subscribers who you can see 
 https://docs.google.com/presentation/d/17X-Ixrh-2bob-g6fLueRSBDBHvXflAIefkBUrNU4m4k/edit#slide=id.g26bfb980518_3_1176
 
 https://www.chrishecker.com/Advanced_Prototyping
+
+![[Pasted image 20240403213019.png]]
+
+# Zelda Music
+https://www.youtube.com/watch?v=oCaOSz13h_o&t=1s
+- Dark World - I Like
+- Lost Woods - Might have issues
+- Song of Storms - I Like
+- Ballad of Goddess - Maybe issues
+- Breath of the Wild
+- Legend of Zelda
+- Ocarina of Time - I Like
+- The Great Sea - I Like
+- Midna's Lament
+- Tal Tal Heights - I Like
+- Kokiri Fores - I like but maybe issues
+- Final Hours - I Like
+- Tears of the Kingdom - I Like But maybe issues
+
+https://www.youtube.com/@LEMMiNOMusic/videos
+
+Nocturne - Fez OST

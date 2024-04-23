@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Rethink how room barriers look #design
 - [ ] Rethink how loot is aquired #design
 - [ ] Sound Fx #polish
 - [ ] Music #polish
@@ -14,6 +13,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Rethink how room barriers look #design
 
 
 ## Done

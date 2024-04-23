@@ -1,23 +1,20 @@
 using Godot;
 using Networking;
 
-public partial class MainMenu : Control
-{
+public partial class MainMenu : Control {
 	[Export] public TextEdit ipAdressInput;
 	[Export] public Button hostButton;
 	[Export] public Button joinButton;
 	[Export] public Button startButton;
 
-	public void Host()
-	{
+	public void Host() {
 		NetworkManager.Host();
 
 		hostButton.QueueFree();
 		joinButton.QueueFree();
 	}
 
-	public void Join()
-	{
+	public void Join() {
 		// NetworkManager.Join("127.0.0.1");
 		// NetworkManager.Join("104.33.194.150");
 
@@ -26,8 +23,7 @@ public partial class MainMenu : Control
 		QueueFree();
 	}
 
-	public void Start()
-	{
+	public void Start() {
 		if (!NetworkManager.IsHost) return;
 
 		Game.Start();

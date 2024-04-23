@@ -1,0 +1,1 @@
+I'm thinking music should more and more be a core idea of the game theme wise.
