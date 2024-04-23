@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://co2o42vdmdcna"]
+[gd_scene load_steps=12 format=3 uid="uid://co2o42vdmdcna"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_itp1v"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_6g3d5"]
 [ext_resource type="PackedScene" uid="uid://d1c6lubkdxjhm" path="res://scenes/chests/chest_golden_grove.tscn" id="3_ssmil"]
 [ext_resource type="PackedScene" uid="uid://dnigwss1h3sid" path="res://scenes/barrier.tscn" id="6_ghlyf"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/bush.tscn" id="7_n0uqx"]
+[ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/tree.tscn" id="8_veyfd"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="9_plwlf"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_tulgd"]
 
@@ -13,6 +14,9 @@ size = Vector2(160, 231)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0yjj"]
 size = Vector2(173, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnoas"]
+size = Vector2(144, 23)
 
 [node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
@@ -230,22 +234,6 @@ offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(134, 88, 12, 8)
 
-[node name="Grass10" type="Sprite2D" parent="Decorations/GrassTufts"]
-y_sort_enabled = true
-position = Vector2(6, -118)
-texture = ExtResource("13_tulgd")
-offset = Vector2(0, -4)
-region_enabled = true
-region_rect = Rect2(123, 88, 10, 8)
-
-[node name="Grass11" type="Sprite2D" parent="Decorations/GrassTufts"]
-y_sort_enabled = true
-position = Vector2(27, -121)
-texture = ExtResource("13_tulgd")
-offset = Vector2(0, -4)
-region_enabled = true
-region_rect = Rect2(134, 88, 12, 8)
-
 [node name="Grass6" type="Sprite2D" parent="Decorations/GrassTufts"]
 y_sort_enabled = true
 position = Vector2(46, -44)
@@ -324,15 +312,6 @@ offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(135, 112, 8, 4)
 
-[node name="Shadow7" type="Sprite2D" parent="Decorations/GrassTufts"]
-z_index = -6
-y_sort_enabled = true
-position = Vector2(26, -115)
-texture = ExtResource("13_tulgd")
-offset = Vector2(0, -4)
-region_enabled = true
-region_rect = Rect2(135, 112, 8, 4)
-
 [node name="Shadow8" type="Sprite2D" parent="Decorations/GrassTufts"]
 z_index = -6
 y_sort_enabled = true
@@ -369,15 +348,6 @@ offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(135, 112, 8, 4)
 
-[node name="Shadow2" type="Sprite2D" parent="Decorations/GrassTufts"]
-z_index = -6
-y_sort_enabled = true
-position = Vector2(6, -112)
-texture = ExtResource("13_tulgd")
-offset = Vector2(0, -4)
-region_enabled = true
-region_rect = Rect2(124, 112, 8, 4)
-
 [node name="Shadow3" type="Sprite2D" parent="Decorations/GrassTufts"]
 z_index = -6
 y_sort_enabled = true
@@ -396,9 +366,6 @@ offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(124, 112, 8, 4)
 
-[node name="Bush" parent="Decorations" instance=ExtResource("7_n0uqx")]
-position = Vector2(16, -117)
-
 [node name="Bush2" parent="Decorations" instance=ExtResource("7_n0uqx")]
 position = Vector2(37, -48)
 
@@ -408,7 +375,53 @@ position = Vector2(-12, -3)
 [node name="Bush4" parent="Decorations" instance=ExtResource("7_n0uqx")]
 position = Vector2(-38, 61)
 
+[node name="Tree" parent="Decorations" instance=ExtResource("8_veyfd")]
+position = Vector2(26, 80)
+
+[node name="Tree2" parent="Decorations" instance=ExtResource("8_veyfd")]
+position = Vector2(-22, -47)
+
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-3.5, -18)
 shape = SubResource("RectangleShape2D_b0yjj")
+
+[node name="Barrier2" type="Area2D" parent="."]
+position = Vector2(0, -133)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lnoas")
+
+[node name="Tree3" parent="Barrier2" instance=ExtResource("8_veyfd")]
+position = Vector2(-59, 12)
+
+[node name="Tree4" parent="Barrier2" instance=ExtResource("8_veyfd")]
+position = Vector2(-37, 5)
+
+[node name="Tree5" parent="Barrier2" instance=ExtResource("8_veyfd")]
+position = Vector2(-13, 12)
+
+[node name="Tree6" parent="Barrier2" instance=ExtResource("8_veyfd")]
+position = Vector2(10, 5)
+
+[node name="Tree7" parent="Barrier2" instance=ExtResource("8_veyfd")]
+position = Vector2(32, 12)
+
+[node name="Bush5" parent="Barrier2" instance=ExtResource("7_n0uqx")]
+position = Vector2(-46, 20)
+
+[node name="Bush6" parent="Barrier2" instance=ExtResource("7_n0uqx")]
+position = Vector2(-20, 22)
+
+[node name="Bush7" parent="Barrier2" instance=ExtResource("7_n0uqx")]
+position = Vector2(8, 17)
+
+[node name="Bush8" parent="Barrier2" instance=ExtResource("7_n0uqx")]
+position = Vector2(48, 21)
+
+[node name="Bush9" parent="Barrier2" instance=ExtResource("7_n0uqx")]
+position = Vector2(68, 14)
+
+[node name="Tree8" parent="Barrier2" instance=ExtResource("8_veyfd")]
+position = Vector2(54, 6)
