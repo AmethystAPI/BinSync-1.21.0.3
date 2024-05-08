@@ -23,6 +23,8 @@ public partial class Altar : Node2D, NetworkPointUser {
 			if (!NetworkManager.IsOwner(body)) continue;
 
 			player.EnterTrinketRealm();
+
+			TrinketRealm.EnterTrinketRealm(this);
 		}
 
 	}

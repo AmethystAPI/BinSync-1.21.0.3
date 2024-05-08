@@ -36,6 +36,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
 		NetworkPoint.Register(nameof(DieRpc), DieRpc);
 		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
+		NetworkPoint.Register(nameof(EnterTrinketRealmRpc), EnterTrinketRealmRpc);
+		NetworkPoint.Register(nameof(LeaveTrinketRealmRpc), LeaveTrinketRealmRpc);
 
 		Players.Add(this);
 		AlivePlayers.Add(this);
@@ -152,19 +154,37 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public void EnterTrinketRealm() {
 		ZIndex += 25;
 
+		NetworkPoint.BounceRpcToClients(nameof(EnterTrinketRealmRpc));
+
 		GetParent().RemoveChild(this);
 		TrinketRealm.Me.AddChild(this);
 
-		TrinketRealm.EnterTrinketRealm();
+		CollisionMask = 512;
+	}
+
+	private void EnterTrinketRealmRpc(Message message) {
+		if (NetworkPoint.IsOwner) return;
+
+		GetParent().RemoveChild(this);
+		TrinketRealm.Me.AddChild(this);
 	}
 
 	public void LeaveTrinketRealm() {
 		ZIndex -= 25;
 
+		NetworkPoint.BounceRpcToClients(nameof(LeaveTrinketRealmRpc));
+
 		TrinketRealm.Me.RemoveChild(this);
 		Game.Me.AddChild(this);
 
-		TrinketRealm.LeaveTinketRealm();
+		CollisionLayer = 2;
+	}
+
+	private void LeaveTrinketRealmRpc(Message message) {
+		if (NetworkPoint.IsOwner) return;
+
+		TrinketRealm.Me.RemoveChild(this);
+		Game.Me.AddChild(this);
 	}
 
 	private void DamageRpc(Message message) {

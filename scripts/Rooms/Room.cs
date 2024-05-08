@@ -73,6 +73,8 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	public void Activate() {
+		if (!NetworkManager.IsHost) return;
+
 		WorldGenerator.PlaceRoom();
 
 		NetworkPoint.SendRpcToClients(nameof(ActivateRpc));
