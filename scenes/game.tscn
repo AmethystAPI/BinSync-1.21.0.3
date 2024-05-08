@@ -57,13 +57,12 @@ script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
 RoomPlacers = Array[Resource]([ExtResource("13_gb3u3")])
 
-[node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Flash")]
+[node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground")]
 z_index = 20
 y_sort_enabled = true
 script = ExtResource("9_vc1vq")
 TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("8_88fnx")]
 TrinketBackground = NodePath("Stars")
-Flash = NodePath("CanvasLayer/Flash")
 
 [node name="Stars" type="ColorRect" parent="TrinketRealm"]
 modulate = Color(1, 1, 1, 0)
@@ -72,18 +71,6 @@ offset_left = -963.0
 offset_top = -540.0
 offset_right = 957.0
 offset_bottom = 540.0
-mouse_filter = 2
-
-[node name="CanvasLayer" type="CanvasLayer" parent="TrinketRealm"]
-layer = 100
-
-[node name="Flash" type="ColorRect" parent="TrinketRealm/CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 
 [node name="Background" type="CanvasLayer" parent="."]

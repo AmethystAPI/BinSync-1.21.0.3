@@ -12,7 +12,7 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Rethink how loot is aquired #design
+- [ ] [[Temples]] #design
 
 
 ## Done

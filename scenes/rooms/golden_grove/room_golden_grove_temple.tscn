@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dx2tllfk62wx"]
+[gd_scene load_steps=11 format=3 uid="uid://dx2tllfk62wx"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Temple.cs" id="1_8xome"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="2_ssf5t"]
@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="4_ffoao"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="4_s1eph"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="5_wynlr"]
+[ext_resource type="Script" path="res://scripts/Altar.cs" id="8_fk0fp"]
+[ext_resource type="Texture2D" uid="uid://bb5jl7sidbr3r" path="res://Project Squad/Attachments/OuterHeadRender.png" id="8_w3ssc"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="9_6ktds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4rj"]
 
 [node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
@@ -41,3 +45,16 @@ position = Vector2(0, 128)
 Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
 [node name="ItemSpawn" type="Node2D" parent="."]
+
+[node name="Altar" type="Node2D" parent="."]
+script = ExtResource("8_fk0fp")
+
+[node name="InteractArea" type="Area2D" parent="Altar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Altar/InteractArea"]
+shape = SubResource("RectangleShape2D_7v4rj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Altar"]
+position = Vector2(0, -2)
+scale = Vector2(0.0443509, 0.0443509)
+texture = ExtResource("8_w3ssc")

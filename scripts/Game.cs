@@ -8,8 +8,7 @@ public partial class Game : Node2D, NetworkPointUser {
 	public static float Difficulty;
 	public static List<Room> NextRooms = new List<Room>();
 	public static RandomNumberGenerator RandomNumberGenerator;
-
-	private static Game s_Me;
+	public static Game Me;
 
 	[Export] public PackedScene PlayerScene;
 	[Export] public int TrinketRoomInterval = 5;
@@ -27,7 +26,7 @@ public partial class Game : Node2D, NetworkPointUser {
 		NetworkPoint.Register(nameof(StartRpc), StartRpc);
 		NetworkPoint.Register(nameof(CleanupRpc), CleanupRpc);
 
-		s_Me = this;
+		Me = this;
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
@@ -41,8 +40,8 @@ public partial class Game : Node2D, NetworkPointUser {
 	}
 
 	public static void Start() {
-		s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
-		s_Me._roomsTilLoot = s_Me.LootRoomInterval;
+		Me._roomsTilTrinket = Me.TrinketRoomInterval;
+		Me._roomsTilLoot = Me.LootRoomInterval;
 
 		List<int> clientIds = new List<int>();
 
@@ -58,13 +57,13 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		Difficulty = clientIds.Count;
 
-		s_Me.NetworkPoint.SendRpcToClients(nameof(StartRpc), message => {
+		Me.NetworkPoint.SendRpcToClients(nameof(StartRpc), message => {
 			message.AddInts(clientIds.ToArray());
 		});
 	}
 
 	public static void Restart() {
-		s_Me.NetworkPoint.SendRpcToClients(nameof(CleanupRpc));
+		Me.NetworkPoint.SendRpcToClients(nameof(CleanupRpc));
 
 		Start();
 	}
@@ -72,16 +71,16 @@ public partial class Game : Node2D, NetworkPointUser {
 	public static void CompletedRoom() {
 		if (!NetworkManager.IsHost) return;
 
-		s_Me._roomsTilTrinket--;
-		s_Me._roomsTilLoot--;
+		Me._roomsTilTrinket--;
+		Me._roomsTilLoot--;
 
-		if (s_Me._roomsTilTrinket <= 0) {
-			s_Me._roomsTilTrinket = s_Me.TrinketRoomInterval;
+		if (Me._roomsTilTrinket <= 0) {
+			Me._roomsTilTrinket = Me.TrinketRoomInterval;
 
-			if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = 1;
+			if (Me._roomsTilLoot <= 0) Me._roomsTilLoot = 1;
 		}
 
-		if (s_Me._roomsTilLoot <= 0) s_Me._roomsTilLoot = s_Me.LootRoomInterval;
+		if (Me._roomsTilLoot <= 0) Me._roomsTilLoot = Me.LootRoomInterval;
 
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 
@@ -92,11 +91,11 @@ public partial class Game : Node2D, NetworkPointUser {
 	}
 
 	public static bool ShouldSpawnAltar() {
-		return s_Me._roomsTilTrinket == 1;
+		return Me._roomsTilTrinket == 1;
 	}
 
 	public static bool ShouldSpawnLootRoom() {
-		return s_Me._roomsTilLoot == 1 && s_Me._roomsTilTrinket != 1;
+		return Me._roomsTilLoot == 1 && Me._roomsTilTrinket != 1;
 	}
 
 	private void StartRpc(Message message) {

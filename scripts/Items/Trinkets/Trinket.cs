@@ -4,18 +4,11 @@ using Networking;
 public partial class Trinket : Item {
 	[Export] public Label Description;
 
-	private bool _animatingToPlayer = false;
-	private Player _playerAnimatingTo;
-
 	public override void _Ready() {
 		base._Ready();
 	}
 
 	public override void _Process(double delta) {
-		if (_animatingToPlayer) {
-			Position = Position.Lerp(Vector2.Up * 60f, (float)delta * 0.3f);
-		}
-
 		if (!_equipped) return;
 
 		float time = Time.GetTicksMsec() / 1000f;
@@ -32,13 +25,6 @@ public partial class Trinket : Item {
 
 	public virtual void ModifyProjectile(Weapon weapon, Projectile projectile) {
 
-	}
-
-	public void AnimateToPlayer(Player player) {
-		Position = Vector2.Up * 100f;
-
-		_animatingToPlayer = true;
-		_playerAnimatingTo = player;
 	}
 
 	public override void EquipToPlayer(Player player) {

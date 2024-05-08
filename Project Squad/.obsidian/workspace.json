@@ -18,6 +18,24 @@
             }
           }
         ]
+      },
+      {
+        "id": "f8f59c494dc6a607",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dbca00a03ed99c90",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design/Temples.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -146,8 +164,9 @@
   },
   "active": "80aceb068a1d41ec",
   "lastOpenFiles": [
-    "Devlogs/Devlog 18/Prototyping - 18.md",
+    "Design/Temples.md",
     "Planning/Beta A Kanban.md",
+    "Devlogs/Devlog 18/Prototyping - 18.md",
     "Devlogs/Devlog 18/Quotes.md",
     "Devlogs/Devlog 18/Draft 6 Revision.md",
     "Devlogs/Devlog 18/Draft 6.md",
@@ -193,7 +212,6 @@
     "Daily Notes/Day 18-15.md",
     "Daily Notes/Day 18-14.md",
     "Design/Trinkets.md",
-    "Daily Notes/Day 18-12.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }

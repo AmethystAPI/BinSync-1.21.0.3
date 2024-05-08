@@ -150,19 +150,21 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void EnterTrinketRealm() {
-		StateMachine.GoToState("Trinket");
-
 		ZIndex += 25;
 
-		GetNode<Node2D>("WeaponHolder").ZIndex -= 25;
+		GetParent().RemoveChild(this);
+		TrinketRealm.Me.AddChild(this);
+
+		TrinketRealm.EnterTrinketRealm();
 	}
 
 	public void LeaveTrinketRealm() {
-		StateMachine.GoToState("Normal");
-
 		ZIndex -= 25;
 
-		GetNode<Node2D>("WeaponHolder").ZIndex += 25;
+		TrinketRealm.Me.RemoveChild(this);
+		Game.Me.AddChild(this);
+
+		TrinketRealm.LeaveTinketRealm();
 	}
 
 	private void DamageRpc(Message message) {

@@ -151,9 +151,6 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		_completed = true;
 
-		if (_chest != null) _chest.Open();
-		if (_altar != null) _altar.Activate();
-
 		Game.CompletedRoom();
 
 		NetworkPoint.SendRpcToClients(nameof(EndRpc));
