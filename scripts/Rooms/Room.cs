@@ -21,43 +21,37 @@ public partial class Room : Node2D, NetworkPointUser {
 	private List<Enemy> _spawnedEnemies = new List<Enemy>();
 	private Barrier _barrier;
 	private Area2D _activateArea;
-	private Node2D _chestSpawn;
-	private Node2D _altarSpawn;
 	private CollisionShape2D _spawnArea;
-	private bool _readyToSpawnEnemies = true;
+	private bool _readyToSpawnComponents = true;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(EndRpc), EndRpc);
-		NetworkPoint.Register(nameof(SpawnChestRpc), SpawnChestRpc);
-		NetworkPoint.Register(nameof(SpawnAltarRpc), SpawnAltarRpc);
 		NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
 		_barrier = GetNodeOrNull<Barrier>("Barrier");
 		Entrance = GetNodeOrNull<Node2D>("Entrance");
 		Exit = GetNodeOrNull<Node2D>("Exit");
 		_activateArea = GetNodeOrNull<Area2D>("ActivateArea");
-		_chestSpawn = GetNodeOrNull<Node2D>("ChestSpawn");
-		_altarSpawn = GetNodeOrNull<Node2D>("AltarSpawn");
 		_spawnArea = GetNodeOrNull<CollisionShape2D>("SpawnArea");
 
 		if (_activateArea != null) _activateArea.BodyEntered += BodyEnteredActivateArea;
 
 		if (!NetworkManager.IsHost) return;
-
-		if (_chestSpawn != null && Game.ShouldSpawnLootRoom()) NetworkPoint.SendRpcToClients(nameof(SpawnChestRpc));
-
-		if (_altarSpawn != null && Game.ShouldSpawnAltar()) NetworkPoint.SendRpcToClients(nameof(SpawnAltarRpc));
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		if (_readyToSpawnEnemies) {
-			_readyToSpawnEnemies = false;
+		if (_readyToSpawnComponents) {
+			_readyToSpawnComponents = false;
 
-			SpawnEnemies();
+			SpawnComponents();
 		}
+	}
+
+	internal virtual void SpawnComponents() {
+		SpawnEnemies();
 	}
 
 	public void AddEnemy() {
@@ -75,7 +69,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	public void Place() {
-		_readyToSpawnEnemies = true;
+		_readyToSpawnComponents = true;
 	}
 
 	public void Activate() {
@@ -167,22 +161,6 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	protected virtual void EndRpc(Message message) {
 		_completed = true;
-	}
-
-	private void SpawnChestRpc(Message message) {
-		_chest = NetworkManager.SpawnNetworkSafe<Chest>(LootChestScene, "Chest");
-
-		AddChild(_chest);
-
-		_chest.GlobalPosition = _chestSpawn.GlobalPosition;
-	}
-
-	private void SpawnAltarRpc(Message message) {
-		_altar = NetworkManager.SpawnNetworkSafe<Altar>(ResourceLoader.Load<PackedScene>("scenes/altar.tscn"), "Altar");
-
-		AddChild(_altar);
-
-		_altar.GlobalPosition = _altarSpawn.GlobalPosition;
 	}
 
 	private void ActivateRpc(Message message) {

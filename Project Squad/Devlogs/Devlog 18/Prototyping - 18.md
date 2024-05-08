@@ -275,3 +275,9 @@ https://www.youtube.com/watch?v=oCaOSz13h_o&t=1s
 https://www.youtube.com/@LEMMiNOMusic/videos
 
 Nocturne - Fez OST
+
+Chris Doerksen - Perfect Parry
+Corbyn Kites - Orbit
+White Bat Audio - Athena
+White Bat Audio - Chroma
+Chris Doerksen - New Groove

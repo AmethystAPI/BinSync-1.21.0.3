@@ -4,39 +4,9 @@
     "type": "split",
     "children": [
       {
-        "id": "227b18a336f9e13d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "5699cc59b91614dc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Devlogs/Devlog 18/Prototyping - 18.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "3c6a6ea1ff491e25",
         "type": "tabs",
         "children": [
-          {
-            "id": "60e331440a45f742",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Devlogs/Devlog 18/Draft 6 Revision.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
           {
             "id": "80aceb068a1d41ec",
             "type": "leaf",
@@ -46,21 +16,8 @@
                 "file": "Planning/Beta A Kanban.md"
               }
             }
-          },
-          {
-            "id": "5dcf4c5046fdd66d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Devlogs/Devlog 18/Draft 5 Revision.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -189,15 +146,15 @@
   },
   "active": "80aceb068a1d41ec",
   "lastOpenFiles": [
+    "Devlogs/Devlog 18/Prototyping - 18.md",
+    "Planning/Beta A Kanban.md",
     "Devlogs/Devlog 18/Quotes.md",
     "Devlogs/Devlog 18/Draft 6 Revision.md",
-    "Devlogs/Devlog 18/Prototyping - 18.md",
     "Devlogs/Devlog 18/Draft 6.md",
     "Design/Music.md",
     "Attachments/Pasted image 20240403213019.png",
     "Devlogs/Devlog 18/Draft 5 Revision.md",
     "Devlogs/Devlog 18/Draft 5.md",
-    "Planning/Beta A Kanban.md",
     "Devlogs/Devlog 18/Draft 4.md",
     "Reference/Devlogs.canvas",
     "Attachments/Pasted image 20240316194450.png",

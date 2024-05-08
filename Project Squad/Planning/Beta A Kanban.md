@@ -6,13 +6,13 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Rethink how loot is aquired #design
 - [ ] Sound Fx #polish
 - [ ] Music #polish
 
 
 ## In Progress
 
+- [ ] Rethink how loot is aquired #design
 
 
 ## Done

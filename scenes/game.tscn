@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=19 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -9,15 +9,10 @@
 [ext_resource type="Shader" path="res://etherial.gdshader" id="5_4da55"]
 [ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="6_mvk5j"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
-[ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_wjaw5"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
-[ext_resource type="Resource" uid="uid://gbgsrxpoxttb" path="res://resources/room_placers/room_placer_golden_grove_plain_bottom_right.tres" id="8_qb27n"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
-[ext_resource type="Resource" uid="uid://c5jxxc7ceh6f6" path="res://resources/room_placers/room_placer_golden_grove_plain_left_top.tres" id="9_whavy"]
-[ext_resource type="Resource" uid="uid://bwka3vkyp1o8j" path="res://resources/room_placers/room_placer_golden_grove_plain_bottom_left.tres" id="10_q5d0h"]
-[ext_resource type="Resource" uid="uid://c08mxw0ij40ib" path="res://resources/room_placers/room_placer_golden_grove_plain_right_top.tres" id="11_6kr5k"]
-[ext_resource type="Resource" uid="uid://b1mtey8fgm5o5" path="res://resources/room_placers/room_placer_golden_grove_large.tres" id="12_e4ldv"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
+[ext_resource type="Resource" uid="uid://dt0sisuqsheo4" path="res://resources/room_placers/room_placer_golden_grove_temple.tres" id="13_gb3u3"]
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
 
@@ -60,7 +55,7 @@ script = ExtResource("4_encmg")
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
-RoomPlacers = Array[Resource]([ExtResource("12_e4ldv"), ExtResource("7_wjaw5"), ExtResource("10_q5d0h"), ExtResource("8_qb27n"), ExtResource("9_whavy"), ExtResource("11_6kr5k")])
+RoomPlacers = Array[Resource]([ExtResource("13_gb3u3")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Flash")]
 z_index = 20
@@ -110,6 +105,7 @@ mouse_filter = 2
 HeartContainer = NodePath("HeartContainer")
 
 [node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton") instance=ExtResource("7_gnxd7")]
+visible = false
 ipAdressInput = NodePath("TextEdit")
 hostButton = NodePath("Host")
 joinButton = NodePath("Join")

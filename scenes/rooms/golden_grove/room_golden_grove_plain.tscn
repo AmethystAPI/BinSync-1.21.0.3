@@ -382,4 +382,5 @@ visible = false
 position = Vector2(-3.5, -18)
 shape = SubResource("RectangleShape2D_b0yjj")
 
-[node name="Barrier" parent="." instance=ExtResource("6_ghlyf")]
+[node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("6_ghlyf")]
+Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
