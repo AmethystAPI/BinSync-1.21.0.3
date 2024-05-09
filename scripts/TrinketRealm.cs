@@ -45,8 +45,6 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 	}
 
 	private void SpawnWeaponRpc(Message message) {
-		GD.Print("Spawn Weapon");
-
 		Me.NetworkPoint.SendRpcToClients(nameof(SpawnWeaponClientRpc), newMessage => {
 			newMessage.AddString(Me.WeaponScenes[Game.RandomNumberGenerator.RandiRange(0, Me.WeaponScenes.Length - 1)].ResourcePath);
 			newMessage.AddInt(message.GetInt());
@@ -56,8 +54,6 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 	}
 
 	private void SpawnWeaponClientRpc(Message message) {
-		GD.Print("Spawn Weapon client");
-
 		string weaponPath = message.GetString();
 		PackedScene weaponScene = ResourceLoader.Load<PackedScene>(weaponPath);
 
@@ -65,7 +61,11 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 
 		AddChild(weapon);
 
-		if (message.GetInt() != NetworkManager.LocalClient.Id) return;
+		if (message.GetInt() != NetworkManager.LocalClient.Id) {
+			weapon.GlobalPosition = Player.LocalPlayer.GlobalPosition + Vector2.Down * 1000f;
+
+			return;
+		};
 
 		Vector2 spawnPosition = new Vector2(message.GetFloat(), message.GetFloat());
 

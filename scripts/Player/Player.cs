@@ -69,6 +69,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		} else {
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
 			Velocity = _networkedVelocity.Value;
+
+			if (GetParent() == TrinketRealm.Me) GlobalPosition = Player.LocalPlayer.GlobalPosition + Vector2.Up * 1000f;
 		}
 
 		Sprite.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
