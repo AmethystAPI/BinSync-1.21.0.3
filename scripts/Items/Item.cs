@@ -1,7 +1,10 @@
+using System;
 using Godot;
 using Networking;
 
 public partial class Item : Node2D, NetworkPointUser {
+  public Action Equipped;
+
   public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
   internal bool _equipped;
@@ -16,5 +19,7 @@ public partial class Item : Node2D, NetworkPointUser {
 
     _equipped = true;
     _equippingPlayer = player;
+
+    Equipped?.Invoke();
   }
 }

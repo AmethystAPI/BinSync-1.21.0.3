@@ -2,24 +2,17 @@
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/SwiftnessTrinket.cs" id="1_omt5b"]
 [ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/trinkets/trinket_swiftness.tres" id="2_3ic87"]
-[ext_resource type="FontFile" uid="uid://cmsbkosa0vclu" path="res://Kenney Mini Square.ttf" id="3_cvtit"]
 
-[node name="SwiftnessTrinket" type="Node2D" node_paths=PackedStringArray("Description")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlhee"]
+
+[node name="SwiftnessTrinket" type="Node2D"]
 script = ExtResource("1_omt5b")
-Description = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3ic87")
 offset = Vector2(0, -6)
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -18.0
-offset_top = 4.0
-offset_right = 120.0
-offset_bottom = 47.0
-scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_cvtit")
-text = "Hephestus Gives
-You Speed"
-horizontal_alignment = 1
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_tlhee")

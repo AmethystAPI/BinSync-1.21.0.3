@@ -2,23 +2,17 @@
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/FaithTrinket.cs" id="1_pmqp0"]
 [ext_resource type="Texture2D" uid="uid://dwbapitnh58x8" path="res://sprites/trinkets/trinket_faith.tres" id="2_nxiye"]
-[ext_resource type="FontFile" uid="uid://cmsbkosa0vclu" path="res://Kenney Mini Square.ttf" id="3_5woeh"]
 
-[node name="Faith Trinket" type="Node2D" node_paths=PackedStringArray("Description")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xjx5"]
+
+[node name="Faith Trinket" type="Node2D"]
 script = ExtResource("1_pmqp0")
-Description = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxiye")
 offset = Vector2(0, -7)
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -19.0
-offset_top = 4.0
-offset_right = 131.0
-offset_bottom = 47.0
-scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_5woeh")
-text = "Stand by the Weak"
-horizontal_alignment = 1
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_0xjx5")

@@ -32,7 +32,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
 		NetworkPoint.Register(nameof(_networkedVelocity), _networkedVelocity);
 		NetworkPoint.Register(nameof(_networkedFacing), _networkedFacing);
-		NetworkPoint.Register(nameof(EquipWeaponRpc), EquipWeaponRpc);
+		NetworkPoint.Register(nameof(EquipItemRpc), EquipItemRpc);
 		NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
 		NetworkPoint.Register(nameof(DieRpc), DieRpc);
 		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
@@ -132,7 +132,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void Equip(Item item) {
-		NetworkPoint.BounceRpcToClients(nameof(EquipWeaponRpc), message => {
+		NetworkPoint.BounceRpcToClients(nameof(EquipItemRpc), message => {
 			message.AddString(item.GetPath());
 		});
 	}
@@ -214,7 +214,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Game.Restart();
 	}
 
-	private void EquipWeaponRpc(Message message) {
+	private void EquipItemRpc(Message message) {
 		string itemPath = message.GetString();
 
 		Item item = GetNode<Item>(itemPath);

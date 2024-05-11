@@ -2,23 +2,17 @@
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/StrengthTrinket.cs" id="1_xs6gt"]
 [ext_resource type="Texture2D" uid="uid://j3ngqcvqstyy" path="res://sprites/trinkets/trinket_strength.tres" id="2_87ncs"]
-[ext_resource type="FontFile" uid="uid://cmsbkosa0vclu" path="res://Kenney Mini Square.ttf" id="3_4r20w"]
 
-[node name="StrengthTrinket" type="Node2D" node_paths=PackedStringArray("Description")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51rh6"]
+
+[node name="StrengthTrinket" type="Node2D"]
 script = ExtResource("1_xs6gt")
-Description = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_87ncs")
 offset = Vector2(0, -4)
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -18.0
-offset_top = 4.0
-offset_right = 120.0
-offset_bottom = 47.0
-scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_4r20w")
-text = "You Monster"
-horizontal_alignment = 1
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("RectangleShape2D_51rh6")

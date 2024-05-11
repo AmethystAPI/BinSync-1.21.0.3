@@ -2,10 +2,12 @@ using Godot;
 using Networking;
 
 public partial class Trinket : Item {
-	[Export] public Label Description;
+	private Area2D _equipArea;
 
 	public override void _Ready() {
 		base._Ready();
+
+		_equipArea = GetNode<Area2D>("EquipArea");
 	}
 
 	public override void _Process(double delta) {
@@ -19,6 +21,20 @@ public partial class Trinket : Item {
 		Position = new Vector2(12f * Mathf.Cos(time * 0.5f + offset), 12f * Mathf.Sin(time * 0.5f + offset));
 	}
 
+	public override void _Input(InputEvent @event) {
+		base._Input(@event);
+
+		if (@event.IsActionReleased("equip") && !_equipped) {
+			foreach (Node2D body in _equipArea.GetOverlappingBodies()) {
+				if (!(body is Player)) continue;
+
+				if (!NetworkManager.IsOwner(body)) continue;
+
+				((Player)body).Equip(this);
+			}
+		}
+	}
+
 	public virtual float ModifySpeed(float speed) {
 		return speed;
 	}
@@ -29,8 +45,5 @@ public partial class Trinket : Item {
 
 	public override void EquipToPlayer(Player player) {
 		base.EquipToPlayer(player);
-
-		Visible = true;
-		Description.Visible = false;
 	}
 }
