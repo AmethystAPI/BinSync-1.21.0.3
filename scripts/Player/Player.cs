@@ -179,7 +179,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		TrinketRealm.Me.RemoveChild(this);
 		Game.Me.AddChild(this);
 
-		CollisionLayer = 2;
+		CollisionMask = 2;
 	}
 
 	private void LeaveTrinketRealmRpc(Message message) {

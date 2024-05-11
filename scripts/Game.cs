@@ -9,6 +9,7 @@ public partial class Game : Node2D, NetworkPointUser {
 	public static List<Room> NextRooms = new List<Room>();
 	public static RandomNumberGenerator RandomNumberGenerator;
 	public static Game Me;
+	public static Room CurrentRoom;
 
 	[Export] public PackedScene PlayerScene;
 	[Export] public int TrinketRoomInterval = 5;
@@ -84,10 +85,12 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
 
-		Room currentRoom = NextRooms[0];
+		CurrentRoom = NextRooms[0];
 		NextRooms.RemoveAt(0);
 
-		currentRoom.Activate();
+		GD.Print("Completed Room!");
+
+		CurrentRoom.Activate();
 	}
 
 	public static bool ShouldSpawnAltar() {

@@ -2,29 +2,38 @@ using Godot;
 using Networking;
 using Riptide;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 
 public partial class TrinketRealm : Node2D, NetworkPointUser {
 	public static TrinketRealm Me;
 
-	[Export] public PackedScene[] TrinketScenes = new PackedScene[] { };
-	[Export] public PackedScene[] WeaponScenes = new PackedScene[] { };
+	[Export] public PackedScene[] TrinketScenes = new PackedScene[0];
+	[Export] public PackedScene[] WeaponScenes = new PackedScene[0];
 	[Export] public ColorRect TrinketBackground;
+	[Export] public PackedScene[] EnemyScenes = new PackedScene[0];
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private float _trinketBackgroundTargetAlpha = 0f;
 	private List<Item> _spawnedItems = new List<Item>();
+	private List<PackedScene> _enemiesToSpawn = new List<PackedScene>();
+	private int _playersToComplete = 0;
 
 	public override void _Ready() {
 		Me = this;
 
 		NetworkPoint.Setup(this);
 
+		NetworkPoint.Register(nameof(PlayerEnterRpc), PlayerEnterRpc);
+		NetworkPoint.Register(nameof(PlayerLeaveRpc), PlayerLeaveRpc);
+		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(SpawnItemsRpc), SpawnItemsRpc);
 		NetworkPoint.Register(nameof(SpawnWeaponClientRpc), SpawnWeaponClientRpc);
 		NetworkPoint.Register(nameof(SpawnTrinketRpc), SpawnTrinketRpc);
 		NetworkPoint.Register(nameof(DespawnItemRpc), DespawnItemRpc);
+		NetworkPoint.Register(nameof(AddEnemyToSpawnRpc), AddEnemyToSpawnRpc);
 	}
 
 	public override void _Process(double delta) {
@@ -35,6 +44,11 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 	}
 
 	public static void EnterTrinketRealm(Altar altar) {
+		Me._spawnedItems.Clear();
+		Me._enemiesToSpawn.Clear();
+
+		Me.TrinketBackground.GlobalPosition = altar.GlobalPosition - Me.TrinketBackground.Size / 2f;
+
 		Me._trinketBackgroundTargetAlpha = 1f;
 
 		Me.NetworkPoint.SendRpcToServer(nameof(SpawnItemsRpc), message => {
@@ -42,10 +56,42 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 			message.AddFloat(altar.GlobalPosition.X);
 			message.AddFloat(altar.GlobalPosition.Y);
 		});
+
+		Me.NetworkPoint.SendRpcToServer(nameof(PlayerEnterRpc));
 	}
 
 	public static void LeaveTinketRealm() {
 		Me._trinketBackgroundTargetAlpha = 0f;
+
+		Me.NetworkPoint.SendRpcToServer(nameof(PlayerLeaveRpc));
+	}
+
+	private void PlayerEnterRpc(Message message) {
+		if (_playersToComplete != 0) return;
+
+		_playersToComplete = NetworkManager.LocalServer.Clients.Length;
+	}
+
+	private void PlayerLeaveRpc(Message message) {
+		_playersToComplete--;
+
+		if (_playersToComplete != 0) return;
+
+		foreach (PackedScene enemyScene in _enemiesToSpawn) {
+			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message => message.AddString(enemyScene.ResourcePath));
+		}
+	}
+
+	private void SpawnEnemyRpc(Message message) {
+		string path = message.GetString();
+		PackedScene enemyScene = ResourceLoader.Load<PackedScene>(path);
+
+		Enemy enemy = NetworkManager.SpawnNetworkSafe<Enemy>(enemyScene, "Enemy");
+
+		Game.CurrentRoom.AddChild(enemy);
+		enemy.GlobalPosition = Game.CurrentRoom.GlobalPosition;
+
+		if (NetworkManager.IsHost) enemy.Activate();
 	}
 
 	private void SpawnItemsRpc(Message message) {
@@ -110,6 +156,16 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 
 		_spawnedItems.Add(trinket);
 
+		RandomNumberGenerator random = new RandomNumberGenerator();
+		PackedScene enemy = EnemyScenes[random.RandiRange(0, EnemyScenes.Length - 1)];
+		int amount = random.RandiRange(4, 10);
+
+		Label label = new Label {
+			Text = enemy.ResourcePath.Split("/").Last() + " " + amount.ToString() + "x",
+			Scale = new Vector2(0.2f, 0.2f)
+		};
+		trinket.AddChild(label);
+
 		trinket.Equipped += () => {
 			foreach (Item item in _spawnedItems) {
 				if (item.GetParent() != this) continue;
@@ -119,10 +175,20 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 				NetworkPoint.BounceRpcToClients(nameof(DespawnItemRpc), message => message.AddString(GetPathTo(item)));
 			}
 
+			for (int i = 0; i < amount; i++) {
+				NetworkPoint.SendRpcToServer(nameof(AddEnemyToSpawnRpc), message => message.AddString(enemy.ResourcePath));
+			}
+
 			LeaveTinketRealm();
 
 			Player.LocalPlayer.LeaveTrinketRealm();
+
+			label.QueueFree();
 		};
+	}
+
+	private void AddEnemyToSpawnRpc(Message message) {
+		_enemiesToSpawn.Add(ResourceLoader.Load<PackedScene>(message.GetString()));
 	}
 
 	private void DespawnItemRpc(Message message) {
