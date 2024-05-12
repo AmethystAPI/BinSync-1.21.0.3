@@ -47,6 +47,8 @@ public partial class Hurt : State {
     }
 
     private void Die() {
+        Audio.Play("enemy_die");
+
         Node2D deathParticle = DeathParticle.Instantiate<Node2D>();
         _enemy.GetParent().AddChild(deathParticle);
         deathParticle.GlobalPosition = _enemy.GlobalPosition;

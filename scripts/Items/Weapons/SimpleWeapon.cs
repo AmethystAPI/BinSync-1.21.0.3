@@ -3,8 +3,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class SimpleWeapon : Weapon
-{
+public partial class SimpleWeapon : Weapon {
   [Signal] public delegate void ShootEventHandler();
 
   [Export] public PackedScene ProjectileScene;
@@ -12,15 +11,13 @@ public partial class SimpleWeapon : Weapon
 
   private float _shootTimer;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     base._Ready();
 
     NetworkPoint.Register(nameof(ShootRpc), ShootRpc);
   }
 
-  public override void _Process(double delta)
-  {
+  public override void _Process(double delta) {
     base._Process(delta);
 
     if (!NetworkPoint.IsOwner) return;
@@ -38,8 +35,7 @@ public partial class SimpleWeapon : Weapon
     NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
   }
 
-  private void ShootRpc(Message message)
-  {
+  private void ShootRpc(Message message) {
     EmitSignal(SignalName.Shoot);
 
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
@@ -53,9 +49,10 @@ public partial class SimpleWeapon : Weapon
 
     _equippingPlayer.GetParent().AddChild(projectile);
 
-    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets)
-    {
+    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets) {
       trinket.ModifyProjectile(this, projectile);
     }
+
+    Audio.Play("weapon_shoot");
   }
 }

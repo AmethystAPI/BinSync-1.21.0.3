@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=30 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
 [ext_resource type="Shader" path="res://etherial.gdshader" id="5_4da55"]
 [ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="6_mvk5j"]
+[ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_cebmk"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="12_tesvq"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
-[ext_resource type="Resource" uid="uid://dt0sisuqsheo4" path="res://resources/room_placers/room_placer_golden_grove_temple.tres" id="13_gb3u3"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="13_js758"]
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
@@ -21,6 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="15_xrri3"]
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
+[ext_resource type="Script" path="res://scripts/Audio.cs" id="22_ko2sk"]
+[ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/sfx_sounds_impact1.wav" id="23_8eois"]
+[ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/death_1.wav" id="24_0d0le"]
+[ext_resource type="AudioStream" uid="uid://cu08ot2vuhs46" path="res://sfx/hurt.wav" id="25_4ymc8"]
+[ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
@@ -48,6 +53,12 @@ PlayerScene = ExtResource("2_nxqs3")
 TrinketRoomInterval = 15
 LootRoomInterval = 6
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("22_ko2sk")
+Sounds = [ExtResource("23_8eois"), ExtResource("24_0d0le"), ExtResource("25_4ymc8"), ExtResource("25_jarow")]
+SoundIds = PackedStringArray("player_damage", "enemy_die", "projectile_hit", "weapon_shoot")
+SoundVolumes = PackedFloat32Array(-4, 0, -8, -12)
+
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("3_ix04k")
 
@@ -61,7 +72,7 @@ script = ExtResource("4_encmg")
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
-RoomPlacers = Array[Resource]([ExtResource("13_gb3u3")])
+RoomPlacers = Array[Resource]([ExtResource("7_cebmk")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground")]
 z_index = 20

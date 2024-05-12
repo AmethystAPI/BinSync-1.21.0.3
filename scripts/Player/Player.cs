@@ -193,6 +193,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
 		AnimationPlayer.Play("hurt");
+
+		Audio.Play("player_damage");
 	}
 
 	private void DieRpc(Message message) {

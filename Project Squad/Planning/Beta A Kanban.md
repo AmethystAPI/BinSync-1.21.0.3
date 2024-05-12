@@ -6,18 +6,18 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Sound Fx #polish
 - [ ] Music #polish
 
 
 ## In Progress
 
-- [ ] [[Temples]] #design
+- [ ] Sound Fx #polish
 
 
 ## Done
 
 **Complete**
+- [x] [[Temples]] #design
 - [x] Rethink how room barriers look #design
 - [x] Encourage players to enter into the midst of enemies #design
 - [x] Improved enemy spawning #code

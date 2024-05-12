@@ -62,6 +62,8 @@ public partial class Projectile : Node2D {
 
 			damageable.Damage(this);
 
+			Audio.Play("projectile_hit");
+
 			if (!Pierce) {
 				Destroyed?.Invoke();
 
