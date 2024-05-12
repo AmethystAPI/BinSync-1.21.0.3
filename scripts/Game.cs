@@ -88,8 +88,6 @@ public partial class Game : Node2D, NetworkPointUser {
 		CurrentRoom = NextRooms[0];
 		NextRooms.RemoveAt(0);
 
-		GD.Print("Completed Room!");
-
 		CurrentRoom.Activate();
 	}
 

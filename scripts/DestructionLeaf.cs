@@ -10,6 +10,8 @@ public partial class DestructionLeaf : CharacterBody2D {
 	private float _swingTimer = 0f;
 	private float _timerFactor = 3f;
 
+	private float _life = 20f;
+
 	public override void _Ready() {
 		RandomNumberGenerator random = new RandomNumberGenerator();
 
@@ -43,5 +45,9 @@ public partial class DestructionLeaf : CharacterBody2D {
 		_swingOrigin.Rotation = Mathf.Pow(Mathf.Abs(sinValue), 0.9f) * Mathf.Sign(sinValue) * Mathf.Pi / 4f * Mathf.Pow(Mathf.Max(-_floatOrigin.Position.Y, 0f) / 16f, 0.8f);
 
 		MoveAndSlide();
+
+		_life -= (float)delta;
+
+		if (_life <= 0) QueueFree();
 	}
 }

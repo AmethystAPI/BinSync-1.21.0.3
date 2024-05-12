@@ -90,8 +90,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			room.Activate();
 
 			Game.CurrentRoom = room;
-
-			GD.Print("Current Room");
 		} else {
 			Game.NextRooms.Add(room);
 		}
