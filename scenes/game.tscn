@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=31 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/death_1.wav" id="24_0d0le"]
 [ext_resource type="AudioStream" uid="uid://cu08ot2vuhs46" path="res://sfx/hurt.wav" id="25_4ymc8"]
 [ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
+[ext_resource type="AudioStream" uid="uid://be255wj238856" path="res://music/bit_forrest_intro.wav" id="27_eml7u"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
@@ -118,3 +119,12 @@ joinButton = NodePath("Join")
 
 [node name="Delay" type="Node" parent="."]
 script = ExtResource("13_l8fec")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_eml7u")
+volume_db = -4.0
+autoplay = true
+max_distance = 9.22337e+18
+attenuation = 1e-05
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="play"]

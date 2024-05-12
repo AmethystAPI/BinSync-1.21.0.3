@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfj7iju8jq7s2"
+path="res://.godot/imported/Adventure Theme Intro.wav-f934987c01d148ea290061148f1bc70c.sample"
+
+[deps]
+
+source_file="res://music/Adventure Theme Intro.wav"
+dest_files=["res://.godot/imported/Adventure Theme Intro.wav-f934987c01d148ea290061148f1bc70c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
