@@ -88,8 +88,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 		if (_rooms.Count == 2) {
 			room.Activate();
-
-			Game.CurrentRoom = room;
 		} else {
 			Game.NextRooms.Add(room);
 		}

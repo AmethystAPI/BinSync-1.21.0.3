@@ -105,7 +105,11 @@ namespace Networking {
         LocalClient = new Client(new Riptide.Transports.Udp.UdpClient());
       }
 
-      LocalClient.Connect(address + ":25566", 5, 0, null, false);
+      if (address.Contains(":")) {
+        LocalClient.Connect(address, 5, 0, null, false);
+      } else {
+        LocalClient.Connect(address + ":25566", 5, 0, null, false);
+      }
 
       LocalClient.MessageReceived += s_Me.OnMessageRecieved;
 

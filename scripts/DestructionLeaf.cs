@@ -10,7 +10,7 @@ public partial class DestructionLeaf : CharacterBody2D {
 	private float _swingTimer = 0f;
 	private float _timerFactor = 3f;
 
-	private float _life = 20f;
+	private float _life = 40f;
 
 	public override void _Ready() {
 		RandomNumberGenerator random = new RandomNumberGenerator();

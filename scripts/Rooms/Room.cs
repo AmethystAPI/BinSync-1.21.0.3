@@ -163,6 +163,8 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	private void ActivateRpc(Message message) {
+		Game.CurrentRoom = this;
+
 		if (_barrier == null) return;
 
 		_barrier.Deactivate();
