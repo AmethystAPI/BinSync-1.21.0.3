@@ -1,3 +1,4 @@
+using Networking;
 using Riptide;
 
 public partial class StoneGolem : Enemy {
@@ -6,7 +7,7 @@ public partial class StoneGolem : Enemy {
 
         NetworkPoint.Register(nameof(SetRandomSeedRpc), SetRandomSeedRpc);
 
-        NetworkPoint.SendRpcToClients(nameof(SetRandomSeedRpc), message => message.AddULong(_stateMachine.GetNode<StoneGolemRoll>("Roll").Random.Seed));
+        if (NetworkManager.IsHost) NetworkPoint.SendRpcToClients(nameof(SetRandomSeedRpc), message => message.AddULong(_stateMachine.GetNode<StoneGolemRoll>("Roll").Random.Seed));
     }
 
     public override void SyncPosition(float delta) {
