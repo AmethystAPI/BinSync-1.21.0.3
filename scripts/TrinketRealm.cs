@@ -1,6 +1,7 @@
 using Godot;
 using Networking;
 using Riptide;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -78,7 +79,12 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 		if (_playersToComplete != 0) return;
 
 		foreach (PackedScene enemyScene in _enemiesToSpawn) {
-			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message => message.AddString(enemyScene.ResourcePath));
+			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message => {
+				message.AddString(enemyScene.ResourcePath);
+
+				message.AddFloat(new RandomNumberGenerator().RandfRange(-48f, 48f));
+				message.AddFloat(new RandomNumberGenerator().RandfRange(-48f, 48f));
+			});
 		}
 	}
 
@@ -89,7 +95,7 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 		Enemy enemy = NetworkManager.SpawnNetworkSafe<Enemy>(enemyScene, "Enemy");
 
 		Game.CurrentRoom.AddChild(enemy);
-		enemy.GlobalPosition = Game.CurrentRoom.GlobalPosition;
+		enemy.GlobalPosition = Game.CurrentRoom.GlobalPosition + new Vector2(message.GetFloat(), message.GetFloat());
 
 		if (NetworkManager.IsHost) enemy.Activate();
 	}
