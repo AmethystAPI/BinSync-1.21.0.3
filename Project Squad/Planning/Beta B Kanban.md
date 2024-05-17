@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Fix enemies spawning outside of map #bug
 - [ ] Enemies triggering after altar room #bug
 - [ ] advancing when you shouldn't #bug
 - [ ] Shooting while dead #bug
@@ -28,6 +27,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Fix enemies spawning outside of map #bug
 
 
 
