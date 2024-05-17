@@ -1,0 +1,8 @@
+- health
+- enemies outside of stuff
+- balancing
+- advancing without needing too
+- item diversity
+- shooting whil dead if held down
+- player skins
+- enemies triggering after altar room

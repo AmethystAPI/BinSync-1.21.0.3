@@ -53,12 +53,6 @@ light_mask = 0
 position = Vector2(-1, -19.5)
 shape = SubResource("RectangleShape2D_7bjp7")
 
-[node name="ChestSpawn" type="Node2D" parent="."]
-position = Vector2(-80, -64)
-
-[node name="AltarSpawn" type="Node2D" parent="."]
-position = Vector2(-80, -64)
-
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -415,6 +409,7 @@ position = Vector2(-30, -56)
 position = Vector2(3, 34)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-15, -34)
 shape = SubResource("RectangleShape2D_6il1x")
 

@@ -13,7 +13,7 @@
 size = Vector2(160, 231)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0yjj"]
-size = Vector2(173, 196)
+size = Vector2(127, 196)
 
 [node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
@@ -52,12 +52,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(-1, -19.5)
 shape = SubResource("RectangleShape2D_7bjp7")
-
-[node name="ChestSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
-
-[node name="AltarSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
 
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -13,7 +13,7 @@
 size = Vector2(175, 246)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpk71"]
-size = Vector2(164, 235)
+size = Vector2(110, 182)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw84m"]
 size = Vector2(18, 155)
@@ -71,12 +71,6 @@ light_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(-8.5, -12)
 shape = SubResource("RectangleShape2D_7bjp7")
-
-[node name="ChestSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
-
-[node name="AltarSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
 
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -432,7 +426,7 @@ position = Vector2(-15, -56)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(6, 1.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_xpk71")
 
 [node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("6_01i0x")]

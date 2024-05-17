@@ -14,7 +14,7 @@
 size = Vector2(276, 289)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gg4k0"]
-size = Vector2(276, 196)
+size = Vector2(214, 196)
 
 [node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
@@ -56,12 +56,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
 position = Vector2(-1, -6.5)
 shape = SubResource("RectangleShape2D_7bjp7")
-
-[node name="ChestSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
-
-[node name="AltarSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
 
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -591,7 +585,7 @@ position = Vector2(-85, 72)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-2, -18)
+position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_gg4k0")
 
 [node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("5_tqsd3")]

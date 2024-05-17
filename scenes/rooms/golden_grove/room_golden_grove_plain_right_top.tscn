@@ -13,7 +13,7 @@
 size = Vector2(193, 255)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4s206"]
-size = Vector2(191, 241)
+size = Vector2(119, 215)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih8p1"]
 size = Vector2(19, 155)
@@ -71,12 +71,6 @@ visible = false
 y_sort_enabled = true
 position = Vector2(15.5, -7.5)
 shape = SubResource("RectangleShape2D_7bjp7")
-
-[node name="ChestSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
-
-[node name="AltarSpawn" type="Node2D" parent="."]
-position = Vector2(0, -64)
 
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -438,11 +432,12 @@ position = Vector2(-41, -113)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(5.5, 4.5)
+position = Vector2(4.5, -0.5)
 shape = SubResource("RectangleShape2D_4s206")
 
-[node name="Barrier" parent="." instance=ExtResource("8_rnvp4")]
+[node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("8_rnvp4")]
 position = Vector2(119, 42)
+Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
 [node name="CollisionShape2D" parent="Barrier" index="0"]
 position = Vector2(-2.5, -3.5)
