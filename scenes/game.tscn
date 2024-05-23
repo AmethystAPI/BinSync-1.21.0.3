@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=38 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/death_1.wav" id="24_0d0le"]
 [ext_resource type="AudioStream" uid="uid://cu08ot2vuhs46" path="res://sfx/hurt.wav" id="25_4ymc8"]
 [ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
+[ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
 [ext_resource type="AudioStream" uid="uid://be255wj238856" path="res://music/bit_forrest_intro.wav" id="27_eml7u"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
@@ -86,7 +87,7 @@ z_index = 20
 y_sort_enabled = true
 script = ExtResource("9_vc1vq")
 TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("8_88fnx")]
-WeaponScenes = [ExtResource("12_tesvq"), ExtResource("13_js758"), ExtResource("15_xrri3")]
+WeaponScenes = [ExtResource("12_tesvq"), ExtResource("13_js758"), ExtResource("15_xrri3"), ExtResource("26_74k7n")]
 TrinketBackground = NodePath("Stars")
 EnemyScenes = [ExtResource("15_pi7jw"), ExtResource("16_a1dbg"), ExtResource("17_yoxty")]
 
@@ -118,6 +119,7 @@ mouse_filter = 2
 HeartContainer = NodePath("HeartContainer")
 
 [node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton") instance=ExtResource("7_gnxd7")]
+visible = false
 ipAdressInput = NodePath("TextEdit")
 hostButton = NodePath("Host")
 joinButton = NodePath("Join")
