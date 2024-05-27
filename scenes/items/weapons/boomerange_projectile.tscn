@@ -35,6 +35,7 @@ radius = 48.0
 
 [node name="BoomerangProjectile" type="Node2D"]
 script = ExtResource("1_mief2")
+ReturnVelocity = 24.0
 Speed = 300.0
 Resistance = 7.5
 Lifetime = 4.0
@@ -50,6 +51,7 @@ position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_e6alr")
 region_rect = Rect2(37, 7, 18, 18)
 
@@ -66,15 +68,15 @@ shape = SubResource("CircleShape2D_unrdv")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(0.616667, 0, 1, 1)
 z_index = 1
-position = Vector2(10, 0)
+position = Vector2(4, 4.76837e-07)
 rotation = -0.793929
+scale = Vector2(0.676891, 0.676891)
 texture = ExtResource("5_yaaer")
 offset = Vector2(0, -5)
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D2"]
 modulate = Color(0.616667, 0, 1, 1)
 z_index = 1
-position = Vector2(10, 0)
-rotation = -2.0944
+rotation = -1.30047
 texture = ExtResource("5_yaaer")
 offset = Vector2(0, -5)
