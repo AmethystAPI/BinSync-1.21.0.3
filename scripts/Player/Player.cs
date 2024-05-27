@@ -101,7 +101,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public void Damage(Projectile projectile) {
 		if (!NetworkPoint.IsOwner) return;
 
-		Health -= projectile.Damage;
+		Health -= projectile.GetDamage();
 
 		GameUI.UpdateHealth(Health);
 

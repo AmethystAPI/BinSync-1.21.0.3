@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8fv5bopgj0rt"]
+
+[ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_xkutt"]
+[ext_resource type="PackedScene" uid="uid://dyxw7udidplhx" path="res://scenes/items/weapons/boomerange_projectile.tscn" id="2_8q7c8"]
+[ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_xyy7f"]
+[ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/weapons/sword.tres" id="4_k3t47"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
+size = Vector2(10, 20)
+
+[node name="Boomerang" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_xkutt")
+ProjectileScene = ExtResource("2_8q7c8")
+
+[node name="Held" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="SwingHandle" type="Node2D" parent="Held"]
+script = ExtResource("3_xyy7f")
+Range = 90.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
+modulate = Color(0.616667, 0, 1, 1)
+z_index = 1
+position = Vector2(10, 0)
+rotation = -0.793929
+texture = ExtResource("4_k3t47")
+offset = Vector2(0, -5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Held/SwingHandle"]
+modulate = Color(0.616667, 0, 1, 1)
+z_index = 1
+position = Vector2(10, 0)
+rotation = -2.0944
+texture = ExtResource("4_k3t47")
+offset = Vector2(0, -5)
+
+[node name="Pickup" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Pickup"]
+texture = ExtResource("4_k3t47")
+
+[node name="EquipArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_orsoj")
+
+[connection signal="Shoot" from="." to="Held/SwingHandle" method="Swing"]

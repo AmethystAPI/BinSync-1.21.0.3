@@ -10,11 +10,14 @@ public partial class Projectile : Node2D {
 	[Export] public float Knockback = 1f;
 	[Export] public bool InheritBelocity = true;
 	[Export] public bool Pierce = false;
+	[Export] public bool DestroyOnTerrain = true;
 
 	public Action Destroyed;
 
 	public Node2D Source;
 	public Vector2 InheritedVelocity;
+
+	internal float _velocity;
 
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
@@ -25,6 +28,8 @@ public partial class Projectile : Node2D {
 
 		_lifetimeTimer = Lifetime;
 		_invincibilityTimer = Invincibilitytime;
+
+		_velocity = Speed;
 	}
 
 	public override void _Process(double delta) {
@@ -39,17 +44,17 @@ public partial class Projectile : Node2D {
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		if (InheritBelocity && IsInstanceValid(Source) && Source is CharacterBody2D) InheritedVelocity = (Source as CharacterBody2D).Velocity;
-
-		GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Speed * (float)delta + InheritedVelocity * (float)delta;
-
-		Speed = Mathf.Lerp(Speed, 0f, Resistance * (float)delta);
+		Movement((float)delta);
 
 		foreach (Node2D body in _damageArea.GetOverlappingBodies()) {
 			if ((body is TileMap || body is Barrier) && _invincibilityTimer <= 0) {
-				Destroyed?.Invoke();
+				OnHit(body);
 
-				QueueFree();
+				if (DestroyOnTerrain) {
+					Destroyed?.Invoke();
+
+					QueueFree();
+				}
 
 				return;
 			}
@@ -64,6 +69,8 @@ public partial class Projectile : Node2D {
 
 			Audio.Play("projectile_hit");
 
+			OnHit(body);
+
 			if (!Pierce) {
 				Destroyed?.Invoke();
 
@@ -72,5 +79,25 @@ public partial class Projectile : Node2D {
 				break;
 			}
 		}
+	}
+
+	public virtual void OnHit(Node2D body) {
+
+	}
+
+	public virtual void Movement(float delta) {
+		if (InheritBelocity && IsInstanceValid(Source) && Source is CharacterBody2D) InheritedVelocity = (Source as CharacterBody2D).Velocity;
+
+		if (InheritBelocity) {
+			GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * _velocity * (float)delta + InheritedVelocity * (float)delta;
+		} else {
+			GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * _velocity * (float)delta;
+		}
+
+		_velocity = Mathf.Lerp(_velocity, 0f, Resistance * (float)delta);
+	}
+
+	public virtual float GetDamage() {
+		return Damage;
 	}
 }

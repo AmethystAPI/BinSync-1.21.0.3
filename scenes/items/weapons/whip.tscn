@@ -1,36 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyh55k213w7y7"]
+[gd_scene load_steps=6 format=3 uid="uid://br71thsbnb2xx"]
 
-[ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_sjj6t"]
-[ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/items/weapons/sword_projectile.tscn" id="2_cwddm"]
-[ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_18ogc"]
-[ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/weapons/sword.tres" id="4_bbk84"]
+[ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_r2rnh"]
+[ext_resource type="PackedScene" uid="uid://bimmdl3utp2sq" path="res://scenes/items/weapons/whip_projectile.tscn" id="2_sdjgr"]
+[ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_f3s4r"]
+[ext_resource type="Texture2D" uid="uid://5606od1o2e5o" path="res://sprites/weapons/whip.tres" id="4_u7ct0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
 size = Vector2(10, 20)
 
-[node name="Sword" type="Node2D"]
+[node name="Whip" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_sjj6t")
-ProjectileScene = ExtResource("2_cwddm")
+script = ExtResource("1_r2rnh")
+ProjectileScene = ExtResource("2_sdjgr")
 
 [node name="Held" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="SwingHandle" type="Node2D" parent="Held"]
-script = ExtResource("3_18ogc")
+script = ExtResource("3_f3s4r")
 Range = 90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
 z_index = 1
 position = Vector2(10, 0)
-texture = ExtResource("4_bbk84")
-offset = Vector2(0, -5)
+texture = ExtResource("4_u7ct0")
+offset = Vector2(-4, -2)
 
 [node name="Pickup" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Pickup"]
-texture = ExtResource("4_bbk84")
+texture = ExtResource("4_u7ct0")
 
 [node name="EquipArea" type="Area2D" parent="."]
 

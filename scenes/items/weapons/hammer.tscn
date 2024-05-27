@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_ow422"]
 [ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/items/weapons/hammer_projectile.tscn" id="2_cv6x1"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_3jr4r"]
-[ext_resource type="Texture2D" uid="uid://dh3th5witmy56" path="res://sprites/weapons/bass_drum.tres" id="4_asxot"]
+[ext_resource type="Texture2D" uid="uid://dh3th5witmy56" path="res://sprites/weapons/hammer.tres" id="4_asxot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaem"]
 size = Vector2(11, 21)
@@ -24,8 +24,9 @@ Range = 110.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
 z_index = 1
-position = Vector2(8, 0)
+position = Vector2(10, 0)
 texture = ExtResource("4_asxot")
+offset = Vector2(0, -4)
 
 [node name="Pickup" type="Node2D" parent="."]
 y_sort_enabled = true

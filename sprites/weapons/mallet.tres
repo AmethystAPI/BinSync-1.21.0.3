@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://fgeevy5xslxm"]
-
-[ext_resource type="Texture2D" uid="uid://t4ih7dg6fx0g" path="res://sprites/Weapons.aseprite" id="1_0wcej"]
-
-[resource]
-atlas = ExtResource("1_0wcej")
-region = Rect2(152, 45, 8, 13)

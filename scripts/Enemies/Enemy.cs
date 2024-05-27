@@ -66,7 +66,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
       message.AddFloat(knockback.X);
       message.AddFloat(knockback.Y);
 
-      message.AddFloat(projectile.Damage);
+      message.AddFloat(projectile.GetDamage());
     });
   }
 

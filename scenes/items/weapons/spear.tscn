@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/Spear.cs" id="1_i77oo"]
 [ext_resource type="PackedScene" uid="uid://isshtmwf2yet" path="res://scenes/items/weapons/spear_projectile.tscn" id="2_1bn4l"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_71j08"]
-[ext_resource type="Texture2D" uid="uid://dcsgueuyq0k40" path="res://sprites/weapons/banjo.tres" id="4_xpls5"]
+[ext_resource type="Texture2D" uid="uid://dcsgueuyq0k40" path="res://sprites/weapons/spear.tres" id="4_xpls5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odmuf"]
 size = Vector2(10, 20)
