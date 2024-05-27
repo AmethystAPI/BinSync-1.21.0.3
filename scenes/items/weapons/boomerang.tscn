@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_xkutt"]
 [ext_resource type="PackedScene" uid="uid://dyxw7udidplhx" path="res://scenes/items/weapons/boomerange_projectile.tscn" id="2_8q7c8"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_xyy7f"]
-[ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/weapons/sword.tres" id="4_k3t47"]
+[ext_resource type="Texture2D" uid="uid://bxdt2d6bhuqgi" path="res://sprites/weapons/boomerang.tres" id="4_3y6u1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
 size = Vector2(10, 20)
@@ -22,26 +22,16 @@ script = ExtResource("3_xyy7f")
 Range = 90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
-modulate = Color(0.616667, 0, 1, 1)
 z_index = 1
 position = Vector2(10, 0)
-rotation = -0.793929
-texture = ExtResource("4_k3t47")
-offset = Vector2(0, -5)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Held/SwingHandle"]
-modulate = Color(0.616667, 0, 1, 1)
-z_index = 1
-position = Vector2(10, 0)
-rotation = -2.0944
-texture = ExtResource("4_k3t47")
-offset = Vector2(0, -5)
+texture = ExtResource("4_3y6u1")
+offset = Vector2(1, -3)
 
 [node name="Pickup" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Pickup"]
-texture = ExtResource("4_k3t47")
+texture = ExtResource("4_3y6u1")
 
 [node name="EquipArea" type="Area2D" parent="."]
 
