@@ -20,7 +20,7 @@ public partial class BoomerangProjectile : Projectile {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
-		if (_returningToPlayer && Source.GlobalPosition.DistanceTo(GlobalPosition) <= 8f) QueueFree();
+		if (_returningToPlayer && IsInstanceValid(Source) && Source.GlobalPosition.DistanceTo(GlobalPosition) <= 8f) QueueFree();
 
 		GlobalRotation = Vector2.Zero.AngleToPoint(_velocity);
 	}

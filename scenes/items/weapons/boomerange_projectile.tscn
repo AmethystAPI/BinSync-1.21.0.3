@@ -36,8 +36,9 @@ radius = 48.0
 [node name="BoomerangProjectile" type="Node2D"]
 script = ExtResource("1_mief2")
 ReturnVelocity = 24.0
-Speed = 300.0
-Resistance = 7.5
+Damage = 0.5
+Speed = 450.0
+Resistance = 7.0
 Lifetime = 4.0
 InheritBelocity = false
 Pierce = true

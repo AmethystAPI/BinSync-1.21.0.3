@@ -12,6 +12,7 @@ size = Vector2(10, 20)
 y_sort_enabled = true
 script = ExtResource("1_xkutt")
 ProjectileScene = ExtResource("2_8q7c8")
+Delay = 0.35
 
 [node name="Held" type="Node2D" parent="."]
 y_sort_enabled = true
