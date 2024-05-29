@@ -6,7 +6,7 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Enemies triggering after altar room #bug
+- [ ] Redo Loot Collection #design
 - [ ] advancing when you shouldn't #bug
 - [ ] Shooting while dead #bug
 - [ ] item diversity #mechanics
@@ -30,7 +30,11 @@ kanban-plugin: basic
 - [x] Fix enemies spawning outside of map #bug
 
 
+***
 
+## Archive
+
+- [ ] Enemies triggering after altar room #bug
 
 %% kanban:settings
 ```

@@ -73,6 +73,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   public void Activate() {
     if (!NetworkManager.IsHost) return;
 
+    if (!IsInstanceValid(this)) return;
+
     NetworkPoint.SendRpcToClients(nameof(ActivateRpc));
   }
 
