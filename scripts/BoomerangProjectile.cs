@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 
 public partial class BoomerangProjectile : Projectile {
-	[Export] public float BounceRange = 48f;
-	[Export] public float ReturnVelocity = 4f;
+	[Export] public float TargetBounceRange = 48f;
+	[Export] public float MinimumVelocity = 4f;
+	[Export] public int MaximumTargetBounces = 2;
+	[Export] public float CollectDistance = 8f;
 
 	private bool _returningToPlayer;
 	private new Vector2 _velocity;
@@ -20,55 +22,62 @@ public partial class BoomerangProjectile : Projectile {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
-		if (_returningToPlayer && IsInstanceValid(Source) && Source.GlobalPosition.DistanceTo(GlobalPosition) <= 8f) QueueFree();
+		if (_returningToPlayer && IsInstanceValid(Source) && Source.GlobalPosition.DistanceTo(GlobalPosition) <= CollectDistance) QueueFree();
 
 		GlobalRotation = Vector2.Zero.AngleToPoint(_velocity);
 	}
 
 	public override void Movement(float delta) {
+		bool sourceValid = IsInstanceValid(Source);
 
-		if (_returningToPlayer && IsInstanceValid(Source)) {
+		if (_returningToPlayer && sourceValid) {
 			_velocity = _velocity.Lerp((Source.GlobalPosition - GlobalPosition).Normalized() * Speed, Resistance * (float)delta);
-
-			GlobalRotation = GlobalPosition.AngleToPoint(Source.GlobalPosition);
 		} else {
 			_velocity = _velocity.Lerp(Vector2.Zero, Resistance * (float)delta);
 		}
 
-		if (IsInstanceValid(Source) && Source is CharacterBody2D characterBody2D && _bounces == 0) {
-			GlobalPosition += _velocity * (float)delta + characterBody2D.Velocity * (float)delta;
+		bool followSourceVelocity = sourceValid && Source is CharacterBody2D && _bounces == 0;
+
+		if (followSourceVelocity) {
+			GlobalPosition += _velocity * (float)delta + ((CharacterBody2D)Source).Velocity * (float)delta;
 		} else {
 			GlobalPosition += _velocity * (float)delta;
 		}
 
-		if (_velocity.Length() > ReturnVelocity) return;
-
-		_returningToPlayer = true;
+		if (_velocity.Length() <= MinimumVelocity) _returningToPlayer = true;
 	}
 
 	public override void OnHit(Node2D body) {
 		_bounces++;
 
-		if (body is TileMap || body is Barrier) {
+		bool hitTerrain = body is TileMap || body is Barrier;
+
+		if (hitTerrain) {
+			if (!_returningToPlayer) Bounce();
+
 			_returningToPlayer = true;
 
 			return;
 		}
 
-		List<Enemy> enemies = GetTree().GetNodesInGroup("Enemies").ToList().Cast<Enemy>().ToList();
+		List<Enemy> targets = GetTree().GetNodesInGroup("Enemies").ToList().Cast<Enemy>().ToList();
 
-		enemies = enemies.Where(enemy => enemy != body).Where(enemy => enemy.GlobalPosition.DistanceTo(GlobalPosition) <= BounceRange).ToList();
+		targets = targets.Where(enemy => enemy != body).Where(enemy => enemy.GlobalPosition.DistanceTo(GlobalPosition) <= TargetBounceRange).ToList();
 
-		if (enemies.Count == 0 || _bounces >= 2) {
-			_velocity = _velocity.Rotated(Mathf.Pi).Normalized() * Speed;
+		if (targets.Count == 0 || _bounces >= MaximumTargetBounces) {
+			Bounce();
 
 			return;
 		}
 
 		_returningToPlayer = false;
 
-		Enemy closestEnemy = enemies.MinBy(enemy => enemy.GlobalPosition.DistanceSquaredTo(GlobalPosition));
+		Enemy closestEnemy = targets.MinBy(enemy => enemy.GlobalPosition.DistanceSquaredTo(GlobalPosition));
 
 		_velocity = Vector2.Right.Rotated(GlobalPosition.AngleToPoint(closestEnemy.GlobalPosition)) * Speed;
+	}
+
+	private void Bounce() {
+		_velocity = _velocity.Rotated(Mathf.Pi).Normalized() * Speed;
 	}
 }

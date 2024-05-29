@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxdt2d6bhuqgi" path="res://sprites/weapons/boomerang.tres" id="2_bv4n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
-size = Vector2(8, 14)
+size = Vector2(10, 10)
 
 [sub_resource type="Animation" id="Animation_26j3f"]
 resource_name = "Spin"
@@ -29,7 +29,7 @@ _data = {
 
 [node name="BoomerangProjectile" type="Node2D"]
 script = ExtResource("1_mief2")
-ReturnVelocity = 24.0
+MinimumVelocity = 24.0
 Damage = 0.5
 Speed = 450.0
 Resistance = 7.0
