@@ -1,10 +1,10 @@
 using Godot;
 
 public partial class Camera : Camera2D {
-	private static Camera s_Me;
+	public static Camera Me;
 
 	public override void _Ready() {
-		s_Me = this;
+		Me = this;
 	}
 
 	public override void _PhysicsProcess(double delta) {
