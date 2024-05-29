@@ -44,6 +44,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   }
 
   public virtual bool CanDamage(Projectile projectile) {
+    if (!Activated && Game.CurrentRoom != GetParent<Room>()) return false;
+
     if (_stateMachine.CurrentState == "Hurt") return false;
 
     if (!(projectile.Source is Player)) return false;

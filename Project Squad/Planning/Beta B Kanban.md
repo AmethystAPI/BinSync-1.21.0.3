@@ -7,8 +7,6 @@ kanban-plugin: basic
 ## Todo
 
 - [ ] Redo Loot Collection #design
-- [ ] advancing when you shouldn't #bug
-- [ ] Shooting while dead #bug
 - [ ] item diversity #mechanics
 - [ ] Player customization #mechanics
 - [ ] More trinkets #design
@@ -17,6 +15,7 @@ kanban-plugin: basic
 - [ ] balancing #design
 - [ ] Custom music #design
 - [ ] Better sfx #polish
+- [ ] advancing when you shouldn't #bug
 
 
 ## In Progress
@@ -26,6 +25,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Shooting while dead #bug
 - [x] More weapons #design
 - [x] Fix enemies spawning outside of map #bug
 
