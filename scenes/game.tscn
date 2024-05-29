@@ -82,8 +82,8 @@ y_sort_enabled = true
 script = ExtResource("9_vc1vq")
 TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("8_88fnx")]
 WeaponScenes = [ExtResource("12_tesvq"), ExtResource("13_js758"), ExtResource("15_xrri3"), ExtResource("26_74k7n")]
-TrinketBackground = NodePath("Stars")
 EnemyScenes = [ExtResource("15_pi7jw"), ExtResource("16_a1dbg"), ExtResource("17_yoxty")]
+TrinketBackground = NodePath("Stars")
 
 [node name="Stars" type="ColorRect" parent="TrinketRealm"]
 modulate = Color(1, 1, 1, 0)
