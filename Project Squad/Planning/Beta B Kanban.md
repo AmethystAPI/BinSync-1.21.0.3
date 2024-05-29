@@ -10,21 +10,21 @@ kanban-plugin: basic
 - [ ] item diversity #mechanics
 - [ ] Player customization #mechanics
 - [ ] More trinkets #design
-- [ ] Try out new visual theme #design
 - [ ] Consider health info #design
 - [ ] balancing #design
 - [ ] Custom music #design
 - [ ] Better sfx #polish
-- [ ] advancing when you shouldn't #bug
 
 
 ## In Progress
 
+- [ ] Work on Visuals #design
 
 
 ## Done
 
 **Complete**
+- [x] advancing when you shouldn't #bug
 - [x] Shooting while dead #bug
 - [x] More weapons #design
 - [x] Fix enemies spawning outside of map #bug
