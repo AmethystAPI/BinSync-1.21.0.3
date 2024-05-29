@@ -88,4 +88,8 @@ public partial class Weapon : Item {
   public virtual void ShootReleased() {
 
   }
+
+  public virtual void CancelShoot() {
+
+  }
 }

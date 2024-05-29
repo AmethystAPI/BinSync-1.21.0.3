@@ -4,8 +4,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class Spear : Weapon
-{
+public partial class Spear : Weapon {
   [Export] public PackedScene ProjectileScene;
   [Export] public float Delay = 0.25f;
   [Export] public float ProjectileSeperation = 0.05f;
@@ -14,15 +13,13 @@ public partial class Spear : Weapon
 
   private List<float> _shootQueue = new List<float>();
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     base._Ready();
 
     NetworkPoint.Register(nameof(ShootRpc), ShootRpc);
   }
 
-  public override void _Process(double delta)
-  {
+  public override void _Process(double delta) {
     base._Process(delta);
 
     if (!NetworkPoint.IsOwner) return;
@@ -31,8 +28,7 @@ public partial class Spear : Weapon
 
     if (!_equipped) return;
 
-    for (int index = 0; index < _shootQueue.Count; index++)
-    {
+    for (int index = 0; index < _shootQueue.Count; index++) {
       _shootQueue[index] -= (float)delta;
 
       if (_shootQueue[index] > 0) continue;
@@ -57,13 +53,15 @@ public partial class Spear : Weapon
     // _shootQueue.Add(ProjectileSeperation * 2f);
   }
 
-  private void Shoot()
-  {
+  public override void CancelShoot() {
+    _shootPressed = false;
+  }
+
+  private void Shoot() {
     NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
   }
 
-  private void ShootRpc(Message message)
-  {
+  private void ShootRpc(Message message) {
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
     projectile.GlobalPosition = GlobalPosition;
@@ -75,8 +73,7 @@ public partial class Spear : Weapon
 
     _equippingPlayer.GetParent().AddChild(projectile);
 
-    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets)
-    {
+    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets) {
       trinket.ModifyProjectile(this, projectile);
     }
   }

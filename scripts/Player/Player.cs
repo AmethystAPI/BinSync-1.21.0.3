@@ -125,6 +125,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.BounceRpcToClients(nameof(DieRpc));
 
 		StateMachine.GoToState("Angel");
+
+		_equippedWeapon.CancelShoot();
 	}
 
 	public void Revive() {

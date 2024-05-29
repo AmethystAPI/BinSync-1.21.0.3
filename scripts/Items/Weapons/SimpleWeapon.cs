@@ -35,6 +35,10 @@ public partial class SimpleWeapon : Weapon {
     NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
   }
 
+  public override void CancelShoot() {
+    _shootPressed = false;
+  }
+
   private void ShootRpc(Message message) {
     EmitSignal(SignalName.Shoot);
 
