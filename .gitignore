@@ -2,3 +2,4 @@
 .godot/
 builds/
 libraries/sg-physics-2d/lib/~libsgphysics2d.windows.template_debug.x86_64.dll
+.vscode/settings.json
