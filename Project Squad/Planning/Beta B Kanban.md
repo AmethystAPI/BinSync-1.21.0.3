@@ -11,7 +11,6 @@ kanban-plugin: basic
 - [ ] Shooting while dead #bug
 - [ ] item diversity #mechanics
 - [ ] Player customization #mechanics
-- [ ] More weapons #design
 - [ ] More trinkets #design
 - [ ] Try out new visual theme #design
 - [ ] Consider health info #design
@@ -22,6 +21,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] More weapons #design
 
 
 ## Done
