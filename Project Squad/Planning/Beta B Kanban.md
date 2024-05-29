@@ -21,12 +21,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] More weapons #design
 
 
 ## Done
 
 **Complete**
+- [x] More weapons #design
 - [x] Fix enemies spawning outside of map #bug
 
 
