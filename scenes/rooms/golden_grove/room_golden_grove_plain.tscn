@@ -399,7 +399,7 @@ Factor = 0.063
 [node name="Origin" type="Node2D" parent="Borders/Paralax"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin"]
-position = Vector2(-141, -8)
+position = Vector2(-137, -5)
 texture = ExtResource("2_brrq6")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax/Origin"]
@@ -411,7 +411,7 @@ position = Vector2(-133, -118)
 texture = ExtResource("2_brrq6")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax/Origin"]
-position = Vector2(-144, 59)
+position = Vector2(-137, 57)
 texture = ExtResource("2_brrq6")
 
 [node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax/Origin"]
@@ -444,8 +444,48 @@ Factor = 0.126
 
 [node name="Origin" type="Node2D" parent="Borders/Paralax2"]
 
+[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(-146, -63)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(-148, -117)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(-148, -1)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(143, 50)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(143, -15)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(143, -71)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(143, -135)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(-147, 59)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(-146, 122)
+texture = ExtResource("2_brrq6")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax2/Origin"]
+position = Vector2(143, 111)
+texture = ExtResource("2_brrq6")
+
 [node name="Sprite2D2" type="Sprite2D" parent="Borders/Paralax2/Origin"]
-position = Vector2(-132, -34)
+position = Vector2(-133, -31)
 texture = ExtResource("2_brrq6")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Borders/Paralax2/Origin"]
