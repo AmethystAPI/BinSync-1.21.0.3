@@ -18,12 +18,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Work on Visuals #design
 
 
 ## Done
 
 **Complete**
+- [x] Work on Visuals #design
 - [x] advancing when you shouldn't #bug
 - [x] Shooting while dead #bug
 - [x] More weapons #design
