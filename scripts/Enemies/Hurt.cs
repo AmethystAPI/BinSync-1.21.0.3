@@ -21,6 +21,8 @@ public partial class Hurt : State {
 
         if (_enemy.Health > 0) return;
 
+        if (_dead) return;
+
         _dead = true;
 
         Delay.Execute(0.5f, Die);
