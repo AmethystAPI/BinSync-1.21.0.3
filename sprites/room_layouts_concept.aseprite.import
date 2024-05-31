@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btf2ngnu3up15"
-path="res://.godot/imported/room_layouts_concept.aseprite-1b1aeec4d371c315d7be98407b9da73b.ctex"
+path="res://.godot/imported/room_layouts_concept.aseprite-1da27860ab2db8c39c9be78a058fc43d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/room_layouts_concept.aseprite"
-dest_files=["res://.godot/imported/room_layouts_concept.aseprite-1b1aeec4d371c315d7be98407b9da73b.ctex"]
+source_file="res://sprites/room_layouts_concept.aseprite"
+dest_files=["res://.godot/imported/room_layouts_concept.aseprite-1da27860ab2db8c39c9be78a058fc43d.ctex"]
 
 [params]
 

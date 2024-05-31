@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b4r1oxxo4whc6"]
 
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://Sprites/golden_grove_tileset.aseprite" id="1_pixhd"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="1_pixhd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ilmj4"]
 resource_name = "Golen Grove Tileset"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=34 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
+[ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://sprites/leaf.tres" id="10_agqbr"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="12_tesvq"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="13_js758"]
@@ -28,6 +29,20 @@
 [ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
 [ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
 [ext_resource type="AudioStream" uid="uid://be255wj238856" path="res://music/bit_forrest_intro.wav" id="27_eml7u"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jo6wf"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 0, 0)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 12.29
+initial_velocity_max = 24.57
+angular_velocity_min = -63.68
+angular_velocity_max = 63.69
+gravity = Vector3(0, 0, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
@@ -69,6 +84,17 @@ process_priority = 1
 process_physics_priority = 1
 zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
+z_index = 9
+position = Vector2(-185, -205)
+rotation = -0.785398
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_jo6wf")
+texture = ExtResource("10_agqbr")
+lifetime = 30.0
+preprocess = 30.0
+visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 
 [node name="WorldGenerator" type="Node2D" parent="."]
 y_sort_enabled = true

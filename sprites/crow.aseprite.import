@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cejt0u8thpy4p"
-path="res://.godot/imported/crow.aseprite-5718fbde88f435152d30288118ac60a7.ctex"
+path="res://.godot/imported/crow.aseprite-a6342470153a9409d72977ba0722f823.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/crow.aseprite"
-dest_files=["res://.godot/imported/crow.aseprite-5718fbde88f435152d30288118ac60a7.ctex"]
+source_file="res://sprites/crow.aseprite"
+dest_files=["res://.godot/imported/crow.aseprite-a6342470153a9409d72977ba0722f823.ctex"]
 
 [params]
 
