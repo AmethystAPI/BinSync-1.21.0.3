@@ -457,7 +457,7 @@ position = Vector2(97, -119)
 
 [node name="Borders" parent="." instance=ExtResource("7_3phhd")]
 
-[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
+[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="0"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
 position = Vector2(-137, -5)
@@ -479,7 +479,7 @@ texture = ExtResource("8_0vhrf")
 position = Vector2(-132, 121)
 texture = ExtResource("8_0vhrf")
 
-[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="3"]
+[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
 
 [node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
 position = Vector2(132, 116)
@@ -501,7 +501,7 @@ texture = ExtResource("8_0vhrf")
 position = Vector2(131, -132)
 texture = ExtResource("8_0vhrf")
 
-[node name="Bottom" type="Node2D" parent="Borders/Paralax/Origin" index="4"]
+[node name="Bottom" type="Node2D" parent="Borders/Paralax/Origin" index="2"]
 
 [node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Bottom"]
 position = Vector2(47, 133)
@@ -523,7 +523,7 @@ texture = ExtResource("8_0vhrf")
 position = Vector2(-114, 114)
 texture = ExtResource("8_0vhrf")
 
-[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
+[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="0"]
 
 [node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
 z_index = 1
@@ -572,7 +572,7 @@ texture = ExtResource("8_0vhrf")
 position = Vector2(131, -163)
 texture = ExtResource("8_0vhrf")
 
-[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="3"]
+[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
 
 [node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
 z_index = 1
@@ -621,7 +621,7 @@ texture = ExtResource("8_0vhrf")
 position = Vector2(-134, 89)
 texture = ExtResource("8_0vhrf")
 
-[node name="Bottom" type="Node2D" parent="Borders/Paralax2/Origin" index="4"]
+[node name="Bottom" type="Node2D" parent="Borders/Paralax2/Origin" index="2"]
 
 [node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Bottom"]
 z_index = 1

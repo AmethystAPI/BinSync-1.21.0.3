@@ -600,18 +600,7 @@ Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePa
 
 [node name="Borders" parent="." instance=ExtResource("10_imjkb")]
 
-[node name="Left" parent="Borders/Paralax/Origin" index="0"]
-position = Vector2(-26, 0)
-
-[node name="Sprite2D6" type="Sprite2D" parent="Borders/Paralax/Origin/Left" index="3"]
-position = Vector2(-133, -118)
-texture = ExtResource("11_2e8ef")
-
-[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Left" index="6"]
-position = Vector2(-108, 159)
-texture = ExtResource("11_2e8ef")
-
-[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
+[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="0"]
 position = Vector2(-26, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
@@ -642,17 +631,7 @@ texture = ExtResource("11_2e8ef")
 position = Vector2(-108, 159)
 texture = ExtResource("11_2e8ef")
 
-[node name="Rights" parent="Borders/Paralax/Origin" index="2"]
-position = Vector2(41, 0)
-
-[node name="Sprite2D11" parent="Borders/Paralax/Origin/Rights" index="0"]
-position = Vector2(125, 126)
-
-[node name="Sprite2D21" type="Sprite2D" parent="Borders/Paralax/Origin/Rights" index="5"]
-position = Vector2(109, -169)
-texture = ExtResource("11_2e8ef")
-
-[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="3"]
+[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
 position = Vector2(41, 0)
 
 [node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
@@ -679,27 +658,13 @@ texture = ExtResource("11_2e8ef")
 position = Vector2(109, -169)
 texture = ExtResource("11_2e8ef")
 
-[node name="Right" parent="Borders/Paralax2/Origin" index="0"]
-position = Vector2(41, 0)
-
-[node name="Sprite2D20" parent="Borders/Paralax2/Origin/Right" index="5"]
-position = Vector2(139, 119)
-
-[node name="Sprite2D21" type="Sprite2D" parent="Borders/Paralax2/Origin/Right" index="6"]
-position = Vector2(102, 149)
-texture = ExtResource("11_2e8ef")
-
-[node name="Sprite2D24" type="Sprite2D" parent="Borders/Paralax2/Origin/Right" index="12"]
-position = Vector2(94, -185)
-texture = ExtResource("11_2e8ef")
-
-[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
+[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="0"]
 position = Vector2(41, 0)
 
 [node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
 z_index = 1
-position = Vector2(234, -21)
-scale = Vector2(224, 334)
+position = Vector2(234, -19.5)
+scale = Vector2(224, 395)
 texture = SubResource("AtlasTexture_vl4ak")
 region_rect = Rect2(0, 0, 336, 192)
 
@@ -751,27 +716,13 @@ texture = ExtResource("11_2e8ef")
 position = Vector2(94, -185)
 texture = ExtResource("11_2e8ef")
 
-[node name="Left" parent="Borders/Paralax2/Origin" index="2"]
-position = Vector2(-26, 0)
-
-[node name="Sprite2D5" parent="Borders/Paralax2/Origin/Left" index="2"]
-position = Vector2(-117, -160)
-
-[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax2/Origin/Left" index="9"]
-position = Vector2(-118, -175)
-texture = ExtResource("11_2e8ef")
-
-[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax2/Origin/Left" index="12"]
-position = Vector2(-120, 154)
-texture = ExtResource("11_2e8ef")
-
-[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="3"]
+[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
 position = Vector2(-26, 0)
 
 [node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
 z_index = 1
-position = Vector2(-238, -17.5)
-scale = Vector2(224, 333)
+position = Vector2(-238, -18.5)
+scale = Vector2(224, 387)
 texture = SubResource("AtlasTexture_vl4ak")
 region_rect = Rect2(0, 0, 336, 192)
 

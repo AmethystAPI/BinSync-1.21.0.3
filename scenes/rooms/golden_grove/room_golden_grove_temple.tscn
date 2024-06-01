@@ -75,150 +75,6 @@ visible = false
 position = Vector2(-3.5, -18)
 shape = SubResource("RectangleShape2D_mmnbf")
 
-[node name="Borders" parent="." instance=ExtResource("7_1krm4")]
-
-[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
-position = Vector2(-137, -5)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
-position = Vector2(-129, -66)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
-position = Vector2(-133, -118)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
-position = Vector2(-137, 57)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
-position = Vector2(-132, 121)
-texture = ExtResource("8_gryq3")
-
-[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="3"]
-
-[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
-position = Vector2(132, 116)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
-position = Vector2(126, 49)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
-position = Vector2(136, -15)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
-position = Vector2(128, -75)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
-position = Vector2(131, -132)
-texture = ExtResource("8_gryq3")
-
-[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
-
-[node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-z_index = 1
-position = Vector2(234, -21)
-scale = Vector2(224, 334)
-texture = SubResource("AtlasTexture_vl4ak")
-region_rect = Rect2(0, 0, 336, 192)
-
-[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(143, 50)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(143, -15)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(143, -71)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(143, -135)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(143, 111)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D12" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(125, 81)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D14" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(127, 21)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D17" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(130, -43)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D19" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(133, -104)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D23" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
-position = Vector2(131, -163)
-texture = ExtResource("8_gryq3")
-
-[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="3"]
-
-[node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-z_index = 1
-position = Vector2(-238, -17.5)
-scale = Vector2(224, 333)
-texture = SubResource("AtlasTexture_vl4ak")
-region_rect = Rect2(0, 0, 336, 192)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-146, -63)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-148, -117)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-148, -1)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D16" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-147, 59)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-146, 122)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-133, -31)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-132, -90)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D6" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-132, -146)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D7" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-137, 27)
-texture = ExtResource("8_gryq3")
-
-[node name="Sprite2D9" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
-position = Vector2(-134, 89)
-texture = ExtResource("8_gryq3")
-
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -288,5 +144,149 @@ position = Vector2(100, -38)
 
 [node name="BorderGrassTuft12" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
 position = Vector2(97, -25)
+
+[node name="Borders" parent="." instance=ExtResource("7_1krm4")]
+
+[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="0"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-137, -5)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-129, -66)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-133, -118)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-137, 57)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-132, 121)
+texture = ExtResource("8_gryq3")
+
+[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
+
+[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(132, 116)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(126, 49)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(136, -15)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(128, -75)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(131, -132)
+texture = ExtResource("8_gryq3")
+
+[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="0"]
+
+[node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+z_index = 1
+position = Vector2(234, -21)
+scale = Vector2(224, 334)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, 50)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, -15)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, -71)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, -135)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, 111)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(125, 81)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(127, 21)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(130, -43)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(133, -104)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(131, -163)
+texture = ExtResource("8_gryq3")
+
+[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
+
+[node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+z_index = 1
+position = Vector2(-238, -17.5)
+scale = Vector2(224, 333)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-146, -63)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-148, -117)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-148, -1)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-147, 59)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-146, 122)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-133, -31)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-132, -90)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-132, -146)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-137, 27)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-134, 89)
+texture = ExtResource("8_gryq3")
 
 [editable path="Borders"]
