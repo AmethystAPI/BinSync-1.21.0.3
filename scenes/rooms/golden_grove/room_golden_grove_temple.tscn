@@ -1,11 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx2tllfk62wx"]
+[gd_scene load_steps=14 format=3 uid="uid://dx2tllfk62wx"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Temple.cs" id="1_8xome"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_0jis8"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="4_s1eph"]
+[ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/border/golden_grove_borders.tscn" id="7_1krm4"]
 [ext_resource type="Script" path="res://scripts/Altar.cs" id="8_fk0fp"]
+[ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/border/border_tree.tscn" id="8_lcivv"]
 [ext_resource type="Texture2D" uid="uid://bb5jl7sidbr3r" path="res://Project Squad/Attachments/OuterHeadRender.png" id="8_w3ssc"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="9_6ktds"]
+[ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/border/border_bush.tscn" id="9_u78d0"]
+[ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/border/border_grass_tuft_1.tscn" id="10_qpouh"]
+[ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/border/border_grass_tuft_2.tscn" id="11_a6dmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4rj"]
 
@@ -63,3 +68,75 @@ texture = ExtResource("8_w3ssc")
 visible = false
 position = Vector2(-3.5, -18)
 shape = SubResource("RectangleShape2D_mmnbf")
+
+[node name="Borders" parent="." instance=ExtResource("7_1krm4")]
+
+[node name="Decorations" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Border" type="Node2D" parent="Decorations"]
+z_index = 9
+y_sort_enabled = true
+
+[node name="BorderTree" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(-91, -40)
+
+[node name="BorderTree2" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(-94, 78)
+
+[node name="BorderTree3" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(85, 83)
+
+[node name="BorderTree4" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(100, -95)
+
+[node name="BorderBush" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(-86, 89)
+
+[node name="BorderBush2" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(-112, 12)
+
+[node name="BorderBush3" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(86, -85)
+
+[node name="BorderBush4" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(103, 22)
+
+[node name="BorderBush5" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(-102, -119)
+
+[node name="BorderGrassTuft1" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(-117, 16)
+
+[node name="BorderGrassTuft3" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(-104, 3)
+
+[node name="BorderGrassTuft4" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(72, 76)
+
+[node name="BorderGrassTuft5" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(91, -81)
+
+[node name="BorderGrassTuft11" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(109, -31)
+
+[node name="BorderGrassTuft6" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(-96, -112)
+
+[node name="BorderGrassTuft2" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(-117, 0)
+
+[node name="BorderGrassTuft7" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(-109, -116)
+
+[node name="BorderGrassTuft8" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(99, -87)
+
+[node name="BorderGrassTuft9" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(74, 90)
+
+[node name="BorderGrassTuft10" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(100, -38)
+
+[node name="BorderGrassTuft12" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(97, -25)
