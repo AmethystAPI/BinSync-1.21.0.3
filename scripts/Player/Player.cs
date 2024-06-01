@@ -156,39 +156,19 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void EnterTrinketRealm() {
-		ZIndex += 25;
-
 		NetworkPoint.BounceRpcToClients(nameof(EnterTrinketRealmRpc));
-
-		GetParent().RemoveChild(this);
-		TrinketRealm.Me.AddChild(this);
-
-		CollisionMask = 512;
 	}
 
 	private void EnterTrinketRealmRpc(Message message) {
 		if (NetworkPoint.IsOwner) return;
-
-		GetParent().RemoveChild(this);
-		TrinketRealm.Me.AddChild(this);
 	}
 
 	public void LeaveTrinketRealm() {
-		ZIndex -= 25;
-
 		NetworkPoint.BounceRpcToClients(nameof(LeaveTrinketRealmRpc));
-
-		TrinketRealm.Me.RemoveChild(this);
-		Game.Me.AddChild(this);
-
-		CollisionMask = 2;
 	}
 
 	private void LeaveTrinketRealmRpc(Message message) {
 		if (NetworkPoint.IsOwner) return;
-
-		TrinketRealm.Me.RemoveChild(this);
-		Game.Me.AddChild(this);
 	}
 
 	private void DamageRpc(Message message) {
@@ -241,7 +221,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			EquippedTrinkets.Add((Trinket)item);
 		}
 
-		item.EquipToPlayer(this);
+		item.OnEquipToPlayer(this);
 	}
 
 	private void ReviveRpc(Message message) {

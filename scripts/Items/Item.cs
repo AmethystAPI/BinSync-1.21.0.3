@@ -14,7 +14,7 @@ public partial class Item : Node2D, NetworkPointUser {
     NetworkPoint.Setup(this);
   }
 
-  public virtual void EquipToPlayer(Player player) {
+  public virtual void OnEquipToPlayer(Player player) {
     Position = Vector2.Zero;
 
     _equipped = true;

@@ -7,6 +7,8 @@
 
 [node name="Faith Trinket" type="Node2D"]
 script = ExtResource("1_pmqp0")
+Icon = ExtResource("2_nxiye")
+Description = "Heals You And Allies"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nxiye")

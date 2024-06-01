@@ -74,8 +74,8 @@ public partial class Weapon : Item {
     }
   }
 
-  public override void EquipToPlayer(Player player) {
-    base.EquipToPlayer(player);
+  public override void OnEquipToPlayer(Player player) {
+    base.OnEquipToPlayer(player);
 
     _pickupNode.Visible = false;
     _heldNode.Visible = true;

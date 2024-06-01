@@ -2,6 +2,9 @@ using Godot;
 using Networking;
 
 public partial class Trinket : Item {
+	[Export] public Texture2D Icon;
+	[Export] public string Description;
+
 	private Area2D _equipArea;
 
 	public override void _Ready() {
@@ -43,7 +46,7 @@ public partial class Trinket : Item {
 
 	}
 
-	public override void EquipToPlayer(Player player) {
-		base.EquipToPlayer(player);
+	public override void OnEquipToPlayer(Player player) {
+		base.OnEquipToPlayer(player);
 	}
 }

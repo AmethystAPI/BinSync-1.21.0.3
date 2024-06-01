@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=35 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -8,13 +8,13 @@
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
 [ext_resource type="Shader" path="res://etherial.gdshader" id="5_4da55"]
 [ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="6_mvk5j"]
-[ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="7_cebmk"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
 [ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://sprites/leaf.tres" id="10_agqbr"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="12_tesvq"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
+[ext_resource type="Resource" uid="uid://dt0sisuqsheo4" path="res://resources/room_placers/room_placer_golden_grove_temple.tres" id="13_8ngsr"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="13_js758"]
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://cu08ot2vuhs46" path="res://sfx/hurt.wav" id="25_4ymc8"]
 [ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
 [ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
+[ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/trinkets/trinket_swiftness.tres" id="26_dnkch"]
 [ext_resource type="AudioStream" uid="uid://be255wj238856" path="res://music/bit_forrest_intro.wav" id="27_eml7u"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jo6wf"]
@@ -100,9 +101,9 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
-RoomPlacers = Array[Resource]([ExtResource("7_cebmk")])
+RoomPlacers = Array[Resource]([ExtResource("13_8ngsr")])
 
-[node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground")]
+[node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20
 y_sort_enabled = true
 script = ExtResource("9_vc1vq")
@@ -110,6 +111,12 @@ TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("
 WeaponScenes = [ExtResource("12_tesvq"), ExtResource("13_js758"), ExtResource("15_xrri3"), ExtResource("26_74k7n")]
 TrinketBackground = NodePath("Stars")
 EnemyScenes = [ExtResource("15_pi7jw"), ExtResource("16_a1dbg"), ExtResource("17_yoxty")]
+Icon = NodePath("../CanvasLayer/TrinketUI/Icon")
+Description = NodePath("../CanvasLayer/TrinketUI/Description")
+DifficultyLabel = NodePath("../CanvasLayer/TrinketUI/Difficulty")
+AcceptButton = NodePath("../CanvasLayer/TrinketUI/Accept")
+SacraficeButton = NodePath("../CanvasLayer/TrinketUI/Sacrafice")
+UI = NodePath("../CanvasLayer/TrinketUI")
 
 [node name="Stars" type="ColorRect" parent="TrinketRealm"]
 modulate = Color(1, 1, 1, 0)
@@ -144,6 +151,92 @@ ipAdressInput = NodePath("TextEdit")
 hostButton = NodePath("Host")
 joinButton = NodePath("Join")
 
+[node name="TrinketUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/TrinketUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -55.0
+offset_right = 27.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_dnkch")
+
+[node name="Description" type="Label" parent="CanvasLayer/TrinketUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -11.5
+offset_right = 62.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Increases Speed"
+
+[node name="Difficulty" type="Label" parent="CanvasLayer/TrinketUI"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 59.0
+offset_right = 63.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Difficulty: 0"
+
+[node name="Accept" type="Button" parent="CanvasLayer/TrinketUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = 24.0
+offset_right = -6.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Accept"
+
+[node name="Sacrafice" type="Button" parent="CanvasLayer/TrinketUI"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 25.0
+offset_right = 84.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sacrafice"
+
 [node name="Delay" type="Node" parent="."]
 script = ExtResource("13_l8fec")
 
@@ -153,4 +246,6 @@ volume_db = -4.0
 max_distance = 9.22337e+18
 attenuation = 1e-05
 
+[connection signal="pressed" from="CanvasLayer/TrinketUI/Accept" to="TrinketRealm" method="OnAccepted"]
+[connection signal="pressed" from="CanvasLayer/TrinketUI/Sacrafice" to="TrinketRealm" method="OnSacraficed"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="play"]

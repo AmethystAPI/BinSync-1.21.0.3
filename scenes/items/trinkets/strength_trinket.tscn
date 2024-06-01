@@ -7,6 +7,8 @@
 
 [node name="StrengthTrinket" type="Node2D"]
 script = ExtResource("1_xs6gt")
+Icon = ExtResource("2_87ncs")
+Description = "Double Damage"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_87ncs")

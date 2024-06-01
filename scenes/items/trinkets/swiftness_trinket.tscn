@@ -7,6 +7,8 @@
 
 [node name="SwiftnessTrinket" type="Node2D"]
 script = ExtResource("1_omt5b")
+Icon = ExtResource("2_3ic87")
+Description = "Increases Speed"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3ic87")

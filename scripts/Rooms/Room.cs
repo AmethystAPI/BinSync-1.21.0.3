@@ -51,7 +51,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	internal virtual void SpawnComponents() {
-		SpawnEnemies();
+		SpawnEnemies(Game.Difficulty);
 	}
 
 	public void AddEnemy() {
@@ -80,6 +80,12 @@ public partial class Room : Node2D, NetworkPointUser {
 		NetworkPoint.SendRpcToClients(nameof(ActivateRpc));
 	}
 
+	public void ActivateEnemies() {
+		foreach (Enemy enemy in _spawnedEnemies) {
+			enemy.Activate();
+		}
+	}
+
 	private void BodyEnteredActivateArea(Node2D body) {
 		if (!NetworkManager.IsHost) return;
 
@@ -87,9 +93,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		if (!(body is Player)) return;
 
-		foreach (Enemy enemy in _spawnedEnemies) {
-			enemy.Activate();
-		}
+		ActivateEnemies();
 	}
 
 	private Vector2 GetRandomPointInSpawnArea() {
@@ -112,10 +116,8 @@ public partial class Room : Node2D, NetworkPointUser {
 		}); ;
 	}
 
-	private void SpawnEnemies() {
+	public void SpawnEnemies(float points, bool activated = false) {
 		if (_spawnArea == null) return;
-
-		float points = Game.Difficulty;
 
 		while (points > 0) {
 			Vector2 spawnPoint = GetRandomPointInSpawnArea();
@@ -129,6 +131,8 @@ public partial class Room : Node2D, NetworkPointUser {
 				message.AddFloat(spawnPoint.Y);
 
 				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1));
+
+				message.AddBool(activated);
 			});
 
 			points--;
@@ -138,6 +142,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	private void SpawnEnemyRpc(Message message) {
 		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
 		int enemySceneIndex = message.GetInt();
+		bool activated = message.GetBool();
 
 		Enemy enemy = NetworkManager.SpawnNetworkSafe<Enemy>(EnemyPool.EnemyScenes[enemySceneIndex], "Enemy");
 
@@ -146,6 +151,8 @@ public partial class Room : Node2D, NetworkPointUser {
 		enemy.GlobalPosition = position;
 
 		_spawnedEnemies.Add(enemy);
+
+		if (activated) enemy.Activate();
 	}
 
 	protected void Complete() {

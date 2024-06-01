@@ -6,7 +6,6 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Redo Loot Collection #design
 - [ ] item diversity #mechanics
 - [ ] Player customization #mechanics
 - [ ] More trinkets #design
@@ -23,6 +22,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Redo Loot Collection #design
 - [x] Work on Visuals #design
 - [x] advancing when you shouldn't #bug
 - [x] Shooting while dead #bug
