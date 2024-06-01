@@ -1,0 +1,166 @@
+[gd_scene load_steps=5 format=3 uid="uid://dluhdh470aipx"]
+
+[ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="1_h47jy"]
+[ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/tree_border.tres" id="2_mfr50"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="3_i1uot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl4ak"]
+atlas = ExtResource("3_i1uot")
+region = Rect2(271, 23, 1, 1)
+
+[node name="Borders" type="Node2D"]
+z_index = 10
+
+[node name="Paralax" type="Node2D" parent="."]
+script = ExtResource("1_h47jy")
+Factor = 0.063
+
+[node name="Origin" type="Node2D" parent="Paralax"]
+
+[node name="Left" type="Node2D" parent="Paralax/Origin"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Paralax/Origin/Left"]
+position = Vector2(-137, -5)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Paralax/Origin/Left"]
+position = Vector2(-129, -66)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Paralax/Origin/Left"]
+position = Vector2(-133, -118)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Paralax/Origin/Left"]
+position = Vector2(-137, 57)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Paralax/Origin/Left"]
+position = Vector2(-132, 121)
+texture = ExtResource("2_mfr50")
+
+[node name="Rights" type="Node2D" parent="Paralax/Origin"]
+
+[node name="Sprite2D11" type="Sprite2D" parent="Paralax/Origin/Rights"]
+position = Vector2(132, 116)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Paralax/Origin/Rights"]
+position = Vector2(126, 49)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Paralax/Origin/Rights"]
+position = Vector2(136, -15)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Paralax/Origin/Rights"]
+position = Vector2(128, -75)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Paralax/Origin/Rights"]
+position = Vector2(131, -132)
+texture = ExtResource("2_mfr50")
+
+[node name="Paralax2" type="Node2D" parent="."]
+script = ExtResource("1_h47jy")
+Factor = 0.126
+
+[node name="Origin" type="Node2D" parent="Paralax2"]
+
+[node name="Right" type="Node2D" parent="Paralax2/Origin"]
+
+[node name="Edge3" type="Sprite2D" parent="Paralax2/Origin/Right"]
+z_index = 1
+position = Vector2(234, -21)
+scale = Vector2(224, 334)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(143, 50)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(143, -15)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(143, -71)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(143, -135)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(143, 111)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(125, 81)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(127, 21)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(130, -43)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(133, -104)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Paralax2/Origin/Right"]
+position = Vector2(131, -163)
+texture = ExtResource("2_mfr50")
+
+[node name="Left" type="Node2D" parent="Paralax2/Origin"]
+
+[node name="Edge2" type="Sprite2D" parent="Paralax2/Origin/Left"]
+z_index = 1
+position = Vector2(-238, -17.5)
+scale = Vector2(224, 333)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-146, -63)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-148, -117)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-148, -1)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-147, 59)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-146, 122)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-133, -31)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-132, -90)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-132, -146)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-137, 27)
+texture = ExtResource("2_mfr50")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Paralax2/Origin/Left"]
+position = Vector2(-134, 89)
+texture = ExtResource("2_mfr50")
