@@ -6,13 +6,12 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] item diversity #mechanics
 - [ ] Player customization #mechanics
 - [ ] More trinkets #design
-- [ ] Consider health info #design
 - [ ] balancing #design
 - [ ] Custom music #design
 - [ ] Better sfx #polish
+- [ ] Boss #design
 
 
 ## In Progress
@@ -22,6 +21,8 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Consider health info #design
+- [x] item diversity #mechanics
 - [x] Redo Loot Collection #design
 - [x] Work on Visuals #design
 - [x] advancing when you shouldn't #bug

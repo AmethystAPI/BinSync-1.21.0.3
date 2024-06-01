@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "Daily Notes/Beta A Playetst.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "Daily Notes/Beta A Playetst.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta B Kanban.md"
+                "file": "Daily Notes/Beta A Playetst.md"
               }
             }
           }
@@ -166,10 +166,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6c7c3dedc5f1acf4",
+  "active": "de31121350767b0c",
   "lastOpenFiles": [
-    "Design/Weapons.md",
     "Planning/Beta B Kanban.md",
+    "Design/Weapons.md",
     "Daily Notes/Beta A Playetst.md",
     "Planning/Untitled Kanban.md",
     "Planning/Previous/Beta A Kanban.md",
