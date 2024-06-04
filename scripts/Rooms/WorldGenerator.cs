@@ -11,10 +11,13 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 	[Export] public RoomPlacer SpawnRoomPlacer;
 	[Export] public RoomPlacer[] RoomPlacers;
+	[Export] public RoomPlacer TempleRoomPlacer;
+	[Export] public Vector2I TempleRoomInterval = new Vector2I(5, 8);
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private List<Room> _rooms = new List<Room>();
+	private int _roomsTilTemple;
 
 	public override void _Ready() {
 		s_Me = this;

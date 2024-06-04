@@ -1,0 +1,199 @@
+[gd_scene load_steps=18 format=3 uid="uid://cg8kvs2jvqdn2"]
+
+[ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_niwpd"]
+[ext_resource type="Texture2D" uid="uid://didmjldh3h46f" path="res://sprites/enemies/slime/slime.tres" id="2_kx022"]
+[ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
+[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_o3mxe"]
+[ext_resource type="Script" path="res://scripts/enemies/Idle.cs" id="5_enrl8"]
+[ext_resource type="Script" path="res://scripts/enemies/slime/SlimeJump.cs" id="6_dwj0d"]
+[ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="7_1wb15"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_tl02o"]
+[ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="9_6r0xt"]
+[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_wa7k2"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="11_gw8t8"]
+[ext_resource type="Texture2D" uid="uid://8aigpuhoomet" path="res://sprites/enemies/slime/slime_hurt.tres" id="12_quu6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
+size = Vector2(12, 9)
+
+[sub_resource type="Animation" id="Animation_4he1a"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, ExtResource("11_gw8t8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kx022")]
+}
+
+[sub_resource type="Animation" id="Animation_pl1hr"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_quu6p"), ExtResource("12_quu6p")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Hurt/HurtSquashAndStretch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_gw8t8"), null]
+}
+
+[sub_resource type="Animation" id="Animation_wv887"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kx022")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hjhs"]
+_data = {
+"RESET": SubResource("Animation_4he1a"),
+"hurt": SubResource("Animation_pl1hr"),
+"idle": SubResource("Animation_wv887")
+}
+
+[node name="Slime" type="CharacterBody2D" groups=["Enemies"]]
+y_sort_enabled = true
+collision_mask = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_niwpd")
+
+[node name="SquashAndStretchTarget" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="SquashAndStretchTarget"]
+texture = ExtResource("2_kx022")
+offset = Vector2(0, -18)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -6
+position = Vector2(0, -2)
+texture = ExtResource("3_ykkpa")
+region_rect = Rect2(32, 8, 16, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_75mpk")
+
+[node name="ProjectileOrigin" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_o3mxe")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
+script = ExtResource("5_enrl8")
+AttackState = "Jump"
+AnimationPlayer = NodePath("../../AnimationPlayer")
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals", "ProjectileOrigin", "Sprite", "JumpSquashAndStretch", "LandSquashAndStretch")]
+script = ExtResource("6_dwj0d")
+Speed = 30.0
+Duration = 0.75
+Height = 16.0
+ProjectileScene = ExtResource("7_1wb15")
+Visuals = NodePath("../../SquashAndStretchTarget/Body")
+ProjectileOrigin = NodePath("../../ProjectileOrigin")
+Sprite = NodePath("../../SquashAndStretchTarget/Body")
+JumpSquashAndStretch = NodePath("JumpSquashAndStretch")
+LandSquashAndStretch = NodePath("LandSquashAndStretch")
+
+[node name="JumpSquashAndStretch" type="Node" parent="StateMachine/Jump" node_paths=PackedStringArray("Target")]
+script = ExtResource("8_tl02o")
+Scale = Vector2(0.6, 1.4)
+Speed = 4.0
+Target = NodePath("../../../SquashAndStretchTarget")
+
+[node name="LandSquashAndStretch" type="Node" parent="StateMachine/Jump" node_paths=PackedStringArray("Target")]
+script = ExtResource("8_tl02o")
+Scale = Vector2(1.4, 0.6)
+Speed = 6.0
+Target = NodePath("../../../SquashAndStretchTarget")
+
+[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
+script = ExtResource("9_6r0xt")
+DeathParticle = ExtResource("10_wa7k2")
+AnimationPlayer = NodePath("../../AnimationPlayer")
+Visuals = NodePath("../../SquashAndStretchTarget/Body")
+
+[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Hurt" node_paths=PackedStringArray("Target")]
+script = ExtResource("8_tl02o")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
+Target = NodePath("../../../SquashAndStretchTarget")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1hjhs")
+}
