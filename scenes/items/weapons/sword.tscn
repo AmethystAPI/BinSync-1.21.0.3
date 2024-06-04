@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_sjj6t"]
 [ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/items/weapons/sword_projectile.tscn" id="2_cwddm"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_18ogc"]
-[ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://Sprites/weapons/sword.tres" id="4_bbk84"]
+[ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/weapons/sword.tres" id="4_bbk84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
 size = Vector2(10, 20)
@@ -17,11 +17,12 @@ ProjectileScene = ExtResource("2_cwddm")
 y_sort_enabled = true
 
 [node name="SwingHandle" type="Node2D" parent="Held"]
+y_sort_enabled = true
 script = ExtResource("3_18ogc")
 Range = 90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
-z_index = 1
+y_sort_enabled = true
 position = Vector2(10, 0)
 texture = ExtResource("4_bbk84")
 offset = Vector2(0, -5)
