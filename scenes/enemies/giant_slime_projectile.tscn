@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://djb3apjd6nutg" path="res://sprites/enemies/giant_slime/giant_slime_projectile.tres" id="2_l6ww8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpqck"]
-radius = 24.0208
+radius = 28.0
 
 [node name="SlimeProjectile" type="Node2D"]
 y_sort_enabled = true

@@ -224,7 +224,6 @@ region_enabled = true
 region_rect = Rect2(159, -1, 64, 68)
 
 [node name="GrassTufts" type="Node2D" parent="Decorations"]
-visible = false
 y_sort_enabled = true
 
 [node name="Grass" type="Sprite2D" parent="Decorations/GrassTufts"]
@@ -418,7 +417,6 @@ region_enabled = true
 region_rect = Rect2(124, 112, 8, 4)
 
 [node name="Destrucatables" type="Node2D" parent="Decorations"]
-visible = false
 y_sort_enabled = true
 
 [node name="Bush" parent="Decorations/Destrucatables" instance=ExtResource("7_gygfb")]

@@ -4,6 +4,7 @@ using Riptide;
 
 public partial class Idle : State, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
+    [Export] public float InteruptDecay = 0f;
     [Export] public string AttackState = "Attack";
     [Export] public string Animation = "idle";
     [Export] public AnimationPlayer AnimationPlayer;
@@ -13,6 +14,7 @@ public partial class Idle : State, NetworkPointUser {
     private Enemy _enemy;
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+    private float _lastIdleTime;
 
     public override void _Ready() {
         _enemy = GetParent().GetParent<Enemy>();
@@ -25,7 +27,11 @@ public partial class Idle : State, NetworkPointUser {
     public override void Enter() {
         AnimationPlayer.Play(Animation);
 
-        if (_idleTimer > 0) return;
+        if (_idleTimer > 0) {
+            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f * InteruptDecay;
+
+            return;
+        }
 
         _idleTimer = _randomNumberGenerator.RandfRange(IdleInterval.X, IdleInterval.Y);
     }
@@ -40,6 +46,10 @@ public partial class Idle : State, NetworkPointUser {
         if (_idleTimer > 0) return;
 
         NetworkPoint.SendRpcToClients(nameof(AttackRpc));
+    }
+
+    public override void Exit() {
+        _lastIdleTime = Time.GetTicksMsec();
     }
 
     private void AttackRpc(Message message) {
