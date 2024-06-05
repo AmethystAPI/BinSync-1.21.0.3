@@ -1,9 +1,14 @@
-using Godot;
-using Riptide;
-
 public partial class SpawnRoom : Room {
 	public override void _Ready() {
 		base._Ready();
+
+		Activate();
 	}
-	protected override void EndRpc(Message message) { }
+
+	internal override void SpawnComponents() {
+	}
+
+	internal override void SetNextRoom(Room nextRoom) {
+		nextRoom.Activate();
+	}
 }

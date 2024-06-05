@@ -74,8 +74,6 @@ shader_parameter/noise = SubResource("NoiseTexture3D_or4pi")
 y_sort_enabled = true
 script = ExtResource("1_sq6vk")
 PlayerScene = ExtResource("2_nxqs3")
-TrinketRoomInterval = 15
-LootRoomInterval = 6
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("22_ko2sk")
@@ -107,7 +105,8 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
-RoomPlacers = Array[Resource]([ExtResource("13_8ngsr"), ExtResource("14_q6c76"), ExtResource("15_y72t3"), ExtResource("16_t2dh1"), ExtResource("17_4pvk4"), ExtResource("18_vxjp8"), ExtResource("13_fx584")])
+RoomPlacers = Array[Resource]([ExtResource("14_q6c76"), ExtResource("15_y72t3"), ExtResource("16_t2dh1"), ExtResource("17_4pvk4"), ExtResource("18_vxjp8"), ExtResource("13_fx584")])
+TempleRoomPlacer = ExtResource("13_8ngsr")
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20
