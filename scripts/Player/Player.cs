@@ -9,11 +9,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public static Player LocalPlayer;
 
 	[Export] public PackedScene DefaultWeaponScene;
-	[Export] public Sprite2D Sprite;
+	[Export] public PackedScene[] DefaultEquipmentScenes;
+	[Export] public Node2D Visuals;
 	[Export] public Node2D WeaponHolder;
 	[Export] public Node2D TrinketHolder;
+	[Export] public Node2D EquipmentHolder;
 
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
+	public Dictionary<string, Equipment> EquippedEquipments = new Dictionary<string, Equipment>();
 	public float Health = 3f;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 	public AnimationPlayer AnimationPlayer;
@@ -46,7 +49,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		StateMachine = GetNode<StateMachine>("StateMachine");
 
-		EquipDefaultItem();
+		EquipDefaultItems();
 
 		if (!NetworkPoint.IsOwner) return;
 
@@ -70,10 +73,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
 			Velocity = _networkedVelocity.Value;
 
-			if (GetParent() == TrinketRealm.Me) GlobalPosition = Player.LocalPlayer.GlobalPosition + Vector2.Up * 1000f;
+			if (GetParent() == TrinketRealm.Me) GlobalPosition = LocalPlayer.GlobalPosition + Vector2.Up * 1000f;
 		}
 
-		Sprite.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+		Visuals.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
 	public void Heal(float health) {
@@ -139,14 +142,20 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		});
 	}
 
-	private void EquipDefaultItem() {
+	private void EquipDefaultItems() {
 		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(DefaultWeaponScene, "Weapon");
 
 		AddChild(weapon);
 
-		if (!NetworkPoint.IsOwner) return;
+		if (NetworkPoint.IsOwner) Equip(weapon);
 
-		Equip(weapon);
+		foreach (PackedScene scene in DefaultEquipmentScenes) {
+			Equipment equipment = NetworkManager.SpawnNetworkSafe<Equipment>(scene, "Equipment");
+
+			AddChild(equipment);
+
+			if (NetworkPoint.IsOwner) Equip(equipment);
+		}
 	}
 
 	public void Cleanup() {
@@ -176,6 +185,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		AnimationPlayer.Play("hurt");
 
+		foreach (Equipment equipment in EquippedEquipments.Values) {
+			equipment.AnimationPlayer.Play("hurt");
+		}
+
 		Audio.Play("player_damage");
 	}
 
@@ -203,22 +216,32 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		Item item = GetNode<Item>(itemPath);
 
-		if (item is Weapon) {
+		if (item is Weapon weapon) {
 			if (_equippedWeapon != null) _equippedWeapon.QueueFree();
 
 			item.GetParent().RemoveChild(item);
-			GetNode("WeaponHolder").AddChild(item);
+			WeaponHolder.AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
-			_equippedWeapon = (Weapon)item;
+			_equippedWeapon = weapon;
 		}
 
-		if (item is Trinket) {
+		if (item is Trinket trinket) {
 			item.GetParent().RemoveChild(item);
-			GetNode("TrinketsHolder").AddChild(item);
+			TrinketHolder.AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
-			EquippedTrinkets.Add((Trinket)item);
+			EquippedTrinkets.Add(trinket);
+		}
+
+		if (item is Equipment equipment) {
+			item.GetParent().RemoveChild(item);
+			EquipmentHolder.AddChild(item);
+			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
+
+			if (EquippedEquipments.ContainsKey(equipment.Slot)) EquippedEquipments[equipment.Slot].QueueFree();
+
+			EquippedEquipments[equipment.Slot] = equipment;
 		}
 
 		item.OnEquipToPlayer(this);

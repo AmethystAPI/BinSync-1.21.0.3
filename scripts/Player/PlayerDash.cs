@@ -20,6 +20,10 @@ public partial class PlayerDash : State {
   public override void Enter() {
     _player.AnimationPlayer.Play("dash");
 
+    foreach (Equipment equipment in _player.EquippedEquipments.Values) {
+      equipment.AnimationPlayer.Play("dash");
+    }
+
     _dashTimer = Duration;
 
     if (!_player.NetworkPoint.IsOwner) return;

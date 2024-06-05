@@ -24,8 +24,16 @@ public partial class PlayerNormal : State, NetworkPointUser {
     if (_player.Knockback.Length() < 3.5f) {
       if (_player.Velocity.Length() > 3.5f) {
         _player.AnimationPlayer.Play("run");
+
+        foreach (Equipment equipment in _player.EquippedEquipments.Values) {
+          equipment.AnimationPlayer.Play("run");
+        }
       } else {
         _player.AnimationPlayer.Play("idle");
+
+        foreach (Equipment equipment in _player.EquippedEquipments.Values) {
+          equipment.AnimationPlayer.Play("idle");
+        }
       }
     }
 

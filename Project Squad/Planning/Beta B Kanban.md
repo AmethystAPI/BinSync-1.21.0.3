@@ -6,16 +6,17 @@ kanban-plugin: basic
 
 ## Todo
 
+- [ ] Fix enemies spawning outside of map #bug
 - [ ] Player customization #mechanics
 - [ ] More trinkets #design
-- [ ] balancing #design
 - [ ] Custom music #design
 - [ ] Better sfx #polish
-- [ ] Boss #design
 
 
 ## In Progress
 
+- [ ] balancing #design
+- [ ] Boss #design
 
 
 ## Done
@@ -28,7 +29,6 @@ kanban-plugin: basic
 - [x] advancing when you shouldn't #bug
 - [x] Shooting while dead #bug
 - [x] More weapons #design
-- [x] Fix enemies spawning outside of map #bug
 
 
 ***
