@@ -8,6 +8,7 @@
 size = Vector2(26, 15)
 
 [node name="Tree" type="StaticBody2D"]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_snroy")
@@ -16,9 +17,9 @@ ParticleCount = 12
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 4)
+position = Vector2(0, 8)
 texture = ExtResource("3_nk0d5")
-offset = Vector2(0, -12)
+offset = Vector2(0, -15)
 region_enabled = true
 region_rect = Rect2(170, 137, 26, 34)
 

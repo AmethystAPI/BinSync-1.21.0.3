@@ -206,8 +206,10 @@ WeaponHolder = NodePath("WeaponHolder")
 TrinketHolder = NodePath("TrinketsHolder")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Sprite" type="Sprite2D" parent="SquashAndStretchTarget"]
+y_sort_enabled = true
 texture = ExtResource("3_n1urs")
 offset = Vector2(0, -12)
 
@@ -223,6 +225,7 @@ position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_ypp2t")
 
 [node name="WeaponHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -11)
 
 [node name="TrinketsHolder" type="Node2D" parent="."]

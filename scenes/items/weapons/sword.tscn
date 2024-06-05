@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyh55k213w7y7"]
+[gd_scene load_steps=7 format=3 uid="uid://cyh55k213w7y7"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_sjj6t"]
 [ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/items/weapons/sword_projectile.tscn" id="2_cwddm"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_18ogc"]
 [ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/weapons/sword.tres" id="4_bbk84"]
+[ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_w0o7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
 size = Vector2(10, 20)
@@ -21,9 +22,12 @@ y_sort_enabled = true
 script = ExtResource("3_18ogc")
 Range = 90.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
-y_sort_enabled = true
+[node name="CustomYSort" type="Node2D" parent="Held/SwingHandle"]
 position = Vector2(10, 0)
+script = ExtResource("4_w0o7s")
+Offset = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle/CustomYSort"]
 texture = ExtResource("4_bbk84")
 offset = Vector2(0, -5)
 

@@ -8,6 +8,7 @@
 size = Vector2(18, 10)
 
 [node name="Bush" type="StaticBody2D"]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_m3bpj")
@@ -15,8 +16,9 @@ Particle = ExtResource("2_ka5t7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, 2)
 texture = ExtResource("3_5n131")
-offset = Vector2(0, -4)
+offset = Vector2(0, -6)
 region_enabled = true
 region_rect = Rect2(216, 120, 20, 18)
 
