@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://blcvj0wy4dq8w"]
+[gd_scene load_steps=7 format=3 uid="uid://blcvj0wy4dq8w"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/Spear.cs" id="1_i77oo"]
 [ext_resource type="PackedScene" uid="uid://isshtmwf2yet" path="res://scenes/items/weapons/spear_projectile.tscn" id="2_1bn4l"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_71j08"]
+[ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_4re4j"]
 [ext_resource type="Texture2D" uid="uid://dcsgueuyq0k40" path="res://sprites/weapons/spear.tres" id="4_xpls5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odmuf"]
@@ -20,12 +21,17 @@ ProjectileSeperation = 0.1
 y_sort_enabled = true
 
 [node name="SwingHandle" type="Node2D" parent="Held"]
+y_sort_enabled = true
 script = ExtResource("3_71j08")
 Range = 90.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
-z_index = 1
+[node name="CustomYSort" type="Node2D" parent="Held/SwingHandle"]
 position = Vector2(10, 0)
+script = ExtResource("4_4re4j")
+Offset = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle/CustomYSort"]
+z_index = 1
 texture = ExtResource("4_xpls5")
 
 [node name="Pickup" type="Node2D" parent="."]

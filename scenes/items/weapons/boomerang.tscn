@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8fv5bopgj0rt"]
+[gd_scene load_steps=7 format=3 uid="uid://c8fv5bopgj0rt"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_xkutt"]
 [ext_resource type="PackedScene" uid="uid://dyxw7udidplhx" path="res://scenes/items/weapons/boomerange_projectile.tscn" id="2_8q7c8"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_xyy7f"]
+[ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_2i0e6"]
 [ext_resource type="Texture2D" uid="uid://bxdt2d6bhuqgi" path="res://sprites/weapons/boomerang.tres" id="4_3y6u1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
@@ -18,12 +19,17 @@ Delay = 0.35
 y_sort_enabled = true
 
 [node name="SwingHandle" type="Node2D" parent="Held"]
+y_sort_enabled = true
 script = ExtResource("3_xyy7f")
 Range = 90.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle"]
-z_index = 1
+[node name="CustomYSort" type="Node2D" parent="Held/SwingHandle"]
 position = Vector2(10, 0)
+script = ExtResource("4_2i0e6")
+Offset = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle/CustomYSort"]
+z_index = 1
 texture = ExtResource("4_3y6u1")
 offset = Vector2(1, -3)
 
