@@ -46,6 +46,8 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		if (_activateArea != null) _activateArea.BodyEntered += BodyEnteredActivateArea;
 
+		s_Rooms.Add(this);
+
 		if (!NetworkManager.IsHost) return;
 
 		SpawnComponents();
