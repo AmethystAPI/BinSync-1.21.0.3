@@ -70,12 +70,34 @@ namespace Networking {
       if (!IsInstanceValid(source as Node)) GD.PushError("Trying to Send RPC From Invalid Instance " + name);
 
       Message message = Message.Create(messageSendMode, 1);
+
+      int initialBits = message.WrittenBits;
+
       message.AddString(name);
       message.AddString(source.GetPath());
 
       messageBuilder?.Invoke(message);
 
+      Message localMessage = Message.Create();
+      int bitsToRead = message.WrittenBits - initialBits;
+      int readPosition = initialBits;
+
+      while (bitsToRead > 0) {
+        int bitsToWrite = Math.Min(bitsToRead, 8);
+
+        byte bits;
+
+        message.PeekBits(bitsToWrite, readPosition, out bits);
+
+        localMessage.AddBits(bits, bitsToWrite);
+
+        readPosition += 8;
+        bitsToRead -= bitsToWrite;
+      }
+
       LocalClient.Send(message);
+
+      s_Me.HandleMessage(localMessage);
     }
 
     public static bool Host() {
@@ -152,7 +174,11 @@ namespace Networking {
           relayMessage.AddBits(bits, bitsToWrite);
         }
 
-        LocalServer.SendToAll(relayMessage);
+        foreach (Connection connection in LocalServer.Clients) {
+          if (connection == eventArguments.FromConnection) continue;
+
+          LocalServer.Send(relayMessage, connection.Id);
+        }
 
         return;
       }
