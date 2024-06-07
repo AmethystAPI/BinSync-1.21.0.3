@@ -55,7 +55,7 @@ public partial class Hurt : State {
         _enemy.GetParent().AddChild(deathParticle);
         deathParticle.GlobalPosition = _enemy.GlobalPosition;
 
-        _enemy.GetParent<Room>().RemoveEnemy();
+        _enemy.GetParent<Room>().EnemyDied(_enemy);
 
         _enemy.QueueFree();
     }

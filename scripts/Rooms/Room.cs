@@ -17,7 +17,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	internal List<Enemy> _spawnedEnemies = new List<Enemy>();
+	protected List<Enemy> _spawnedEnemies = new List<Enemy>();
 
 	private bool _completed;
 	private int _aliveEnemies = 0;
@@ -64,14 +64,14 @@ public partial class Room : Node2D, NetworkPointUser {
 		_aliveEnemies++;
 	}
 
-	public void RemoveEnemy() {
+	public void EnemyDied(Enemy enemy) {
 		_aliveEnemies--;
 
 		if (_aliveEnemies != 0) return;
 
 		if (!NetworkManager.IsHost) return;
 
-		Complete();
+		Complete(enemy);
 	}
 
 	public void Activate() {
@@ -88,12 +88,12 @@ public partial class Room : Node2D, NetworkPointUser {
 		}
 	}
 
-	internal virtual void SpawnComponents() {
-		SpawnEnemies(Game.Difficulty);
+	public virtual void SetNextRoom(Room nextRoom) {
+		_nextRoom = nextRoom;
 	}
 
-	internal virtual void SetNextRoom(Room nextRoom) {
-		_nextRoom = nextRoom;
+	protected virtual void SpawnComponents() {
+		SpawnEnemies(Game.Difficulty);
 	}
 
 	private void BodyEnteredActivateArea(Node2D body) {
@@ -165,7 +165,7 @@ public partial class Room : Node2D, NetworkPointUser {
 		if (activated) enemy.Activate();
 	}
 
-	protected void Complete() {
+	protected virtual void Complete(Enemy enemy = null) {
 		if (!NetworkManager.IsHost) return;
 
 		_completed = true;

@@ -14,13 +14,14 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] balancing #design
-- [ ] Boss #design
+- [ ] Item System
 
 
 ## Done
 
 **Complete**
+- [x] balancing #design
+- [x] Boss #design
 - [x] Player customization #mechanics
 - [x] Consider health info #design
 - [x] item diversity #mechanics

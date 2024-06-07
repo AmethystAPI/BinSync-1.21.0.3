@@ -5,10 +5,10 @@ public partial class SpawnRoom : Room {
 		Activate();
 	}
 
-	internal override void SpawnComponents() {
+	protected override void SpawnComponents() {
 	}
 
-	internal override void SetNextRoom(Room nextRoom) {
+	public override void SetNextRoom(Room nextRoom) {
 		nextRoom.Activate();
 	}
 }
