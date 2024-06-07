@@ -109,7 +109,6 @@ SpawnRoomPlacer = ExtResource("6_mvk5j")
 RoomPlacers = Array[Resource]([ExtResource("14_q6c76"), ExtResource("15_y72t3"), ExtResource("16_t2dh1"), ExtResource("17_4pvk4"), ExtResource("18_vxjp8"), ExtResource("13_fx584")])
 TempleRoomPlacer = ExtResource("13_8ngsr")
 BossRoomPlacer = ExtResource("20_b6sci")
-BossRoomInterval = Vector2i(1, 1)
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20
