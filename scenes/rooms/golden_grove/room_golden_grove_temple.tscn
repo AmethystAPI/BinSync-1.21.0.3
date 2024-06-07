@@ -55,8 +55,6 @@ position = Vector2(0, 128)
 [node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("9_6ktds")]
 Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
-[node name="ItemSpawn" type="Node2D" parent="."]
-
 [node name="Altar" type="Node2D" parent="."]
 script = ExtResource("8_fk0fp")
 

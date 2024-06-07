@@ -17,9 +17,10 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
+	internal List<Enemy> _spawnedEnemies = new List<Enemy>();
+
 	private bool _completed;
 	private int _aliveEnemies = 0;
-	private List<Enemy> _spawnedEnemies = new List<Enemy>();
 	private Room _nextRoom;
 
 	private Barrier _barrier;

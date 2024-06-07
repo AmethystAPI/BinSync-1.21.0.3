@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cg8kvs2jvqdn2"]
+[gd_scene load_steps=19 format=3 uid="uid://cg8kvs2jvqdn2"]
 
 [ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_niwpd"]
 [ext_resource type="Texture2D" uid="uid://drqty4uy1t5tm" path="res://sprites/enemies/giant_slime/giant_slime.tres" id="2_2rx6r"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_wa7k2"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="11_gw8t8"]
 [ext_resource type="Texture2D" uid="uid://dlrdu2uqm5eda" path="res://sprites/enemies/giant_slime/giant_slime_hurt.tres" id="13_4nnx5"]
+[ext_resource type="Script" path="res://scripts/enemies/BossScaling.cs" id="13_aeshf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(36, 17)
@@ -198,3 +199,7 @@ Speed = 8.0
 libraries = {
 "": SubResource("AnimationLibrary_1hjhs")
 }
+
+[node name="BossScaling" type="Node2D" parent="."]
+script = ExtResource("13_aeshf")
+DifficultyScaling = 2.0

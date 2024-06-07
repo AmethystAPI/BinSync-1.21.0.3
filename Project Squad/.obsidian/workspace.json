@@ -12,9 +12,11 @@
             "id": "6c7c3dedc5f1acf4",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta B Kanban.md"
+                "file": "Reference/Music.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,13 +85,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "b07aa7183d4db9b0",
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "Reference/Music.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "Reference/Music.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta B Kanban.md"
+                "file": "Reference/Music.md"
               }
             }
           }
@@ -168,8 +168,10 @@
   },
   "active": "6c7c3dedc5f1acf4",
   "lastOpenFiles": [
-    "Daily Notes/Beta A Playetst.md",
+    "Attachments/Pasted image 20240607003604.png",
+    "Attachments/Pasted image 20240607003557.png",
     "Planning/Beta B Kanban.md",
+    "Daily Notes/Beta A Playetst.md",
     "Design/Weapons.md",
     "Planning/Untitled Kanban.md",
     "Planning/Previous/Beta A Kanban.md",
@@ -196,7 +198,6 @@
     "Devlogs/Devlog 18/Draft 3.md",
     "Planning/Previous/Alpha Kanban.md",
     "Planning/Previous/Alpha.md",
-    "Attachments/Pasted image 20240316114550.png",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
     "Attachments/PasBF2.tmp",
@@ -215,7 +216,6 @@
     "Daily Notes/Day 18-19.md",
     "Daily Notes/Day 18-18.md",
     "Daily Notes/Day 18-17.md",
-    "Daily Notes/Day 18-16.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }

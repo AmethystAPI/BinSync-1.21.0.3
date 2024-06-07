@@ -109,6 +109,7 @@ SpawnRoomPlacer = ExtResource("6_mvk5j")
 RoomPlacers = Array[Resource]([ExtResource("14_q6c76"), ExtResource("15_y72t3"), ExtResource("16_t2dh1"), ExtResource("17_4pvk4"), ExtResource("18_vxjp8"), ExtResource("13_fx584")])
 TempleRoomPlacer = ExtResource("13_8ngsr")
 BossRoomPlacer = ExtResource("20_b6sci")
+BossRoomInterval = Vector2i(3, 3)
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20
@@ -153,6 +154,7 @@ mouse_filter = 2
 HeartContainer = NodePath("HeartContainer")
 
 [node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton", "startButton", "HatEquipmentButton", "BodyEquipmentButton") instance=ExtResource("7_gnxd7")]
+visible = false
 ipAdressInput = NodePath("TextEdit")
 hostButton = NodePath("Host")
 joinButton = NodePath("Join")
