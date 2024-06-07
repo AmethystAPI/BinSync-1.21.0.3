@@ -27,8 +27,10 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	}
 
 	public void Start() {
-		_roomsTilTemple = Game.RandomNumberGenerator.RandiRange(TempleRoomInterval.X, TempleRoomInterval.Y);
-		_roomsTilBoss = Game.RandomNumberGenerator.RandiRange(BossRoomInterval.X, BossRoomInterval.Y);
+		if (NetworkManager.IsHost) {
+			_roomsTilTemple = Game.RandomNumberGenerator.RandiRange(TempleRoomInterval.X, TempleRoomInterval.Y);
+			_roomsTilBoss = Game.RandomNumberGenerator.RandiRange(BossRoomInterval.X, BossRoomInterval.Y);
+		}
 
 		PlaceSpawnRoom();
 	}

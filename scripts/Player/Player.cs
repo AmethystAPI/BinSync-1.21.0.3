@@ -7,6 +7,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public static List<Player> Players = new List<Player>();
 	public static List<Player> AlivePlayers = new List<Player>();
 	public static Player LocalPlayer;
+	public static PackedScene HatCosmetic;
+	public static PackedScene BodyCosmetic;
 
 	[Export] public PackedScene DefaultWeaponScene;
 	[Export] public PackedScene[] DefaultEquipmentScenes;
@@ -41,6 +43,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
 		NetworkPoint.Register(nameof(EnterTrinketRealmRpc), EnterTrinketRealmRpc);
 		NetworkPoint.Register(nameof(LeaveTrinketRealmRpc), LeaveTrinketRealmRpc);
+		NetworkPoint.Register(nameof(EquipCosmeticRpc), EquipCosmeticRpc);
 
 		Players.Add(this);
 		AlivePlayers.Add(this);
@@ -56,6 +59,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		LocalPlayer = this;
 
 		GameUI.UpdateHealth(Health);
+
+		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(HatCosmetic.ResourcePath));
+		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(BodyCosmetic.ResourcePath));
 	}
 
 	public override void _Process(double delta) {
@@ -261,5 +267,17 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		if (!NetworkPoint.IsOwner) return;
 
 		GameUI.UpdateHealth(Health);
+	}
+
+	private void EquipCosmeticRpc(Message message) {
+		string path = message.GetString();
+
+		PackedScene scene = ResourceLoader.Load<PackedScene>(path);
+
+		Equipment equipment = NetworkManager.SpawnNetworkSafe<Equipment>(scene, "Equipment");
+
+		AddChild(equipment);
+
+		if (NetworkPoint.IsOwner) Equip(equipment);
 	}
 }

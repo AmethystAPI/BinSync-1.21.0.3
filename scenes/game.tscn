@@ -152,11 +152,13 @@ mouse_filter = 2
 mouse_filter = 2
 HeartContainer = NodePath("HeartContainer")
 
-[node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton") instance=ExtResource("7_gnxd7")]
-visible = false
+[node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton", "startButton", "HatEquipmentButton", "BodyEquipmentButton") instance=ExtResource("7_gnxd7")]
 ipAdressInput = NodePath("TextEdit")
 hostButton = NodePath("Host")
 joinButton = NodePath("Join")
+startButton = NodePath("Start")
+HatEquipmentButton = NodePath("HatEquipment")
+BodyEquipmentButton = NodePath("BodyEquipment")
 
 [node name="TrinketUI" type="Control" parent="CanvasLayer"]
 visible = false
