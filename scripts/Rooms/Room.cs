@@ -51,7 +51,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		if (!NetworkManager.IsHost) return;
 
-		SpawnComponents();
+		GetTree().ProcessFrame += SpawnComponents;
 	}
 
 	public static void Cleanup() {
@@ -93,6 +93,8 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	protected virtual void SpawnComponents() {
+		GetTree().ProcessFrame -= SpawnComponents;
+
 		SpawnEnemies(Game.Difficulty);
 	}
 
@@ -122,8 +124,8 @@ public partial class Room : Node2D, NetworkPointUser {
 				Radius = 12f,
 			},
 			Transform = new Transform2D(0f, position),
-			CollisionMask = 2
-		}); ;
+			CollisionMask = 2,
+		});
 	}
 
 	public void SpawnEnemies(float points, bool activated = false) {
