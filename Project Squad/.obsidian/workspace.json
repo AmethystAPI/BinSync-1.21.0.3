@@ -17,8 +17,19 @@
                 "file": "Planning/Beta B Kanban.md"
               }
             }
+          },
+          {
+            "id": "721e658e51e4c419",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "Planning/Beta B Kanban.md"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "c07bb49c7e24a197",
@@ -164,8 +175,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6c7c3dedc5f1acf4",
+  "active": "721e658e51e4c419",
   "lastOpenFiles": [
+    "Design/Trinkets.md",
     "Reference/Music.md",
     "Attachments/Pasted image 20240607003604.png",
     "Attachments/Pasted image 20240607003557.png",

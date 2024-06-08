@@ -16,21 +16,10 @@ public partial class FaithTrinket : Trinket {
 
     _lastTick = now;
 
-    bool healedOtherPlayer = false;
     foreach (Player player in Player.AlivePlayers) {
-      if (_equippingPlayer == player) continue;
-
       if (_equippingPlayer.GlobalPosition.DistanceSquaredTo(player.GlobalPosition) > 1094) continue;
 
-      healedOtherPlayer = true;
-
-      player.Heal(0.1f);
-    }
-
-    if (healedOtherPlayer) {
-      _equippingPlayer.Heal(0.1f);
-    } else {
-      _equippingPlayer.Heal(0.03f);
+      player.Heal(0.03f);
     }
   }
 }

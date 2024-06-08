@@ -149,6 +149,6 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 
 		GD.Print(_globalDifficulty);
 
-		Room.Current.SpawnEnemies(_globalDifficulty, true);
+		Room.Current.SpawnEnemies(_globalDifficulty + Game.Difficulty, true);
 	}
 }

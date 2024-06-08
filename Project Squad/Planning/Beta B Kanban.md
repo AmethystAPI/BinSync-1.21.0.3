@@ -6,20 +6,20 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Interaction System #code
-- [ ] More trinkets #design
-- [ ] Custom music #design
 - [ ] Better sfx #polish
 - [ ] More Boss Moves #design
 
 
 ## In Progress
 
+- [ ] Custom music #design
 
 
 ## Done
 
 **Complete**
+- [x] More trinkets #design
+- [x] Interaction System #code
 - [x] Fix enemies spawning outside of map #bug
 - [x] Item System
 - [x] balancing #design

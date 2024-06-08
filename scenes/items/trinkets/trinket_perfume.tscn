@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8nft4fq0fngx"]
+
+[ext_resource type="Script" path="res://scripts/items/trinkets/PerfumeTrinket.cs" id="1_7jkbd"]
+[ext_resource type="Texture2D" uid="uid://dvmehtji52kfr" path="res://sprites/trinkets/trinket_perfume.tres" id="3_3jrbs"]
+
+[node name="PerfumeTrinket" type="Node2D"]
+script = ExtResource("1_7jkbd")
+Icon = ExtResource("3_3jrbs")
+Description = "Attracts monsters"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_3jrbs")
+offset = Vector2(0, -7)

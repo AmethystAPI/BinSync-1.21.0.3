@@ -5,12 +5,8 @@ public partial class Trinket : Item {
 	[Export] public Texture2D Icon;
 	[Export] public string Description;
 
-	private Area2D _equipArea;
-
 	public override void _Ready() {
 		base._Ready();
-
-		_equipArea = GetNode<Area2D>("EquipArea");
 	}
 
 	public override void _Process(double delta) {
@@ -29,6 +25,10 @@ public partial class Trinket : Item {
 	}
 
 	public virtual void ModifyProjectile(Weapon weapon, Projectile projectile) {
+
+	}
+
+	public virtual void HitEnemy(Enemy enemy, Projectile projectile) {
 
 	}
 

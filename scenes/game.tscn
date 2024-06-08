@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=46 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -35,9 +35,12 @@
 [ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/death_1.wav" id="24_0d0le"]
 [ext_resource type="AudioStream" uid="uid://cu08ot2vuhs46" path="res://sfx/hurt.wav" id="25_4ymc8"]
 [ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
+[ext_resource type="PackedScene" uid="uid://cx1vygvn5xxmn" path="res://scenes/items/trinkets/trinket_duality.tscn" id="26_7jx7d"]
 [ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
 [ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/trinkets/trinket_swiftness.tres" id="26_dnkch"]
 [ext_resource type="AudioStream" uid="uid://be255wj238856" path="res://music/bit_forrest_intro.wav" id="27_eml7u"]
+[ext_resource type="PackedScene" uid="uid://8nft4fq0fngx" path="res://scenes/items/trinkets/trinket_perfume.tscn" id="27_uxav1"]
+[ext_resource type="PackedScene" uid="uid://c46kocxmjw57s" path="res://scenes/items/trinkets/trinket_vampire.tscn" id="28_cergm"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jo6wf"]
 particle_flag_disable_z = true
@@ -112,13 +115,14 @@ script = ExtResource("4_x66nk")
 SpawnRoomPlacer = ExtResource("6_mvk5j")
 RoomPlacers = Array[Resource]([ExtResource("14_q6c76"), ExtResource("15_y72t3"), ExtResource("16_t2dh1"), ExtResource("17_4pvk4"), ExtResource("18_vxjp8"), ExtResource("13_fx584")])
 TempleRoomPlacer = ExtResource("13_8ngsr")
+TempleRoomInterval = Vector2i(1, 1)
 BossRoomPlacer = ExtResource("20_b6sci")
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20
 y_sort_enabled = true
 script = ExtResource("9_vc1vq")
-TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("8_88fnx")]
+TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("8_88fnx"), ExtResource("26_7jx7d"), ExtResource("27_uxav1"), ExtResource("28_cergm")]
 WeaponScenes = [ExtResource("12_tesvq"), ExtResource("13_js758"), ExtResource("15_xrri3"), ExtResource("26_74k7n")]
 TrinketBackground = NodePath("Stars")
 EnemyScenes = [ExtResource("15_pi7jw"), ExtResource("16_a1dbg"), ExtResource("17_yoxty")]
@@ -187,7 +191,9 @@ offset_right = 27.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
 texture = ExtResource("26_dnkch")
+stretch_mode = 2
 
 [node name="Description" type="Label" parent="CanvasLayer/TrinketUI"]
 layout_mode = 1

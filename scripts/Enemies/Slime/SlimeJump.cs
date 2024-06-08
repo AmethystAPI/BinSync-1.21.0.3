@@ -28,13 +28,7 @@ public partial class SlimeJump : State {
 
         _jumpTimer = 0f;
 
-        _target = Player.AlivePlayers[0].GlobalPosition;
-
-        foreach (Player player in Player.AlivePlayers) {
-            if (_slime.GlobalPosition.DistanceTo(player.GlobalPosition) >= _slime.GlobalPosition.DistanceTo(_target)) continue;
-
-            _target = player.GlobalPosition;
-        }
+        _target = _slime.GetWeightedTargets()[0].Player.GlobalPosition;
 
         Sprite.Scale = new Vector2(_target.X > _slime.GlobalPosition.X ? 1f : -1f, 1f);
 

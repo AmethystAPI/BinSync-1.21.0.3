@@ -28,7 +28,7 @@ public partial class StoneGolemRoll : State {
             return;
         }
 
-        Vector2 target = Player.AlivePlayers[0].GlobalPosition;
+        Vector2 target = _stoneGolem.GetWeightedTargets()[0].Player.GlobalPosition;
 
         foreach (Player player in Player.AlivePlayers) {
             if (_stoneGolem.GlobalPosition.DistanceTo(player.GlobalPosition) >= _stoneGolem.GlobalPosition.DistanceTo(target)) continue;

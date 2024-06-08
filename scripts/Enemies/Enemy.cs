@@ -1,8 +1,15 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using Networking;
 using Riptide;
 
 public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
+  public class WeightedTarget {
+    public Player Player;
+    public float Weight;
+  }
+
   [Export] public float Health = 3f;
 
   public bool Activated;
@@ -60,6 +67,12 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     _justHit = true;
 
+    if (projectile.Source is Player player) {
+      foreach (Trinket trinket in player.EquippedTrinkets) {
+        trinket.HitEnemy(this, projectile);
+      }
+    }
+
     NetworkPoint.BounceRpcToClientsFast(nameof(DamageRpc), message => {
       message.AddInt(projectile.GetMultiplayerAuthority());
 
@@ -94,5 +107,12 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   private void ActivateRpc(Message message) {
     Activated = true;
+  }
+
+  public WeightedTarget[] GetWeightedTargets() {
+    return Player.AlivePlayers.Select(player => new WeightedTarget {
+      Player = player,
+      Weight = GlobalPosition.DistanceTo(player.GlobalPosition) - player.EquippedTrinkets.Where(trinket => trinket is PerfumeTrinket).Count() * 48f
+    }).OrderBy(target => target.Weight).ToArray();
   }
 }

@@ -9,14 +9,15 @@ public partial class BoomerangProjectile : Projectile {
 	[Export] public int MaximumTargetBounces = 2;
 	[Export] public float CollectDistance = 8f;
 
+	public new Vector2 Velocity;
+
 	private bool _returningToPlayer;
-	private new Vector2 _velocity;
 	private int _bounces = 0;
 
 	public override void _Ready() {
 		base._Ready();
 
-		_velocity = GlobalTransform.BasisXform(Vector2.Right) * Speed;
+		Velocity = GlobalTransform.BasisXform(Vector2.Right) * Speed;
 	}
 
 	public override void _Process(double delta) {
@@ -24,27 +25,27 @@ public partial class BoomerangProjectile : Projectile {
 
 		if (_returningToPlayer && IsInstanceValid(Source) && Source.GlobalPosition.DistanceTo(GlobalPosition) <= CollectDistance) QueueFree();
 
-		GlobalRotation = Vector2.Zero.AngleToPoint(_velocity);
+		GlobalRotation = Vector2.Zero.AngleToPoint(Velocity);
 	}
 
 	public override void Movement(float delta) {
 		bool sourceValid = IsInstanceValid(Source);
 
 		if (_returningToPlayer && sourceValid) {
-			_velocity = _velocity.Lerp((Source.GlobalPosition - GlobalPosition).Normalized() * Speed, Resistance * (float)delta);
+			Velocity = Velocity.Lerp((Source.GlobalPosition - GlobalPosition).Normalized() * Speed, Resistance * (float)delta);
 		} else {
-			_velocity = _velocity.Lerp(Vector2.Zero, Resistance * (float)delta);
+			Velocity = Velocity.Lerp(Vector2.Zero, Resistance * (float)delta);
 		}
 
 		bool followSourceVelocity = sourceValid && Source is CharacterBody2D && _bounces == 0;
 
 		if (followSourceVelocity) {
-			GlobalPosition += _velocity * (float)delta + ((CharacterBody2D)Source).Velocity * (float)delta;
+			GlobalPosition += Velocity * (float)delta + ((CharacterBody2D)Source).Velocity * (float)delta;
 		} else {
-			GlobalPosition += _velocity * (float)delta;
+			GlobalPosition += Velocity * (float)delta;
 		}
 
-		if (_velocity.Length() <= MinimumVelocity) _returningToPlayer = true;
+		if (Velocity.Length() <= MinimumVelocity) _returningToPlayer = true;
 	}
 
 	public override void OnHit(Node2D body) {
@@ -74,10 +75,10 @@ public partial class BoomerangProjectile : Projectile {
 
 		Enemy closestEnemy = targets.MinBy(enemy => enemy.GlobalPosition.DistanceSquaredTo(GlobalPosition));
 
-		_velocity = Vector2.Right.Rotated(GlobalPosition.AngleToPoint(closestEnemy.GlobalPosition)) * Speed;
+		Velocity = Vector2.Right.Rotated(GlobalPosition.AngleToPoint(closestEnemy.GlobalPosition)) * Speed;
 	}
 
 	private void Bounce() {
-		_velocity = _velocity.Rotated(Mathf.Pi).Normalized() * Speed;
+		Velocity = Velocity.Rotated(Mathf.Pi).Normalized() * Speed;
 	}
 }
