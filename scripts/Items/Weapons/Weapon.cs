@@ -92,11 +92,4 @@ public partial class Weapon : Item, Interactable {
   public void Interact(Node2D interactor) {
     Player.LocalPlayer.Equip(this);
   }
-
-  public void ActivateInteract() {
-
-  }
-  public void InactivateInteract() {
-
-  }
 }

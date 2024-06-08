@@ -1,20 +1,25 @@
-[gd_scene load_steps=17 format=3 uid="uid://dx2tllfk62wx"]
+[gd_scene load_steps=19 format=3 uid="uid://dx2tllfk62wx"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Temple.cs" id="1_8xome"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_0jis8"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="4_s1eph"]
+[ext_resource type="Texture2D" uid="uid://da2ersq78k35r" path="res://sprites/altar/altar.tres" id="6_v7uhu"]
 [ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/border/golden_grove_borders.tscn" id="7_1krm4"]
+[ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="7_fy0mm"]
 [ext_resource type="Script" path="res://scripts/Altar.cs" id="8_fk0fp"]
 [ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/tree_border.tres" id="8_gryq3"]
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/border/border_tree.tscn" id="8_lcivv"]
-[ext_resource type="Texture2D" uid="uid://bb5jl7sidbr3r" path="res://Project Squad/Attachments/OuterHeadRender.png" id="8_w3ssc"]
+[ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="8_lxf28"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="9_6ktds"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="9_amssf"]
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/border/border_bush.tscn" id="9_u78d0"]
 [ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/border/border_grass_tuft_1.tscn" id="10_qpouh"]
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/border/border_grass_tuft_2.tscn" id="11_a6dmg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4rj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvnko"]
+shader = ExtResource("8_lxf28")
+shader_parameter/outline_color = Color(0.258824, 0.223529, 0.203922, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmnbf"]
 size = Vector2(127, 196)
@@ -55,18 +60,20 @@ position = Vector2(0, 128)
 [node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("9_6ktds")]
 Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
-[node name="Altar" type="Node2D" parent="."]
+[node name="Altar" type="Node2D" parent="." groups=["Interactables"]]
+y_sort_enabled = true
 script = ExtResource("8_fk0fp")
 
-[node name="InteractArea" type="Area2D" parent="Altar"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Altar/InteractArea"]
-shape = SubResource("RectangleShape2D_7v4rj")
-
 [node name="Sprite2D" type="Sprite2D" parent="Altar"]
-position = Vector2(0, -2)
-scale = Vector2(0.0443509, 0.0443509)
-texture = ExtResource("8_w3ssc")
+y_sort_enabled = true
+texture = ExtResource("6_v7uhu")
+offset = Vector2(0, -13)
+
+[node name="HighlightInteractable" type="Node2D" parent="Altar/Sprite2D" node_paths=PackedStringArray("Interactable")]
+process_priority = 1
+script = ExtResource("7_fy0mm")
+Interactable = NodePath("../..")
+HighlightMaterial = SubResource("ShaderMaterial_tvnko")
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false

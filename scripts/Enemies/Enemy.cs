@@ -60,7 +60,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     _justHit = true;
 
-    NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
+    NetworkPoint.BounceRpcToClientsFast(nameof(DamageRpc), message => {
       message.AddInt(projectile.GetMultiplayerAuthority());
 
       Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;

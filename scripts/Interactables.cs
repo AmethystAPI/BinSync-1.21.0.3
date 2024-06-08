@@ -48,8 +48,8 @@ public interface Interactable {
 
     public void Interact(Node2D interactor);
 
-    public void ActivateInteract();
-    public void InactivateInteract();
+    public virtual void ActivateInteract() { }
+    public virtual void InactivateInteract() { }
 
     public Vector2 GlobalPosition { get; set; }
 }

@@ -128,7 +128,7 @@ collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_niwpd")
-Health = 1.0
+Health = 40.0
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
 

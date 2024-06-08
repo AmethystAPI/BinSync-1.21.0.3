@@ -24,20 +24,6 @@ public partial class Trinket : Item {
 		Position = new Vector2(12f * Mathf.Cos(time * 0.5f + offset), 12f * Mathf.Sin(time * 0.5f + offset));
 	}
 
-	public override void _Input(InputEvent @event) {
-		base._Input(@event);
-
-		if (@event.IsActionReleased("equip") && !_equipped) {
-			foreach (Node2D body in _equipArea.GetOverlappingBodies()) {
-				if (!(body is Player)) continue;
-
-				if (!NetworkManager.IsOwner(body)) continue;
-
-				((Player)body).Equip(this);
-			}
-		}
-	}
-
 	public virtual float ModifySpeed(float speed) {
 		return speed;
 	}
