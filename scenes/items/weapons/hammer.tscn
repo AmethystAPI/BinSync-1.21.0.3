@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb261ce2j3ht2"]
+[gd_scene load_steps=9 format=3 uid="uid://bb261ce2j3ht2"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_ow422"]
 [ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/items/weapons/hammer_projectile.tscn" id="2_cv6x1"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_3jr4r"]
 [ext_resource type="Texture2D" uid="uid://dh3th5witmy56" path="res://sprites/weapons/hammer.tres" id="4_asxot"]
 [ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_jhku8"]
+[ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="6_0m2cf"]
+[ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="7_lqo4b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbaem"]
-size = Vector2(11, 21)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csnip"]
+shader = ExtResource("7_lqo4b")
+shader_parameter/outline_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
 
-[node name="Hammer" type="Node2D"]
+[node name="Hammer" type="Node2D" groups=["Interactables"]]
 y_sort_enabled = true
 script = ExtResource("1_ow422")
 ProjectileScene = ExtResource("2_cv6x1")
@@ -30,7 +34,6 @@ script = ExtResource("4_jhku8")
 Offset = 8.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/SwingHandle/CustomYSort"]
-z_index = 1
 texture = ExtResource("4_asxot")
 offset = Vector2(0, -4)
 
@@ -40,10 +43,10 @@ y_sort_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="Pickup"]
 texture = ExtResource("4_asxot")
 
-[node name="EquipArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_xbaem")
+[node name="HighlightInteractable" type="Node2D" parent="Pickup/Sprite2D" node_paths=PackedStringArray("Interactable")]
+process_priority = 1
+script = ExtResource("6_0m2cf")
+Interactable = NodePath("../../..")
+HighlightMaterial = SubResource("ShaderMaterial_csnip")
 
 [connection signal="Shoot" from="." to="Held/SwingHandle" method="Swing"]

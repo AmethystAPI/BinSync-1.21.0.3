@@ -11,7 +11,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public static PackedScene BodyCosmetic;
 
 	[Export] public PackedScene DefaultWeaponScene;
-	[Export] public PackedScene[] DefaultEquipmentScenes;
 	[Export] public Node2D Visuals;
 	[Export] public Node2D WeaponHolder;
 	[Export] public Node2D TrinketHolder;
@@ -72,6 +71,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		_networkedFacing.Sync();
 
 		if (NetworkPoint.IsOwner) {
+			if (StateMachine.CurrentState != "Hurt") Interactables.ActivateClosest(this);
+
 			_networkedPosition.Value = GlobalPosition;
 			_networkedVelocity.Value = Velocity;
 			_networkedFacing.Value = GetGlobalMousePosition() - GlobalPosition;
@@ -154,14 +155,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		AddChild(weapon);
 
 		if (NetworkPoint.IsOwner) Equip(weapon);
-
-		foreach (PackedScene scene in DefaultEquipmentScenes) {
-			Equipment equipment = NetworkManager.SpawnNetworkSafe<Equipment>(scene, "Equipment");
-
-			AddChild(equipment);
-
-			if (NetworkPoint.IsOwner) Equip(equipment);
-		}
 	}
 
 	public void Cleanup() {

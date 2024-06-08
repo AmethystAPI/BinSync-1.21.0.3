@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnsnl644enbf0"]
+[gd_scene load_steps=8 format=3 uid="uid://dnsnl644enbf0"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_wcney"]
 [ext_resource type="PackedScene" uid="uid://pdger2vckwas" path="res://scenes/items/weapons/bow_projectile.tscn" id="2_1h1w5"]
 [ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="3_gyb2f"]
 [ext_resource type="Texture2D" uid="uid://c2dkyfxvw6kix" path="res://sprites/weapons/bow.tres" id="3_s865s"]
+[ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="5_xdjfu"]
+[ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="6_uffu1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm67q"]
-size = Vector2(10, 21)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfh0b"]
+shader = ExtResource("6_uffu1")
+shader_parameter/outline_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
 
-[node name="Bow" type="Node2D"]
+[node name="Bow" type="Node2D" groups=["Interactables"]]
 y_sort_enabled = true
 script = ExtResource("1_wcney")
 ProjectileScene = ExtResource("2_1h1w5")
@@ -23,7 +27,6 @@ script = ExtResource("3_gyb2f")
 Offset = 8.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/CustomYSort"]
-z_index = 1
 texture = ExtResource("3_s865s")
 
 [node name="Pickup" type="Node2D" parent="."]
@@ -32,8 +35,8 @@ y_sort_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="Pickup"]
 texture = ExtResource("3_s865s")
 
-[node name="EquipArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_rm67q")
+[node name="HighlightInteractable" type="Node2D" parent="Pickup/Sprite2D" node_paths=PackedStringArray("Interactable")]
+process_priority = 1
+script = ExtResource("5_xdjfu")
+Interactable = NodePath("../../..")
+HighlightMaterial = SubResource("ShaderMaterial_lfh0b")

@@ -59,6 +59,16 @@ public partial class PlayerNormal : State, NetworkPointUser {
   public override void OnInput(InputEvent inputEvent) {
     if (!_player.NetworkPoint.IsOwner) return;
 
+    if (inputEvent.IsActionPressed("interact")) {
+      Interactable interactable = Interactables.GetClosest(_player);
+
+      if (interactable == null) return;
+
+      interactable.Interact(_player);
+
+      return;
+    }
+
     if (!inputEvent.IsActionPressed("dash")) return;
 
     if (!GetState<PlayerDash>("Dash").CanDash()) return;

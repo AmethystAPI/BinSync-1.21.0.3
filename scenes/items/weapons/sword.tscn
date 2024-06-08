@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyh55k213w7y7"]
+[gd_scene load_steps=9 format=3 uid="uid://cyh55k213w7y7"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_sjj6t"]
 [ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/items/weapons/sword_projectile.tscn" id="2_cwddm"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_18ogc"]
 [ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/weapons/sword.tres" id="4_bbk84"]
 [ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_w0o7s"]
+[ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="6_jc1qe"]
+[ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="7_yq77b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_orsoj"]
-size = Vector2(10, 20)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k5r0"]
+shader = ExtResource("7_yq77b")
+shader_parameter/outline_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
 
-[node name="Sword" type="Node2D"]
+[node name="Sword" type="Node2D" groups=["Interactables"]]
 y_sort_enabled = true
 script = ExtResource("1_sjj6t")
 ProjectileScene = ExtResource("2_cwddm")
@@ -37,10 +41,10 @@ y_sort_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="Pickup"]
 texture = ExtResource("4_bbk84")
 
-[node name="EquipArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_orsoj")
+[node name="HighlightInteractable" type="Node2D" parent="Pickup/Sprite2D" node_paths=PackedStringArray("Interactable")]
+process_priority = 1
+script = ExtResource("6_jc1qe")
+Interactable = NodePath("../../..")
+HighlightMaterial = SubResource("ShaderMaterial_3k5r0")
 
 [connection signal="Shoot" from="." to="Held/SwingHandle" method="Swing"]

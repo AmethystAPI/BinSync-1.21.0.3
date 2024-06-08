@@ -6,9 +6,11 @@ kanban-plugin: basic
 
 ## Todo
 
+- [ ] Interaction System #code
 - [ ] More trinkets #design
 - [ ] Custom music #design
 - [ ] Better sfx #polish
+- [ ] More Boss Moves #design
 
 
 ## In Progress

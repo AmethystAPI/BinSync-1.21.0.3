@@ -51,7 +51,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		if (!NetworkManager.IsHost) return;
 
-		GetTree().ProcessFrame += SpawnComponents;
+		GetTree().ProcessFrame += DelaySpawnComponents;
 	}
 
 	public static void Cleanup() {
@@ -92,9 +92,13 @@ public partial class Room : Node2D, NetworkPointUser {
 		_nextRoom = nextRoom;
 	}
 
-	protected virtual void SpawnComponents() {
-		GetTree().ProcessFrame -= SpawnComponents;
+	private void DelaySpawnComponents() {
+		GetTree().ProcessFrame -= DelaySpawnComponents;
 
+		SpawnComponents();
+	}
+
+	protected virtual void SpawnComponents() {
 		SpawnEnemies(Game.Difficulty);
 	}
 

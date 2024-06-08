@@ -78,6 +78,21 @@ namespace Networking {
 
       messageBuilder?.Invoke(message);
 
+      LocalClient.Send(message);
+    }
+
+    public static void BounceRpcToClientsFast(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
+      if (!IsInstanceValid(source as Node)) GD.PushError("Trying to Send RPC From Invalid Instance " + name);
+
+      Message message = Message.Create(messageSendMode, 2);
+
+      int initialBits = message.WrittenBits;
+
+      message.AddString(name);
+      message.AddString(source.GetPath());
+
+      messageBuilder?.Invoke(message);
+
       Message localMessage = Message.Create();
       int bitsToRead = message.WrittenBits - initialBits;
       int readPosition = initialBits;
@@ -161,7 +176,7 @@ namespace Networking {
     }
 
     private void OnMessageRecieved(object _, MessageReceivedEventArgs eventArguments) {
-      if (eventArguments.MessageId == 1) {
+      if (eventArguments.MessageId == 1 || eventArguments.MessageId == 2) {
         Message relayMessage = Message.Create(eventArguments.Message.SendMode, 0);
 
         while (eventArguments.Message.UnreadBits > 0) {
@@ -174,10 +189,14 @@ namespace Networking {
           relayMessage.AddBits(bits, bitsToWrite);
         }
 
-        foreach (Connection connection in LocalServer.Clients) {
-          if (connection == eventArguments.FromConnection) continue;
+        if (eventArguments.MessageId == 1) {
+          LocalServer.SendToAll(relayMessage);
+        } else {
+          foreach (Connection connection in LocalServer.Clients) {
+            if (connection == eventArguments.FromConnection) continue;
 
-          LocalServer.Send(relayMessage, connection.Id);
+            LocalServer.Send(relayMessage, connection.Id);
+          }
         }
 
         return;
