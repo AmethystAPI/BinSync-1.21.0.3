@@ -1,0 +1,7 @@
+- Improve player controller feel
+- Tweak level design
+- Tweak graphics to be consistent
+- Add lighting
+- Make night more obviously block sightline
+- tutorial
+- Add the other 6 levels

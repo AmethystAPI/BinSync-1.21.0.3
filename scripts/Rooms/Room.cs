@@ -4,80 +4,102 @@ using Riptide;
 using System.Collections.Generic;
 
 public partial class Room : Node2D, NetworkPointUser {
+
 	[Export] public EnemyPool EnemyPool;
-	[Export] public PackedScene LootChestScene;
 	[Export] public Vector2 ExitDirection;
-	[Export] public bool HasTrinkets = true;
+
+	public static Room Current;
+
+	private static List<Room> s_Rooms = new List<Room>();
 
 	public Node2D Entrance;
 	public Node2D Exit;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	private int _aliveEnemies = 0;
+	protected List<Enemy> _spawnedEnemies = new List<Enemy>();
+
 	private bool _completed;
-	private Chest _chest;
-	private Altar _altar;
-	private List<Enemy> _spawnedEnemies = new List<Enemy>();
+	private int _aliveEnemies = 0;
+	private Room _nextRoom;
+
 	private Barrier _barrier;
 	private Area2D _activateArea;
 	private CollisionShape2D _spawnArea;
-	private bool _readyToSpawnComponents = true;
+
+	public void Load() {
+		Entrance = GetNodeOrNull<Node2D>("Entrance");
+		Exit = GetNodeOrNull<Node2D>("Exit");
+	}
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
-		NetworkPoint.Register(nameof(EndRpc), EndRpc);
 		NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
 		_barrier = GetNodeOrNull<Barrier>("Barrier");
-		Entrance = GetNodeOrNull<Node2D>("Entrance");
-		Exit = GetNodeOrNull<Node2D>("Exit");
+
+		Load();
+
 		_activateArea = GetNodeOrNull<Area2D>("ActivateArea");
 		_spawnArea = GetNodeOrNull<CollisionShape2D>("SpawnArea");
 
 		if (_activateArea != null) _activateArea.BodyEntered += BodyEnteredActivateArea;
 
+		s_Rooms.Add(this);
+
 		if (!NetworkManager.IsHost) return;
+
+		GetTree().ProcessFrame += DelaySpawnComponents;
 	}
 
-	public override void _PhysicsProcess(double delta) {
-		if (_readyToSpawnComponents) {
-			_readyToSpawnComponents = false;
-
-			SpawnComponents();
+	public static void Cleanup() {
+		foreach (Room room in s_Rooms) {
+			room.QueueFree();
 		}
-	}
-
-	internal virtual void SpawnComponents() {
-		SpawnEnemies();
 	}
 
 	public void AddEnemy() {
 		_aliveEnemies++;
 	}
 
-	public void RemoveEnemy() {
+	public void EnemyDied(Enemy enemy) {
 		_aliveEnemies--;
 
 		if (_aliveEnemies != 0) return;
 
 		if (!NetworkManager.IsHost) return;
 
-		Complete();
-	}
-
-	public void Place() {
-		_readyToSpawnComponents = true;
+		Complete(enemy);
 	}
 
 	public void Activate() {
 		if (!NetworkManager.IsHost) return;
 
-		WorldGenerator.PlaceRoom();
+		WorldGenerator.PlaceRoom(this);
 
 		NetworkPoint.SendRpcToClients(nameof(ActivateRpc));
+	}
+
+	public void ActivateEnemies() {
+		foreach (Enemy enemy in _spawnedEnemies) {
+			enemy.Activate();
+		}
+	}
+
+	public virtual void SetNextRoom(Room nextRoom) {
+		_nextRoom = nextRoom;
+	}
+
+	private void DelaySpawnComponents() {
+		GetTree().ProcessFrame -= DelaySpawnComponents;
+
+		SpawnComponents();
+	}
+
+	protected virtual void SpawnComponents() {
+		SpawnEnemies(Game.Difficulty);
 	}
 
 	private void BodyEnteredActivateArea(Node2D body) {
@@ -87,9 +109,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		if (!(body is Player)) return;
 
-		foreach (Enemy enemy in _spawnedEnemies) {
-			enemy.Activate();
-		}
+		ActivateEnemies();
 	}
 
 	private Vector2 GetRandomPointInSpawnArea() {
@@ -108,14 +128,12 @@ public partial class Room : Node2D, NetworkPointUser {
 				Radius = 12f,
 			},
 			Transform = new Transform2D(0f, position),
-			CollisionMask = 2
-		}); ;
+			CollisionMask = 2,
+		});
 	}
 
-	private void SpawnEnemies() {
+	public void SpawnEnemies(float points, bool activated = false) {
 		if (_spawnArea == null) return;
-
-		float points = Game.Difficulty;
 
 		while (points > 0) {
 			Vector2 spawnPoint = GetRandomPointInSpawnArea();
@@ -129,6 +147,8 @@ public partial class Room : Node2D, NetworkPointUser {
 				message.AddFloat(spawnPoint.Y);
 
 				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1));
+
+				message.AddBool(activated);
 			});
 
 			points--;
@@ -138,6 +158,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	private void SpawnEnemyRpc(Message message) {
 		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
 		int enemySceneIndex = message.GetInt();
+		bool activated = message.GetBool();
 
 		Enemy enemy = NetworkManager.SpawnNetworkSafe<Enemy>(EnemyPool.EnemyScenes[enemySceneIndex], "Enemy");
 
@@ -146,24 +167,22 @@ public partial class Room : Node2D, NetworkPointUser {
 		enemy.GlobalPosition = position;
 
 		_spawnedEnemies.Add(enemy);
+
+		if (activated) enemy.Activate();
 	}
 
-	protected void Complete() {
+	protected virtual void Complete(Enemy enemy = null) {
 		if (!NetworkManager.IsHost) return;
 
 		_completed = true;
 
-		Game.CompletedRoom();
+		Game.IncreaseDifficulty();
 
-		NetworkPoint.SendRpcToClients(nameof(EndRpc));
-	}
-
-	protected virtual void EndRpc(Message message) {
-		_completed = true;
+		_nextRoom.Activate();
 	}
 
 	private void ActivateRpc(Message message) {
-		Game.CurrentRoom = this;
+		Current = this;
 
 		if (_barrier == null) return;
 

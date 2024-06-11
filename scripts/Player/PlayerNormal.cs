@@ -24,8 +24,16 @@ public partial class PlayerNormal : State, NetworkPointUser {
     if (_player.Knockback.Length() < 3.5f) {
       if (_player.Velocity.Length() > 3.5f) {
         _player.AnimationPlayer.Play("run");
+
+        foreach (Equipment equipment in _player.EquippedEquipments.Values) {
+          equipment.AnimationPlayer.Play("run");
+        }
       } else {
         _player.AnimationPlayer.Play("idle");
+
+        foreach (Equipment equipment in _player.EquippedEquipments.Values) {
+          equipment.AnimationPlayer.Play("idle");
+        }
       }
     }
 
@@ -50,6 +58,16 @@ public partial class PlayerNormal : State, NetworkPointUser {
 
   public override void OnInput(InputEvent inputEvent) {
     if (!_player.NetworkPoint.IsOwner) return;
+
+    if (inputEvent.IsActionPressed("interact")) {
+      Interactable interactable = Interactables.GetClosest(_player);
+
+      if (interactable == null) return;
+
+      interactable.Interact(_player);
+
+      return;
+    }
 
     if (!inputEvent.IsActionPressed("dash")) return;
 

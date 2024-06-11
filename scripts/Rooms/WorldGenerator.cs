@@ -1,20 +1,22 @@
 using Godot;
 using Networking;
 using Riptide;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class WorldGenerator : Node2D, NetworkPointUser {
-
-
 	private static WorldGenerator s_Me;
 
 	[Export] public RoomPlacer SpawnRoomPlacer;
 	[Export] public RoomPlacer[] RoomPlacers;
+	[Export] public RoomPlacer TempleRoomPlacer;
+	[Export] public Vector2I TempleRoomInterval = new Vector2I(5, 8);
+	[Export] public RoomPlacer BossRoomPlacer;
+	[Export] public Vector2I BossRoomInterval = new Vector2I(15, 20);
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-	private List<Room> _rooms = new List<Room>();
+	private int _roomsTilTemple;
+	private int _roomsTilBoss;
 
 	public override void _Ready() {
 		s_Me = this;
@@ -25,71 +27,100 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	}
 
 	public void Start() {
-		_rooms = new List<Room>();
+		if (NetworkManager.IsHost) {
+			_roomsTilTemple = Game.RandomNumberGenerator.RandiRange(TempleRoomInterval.X, TempleRoomInterval.Y);
+			_roomsTilBoss = Game.RandomNumberGenerator.RandiRange(BossRoomInterval.X, BossRoomInterval.Y);
+		}
 
 		PlaceSpawnRoom();
-
-		if (!NetworkManager.IsHost) return;
-
-		PlaceRoom();
-	}
-
-	public void Cleanup() {
-		foreach (Node node in GetTree().GetNodesInGroup("Rooms")) {
-			node.QueueFree();
-		}
 	}
 
 	private void PlaceSpawnRoom() {
 		SpawnRoom spawnRoom = NetworkManager.SpawnNetworkSafe<SpawnRoom>(SpawnRoomPlacer.RoomScene, "SpawnRoom");
 
 		AddChild(spawnRoom);
-
-		_rooms.Add(spawnRoom);
-
-		spawnRoom.Place();
 	}
 
-	public static void PlaceRoom() {
+	public static void PlaceRoom(Room sourceRoom) {
 		if (!NetworkManager.IsHost) return;
 
-		Room _lastRoom = s_Me._rooms[s_Me._rooms.Count - 1];
+		s_Me._roomsTilTemple--;
+		s_Me._roomsTilBoss--;
 
 		RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
-			if (!placer.CanConnectTo(_lastRoom.ExitDirection)) return false;
+			if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
 
-			if (_lastRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up) && placer.GetDirections().Count == 2) return false;
+			if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
 
 			return true;
 		}).ToArray();
 
+		if (s_Me._roomsTilTemple == 1) {
+			validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
+				if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
+
+				if (!placer.CanConnectTo(Vector2.Down)) return false;
+
+				if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
+
+				return true;
+			}).ToArray();
+		}
+
+		if (s_Me._roomsTilTemple == 0) {
+			validRoomPlacers = new RoomPlacer[] { s_Me.TempleRoomPlacer };
+
+			s_Me._roomsTilTemple = Game.RandomNumberGenerator.RandiRange(s_Me.TempleRoomInterval.X, s_Me.TempleRoomInterval.Y);
+		}
+
+		if (s_Me._roomsTilBoss == 1) {
+			validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
+				if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
+
+				if (!placer.CanConnectTo(Vector2.Down)) return false;
+
+				if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
+
+				return true;
+			}).ToArray();
+		}
+
+		if (s_Me._roomsTilBoss == 0) {
+			validRoomPlacers = new RoomPlacer[] { s_Me.BossRoomPlacer };
+
+			s_Me._roomsTilBoss = Game.RandomNumberGenerator.RandiRange(s_Me.BossRoomInterval.X, s_Me.BossRoomInterval.Y);
+		}
+
 		RoomPlacer roomPlacer = validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
+
+		Room room = roomPlacer.RoomScene.Instantiate<Room>();
+		room.Load();
+
+		Vector2 placePosition = sourceRoom.Exit.GlobalPosition - room.Entrance.Position;
+
+		room.QueueFree();
 
 		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceRoomRpc), message => {
 			message.AddString(roomPlacer.ResourcePath);
+			message.AddString(sourceRoom.GetPath());
+			message.AddFloat(placePosition.X);
+			message.AddFloat(placePosition.Y);
 		});
 	}
 
 	private void PlaceRoomRpc(Message message) {
 		string roomPlacerPath = message.GetString();
+		string sourceRoomPath = message.GetString();
+		Vector2 placePosition = new Vector2(message.GetFloat(), message.GetFloat());
+
 		RoomPlacer roomPlacer = ResourceLoader.Load<RoomPlacer>(roomPlacerPath);
 
 		Room room = NetworkManager.SpawnNetworkSafe<Room>(roomPlacer.RoomScene, "Room");
 
+		room.GlobalPosition = placePosition;
+
 		AddChild(room);
 
-		Room _lastRoom = _rooms[_rooms.Count - 1];
-
-		_rooms.Add(room);
-
-		room.GlobalPosition = _lastRoom.Exit.GlobalPosition - room.Entrance.GlobalPosition;
-
-		room.Place();
-
-		if (_rooms.Count == 2) {
-			room.Activate();
-		} else {
-			Game.NextRooms.Add(room);
-		}
+		GetTree().Root.GetNode<Room>(sourceRoomPath).SetNextRoom(room);
 	}
 }

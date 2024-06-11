@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0468af4tnqat"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="1_ehgnj"]
+
+[resource]
+shader = ExtResource("1_ehgnj")
+shader_parameter/outline_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)

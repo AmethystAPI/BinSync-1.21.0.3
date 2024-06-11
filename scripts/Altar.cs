@@ -1,37 +1,31 @@
 using Godot;
 using Networking;
-using Riptide;
 
-public partial class Altar : Node2D, NetworkPointUser {
+public partial class Altar : Node2D, NetworkPointUser, Interactable {
+
+	[Export] public float InteractRange = 32f;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
-
-	private Area2D _interactArea;
 
 	private bool _activated = false;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
-
-		_interactArea = GetNode<Area2D>("InteractArea");
 	}
 
-	public override void _Input(InputEvent @event) {
-		if (_activated) return;
+	public bool CanInteract(Node2D interactor) {
+		if (_activated) return false;
 
-		if (!@event.IsActionReleased("equip")) return;
+		return interactor.GlobalPosition.DistanceTo(GlobalPosition) <= InteractRange;
+	}
 
-		foreach (Node2D body in _interactArea.GetOverlappingBodies()) {
-			if (!(body is Player player)) continue;
+	public void Interact(Node2D interactor) {
+		if (!(interactor is Player player)) return;
 
-			if (!NetworkManager.IsOwner(body)) continue;
+		_activated = true;
 
-			_activated = true;
+		player.EnterTrinketRealm();
 
-			player.EnterTrinketRealm();
-
-			TrinketRealm.EnterTrinketRealm(this);
-		}
-
+		TrinketRealm.EnterTrinketRealm(this);
 	}
 }

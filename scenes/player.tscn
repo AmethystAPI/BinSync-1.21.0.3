@@ -33,7 +33,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:material")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/1/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -61,7 +61,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +78,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +95,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,7 +111,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -123,7 +123,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SquashAndStretchTarget/Sprite:material")
+tracks/1/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:material")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -153,7 +153,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -171,7 +171,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Sprite:texture")
+tracks/0/path = NodePath("SquashAndStretchTarget/PlayerSortOrigin/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -194,22 +194,28 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6m8y"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Sprite", "WeaponHolder", "TrinketHolder")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Visuals", "WeaponHolder", "TrinketHolder", "EquipmentHolder")]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xr8oe")
 DefaultWeaponScene = ExtResource("2_3xde7")
-Sprite = NodePath("SquashAndStretchTarget/Sprite")
+Visuals = NodePath("SquashAndStretchTarget/PlayerSortOrigin")
 WeaponHolder = NodePath("WeaponHolder")
 TrinketHolder = NodePath("TrinketsHolder")
+EquipmentHolder = NodePath("SquashAndStretchTarget/PlayerSortOrigin/EquipmentHolder")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Sprite" type="Sprite2D" parent="SquashAndStretchTarget"]
+[node name="PlayerSortOrigin" type="Node2D" parent="SquashAndStretchTarget"]
+
+[node name="Sprite" type="Sprite2D" parent="SquashAndStretchTarget/PlayerSortOrigin"]
 texture = ExtResource("3_n1urs")
 offset = Vector2(0, -12)
+
+[node name="EquipmentHolder" type="Node2D" parent="SquashAndStretchTarget/PlayerSortOrigin"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
@@ -223,6 +229,7 @@ position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_ypp2t")
 
 [node name="WeaponHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -11)
 
 [node name="TrinketsHolder" type="Node2D" parent="."]

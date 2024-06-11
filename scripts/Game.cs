@@ -6,20 +6,14 @@ using System.Collections.Generic;
 public partial class Game : Node2D, NetworkPointUser {
 	public static uint Seed;
 	public static float Difficulty;
-	public static List<Room> NextRooms = new List<Room>();
 	public static RandomNumberGenerator RandomNumberGenerator;
 	public static Game Me;
-	public static Room CurrentRoom;
 
 	[Export] public PackedScene PlayerScene;
-	[Export] public int TrinketRoomInterval = 5;
-	[Export] public int LootRoomInterval = 7;
 
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
 	private WorldGenerator _worldGenerator;
-	private int _roomsTilTrinket;
-	private int _roomsTilLoot;
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -41,9 +35,6 @@ public partial class Game : Node2D, NetworkPointUser {
 	}
 
 	public static void Start() {
-		Me._roomsTilTrinket = Me.TrinketRoomInterval;
-		Me._roomsTilLoot = Me.LootRoomInterval;
-
 		List<int> clientIds = new List<int>();
 
 		foreach (Connection connection in NetworkManager.LocalServer.Clients) {
@@ -69,40 +60,12 @@ public partial class Game : Node2D, NetworkPointUser {
 		Start();
 	}
 
-	public static void CompletedRoom() {
-		if (!NetworkManager.IsHost) return;
-
-		Me._roomsTilTrinket--;
-		Me._roomsTilLoot--;
-
-		if (Me._roomsTilTrinket <= 0) {
-			Me._roomsTilTrinket = Me.TrinketRoomInterval;
-
-			if (Me._roomsTilLoot <= 0) Me._roomsTilLoot = 1;
-		}
-
-		if (Me._roomsTilLoot <= 0) Me._roomsTilLoot = Me.LootRoomInterval;
-
+	public static void IncreaseDifficulty() {
 		Difficulty += Mathf.Sqrt(Player.Players.Count) / 3f;
-
-		Room currentRoom = NextRooms[0];
-		NextRooms.RemoveAt(0);
-
-		currentRoom.Activate();
-	}
-
-	public static bool ShouldSpawnAltar() {
-		return Me._roomsTilTrinket == 1;
-	}
-
-	public static bool ShouldSpawnLootRoom() {
-		return Me._roomsTilLoot == 1 && Me._roomsTilTrinket != 1;
 	}
 
 	private void StartRpc(Message message) {
 		int[] clientIds = message.GetInts();
-
-		NextRooms = new List<Room>();
 
 		_worldGenerator.Start();
 
@@ -118,6 +81,6 @@ public partial class Game : Node2D, NetworkPointUser {
 			Player.Players[0].Cleanup();
 		}
 
-		_worldGenerator.Cleanup();
+		Room.Cleanup();
 	}
 }

@@ -154,6 +154,7 @@ script = ExtResource("4_phacr")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("5_3ytew")
+InteruptDecay = 0.5
 AttackState = "Jump"
 AnimationPlayer = NodePath("../../AnimationPlayer")
 

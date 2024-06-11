@@ -16,8 +16,7 @@ public partial class Projectile : Node2D {
 
 	public Node2D Source;
 	public Vector2 InheritedVelocity;
-
-	internal float _velocity;
+	public float Velocity;
 
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
@@ -29,7 +28,7 @@ public partial class Projectile : Node2D {
 		_lifetimeTimer = Lifetime;
 		_invincibilityTimer = Invincibilitytime;
 
-		_velocity = Speed;
+		Velocity = Speed;
 	}
 
 	public override void _Process(double delta) {
@@ -89,12 +88,12 @@ public partial class Projectile : Node2D {
 		if (InheritBelocity && IsInstanceValid(Source) && Source is CharacterBody2D) InheritedVelocity = (Source as CharacterBody2D).Velocity;
 
 		if (InheritBelocity) {
-			GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * _velocity * (float)delta + InheritedVelocity * (float)delta;
+			GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Velocity * (float)delta + InheritedVelocity * (float)delta;
 		} else {
-			GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * _velocity * (float)delta;
+			GlobalPosition += GlobalTransform.BasisXform(Vector2.Right) * Velocity * (float)delta;
 		}
 
-		_velocity = Mathf.Lerp(_velocity, 0f, Resistance * (float)delta);
+		Velocity = Mathf.Lerp(Velocity, 0f, Resistance * (float)delta);
 	}
 
 	public virtual float GetDamage() {

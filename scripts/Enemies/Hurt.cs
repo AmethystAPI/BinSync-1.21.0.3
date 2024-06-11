@@ -21,6 +21,8 @@ public partial class Hurt : State {
 
         if (_enemy.Health > 0) return;
 
+        if (_dead) return;
+
         _dead = true;
 
         Delay.Execute(0.5f, Die);
@@ -53,7 +55,7 @@ public partial class Hurt : State {
         _enemy.GetParent().AddChild(deathParticle);
         deathParticle.GlobalPosition = _enemy.GlobalPosition;
 
-        _enemy.GetParent<Room>().RemoveEnemy();
+        _enemy.GetParent<Room>().EnemyDied(_enemy);
 
         _enemy.QueueFree();
     }

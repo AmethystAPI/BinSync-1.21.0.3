@@ -1,8 +1,15 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using Networking;
 using Riptide;
 
 public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
+  public class WeightedTarget {
+    public Player Player;
+    public float Weight;
+  }
+
   [Export] public float Health = 3f;
 
   public bool Activated;
@@ -44,7 +51,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   }
 
   public virtual bool CanDamage(Projectile projectile) {
-    if (!Activated && Game.CurrentRoom != GetParent<Room>()) return false;
+    if (!Activated && Room.Current != GetParent<Room>()) return false;
 
     if (_stateMachine.CurrentState == "Hurt") return false;
 
@@ -60,7 +67,13 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     _justHit = true;
 
-    NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
+    if (projectile.Source is Player player) {
+      foreach (Trinket trinket in player.EquippedTrinkets) {
+        trinket.HitEnemy(this, projectile);
+      }
+    }
+
+    NetworkPoint.BounceRpcToClientsFast(nameof(DamageRpc), message => {
       message.AddInt(projectile.GetMultiplayerAuthority());
 
       Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
@@ -94,5 +107,12 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   private void ActivateRpc(Message message) {
     Activated = true;
+  }
+
+  public WeightedTarget[] GetWeightedTargets() {
+    return Player.AlivePlayers.Select(player => new WeightedTarget {
+      Player = player,
+      Weight = GlobalPosition.DistanceTo(player.GlobalPosition) - player.EquippedTrinkets.Where(trinket => trinket is PerfumeTrinket).Count() * 48f
+    }).OrderBy(target => target.Weight).ToArray();
   }
 }

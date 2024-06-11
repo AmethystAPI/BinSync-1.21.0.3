@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpb2vij815fs3"]
+[gd_scene load_steps=7 format=3 uid="uid://dpb2vij815fs3"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_rc6ko"]
+[ext_resource type="PackedScene" uid="uid://cv663jsc3lwub" path="res://scenes/items/equipment/hair1.tscn" id="2_rx0vu"]
+[ext_resource type="PackedScene" uid="uid://4ylk2aoq7at6" path="res://scenes/items/equipment/OG_hat.tscn" id="3_qf61c"]
+[ext_resource type="PackedScene" uid="uid://bfo055prag30g" path="res://scenes/items/equipment/shirt1.tscn" id="4_m04t5"]
+[ext_resource type="PackedScene" uid="uid://bppjdyp3rbk0k" path="res://scenes/items/equipment/shirt2.tscn" id="5_aeuqm"]
+[ext_resource type="PackedScene" uid="uid://27aa74633x5c" path="res://scenes/items/equipment/shirt3.tscn" id="6_rpp7x"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("ipAdressInput", "hostButton", "joinButton", "startButton", "HatEquipmentButton", "BodyEquipmentButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +18,11 @@ script = ExtResource("1_rc6ko")
 ipAdressInput = NodePath("TextEdit")
 hostButton = NodePath("Host")
 joinButton = NodePath("Join")
+startButton = NodePath("Start")
+HatEquipmentButton = NodePath("HatEquipment")
+BodyEquipmentButton = NodePath("BodyEquipment")
+HatEquipmentScenes = Array[PackedScene]([ExtResource("2_rx0vu"), ExtResource("3_qf61c")])
+BodyEquipmentScenes = Array[PackedScene]([ExtResource("4_m04t5"), ExtResource("5_aeuqm"), ExtResource("6_rpp7x")])
 
 [node name="Host" type="Button" parent="."]
 layout_mode = 1
@@ -78,6 +88,38 @@ grow_vertical = 2
 text = "127.0.0.1"
 placeholder_text = "Enter Host IP..."
 
+[node name="HatEquipment" type="Button" parent="."]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -80.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(400, 40)
+text = "Hair 1"
+
+[node name="BodyEquipment" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(400, 40)
+text = "Orange Shirt"
+
 [connection signal="pressed" from="Host" to="." method="Host"]
 [connection signal="pressed" from="Join" to="." method="Join"]
 [connection signal="pressed" from="Start" to="." method="Start"]
+[connection signal="pressed" from="HatEquipment" to="." method="NextHatEquipment"]
+[connection signal="pressed" from="BodyEquipment" to="." method="NextBodyEquipment"]

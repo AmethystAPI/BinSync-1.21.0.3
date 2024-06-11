@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://q8w05kax16eb"]
-
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="1_0l3ek"]
-
-[resource]
-atlas = ExtResource("1_0l3ek")
-region = Rect2(241, 1, 46, 46)

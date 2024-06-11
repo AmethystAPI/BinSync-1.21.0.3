@@ -7,13 +7,17 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public static List<Player> Players = new List<Player>();
 	public static List<Player> AlivePlayers = new List<Player>();
 	public static Player LocalPlayer;
+	public static PackedScene HatCosmetic;
+	public static PackedScene BodyCosmetic;
 
 	[Export] public PackedScene DefaultWeaponScene;
-	[Export] public Sprite2D Sprite;
+	[Export] public Node2D Visuals;
 	[Export] public Node2D WeaponHolder;
 	[Export] public Node2D TrinketHolder;
+	[Export] public Node2D EquipmentHolder;
 
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
+	public Dictionary<string, Equipment> EquippedEquipments = new Dictionary<string, Equipment>();
 	public float Health = 3f;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 	public AnimationPlayer AnimationPlayer;
@@ -38,6 +42,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.Register(nameof(ReviveRpc), ReviveRpc);
 		NetworkPoint.Register(nameof(EnterTrinketRealmRpc), EnterTrinketRealmRpc);
 		NetworkPoint.Register(nameof(LeaveTrinketRealmRpc), LeaveTrinketRealmRpc);
+		NetworkPoint.Register(nameof(EquipCosmeticRpc), EquipCosmeticRpc);
 
 		Players.Add(this);
 		AlivePlayers.Add(this);
@@ -46,13 +51,16 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		StateMachine = GetNode<StateMachine>("StateMachine");
 
-		EquipDefaultItem();
+		EquipDefaultItems();
 
 		if (!NetworkPoint.IsOwner) return;
 
 		LocalPlayer = this;
 
 		GameUI.UpdateHealth(Health);
+
+		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(HatCosmetic.ResourcePath));
+		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(BodyCosmetic.ResourcePath));
 	}
 
 	public override void _Process(double delta) {
@@ -63,6 +71,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		_networkedFacing.Sync();
 
 		if (NetworkPoint.IsOwner) {
+			if (StateMachine.CurrentState != "Hurt") Interactables.ActivateClosest(this);
+
 			_networkedPosition.Value = GlobalPosition;
 			_networkedVelocity.Value = Velocity;
 			_networkedFacing.Value = GetGlobalMousePosition() - GlobalPosition;
@@ -70,10 +80,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
 			Velocity = _networkedVelocity.Value;
 
-			if (GetParent() == TrinketRealm.Me) GlobalPosition = Player.LocalPlayer.GlobalPosition + Vector2.Up * 1000f;
+			if (GetParent() == TrinketRealm.Me) GlobalPosition = LocalPlayer.GlobalPosition + Vector2.Up * 1000f;
 		}
 
-		Sprite.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+		Visuals.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
 	public void Heal(float health) {
@@ -139,14 +149,12 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		});
 	}
 
-	private void EquipDefaultItem() {
+	private void EquipDefaultItems() {
 		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(DefaultWeaponScene, "Weapon");
 
 		AddChild(weapon);
 
-		if (!NetworkPoint.IsOwner) return;
-
-		Equip(weapon);
+		if (NetworkPoint.IsOwner) Equip(weapon);
 	}
 
 	public void Cleanup() {
@@ -156,45 +164,29 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void EnterTrinketRealm() {
-		ZIndex += 25;
-
 		NetworkPoint.BounceRpcToClients(nameof(EnterTrinketRealmRpc));
-
-		GetParent().RemoveChild(this);
-		TrinketRealm.Me.AddChild(this);
-
-		CollisionMask = 512;
 	}
 
 	private void EnterTrinketRealmRpc(Message message) {
 		if (NetworkPoint.IsOwner) return;
-
-		GetParent().RemoveChild(this);
-		TrinketRealm.Me.AddChild(this);
 	}
 
 	public void LeaveTrinketRealm() {
-		ZIndex -= 25;
-
 		NetworkPoint.BounceRpcToClients(nameof(LeaveTrinketRealmRpc));
-
-		TrinketRealm.Me.RemoveChild(this);
-		Game.Me.AddChild(this);
-
-		CollisionMask = 2;
 	}
 
 	private void LeaveTrinketRealmRpc(Message message) {
 		if (NetworkPoint.IsOwner) return;
-
-		TrinketRealm.Me.RemoveChild(this);
-		Game.Me.AddChild(this);
 	}
 
 	private void DamageRpc(Message message) {
 		Knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
 		AnimationPlayer.Play("hurt");
+
+		foreach (Equipment equipment in EquippedEquipments.Values) {
+			equipment.AnimationPlayer.Play("hurt");
+		}
 
 		Audio.Play("player_damage");
 	}
@@ -223,25 +215,35 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		Item item = GetNode<Item>(itemPath);
 
-		if (item is Weapon) {
+		if (item is Weapon weapon) {
 			if (_equippedWeapon != null) _equippedWeapon.QueueFree();
 
 			item.GetParent().RemoveChild(item);
-			GetNode("WeaponHolder").AddChild(item);
+			WeaponHolder.AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
-			_equippedWeapon = (Weapon)item;
+			_equippedWeapon = weapon;
 		}
 
-		if (item is Trinket) {
+		if (item is Trinket trinket) {
 			item.GetParent().RemoveChild(item);
-			GetNode("TrinketsHolder").AddChild(item);
+			TrinketHolder.AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
-			EquippedTrinkets.Add((Trinket)item);
+			EquippedTrinkets.Add(trinket);
 		}
 
-		item.EquipToPlayer(this);
+		if (item is Equipment equipment) {
+			item.GetParent().RemoveChild(item);
+			EquipmentHolder.AddChild(item);
+			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
+
+			if (EquippedEquipments.ContainsKey(equipment.Slot)) EquippedEquipments[equipment.Slot].QueueFree();
+
+			EquippedEquipments[equipment.Slot] = equipment;
+		}
+
+		item.OnEquipToPlayer(this);
 	}
 
 	private void ReviveRpc(Message message) {
@@ -258,5 +260,17 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		if (!NetworkPoint.IsOwner) return;
 
 		GameUI.UpdateHealth(Health);
+	}
+
+	private void EquipCosmeticRpc(Message message) {
+		string path = message.GetString();
+
+		PackedScene scene = ResourceLoader.Load<PackedScene>(path);
+
+		Equipment equipment = NetworkManager.SpawnNetworkSafe<Equipment>(scene, "Equipment");
+
+		AddChild(equipment);
+
+		if (NetworkPoint.IsOwner) Equip(equipment);
 	}
 }

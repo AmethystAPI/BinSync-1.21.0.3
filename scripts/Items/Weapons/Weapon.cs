@@ -1,12 +1,13 @@
 using Godot;
 using Networking;
 
-public partial class Weapon : Item {
+public partial class Weapon : Item, Interactable {
+  [Export] public float PickupRange = 16f;
+
   internal bool _shootPressed = false;
 
   private NetworkedVariable<float> _syncedRotation = new NetworkedVariable<float>(0);
 
-  private Area2D _equipArea;
   private Node2D _heldNode;
   private Node2D _pickupNode;
 
@@ -15,7 +16,6 @@ public partial class Weapon : Item {
 
     NetworkPoint.Register(nameof(_syncedRotation), _syncedRotation);
 
-    _equipArea = GetNode<Area2D>("EquipArea");
     _heldNode = GetNode<Node2D>("Held");
     _pickupNode = GetNode<Node2D>("Pickup");
 
@@ -62,20 +62,10 @@ public partial class Weapon : Item {
 
       ShootReleased();
     }
-
-    if (@event.IsActionReleased("equip") && !_equipped) {
-      foreach (Node2D body in _equipArea.GetOverlappingBodies()) {
-        if (!(body is Player)) continue;
-
-        if (!NetworkManager.IsOwner(body)) continue;
-
-        ((Player)body).Equip(this);
-      }
-    }
   }
 
-  public override void EquipToPlayer(Player player) {
-    base.EquipToPlayer(player);
+  public override void OnEquipToPlayer(Player player) {
+    base.OnEquipToPlayer(player);
 
     _pickupNode.Visible = false;
     _heldNode.Visible = true;
@@ -91,5 +81,15 @@ public partial class Weapon : Item {
 
   public virtual void CancelShoot() {
 
+  }
+
+  public bool CanInteract(Node2D interactor) {
+    if (_equipped) return false;
+
+    return interactor.GlobalPosition.DistanceTo(GlobalPosition) <= PickupRange;
+  }
+
+  public void Interact(Node2D interactor) {
+    Player.LocalPlayer.Equip(this);
   }
 }

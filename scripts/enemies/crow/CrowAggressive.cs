@@ -45,13 +45,7 @@ public partial class CrowAggressive : State, NetworkPointUser {
 
         if (!_crow.NetworkPoint.IsOwner) return;
 
-        Vector2 target = Player.AlivePlayers[0].GlobalPosition;
-
-        foreach (Player player in Player.AlivePlayers) {
-            if (_crow.GlobalPosition.DistanceTo(player.GlobalPosition) >= _crow.GlobalPosition.DistanceTo(target)) continue;
-
-            target = player.GlobalPosition;
-        }
+        Vector2 target = _crow.GetWeightedTargets()[0].Player.GlobalPosition;
 
         _crow.Velocity = _crow.Velocity.Slerp((target - _crow.GlobalPosition).Normalized() * Speed, InverseInertia * delta);
 

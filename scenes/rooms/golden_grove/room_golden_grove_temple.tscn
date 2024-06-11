@@ -1,16 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx2tllfk62wx"]
+[gd_scene load_steps=19 format=3 uid="uid://dx2tllfk62wx"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Temple.cs" id="1_8xome"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_0jis8"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://golden_grove_tileset.tres" id="4_s1eph"]
+[ext_resource type="Texture2D" uid="uid://da2ersq78k35r" path="res://sprites/altar/altar.tres" id="6_v7uhu"]
+[ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/border/golden_grove_borders.tscn" id="7_1krm4"]
+[ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="7_fy0mm"]
 [ext_resource type="Script" path="res://scripts/Altar.cs" id="8_fk0fp"]
-[ext_resource type="Texture2D" uid="uid://bb5jl7sidbr3r" path="res://Project Squad/Attachments/OuterHeadRender.png" id="8_w3ssc"]
+[ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/tree_border.tres" id="8_gryq3"]
+[ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/border/border_tree.tscn" id="8_lcivv"]
+[ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="8_lxf28"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="9_6ktds"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="9_amssf"]
+[ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/border/border_bush.tscn" id="9_u78d0"]
+[ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/border/border_grass_tuft_1.tscn" id="10_qpouh"]
+[ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/border/border_grass_tuft_2.tscn" id="11_a6dmg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v4rj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvnko"]
+shader = ExtResource("8_lxf28")
+shader_parameter/outline_color = Color(0.258824, 0.223529, 0.203922, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmnbf"]
+size = Vector2(127, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl4ak"]
+atlas = ExtResource("9_amssf")
+region = Rect2(271, 23, 1, 1)
 
 [node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_8xome")
+EnemyPool = ExtResource("2_0jis8")
 ExitDirection = Vector2(0, -1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -39,17 +60,238 @@ position = Vector2(0, 128)
 [node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("9_6ktds")]
 Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
-[node name="ItemSpawn" type="Node2D" parent="."]
-
-[node name="Altar" type="Node2D" parent="."]
+[node name="Altar" type="Node2D" parent="." groups=["Interactables"]]
+y_sort_enabled = true
 script = ExtResource("8_fk0fp")
 
-[node name="InteractArea" type="Area2D" parent="Altar"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Altar/InteractArea"]
-shape = SubResource("RectangleShape2D_7v4rj")
-
 [node name="Sprite2D" type="Sprite2D" parent="Altar"]
-position = Vector2(0, -2)
-scale = Vector2(0.0443509, 0.0443509)
-texture = ExtResource("8_w3ssc")
+y_sort_enabled = true
+texture = ExtResource("6_v7uhu")
+offset = Vector2(0, -13)
+
+[node name="HighlightInteractable" type="Node2D" parent="Altar/Sprite2D" node_paths=PackedStringArray("Interactable")]
+process_priority = 1
+script = ExtResource("7_fy0mm")
+Interactable = NodePath("../..")
+HighlightMaterial = SubResource("ShaderMaterial_tvnko")
+
+[node name="SpawnArea" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3.5, -18)
+shape = SubResource("RectangleShape2D_mmnbf")
+
+[node name="Decorations" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Border" type="Node2D" parent="Decorations"]
+z_index = 9
+y_sort_enabled = true
+
+[node name="BorderTree" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(-91, -40)
+
+[node name="BorderTree2" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(-94, 78)
+
+[node name="BorderTree3" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(85, 83)
+
+[node name="BorderTree4" parent="Decorations/Border" instance=ExtResource("8_lcivv")]
+position = Vector2(100, -95)
+
+[node name="BorderBush" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(-86, 89)
+
+[node name="BorderBush2" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(-112, 12)
+
+[node name="BorderBush3" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(86, -85)
+
+[node name="BorderBush4" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(103, 22)
+
+[node name="BorderBush5" parent="Decorations/Border" instance=ExtResource("9_u78d0")]
+position = Vector2(-102, -119)
+
+[node name="BorderGrassTuft1" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(-117, 16)
+
+[node name="BorderGrassTuft3" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(-104, 3)
+
+[node name="BorderGrassTuft4" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(72, 76)
+
+[node name="BorderGrassTuft5" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(91, -81)
+
+[node name="BorderGrassTuft11" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(109, -31)
+
+[node name="BorderGrassTuft6" parent="Decorations/Border" instance=ExtResource("10_qpouh")]
+position = Vector2(-96, -112)
+
+[node name="BorderGrassTuft2" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(-117, 0)
+
+[node name="BorderGrassTuft7" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(-109, -116)
+
+[node name="BorderGrassTuft8" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(99, -87)
+
+[node name="BorderGrassTuft9" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(74, 90)
+
+[node name="BorderGrassTuft10" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(100, -38)
+
+[node name="BorderGrassTuft12" parent="Decorations/Border" instance=ExtResource("11_a6dmg")]
+position = Vector2(97, -25)
+
+[node name="Borders" parent="." instance=ExtResource("7_1krm4")]
+
+[node name="Left2" type="Node2D" parent="Borders/Paralax/Origin" index="0"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-137, -5)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-129, -66)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-133, -118)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-137, 57)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax/Origin/Left2"]
+position = Vector2(-132, 121)
+texture = ExtResource("8_gryq3")
+
+[node name="Rights2" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
+
+[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(132, 116)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(126, 49)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(136, -15)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(128, -75)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax/Origin/Rights2"]
+position = Vector2(131, -132)
+texture = ExtResource("8_gryq3")
+
+[node name="Right2" type="Node2D" parent="Borders/Paralax2/Origin" index="0"]
+
+[node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+z_index = 1
+position = Vector2(234, -21)
+scale = Vector2(224, 334)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, 50)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, -15)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, -71)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, -135)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(143, 111)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(125, 81)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(127, 21)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(130, -43)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(133, -104)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Borders/Paralax2/Origin/Right2"]
+position = Vector2(131, -163)
+texture = ExtResource("8_gryq3")
+
+[node name="Left2" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
+
+[node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+z_index = 1
+position = Vector2(-238, -17.5)
+scale = Vector2(224, 333)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-146, -63)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-148, -117)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-148, -1)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-147, 59)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-146, 122)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-133, -31)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-132, -90)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-132, -146)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-137, 27)
+texture = ExtResource("8_gryq3")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Borders/Paralax2/Origin/Left2"]
+position = Vector2(-134, 89)
+texture = ExtResource("8_gryq3")
+
+[editable path="Borders"]

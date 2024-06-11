@@ -6,28 +6,32 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Redo Loot Collection #design
-- [ ] item diversity #mechanics
-- [ ] Player customization #mechanics
-- [ ] More trinkets #design
-- [ ] Consider health info #design
-- [ ] balancing #design
-- [ ] Custom music #design
 - [ ] Better sfx #polish
+- [ ] More Boss Moves #design
 
 
 ## In Progress
 
-- [ ] Work on Visuals #design
+- [ ] Custom music #design
 
 
 ## Done
 
 **Complete**
+- [x] More trinkets #design
+- [x] Interaction System #code
+- [x] Fix enemies spawning outside of map #bug
+- [x] Item System
+- [x] balancing #design
+- [x] Boss #design
+- [x] Player customization #mechanics
+- [x] Consider health info #design
+- [x] item diversity #mechanics
+- [x] Redo Loot Collection #design
+- [x] Work on Visuals #design
 - [x] advancing when you shouldn't #bug
 - [x] Shooting while dead #bug
 - [x] More weapons #design
-- [x] Fix enemies spawning outside of map #bug
 
 
 ***

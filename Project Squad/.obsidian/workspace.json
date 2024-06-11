@@ -17,8 +17,31 @@
                 "file": "Planning/Beta B Kanban.md"
               }
             }
+          },
+          {
+            "id": "721e658e51e4c419",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "Planning/Beta B Kanban.md"
+              }
+            }
+          },
+          {
+            "id": "7ba69c905a90807e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "No Communication Notes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       },
       {
         "id": "c07bb49c7e24a197",
@@ -103,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "No Communication Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "No Communication Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta B Kanban.md"
+                "file": "No Communication Notes.md"
               }
             }
           }
@@ -164,11 +187,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6c7c3dedc5f1acf4",
+  "active": "7ba69c905a90807e",
   "lastOpenFiles": [
-    "Design/Weapons.md",
     "Planning/Beta B Kanban.md",
+    "No Communication Notes.md",
+    "Design/Trinkets.md",
+    "Reference/Music.md",
+    "Attachments/Pasted image 20240607003604.png",
+    "Attachments/Pasted image 20240607003557.png",
     "Daily Notes/Beta A Playetst.md",
+    "Design/Weapons.md",
     "Planning/Untitled Kanban.md",
     "Planning/Previous/Beta A Kanban.md",
     "Design/Temples.md",
@@ -190,11 +218,9 @@
     "Attachments/adrian-meier-highresscreenshot00000.jpg",
     "Attachments/Prototype-Environment.jpg",
     "Attachments/Pasted image 20240316154618.png.import",
-    "Attachments/Pasted image 20240316154618.png",
     "Devlogs/Devlog 18/Draft 3.md",
     "Planning/Previous/Alpha Kanban.md",
     "Planning/Previous/Alpha.md",
-    "Attachments/Pasted image 20240316114550.png",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
     "Attachments/PasBF2.tmp",
@@ -205,15 +231,12 @@
     "Attachments/Pas25D.tmp",
     "Attachments/Pas217.tmp",
     "Planning/Previous/Pre Alpha Kanban.md",
-    "Reference/Music.md",
     "Reference/General.canvas",
     "Daily Notes/Day 18-22.md",
     "Daily Notes/Day 18-21.md",
     "Daily Notes/Day 18-20.md",
     "Daily Notes/Day 18-19.md",
     "Daily Notes/Day 18-18.md",
-    "Daily Notes/Day 18-17.md",
-    "Daily Notes/Day 18-16.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }

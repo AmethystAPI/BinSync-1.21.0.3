@@ -16,5 +16,12 @@ Grants the wielder +20% speed
 Grants the wielder +100% damage
 ### Holy / Faith Trinket
 Heals nearby allies. Wielder is granted healing when healing nearby allies.
+Maybe needs to be changed to reduces ally damage when nearby
+### Duality Trinket
+You shoot double bullets but one goes backwards
+### Monster Perfume
+Enemies are more likely to target you
+### Vampire
+Kills give  you health
 ## Obtaining
 Trinkets will be given out every few levels to all players. Trinkets are automatically given to the player.
