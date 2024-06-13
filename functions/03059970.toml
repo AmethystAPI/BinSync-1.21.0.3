@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x3059970
+size = 0x1152
+last_change = 2024-06-13T21:39:57.974293Z
+
+[header]
+last_change = 2024-06-13T21:39:57.974293Z
+name = "?_lookupByNameImpl@BlockTypeRegistry@@CA?AULookupByNameImplReturnType@1@AEBVHashedString@@HW4LookupByNameImplResolve@1@_N@Z"
+addr = 0x3059970
