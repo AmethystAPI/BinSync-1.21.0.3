@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x30d4e70
+size = 0x80f
+last_change = 2024-06-13T22:25:03.502043Z
+
+[header]
+last_change = 2024-06-13T22:25:03.502043Z
+name = "??$registerBlock@VStoneBlock@@H@BlockTypeRegistry@@SAAEAVStoneBlock@@AEBVHashedString@@$$QEAH@Z"
+addr = 0x30d4e70
