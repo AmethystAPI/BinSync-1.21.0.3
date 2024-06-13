@@ -6,7 +6,6 @@
       {
         "id": "4430a5c22006cade",
         "type": "tabs",
-        "dimension": 59.32741116751268,
         "children": [
           {
             "id": "6c7c3dedc5f1acf4",
@@ -27,40 +26,9 @@
                 "file": "Planning/Beta B Kanban.md"
               }
             }
-          },
-          {
-            "id": "7ba69c905a90807e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "No Communication Notes.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 2
-      },
-      {
-        "id": "c07bb49c7e24a197",
-        "type": "tabs",
-        "dimension": 40.672588832487314,
-        "children": [
-          {
-            "id": "de31121350767b0c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Daily Notes/Beta A Playetst.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -126,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "No Communication Notes.md",
+                "file": "Planning/Beta B Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "No Communication Notes.md",
+                "file": "Planning/Beta B Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "No Communication Notes.md"
+                "file": "Planning/Beta B Kanban.md"
               }
             }
           }
@@ -187,10 +155,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7ba69c905a90807e",
+  "active": "721e658e51e4c419",
   "lastOpenFiles": [
-    "Planning/Beta B Kanban.md",
+    "Attachments/PasF6D9.tmp",
     "No Communication Notes.md",
+    "Planning/Beta B Kanban.md",
     "Design/Trinkets.md",
     "Reference/Music.md",
     "Attachments/Pasted image 20240607003604.png",
@@ -236,7 +205,6 @@
     "Daily Notes/Day 18-21.md",
     "Daily Notes/Day 18-20.md",
     "Daily Notes/Day 18-19.md",
-    "Daily Notes/Day 18-18.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }
