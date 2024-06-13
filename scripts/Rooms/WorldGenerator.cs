@@ -93,6 +93,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 		RoomPlacer roomPlacer = validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 
+		GD.Print(roomPlacer);
+		GD.Print(roomPlacer.RoomScene);
+
 		Room room = roomPlacer.RoomScene.Instantiate<Room>();
 		room.Load();
 

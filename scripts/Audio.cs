@@ -37,7 +37,8 @@ public partial class Audio : Node
             VolumeDb = Me.SoundVolumes[Me.SoundIds.ToList().IndexOf(id)] + new RandomNumberGenerator().RandfRange(-1f, 1f),
             PitchScale = new RandomNumberGenerator().RandfRange(0.9f, 1.1f),
             Attenuation = 0f,
-            MaxDistance = 9999999999999999f
+            MaxDistance = 9999999999999999f,
+            PanningStrength = 0f,
         };
 
         Me.AddChild(audio);
