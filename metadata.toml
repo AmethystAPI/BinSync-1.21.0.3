@@ -1,6 +1,6 @@
 user = "freddie"
 version = "4.1.6"
-last_push_time = 2024-06-14T14:25:51.222875Z
+last_push_time = 2024-06-14T14:26:25.860032Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None ?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z(args=0); @0x2b5ec50>"
+last_commit_msg = "Updated <FuncHeader: None ?registerItem@ItemRegistry@@AEAAXV?$SharedPtr@VItem@@@@@Z(args=0); @0x2b5ad60>"
