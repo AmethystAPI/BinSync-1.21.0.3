@@ -12,6 +12,13 @@ func_addr = 0x3059970
 comment = ""
 decompiled = true
 
+[0x3059a0d]
+last_change = 2024-06-14T13:47:39.694454Z
+addr = 0x3059a0d
+func_addr = 0x3059970
+comment = "?_lockAgainstRegistryModifications@BlockTypeRegistry@@CA?AVBlockTypeRegistryRead\nLock@@XZ inlined\n"
+decompiled = true
+
 [0x30d54f4]
 last_change = 2024-06-13T22:32:06.983472Z
 addr = 0x30d54f4
