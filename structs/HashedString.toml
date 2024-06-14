@@ -1,7 +1,7 @@
 [metadata]
 name = "HashedString"
 size = 0x30
-last_change = 2024-06-14T13:42:13.960241Z
+last_change = 2024-06-14T13:42:17.752074Z
 
 [members.0x0]
 name = "mStrHash"
@@ -13,7 +13,7 @@ size = 0x8
 name = "mStr"
 offset = 0x8
 type = ""
-size = 0x11
+size = 0x12
 
 [members.0x28]
 name = "mLastMatch"
