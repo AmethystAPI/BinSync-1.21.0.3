@@ -37,6 +37,10 @@ namespace Networking {
       NetworkManager.SendRpcToClients(_source, name, messageBuilder, messageSendMode);
     }
 
+    public void SendRpcToClientsFast(string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
+      NetworkManager.SendRpcToClientsFast(_source, name, messageBuilder, messageSendMode);
+    }
+
     public void BounceRpcToClients(string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
       NetworkManager.BounceRpcToClients(_source, name, messageBuilder, messageSendMode);
     }

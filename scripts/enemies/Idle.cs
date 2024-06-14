@@ -45,7 +45,7 @@ public partial class Idle : State, NetworkPointUser {
 
         if (_idleTimer > 0) return;
 
-        NetworkPoint.SendRpcToClients(nameof(AttackRpc));
+        NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
     }
 
     public override void Exit() {

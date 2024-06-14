@@ -12,12 +12,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Custom music #design
+- [ ] Stun Locking Boss #bug
 
 
 ## Done
 
 **Complete**
+- [x] Custom music #design
 - [x] More trinkets #design
 - [x] Interaction System #code
 - [x] Fix enemies spawning outside of map #bug

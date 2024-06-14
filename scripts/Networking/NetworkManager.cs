@@ -66,6 +66,44 @@ namespace Networking {
       LocalServer.SendToAll(message);
     }
 
+    public static void SendRpcToClientsFast(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
+      if (!IsInstanceValid(source as Node)) GD.PushError("Trying to Send RPC From Invalid Instance " + name);
+
+      Message message = Message.Create(messageSendMode, 0);
+
+      int initialBits = message.WrittenBits;
+
+      message.AddString(name);
+      message.AddString(source.GetPath());
+
+      messageBuilder?.Invoke(message);
+
+      Message localMessage = Message.Create();
+      int bitsToRead = message.WrittenBits - initialBits;
+      int readPosition = initialBits;
+
+      while (bitsToRead > 0) {
+        int bitsToWrite = Math.Min(bitsToRead, 8);
+
+        byte bits;
+
+        message.PeekBits(bitsToWrite, readPosition, out bits);
+
+        localMessage.AddBits(bits, bitsToWrite);
+
+        readPosition += 8;
+        bitsToRead -= bitsToWrite;
+      }
+
+      foreach (Connection client in LocalServer.Clients) {
+        if (client.Id == LocalClient.Id) continue;
+
+        LocalServer.Send(message, client.Id);
+      }
+
+      s_Me.HandleMessage(localMessage);
+    }
+
     public static void BounceRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
       if (!IsInstanceValid(source as Node)) GD.PushError("Trying to Send RPC From Invalid Instance " + name);
 
