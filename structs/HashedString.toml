@@ -1,7 +1,7 @@
 [metadata]
 name = "HashedString"
 size = 0x28
-last_change = 2024-06-14T13:36:26.336954Z
+last_change = 2024-06-14T13:36:42.616041Z
 
 [members.0x0]
 name = "mStrHash"
@@ -10,7 +10,7 @@ type = "uint64_t"
 size = 0x8
 
 [members.0x8]
-name = "field_8"
+name = "mStr"
 offset = 0x8
 type = "std::string"
 size = 0x20
