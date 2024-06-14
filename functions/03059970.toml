@@ -1,17 +1,17 @@
 [metadata]
 addr = 0x3059970
 size = 0x1152
-last_change = 2024-06-14T13:31:45.702349Z
+last_change = 2024-06-14T13:32:02.097057Z
 
 [header]
-last_change = 2024-06-14T13:31:45.702349Z
+last_change = 2024-06-14T13:32:02.097057Z
 name = "?_lookupByNameImpl@BlockTypeRegistry@@CA?AULookupByNameImplReturnType@1@AEBVHashedString@@HW4LookupByNameImplResolve@1@_N@Z"
 addr = 0x3059970
 
 [header.args.1]
 offset = 0x1
 name = "hashed"
-type = "HashedString *"
+type = "long long"
 size = 0x8
 
 [header.args.2]
