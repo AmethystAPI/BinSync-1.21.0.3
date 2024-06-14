@@ -74,6 +74,8 @@ public partial class Game : Node2D, NetworkPointUser {
 
 			AddChild(player);
 		}
+
+		Audio.PlayMusic("golden_grove");
 	}
 
 	private void CleanupRpc(Message message) {

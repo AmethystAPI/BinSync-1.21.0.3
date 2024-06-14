@@ -37,6 +37,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 		NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
+		NetworkPoint.Register(nameof(ActivateEnemiesRpc), ActivateEnemiesRpc);
 
 		_barrier = GetNodeOrNull<Barrier>("Barrier");
 
@@ -110,6 +111,8 @@ public partial class Room : Node2D, NetworkPointUser {
 		if (!(body is Player)) return;
 
 		ActivateEnemies();
+
+		NetworkPoint.BounceRpcToClientsFast(nameof(ActivateEnemiesRpc));
 	}
 
 	private Vector2 GetRandomPointInSpawnArea() {
@@ -181,11 +184,15 @@ public partial class Room : Node2D, NetworkPointUser {
 		_nextRoom.Activate();
 	}
 
-	private void ActivateRpc(Message message) {
+	protected virtual void ActivateRpc(Message message) {
 		Current = this;
 
 		if (_barrier == null) return;
 
 		_barrier.Deactivate();
+	}
+
+	protected virtual void ActivateEnemiesRpc(Message message) {
+
 	}
 }

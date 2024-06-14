@@ -147,8 +147,6 @@ public partial class TrinketRealm : Node2D, NetworkPointUser {
 
 		if (!NetworkManager.IsHost) return;
 
-		GD.Print(_globalDifficulty);
-
 		Room.Current.SpawnEnemies(_globalDifficulty + Game.Difficulty, true);
 	}
 }

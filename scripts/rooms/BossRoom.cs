@@ -18,8 +18,14 @@ public partial class BossRoom : Room {
         NetworkPoint.SendRpcToClients(nameof(SpawnBossRpc));
     }
 
+    protected override void ActivateEnemiesRpc(Message message) {
+        Audio.PlayMusic("boss");
+    }
+
     protected override void Complete(Enemy enemy = null) {
         base.Complete(enemy);
+
+        Audio.PlayMusic("golden_grove");
 
         if (!NetworkManager.IsHost) return;
 

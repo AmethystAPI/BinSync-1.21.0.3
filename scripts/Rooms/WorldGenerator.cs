@@ -55,34 +55,10 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			return true;
 		}).ToArray();
 
-		if (s_Me._roomsTilTemple == 1) {
-			validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
-				if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
-
-				if (!placer.CanConnectTo(Vector2.Down)) return false;
-
-				if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
-
-				return true;
-			}).ToArray();
-		}
-
 		if (s_Me._roomsTilTemple == 0) {
 			validRoomPlacers = new RoomPlacer[] { s_Me.TempleRoomPlacer };
 
 			s_Me._roomsTilTemple = Game.RandomNumberGenerator.RandiRange(s_Me.TempleRoomInterval.X, s_Me.TempleRoomInterval.Y);
-		}
-
-		if (s_Me._roomsTilBoss == 1) {
-			validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
-				if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
-
-				if (!placer.CanConnectTo(Vector2.Down)) return false;
-
-				if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
-
-				return true;
-			}).ToArray();
 		}
 
 		if (s_Me._roomsTilBoss == 0) {
@@ -91,10 +67,19 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			s_Me._roomsTilBoss = Game.RandomNumberGenerator.RandiRange(s_Me.BossRoomInterval.X, s_Me.BossRoomInterval.Y);
 		}
 
-		RoomPlacer roomPlacer = validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
+		if (s_Me._roomsTilBoss == 1 || s_Me._roomsTilTemple == 1) {
+			validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
+				if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
 
-		GD.Print(roomPlacer);
-		GD.Print(roomPlacer.RoomScene);
+				if (!placer.CanConnectTo(Vector2.Down)) return false;
+
+				if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
+
+				return true;
+			}).ToArray();
+		}
+
+		RoomPlacer roomPlacer = validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 
 		Room room = roomPlacer.RoomScene.Instantiate<Room>();
 		room.Load();
