@@ -1,10 +1,10 @@
 [metadata]
 name = "std::string"
-size = 0x1
-last_change = 2024-06-14T13:41:14.692916Z
+size = 0x10
+last_change = 2024-06-14T13:41:37.577599Z
 
 [members.0x0]
 name = "field_0"
 offset = 0x0
-type = ""
-size = 0x1
+type = "byte[16]"
+size = 0x10
