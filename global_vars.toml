@@ -10,6 +10,12 @@ addr = 0x4e257c8
 name = "??_7BlockItem@@6B@"
 size = 0x8
 
+[0x57c56b0]
+last_change = 2024-06-14T16:46:04.271495Z
+addr = 0x57c56b0
+name = "?blockChange@GameEventRegistry@@3VGameEvent@@B"
+size = 0x1
+
 [0x57d14e0]
 last_change = 2024-06-14T14:14:40.561649Z
 addr = 0x57d14e0
