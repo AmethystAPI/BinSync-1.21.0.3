@@ -1,7 +1,7 @@
 [metadata]
 name = "HashedString"
 size = 0x10
-last_change = 2024-06-14T13:33:45.718289Z
+last_change = 2024-06-14T13:35:17.516484Z
 
 [members.0x0]
 name = "mStrHash"
@@ -13,4 +13,4 @@ size = 0x8
 name = "field_8"
 offset = 0x8
 type = ""
-size = 0x1
+size = 0x2
