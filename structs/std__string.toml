@@ -1,7 +1,7 @@
 [metadata]
 name = "std::string"
 size = 0x20
-last_change = 2024-06-14T13:42:36.100212Z
+last_change = 2024-06-14T13:42:52.833791Z
 
 [members.0x0]
 name = "_buf_or_ptr"
@@ -10,7 +10,7 @@ type = "byte[16]"
 size = 0x10
 
 [members.0x10]
-name = "field_10"
+name = "_Mysize"
 offset = 0x10
 type = ""
 size = 0x8
