@@ -1,0 +1,2 @@
+- More enemies don't actually feel like more because of piercing
+- Stun locks are OP

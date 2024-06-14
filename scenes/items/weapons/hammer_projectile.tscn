@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6cyrpgftmxi0"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_3623f"]
-[ext_resource type="Texture2D" uid="uid://dscg0viludyf8" path="res://sprites/projectiles/hammer/projectile_hammer_0.tres" id="3_6fu87"]
-[ext_resource type="Texture2D" uid="uid://dp6sa8y72hs4m" path="res://sprites/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
-[ext_resource type="Texture2D" uid="uid://c58y2rdehx54r" path="res://sprites/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
+[ext_resource type="Texture2D" uid="uid://dscg0viludyf8" path="res://Sprites/projectiles/hammer/projectile_hammer_0.tres" id="3_6fu87"]
+[ext_resource type="Texture2D" uid="uid://dp6sa8y72hs4m" path="res://Sprites/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
+[ext_resource type="Texture2D" uid="uid://c58y2rdehx54r" path="res://Sprites/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(9, 14)
@@ -36,7 +36,6 @@ Speed = 300.0
 Resistance = 7.5
 Lifetime = 0.3
 Knockback = 2.5
-Pierce = true
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 7

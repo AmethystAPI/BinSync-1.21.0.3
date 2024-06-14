@@ -16,8 +16,21 @@
                 "file": "Planning/Beta B Kanban.md"
               }
             }
+          },
+          {
+            "id": "6b90991c2006e87f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Beta B Playtest Notes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -83,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "Beta B Playtest Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta B Kanban.md",
+                "file": "Beta B Playtest Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta B Kanban.md"
+                "file": "Beta B Playtest Notes.md"
               }
             }
           }
@@ -144,10 +157,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d0c68c1f6fcbb024",
+  "active": "6b90991c2006e87f",
   "lastOpenFiles": [
-    "Planning/Beta C Kanban.md",
     "Planning/Beta B Kanban.md",
+    "Beta B Playtest Notes.md",
+    "Planning/Beta C Kanban.md",
     "Attachments/PasF6D9.tmp",
     "No Communication Notes.md",
     "Design/Trinkets.md",
@@ -193,7 +207,6 @@
     "Daily Notes/Day 18-22.md",
     "Daily Notes/Day 18-21.md",
     "Daily Notes/Day 18-20.md",
-    "Daily Notes/Day 18-19.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }

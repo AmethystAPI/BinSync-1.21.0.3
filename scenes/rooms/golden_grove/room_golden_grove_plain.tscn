@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/border/border_grass_tuft_2.tscn" id="14_o30h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
-size = Vector2(160, 231)
+size = Vector2(160, 221)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0yjj"]
 size = Vector2(127, 196)
@@ -54,11 +54,10 @@ position = Vector2(0, -144)
 position = Vector2(0, 128)
 
 [node name="ActivateArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivateArea"]
-position = Vector2(-1, -19.5)
+position = Vector2(-1, -24.5)
 shape = SubResource("RectangleShape2D_7bjp7")
 
 [node name="Decorations" type="Node2D" parent="."]
