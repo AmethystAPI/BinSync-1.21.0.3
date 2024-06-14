@@ -6,18 +6,17 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Better sfx #polish
-- [ ] More Boss Moves #design
 
 
 ## In Progress
 
-- [ ] Stun Locking Boss #bug
 
 
 ## Done
 
 **Complete**
+- [x] More Boss Moves #design
+- [x] Stun Locking Boss #bug
 - [x] Custom music #design
 - [x] More trinkets #design
 - [x] Interaction System #code

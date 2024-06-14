@@ -59,6 +59,8 @@ public partial class Room : Node2D, NetworkPointUser {
 		foreach (Room room in s_Rooms) {
 			room.QueueFree();
 		}
+
+		s_Rooms.Clear();
 	}
 
 	public void AddEnemy() {

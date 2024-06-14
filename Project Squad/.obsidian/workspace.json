@@ -4,21 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4430a5c22006cade",
+        "id": "46b2770a2aa71273",
         "type": "tabs",
         "children": [
           {
-            "id": "6c7c3dedc5f1acf4",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Planning/Beta B Kanban.md"
-              }
-            }
-          },
-          {
-            "id": "721e658e51e4c419",
+            "id": "d0c68c1f6fcbb024",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -27,8 +17,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -155,11 +144,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "721e658e51e4c419",
+  "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
+    "Planning/Beta C Kanban.md",
+    "Planning/Beta B Kanban.md",
     "Attachments/PasF6D9.tmp",
     "No Communication Notes.md",
-    "Planning/Beta B Kanban.md",
     "Design/Trinkets.md",
     "Reference/Music.md",
     "Attachments/Pasted image 20240607003604.png",
@@ -198,7 +188,6 @@
     "Attachments/GA580A.tmp",
     "Attachments/Pas28E.tmp",
     "Attachments/Pas25D.tmp",
-    "Attachments/Pas217.tmp",
     "Planning/Previous/Pre Alpha Kanban.md",
     "Reference/General.canvas",
     "Daily Notes/Day 18-22.md",

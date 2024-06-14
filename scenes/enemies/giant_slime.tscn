@@ -1,17 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://cg8kvs2jvqdn2"]
+[gd_scene load_steps=21 format=3 uid="uid://cg8kvs2jvqdn2"]
 
 [ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_niwpd"]
-[ext_resource type="Texture2D" uid="uid://drqty4uy1t5tm" path="res://sprites/enemies/giant_slime/giant_slime.tres" id="2_2rx6r"]
-[ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
+[ext_resource type="Texture2D" uid="uid://drqty4uy1t5tm" path="res://Sprites/enemies/giant_slime/giant_slime.tres" id="2_2rx6r"]
+[ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://Sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_o3mxe"]
-[ext_resource type="Script" path="res://scripts/enemies/Idle.cs" id="5_enrl8"]
+[ext_resource type="Script" path="res://scripts/enemies/RandomIdle.cs" id="5_y4do1"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/SlimeJump.cs" id="6_dwj0d"]
 [ext_resource type="PackedScene" uid="uid://b01wmjm7v2unj" path="res://scenes/enemies/giant_slime_projectile.tscn" id="7_eun27"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_tl02o"]
 [ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="9_6r0xt"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_wa7k2"]
+[ext_resource type="Script" path="res://scripts/enemies/Summon.cs" id="11_4is48"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="11_gw8t8"]
-[ext_resource type="Texture2D" uid="uid://dlrdu2uqm5eda" path="res://sprites/enemies/giant_slime/giant_slime_hurt.tres" id="13_4nnx5"]
+[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="12_ujy5u"]
+[ext_resource type="Texture2D" uid="uid://dlrdu2uqm5eda" path="res://Sprites/enemies/giant_slime/giant_slime_hurt.tres" id="13_4nnx5"]
 [ext_resource type="Script" path="res://scripts/enemies/BossScaling.cs" id="13_aeshf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
@@ -154,9 +156,9 @@ position = Vector2(0, -4)
 script = ExtResource("4_o3mxe")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
-script = ExtResource("5_enrl8")
+script = ExtResource("5_y4do1")
 InteruptDecay = 0.5
-AttackState = "Jump"
+AttackStates = PackedStringArray("Jump", "Summon")
 AnimationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals", "ProjectileOrigin", "Sprite", "JumpSquashAndStretch", "LandSquashAndStretch")]
@@ -194,6 +196,11 @@ script = ExtResource("8_tl02o")
 Target = NodePath("../../../SquashAndStretchTarget")
 Scale = Vector2(0.6, 1.4)
 Speed = 8.0
+
+[node name="Summon" type="Node" parent="StateMachine"]
+script = ExtResource("11_4is48")
+Summons = [ExtResource("12_ujy5u")]
+SummonAmmount = Vector2i(1, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

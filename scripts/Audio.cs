@@ -91,8 +91,6 @@ public partial class Audio : Node {
     }
 
     public static void Play(string id) {
-        return;
-
         AudioStreamPlayer2D audio = new AudioStreamPlayer2D() {
             Stream = Me.Sounds[Me.SoundIds.ToList().IndexOf(id)],
             VolumeDb = Me.SoundVolumes[Me.SoundIds.ToList().IndexOf(id)] + new RandomNumberGenerator().RandfRange(-1f, 1f),
