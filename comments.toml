@@ -5,6 +5,13 @@ func_addr = 0x3050b70
 comment = "possibly inlined ?registerBlockFromDefinition@BlockDefinitionGroup@@QEAAXAEBUBlo\nckDefinition@@_N@Z\n"
 decompiled = true
 
+[0x30599d7]
+last_change = 2024-06-14T13:43:12.318547Z
+addr = 0x30599d7
+func_addr = 0x3059970
+comment = ""
+decompiled = true
+
 [0x30d54f4]
 last_change = 2024-06-13T22:32:06.983472Z
 addr = 0x30d54f4
