@@ -1,6 +1,6 @@
 user = "freddie"
 version = "4.1.6"
-last_push_time = 2024-06-14T14:10:09.226564Z
+last_push_time = 2024-06-14T14:14:40.561649Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <GlobalVar: None ?mBlockLookupMap@BlockTypeRegistry@@0V?$map@VHashedString@@V?$SharedPtr@VBlockLegacy@@@@U?$less@VHashedString@@@std@@V?$allocator@U?$pair@$$CBVHashedString@@V?$SharedPtr@VBlockLegacy@@@@@std@@@4@@std@@A; @94237440 len=8>"
+last_commit_msg = "Updated <GlobalVar: None ?mBlockNameHashToStringMap@BlockTypeRegistry@@0V?$dense_map@_KVHashedString@@U?$hash@_K@std@@U?$equal_to@_K@3@V?$allocator@U?$pair@$$CB_KVHashedString@@@std@@@3@@entt@@A; @92083424 len=8>"
