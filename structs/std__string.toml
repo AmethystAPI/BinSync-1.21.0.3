@@ -1,10 +1,10 @@
 [metadata]
 name = "std::string"
 size = 0x20
-last_change = 2024-06-14T13:46:05.074158Z
+last_change = 2024-06-14T13:46:10.826159Z
 
 [members.0x0]
-name = "_buf_or_ptr"
+name = "_buf"
 offset = 0x0
 type = "char[16]"
 size = 0x10
