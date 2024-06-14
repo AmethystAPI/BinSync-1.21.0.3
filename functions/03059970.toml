@@ -1,19 +1,11 @@
 [metadata]
 addr = 0x3059970
 size = 0x1152
-last_change = 2024-06-14T13:54:11.258918Z
+last_change = 2024-06-14T13:48:56.834767Z
 
 [header]
 last_change = 2024-06-14T13:48:56.834767Z
 name = "?_lookupByNameImpl@BlockTypeRegistry@@CA?AULookupByNameImplReturnType@1@AEBVHashedString@@HW4LookupByNameImplResolve@1@_N@Z"
-addr = 0x3059970
-
-[stack_vars.-0x120]
-last_change = 2024-06-14T13:54:11.258918Z
-offset = -288
-name = "var_118"
-type = "HashedString *"
-size = 0x8
 addr = 0x3059970
 
 [header.args.1]
