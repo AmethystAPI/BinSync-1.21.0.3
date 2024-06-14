@@ -1,10 +1,6 @@
 [metadata]
 name = "struct_0"
-size = 0x1
-last_change = 2024-06-14T13:35:42.747889Z
+size = -1
+last_change = 2024-06-14T13:36:06.420086Z
 
-[members.0x0]
-name = "field_0"
-offset = 0x0
-type = ""
-size = 0x1
+[members]
