@@ -28,6 +28,12 @@ addr = 0x57f98b8
 name = "qword_1457F98B8"
 size = 0x8
 
+[0x59bd7e0]
+last_change = 2024-06-16T21:37:01.612111Z
+addr = 0x59bd7e0
+name = "uiFillMaterial"
+size = 0x8
+
 [0x59df300]
 last_change = 2024-06-14T14:10:09.226564Z
 addr = 0x59df300
