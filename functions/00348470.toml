@@ -1,0 +1,11 @@
+last_change = 2024-06-17T21:30:53.728417Z
+addr = 0x348470
+size = 0x971
+name = "__ZN14ClientInstanceC2ER14IMinecraftGameR13IMinecraftAppR13LevelListener11SubClientIdRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEERKNS8_INSA_I30ClientInstanceEventCoordinatorEEEEP19LatencyGraphDisplayNS8_INSA_I19NetworkSessionOwnerEEEE"
+
+[header]
+last_change = 2024-06-17T21:30:53.728417Z
+name = "__ZN14ClientInstanceC2ER14IMinecraftGameR13IMinecraftAppR13LevelListener11SubClientIdRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEERKNS8_INSA_I30ClientInstanceEventCoordinatorEEEEP19LatencyGraphDisplayNS8_INSA_I19NetworkSessionOwnerEEEE"
+addr = 0x348470
+
+[header.args]
