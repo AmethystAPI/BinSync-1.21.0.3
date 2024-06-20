@@ -1,6 +1,10 @@
 [metadata]
 name = "__m128i"
-size = 0x0
-last_change = 2024-06-20T16:28:05.289644Z
+size = 0x10
+last_change = 2024-06-20T16:28:05.290644Z
 
-[members]
+[members.0x0]
+name = "m128i_i8"
+offset = 0x0
+type = ""
+size = 0x10
