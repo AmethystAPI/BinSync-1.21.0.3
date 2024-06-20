@@ -1,7 +1,7 @@
 [metadata]
 name = "__m128i"
 size = 0x10
-last_change = 2024-06-20T16:28:05.292645Z
+last_change = 2024-06-20T16:28:05.293645Z
 
 [members.0x0]
 name = "m128i_i8"
@@ -36,5 +36,11 @@ size = 0x10
 [members.0x5]
 name = "m128i_u16"
 offset = 0x5
+type = "unsigned short[8]"
+size = 0x10
+
+[members.0x6]
+name = "m128i_u32"
+offset = 0x6
 type = ""
 size = 0x10
