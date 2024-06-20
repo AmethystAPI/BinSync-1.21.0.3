@@ -1,6 +1,6 @@
 user = "Duckos"
 version = "4.1.6"
-last_push_time = 2024-06-20T16:56:48.222067Z
+last_push_time = 2024-06-20T16:57:40.572776Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None __ZN9LevelData12setGeneratorE13GeneratorType(args=0); @0x2f71090>"
+last_commit_msg = "Updated <FuncHeader: None __ZN28SettingsScreenControllerBase22_initNewWorldLevelDataER16LevelDataWrapper(args=0); @0xc489c0>"
