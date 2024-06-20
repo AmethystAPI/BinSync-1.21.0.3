@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x14d380
+size = 0xf2
+last_change = 2024-06-20T18:21:45.161221Z
+
+[header]
+last_change = 2024-06-20T18:21:45.161221Z
+name = "__ZNK11AppPlatform23getMaxSimRadiusInChunksEv"
+addr = 0x14d380
