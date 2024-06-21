@@ -1,0 +1,11 @@
+last_change = 2024-06-20T01:08:11.826889Z
+addr = 0x2f64d00
+size = 0x1ba4
+name = "?_registerRules@GameRules@@AEAAXXZ"
+
+[header]
+last_change = 2024-06-20T01:08:11.826889Z
+name = "?_registerRules@GameRules@@AEAAXXZ"
+addr = 0x2f64d00
+
+[header.args]
