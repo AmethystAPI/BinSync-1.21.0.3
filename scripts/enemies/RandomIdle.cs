@@ -1,11 +1,12 @@
+using System.Linq;
 using Godot;
 using Networking;
 using Riptide;
 
 public partial class RandomIdle : State, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
-    [Export] public float InteruptDecay = 0f;
     [Export] public string[] AttackStates = new string[] { "Attack" };
+    [Export] public float[] AttackWeights = new float[] { 1f };
     [Export] public string Animation = "idle";
     [Export] public AnimationPlayer AnimationPlayer;
 
@@ -28,7 +29,7 @@ public partial class RandomIdle : State, NetworkPointUser {
         AnimationPlayer.Play(Animation);
 
         if (_idleTimer > 0) {
-            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f * InteruptDecay;
+            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
 
             return;
         }
@@ -45,7 +46,22 @@ public partial class RandomIdle : State, NetworkPointUser {
 
         if (_idleTimer > 0) return;
 
-        NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc), message => message.AddString(AttackStates[_randomNumberGenerator.RandiRange(0, AttackStates.Length - 1)]));
+        float totalWeights = AttackWeights.Sum();
+        float selection = _randomNumberGenerator.RandfRange(0f, totalWeights - 0.0001f);
+
+        string state = AttackStates[0];
+
+        for (int index = 0; index < AttackStates.Length; index++) {
+            if (selection < AttackWeights[index]) {
+                state = AttackStates[index];
+
+                break;
+            }
+
+            selection -= AttackWeights[index];
+        }
+
+        NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc), message => message.AddString(state));
     }
 
     public override void Exit() {
