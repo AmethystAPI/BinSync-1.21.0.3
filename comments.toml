@@ -1,0 +1,5 @@
+[0x3050bc0]
+addr = 0x3050bc0
+func_addr = 0x3050b70
+comment = "possibly inlined ?registerBlockFromDefinition@BlockDefinitionGroup@@QEAAXAEBUBlo\nckDefinition@@_N@Z\n"
+decompiled = true
