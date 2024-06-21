@@ -4,7 +4,6 @@ using Riptide;
 
 public partial class Idle : State, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
-    [Export] public float InteruptDecay = 0f;
     [Export] public string AttackState = "Attack";
     [Export] public string Animation = "idle";
     [Export] public AnimationPlayer AnimationPlayer;
@@ -28,7 +27,7 @@ public partial class Idle : State, NetworkPointUser {
         AnimationPlayer.Play(Animation);
 
         if (_idleTimer > 0) {
-            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f * InteruptDecay;
+            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
 
             return;
         }

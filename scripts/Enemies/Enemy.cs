@@ -21,6 +21,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   internal StateMachine _stateMachine;
 
   private bool _justHit;
+  private float _invincibilityTimer;
 
   public override void _Ready() {
     NetworkPoint.Setup(this);
@@ -38,6 +39,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     _networkedPosition.Sync();
 
     SyncPosition((float)delta);
+
+    if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
   }
 
   public virtual void SyncPosition(float delta) {
@@ -55,7 +58,10 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     if (_stateMachine.CurrentState == "Hurt") return false;
 
+    if (_invincibilityTimer >= 0f) return false;
+
     if (!(projectile.Source is Player)) return false;
+
 
     return true;
   }
@@ -95,6 +101,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   private void DamageRpc(Message message) {
     _justHit = false;
+
+    _invincibilityTimer = 0.1f;
 
     SetMultiplayerAuthority(message.GetInt());
 
