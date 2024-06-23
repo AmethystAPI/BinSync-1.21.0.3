@@ -16,6 +16,12 @@ addr = 0x4cfe968
 name = "__ZTV26LegacyClientNetworkHandler"
 size = 0x8
 
+[0x4cff230]
+last_change = 2024-06-23T22:32:50.578422Z
+addr = 0x4cff230
+name = "__ZTV20ClientNetworkHandler"
+size = 0x8
+
 [0x4dfce10]
 last_change = 2024-06-14T14:21:36.316699Z
 addr = 0x4dfce10
