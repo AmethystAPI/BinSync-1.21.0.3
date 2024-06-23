@@ -1,0 +1,9 @@
+[metadata]
+addr = 0xaf3ef0
+size = 0xcd5
+last_change = 2024-06-23T20:32:45.056594Z
+
+[header]
+last_change = 2024-06-23T20:32:45.056594Z
+name = "__ZN20ClientNetworkHandler6handleERK17NetworkIdentifierRK19TakeItemActorPacket"
+addr = 0xaf3ef0
