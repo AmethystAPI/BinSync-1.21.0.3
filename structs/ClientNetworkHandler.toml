@@ -1,10 +1,10 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:43:51.537756Z
+last_change = 2024-06-23T22:43:58.232316Z
 
 [members.0x78]
-name = "field_78"
+name = "mPrivateKeyManager"
 offset = 0x78
 type = ""
 size = 0x1
