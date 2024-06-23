@@ -1,7 +1,7 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:57:28.794357Z
+last_change = 2024-06-23T22:59:23.257333Z
 
 [members.0x48]
 name = "mClientInstance"
@@ -9,9 +9,9 @@ offset = 0x48
 type = "IClientInstance *"
 size = 0x8
 
-[members.0x57]
-name = "field_57"
-offset = 0x57
+[members.0x50]
+name = "field_50"
+offset = 0x50
 type = ""
 size = 0x1
 
