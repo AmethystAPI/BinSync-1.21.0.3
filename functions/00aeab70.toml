@@ -1,19 +1,11 @@
 [metadata]
 addr = 0xaeab70
 size = 0x1a1
-last_change = 2024-06-23T22:35:40.583478Z
+last_change = 2024-06-23T22:35:40.583988Z
 
 [header]
-last_change = 2024-06-23T22:35:34.328307Z
+last_change = 2024-06-23T22:35:40.583988Z
 name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
-addr = 0xaeab70
-
-[stack_vars.-0x28]
-last_change = 2024-06-23T22:35:40.583478Z
-offset = -40
-name = "packetSender"
-type = "long long"
-size = 0x8
 addr = 0xaeab70
 
 [header.args.0]
@@ -34,4 +26,9 @@ size = 0x8
 [header.args.3]
 offset = 0x3
 name = "clientNetworkSystem"
+size = 0x8
+
+[header.args.4]
+offset = 0x4
+name = "packetSender"
 size = 0x8
