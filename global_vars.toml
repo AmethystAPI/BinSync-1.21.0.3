@@ -4,6 +4,12 @@ addr = 0x4cb69b8
 name = "__ZTV14ClientInstance"
 size = 0x8
 
+[0x4cfe968]
+last_change = 2024-06-23T20:21:18.887384Z
+addr = 0x4cfe968
+name = "__ZTV20ClientNetworkHandler"
+size = 0x8
+
 [0x4dfce10]
 last_change = 2024-06-14T14:21:36.316699Z
 addr = 0x4dfce10
