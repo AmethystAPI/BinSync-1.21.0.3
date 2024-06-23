@@ -1,10 +1,6 @@
 [metadata]
 name = "ClientNetworkHandler"
-size = 0x90
+size = 0x0
 last_change = 2024-06-23T20:35:36.909609Z
 
-[members.0x88]
-name = "pqword88"
-offset = 0x88
-type = "_QWORD *"
-size = 0x8
+[members]
