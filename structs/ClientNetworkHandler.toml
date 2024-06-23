@@ -1,7 +1,13 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:45:38.051463Z
+last_change = 2024-06-23T22:46:06.383829Z
+
+[members.0x68]
+name = "field_68"
+offset = 0x68
+type = ""
+size = 0x1
 
 [members.0x70]
 name = "mPacketSender"
