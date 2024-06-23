@@ -1,0 +1,9 @@
+[metadata]
+addr = 0xb00860
+size = 0x3d3
+last_change = 2024-06-23T22:24:15.207743Z
+
+[header]
+last_change = 2024-06-23T22:24:15.207743Z
+name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
+addr = 0xb00860
