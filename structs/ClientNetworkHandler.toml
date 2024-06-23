@@ -1,13 +1,7 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:38:40.972391Z
-
-[members.0x0]
-name = "gap0"
-offset = 0x0
-type = ""
-size = 0x2
+last_change = 2024-06-23T22:38:53.466540Z
 
 [members.0x88]
 name = "mLevel"
