@@ -1,7 +1,7 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:38:04.482630Z
+last_change = 2024-06-23T22:38:38.114309Z
 
 [members.0x0]
 name = "gap0"
@@ -14,12 +14,6 @@ name = "pqword48"
 offset = 0x48
 type = "_QWORD *"
 size = 0x8
-
-[members.0x50]
-name = "gap50"
-offset = 0x50
-type = ""
-size = 0x2
 
 [members.0x88]
 name = "mLevel"
