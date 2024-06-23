@@ -1,7 +1,7 @@
 [metadata]
 name = "ClientNetworkHandler"
-size = 0x90
-last_change = 2024-06-23T22:56:52.114437Z
+size = 0x88
+last_change = 2024-06-23T22:57:03.987783Z
 
 [members.0x48]
 name = "mClientInstance"
@@ -9,38 +9,38 @@ offset = 0x48
 type = "IClientInstance *"
 size = 0x8
 
-[members.0x60]
+[members.0x58]
 name = "mGameStartupServer"
-offset = 0x60
+offset = 0x58
 type = "IGameServerStartup *"
 size = 0x8
 
-[members.0x68]
+[members.0x60]
 name = "mClientNetworkSystem"
-offset = 0x68
+offset = 0x60
 type = "ClientNetworkSystem *"
 size = 0x8
 
-[members.0x70]
+[members.0x68]
 name = "mPacketSender"
-offset = 0x70
+offset = 0x68
 type = "PacketSender *"
 size = 0x8
 
-[members.0x78]
+[members.0x70]
 name = "mPrivateKeyManager"
-offset = 0x78
+offset = 0x70
 type = "PrivateKeyManager *"
 size = 0x8
 
-[members.0x80]
+[members.0x78]
 name = "mMinecraftCommands"
-offset = 0x80
+offset = 0x78
 type = "MinecraftCommands *"
 size = 0x8
 
-[members.0x88]
+[members.0x80]
 name = "mLevel"
-offset = 0x88
+offset = 0x80
 type = "_QWORD *"
 size = 0x8
