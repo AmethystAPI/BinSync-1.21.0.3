@@ -1,10 +1,10 @@
 [metadata]
 addr = 0xaeab70
 size = 0x1a1
-last_change = 2024-06-23T22:35:10.651374Z
+last_change = 2024-06-23T22:35:24.338488Z
 
 [header]
-last_change = 2024-06-23T22:35:10.651374Z
+last_change = 2024-06-23T22:35:24.338488Z
 name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
 addr = 0xaeab70
 
@@ -16,4 +16,9 @@ size = 0x8
 [header.args.1]
 offset = 0x1
 name = "gameConnectionListener"
+size = 0x8
+
+[header.args.2]
+offset = 0x2
+name = "iGameServerStartup"
 size = 0x8
