@@ -1,13 +1,13 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:43:58.232316Z
+last_change = 2024-06-23T22:44:30.383145Z
 
 [members.0x78]
 name = "mPrivateKeyManager"
 offset = 0x78
-type = ""
-size = 0x1
+type = "PrivateKeyManager *"
+size = 0x8
 
 [members.0x80]
 name = "mMinecraftCommands"
