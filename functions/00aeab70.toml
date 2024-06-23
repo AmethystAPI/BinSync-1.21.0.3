@@ -1,10 +1,10 @@
 [metadata]
 addr = 0xaeab70
 size = 0x1a1
-last_change = 2024-06-23T22:36:19.013449Z
+last_change = 2024-06-23T22:36:19.014581Z
 
 [header]
-last_change = 2024-06-23T22:36:19.013449Z
+last_change = 2024-06-23T22:36:11.713324Z
 name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
 addr = 0xaeab70
 
@@ -20,6 +20,14 @@ addr = 0xaeab70
 last_change = 2024-06-23T22:35:56.434357Z
 offset = -24
 name = "iClientInstance"
+type = "_QWORD *"
+size = 0x8
+addr = 0xaeab70
+
+[stack_vars.0x0]
+last_change = 2024-06-23T22:36:19.014581Z
+offset = 0x0
+name = "iLevel"
 type = "_QWORD *"
 size = 0x8
 addr = 0xaeab70
@@ -57,9 +65,4 @@ size = 0x8
 [header.args.8]
 offset = 0x8
 name = "clientBlobCache"
-size = 0x8
-
-[header.args.9]
-offset = 0x9
-name = "iLevel"
 size = 0x8
