@@ -3,12 +3,6 @@ name = "ClientNetworkHandler"
 size = 0x90
 last_change = 2024-06-23T20:35:36.908612Z
 
-[members.0x48]
-name = "pqword48"
-offset = 0x48
-type = "_QWORD *"
-size = 0x8
-
 [members.0x50]
 name = "gap50"
 offset = 0x50
