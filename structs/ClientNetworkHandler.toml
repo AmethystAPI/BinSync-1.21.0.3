@@ -1,7 +1,7 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T23:03:13.744855Z
+last_change = 2024-06-23T23:03:23.643876Z
 
 [members.0x48]
 name = "mClientInstance"
@@ -16,7 +16,7 @@ type = "IGameConnectionListener *"
 size = 0x8
 
 [members.0x58]
-name = "field_58"
+name = "mGameConnectionListenerUseCount"
 offset = 0x58
 type = "uint64_t"
 size = 0x8
