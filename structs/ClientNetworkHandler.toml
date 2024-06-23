@@ -1,7 +1,13 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:42:06.533206Z
+last_change = 2024-06-23T22:43:51.537756Z
+
+[members.0x78]
+name = "field_78"
+offset = 0x78
+type = ""
+size = 0x1
 
 [members.0x80]
 name = "mMinecraftCommands"
