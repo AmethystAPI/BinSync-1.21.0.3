@@ -1,13 +1,13 @@
 [metadata]
 name = "ClientNetworkHandler"
 size = 0x90
-last_change = 2024-06-23T22:47:15.817240Z
+last_change = 2024-06-23T22:47:41.571257Z
 
 [members.0x60]
 name = "mGameStartupServer"
 offset = 0x60
-type = ""
-size = 0x1
+type = "IGameServerStartup *"
+size = 0x8
 
 [members.0x68]
 name = "mClientNetworkSystem"
