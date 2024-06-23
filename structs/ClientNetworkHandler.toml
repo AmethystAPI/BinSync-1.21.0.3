@@ -1,16 +1,16 @@
 [metadata]
 name = "ClientNetworkHandler"
-size = 0x98
-last_change = 2024-06-23T22:41:32.653089Z
+size = 0x90
+last_change = 2024-06-23T22:42:06.533206Z
 
-[members.0x87]
+[members.0x80]
 name = "mMinecraftCommands"
-offset = 0x87
-type = ""
-size = 0x1
+offset = 0x80
+type = "MinecraftCommands *"
+size = 0x8
 
-[members.0x8f]
+[members.0x88]
 name = "mLevel"
-offset = 0x8f
+offset = 0x88
 type = "_QWORD *"
 size = 0x8
