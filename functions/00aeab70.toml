@@ -1,10 +1,10 @@
 [metadata]
 addr = 0xaeab70
 size = 0x1a1
-last_change = 2024-06-23T22:42:18.839125Z
+last_change = 2024-06-23T22:42:18.840121Z
 
 [header]
-last_change = 2024-06-23T22:38:28.776252Z
+last_change = 2024-06-23T22:42:18.840121Z
 name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
 addr = 0xaeab70
 
@@ -29,14 +29,6 @@ last_change = 2024-06-23T22:36:19.014581Z
 offset = 0x0
 name = "iLevel"
 type = "_QWORD *"
-size = 0x8
-addr = 0xaeab70
-
-[stack_vars.-0x10]
-last_change = 2024-06-23T22:42:18.839125Z
-offset = -16
-name = "minecraftCommands"
-type = "MinecraftCommands *"
 size = 0x8
 addr = 0xaeab70
 
@@ -69,6 +61,7 @@ size = 0x8
 [header.args.7]
 offset = 0x7
 name = "minecraftCommands"
+type = "MinecraftCommands *"
 size = 0x8
 
 [header.args.8]
