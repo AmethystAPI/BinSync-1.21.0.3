@@ -1,0 +1,9 @@
+[metadata]
+addr = 0xa47b00
+size = 0x167
+last_change = 2024-06-25T14:24:25.930947Z
+
+[header]
+last_change = 2024-06-25T14:24:25.930947Z
+name = "__ZN13BlockGraphics25setDefaultCarriedTexturesEv"
+addr = 0xa47b00
