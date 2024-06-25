@@ -13,24 +13,11 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Planning/Beta B Kanban.md"
-              }
-            }
-          },
-          {
-            "id": "6b90991c2006e87f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Beta B Playtest Notes.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -96,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Beta B Playtest Notes.md",
+                "file": "Planning/Beta C Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Beta B Playtest Notes.md",
+                "file": "Planning/Beta C Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Beta B Playtest Notes.md"
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -157,9 +144,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6b90991c2006e87f",
+  "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
     "Planning/Beta B Kanban.md",
+    "Planning/Beta B Kanban 1.md",
     "Beta B Playtest Notes.md",
     "Planning/Beta C Kanban.md",
     "Attachments/PasF6D9.tmp",
@@ -206,7 +194,6 @@
     "Reference/General.canvas",
     "Daily Notes/Day 18-22.md",
     "Daily Notes/Day 18-21.md",
-    "Daily Notes/Day 18-20.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }

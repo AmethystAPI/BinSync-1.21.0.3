@@ -6,6 +6,7 @@ using System.Linq;
 public partial class WorldGenerator : Node2D, NetworkPointUser {
 	private static WorldGenerator s_Me;
 
+	[Export] public Biome[] Biomes;
 	[Export] public RoomPlacer SpawnRoomPlacer;
 	[Export] public RoomPlacer[] RoomPlacers;
 	[Export] public RoomPlacer TempleRoomPlacer;
