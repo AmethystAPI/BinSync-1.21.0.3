@@ -1,0 +1,10 @@
+[metadata]
+name = "std::mutex"
+size = 0x50
+last_change = 2024-06-26T20:36:13.749482Z
+
+[members.0x0]
+name = "mGeometryLock"
+offset = 0x0
+type = "byte[80]"
+size = 0x50
