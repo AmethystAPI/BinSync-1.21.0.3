@@ -1,4 +1,4 @@
-last_change = 2024-06-26T17:06:56.858669Z
+last_change = 2024-06-26T17:06:56.859669Z
 addr = 0x13bbc60
 size = 0x2f4
 
@@ -7,5 +7,13 @@ last_change = 2024-06-26T17:06:56.858669Z
 offset = -200
 name = "a3"
 type = "int[2]"
+size = 0x8
+addr = 0x13bbc60
+
+[stack_vars.-0xc0]
+last_change = 2024-06-26T17:06:56.859669Z
+offset = -192
+name = "var_B8"
+type = "long long"
 size = 0x8
 addr = 0x13bbc60
