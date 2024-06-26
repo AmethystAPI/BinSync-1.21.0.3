@@ -1,11 +1,11 @@
-last_change = 2024-06-26T16:47:38.561408Z
+last_change = 2024-06-26T16:48:09.309743Z
 addr = 0x3859b10
 size = 0x8a
 name = "mce::Mesh::renderMesh"
 type = "void"
 
 [header]
-last_change = 2024-06-26T16:47:38.561408Z
+last_change = 2024-06-26T16:48:09.309743Z
 name = "mce::Mesh::renderMesh"
 addr = 0x3859b10
 type = "void"
@@ -13,4 +13,9 @@ type = "void"
 [header.args.0x1]
 offset = 0x1
 name = "materialPtr"
+size = 0x4
+
+[header.args.0x0]
+offset = 0x0
+type = "int"
 size = 0x4
