@@ -1,11 +1,11 @@
-last_change = 2024-06-26T16:50:58.904009Z
+last_change = 2024-06-26T17:09:24.352130Z
 addr = 0x3859b10
 size = 0x8a
 name = "mce::Mesh::renderMesh"
 type = "void"
 
 [header]
-last_change = 2024-06-26T16:48:13.351252Z
+last_change = 2024-06-26T17:09:24.352130Z
 name = "mce::Mesh::renderMesh"
 addr = 0x3859b10
 type = "void"
@@ -18,5 +18,5 @@ size = 0x4
 [header.args.0x0]
 offset = 0x0
 name = "meshContext"
-type = "int"
-size = 0x4
+type = "mce::MeshContext *"
+size = 0x8
