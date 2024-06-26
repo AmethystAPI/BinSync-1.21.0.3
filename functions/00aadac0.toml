@@ -1,7 +1,7 @@
 [metadata]
 addr = 0xaadac0
 size = 0x19a8
-last_change = 2024-06-26T20:30:06.058410Z
+last_change = 2024-06-26T20:30:10.941882Z
 
 [header]
 last_change = 2024-06-26T20:29:40.673447Z
@@ -12,6 +12,14 @@ addr = 0xaadac0
 last_change = 2024-06-26T20:30:06.058410Z
 offset = -1064
 name = "_this"
+type = "GeometryGroup *"
+size = 0x8
+addr = 0xaadac0
+
+[stack_vars.-0x130]
+last_change = 2024-06-26T20:30:10.941882Z
+offset = -304
+name = "_this2"
 type = "GeometryGroup *"
 size = 0x8
 addr = 0xaadac0
