@@ -1,7 +1,7 @@
 [metadata]
 addr = 0xaadac0
 size = 0x19a8
-last_change = 2024-06-26T20:30:49.776073Z
+last_change = 2024-06-26T20:33:01.493946Z
 
 [header]
 last_change = 2024-06-26T20:30:49.776073Z
@@ -22,6 +22,14 @@ offset = -304
 name = "_this2"
 type = "GeometryGroup *"
 size = 0x8
+addr = 0xaadac0
+
+[stack_vars.-0xa8]
+last_change = 2024-06-26T20:33:01.493946Z
+offset = -168
+name = "this_1"
+type = "__int128"
+size = 0x10
 addr = 0xaadac0
 
 [header.args.1]
