@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x29c6330
+size = 0x7c9
+last_change = 2024-06-26T16:37:57.520646Z
+
+[header]
+last_change = 2024-06-26T16:37:57.520646Z
+name = "?readAdditionalSaveData@Mob@@MEAAXAEBVCompoundTag@@AEAVDataLoadHelper@@@Z"
+addr = 0x29c6330
