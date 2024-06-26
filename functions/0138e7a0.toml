@@ -1,0 +1,11 @@
+last_change = 2024-06-26T17:15:54.669638Z
+addr = 0x138e7a0
+size = 0x6bd
+
+[stack_vars.-0x5c0]
+last_change = 2024-06-26T17:15:54.669638Z
+offset = -1472
+name = "var_590"
+type = "__int128"
+size = 0x10
+addr = 0x138e7a0
