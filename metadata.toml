@@ -1,6 +1,6 @@
 user = "freddie"
 version = "4.1.6"
-last_push_time = 2024-06-26T20:50:33.285108Z
+last_push_time = 2024-06-26T20:51:06.945691Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None __ZN13LevelRendererC2ER15IClientInstanceR16MultiPlayerLevelNSt3__110shared_ptrI7OptionsEENS5_IN3mce12TextureGroupEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE13WeakEntityRefR19HolographicPlatformR12GameRendererRKNSC_INSE_I20SoundPlayerInterfaceEEEERKNSC_INSE_I13GeometryGroupEEEERK12SoundMappingRKNSC_INSE_IK28ActorResourceDefinitionGroupEEEE(args=0); @0x13afc50>"
+last_commit_msg = "Updated <StackVar: long long ** actorResourceDefGroup; 0x0@0x13afc50>"

@@ -1,7 +1,7 @@
 [metadata]
 addr = 0x13afc50
 size = 0x1346
-last_change = 2024-06-26T20:50:33.285108Z
+last_change = 2024-06-26T20:51:06.945691Z
 
 [header]
 last_change = 2024-06-26T20:50:33.285108Z
@@ -13,5 +13,13 @@ last_change = 2024-06-26T20:44:14.679816Z
 offset = -1472
 name = "var_550"
 type = "long long"
+size = 0x8
+addr = 0x13afc50
+
+[stack_vars.0x0]
+last_change = 2024-06-26T20:51:06.945691Z
+offset = 0x0
+name = "actorResourceDefGroup"
+type = "long long **"
 size = 0x8
 addr = 0x13afc50
