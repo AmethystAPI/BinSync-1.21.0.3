@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x2752960
+size = 0x3be
+last_change = 2024-06-26T17:09:56.047171Z
+
+[header]
+last_change = 2024-06-26T17:09:56.047171Z
+addr = 0x2752960
+type = "long long *"
