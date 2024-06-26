@@ -1,6 +1,6 @@
 user = "Duckos"
 version = "4.1.6"
-last_push_time = 2024-06-26T16:39:51.510349Z
+last_push_time = 2024-06-26T16:42:58.337168Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None ?getList@CompoundTag@@QEBAPEBVListTag@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z(args=0); @0x1656120>"
+last_commit_msg = "Updated <FuncHeader: None ?fromTag@ItemStack@@SA?AV1@AEBVCompoundTag@@@Z(args=0); @0x2e0c0e0>"
