@@ -1,4 +1,4 @@
-last_change = 2024-06-26T17:15:54.591635Z
+last_change = 2024-06-26T17:15:54.596637Z
 addr = 0x3859b10
 size = 0x8a
 name = "mce::Mesh::renderMesh"
@@ -11,9 +11,9 @@ addr = 0x3859b10
 type = "void"
 
 [stack_vars.-0x168]
-last_change = 2024-06-26T17:15:54.591635Z
+last_change = 2024-06-26T17:15:54.596637Z
 offset = -360
-name = "var_158"
+name = "a4"
 type = "long long[42]"
 size = 0x150
 addr = 0x3859b10
