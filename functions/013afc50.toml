@@ -1,0 +1,12 @@
+[metadata]
+addr = 0x13afc50
+size = 0x1346
+last_change = 2024-06-26T20:44:14.679816Z
+
+[stack_vars.-0x550]
+last_change = 2024-06-26T20:44:14.679816Z
+offset = -1360
+name = "var_4E0"
+type = "long long **"
+size = 0x8
+addr = 0x13afc50
