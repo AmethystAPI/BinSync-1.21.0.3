@@ -1,11 +1,13 @@
-last_change = 2024-06-26T16:44:33.185210Z
+last_change = 2024-06-26T16:47:02.388757Z
 addr = 0x3859b10
 size = 0x8a
 name = "mce::Mesh::renderMesh"
+type = "void"
 
 [header]
-last_change = 2024-06-26T16:44:33.185210Z
+last_change = 2024-06-26T16:47:02.388757Z
 name = "mce::Mesh::renderMesh"
 addr = 0x3859b10
+type = "void"
 
 [header.args]
