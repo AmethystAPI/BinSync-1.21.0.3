@@ -1,7 +1,7 @@
 [metadata]
 name = "GeometryGroup"
-size = 0x18
-last_change = 2024-06-26T20:30:39.115270Z
+size = 0x19
+last_change = 2024-06-26T20:30:41.409856Z
 
 [members.0x0]
 name = "field_0"
@@ -20,3 +20,9 @@ name = "field_10"
 offset = 0x10
 type = ""
 size = 0x8
+
+[members.0x18]
+name = "field_18"
+offset = 0x18
+type = ""
+size = 0x1
