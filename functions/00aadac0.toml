@@ -1,10 +1,10 @@
 [metadata]
 addr = 0xaadac0
 size = 0x19a8
-last_change = 2024-06-26T20:27:45.050483Z
+last_change = 2024-06-26T20:29:12.193886Z
 
 [header]
-last_change = 2024-06-26T20:27:45.050483Z
+last_change = 2024-06-26T20:29:12.193886Z
 name = "__ZN13GeometryGroup12loadModelExtENSt3__18weak_ptrIS_EERKNS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERK11ModelParentiiRK22TextureUVCoordinateSetb"
 addr = 0xaadac0
 
@@ -16,4 +16,5 @@ size = 0x8
 [header.args.0]
 offset = 0x0
 name = "this"
+type = "GeometryGroup *"
 size = 0x8
