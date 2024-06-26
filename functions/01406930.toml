@@ -11,7 +11,7 @@ addr = 0x1406930
 [stack_vars.-0x20]
 last_change = 2024-06-26T20:44:14.670270Z
 offset = -32
-name = "a5"
+name = "arg_20"
 type = "long long **"
 size = 0x8
 addr = 0x1406930
