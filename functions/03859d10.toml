@@ -1,10 +1,10 @@
-last_change = 2024-06-26T17:16:28.412623Z
+last_change = 2024-06-26T17:17:14.834293Z
 addr = 0x3859d10
 size = 0x4c0
 name = "mce::Mesh::_renderMesh"
 
 [header]
-last_change = 2024-06-26T17:16:28.412623Z
+last_change = 2024-06-26T17:17:14.834293Z
 name = "mce::Mesh::_renderMesh"
 addr = 0x3859d10
 
@@ -19,4 +19,5 @@ addr = 0x3859d10
 [header.args.0x0]
 offset = 0x0
 name = "this"
-size = 0x4
+type = "mce::Mesh *"
+size = 0x8
