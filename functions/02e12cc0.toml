@@ -1,9 +1,10 @@
 [metadata]
 addr = 0x2e12cc0
 size = 0x98
-last_change = 2024-06-26T16:43:04.272669Z
+last_change = 2024-06-26T16:43:39.090038Z
 
 [header]
-last_change = 2024-06-26T16:43:04.272669Z
+last_change = 2024-06-26T16:43:39.090038Z
+name = "??1ItemStackBase@@UEAA@XZ"
 addr = 0x2e12cc0
 type = "void"
