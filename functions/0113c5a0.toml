@@ -1,11 +1,11 @@
 last_change = 2024-06-26T17:15:54.667638Z
 addr = 0x113c5a0
 size = 0x1e9
-type = "long long"
 
-[header]
+[stack_vars.-0x1c0]
 last_change = 2024-06-26T17:15:54.667638Z
+offset = -448
+name = "var_1A0"
+type = "_QWORD[7]"
+size = 0x38
 addr = 0x113c5a0
-type = "long long"
-
-[header.args]
