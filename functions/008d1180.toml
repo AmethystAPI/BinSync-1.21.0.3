@@ -1,0 +1,11 @@
+last_change = 2024-06-26T17:15:54.664638Z
+addr = 0x8d1180
+size = 0x769
+
+[stack_vars.-0x308]
+last_change = 2024-06-26T17:15:54.664638Z
+offset = -776
+name = "var_300"
+type = "__int128[2]"
+size = 0x20
+addr = 0x8d1180
