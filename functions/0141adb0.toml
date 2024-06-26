@@ -2,10 +2,10 @@ last_change = 2024-06-26T17:15:54.672142Z
 addr = 0x141adb0
 size = 0xf2c
 
-[stack_vars.-0x4c8]
+[stack_vars.-0x1c8]
 last_change = 2024-06-26T17:15:54.672142Z
-offset = -1224
-name = "var_4A0"
-type = "long long"
-size = 0x8
+offset = -456
+name = "var_1A0"
+type = "__int128"
+size = 0x10
 addr = 0x141adb0
