@@ -1,9 +1,10 @@
 [metadata]
 addr = 0xa28f10
 size = 0xc8
-last_change = 2024-06-26T20:31:38.829395Z
+last_change = 2024-06-26T20:33:32.122035Z
 
 [header]
-last_change = 2024-06-26T20:31:38.829395Z
+last_change = 2024-06-26T20:33:32.122035Z
 name = "__ZN11GeometryPtrC1ER13GeometryGroupRK12HashedString"
 addr = 0xa28f10
+type = "GeometryPtr *"
