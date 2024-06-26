@@ -1,6 +1,14 @@
-last_change = 2024-06-26T17:15:50.779277Z
+last_change = 2024-06-26T17:16:13.772146Z
 addr = 0x3859d10
 size = 0x4c0
+name = "mce::Mesh::_renderMesh"
+
+[header]
+last_change = 2024-06-26T17:16:13.772146Z
+name = "mce::Mesh::_renderMesh"
+addr = 0x3859d10
+
+[header.args]
 
 [stack_vars.0x0]
 last_change = 2024-06-26T17:15:50.779277Z
