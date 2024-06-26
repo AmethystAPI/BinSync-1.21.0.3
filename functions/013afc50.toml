@@ -4,7 +4,7 @@ size = 0x1346
 last_change = 2024-06-26T20:51:13.144927Z
 
 [header]
-last_change = 2024-06-26T20:51:06.945691Z
+last_change = 2024-06-26T20:51:13.144927Z
 name = "__ZN13LevelRendererC2ER15IClientInstanceR16MultiPlayerLevelNSt3__110shared_ptrI7OptionsEENS5_IN3mce12TextureGroupEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE13WeakEntityRefR19HolographicPlatformR12GameRendererRKNSC_INSE_I20SoundPlayerInterfaceEEEERKNSC_INSE_I13GeometryGroupEEEERK12SoundMappingRKNSC_INSE_IK28ActorResourceDefinitionGroupEEEE"
 addr = 0x13afc50
 
@@ -16,15 +16,12 @@ type = "long long"
 size = 0x8
 addr = 0x13afc50
 
-[stack_vars.-0x8]
-last_change = 2024-06-26T20:51:13.144927Z
-offset = -8
-name = "soundMapping"
-type = "long long"
-size = 0x8
-addr = 0x13afc50
-
 [header.args.12]
 offset = 0xc
 name = "actorResourceDefGroup"
+size = 0x8
+
+[header.args.11]
+offset = 0xb
+name = "soundMapping"
 size = 0x8
