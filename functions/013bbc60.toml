@@ -3,9 +3,9 @@ addr = 0x13bbc60
 size = 0x2f4
 
 [stack_vars.-0xc8]
-last_change = 2024-06-26T16:47:02.482822Z
+last_change = 2024-06-26T17:06:56.858669Z
 offset = -200
-name = "var_C0"
+name = "a3"
 type = "int[2]"
 size = 0x8
 addr = 0x13bbc60
