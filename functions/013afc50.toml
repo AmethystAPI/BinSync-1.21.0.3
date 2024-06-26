@@ -6,7 +6,7 @@ last_change = 2024-06-26T20:44:14.679816Z
 [stack_vars.-0x5a0]
 last_change = 2024-06-26T20:44:14.679816Z
 offset = -1440
-name = "a2"
+name = "var_530"
 type = "long long"
 size = 0x8
 addr = 0x13afc50
