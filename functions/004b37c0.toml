@@ -1,4 +1,4 @@
-last_change = 2024-06-26T16:47:02.472813Z
+last_change = 2024-06-26T17:06:56.847668Z
 addr = 0x4b37c0
 size = 0x1260
 
@@ -11,9 +11,9 @@ size = 0x10
 addr = 0x4b37c0
 
 [stack_vars.-0x308]
-last_change = 2024-06-26T16:47:02.467811Z
+last_change = 2024-06-26T17:06:56.847668Z
 offset = -776
-name = "a1"
+name = "var_300"
 type = "long long[68]"
 size = 0x220
 addr = 0x4b37c0
