@@ -1,9 +1,9 @@
 [metadata]
 addr = 0x29c6330
 size = 0x7c9
-last_change = 2024-06-26T16:38:41.718267Z
+last_change = 2024-06-26T16:39:01.593692Z
 
 [header]
-last_change = 2024-06-26T16:38:41.718267Z
-name = "?resetAttributes@Mob@@QEAAXXZ"
+last_change = 2024-06-26T16:39:01.593692Z
+name = "?readAdditionalSaveData@Mob@@MEAAXAEBVCompoundTag@@AEAVDataLoadHelper@@@Z"
 addr = 0x29c6330
