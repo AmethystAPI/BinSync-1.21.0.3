@@ -3,10 +3,10 @@ addr = 0x13afc50
 size = 0x1346
 last_change = 2024-06-26T20:44:14.679816Z
 
-[stack_vars.-0x5e0]
+[stack_vars.-0x5a0]
 last_change = 2024-06-26T20:44:14.679816Z
-offset = -1504
-name = "var_570"
-type = "_QWORD *"
+offset = -1440
+name = "a2"
+type = "long long"
 size = 0x8
 addr = 0x13afc50
