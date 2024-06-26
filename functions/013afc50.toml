@@ -1,7 +1,12 @@
 [metadata]
 addr = 0x13afc50
 size = 0x1346
-last_change = 2024-06-26T20:44:14.679816Z
+last_change = 2024-06-26T20:50:33.285108Z
+
+[header]
+last_change = 2024-06-26T20:50:33.285108Z
+name = "__ZN13LevelRendererC2ER15IClientInstanceR16MultiPlayerLevelNSt3__110shared_ptrI7OptionsEENS5_IN3mce12TextureGroupEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE13WeakEntityRefR19HolographicPlatformR12GameRendererRKNSC_INSE_I20SoundPlayerInterfaceEEEERKNSC_INSE_I13GeometryGroupEEEERK12SoundMappingRKNSC_INSE_IK28ActorResourceDefinitionGroupEEEE"
+addr = 0x13afc50
 
 [stack_vars.-0x5c0]
 last_change = 2024-06-26T20:44:14.679816Z
