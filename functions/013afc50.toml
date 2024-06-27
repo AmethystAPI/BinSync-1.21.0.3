@@ -24,17 +24,17 @@ type = "long long"
 size = 0x8
 addr = 0x13afc50
 
-[header.args.24]
+[header.args.36]
 offset = 0xc
 name = "actorResourceDefGroup"
 size = 0x8
 
-[header.args.23]
+[header.args.35]
 offset = 0xb
 name = "soundMapping"
 size = 0x8
 
-[header.args.22]
+[header.args.34]
 offset = 0xa
 name = "geometryGroup"
 size = 0x8
