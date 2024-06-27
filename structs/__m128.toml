@@ -12,5 +12,11 @@ size = 0x10
 [members.0x1]
 name = "m128_u64"
 offset = 0x1
+type = "unsigned long long[2]"
+size = 0x10
+
+[members.0x2]
+name = "m128_i8"
+offset = 0x2
 type = ""
 size = 0x10
