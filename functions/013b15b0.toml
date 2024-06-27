@@ -1,7 +1,7 @@
 [metadata]
 addr = 0x13b15b0
 size = 0x2e7
-last_change = 2024-06-27T20:56:33.030243Z
+last_change = 2024-06-27T21:06:50.303511Z
 
 [header]
 last_change = 2024-06-27T20:56:33.030243Z
@@ -9,9 +9,9 @@ name = "__ZN13LevelRenderer6reinitERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK
 addr = 0x13b15b0
 
 [stack_vars.-0xc8]
-last_change = 2024-06-26T20:44:14.679816Z
+last_change = 2024-06-27T21:06:50.303511Z
 offset = -200
-name = "var_C0"
+name = "textureGroup"
 type = "__int128"
 size = 0x10
 addr = 0x13b15b0
