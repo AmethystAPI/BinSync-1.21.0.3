@@ -6,7 +6,7 @@ last_change = 2024-06-27T09:53:52.151565Z
 [stack_vars.-0x38]
 last_change = 2024-06-27T09:53:52.151565Z
 offset = -56
-name = "a1"
+name = "var_28"
 type = "_QWORD[2]"
 size = 0x10
 addr = 0x1e0c0
