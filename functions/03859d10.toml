@@ -1,9 +1,9 @@
 [metadata]
 addr = 0x3859d10
 size = 0x4c0
-last_change = 2024-06-27T10:32:14.095762Z
+last_change = 2024-06-27T10:39:48.824230Z
 
 [header]
-last_change = 2024-06-27T10:32:14.095762Z
-name = "__ZNK3mce4Mesh11_renderMeshERNS_11MeshContextERKNS_11MaterialPtrEN5brstd13static_vectorINSt3__17variantIJNS8_9monostateENS_10TexturePtrENS_13ClientTextureENS_13ServerTextureEEEELm8EEEjjPKNS_20IndexBufferContainerENS8_8optionalIN6dragon14RenderMetadataEEE"
+last_change = 2024-06-27T10:39:48.824230Z
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrERKNSt3__17variantIJNS6_9monostateENS_10TexturePtrENS_13ClientTextureENS_13ServerTextureEEEEjjPKNS_20IndexBufferContainerE"
 addr = 0x3859d10
