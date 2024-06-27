@@ -1,12 +1,12 @@
 [metadata]
 addr = 0x17ff0
 size = 0x10d
-last_change = 2024-06-27T09:53:52.035165Z
+last_change = 2024-06-27T09:53:52.039170Z
 
-[stack_vars.-0x50]
-last_change = 2024-06-27T09:53:52.035165Z
-offset = -80
-name = "var_50"
-type = "_QWORD[2]"
-size = 0x10
+[stack_vars.-0x28]
+last_change = 2024-06-27T09:53:52.039170Z
+offset = -40
+name = "var_28"
+type = "__int128[2]"
+size = 0x20
 addr = 0x17ff0
