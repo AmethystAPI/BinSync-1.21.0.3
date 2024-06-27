@@ -1,0 +1,13 @@
+[metadata]
+addr = 0x3859ba0
+size = 0x99
+last_change = 2024-06-27T10:36:43.499930Z
+
+[header]
+last_change = 2024-06-27T10:36:43.499930Z
+addr = 0x3859ba0
+
+[header.args.0]
+offset = 0x0
+name = "mesh"
+size = 0x8
