@@ -1,6 +1,6 @@
 user = "freddie"
 version = "4.1.6"
-last_push_time = 2024-06-27T10:39:48.824230Z
+last_push_time = 2024-06-27T10:44:41.155239Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None __ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrERKNSt3__17variantIJNS6_9monostateENS_10TexturePtrENS_13ClientTextureENS_13ServerTextureEEEEjjPKNS_20IndexBufferContainerE(args=0); @0x3859d10>"
+last_commit_msg = "Updated <FuncHeader: None __ZN13HoverRenderer15_renderHoverBoxER24MinecraftUIRenderContextR15IClientInstanceR13RectangleAreaf(args=0); @0x5ada90>"
