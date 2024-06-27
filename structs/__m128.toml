@@ -6,5 +6,11 @@ last_change = 2024-06-27T10:45:59.555235Z
 [members.0x0]
 name = "m128_f32"
 offset = 0x0
+type = "float[4]"
+size = 0x10
+
+[members.0x1]
+name = "m128_u64"
+offset = 0x1
 type = ""
 size = 0x10
