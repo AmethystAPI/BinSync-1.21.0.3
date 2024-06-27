@@ -3,10 +3,10 @@ addr = 0x183d0
 size = 0x2a8
 last_change = 2024-06-27T09:53:52.033151Z
 
-[stack_vars.-0x28]
+[stack_vars.-0xe8]
 last_change = 2024-06-27T09:53:52.033151Z
-offset = -40
-name = "var_20"
+offset = -232
+name = "var_E0"
 type = "__int128[2]"
 size = 0x20
 addr = 0x183d0
