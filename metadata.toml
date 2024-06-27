@@ -1,6 +1,6 @@
 user = "freddie"
 version = "4.1.6"
-last_push_time = 2024-06-27T20:35:11.286586Z
+last_push_time = 2024-06-27T20:39:25.328445Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None __ZN14ArmorTrimUtils13createTextureERN3mce12TextureGroupERK20ArmorTrimTextureDataP17ArmorTrimUnloader(args=4); @0xab84c0>"
+last_commit_msg = "Updated <FuncHeader: None __ZN3mce12TextureGroupC2EN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEENS2_INS4_I19ResourceLoadManagerEEEERNS_22TextureResourceServiceE(args=0); @0x8c7c20>"
