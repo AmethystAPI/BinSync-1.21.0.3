@@ -1,10 +1,10 @@
 [metadata]
 addr = 0x13b15b0
 size = 0x2e7
-last_change = 2024-06-27T20:50:59.056264Z
+last_change = 2024-06-27T20:56:33.030243Z
 
 [header]
-last_change = 2024-06-27T20:50:59.056264Z
+last_change = 2024-06-27T20:56:33.030243Z
 name = "__ZN13LevelRenderer6reinitERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEERKNS1_INS3_I13GeometryGroupEEEERKNS1_INS3_IK28ActorResourceDefinitionGroupEEEE"
 addr = 0x13b15b0
 
@@ -15,3 +15,8 @@ name = "var_C0"
 type = "__int128"
 size = 0x10
 addr = 0x13b15b0
+
+[header.args.0]
+offset = 0x0
+name = "this"
+size = 0x8
