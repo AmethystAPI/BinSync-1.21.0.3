@@ -1,0 +1,12 @@
+[metadata]
+addr = 0x26c0
+size = 0x187
+last_change = 2024-06-27T09:53:51.627209Z
+
+[stack_vars.-0xa0]
+last_change = 2024-06-27T09:53:51.627209Z
+offset = -160
+name = "a1"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x26c0
