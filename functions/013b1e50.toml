@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x13b1e50
+size = 0x146
+last_change = 2024-06-27T21:01:39.115816Z
+
+[header]
+last_change = 2024-06-27T21:01:39.115816Z
+name = "__ZN13LevelRenderer16getBlockRendererEv"
+addr = 0x13b1e50
