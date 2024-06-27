@@ -1,14 +1,19 @@
 [metadata]
 addr = 0xab84c0
 size = 0x562
-last_change = 2024-06-27T20:33:50.665736Z
+last_change = 2024-06-27T20:33:58.618398Z
 
 [header]
-last_change = 2024-06-27T20:33:50.665736Z
+last_change = 2024-06-27T20:33:58.618398Z
 name = "__ZN14ArmorTrimUtils13createTextureERN3mce12TextureGroupERK20ArmorTrimTextureDataP17ArmorTrimUnloader"
 addr = 0xab84c0
 
 [header.args.0]
 offset = 0x0
 name = "retVal"
+size = 0x8
+
+[header.args.1]
+offset = 0x1
+name = "this"
 size = 0x8
