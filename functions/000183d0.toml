@@ -1,12 +1,12 @@
 [metadata]
 addr = 0x183d0
 size = 0x2a8
-last_change = 2024-06-27T09:53:52.033151Z
+last_change = 2024-06-27T09:53:52.034656Z
 
-[stack_vars.-0xe8]
-last_change = 2024-06-27T09:53:52.033151Z
-offset = -232
-name = "var_E0"
+[stack_vars.-0x68]
+last_change = 2024-06-27T09:53:52.034656Z
+offset = -104
+name = "var_60"
 type = "__int128[2]"
 size = 0x20
 addr = 0x183d0
