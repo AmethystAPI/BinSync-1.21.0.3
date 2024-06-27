@@ -5,6 +5,13 @@ func_addr = 0x4d08b0
 comment = "inlined __ZNK3mce10TexturePtr16getClientTextureEv\n"
 decompiled = true
 
+[0x4d0922]
+last_change = 2024-06-27T10:53:46.014843Z
+addr = 0x4d0922
+func_addr = 0x4d08b0
+comment = "\n"
+decompiled = true
+
 [0xaeac28]
 last_change = 2024-06-23T22:38:11.326512Z
 addr = 0xaeac28
