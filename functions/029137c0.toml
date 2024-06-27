@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x29137c0
+size = 0x47
+last_change = 2024-06-27T22:48:09.399553Z
+
+[header]
+last_change = 2024-06-27T22:48:09.399553Z
+name = "?getNameTag@Actor@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+addr = 0x29137c0
