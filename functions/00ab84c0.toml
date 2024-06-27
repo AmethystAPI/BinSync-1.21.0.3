@@ -1,0 +1,9 @@
+[metadata]
+addr = 0xab84c0
+size = 0x562
+last_change = 2024-06-27T20:30:03.029555Z
+
+[header]
+last_change = 2024-06-27T20:30:03.029555Z
+name = "__ZN14ArmorTrimUtils13createTextureERN3mce12TextureGroupERK20ArmorTrimTextureDataP17ArmorTrimUnloader"
+addr = 0xab84c0
