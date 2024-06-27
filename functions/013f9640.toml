@@ -1,10 +1,10 @@
 [metadata]
 addr = 0x13f9640
 size = 0x1d4
-last_change = 2024-06-27T12:16:06.392306Z
+last_change = 2024-06-27T12:16:56.024429Z
 
 [header]
-last_change = 2024-06-27T12:16:06.392306Z
+last_change = 2024-06-27T12:16:56.024429Z
 name = "__ZN11MeshHelpers21renderMeshImmediatelyER13ScreenContextR11TessellatorRKN3mce11MaterialPtrERKNS4_13ClientTextureE"
 addr = 0x13f9640
 type = "void"
@@ -12,4 +12,9 @@ type = "void"
 [header.args.0]
 offset = 0x0
 name = "this"
+size = 0x8
+
+[header.args.1]
+offset = 0x1
+name = "tess"
 size = 0x8
