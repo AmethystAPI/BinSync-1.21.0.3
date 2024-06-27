@@ -1,10 +1,10 @@
 [metadata]
 addr = 0x1406930
 size = 0x1064
-last_change = 2024-06-26T20:44:13.869861Z
+last_change = 2024-06-27T21:07:29.124248Z
 
 [header]
-last_change = 2024-06-26T20:44:08.429668Z
+last_change = 2024-06-27T21:07:29.124248Z
 name = "__ZN26BlockActorRenderDispatcher30initializeBlockEntityRenderersERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI13GeometryGroupEEEENSt3__110shared_ptrIN3mce12TextureGroupEEER16BlockTessellatorRKNS1_INS3_IK28ActorResourceDefinitionGroupEEEER19ResourcePackManagerR34MinecraftGameplayGraphicsResourcesNS1_INS3_I19ResourceLoadManagerEEEERK15BaseGameVersionRK11Experiments"
 addr = 0x1406930
 
@@ -15,3 +15,8 @@ name = "a6"
 type = "long long"
 size = 0x8
 addr = 0x1406930
+
+[header.args.2]
+offset = 0x2
+name = "textureGroup"
+size = 0x8
