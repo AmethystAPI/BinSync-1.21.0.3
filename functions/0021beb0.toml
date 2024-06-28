@@ -1,0 +1,11 @@
+last_change = 2024-06-26T17:22:20.545786Z
+addr = 0x21beb0
+size = 0x3d
+type = "void (__fastcall ****)(_QWORD, long long)"
+
+[header]
+last_change = 2024-06-26T17:22:20.545786Z
+addr = 0x21beb0
+type = "void (__fastcall ****)(_QWORD, long long)"
+
+[header.args]
