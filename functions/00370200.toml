@@ -5,7 +5,7 @@ size = 0x13ea
 [stack_vars.-0x198]
 last_change = 2024-06-28T11:24:56.172105Z
 offset = -408
-name = "a1"
+name = "var_190"
 type = "_QWORD[3]"
 size = 0x18
 addr = 0x370200
