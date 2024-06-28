@@ -1,0 +1,11 @@
+last_change = 2024-06-27T22:51:42.600365Z
+addr = 0x29137c0
+size = 0x47
+name = "?getString@SynchedActorDataEntityWrapper@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z"
+
+[header]
+last_change = 2024-06-27T22:51:42.600365Z
+name = "?getString@SynchedActorDataEntityWrapper@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z"
+addr = 0x29137c0
+
+[header.args]
