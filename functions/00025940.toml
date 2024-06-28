@@ -1,11 +1,11 @@
-last_change = 2024-06-28T15:42:41.476639Z
+last_change = 2024-06-28T15:42:41.479101Z
 addr = 0x25940
 size = 0x187
 
-[stack_vars.-0xa0]
-last_change = 2024-06-28T15:42:41.476639Z
-offset = -160
-name = "a1"
-type = "_QWORD[2]"
-size = 0x10
+[stack_vars.-0x28]
+last_change = 2024-06-28T15:42:41.479101Z
+offset = -40
+name = "var_28"
+type = "__int128[2]"
+size = 0x20
 addr = 0x25940
