@@ -1,11 +1,11 @@
-last_change = 2024-06-28T11:26:53.405527Z
+last_change = 2024-06-28T11:26:53.406566Z
 addr = 0x3666fc0
 size = 0x10d
-type = "void"
 
-[header]
-last_change = 2024-06-28T11:26:53.405527Z
+[stack_vars.-0x48]
+last_change = 2024-06-28T11:26:53.406566Z
+offset = -72
+name = "a1"
+type = "long long[3]"
+size = 0x18
 addr = 0x3666fc0
-type = "void"
-
-[header.args]
