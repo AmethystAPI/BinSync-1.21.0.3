@@ -1,4 +1,4 @@
-last_change = 2024-06-28T11:26:48.384154Z
+last_change = 2024-06-28T11:26:48.405165Z
 addr = 0x2e97d10
 size = 0xd897
 
@@ -14,6 +14,14 @@ addr = 0x2e97d10
 last_change = 2024-06-28T11:26:48.384154Z
 offset = -1208
 name = "var_498"
+type = "char[32]"
+size = 0x20
+addr = 0x2e97d10
+
+[stack_vars.-0x4f8]
+last_change = 2024-06-28T11:26:48.405165Z
+offset = -1272
+name = "var_4D8"
 type = "char[32]"
 size = 0x20
 addr = 0x2e97d10
