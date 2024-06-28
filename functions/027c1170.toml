@@ -1,0 +1,11 @@
+last_change = 2024-06-26T16:53:16.970952Z
+addr = 0x27c1170
+size = 0x730
+name = "?loadActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@PEAVCompoundTag@@AEAVDataLoadHelper@@AEBVDimensionHeightRange@@PEBVLevelChunk@@@Z"
+
+[header]
+last_change = 2024-06-26T16:53:16.970952Z
+name = "?loadActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@PEAVCompoundTag@@AEAVDataLoadHelper@@AEBVDimensionHeightRange@@PEBVLevelChunk@@@Z"
+addr = 0x27c1170
+
+[header.args]
