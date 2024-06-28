@@ -1,0 +1,11 @@
+last_change = 2024-06-26T16:39:51.510349Z
+addr = 0x1656120
+size = 0x107
+name = "?getList@CompoundTag@@QEBAPEBVListTag@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+
+[header]
+last_change = 2024-06-26T16:39:51.510349Z
+name = "?getList@CompoundTag@@QEBAPEBVListTag@@V?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+addr = 0x1656120
+
+[header.args]
