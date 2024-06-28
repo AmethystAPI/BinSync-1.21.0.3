@@ -5,7 +5,7 @@ size = 0x298
 [stack_vars.-0x58]
 last_change = 2024-06-28T11:26:04.115115Z
 offset = -88
-name = "var_50"
+name = "a1"
 type = "long long[2]"
 size = 0x10
 addr = 0x2215570
