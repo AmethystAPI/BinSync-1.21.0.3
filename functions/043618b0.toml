@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x43618b0
+size = 0x7b2
+last_change = 2024-06-28T14:40:50.690968Z
+
+[header]
+last_change = 2024-06-28T14:40:50.690968Z
+name = "?loadChunk@OverworldGenerator@@UEAAXAEAVLevelChunk@@_N@Z"
+addr = 0x43618b0
