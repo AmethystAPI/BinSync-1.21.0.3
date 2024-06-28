@@ -1,0 +1,9 @@
+[metadata]
+addr = 0x32451a0
+size = 0xef
+last_change = 2024-06-28T14:50:00.721753Z
+
+[header]
+last_change = 2024-06-28T14:50:00.721753Z
+addr = 0x32451a0
+type = "void *"
