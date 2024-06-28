@@ -1,11 +1,11 @@
-last_change = 2024-06-28T11:26:48.340126Z
+last_change = 2024-06-28T11:26:48.341125Z
 addr = 0x2e8a2a0
 size = 0x4cfc
 
-[stack_vars.-0x5b8]
-last_change = 2024-06-28T11:26:48.340126Z
-offset = -1464
-name = "var_590"
+[stack_vars.-0x598]
+last_change = 2024-06-28T11:26:48.341125Z
+offset = -1432
+name = "var_570"
 type = "char[32]"
 size = 0x20
 addr = 0x2e8a2a0
