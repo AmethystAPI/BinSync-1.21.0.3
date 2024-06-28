@@ -1,5 +1,9 @@
-last_change = 2024-06-28T11:24:59.376378Z
+last_change = 2024-06-28T11:24:59.377882Z
 name = "__m128i"
-size = 0x0
+size = 0x10
 
-[members]
+[members.0x0]
+name = "m128i_i8"
+offset = 0x0
+type = ""
+size = 0x10
