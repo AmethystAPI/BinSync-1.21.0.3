@@ -1,0 +1,13 @@
+last_change = 2024-06-27T22:55:53.388805Z
+addr = 0x27101b0
+size = 0x51
+name = "?getNameTag@Actor@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+type = "void *"
+
+[header]
+last_change = 2024-06-27T22:55:53.388805Z
+name = "?getNameTag@Actor@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+addr = 0x27101b0
+type = "void *"
+
+[header.args]
