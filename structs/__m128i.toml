@@ -1,4 +1,4 @@
-last_change = 2024-06-28T11:05:35.764329Z
+last_change = 2024-06-28T11:05:35.765334Z
 name = "__m128i"
 size = 0x10
 
@@ -17,5 +17,11 @@ size = 0x10
 [members.0x2]
 name = "m128i_i32"
 offset = 0x2
+type = "int[4]"
+size = 0x10
+
+[members.0x3]
+name = "m128i_i64"
+offset = 0x3
 type = ""
 size = 0x10
