@@ -1,0 +1,9 @@
+[metadata]
+addr = 0xe64b0
+size = 0x2f
+last_change = 2024-06-28T16:47:51.461239Z
+
+[header]
+last_change = 2024-06-28T16:47:51.461239Z
+name = "VanillaBlockTypeIds::_dynamic_initializer_for__CaveVinesHeadWithBerries__"
+addr = 0xe64b0
