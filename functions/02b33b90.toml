@@ -1,0 +1,11 @@
+last_change = 2024-06-26T17:22:03.827886Z
+addr = 0x2b33b90
+size = 0x3e4
+type = "_QWORD *"
+
+[header]
+last_change = 2024-06-26T17:22:03.827886Z
+addr = 0x2b33b90
+type = "_QWORD *"
+
+[header.args]
