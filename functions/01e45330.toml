@@ -1,0 +1,11 @@
+last_change = 2024-06-28T11:26:02.054976Z
+addr = 0x1e45330
+size = 0x214
+
+[stack_vars.-0xe0]
+last_change = 2024-06-28T11:26:02.054976Z
+offset = -224
+name = "var_D8"
+type = "long long"
+size = 0x8
+addr = 0x1e45330
