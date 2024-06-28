@@ -1,0 +1,11 @@
+last_change = 2024-06-28T00:42:27.755061Z
+addr = 0x43667d0
+size = 0x59e
+name = "?_generateDensityCellsForChunk@OverworldGenerator2d@@AEBA?AV?$MultidimensionalArray@M$04$04$0CJ@@Util@@AEBVChunkPos@@@Z"
+
+[header]
+last_change = 2024-06-28T00:42:27.755061Z
+name = "?_generateDensityCellsForChunk@OverworldGenerator2d@@AEBA?AV?$MultidimensionalArray@M$04$04$0CJ@@Util@@AEBVChunkPos@@@Z"
+addr = 0x43667d0
+
+[header.args]
