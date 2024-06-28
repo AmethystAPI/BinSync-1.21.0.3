@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-28T11:26:59.772053Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?fromTag@ItemStack@@SA?AV1@AEBVCompoundTag@@@Z(args=0); @0x2e0c0e0 vars=0 len=0x249> from Duckos"
+last_commit_msg = "Merged in <Function: void None(args=0); @0x2e12cc0 vars=0 len=0x98> from Duckos"
