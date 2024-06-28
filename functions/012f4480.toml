@@ -1,11 +1,11 @@
 last_change = 2024-06-28T11:25:26.869387Z
 addr = 0x12f4480
 size = 0x132
+type = "unsigned long long"
 
-[stack_vars.-0x48]
+[header]
 last_change = 2024-06-28T11:25:26.869387Z
-offset = -72
-name = "a1"
-type = "long long[3]"
-size = 0x18
 addr = 0x12f4480
+type = "unsigned long long"
+
+[header.args]
