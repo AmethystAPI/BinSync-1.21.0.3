@@ -1,4 +1,4 @@
-last_change = 2024-06-28T15:42:40.294016Z
+last_change = 2024-06-28T15:42:40.299919Z
 addr = 0x9c00
 size = 0xbc8
 
@@ -38,6 +38,14 @@ addr = 0x9c00
 last_change = 2024-06-28T15:42:40.294016Z
 offset = -80
 name = "var_40"
+type = "__int128[2]"
+size = 0x20
+addr = 0x9c00
+
+[stack_vars.-0x30]
+last_change = 2024-06-28T15:42:40.299919Z
+offset = -48
+name = "var_20"
 type = "__int128[2]"
 size = 0x20
 addr = 0x9c00
