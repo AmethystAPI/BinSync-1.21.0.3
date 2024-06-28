@@ -1,11 +1,11 @@
-last_change = 2024-06-28T11:26:55.089709Z
+last_change = 2024-06-28T11:26:55.090710Z
 addr = 0x3b1a0c0
 size = 0xb9
 
-[stack_vars.-0x68]
-last_change = 2024-06-28T11:26:55.089709Z
-offset = -104
-name = "var_68"
-type = "long long[2]"
-size = 0x10
+[stack_vars.-0x38]
+last_change = 2024-06-28T11:26:55.090710Z
+offset = -56
+name = "var_38"
+type = "__int128[2]"
+size = 0x20
 addr = 0x3b1a0c0
