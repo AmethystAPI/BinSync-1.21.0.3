@@ -1,11 +1,11 @@
 last_change = 2024-06-28T11:25:02.660114Z
 addr = 0x494680
 size = 0x880
+type = "double"
 
-[stack_vars.-0x280]
+[header]
 last_change = 2024-06-28T11:25:02.660114Z
-offset = -640
-name = "a1"
-type = "long long"
-size = 0x8
 addr = 0x494680
+type = "double"
+
+[header.args]
