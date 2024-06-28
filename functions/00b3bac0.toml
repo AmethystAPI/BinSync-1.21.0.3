@@ -1,0 +1,11 @@
+last_change = 2024-06-20T16:59:16.834710Z
+addr = 0xb3bac0
+size = 0x70
+name = "__ZNK20MinecraftScreenModel23getMaxSimRadiusInChunksEv"
+
+[header]
+last_change = 2024-06-20T16:59:16.834710Z
+name = "__ZNK20MinecraftScreenModel23getMaxSimRadiusInChunksEv"
+addr = 0xb3bac0
+
+[header.args]
