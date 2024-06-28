@@ -1,11 +1,11 @@
-last_change = 2024-06-28T11:26:58.888265Z
+last_change = 2024-06-28T11:26:58.889265Z
 addr = 0x4059fd0
 size = 0x1184
-type = "char *"
 
-[header]
-last_change = 2024-06-28T11:26:58.888265Z
+[stack_vars.-0xcf8]
+last_change = 2024-06-28T11:26:58.889265Z
+offset = -3320
+name = "var_CA0"
+type = "__int128"
+size = 0x10
 addr = 0x4059fd0
-type = "char *"
-
-[header.args]
