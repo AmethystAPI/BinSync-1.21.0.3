@@ -1,11 +1,11 @@
-last_change = 2024-06-28T11:26:59.769053Z
+last_change = 2024-06-28T11:26:59.770054Z
 addr = 0x41d6cb0
 size = 0x389
+type = "_QWORD *"
 
-[stack_vars.-0x109]
-last_change = 2024-06-28T11:26:59.769053Z
-offset = -265
-name = "var_A0"
-type = "long long"
-size = 0x8
+[header]
+last_change = 2024-06-28T11:26:59.770054Z
 addr = 0x41d6cb0
+type = "_QWORD *"
+
+[header.args]
