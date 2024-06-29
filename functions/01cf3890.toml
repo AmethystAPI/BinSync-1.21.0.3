@@ -1,0 +1,9 @@
+addr = 0x1cf3890
+size = 0x2b9
+
+[stack_vars.-0x140]
+offset = -320
+name = "var_120"
+type = "long long[2]"
+size = 0x10
+addr = 0x1cf3890
