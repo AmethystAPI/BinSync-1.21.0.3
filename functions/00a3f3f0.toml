@@ -1,0 +1,10 @@
+addr = 0xa3f3f0
+size = 0x239
+name = "__ZN13BlockGraphics21registerBlockGraphicsERNSt3__113unordered_mapI12HashedStringNS0_6vectorIN4Json5ValueENS0_9allocatorIS5_EEEENS0_4hashIS2_EENS0_8equal_toIS2_EENS6_INS0_4pairIKS2_S8_EEEEEERSE_10BlockShape"
+
+[header]
+last_change = 2024-06-25T14:23:50.533717Z
+name = "__ZN13BlockGraphics21registerBlockGraphicsERNSt3__113unordered_mapI12HashedStringNS0_6vectorIN4Json5ValueENS0_9allocatorIS5_EEEENS0_4hashIS2_EENS0_8equal_toIS2_EENS6_INS0_4pairIKS2_S8_EEEEEERSE_10BlockShape"
+addr = 0xa3f3f0
+
+[header.args]
