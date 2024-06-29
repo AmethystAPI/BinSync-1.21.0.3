@@ -1,10 +1,10 @@
 [metadata]
 addr = 0x2bca220
 size = 0xd2
-last_change = 2024-06-29T16:14:30.924519Z
+last_change = 2024-06-29T16:14:34.858365Z
 
 [header]
-last_change = 2024-06-29T16:14:30.924519Z
+last_change = 2024-06-29T16:14:34.858365Z
 addr = 0x2bca220
 
 [header.args.3]
@@ -16,4 +16,5 @@ size = 0x8
 [header.args.4]
 offset = 0x4
 name = "scheduler"
+type = "Scheduler *"
 size = 0x8
