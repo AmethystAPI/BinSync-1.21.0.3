@@ -33,6 +33,13 @@ func_addr = 0xaeab70
 comment = ""
 decompiled = true
 
+[0x2afe535]
+last_change = 2024-06-29T16:23:35.011245Z
+addr = 0x2afe535
+func_addr = 0x2afe520
+comment = "<-\n"
+decompiled = true
+
 [0x2b5e032]
 last_change = 2024-06-14T14:24:29.239753Z
 addr = 0x2b5e032
