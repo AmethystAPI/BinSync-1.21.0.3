@@ -1,0 +1,9 @@
+addr = 0x1356b10
+size = 0x9af
+
+[stack_vars.-0x650]
+offset = -1616
+name = "var_630"
+type = "__int128"
+size = 0x10
+addr = 0x1356b10
