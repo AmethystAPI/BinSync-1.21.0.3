@@ -1,0 +1,9 @@
+addr = 0x48f3a0
+size = 0x2768
+
+[stack_vars.-0x11b0]
+offset = -4528
+name = "var_1188"
+type = "char[32]"
+size = 0x20
+addr = 0x48f3a0
