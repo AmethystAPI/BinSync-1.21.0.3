@@ -1,0 +1,10 @@
+addr = 0x30531a0
+size = 0xa45
+name = "?loadResources@BlockDefinitionGroup@@QEAAXAEBVResourcePackManager@@AEBVBlockComponentFactory@@AEBVExperiments@@@Z"
+
+[header]
+last_change = 2024-06-13T21:40:56.058707Z
+name = "?loadResources@BlockDefinitionGroup@@QEAAXAEBVResourcePackManager@@AEBVBlockComponentFactory@@AEBVExperiments@@@Z"
+addr = 0x30531a0
+
+[header.args]
