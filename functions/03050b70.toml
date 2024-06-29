@@ -1,0 +1,10 @@
+addr = 0x3050b70
+size = 0x280
+name = "?registerBlocks@BlockDefinitionGroup@@QEAAXXZ"
+
+[header]
+last_change = 2024-06-13T21:40:35.885644Z
+name = "?registerBlocks@BlockDefinitionGroup@@QEAAXXZ"
+addr = 0x3050b70
+
+[header.args]
