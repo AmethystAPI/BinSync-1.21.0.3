@@ -1,0 +1,18 @@
+addr = 0x3859ba0
+size = 0x99
+
+[header]
+last_change = 2024-06-27T10:36:48.097311Z
+addr = 0x3859ba0
+
+[stack_vars.-0x168]
+offset = -360
+name = "var_168"
+type = "long long[4]"
+size = 0x20
+addr = 0x3859ba0
+
+[header.args.0x0]
+offset = 0x0
+name = "this"
+size = 0x8
