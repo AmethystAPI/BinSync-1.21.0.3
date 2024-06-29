@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-06-28T17:06:41.032431Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN6PlayerC2ER5LevelR12PacketSender8GameTypebRK17NetworkIdentifier11SubClientIdN3mce4UUIDERKNSt3__112basic_stringIcNSB_11char_traitsIcEENSB_9allocatorIcEEEESJ_NSB_10unique_ptrI11CertificateNSB_14default_deleteISL_EEEER13EntityContextSJ_SJ_(args=0); @0x2737340 vars=0 len=0x1894> from Duckos"
+last_commit_msg = "Merged in <Function: @0xbeeb40 len=0x221> from Duckos"
