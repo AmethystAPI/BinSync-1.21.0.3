@@ -1,0 +1,12 @@
+addr = 0x2df2c50
+size = 0x300
+name = "??0BlockItem@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HAEBVHashedString@@@Z"
+type = "BlockItem *"
+
+[header]
+last_change = 2024-06-14T14:26:29.707747Z
+name = "??0BlockItem@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HAEBVHashedString@@@Z"
+addr = 0x2df2c50
+type = "BlockItem *"
+
+[header.args]
