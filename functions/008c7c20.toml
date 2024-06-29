@@ -1,0 +1,10 @@
+addr = 0x8c7c20
+size = 0x3e4
+name = "__ZN3mce12TextureGroupC2EN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEENS2_INS4_I19ResourceLoadManagerEEEERNS_22TextureResourceServiceE"
+
+[header]
+last_change = 2024-06-27T20:39:25.328445Z
+name = "__ZN3mce12TextureGroupC2EN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEENS2_INS4_I19ResourceLoadManagerEEEERNS_22TextureResourceServiceE"
+addr = 0x8c7c20
+
+[header.args]
