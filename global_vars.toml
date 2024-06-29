@@ -40,6 +40,12 @@ addr = 0x4e257c8
 name = "??_7BlockItem@@6B@"
 size = 0x8
 
+[0x4e5fa28]
+last_change = 2024-06-29T16:04:55.826547Z
+addr = 0x4e5fa28
+name = "??_7Dimension@@6BLevelListener@@@"
+size = 0x8
+
 [0x4ee8900]
 last_change = 2024-06-29T16:04:47.473750Z
 addr = 0x4ee8900
