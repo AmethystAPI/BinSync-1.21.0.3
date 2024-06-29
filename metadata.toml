@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-06-28T17:06:41.032431Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: void __ZN13BlockGraphics25setDefaultCarriedTexturesEv(args=0); @0xa47b00 vars=0 len=0x167> from Duckos"
+last_commit_msg = "Merged in <Function: @0x47eb00 len=0x208> from Duckos"
