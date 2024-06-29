@@ -1,9 +1,11 @@
-[metadata]
+last_change = 2024-06-28T17:06:41.032431Z
 addr = 0x3059430
 size = 0x228
-last_change = 2024-06-28T17:06:41.032431Z
+name = "?getDefaultBlockState@BlockTypeRegistry@@SAAEBVBlock@@AEBVHashedString@@_N@Z"
 
 [header]
 last_change = 2024-06-28T17:06:41.032431Z
 name = "?getDefaultBlockState@BlockTypeRegistry@@SAAEBVBlock@@AEBVHashedString@@_N@Z"
 addr = 0x3059430
+
+[header.args]

@@ -1,9 +1,11 @@
-[metadata]
+last_change = 2024-06-28T16:55:03.034614Z
 addr = 0x1458e0
 size = 0x37
-last_change = 2024-06-28T16:55:03.034614Z
+type = "_QWORD *"
 
 [header]
 last_change = 2024-06-28T16:55:03.034614Z
 addr = 0x1458e0
 type = "_QWORD *"
+
+[header.args]
