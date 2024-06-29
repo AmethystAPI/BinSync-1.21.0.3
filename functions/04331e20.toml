@@ -1,10 +1,10 @@
 [metadata]
 addr = 0x4331e20
 size = 0x1d4
-last_change = 2024-06-29T16:06:35.435903Z
+last_change = 2024-06-29T16:06:38.837887Z
 
 [header]
-last_change = 2024-06-29T16:06:35.435903Z
+last_change = 2024-06-29T16:06:38.837887Z
 name = "??0OverworldDimension@@QEAA@AEAVILevel@@AEAVScheduler@@@Z"
 addr = 0x4331e20
 
@@ -16,5 +16,6 @@ size = 0x8
 
 [header.args.2]
 offset = 0x2
+name = "scheduler"
 type = "Scheduler *"
 size = 0x8
