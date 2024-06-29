@@ -1,0 +1,9 @@
+addr = 0x1e22420
+size = 0xd25
+
+[stack_vars.-0xf8]
+offset = -248
+name = "var_C8"
+type = "long long[2]"
+size = 0x10
+addr = 0x1e22420
