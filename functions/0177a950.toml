@@ -1,0 +1,10 @@
+addr = 0x177a950
+size = 0x9
+name = "std::_Func_impl_no_alloc__lambda_c8ea76f62579a5f1e97f6d9ecb451fff__void_::_Do_call"
+
+[header]
+last_change = 2024-06-29T16:27:57.815592Z
+name = "std::_Func_impl_no_alloc__lambda_c8ea76f62579a5f1e97f6d9ecb451fff__void_::_Do_call"
+addr = 0x177a950
+
+[header.args]
