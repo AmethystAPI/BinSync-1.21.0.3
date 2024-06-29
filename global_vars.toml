@@ -70,6 +70,12 @@ addr = 0x59bd7e0
 name = "uiFillMaterial"
 size = 0x8
 
+[0x59d6234]
+last_change = 2024-06-29T16:04:40.674543Z
+addr = 0x59d6234
+name = "?Overworld@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
+size = 0x4
+
 [0x59df300]
 last_change = 2024-06-14T14:10:09.226564Z
 addr = 0x59df300
