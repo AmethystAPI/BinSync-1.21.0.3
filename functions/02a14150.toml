@@ -1,0 +1,9 @@
+addr = 0x2a14150
+size = 0x843
+
+[stack_vars.-0xf8]
+offset = -248
+name = "a1"
+type = "float"
+size = 0x4
+addr = 0x2a14150
