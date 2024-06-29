@@ -1,0 +1,10 @@
+addr = 0xb10c30
+size = 0xb5
+type = "void"
+
+[header]
+last_change = 2024-06-28T11:25:21.730953Z
+addr = 0xb10c30
+type = "void"
+
+[header.args]
