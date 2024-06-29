@@ -1,14 +1,15 @@
 [metadata]
 addr = 0x4331e20
 size = 0x1d4
-last_change = 2024-06-29T16:05:43.053079Z
+last_change = 2024-06-29T16:05:46.515900Z
 
 [header]
-last_change = 2024-06-29T16:05:43.053079Z
+last_change = 2024-06-29T16:05:46.515900Z
 name = "??0OverworldDimension@@QEAA@AEAVILevel@@AEAVScheduler@@@Z"
 addr = 0x4331e20
 
 [header.args.1]
 offset = 0x1
 name = "level"
+type = "_QWORD *"
 size = 0x8
