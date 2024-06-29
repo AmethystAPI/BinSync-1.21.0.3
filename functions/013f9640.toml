@@ -1,7 +1,8 @@
-[metadata]
+last_change = 2024-06-27T12:21:03.631732Z
 addr = 0x13f9640
 size = 0x1d4
-last_change = 2024-06-27T12:21:03.631732Z
+name = "__ZN11MeshHelpers21renderMeshImmediatelyER13ScreenContextR11TessellatorRKN3mce11MaterialPtrERKNS4_13ClientTextureE"
+type = "void"
 
 [header]
 last_change = 2024-06-27T12:21:03.631732Z
@@ -9,22 +10,22 @@ name = "__ZN11MeshHelpers21renderMeshImmediatelyER13ScreenContextR11TessellatorR
 addr = 0x13f9640
 type = "void"
 
-[header.args.0]
+[header.args.0x0]
 offset = 0x0
 name = "screenContext"
 size = 0x8
 
-[header.args.1]
+[header.args.0x1]
 offset = 0x1
 name = "tess"
 size = 0x8
 
-[header.args.2]
+[header.args.0x2]
 offset = 0x2
 name = "material"
 size = 0x8
 
-[header.args.3]
+[header.args.0x3]
 offset = 0x3
 name = "clientTexture"
 size = 0x8

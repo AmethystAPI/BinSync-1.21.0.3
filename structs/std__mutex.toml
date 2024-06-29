@@ -1,7 +1,6 @@
-[metadata]
+last_change = 2024-06-26T20:36:43.485521Z
 name = "std::mutex"
 size = 0x50
-last_change = 2024-06-26T20:36:43.485521Z
 
 [members.0x0]
 name = "_Mutex_base"

@@ -1,13 +1,12 @@
-[metadata]
+last_change = 2024-06-29T16:16:12.402262Z
 addr = 0x2bc1cb0
 size = 0xcb
-last_change = 2024-06-29T16:16:12.402262Z
 
 [header]
 last_change = 2024-06-29T16:16:12.402262Z
 addr = 0x2bc1cb0
 
-[header.args.1]
+[header.args.0x1]
 offset = 0x1
 type = "long long"
 size = 0x8

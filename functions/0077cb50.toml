@@ -1,9 +1,11 @@
-[metadata]
+last_change = 2024-06-13T22:11:08.781431Z
 addr = 0x77cb50
 size = 0x9
-last_change = 2024-06-13T22:11:08.781431Z
+type = "double"
 
 [header]
 last_change = 2024-06-13T22:11:08.781431Z
 addr = 0x77cb50
 type = "double"
+
+[header.args]

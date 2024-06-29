@@ -1,7 +1,6 @@
-[metadata]
+last_change = 2024-06-14T13:42:36.100212Z
 name = "HashedString"
 size = 0x30
-last_change = 2024-06-14T13:42:36.100212Z
 
 [members.0x0]
 name = "mStrHash"

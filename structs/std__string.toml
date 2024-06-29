@@ -1,7 +1,6 @@
-[metadata]
+last_change = 2024-06-14T13:46:10.826159Z
 name = "std::string"
 size = 0x20
-last_change = 2024-06-14T13:46:10.826159Z
 
 [members.0x0]
 name = "_buf"
