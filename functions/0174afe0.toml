@@ -1,3 +1,7 @@
 [metadata]
 addr = 0x174afe0
 size = 0x0
+
+[header]
+name = "_lambda_c8ea76f62579a5f1e97f6d9ecb451fff_::operator()"
+addr = 0x174afe0
