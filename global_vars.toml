@@ -40,6 +40,12 @@ addr = 0x4e257c8
 name = "??_7BlockItem@@6B@"
 size = 0x8
 
+[0x4e5fa10]
+last_change = 2024-06-29T16:05:02.497171Z
+addr = 0x4e5fa10
+name = "??_7OverworldDimension@@6BSavedData@@@"
+size = 0x8
+
 [0x4e5fa28]
 last_change = 2024-06-29T16:04:55.826547Z
 addr = 0x4e5fa28
