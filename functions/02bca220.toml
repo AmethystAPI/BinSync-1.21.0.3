@@ -1,15 +1,16 @@
 [metadata]
 addr = 0x2bca220
 size = 0xd2
-last_change = 2024-06-29T16:14:25.670154Z
+last_change = 2024-06-29T16:14:30.924519Z
 
 [header]
-last_change = 2024-06-29T16:14:25.670154Z
+last_change = 2024-06-29T16:14:30.924519Z
 addr = 0x2bca220
 
 [header.args.3]
 offset = 0x3
 name = "level"
+type = "ILevel *"
 size = 0x8
 
 [header.args.4]
