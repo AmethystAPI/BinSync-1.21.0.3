@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfhlxhqviav7f"
-path="res://.godot/imported/biome_concepts.aseprite-485cbaaaed6858617a21153c001da97c.ctex"
+path="res://.godot/imported/biome_concepts.aseprite-3211d8f5f84d39121a176dfcdb39af61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/biome_concepts.aseprite"
-dest_files=["res://.godot/imported/biome_concepts.aseprite-485cbaaaed6858617a21153c001da97c.ctex"]
+source_file="res://sprites/biome_concepts.aseprite"
+dest_files=["res://.godot/imported/biome_concepts.aseprite-3211d8f5f84d39121a176dfcdb39af61.ctex"]
 
 [params]
 
