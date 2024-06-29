@@ -1,0 +1,10 @@
+addr = 0x2b5ec50
+size = 0x32a
+name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+
+[header]
+last_change = 2024-06-14T14:25:51.222875Z
+name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+addr = 0x2b5ec50
+
+[header.args]
