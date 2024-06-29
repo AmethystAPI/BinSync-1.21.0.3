@@ -1,0 +1,16 @@
+addr = 0x1e0c0
+size = 0x154
+
+[stack_vars.-0x28]
+offset = -40
+name = "a3"
+type = "__int128"
+size = 0x10
+addr = 0x1e0c0
+
+[stack_vars.-0x58]
+offset = -88
+name = "a2"
+type = "__int128"
+size = 0x10
+addr = 0x1e0c0
