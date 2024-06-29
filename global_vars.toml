@@ -28,6 +28,12 @@ addr = 0x4cff230
 name = "__ZTV20ClientNetworkHandler"
 size = 0x8
 
+[0x4d79138]
+last_change = 2024-06-29T16:26:05.811205Z
+addr = 0x4d79138
+name = "??_7DefaultDataLoadHelper@@6B@"
+size = 0x8
+
 [0x4dfce10]
 last_change = 2024-06-14T14:21:36.316699Z
 addr = 0x4dfce10
