@@ -1,0 +1,10 @@
+addr = 0x144c10
+size = 0x4f
+type = "double"
+
+[header]
+last_change = 2024-06-26T17:15:53.442975Z
+addr = 0x144c10
+type = "double"
+
+[header.args]
