@@ -40,6 +40,13 @@ func_addr = 0x2b5d9c0
 comment = "getId inlined\n"
 decompiled = true
 
+[0x2bc1d52]
+last_change = 2024-06-29T16:14:48.817697Z
+addr = 0x2bc1d52
+func_addr = 0x2bc1cb0
+comment = "<-\n"
+decompiled = true
+
 [0x2bca2bf]
 last_change = 2024-06-29T16:14:05.355797Z
 addr = 0x2bca2bf
