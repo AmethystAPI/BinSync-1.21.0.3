@@ -1,0 +1,9 @@
+addr = 0x2b60
+size = 0x1bf
+
+[stack_vars.-0x60]
+offset = -96
+name = "var_50"
+type = "__int128[2]"
+size = 0x20
+addr = 0x2b60
