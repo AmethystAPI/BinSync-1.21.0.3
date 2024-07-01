@@ -1,0 +1,11 @@
+last_change = 2024-06-27T10:39:48.824230Z
+addr = 0x3859d10
+size = 0x4c0
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrERKNSt3__17variantIJNS6_9monostateENS_10TexturePtrENS_13ClientTextureENS_13ServerTextureEEEEjjPKNS_20IndexBufferContainerE"
+
+[header]
+last_change = 2024-06-27T10:39:48.824230Z
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrERKNSt3__17variantIJNS6_9monostateENS_10TexturePtrENS_13ClientTextureENS_13ServerTextureEEEEjjPKNS_20IndexBufferContainerE"
+addr = 0x3859d10
+
+[header.args]
