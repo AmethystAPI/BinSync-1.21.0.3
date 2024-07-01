@@ -16,19 +16,8 @@
                 "file": "Planning/Beta C Kanban.md"
               }
             }
-          },
-          {
-            "id": "e91618419a731b9f",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.6.5"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -155,15 +144,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e91618419a731b9f",
+  "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
+    "Marketing/Client Authority.md",
+    "Planning/Beta C Kanban.md",
+    "Attachments/200w 1.gif",
+    "Attachments/200w.gif",
+    "Attachments/Pasted image 20240630225858.png",
+    "Attachments/Server-based-network.svg.png",
+    "Attachments/Client-server-model.svg.png",
+    "Attachments/Pasted image 20240630224700.png",
+    "Marketing",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Graph.canvas",
     "Devlogs/Devlog 19",
     "Planning/Beta B Kanban.md",
     "Planning/Beta B Kanban 1.md",
     "Beta B Playtest Notes.md",
-    "Planning/Beta C Kanban.md",
     "Attachments/PasF6D9.tmp",
     "No Communication Notes.md",
     "Design/Trinkets.md",
@@ -186,12 +183,6 @@
     "Devlogs/Devlog 18/Draft 4.md",
     "Reference/Devlogs.canvas",
     "Attachments/Pasted image 20240316194450.png",
-    "Attachments/Pasted image 20240316194408.png",
-    "Attachments/Screenshot_05_7cf72c5c-4a1b-4c50-a3f1-7be2af71749e.webp",
-    "Attachments/Screenshot_01_e73c4cef-0ff6-4f60-bd7a-5baee3647307.webp",
-    "Attachments/free_3d_modular_low_poly_assets_for_prototyping_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_4187542_m.png",
-    "Attachments/adrian-meier-highresscreenshot00000.jpg",
-    "Attachments/Prototype-Environment.jpg",
     "Attachments/Pasted image 20240316154618.png.import",
     "Devlogs/Devlog 18/Draft 3.md",
     "Planning/Previous/Alpha Kanban.md",
@@ -202,10 +193,7 @@
     "Attachments/GAw862.tmp",
     "Attachments/GBu83D.tmp",
     "Attachments/GA580A.tmp",
-    "Attachments/Pas28E.tmp",
-    "Planning/Previous/Pre Alpha Kanban.md",
     "Reference/General.canvas",
-    "Daily Notes/Day 18-22.md",
     "Reference/Locations/Golden Grove.canvas"
   ]
 }
