@@ -1,4 +1,20 @@
 name = "std::string"
 size = 0x20
 
-[members]
+[members.0x0]
+name = "_buf"
+offset = 0x0
+type = "char[16]"
+size = 0x10
+
+[members.0x10]
+name = "_Mysize"
+offset = 0x10
+type = ""
+size = 0x8
+
+[members.0x18]
+name = "_Myres"
+offset = 0x18
+type = ""
+size = 0x8
