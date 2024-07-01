@@ -1,0 +1,4 @@
+name = "ClientNetworkHandler"
+size = 0x90
+
+[members]
