@@ -1,0 +1,11 @@
+last_change = 2024-06-29T16:07:05.139115Z
+addr = 0x409d000
+size = 0x150
+name = "??$make_shared@VOverworldDimension@@AEAVILevel@@AEAVScheduler@@@std@@YA?AV?$shared_ptr@VOverworldDimension@@@0@AEAVILevel@@AEAVScheduler@@@Z"
+
+[header]
+last_change = 2024-06-29T16:07:05.139115Z
+name = "??$make_shared@VOverworldDimension@@AEAVILevel@@AEAVScheduler@@@std@@YA?AV?$shared_ptr@VOverworldDimension@@@0@AEAVILevel@@AEAVScheduler@@@Z"
+addr = 0x409d000
+
+[header.args]
