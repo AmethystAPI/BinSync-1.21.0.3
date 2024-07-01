@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?_getValidActorManager@PlayerLimboActorManager@@AEBA?AV?$StackRefResult@VActorManager@@@@XZ(args=0); @0x2b349e0 vars=0 len=0xaf> from freddie"
+last_commit_msg = "Merged in <Function: None ?registerItem@ItemRegistry@@AEAAXV?$SharedPtr@VItem@@@@@Z(args=0); @0x2b5ad60 vars=0 len=0x7e2> from freddie"

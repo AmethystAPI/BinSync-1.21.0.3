@@ -1,0 +1,11 @@
+last_change = 2024-06-14T14:26:25.860032Z
+addr = 0x2b5ad60
+size = 0x7e2
+name = "?registerItem@ItemRegistry@@AEAAXV?$SharedPtr@VItem@@@@@Z"
+
+[header]
+last_change = 2024-06-14T14:26:25.860032Z
+name = "?registerItem@ItemRegistry@@AEAAXV?$SharedPtr@VItem@@@@@Z"
+addr = 0x2b5ad60
+
+[header.args]
