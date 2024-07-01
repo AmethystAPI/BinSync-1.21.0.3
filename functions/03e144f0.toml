@@ -1,0 +1,11 @@
+last_change = 2024-06-27T20:28:03.195857Z
+addr = 0x3e144f0
+size = 0x2f
+name = "__ZN4Util6formatEPKcz"
+
+[header]
+last_change = 2024-06-27T20:28:03.195857Z
+name = "__ZN4Util6formatEPKcz"
+addr = 0x3e144f0
+
+[header.args]
