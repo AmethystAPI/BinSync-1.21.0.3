@@ -82,3 +82,8 @@ size = 0x8
 addr = 0x59bd7e0
 name = "uiFillMaterial"
 size = 0x8
+
+[0x59d6234]
+addr = 0x59d6234
+name = "?Overworld@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
+size = 0x4
