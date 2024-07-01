@@ -1,2 +1,66 @@
 addr = 0xaeab70
 size = 0x1a1
+name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
+
+[header]
+last_change = 2024-06-23T22:50:55.204203Z
+name = "__ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE"
+addr = 0xaeab70
+
+[stack_vars.-0x20]
+offset = -32
+name = "privateKeyManager"
+type = "long long"
+size = 0x8
+addr = 0xaeab70
+
+[stack_vars.-0x18]
+offset = -24
+name = "iClientInstance"
+type = "IClientInstance *"
+size = 0x8
+addr = 0xaeab70
+
+[stack_vars.0x0]
+offset = 0x0
+name = "iLevel"
+type = "_QWORD *"
+size = 0x8
+addr = 0xaeab70
+
+[header.args.0x0]
+offset = 0x0
+name = "self"
+type = "ClientNetworkHandler *"
+size = 0x8
+
+[header.args.0x1]
+offset = 0x1
+name = "gameConnectionListener"
+size = 0x8
+
+[header.args.0x2]
+offset = 0x2
+name = "iGameServerStartup"
+size = 0x8
+
+[header.args.0x3]
+offset = 0x3
+name = "clientNetworkSystem"
+size = 0x8
+
+[header.args.0x4]
+offset = 0x4
+name = "packetSender"
+size = 0x8
+
+[header.args.0x7]
+offset = 0x7
+name = "minecraftCommands"
+type = "MinecraftCommands *"
+size = 0x8
+
+[header.args.0x8]
+offset = 0x8
+name = "clientBlobCache"
+size = 0x8
