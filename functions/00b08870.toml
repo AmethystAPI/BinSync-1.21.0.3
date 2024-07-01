@@ -1,0 +1,11 @@
+last_change = 2024-06-23T20:21:59.767494Z
+addr = 0xb08870
+size = 0x7a
+name = "__ZN16NetEventCallback13onPlayerReadyER6Player"
+
+[header]
+last_change = 2024-06-23T20:21:59.767494Z
+name = "__ZN16NetEventCallback13onPlayerReadyER6Player"
+addr = 0xb08870
+
+[header.args]
