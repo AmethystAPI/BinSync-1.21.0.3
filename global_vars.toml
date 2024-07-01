@@ -62,3 +62,8 @@ size = 0x8
 addr = 0x57c56b0
 name = "?blockChange@GameEventRegistry@@3VGameEvent@@B"
 size = 0x1
+
+[0x57d14e0]
+addr = 0x57d14e0
+name = "?mBlockNameHashToStringMap@BlockTypeRegistry@@0V?$dense_map@_KVHashedString@@U?$hash@_K@std@@U?$equal_to@_K@3@V?$allocator@U?$pair@$$CB_KVHashedString@@@std@@@3@@entt@@A"
+size = 0x8
