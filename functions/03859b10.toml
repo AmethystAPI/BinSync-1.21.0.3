@@ -1,0 +1,11 @@
+last_change = 2024-06-27T10:32:23.553077Z
+addr = 0x3859b10
+size = 0x8a
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrEjjPKNS_20IndexBufferContainerE"
+
+[header]
+last_change = 2024-06-27T10:32:23.553077Z
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrEjjPKNS_20IndexBufferContainerE"
+addr = 0x3859b10
+
+[header.args]
