@@ -3,3 +3,9 @@ addr = 0x4d08e5
 func_addr = 0x4d08b0
 comment = "inlined __ZNK3mce10TexturePtr16getClientTextureEv\n"
 decompiled = true
+
+[0x4d0922]
+addr = 0x4d0922
+func_addr = 0x4d08b0
+comment = "\n"
+decompiled = true
