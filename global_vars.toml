@@ -72,3 +72,8 @@ size = 0x8
 addr = 0x57e2f60
 name = "__ZN3mce10TexturePtr19mDefaultTextureDataE"
 size = 0x8
+
+[0x57f98b8]
+addr = 0x57f98b8
+name = "qword_1457F98B8"
+size = 0x8
