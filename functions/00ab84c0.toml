@@ -1,0 +1,29 @@
+last_change = 2024-06-27T20:35:11.286586Z
+addr = 0xab84c0
+size = 0x562
+name = "__ZN14ArmorTrimUtils13createTextureERN3mce12TextureGroupERK20ArmorTrimTextureDataP17ArmorTrimUnloader"
+
+[header]
+last_change = 2024-06-27T20:35:11.286586Z
+name = "__ZN14ArmorTrimUtils13createTextureERN3mce12TextureGroupERK20ArmorTrimTextureDataP17ArmorTrimUnloader"
+addr = 0xab84c0
+
+[header.args.0x0]
+offset = 0x0
+name = "retVal"
+size = 0x8
+
+[header.args.0x1]
+offset = 0x1
+name = "textureGroup"
+size = 0x8
+
+[header.args.0x2]
+offset = 0x2
+name = "armortrimtexturedata"
+size = 0x8
+
+[header.args.0x3]
+offset = 0x3
+name = "armortrimunloader"
+size = 0x8
