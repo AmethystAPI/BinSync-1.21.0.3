@@ -21,3 +21,9 @@ addr = 0xaeac28
 func_addr = 0xaeab70
 comment = ""
 decompiled = true
+
+[0xaeac3e]
+addr = 0xaeac3e
+func_addr = 0xaeab70
+comment = ""
+decompiled = true
