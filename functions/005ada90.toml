@@ -1,0 +1,11 @@
+last_change = 2024-06-27T10:44:41.155239Z
+addr = 0x5ada90
+size = 0x30f
+name = "__ZN13HoverRenderer15_renderHoverBoxER24MinecraftUIRenderContextR15IClientInstanceR13RectangleAreaf"
+
+[header]
+last_change = 2024-06-27T10:44:41.155239Z
+name = "__ZN13HoverRenderer15_renderHoverBoxER24MinecraftUIRenderContextR15IClientInstanceR13RectangleAreaf"
+addr = 0x5ada90
+
+[header.args]
