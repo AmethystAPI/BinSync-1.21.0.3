@@ -33,3 +33,9 @@ addr = 0x2b5e032
 func_addr = 0x2b5d9c0
 comment = "getId inlined\n"
 decompiled = true
+
+[0x2bc1d52]
+addr = 0x2bc1d52
+func_addr = 0x2bc1cb0
+comment = "<-\n"
+decompiled = true
