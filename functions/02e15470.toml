@@ -1,0 +1,11 @@
+last_change = 2024-06-13T18:39:38.169745Z
+addr = 0x2e15470
+size = 0xd8e
+name = "?_loadItem@ItemStackBase@@AEAAXAEBVCompoundTag@@@Z"
+
+[header]
+last_change = 2024-06-13T18:39:38.169745Z
+name = "?_loadItem@ItemStackBase@@AEAAXAEBVCompoundTag@@@Z"
+addr = 0x2e15470
+
+[header.args]
