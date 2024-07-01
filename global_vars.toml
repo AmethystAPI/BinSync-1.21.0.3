@@ -92,3 +92,8 @@ size = 0x4
 addr = 0x59d63e4
 name = "?Undefined@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
 size = 0x4
+
+[0x59df300]
+addr = 0x59df300
+name = "?mBlockLookupMap@BlockTypeRegistry@@0V?$map@VHashedString@@V?$SharedPtr@VBlockLegacy@@@@U?$less@VHashedString@@@std@@V?$allocator@U?$pair@$$CBVHashedString@@V?$SharedPtr@VBlockLegacy@@@@@std@@@4@@std@@A"
+size = 0x8
