@@ -7,3 +7,8 @@ size = 0x8
 addr = 0x4cb69b8
 name = "__ZTV14ClientInstance"
 size = 0x8
+
+[0x4cf2ad8]
+addr = 0x4cf2ad8
+name = "__ZTVN3mce12TextureGroupE"
+size = 0x8
