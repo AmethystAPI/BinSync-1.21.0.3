@@ -57,3 +57,8 @@ size = 0x8
 addr = 0x4ee8900
 name = "??_7OverworldDimension@@6BIDimension@@@"
 size = 0x8
+
+[0x57c56b0]
+addr = 0x57c56b0
+name = "?blockChange@GameEventRegistry@@3VGameEvent@@B"
+size = 0x1
