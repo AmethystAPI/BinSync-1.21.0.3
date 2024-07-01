@@ -9,3 +9,9 @@ addr = 0x4d0922
 func_addr = 0x4d08b0
 comment = "\n"
 decompiled = true
+
+[0x4d09a8]
+addr = 0x4d09a8
+func_addr = 0x4d08b0
+comment = "\nTessellator::addPostTransformOffset\n"
+decompiled = true
