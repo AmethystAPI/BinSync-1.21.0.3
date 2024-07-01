@@ -87,3 +87,8 @@ size = 0x8
 addr = 0x59d6234
 name = "?Overworld@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
 size = 0x4
+
+[0x59d63e4]
+addr = 0x59d63e4
+name = "?Undefined@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
+size = 0x4
