@@ -57,3 +57,9 @@ addr = 0x30599d7
 func_addr = 0x3059970
 comment = ""
 decompiled = true
+
+[0x3059a0d]
+addr = 0x3059a0d
+func_addr = 0x3059970
+comment = "?_lockAgainstRegistryModifications@BlockTypeRegistry@@CA?AVBlockTypeRegistryRead\nLock@@XZ inlined\n"
+decompiled = true
