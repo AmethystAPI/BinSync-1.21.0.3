@@ -1,0 +1,4 @@
+name = "std::string"
+size = 0x20
+
+[members]
