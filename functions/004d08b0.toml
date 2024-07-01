@@ -1,2 +1,13 @@
 addr = 0x4d08b0
 size = 0x27c
+name = "__ZN14NinePatchLayer4drawER13ScreenContextR11Tessellatorff"
+
+[header]
+last_change = 2024-06-27T11:00:57.928271Z
+name = "__ZN14NinePatchLayer4drawER13ScreenContextR11Tessellatorff"
+addr = 0x4d08b0
+
+[header.args.0x2]
+offset = 0x2
+name = "tess"
+size = 0x8
