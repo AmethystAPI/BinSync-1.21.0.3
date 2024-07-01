@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?registerItems@VanillaItems@@SAXAEAUReflectionCtx@cereal@@VItemRegistryRef@@AEBVBaseGameVersion@@AEBVExperiments@@@Z(args=0); @0x2d7e110 vars=0 len=0x130bb> from freddie"
+last_commit_msg = "Merged in <Function: BlockItem * ??0BlockItem@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HAEBVHashedString@@@Z(args=0); @0x2df2c50 vars=0 len=0x300> from freddie"
