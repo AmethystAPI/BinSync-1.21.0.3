@@ -1,0 +1,4 @@
+name = "HashedString"
+size = 0x30
+
+[members]
