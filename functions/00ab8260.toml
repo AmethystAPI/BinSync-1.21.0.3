@@ -1,0 +1,11 @@
+last_change = 2024-06-27T20:29:38.264649Z
+addr = 0xab8260
+size = 0x255
+name = "__ZNK20ArmorTrimTextureData25buildArmorTrimTexturePathEv"
+
+[header]
+last_change = 2024-06-27T20:29:38.264649Z
+name = "__ZNK20ArmorTrimTextureData25buildArmorTrimTexturePathEv"
+addr = 0xab8260
+
+[header.args]
