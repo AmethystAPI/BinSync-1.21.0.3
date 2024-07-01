@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN14ClientInstanceC2ER14IMinecraftGameR13IMinecraftAppR13LevelListener11SubClientIdRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEERKNS8_INSA_I30ClientInstanceEventCoordinatorEEEEP19LatencyGraphDisplayNS8_INSA_I19NetworkSessionOwnerEEEE(args=0); @0x348470 vars=0 len=0x971> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN14ClientInstance4initERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIN4Core15FilePathManagerEEEEER13NetworkSystemR5TimerSD_RKNS1_INS3_IN6Social12IUserManagerEEEEEiR14IGameModuleApp(args=0); @0x34a000 vars=0 len=0x1261> from freddie"
