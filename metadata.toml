@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN15FlipbookTextureC2ER17MinecraftGraphicsNSt3__110shared_ptrIN3mce12TextureGroupEEERK26FlipbookTextureDescriptionRK22TextureUVCoordinateSetiN2cg19TextureSetLayerTypeE(args=0); @0x13f99b0 vars=0 len=0x3ef> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN26BlockActorRenderDispatcher30initializeBlockEntityRenderersERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI13GeometryGroupEEEENSt3__110shared_ptrIN3mce12TextureGroupEEER16BlockTessellatorRKNS1_INS3_IK28ActorResourceDefinitionGroupEEEER19ResourcePackManagerR34MinecraftGameplayGraphicsResourcesNS1_INS3_I19ResourceLoadManagerEEEERK15BaseGameVersionRK11Experiments(args=1); @0x1406930 vars=1 len=0x1064> from freddie"
