@@ -1,0 +1,11 @@
+last_change = 2024-06-29T16:04:18.376036Z
+addr = 0x2fb9f40
+size = 0xa47
+name = "??0Dimension@@QEAA@AEAVILevel@@V?$AutomaticID@VDimension@@H@@VDimensionHeightRange@@AEAVScheduler@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+
+[header]
+last_change = 2024-06-29T16:04:18.376036Z
+name = "??0Dimension@@QEAA@AEAVILevel@@V?$AutomaticID@VDimension@@H@@VDimensionHeightRange@@AEAVScheduler@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+addr = 0x2fb9f40
+
+[header.args]
