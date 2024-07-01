@@ -1,0 +1,4 @@
+name = "std::mutex"
+size = 0x50
+
+[members]
