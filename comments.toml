@@ -39,3 +39,9 @@ addr = 0x2bc1d52
 func_addr = 0x2bc1cb0
 comment = "<-\n"
 decompiled = true
+
+[0x2bca2bf]
+addr = 0x2bca2bf
+func_addr = 0x2bca220
+comment = "this is probably calling the thing\n"
+decompiled = true
