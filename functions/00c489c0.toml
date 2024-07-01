@@ -1,0 +1,11 @@
+last_change = 2024-06-20T16:57:40.572776Z
+addr = 0xc489c0
+size = 0x3a0
+name = "__ZN28SettingsScreenControllerBase22_initNewWorldLevelDataER16LevelDataWrapper"
+
+[header]
+last_change = 2024-06-20T16:57:40.572776Z
+name = "__ZN28SettingsScreenControllerBase22_initNewWorldLevelDataER16LevelDataWrapper"
+addr = 0xc489c0
+
+[header.args]
