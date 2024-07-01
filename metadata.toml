@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <GlobalVar: None ?mBlockNameHashToStringMap@BlockTypeRegistry@@0V?$dense_map@_KVHashedString@@U?$hash@_K@std@@U?$equal_to@_K@3@V?$allocator@U?$pair@$$CB_KVHashedString@@@std@@@3@@entt@@A; @92083424 len=8> from freddie"
+last_commit_msg = "Merged in <GlobalVar: None __ZN3mce10TexturePtr19mDefaultTextureDataE; @92155744 len=8> from freddie"
