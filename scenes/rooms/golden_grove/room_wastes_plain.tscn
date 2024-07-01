@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpwyngsyoo0n7"]
+[gd_scene load_steps=20 format=3 uid="uid://dpwyngsyoo0n7"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_iscmi"]
-[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_rnqjr"]
+[ext_resource type="Resource" uid="uid://bxaqp12reo668" path="res://resources/enemy_pools/wastes_pool.tres" id="2_7yu7l"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://tileset.tres" id="3_4k2k0"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://Sprites/golden_grove_tileset.aseprite" id="4_if5o6"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/bush.tscn" id="5_7l4ex"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="11_bpkmc"]
 [ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/border/golden_grove_borders.tscn" id="12_jok87"]
 [ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://Sprites/tree_border.tres" id="13_n8q8e"]
+[ext_resource type="PackedScene" uid="uid://bo7kdp3xm40yq" path="res://scenes/decorations/wastes/decoration_wastes_rock_1.tscn" id="14_s4cky"]
+[ext_resource type="PackedScene" uid="uid://xn3thy4qqqsd" path="res://scenes/decorations/wastes/decoration_wastes_rock_2.tscn" id="15_dkepn"]
+[ext_resource type="PackedScene" uid="uid://drxruvv7scqyl" path="res://scenes/decorations/wastes/decoration_wastes_pebble_1.tscn" id="16_o2lj1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(160, 221)
@@ -27,7 +30,7 @@ region = Rect2(271, 23, 1, 1)
 [node name="WindsweptWastesRoomPlain" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
 script = ExtResource("1_iscmi")
-EnemyPool = ExtResource("2_rnqjr")
+EnemyPool = ExtResource("2_7yu7l")
 ExitDirection = Vector2(0, -1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -602,5 +605,20 @@ texture = ExtResource("13_n8q8e")
 [node name="Sprite2D23" type="Sprite2D" parent="Borders/Paralax2/Origin/Right"]
 position = Vector2(131, -163)
 texture = ExtResource("13_n8q8e")
+
+[node name="Rock" parent="." instance=ExtResource("14_s4cky")]
+position = Vector2(31, -3)
+
+[node name="Rock2" parent="." instance=ExtResource("15_dkepn")]
+position = Vector2(-25, -90)
+
+[node name="Rock3" parent="." instance=ExtResource("16_o2lj1")]
+position = Vector2(-38, 28)
+
+[node name="Rock4" parent="." instance=ExtResource("16_o2lj1")]
+position = Vector2(19, -4)
+
+[node name="Rock5" parent="." instance=ExtResource("16_o2lj1")]
+position = Vector2(34, -112)
 
 [editable path="Borders"]

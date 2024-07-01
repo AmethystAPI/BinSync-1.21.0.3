@@ -12,4 +12,4 @@ script = ExtResource("2_738dh")
 RoomPlacers = [ExtResource("4_3atf6"), ExtResource("5_vy2o1"), ExtResource("1_bsp3g")]
 UniqueEncounters = [ExtResource("7_dnet6"), ExtResource("8_eg8qj")]
 Level = 0
-Size = Vector2i(3, 3)
+Size = Vector2i(2, 2)
