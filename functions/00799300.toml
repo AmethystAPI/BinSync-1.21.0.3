@@ -1,0 +1,11 @@
+last_change = 2024-06-27T10:59:32.928787Z
+addr = 0x799300
+size = 0x111
+name = "__ZN11Tessellator5beginEib"
+
+[header]
+last_change = 2024-06-27T10:59:32.928787Z
+name = "__ZN11Tessellator5beginEib"
+addr = 0x799300
+
+[header.args]
