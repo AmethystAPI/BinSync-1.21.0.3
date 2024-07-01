@@ -1,0 +1,11 @@
+last_change = 2024-06-25T14:11:13.239643Z
+addr = 0xa45780
+size = 0xfcc
+name = "__ZN13BlockGraphics10initBlocksER19ResourcePackManagerRK11Experiments"
+
+[header]
+last_change = 2024-06-25T14:11:13.239643Z
+name = "__ZN13BlockGraphics10initBlocksER19ResourcePackManagerRK11Experiments"
+addr = 0xa45780
+
+[header.args]
