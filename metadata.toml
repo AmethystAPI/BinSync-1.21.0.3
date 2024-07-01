@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ??$make_shared@VOverworldDimension@@AEAVILevel@@AEAVScheduler@@@std@@YA?AV?$shared_ptr@VOverworldDimension@@@0@AEAVILevel@@AEAVScheduler@@@Z(args=0); @0x409d000 vars=0 len=0x150> from freddie"
+last_commit_msg = "Merged in <Function: None ?computeOverworldHeightRange@unity_5c986e6b9d6571cc96912b0bfa0329e2@@YA?AVDimensionHeightRange@@AEAVILevel@@@Z(args=0); @0x43317b0 vars=0 len=0x2b6> from freddie"
