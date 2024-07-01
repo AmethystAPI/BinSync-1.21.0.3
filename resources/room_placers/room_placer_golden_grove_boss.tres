@@ -10,3 +10,4 @@ LeftConnection = false
 RightConnection = false
 TopConnection = true
 BottomConnection = true
+ExitDirection = Vector2(0, -1)

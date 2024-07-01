@@ -16,8 +16,19 @@
                 "file": "Planning/Beta C Kanban.md"
               }
             }
+          },
+          {
+            "id": "e91618419a731b9f",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.5"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -144,7 +155,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d0c68c1f6fcbb024",
+  "active": "e91618419a731b9f",
   "lastOpenFiles": [
     "Planning/Beta B Kanban.md",
     "Planning/Beta B Kanban 1.md",

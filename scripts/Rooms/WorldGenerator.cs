@@ -48,18 +48,24 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 		_roomsTillNewBiome = Game.RandomNumberGenerator.RandiRange(_currentBiome.Size.X, _currentBiome.Size.Y);
 	}
 
-	private RoomPlacer SelectRoom() {
+	private RoomPlacer SelectRoom(Room sourceRoom) {
+		if (_roomsTillNewBiome <= 0) {
+			_biomeLevel++;
+
+			SetupBiome();
+		}
+
+		_roomsTillNewBiome--;
+
 		List<UniqueEncounter.State> validStates = _uniqueEncounterStates.Where(state => {
-			if (state.Placed >= state.Source.Limit) return false;
+			if (state.Source.Limit != 0 && state.Placed >= state.Source.Limit) return false;
 
 			if (state.RoomsTillPlace > 0) return false;
 
+			if (sourceRoom != null && !state.Source.RoomPlacer.CanConnectTo(sourceRoom.ExitDirection)) return false;
+
 			return true;
 		}).ToList();
-
-		foreach (UniqueEncounter.State state in _uniqueEncounterStates) {
-			state.RoomsTillPlace--;
-		}
 
 		if (validStates.Count > 0) {
 			UniqueEncounter.State chosenState = validStates[0];
@@ -69,52 +75,49 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			_uniqueEncounterStates[index] = chosenState.Source.GetState(Game.RandomNumberGenerator);
 			_uniqueEncounterStates[index].Placed = chosenState.Placed + 1;
 
+			foreach (UniqueEncounter.State state in _uniqueEncounterStates) {
+				state.RoomsTillPlace--;
+			}
+
 			return chosenState.Source.RoomPlacer;
 		}
 
-		return _currentBiome.RoomPlacers[Game.RandomNumberGenerator.RandiRange(0, _currentBiome.RoomPlacers.Length - 1)];
+		RoomPlacer[] validRoomPlacers = _currentBiome.RoomPlacers.Where(placer => {
+			if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
 
-		// s_Me._roomsTilTemple--;
-		// s_Me._roomsTilBoss--;
+			if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
 
-		// RoomPlacer[] validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
-		// 	if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
+			return true;
+		}).ToArray();
 
-		// 	if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
+		List<UniqueEncounter.State> expectedStates = _uniqueEncounterStates.Where(state => {
+			if (state.Source.Limit != 0 && state.Placed >= state.Source.Limit) return false;
 
-		// 	return true;
-		// }).ToArray();
+			if (state.RoomsTillPlace > 1) return false;
 
-		// if (s_Me._roomsTilTemple == 0) {
-		// 	validRoomPlacers = new RoomPlacer[] { s_Me.TempleRoomPlacer };
+			return true;
+		}).ToList();
 
-		// 	s_Me._roomsTilTemple = Game.RandomNumberGenerator.RandiRange(s_Me.TempleRoomInterval.X, s_Me.TempleRoomInterval.Y);
-		// }
+		foreach (UniqueEncounter.State expectedState in expectedStates) {
+			RoomPlacer[] newValidRoomPlacers = validRoomPlacers.Where(roomPlacer => expectedState.Source.RoomPlacer.CanConnectTo(roomPlacer.ExitDirection)).ToArray();
 
-		// if (s_Me._roomsTilBoss == 0) {
-		// 	validRoomPlacers = new RoomPlacer[] { s_Me.BossRoomPlacer };
+			if (newValidRoomPlacers.Length > 0) {
+				validRoomPlacers = newValidRoomPlacers;
 
-		// 	s_Me._roomsTilBoss = Game.RandomNumberGenerator.RandiRange(s_Me.BossRoomInterval.X, s_Me.BossRoomInterval.Y);
-		// }
+				break;
+			}
+		}
 
-		// if (s_Me._roomsTilBoss == 1 || s_Me._roomsTilTemple == 1) {
-		// 	validRoomPlacers = s_Me.RoomPlacers.Where(placer => {
-		// 		if (!placer.CanConnectTo(sourceRoom.ExitDirection)) return false;
+		foreach (UniqueEncounter.State state in _uniqueEncounterStates) {
+			state.RoomsTillPlace--;
+		}
 
-		// 		if (!placer.CanConnectTo(Vector2.Down)) return false;
-
-		// 		if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
-
-		// 		return true;
-		// 	}).ToArray();
-		// }
-
-		// RoomPlacer roomPlacer = validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
+		return validRoomPlacers[Game.RandomNumberGenerator.RandiRange(0, validRoomPlacers.Length - 1)];
 	}
 
 	private void PlaceSpawnRoom() {
 		s_Me.NetworkPoint.SendRpcToClients(nameof(PlaceRoomRpc), message => {
-			message.AddString(SelectRoom().ResourcePath);
+			message.AddString(SelectRoom(null).ResourcePath);
 			message.AddString("");
 			message.AddFloat(0);
 			message.AddFloat(0);
@@ -124,7 +127,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	public static void PlaceRoom(Room sourceRoom) {
 		if (!NetworkManager.IsHost) return;
 
-		RoomPlacer roomPlacer = s_Me.SelectRoom();
+		RoomPlacer roomPlacer = s_Me.SelectRoom(sourceRoom);
 		Room room = roomPlacer.RoomScene.Instantiate<Room>();
 		room.Load();
 

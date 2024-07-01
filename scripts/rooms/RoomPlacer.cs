@@ -8,6 +8,7 @@ public partial class RoomPlacer : Resource {
     [Export] public bool RightConnection;
     [Export] public bool TopConnection;
     [Export] public bool BottomConnection;
+    [Export] public Vector2 ExitDirection = Vector2.Up;
 
     public List<Vector2> GetDirections() {
         List<Vector2> directions = new List<Vector2>();
