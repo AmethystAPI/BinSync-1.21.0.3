@@ -26,6 +26,8 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 	public void Start() {
 		if (NetworkManager.IsHost) {
+			_biomeLevel = 0;
+
 			SetupBiome();
 
 			PlaceSpawnRoom();

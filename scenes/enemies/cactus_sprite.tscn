@@ -155,6 +155,7 @@ DefaultState = "RangedApproach"
 
 [node name="RangedApproach" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("5_dt13m")
+IdleInterval = Vector2(1.5, 2.5)
 AnimationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="Attack" type="Node" parent="StateMachine"]
