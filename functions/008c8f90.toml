@@ -1,0 +1,11 @@
+last_change = 2024-06-27T13:14:52.045673Z
+addr = 0x8c8f90
+size = 0x36e
+name = "__ZN3mce12TextureGroup10getTextureERK16ResourceLocationbNSt3__18optionalIjEEN2cg19TextureSetLayerTypeE"
+
+[header]
+last_change = 2024-06-27T13:14:52.045673Z
+name = "__ZN3mce12TextureGroup10getTextureERK16ResourceLocationbNSt3__18optionalIjEEN2cg19TextureSetLayerTypeE"
+addr = 0x8c8f90
+
+[header.args]
