@@ -67,7 +67,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 			return true;
 		}).ToList();
 
-		if (validStates.Count > 0) {
+		if (validStates.Count > 0 && _roomsTillNewBiome != 0) {
 			UniqueEncounter.State chosenState = validStates[0];
 
 			int index = _uniqueEncounterStates.IndexOf(chosenState);
@@ -87,24 +87,28 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
 			if (sourceRoom.ExitDirection != Vector2.Up && placer.CanConnectTo(Vector2.Up)) return false;
 
+			if (_roomsTillNewBiome == 0 && placer.ExitDirection != Vector2.Up) return false;
+
 			return true;
 		}).ToArray();
 
-		List<UniqueEncounter.State> expectedStates = _uniqueEncounterStates.Where(state => {
-			if (state.Source.Limit != 0 && state.Placed >= state.Source.Limit) return false;
+		if (_roomsTillNewBiome != 0) {
+			List<UniqueEncounter.State> expectedStates = _uniqueEncounterStates.Where(state => {
+				if (state.Source.Limit != 0 && state.Placed >= state.Source.Limit) return false;
 
-			if (state.RoomsTillPlace > 1) return false;
+				if (state.RoomsTillPlace > 1) return false;
 
-			return true;
-		}).ToList();
+				return true;
+			}).ToList();
 
-		foreach (UniqueEncounter.State expectedState in expectedStates) {
-			RoomPlacer[] newValidRoomPlacers = validRoomPlacers.Where(roomPlacer => expectedState.Source.RoomPlacer.CanConnectTo(roomPlacer.ExitDirection)).ToArray();
+			foreach (UniqueEncounter.State expectedState in expectedStates) {
+				RoomPlacer[] newValidRoomPlacers = validRoomPlacers.Where(roomPlacer => expectedState.Source.RoomPlacer.CanConnectTo(roomPlacer.ExitDirection)).ToArray();
 
-			if (newValidRoomPlacers.Length > 0) {
-				validRoomPlacers = newValidRoomPlacers;
+				if (newValidRoomPlacers.Length > 0) {
+					validRoomPlacers = newValidRoomPlacers;
 
-				break;
+					break;
+				}
 			}
 		}
 
