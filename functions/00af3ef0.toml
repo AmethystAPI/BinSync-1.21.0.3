@@ -1,0 +1,14 @@
+last_change = 2024-06-23T20:35:20.838781Z
+addr = 0xaf3ef0
+size = 0xcd5
+name = "__ZN20ClientNetworkHandler6handleERK17NetworkIdentifierRK19TakeItemActorPacket"
+
+[header]
+last_change = 2024-06-23T20:35:20.838781Z
+name = "__ZN20ClientNetworkHandler6handleERK17NetworkIdentifierRK19TakeItemActorPacket"
+addr = 0xaf3ef0
+
+[header.args.0x0]
+offset = 0x0
+type = "ClientNetworkHandler *"
+size = 0x8
