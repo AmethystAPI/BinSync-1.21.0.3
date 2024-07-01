@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None _lambda_c8ea76f62579a5f1e97f6d9ecb451fff_::operator()(args=0); @0x174afe0 vars=0 len=0x3fe> from freddie"
+last_commit_msg = "Merged in <Function: None std::_Func_impl_no_alloc__lambda_c8ea76f62579a5f1e97f6d9ecb451fff__void_::_Do_call(args=0); @0x177a950 vars=0 len=0x9> from freddie"
