@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN13LevelRendererC2ER15IClientInstanceR16MultiPlayerLevelNSt3__110shared_ptrI7OptionsEENS5_IN3mce12TextureGroupEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE13WeakEntityRefR19HolographicPlatformR12GameRendererRKNSC_INSE_I20SoundPlayerInterfaceEEEERKNSC_INSE_I13GeometryGroupEEEERK12SoundMappingRKNSC_INSE_IK28ActorResourceDefinitionGroupEEEE(args=3); @0x13afc50 vars=2 len=0x1346> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN13LevelRenderer6reinitERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEERKNS1_INS3_I13GeometryGroupEEEERKNS1_INS3_IK28ActorResourceDefinitionGroupEEEE(args=1); @0x13b15b0 vars=1 len=0x2e7> from freddie"
