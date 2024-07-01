@@ -27,3 +27,9 @@ addr = 0xaeac3e
 func_addr = 0xaeab70
 comment = ""
 decompiled = true
+
+[0x2b5e032]
+addr = 0x2b5e032
+func_addr = 0x2b5d9c0
+comment = "getId inlined\n"
+decompiled = true
