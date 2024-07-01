@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-06-26T16:37:48.665647Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?_playerChangeDimensionPrepareRegion@PlayerDimensionTransferManager@@AEAAXAEAVPlayer@@AEAVChangeDimensionRequest@@AEAVDimension@@@Z(args=0); @0x2b31190 vars=0 len=0x212> from freddie"
+last_commit_msg = "Merged in <Function: None ?playerDimensionChangedEvent@PlayerDimensionTransferProxy@@UEAAXAEAVPlayer@@V?$AutomaticID@VDimension@@H@@1@Z(args=0); @0x2b318b0 vars=0 len=0x10> from freddie"
