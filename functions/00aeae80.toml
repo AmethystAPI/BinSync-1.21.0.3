@@ -1,0 +1,11 @@
+last_change = 2024-06-23T20:23:52.344790Z
+addr = 0xaeae80
+size = 0x91
+name = "__ZN20ClientNetworkHandler19onStoreOfferReceiveE26ShowStoreOfferRedirectTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE"
+
+[header]
+last_change = 2024-06-23T20:23:52.344790Z
+name = "__ZN20ClientNetworkHandler19onStoreOfferReceiveE26ShowStoreOfferRedirectTypeRKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE"
+addr = 0xaeae80
+
+[header.args]
