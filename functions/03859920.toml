@@ -1,0 +1,11 @@
+last_change = 2024-06-26T22:16:53.080788Z
+addr = 0x3859920
+size = 0xea
+name = "__ZNK3mce4Mesh7isValidEv"
+
+[header]
+last_change = 2024-06-26T22:16:53.080788Z
+name = "__ZNK3mce4Mesh7isValidEv"
+addr = 0x3859920
+
+[header.args]
