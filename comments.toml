@@ -51,3 +51,9 @@ addr = 0x3050bc0
 func_addr = 0x3050b70
 comment = "possibly inlined ?registerBlockFromDefinition@BlockDefinitionGroup@@QEAAXAEBUBlo\nckDefinition@@_N@Z\n"
 decompiled = true
+
+[0x30599d7]
+addr = 0x30599d7
+func_addr = 0x3059970
+comment = ""
+decompiled = true
