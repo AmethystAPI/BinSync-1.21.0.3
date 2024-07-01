@@ -1,0 +1,41 @@
+last_change = 2024-06-26T20:33:01.493946Z
+addr = 0xaadac0
+size = 0x19a8
+name = "__ZN13GeometryGroup12loadModelExtENSt3__18weak_ptrIS_EERKNS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERK11ModelParentiiRK22TextureUVCoordinateSetb"
+
+[header]
+last_change = 2024-06-26T20:30:49.776073Z
+name = "__ZN13GeometryGroup12loadModelExtENSt3__18weak_ptrIS_EERKNS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERK11ModelParentiiRK22TextureUVCoordinateSetb"
+addr = 0xaadac0
+
+[stack_vars.-0x428]
+offset = -1064
+name = "_this"
+type = "GeometryGroup *"
+size = 0x8
+addr = 0xaadac0
+
+[stack_vars.-0x130]
+offset = -304
+name = "_this2"
+type = "GeometryGroup *"
+size = 0x8
+addr = 0xaadac0
+
+[stack_vars.-0xa8]
+offset = -168
+name = "this_1"
+type = "__int128"
+size = 0x10
+addr = 0xaadac0
+
+[header.args.0x1]
+offset = 0x1
+type = "size_t *"
+size = 0x8
+
+[header.args.0x0]
+offset = 0x0
+name = "this"
+type = "GeometryGroup *"
+size = 0x8
