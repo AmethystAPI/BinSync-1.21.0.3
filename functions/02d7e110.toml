@@ -1,0 +1,11 @@
+last_change = 2024-06-13T21:34:57.253147Z
+addr = 0x2d7e110
+size = 0x130bb
+name = "?registerItems@VanillaItems@@SAXAEAUReflectionCtx@cereal@@VItemRegistryRef@@AEBVBaseGameVersion@@AEBVExperiments@@@Z"
+
+[header]
+last_change = 2024-06-13T21:34:57.253147Z
+name = "?registerItems@VanillaItems@@SAXAEAUReflectionCtx@cereal@@VItemRegistryRef@@AEBVBaseGameVersion@@AEBVExperiments@@@Z"
+addr = 0x2d7e110
+
+[header.args]
