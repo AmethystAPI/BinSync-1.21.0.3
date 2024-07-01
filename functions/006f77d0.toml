@@ -1,0 +1,11 @@
+last_change = 2024-06-20T16:36:19.101284Z
+addr = 0x6f77d0
+size = 0x3e
+name = "__ZNK5OreUI17LevelDataBindings8Advanced15getUseFlatWorldEv"
+
+[header]
+last_change = 2024-06-20T16:36:19.101284Z
+name = "__ZNK5OreUI17LevelDataBindings8Advanced15getUseFlatWorldEv"
+addr = 0x6f77d0
+
+[header.args]
