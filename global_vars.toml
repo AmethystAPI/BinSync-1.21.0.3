@@ -2,3 +2,8 @@
 addr = 0x4caae90
 name = "off_144CAAE90"
 size = 0x8
+
+[0x4cb69b8]
+addr = 0x4cb69b8
+name = "__ZTV14ClientInstance"
+size = 0x8
