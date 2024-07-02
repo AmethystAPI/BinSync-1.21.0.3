@@ -11,9 +11,23 @@
             "id": "d0c68c1f6fcbb024",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Marketing/Post List.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ff8b252d69f5b7d3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Marketing/Reddit Guidelines.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Marketing/Post List.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Marketing/Post List.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Marketing/Post List.md"
               }
             }
           }
@@ -147,13 +161,16 @@
   "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
     "Marketing/Client Authority.md",
-    "Planning/Beta C Kanban.md",
+    "Marketing/Reddit Guidelines.md",
+    "Marketing/Notes.md",
+    "Marketing/Post List.md",
     "Attachments/200w 1.gif",
-    "Attachments/200w.gif",
     "Attachments/Pasted image 20240630225858.png",
+    "Attachments/Pasted image 20240630224700.png",
+    "Planning/Beta C Kanban.md",
+    "Attachments/200w.gif",
     "Attachments/Server-based-network.svg.png",
     "Attachments/Client-server-model.svg.png",
-    "Attachments/Pasted image 20240630224700.png",
     "Marketing",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Graph.canvas",
@@ -185,8 +202,6 @@
     "Attachments/Pasted image 20240316194450.png",
     "Attachments/Pasted image 20240316154618.png.import",
     "Devlogs/Devlog 18/Draft 3.md",
-    "Planning/Previous/Alpha Kanban.md",
-    "Planning/Previous/Alpha.md",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
     "Attachments/PasBF2.tmp",
