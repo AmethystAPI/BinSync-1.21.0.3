@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cf1alnlwhq4yq"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_ign8b"]
-[ext_resource type="Texture2D" uid="uid://cctw36vydelw4" path="res://Sprites/cactus_spirit.png" id="2_wygyp"]
+[ext_resource type="Texture2D" uid="uid://cctw36vydelw4" path="res://Sprites/enemies/cactus_spirit/cactus_spirit.png" id="2_wygyp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bv6ss"]
 radius = 4.12311
@@ -24,4 +24,4 @@ z_index = 1
 position = Vector2(1, 0)
 texture = ExtResource("2_wygyp")
 region_enabled = true
-region_rect = Rect2(43, 13, 12, 9)
+region_rect = Rect2(281, 23, 12, 9)

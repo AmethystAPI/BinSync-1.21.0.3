@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxaqp12reo668"]
 
-[ext_resource type="PackedScene" uid="uid://b0awcwrhaggno" path="res://scenes/enemies/cactus_sprite.tscn" id="1_mnwmo"]
+[ext_resource type="PackedScene" uid="uid://b0awcwrhaggno" path="res://scenes/enemies/cactus_spirit.tscn" id="1_mnwmo"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_yu0xw"]
 
 [resource]

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://lhjoyq0bew87"]
+
+[ext_resource type="Texture2D" uid="uid://cctw36vydelw4" path="res://Sprites/enemies/cactus_spirit/cactus_spirit.png" id="1_c6h2t"]
+
+[resource]
+atlas = ExtResource("1_c6h2t")
+region = Rect2(220, 19, 28, 18)

@@ -3,20 +3,20 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class CactusSpriteAttack : State {
+public partial class CactusSpiritAttack : State {
     [Export] public PackedScene ProjectileScene;
 
     private Enemy _enemy;
     private float _timer = 0.5f;
     private List<float> _shootQueue = new List<float>();
+    private AnimationPlayer _animationPlayer;
 
     public override void _Ready() {
         _enemy = GetParent().GetParent<Enemy>();
+        _animationPlayer = GetParent().GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
     public override void Enter() {
-        // AnimationPlayer.Play(RunAnimation);
-
         Shoot();
 
         _shootQueue.Add(0.1f);
@@ -58,5 +58,7 @@ public partial class CactusSpriteAttack : State {
         _projectile.Position += direction * 5f;
 
         _projectile.LookAt(_projectile.GlobalPosition + direction);
+
+        _animationPlayer.Play("attack");
     }
 }
