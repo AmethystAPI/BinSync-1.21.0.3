@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwmf0cwd11nx0"]
+
+[ext_resource type="Texture2D" uid="uid://g6q4if0fvkxu" path="res://Sprites/biomes/wastes/sprite_wastes_rock_2.tres" id="2_lqc0t"]
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://Sprites/windswept_wastes_tileset.aseprite" id="3_muo8e"]
+
+[node name="Rock" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 8)
+texture = ExtResource("2_lqc0t")
+offset = Vector2(0, -13)
+region_rect = Rect2(216, 120, 20, 18)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(0, 13)
+texture = ExtResource("3_muo8e")
+offset = Vector2(-0.5, -7.5)
+region_enabled = true
+region_rect = Rect2(247, 82, 28, 10)

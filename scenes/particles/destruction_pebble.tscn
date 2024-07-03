@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b40i51q2a82vg"]
+
+[ext_resource type="Script" path="res://scripts/DestructionPebble.cs" id="1_y45mo"]
+[ext_resource type="Texture2D" uid="uid://yybdk8wkfvb4" path="res://Sprites/particles/pebble.tres" id="2_mpuq0"]
+[ext_resource type="Texture2D" uid="uid://b7esraxflc3sr" path="res://Sprites/particles/pebble_shadow.tres" id="3_gufdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8w1g"]
+size = Vector2(4, 4)
+
+[node name="DestructionPebble" type="CharacterBody2D"]
+position = Vector2(0, -44)
+collision_layer = 0
+collision_mask = 2
+motion_mode = 1
+slide_on_ceiling = false
+platform_on_leave = 2
+script = ExtResource("1_y45mo")
+AirResistance = 1.0
+GroundResistance = 7.0
+SpeedRange = Vector2(20, 80)
+TimerFactor = 7.0
+
+[node name="ArcOrigin" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="ArcOrigin"]
+texture = ExtResource("2_mpuq0")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+position = Vector2(0, 3)
+texture = ExtResource("3_gufdg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_f8w1g")

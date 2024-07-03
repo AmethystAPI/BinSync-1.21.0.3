@@ -96,6 +96,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
+visible = false
 z_index = 9
 position = Vector2(-185, -205)
 rotation = -0.785398

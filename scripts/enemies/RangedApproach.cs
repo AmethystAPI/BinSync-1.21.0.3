@@ -11,6 +11,7 @@ public partial class RangedApproach : State, NetworkPointUser {
     [Export] public string RunAnimation = "run";
     [Export] public string IdleAnimation = "idle";
     [Export] public AnimationPlayer AnimationPlayer;
+    [Export] public Sprite2D Sprite;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -30,7 +31,11 @@ public partial class RangedApproach : State, NetworkPointUser {
 
     public override void Enter() {
         if (_idleTimer > 0) {
+            float prev = _idleTimer;
+
             _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
+
+            GD.Print("Resumed idle " + prev + " with " + _idleTimer);
 
             return;
         }
@@ -53,9 +58,15 @@ public partial class RangedApproach : State, NetworkPointUser {
     public override void PhsysicsUpdate(float delta) {
         if (!_enemy.Activated) return;
 
-        Vector2 target = _enemy.GetWeightedTargets()[0].Player.GlobalPosition;
+        Enemy.WeightedTarget[] targets = _enemy.GetWeightedTargets();
+
+        if (targets.Length == 0) return;
+
+        Vector2 target = targets[0].Player.GlobalPosition;
         float distance = target.DistanceTo(_enemy.GlobalPosition);
         Vector2 direction = (target - _enemy.GlobalPosition).Normalized();
+
+        Sprite.Scale = new Vector2(target.X > _enemy.GlobalPosition.X ? 1f : -1f, 1f);
 
         if (_resting) {
             if (Mathf.Abs(distance - TargetDistance) <= RestRange) {

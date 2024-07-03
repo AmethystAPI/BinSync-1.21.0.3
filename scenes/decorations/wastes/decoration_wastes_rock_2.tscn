@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://xn3thy4qqqsd"]
+[gd_scene load_steps=6 format=3 uid="uid://xn3thy4qqqsd"]
 
 [ext_resource type="Script" path="res://scripts/Destructable.cs" id="1_q81ks"]
+[ext_resource type="PackedScene" uid="uid://b40i51q2a82vg" path="res://scenes/particles/destruction_pebble.tscn" id="2_ksxsi"]
 [ext_resource type="Texture2D" uid="uid://g6q4if0fvkxu" path="res://Sprites/biomes/wastes/sprite_wastes_rock_2.tres" id="2_v63iv"]
 [ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://Sprites/windswept_wastes_tileset.aseprite" id="3_pnyfu"]
 
@@ -12,14 +13,13 @@ y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_q81ks")
-ParticleCount = 0
-Invincible = true
+Particle = ExtResource("2_ksxsi")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 8)
+position = Vector2(0, 3)
 texture = ExtResource("2_v63iv")
-offset = Vector2(0, -13)
+offset = Vector2(0, -7.5)
 region_rect = Rect2(216, 120, 20, 18)
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -27,7 +27,7 @@ z_index = -6
 y_sort_enabled = true
 position = Vector2(0, 13)
 texture = ExtResource("3_pnyfu")
-offset = Vector2(-0.5, -7.5)
+offset = Vector2(-0.5, -7)
 region_enabled = true
 region_rect = Rect2(247, 82, 28, 10)
 

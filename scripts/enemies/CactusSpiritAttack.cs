@@ -5,11 +5,13 @@ using Riptide;
 
 public partial class CactusSpiritAttack : State {
     [Export] public PackedScene ProjectileScene;
+    [Export] public Sprite2D Sprite;
 
     private Enemy _enemy;
-    private float _timer = 0.5f;
+    private float _timer;
     private List<float> _shootQueue = new List<float>();
     private AnimationPlayer _animationPlayer;
+    private Vector2 _direction;
 
     public override void _Ready() {
         _enemy = GetParent().GetParent<Enemy>();
@@ -17,12 +19,19 @@ public partial class CactusSpiritAttack : State {
     }
 
     public override void Enter() {
-        Shoot();
+        _animationPlayer.Play("telegraph_attack");
 
-        _shootQueue.Add(0.1f);
-        _shootQueue.Add(0.2f);
+        _timer = 1f;
 
-        _timer = 0.5f;
+        Vector2 target = _enemy.GetWeightedTargets()[0].Player.GlobalPosition;
+
+        _direction = (target - _enemy.GlobalPosition).Normalized();
+
+        Sprite.Scale = new Vector2(target.X > _enemy.GlobalPosition.X ? 1f : -1f, 1f);
+
+        _shootQueue.Add(0.3f);
+        _shootQueue.Add(0.3f + 0.12f);
+        _shootQueue.Add(0.3f + 0.12f * 2f);
     }
 
     public override void Update(float delta) {
@@ -50,14 +59,10 @@ public partial class CactusSpiritAttack : State {
 
         _enemy.GetParent().AddChild(_projectile);
 
-        Vector2 target = _enemy.GetWeightedTargets()[0].Player.GlobalPosition;
-
-        Vector2 direction = (target - _enemy.GlobalPosition).Normalized();
-
         _projectile.GlobalPosition = _enemy.GlobalPosition;
-        _projectile.Position += direction * 5f;
+        _projectile.Position += _direction * 5f;
 
-        _projectile.LookAt(_projectile.GlobalPosition + direction);
+        _projectile.LookAt(_projectile.GlobalPosition + _direction);
 
         _animationPlayer.Play("attack");
     }

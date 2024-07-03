@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0awcwrhaggno"]
+[gd_scene load_steps=26 format=3 uid="uid://b0awcwrhaggno"]
 
 [ext_resource type="Script" path="res://scripts/enemies/Enemy.cs" id="1_tml3d"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://Sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_v2rhn"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dd67t0bvjf7tf" path="res://Sprites/enemies/cactus_spirit/sprite_cactus_spirit_run_1.tres" id="14_l6d0w"]
 [ext_resource type="Texture2D" uid="uid://b5wp2axeyexch" path="res://Sprites/enemies/cactus_spirit/sprite_cactus_spirit_run_2.tres" id="15_kjkyk"]
 [ext_resource type="Texture2D" uid="uid://lhjoyq0bew87" path="res://Sprites/enemies/cactus_spirit/sprite_cactus_spirit_run_3.tres" id="16_gyi42"]
+[ext_resource type="Texture2D" uid="uid://cmkvtc2h356ki" path="res://Sprites/enemies/cactus_spirit/sprite_cactus_spirit_attack.tres" id="17_i84ry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(16, 13)
@@ -46,6 +47,48 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("13_16cnt")]
+}
+
+[sub_resource type="Animation" id="Animation_yypc7"]
+resource_name = "attack"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_i84ry")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Attack/SquashAndStretch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pl1hr"]
@@ -148,8 +191,8 @@ tracks/1/keys = {
 "values": [null]
 }
 
-[sub_resource type="Animation" id="Animation_yypc7"]
-resource_name = "attack"
+[sub_resource type="Animation" id="Animation_n33jn"]
+resource_name = "telegraph_attack"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -161,7 +204,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_16cnt")]
+"values": [ExtResource("17_i84ry")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -178,7 +221,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/Attack/SquashAndStretch")
+tracks/2/path = NodePath("StateMachine/Attack/TelegraphSquashAndStretch")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -196,7 +239,8 @@ _data = {
 "attack": SubResource("Animation_yypc7"),
 "hurt": SubResource("Animation_pl1hr"),
 "idle": SubResource("Animation_wv887"),
-"run": SubResource("Animation_hclil")
+"run": SubResource("Animation_hclil"),
+"telegraph_attack": SubResource("Animation_n33jn")
 }
 
 [node name="CactusSprite" type="CharacterBody2D" groups=["Enemies"]]
@@ -230,14 +274,22 @@ position = Vector2(0, -4)
 script = ExtResource("4_kivvl")
 DefaultState = "RangedApproach"
 
-[node name="RangedApproach" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
+[node name="RangedApproach" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Sprite")]
 script = ExtResource("5_rk5yk")
 IdleInterval = Vector2(1.5, 2.5)
 AnimationPlayer = NodePath("../../AnimationPlayer")
+Sprite = NodePath("../../SquashAndStretchTarget/Body")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("Sprite")]
 script = ExtResource("6_qtr8a")
 ProjectileScene = ExtResource("7_5teak")
+Sprite = NodePath("../../SquashAndStretchTarget/Body")
+
+[node name="TelegraphSquashAndStretch" type="Node" parent="StateMachine/Attack" node_paths=PackedStringArray("Target")]
+script = ExtResource("8_xya6n")
+Target = NodePath("../../../SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
 
 [node name="SquashAndStretch" type="Node" parent="StateMachine/Attack" node_paths=PackedStringArray("Target")]
 script = ExtResource("8_xya6n")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://m4lemtbjlji5"]
+
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://Sprites/windswept_wastes_tileset.aseprite" id="2_xkjdb"]
+
+[node name="Rock" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_xkjdb")
+offset = Vector2(0, -3.5)
+region_enabled = true
+region_rect = Rect2(211, 102, 10, 7)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+texture = ExtResource("2_xkjdb")
+offset = Vector2(0, 0.5)
+region_enabled = true
+region_rect = Rect2(211, 111, 10, 3)
