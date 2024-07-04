@@ -1,11 +1,7 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://d2phftpgxdl4w"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d2phftpgxdl4w"]
 
-[ext_resource type="PackedScene" uid="uid://b0awcwrhaggno" path="res://scenes/enemies/cactus_spirit.tscn" id="1_oi70y"]
-[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="1_q7hkl"]
-[ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="2_updpv"]
-[ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="3_xrpap"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_rwbs5"]
 
 [resource]
 script = ExtResource("4_rwbs5")
-EnemyScenes = Array[PackedScene]([ExtResource("1_oi70y"), ExtResource("1_q7hkl"), ExtResource("2_updpv"), ExtResource("3_xrpap")])
+EnemyScenes = Array[PackedScene]([])

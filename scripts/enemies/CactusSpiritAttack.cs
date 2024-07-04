@@ -29,6 +29,7 @@ public partial class CactusSpiritAttack : State {
 
         Sprite.Scale = new Vector2(target.X > _enemy.GlobalPosition.X ? 1f : -1f, 1f);
 
+        _shootQueue.Clear();
         _shootQueue.Add(0.3f);
         _shootQueue.Add(0.3f + 0.12f);
         _shootQueue.Add(0.3f + 0.12f * 2f);
