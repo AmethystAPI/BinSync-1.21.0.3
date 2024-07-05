@@ -1,6 +1,7 @@
 using System;
 using Godot;
 
+[Tool]
 public partial class SmartTileset : Resource {
     [ExportGroup("Roofs")]
     [Export] public Vector2[] RoofsTopLeft = new Vector2[0];
