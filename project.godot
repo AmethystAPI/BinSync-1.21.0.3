@@ -37,7 +37,7 @@ movie_writer/movie_file="C:/Users/outer/OneDrive/Desktop/Project-Squad-Godot/mar
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg", "res://addons/smart_tilemap/plugin.cfg")
 
 [global_group]
 

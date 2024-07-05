@@ -80,7 +80,7 @@ public partial class TileMapTool : Node {
         }
 
         foreach (Vector2I position in wallUsedCells) {
-            tileMap.SetCell(wallsLayer, position, 0, new Vector2I(3, 0));
+            tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.WallHidden);
 
             bool right = WallTileAt(wallsLayer, position + Vector2I.Right, tileMap, rect);
             bool left = WallTileAt(wallsLayer, position + Vector2I.Left, tileMap, rect);
