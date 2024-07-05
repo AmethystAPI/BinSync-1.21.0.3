@@ -1,3 +1,4 @@
+#if TOOLS
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -49,7 +50,7 @@ public partial class TileMapTool : Node {
         foreach (Vector2I position in wallUsedCells) {
             if (tileMap.GetCellTileData(wallsLayer, position + Vector2I.Down) == null && position.Y != downBound) continue;
 
-            tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsMiddle));
+            tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsMiddle));
 
             bool right = RoofTileAt(wallsLayer, position + Vector2I.Right, tileMap, rect);
             bool left = RoofTileAt(wallsLayer, position + Vector2I.Left, tileMap, rect);
@@ -61,26 +62,26 @@ public partial class TileMapTool : Node {
             bool downRight = RoofTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Right, tileMap, rect);
             bool downLeft = RoofTileAt(wallsLayer, position + Vector2I.Down + Vector2I.Left, tileMap, rect);
 
-            if (!right) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsRight));
-            if (!left) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsLeft));
-            if (!up) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsTop));
-            if (!down) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsBottom));
+            if (!right) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsRight));
+            if (!left) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsLeft));
+            if (!up) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsTop));
+            if (!down) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsBottom));
 
-            if (!right && !down && !downRight) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsBottomRight));
-            if (right && down && !downRight) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideTopLeft));
+            if (!right && !down && !downRight) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsBottomRight));
+            if (right && down && !downRight) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideTopLeft));
 
-            if (!left && !down && !downLeft) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsBottomLeft));
-            if (left && down && !downLeft) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideTopRight));
+            if (!left && !down && !downLeft) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsBottomLeft));
+            if (left && down && !downLeft) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideTopRight));
 
-            if (!right && !up && !upRight) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsTopRight));
-            if (right && up && !upRight) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideBottomLeft));
+            if (!right && !up && !upRight) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsTopRight));
+            if (right && up && !upRight) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideBottomLeft));
 
-            if (!left && !up && !upLeft) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsTopLeft));
-            if (left && up && !upLeft) tileMap.SetCell(roofsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideBottomRight));
+            if (!left && !up && !upLeft) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsTopLeft));
+            if (left && up && !upLeft) tileMap.SetCell(roofsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.RoofsInsideBottomRight));
         }
 
         foreach (Vector2I position in wallUsedCells) {
-            tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.WallHidden);
+            tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.WallHidden);
 
             bool right = WallTileAt(wallsLayer, position + Vector2I.Right, tileMap, rect);
             bool left = WallTileAt(wallsLayer, position + Vector2I.Left, tileMap, rect);
@@ -91,16 +92,16 @@ public partial class TileMapTool : Node {
 
             bool downDown = WallTileAt(wallsLayer, position + Vector2I.Down * 2, tileMap, rect);
 
-            if (!down) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsMiddle));
-            if (!down && !right) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsRight));
-            if (!down && !left) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsLeft));
+            if (!down) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsMiddle));
+            if (!down && !right) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsRight));
+            if (!down && !left) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsLeft));
 
-            if (down && !downDown) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsMiddle) + Vector2I.Up);
-            if (down && !downDown && !downRight) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsRight) + Vector2I.Up);
-            if (down && !downDown && !downLeft) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsLeft) + Vector2I.Up);
+            if (down && !downDown) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsMiddle) + Vector2I.Up);
+            if (down && !downDown && !downRight) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsRight) + Vector2I.Up);
+            if (down && !downDown && !downLeft) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsLeft) + Vector2I.Up);
 
-            if (down && !downRight && right) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsInsideLeft));
-            if (down && !downLeft && left) tileMap.SetCell(wallsLayer, position, 0, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsInsideRight));
+            if (down && !downRight && right) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsInsideLeft));
+            if (down && !downLeft && left) tileMap.SetCell(wallsLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.GetRandom(SmartTileset.WallsInsideRight));
         }
 
         tileMap.ClearLayer(shadowLayer);
@@ -115,22 +116,22 @@ public partial class TileMapTool : Node {
 
             bool downDown = WallTileAt(wallsLayer, position + Vector2I.Down * 2, tileMap, rect);
 
-            if (!down) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowMiddle);
-            if (!down && !right) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowRight);
-            if (!down && !left) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowLeft);
+            if (!down) tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle);
+            if (!down && !right) tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowRight);
+            if (!down && !left) tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowLeft);
 
-            if (down && !downDown) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowMiddle + Vector2I.Up);
-            if (down && !downDown && !downRight) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowRight + Vector2I.Up);
-            if (down && !downDown && !downLeft) tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowLeft + Vector2I.Up);
+            if (down && !downDown) tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle + Vector2I.Up);
+            if (down && !downDown && !downRight) tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowRight + Vector2I.Up);
+            if (down && !downDown && !downLeft) tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowLeft + Vector2I.Up);
 
             if (down && !downRight && right) {
-                tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowInsideLeft);
-                tileMap.SetCell(shadowLayer, position, 0, (Vector2I)SmartTileset.ShadowMiddle);
+                tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowInsideLeft);
+                tileMap.SetCell(shadowLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle);
             }
 
             if (down && !downLeft && left) {
-                tileMap.SetCell(shadowLayer, position + Vector2I.Down, 0, (Vector2I)SmartTileset.ShadowInsideRight);
-                tileMap.SetCell(shadowLayer, position, 0, (Vector2I)SmartTileset.ShadowMiddle);
+                tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowInsideRight);
+                tileMap.SetCell(shadowLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle);
             }
         }
     }
@@ -143,3 +144,4 @@ public partial class TileMapTool : Node {
         return tileMap.GetCellTileData(layer, position) != null || !rect.HasPoint(position);
     }
 }
+#endif

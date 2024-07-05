@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -128,3 +129,4 @@ public partial class TileMapToolEditorUI : Control {
 		ResourceSaver.Singleton.Save(smartTileset, _smartTileMapPath);
 	}
 }
+#endif

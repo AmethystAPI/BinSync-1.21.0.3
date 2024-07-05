@@ -3,6 +3,8 @@ using Godot;
 
 [Tool]
 public partial class SmartTileset : Resource {
+    [Export] public int SourceId = 0;
+
     [ExportGroup("Roofs")]
     [Export] public Vector2[] RoofsTopLeft = new Vector2[0];
     [Export] public Vector2[] RoofsTop = new Vector2[0];
