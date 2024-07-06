@@ -1,0 +1,12 @@
+[ActorInitializationMethod]
+name = "ActorInitializationMethod"
+
+[ActorInitializationMethod.members]
+INVALID = 0x0
+LOADED = 0x1
+SPAWNED = 0x2
+BORN = 0x3
+TRANSFORMED = 0x4
+UPDATED = 0x5
+EVENT = 0x6
+LEGACY = 0x7

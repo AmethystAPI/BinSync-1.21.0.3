@@ -1,0 +1,15 @@
+last_change = 2024-07-06T17:39:14.846861Z
+name = "std::string_view"
+size = 0x10
+
+[members.0x0]
+name = "_Mydata"
+offset = 0x0
+type = "char *"
+size = 0x8
+
+[members.0x8]
+name = "_Mysize"
+offset = 0x8
+type = "uint64_t"
+size = 0x8
