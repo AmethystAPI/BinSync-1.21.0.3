@@ -1,0 +1,10 @@
+addr = 0x2b9dc70
+size = 0x967
+name = "??0Item@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@F@Z"
+
+[header]
+last_change = 2024-06-14T14:21:51.610128Z
+name = "??0Item@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@F@Z"
+addr = 0x2b9dc70
+
+[header.args]
