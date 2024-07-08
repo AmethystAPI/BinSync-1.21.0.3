@@ -1,0 +1,12 @@
+addr = 0x32451a0
+size = 0xef
+name = "?getRegion@PerlinSimplexNoise@@QEBAPEAMPEAMAEBVVec2@@HH1MM@Z"
+type = "void *"
+
+[header]
+last_change = 2024-06-28T15:10:20.674484Z
+name = "?getRegion@PerlinSimplexNoise@@QEBAPEAMPEAMAEBVVec2@@HH1MM@Z"
+addr = 0x32451a0
+type = "void *"
+
+[header.args]
