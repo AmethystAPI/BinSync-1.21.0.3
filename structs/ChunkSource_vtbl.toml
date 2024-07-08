@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.192905Z
+last_change = 2024-07-08T21:37:05.193910Z
 name = "ChunkSource_vtbl"
-size = 0x28
+size = 0x30
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -29,5 +29,11 @@ size = 0x8
 [members.0x20]
 name = "getRandomChunk"
 offset = 0x20
+type = "std::shared_ptr<LevelChunk> (__fastcall *)(ChunkSource *__hidden this, Random *random)"
+size = 0x8
+
+[members.0x28]
+name = "isChunkKnown"
+offset = 0x28
 type = ""
 size = 0x8
