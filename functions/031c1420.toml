@@ -1,11 +1,14 @@
-last_change = 2024-07-08T21:32:25.682074Z
+last_change = 2024-07-08T21:32:56.731274Z
 addr = 0x31c1420
 size = 0x8b
 type = "_QWORD *"
 
 [header]
-last_change = 2024-07-08T21:32:25.682074Z
+last_change = 2024-07-08T21:32:56.731274Z
 addr = 0x31c1420
 type = "_QWORD *"
 
-[header.args]
+[header.args.0x1]
+offset = 0x1
+type = "_QWORD *"
+size = 0x8
