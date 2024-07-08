@@ -1,0 +1,10 @@
+addr = 0x6f77a0
+size = 0x27
+name = "__ZN5OreUI17LevelDataBindings8Advanced15setUseFlatWorldEb"
+
+[header]
+last_change = 2024-06-20T16:36:32.036268Z
+name = "__ZN5OreUI17LevelDataBindings8Advanced15setUseFlatWorldEb"
+addr = 0x6f77a0
+
+[header.args]
