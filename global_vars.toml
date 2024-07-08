@@ -32,3 +32,8 @@ size = 0x8
 addr = 0x4dfce10
 name = "??_7AirBlockItem@@6B@"
 size = 0x8
+
+[0x4e5fa10]
+addr = 0x4e5fa10
+name = "??_7OverworldDimension@@6BSavedData@@@"
+size = 0x8
