@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T21:37:03.544388Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None None(args=1); @0x2f8f910>"
+last_commit_msg = "Updated <FuncHeader: bool None(args=0); @0x2f8f910>"
