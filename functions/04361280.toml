@@ -1,0 +1,10 @@
+addr = 0x4361280
+size = 0x1bf
+name = "?prepareAndComputeHeights@OverworldGenerator@@UEAAXAEAVBlockVolume@@AEBVChunkPos@@AEAV?$vector@FV?$allocator@F@std@@@std@@_NH@Z"
+
+[header]
+last_change = 2024-06-28T01:02:18.926963Z
+name = "?prepareAndComputeHeights@OverworldGenerator@@UEAAXAEAVBlockVolume@@AEBVChunkPos@@AEAV?$vector@FV?$allocator@F@std@@@std@@_NH@Z"
+addr = 0x4361280
+
+[header.args]
