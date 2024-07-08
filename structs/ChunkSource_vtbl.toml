@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.220137Z
+last_change = 2024-07-08T21:37:05.222174Z
 name = "ChunkSource_vtbl"
-size = 0xc0
+size = 0xc8
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -143,5 +143,11 @@ size = 0x8
 [members.0xb8]
 name = "isWithinWorldLimit"
 offset = 0xb8
+type = "bool (__fastcall *)(const ChunkSource *__hidden this, const ChunkPos *cp)"
+size = 0x8
+
+[members.0xc0]
+name = "getChunkMap"
+offset = 0xc0
 type = ""
 size = 0x8
