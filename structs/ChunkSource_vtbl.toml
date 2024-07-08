@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.210179Z
+last_change = 2024-07-08T21:37:05.212180Z
 name = "ChunkSource_vtbl"
-size = 0x90
+size = 0x98
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -107,5 +107,11 @@ size = 0x8
 [members.0x88]
 name = "hintDiscardBatchBegin"
 offset = 0x88
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x90]
+name = "hintDiscardBatchEnd"
+offset = 0x90
 type = ""
 size = 0x8
