@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN9LevelData12setGeneratorE13GeneratorType(args=0); @0x2f71090 vars=0 len=0x570> from freddie"
+last_commit_msg = "Merged in <Function: None __ZNK5OreUI17LevelDataBindings8Advanced21getSimulationDistanceEv(args=0); @0x6f78a0 vars=0 len=0x1a> from freddie"
