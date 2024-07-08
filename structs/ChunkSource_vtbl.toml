@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.206148Z
+last_change = 2024-07-08T21:37:05.207181Z
 name = "ChunkSource_vtbl"
-size = 0x78
+size = 0x80
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -89,5 +89,11 @@ size = 0x8
 [members.0x70]
 name = "writeEntityChunkTransfer"
 offset = 0x70
+type = "void (__fastcall *)(ChunkSource *__hidden this, LevelChunk *levelChunk)"
+size = 0x8
+
+[members.0x78]
+name = "writeEntityChunkTransfersToUnloadedChunk"
+offset = 0x78
 type = ""
 size = 0x8
