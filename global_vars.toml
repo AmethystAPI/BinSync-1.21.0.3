@@ -2,3 +2,8 @@
 addr = 0x4e0e500
 name = "BlockLegacy_vftable"
 size = 0x8
+
+[0x4ee8900]
+addr = 0x4ee8900
+name = "??_7OverworldDimension@@6BIDimension@@@"
+size = 0x8
