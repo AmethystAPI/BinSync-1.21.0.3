@@ -1,0 +1,9 @@
+addr = 0x31b9f90
+size = 0xb98
+
+[stack_vars.-0xb0]
+offset = -176
+name = "var_88"
+type = "long long"
+size = 0x8
+addr = 0x31b9f90
