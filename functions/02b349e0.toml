@@ -1,0 +1,10 @@
+addr = 0x2b349e0
+size = 0xaf
+name = "?_getValidActorManager@PlayerLimboActorManager@@AEBA?AV?$StackRefResult@VActorManager@@@@XZ"
+
+[header]
+last_change = 2024-06-26T16:49:51.688115Z
+name = "?_getValidActorManager@PlayerLimboActorManager@@AEBA?AV?$StackRefResult@VActorManager@@@@XZ"
+addr = 0x2b349e0
+
+[header.args]
