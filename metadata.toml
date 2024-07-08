@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __Z33fixupClientSkinModelHeirarchy_1_8RN4Json5ValueE(args=0); @0x854220 vars=0 len=0x1fe0> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN3mce12TextureGroupC2EN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEENS2_INS4_I19ResourceLoadManagerEEEERNS_22TextureResourceServiceE(args=0); @0x8c7c20 vars=0 len=0x3e4> from freddie"
