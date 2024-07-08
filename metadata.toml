@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: void __ZN11MeshHelpers21renderMeshImmediatelyER13ScreenContextR11TessellatorRKN3mce11MaterialPtrERKNS4_13ClientTextureE(args=4); @0x13f9640 vars=0 len=0x1d4> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN13LevelRendererC2ER15IClientInstanceR16MultiPlayerLevelNSt3__110shared_ptrI7OptionsEENS5_IN3mce12TextureGroupEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE13WeakEntityRefR19HolographicPlatformR12GameRendererRKNSC_INSE_I20SoundPlayerInterfaceEEEERKNSC_INSE_I13GeometryGroupEEEERK12SoundMappingRKNSC_INSE_IK28ActorResourceDefinitionGroupEEEE(args=6); @0x13afc50 vars=2 len=0x1346> from freddie"
