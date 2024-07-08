@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?buildSurfaces@OverworldGenerator@@QEAAXAEAUThreadData@1@AEAVBlockVolume@@AEAVLevelChunk@@AEBVChunkPos@@AEBVSurfaceLevelCache@@@Z(args=0); @0x43614a0 vars=0 len=0x40e> from freddie"
+last_commit_msg = "Merged in <Function: None VanillaBlockTypeIds::_dynamic_initializer_for__CaveVinesHeadWithBerries__(args=0); @0xe64b0 vars=0 len=0x2f> from freddie"
