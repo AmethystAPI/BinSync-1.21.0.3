@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.228836Z
+last_change = 2024-07-08T21:37:05.230798Z
 name = "ChunkSource_vtbl"
-size = 0xe8
+size = 0xf0
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -173,5 +173,11 @@ size = 0x8
 [members.0xe0]
 name = "tryGetBlendingDataProvider"
 offset = 0xe0
+type = "std::unique_ptr<BlendingDataProvider> (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xe8]
+name = "loadLevelChunkMetaDataDictionary"
+offset = 0xe8
 type = ""
 size = 0x8
