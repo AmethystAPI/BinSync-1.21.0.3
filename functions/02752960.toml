@@ -1,0 +1,12 @@
+addr = 0x2752960
+size = 0x3be
+name = "?fireDimensionChangedEvent@Player@@QEAAXV?$AutomaticID@VDimension@@H@@0@Z"
+type = "long long *"
+
+[header]
+last_change = 2024-06-26T17:11:10.440549Z
+name = "?fireDimensionChangedEvent@Player@@QEAAXV?$AutomaticID@VDimension@@H@@0@Z"
+addr = 0x2752960
+type = "long long *"
+
+[header.args]
