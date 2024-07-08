@@ -87,3 +87,8 @@ size = 0x8
 addr = 0x59fdfb8
 name = "__ZN13BlockGraphics11mDummyBlockE"
 size = 0x8
+
+[0x4e257c8]
+addr = 0x4e257c8
+name = "??_7BlockItem@@6B@"
+size = 0x8
