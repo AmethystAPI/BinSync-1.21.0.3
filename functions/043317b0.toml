@@ -1,0 +1,10 @@
+addr = 0x43317b0
+size = 0x2b6
+name = "?computeOverworldHeightRange@unity_5c986e6b9d6571cc96912b0bfa0329e2@@YA?AVDimensionHeightRange@@AEAVILevel@@@Z"
+
+[header]
+last_change = 2024-06-29T16:04:32.824518Z
+name = "?computeOverworldHeightRange@unity_5c986e6b9d6571cc96912b0bfa0329e2@@YA?AVDimensionHeightRange@@AEAVILevel@@@Z"
+addr = 0x43317b0
+
+[header.args]
