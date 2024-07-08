@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.207181Z
+last_change = 2024-07-08T21:37:05.209182Z
 name = "ChunkSource_vtbl"
-size = 0x80
+size = 0x88
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -95,5 +95,11 @@ size = 0x8
 [members.0x78]
 name = "writeEntityChunkTransfersToUnloadedChunk"
 offset = 0x78
+type = "void (__fastcall *)(ChunkSource *__hidden this, const ChunkKey *, const std::vector<ActorUnloadedChunkTransferEntry> *)"
+size = 0x8
+
+[members.0x80]
+name = "deserializeActorStorageToLevelChunk"
+offset = 0x80
 type = ""
 size = 0x8
