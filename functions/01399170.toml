@@ -1,0 +1,9 @@
+addr = 0x1399170
+size = 0x7a2
+
+[stack_vars.-0x538]
+offset = -1336
+name = "a4"
+type = "char[320]"
+size = 0x140
+addr = 0x1399170
