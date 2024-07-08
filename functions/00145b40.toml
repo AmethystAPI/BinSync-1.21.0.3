@@ -1,0 +1,12 @@
+addr = 0x145b40
+size = 0xa5
+name = "??$_Construct@$00PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAXQEBD_K@Z"
+type = "void *"
+
+[header]
+last_change = 2024-06-29T16:04:26.031293Z
+name = "??$_Construct@$00PEBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAAXQEBD_K@Z"
+addr = 0x145b40
+type = "void *"
+
+[header.args]
