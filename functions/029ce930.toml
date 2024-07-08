@@ -1,0 +1,9 @@
+addr = 0x29ce930
+size = 0x26a
+
+[stack_vars.-0x68]
+offset = -104
+name = "var_50"
+type = "long long[3]"
+size = 0x18
+addr = 0x29ce930
