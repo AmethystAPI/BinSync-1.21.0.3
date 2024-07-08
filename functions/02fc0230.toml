@@ -1,0 +1,11 @@
+last_change = 2024-07-08T21:30:44.019118Z
+addr = 0x2fc0230
+size = 0xc2
+name = "?sendPacketForPosition@Dimension@@UEAAXAEBVBlockPos@@AEBVPacket@@PEBVPlayer@@@Z"
+
+[header]
+last_change = 2024-07-08T21:30:44.019118Z
+name = "?sendPacketForPosition@Dimension@@UEAAXAEBVBlockPos@@AEBVPacket@@PEBVPlayer@@@Z"
+addr = 0x2fc0230
+
+[header.args]
