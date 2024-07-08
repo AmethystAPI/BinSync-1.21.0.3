@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.204033Z
+last_change = 2024-07-08T21:37:05.206148Z
 name = "ChunkSource_vtbl"
-size = 0x70
+size = 0x78
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -83,5 +83,11 @@ size = 0x8
 [members.0x68]
 name = "saveLiveChunk"
 offset = 0x68
+type = "bool (__fastcall *)(ChunkSource *__hidden this, LevelChunk *lc)"
+size = 0x8
+
+[members.0x70]
+name = "writeEntityChunkTransfer"
+offset = 0x70
 type = ""
 size = 0x8
