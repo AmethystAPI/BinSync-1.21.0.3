@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN13GeometryGroup12loadModelExtENSt3__18weak_ptrIS_EERKNS0_12basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERK11ModelParentiiRK22TextureUVCoordinateSetb(args=2); @0xaadac0 vars=3 len=0x19a8> from freddie"
+last_commit_msg = "Merged in <Function: None __ZNK20MinecraftScreenModel23getMaxSimRadiusInChunksEv(args=0); @0xb3bac0 vars=0 len=0x70> from freddie"
