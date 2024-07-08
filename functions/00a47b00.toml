@@ -1,0 +1,12 @@
+addr = 0xa47b00
+size = 0x167
+name = "__ZN13BlockGraphics25setDefaultCarriedTexturesEv"
+type = "void"
+
+[header]
+last_change = 2024-06-25T14:28:55.639132Z
+name = "__ZN13BlockGraphics25setDefaultCarriedTexturesEv"
+addr = 0xa47b00
+type = "void"
+
+[header.args]
