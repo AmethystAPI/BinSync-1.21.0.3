@@ -1,0 +1,11 @@
+last_change = 2024-07-08T21:31:14.320432Z
+addr = 0x2fbda00
+size = 0x154
+name = "?forEachPlayer@Dimension@@UEBAXV?$function@$$A6A_NAEAVPlayer@@@Z@std@@@Z"
+
+[header]
+last_change = 2024-07-08T21:31:14.320432Z
+name = "?forEachPlayer@Dimension@@UEBAXV?$function@$$A6A_NAEAVPlayer@@@Z@std@@@Z"
+addr = 0x2fbda00
+
+[header.args]
