@@ -88,3 +88,10 @@ addr = 0x30d54f4
 func_addr = 0x30d4e70
 comment = "maybe ??$insert_or_do_nothing@_K$$V@?$dense_map@_KVHashedString@@U?$hash@_K@std@\n@U?$equal_to@_K@3@V?$allocator@U?$pair@$$CB_KVHashedString@@@std@@@3@@entt@@AEAA\n?A_P$$QEA_K@Z inlined\nIt potentially inlined the mBlockNameHashToStringMap too\n"
 decompiled = true
+
+[0x3279499]
+last_change = 2024-07-08T16:48:31.749021Z
+addr = 0x3279499
+func_addr = 0x3279470
+comment = "test, will this work?\n"
+decompiled = true
