@@ -1,5 +1,9 @@
-last_change = 2024-07-08T21:37:05.186831Z
+last_change = 2024-07-08T21:37:05.187767Z
 name = "ChunkSource_vtbl"
-size = 0x0
+size = 0x8
 
-[members]
+[members.0x0]
+name = "ChunkSource_dtor_0"
+offset = 0x0
+type = ""
+size = 0x8
