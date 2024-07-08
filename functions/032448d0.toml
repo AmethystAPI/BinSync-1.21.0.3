@@ -1,0 +1,10 @@
+addr = 0x32448d0
+size = 0x1b8
+name = "?getRegion@PerlinNoise@@QEBAXPEAMAEBVVec2@@HH1M@Z"
+
+[header]
+last_change = 2024-06-28T00:41:44.733240Z
+name = "?getRegion@PerlinNoise@@QEBAXPEAMAEBVVec2@@HH1M@Z"
+addr = 0x32448d0
+
+[header.args]
