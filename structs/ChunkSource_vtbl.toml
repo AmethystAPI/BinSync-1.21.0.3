@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.230798Z
+last_change = 2024-07-08T21:37:05.233890Z
 name = "ChunkSource_vtbl"
-size = 0xf0
+size = 0xf8
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -179,5 +179,11 @@ size = 0x8
 [members.0xe8]
 name = "loadLevelChunkMetaDataDictionary"
 offset = 0xe8
+type = "std::shared_ptr<LevelChunkMetaDataDictionary> (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xf0]
+name = "setLevelChunk"
+offset = 0xf0
 type = ""
 size = 0x8
