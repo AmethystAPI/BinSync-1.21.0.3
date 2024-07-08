@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.225798Z
+last_change = 2024-07-08T21:37:05.227831Z
 name = "ChunkSource_vtbl"
-size = 0xd8
+size = 0xe0
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -161,5 +161,11 @@ size = 0x8
 [members.0xd0]
 name = "clearDeletedEntities"
 offset = 0xd0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xd8]
+name = "canCreateViews"
+offset = 0xd8
 type = ""
 size = 0x8
