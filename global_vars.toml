@@ -27,3 +27,8 @@ size = 0x8
 addr = 0x4caae90
 name = "off_144CAAE90"
 size = 0x8
+
+[0x4dfce10]
+addr = 0x4dfce10
+name = "??_7AirBlockItem@@6B@"
+size = 0x8
