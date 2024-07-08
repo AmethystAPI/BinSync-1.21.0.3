@@ -1,9 +1,0 @@
-addr = 0x1cf3b50
-size = 0x1a1
-
-[stack_vars.-0x100]
-offset = -256
-name = "var_F8"
-type = "long long[3]"
-size = 0x18
-addr = 0x1cf3b50

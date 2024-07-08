@@ -1,9 +1,0 @@
-addr = 0x1d06340
-size = 0x38f
-
-[stack_vars.-0x168]
-offset = -360
-name = "var_140"
-type = "long long[2]"
-size = 0x10
-addr = 0x1d06340

@@ -1,9 +1,0 @@
-addr = 0x445ac0
-size = 0x208
-
-[stack_vars.-0x50]
-offset = -80
-name = "a1"
-type = "long long[3]"
-size = 0x18
-addr = 0x445ac0
