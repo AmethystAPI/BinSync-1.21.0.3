@@ -1,4 +1,4 @@
-last_change = 2024-07-08T18:22:32.265618Z
+last_change = 2024-07-08T18:22:32.563259Z
 addr = 0x1e730
 size = 0xcc8
 
@@ -6,6 +6,30 @@ size = 0xcc8
 last_change = 2024-07-08T18:22:32.265618Z
 offset = -1128
 name = "var_450"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
+
+[stack_vars.-0x498]
+last_change = 2024-07-08T18:22:32.363012Z
+offset = -1176
+name = "var_480"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
+
+[stack_vars.-0x4c8]
+last_change = 2024-07-08T18:22:32.463926Z
+offset = -1224
+name = "var_4B0"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
+
+[stack_vars.-0x4f8]
+last_change = 2024-07-08T18:22:32.563259Z
+offset = -1272
+name = "var_4E0"
 type = "_QWORD[2]"
 size = 0x10
 addr = 0x1e730

@@ -1,0 +1,27 @@
+last_change = 2024-07-08T18:22:32.647830Z
+addr = 0x4da40
+size = 0x2361
+
+[stack_vars.-0x160]
+last_change = 2024-07-08T18:22:32.636787Z
+offset = -352
+name = "var_D0"
+type = "char[32]"
+size = 0x20
+addr = 0x4da40
+
+[stack_vars.-0x1c0]
+last_change = 2024-07-08T18:22:32.642381Z
+offset = -448
+name = "var_130"
+type = "char[32]"
+size = 0x20
+addr = 0x4da40
+
+[stack_vars.-0x220]
+last_change = 2024-07-08T18:22:32.647830Z
+offset = -544
+name = "var_190"
+type = "char[32]"
+size = 0x20
+addr = 0x4da40

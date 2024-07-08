@@ -1,0 +1,11 @@
+last_change = 2024-07-08T18:22:32.763183Z
+addr = 0x62690
+size = 0x281
+
+[stack_vars.-0x2c0]
+last_change = 2024-07-08T18:22:32.763183Z
+offset = -704
+name = "var_1B0"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x62690
