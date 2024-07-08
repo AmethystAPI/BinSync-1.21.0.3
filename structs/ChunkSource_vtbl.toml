@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.234920Z
+last_change = 2024-07-08T21:37:05.236921Z
 name = "ChunkSource_vtbl"
-size = 0x100
+size = 0x108
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -191,5 +191,11 @@ size = 0x8
 [members.0xf8]
 name = "canLaunchTasks"
 offset = 0xf8
+type = "bool (__fastcall *)(const ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x100]
+name = "chunkPosNeedsBlending"
+offset = 0x100
 type = ""
 size = 0x8
