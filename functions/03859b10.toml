@@ -1,0 +1,29 @@
+addr = 0x3859b10
+size = 0x8a
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrEjjPKNS_20IndexBufferContainerE"
+type = "void"
+
+[header]
+last_change = 2024-06-27T10:32:23.553077Z
+name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrEjjPKNS_20IndexBufferContainerE"
+addr = 0x3859b10
+type = "void"
+
+[stack_vars.-0x168]
+offset = -360
+name = "a4"
+type = "long long[42]"
+size = 0x150
+addr = 0x3859b10
+
+[header.args.0x1]
+offset = 0x1
+name = "materialPtr"
+type = "const mce::MaterialPtr *"
+size = 0x8
+
+[header.args.0x0]
+offset = 0x0
+name = "meshContext"
+type = "mce::MeshContext *"
+size = 0x8
