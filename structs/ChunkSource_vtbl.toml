@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.201967Z
+last_change = 2024-07-08T21:37:05.203055Z
 name = "ChunkSource_vtbl"
-size = 0x60
+size = 0x68
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -71,5 +71,11 @@ size = 0x8
 [members.0x58]
 name = "loadChunk"
 offset = 0x58
+type = "void (__fastcall *)(ChunkSource *__hidden this, LevelChunk *lc, bool forceImmediateReplacementDataLoad)"
+size = 0x8
+
+[members.0x60]
+name = "postProcessMobsAt"
+offset = 0x60
 type = ""
 size = 0x8
