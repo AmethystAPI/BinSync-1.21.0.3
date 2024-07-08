@@ -1,0 +1,9 @@
+addr = 0x40589b0
+size = 0x150e
+
+[stack_vars.-0xa18]
+offset = -2584
+name = "var_A10"
+type = "__int128"
+size = 0x10
+addr = 0x40589b0

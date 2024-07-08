@@ -1,0 +1,9 @@
+addr = 0x13f9170
+size = 0x1e5
+
+[stack_vars.-0x3a8]
+offset = -936
+name = "a4"
+type = "long long[40]"
+size = 0x140
+addr = 0x13f9170

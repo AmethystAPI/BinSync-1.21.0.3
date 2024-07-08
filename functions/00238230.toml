@@ -1,0 +1,9 @@
+addr = 0x238230
+size = 0x17b
+
+[stack_vars.-0x10]
+offset = -16
+name = "arg_30"
+type = "_QWORD *"
+size = 0x8
+addr = 0x238230

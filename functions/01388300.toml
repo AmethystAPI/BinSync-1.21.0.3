@@ -1,0 +1,9 @@
+addr = 0x1388300
+size = 0x485
+
+[stack_vars.-0x238]
+offset = -568
+name = "var_230"
+type = "__int128[2]"
+size = 0x20
+addr = 0x1388300

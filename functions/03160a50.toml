@@ -1,0 +1,11 @@
+addr = 0x3160a50
+size = 0xb9
+
+[header]
+last_change = 2024-06-14T13:54:23.675142Z
+addr = 0x3160a50
+
+[header.args.0x0]
+offset = 0x0
+type = "long long"
+size = 0x8

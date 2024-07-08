@@ -1,0 +1,9 @@
+addr = 0x23edb10
+size = 0x13b5
+
+[stack_vars.-0x248]
+offset = -584
+name = "var_220"
+type = "long long[2]"
+size = 0x10
+addr = 0x23edb10
