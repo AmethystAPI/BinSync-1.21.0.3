@@ -1,0 +1,10 @@
+addr = 0x3243ac0
+size = 0x759
+name = "?_readArea@ImprovedNoise@@QEBAXPEAMAEBVVec3@@HHH1M@Z"
+
+[header]
+last_change = 2024-06-28T00:41:13.315531Z
+name = "?_readArea@ImprovedNoise@@QEBAXPEAMAEBVVec3@@HHH1M@Z"
+addr = 0x3243ac0
+
+[header.args]
