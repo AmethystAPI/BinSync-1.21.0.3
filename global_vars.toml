@@ -7,3 +7,8 @@ size = 0x8
 addr = 0x4ee8900
 name = "??_7OverworldDimension@@6BIDimension@@@"
 size = 0x8
+
+[0x59df300]
+addr = 0x59df300
+name = "?mBlockLookupMap@BlockTypeRegistry@@0V?$map@VHashedString@@V?$SharedPtr@VBlockLegacy@@@@U?$less@VHashedString@@@std@@V?$allocator@U?$pair@$$CBVHashedString@@V?$SharedPtr@VBlockLegacy@@@@@std@@@4@@std@@A"
+size = 0x8
