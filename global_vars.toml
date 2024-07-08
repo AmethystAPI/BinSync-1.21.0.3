@@ -122,3 +122,8 @@ size = 0x4
 addr = 0x4e2c5e8
 name = "ItemStackBase_vtable"
 size = 0x8
+
+[0x4cfe968]
+addr = 0x4cfe968
+name = "__ZTV26LegacyClientNetworkHandler"
+size = 0x8
