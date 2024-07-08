@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T17:42:35.182389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN3mce12TextureGroupC2EN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEENS2_INS4_I19ResourceLoadManagerEEEERNS_22TextureResourceServiceE(args=0); @0x8c7c20 vars=0 len=0x3e4> from outer"
+last_commit_msg = "Merged in <Function: None ?_getValue@SimplexNoise@@QEBAMAEBVVec2@@@Z(args=0); @0x3245420 vars=0 len=0x2ab> from outer"
