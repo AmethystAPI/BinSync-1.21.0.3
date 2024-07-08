@@ -1,0 +1,10 @@
+addr = 0x174afe0
+size = 0x3fe
+name = "_lambda_c8ea76f62579a5f1e97f6d9ecb451fff_::operator()"
+
+[header]
+last_change = 2024-06-29T16:25:12.204109Z
+name = "_lambda_c8ea76f62579a5f1e97f6d9ecb451fff_::operator()"
+addr = 0x174afe0
+
+[header.args]
