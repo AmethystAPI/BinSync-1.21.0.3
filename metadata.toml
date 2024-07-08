@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Struct: GeometryGroup membs=4 (0xb8)> from freddie"
+last_commit_msg = "Merged in <Function: GeometryPtr * __ZN11GeometryPtrC1ER13GeometryGroupRK12HashedString(args=1); @0xa28f10 vars=0 len=0xc8> from freddie"
