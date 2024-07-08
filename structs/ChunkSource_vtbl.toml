@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.196963Z
+last_change = 2024-07-08T21:37:05.198998Z
 name = "ChunkSource_vtbl"
-size = 0x48
+size = 0x50
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -53,5 +53,11 @@ size = 0x8
 [members.0x40]
 name = "getOrLoadChunk"
 offset = 0x40
+type = "std::shared_ptr<LevelChunk> (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *cp, ChunkSource::LoadMode lm, bool readOnly)"
+size = 0x8
+
+[members.0x48]
+name = "postProcess"
+offset = 0x48
 type = ""
 size = 0x8
