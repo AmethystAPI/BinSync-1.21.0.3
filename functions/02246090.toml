@@ -1,0 +1,9 @@
+addr = 0x2246090
+size = 0x7a0
+
+[stack_vars.-0x208]
+offset = -520
+name = "a1"
+type = "long long[2]"
+size = 0x10
+addr = 0x2246090
