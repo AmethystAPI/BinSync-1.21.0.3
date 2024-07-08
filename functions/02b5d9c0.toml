@@ -1,0 +1,11 @@
+last_change = 2024-06-14T14:24:51.166176Z
+addr = 0x2b5d9c0
+size = 0x978
+
+[stack_vars.-0x198]
+last_change = 2024-06-14T14:24:51.166176Z
+offset = -408
+name = "blockItemId"
+type = "short"
+size = 0x2
+addr = 0x2b5d9c0

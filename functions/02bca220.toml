@@ -1,0 +1,26 @@
+last_change = 2024-06-29T16:14:34.859091Z
+addr = 0x2bca220
+size = 0xd2
+
+[header]
+last_change = 2024-06-29T16:14:30.924519Z
+addr = 0x2bca220
+
+[stack_vars.0x0]
+last_change = 2024-06-29T16:14:34.859091Z
+offset = 0x0
+name = "scheduler"
+type = "Scheduler *"
+size = 0x8
+addr = 0x2bca220
+
+[header.args.0x3]
+offset = 0x3
+name = "level"
+type = "ILevel *"
+size = 0x8
+
+[header.args.0x4]
+offset = 0x4
+name = "scheduler"
+size = 0x8
