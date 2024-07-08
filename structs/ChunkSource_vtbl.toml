@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.213132Z
+last_change = 2024-07-08T21:37:05.215138Z
 name = "ChunkSource_vtbl"
-size = 0xa0
+size = 0xa8
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -119,5 +119,11 @@ size = 0x8
 [members.0x98]
 name = "acquireDiscarded"
 offset = 0x98
+type = "void (__fastcall *)(ChunkSource *__hidden this, std::unique_ptr<LevelChunk, LevelChunkFinalDeleter> ptr)"
+size = 0x8
+
+[members.0xa0]
+name = "compact"
+offset = 0xa0
 type = ""
 size = 0x8
