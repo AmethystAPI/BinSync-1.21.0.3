@@ -1,9 +1,15 @@
-last_change = 2024-07-08T21:37:05.187767Z
+last_change = 2024-07-08T21:37:05.189178Z
 name = "ChunkSource_vtbl"
-size = 0x8
+size = 0x10
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
 offset = 0x0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x8]
+name = "shutdown"
+offset = 0x8
 type = ""
 size = 0x8
