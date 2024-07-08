@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T18:05:39.947550Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?getString@SynchedActorDataEntityWrapper@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@G@Z(args=0); @0x29137c0 vars=0 len=0x47> from outer"
+last_commit_msg = "Merged in <Function: None __ZNK5OreUI17LevelDataBindings8Advanced15getUseFlatWorldEv(args=0); @0x6f77d0 vars=0 len=0x3e> from outer"
