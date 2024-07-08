@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.218136Z
+last_change = 2024-07-08T21:37:05.220137Z
 name = "ChunkSource_vtbl"
-size = 0xb8
+size = 0xc0
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -137,5 +137,11 @@ size = 0x8
 [members.0xb0]
 name = "flushThreadBatch"
 offset = 0xb0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xb8]
+name = "isWithinWorldLimit"
+offset = 0xb8
 type = ""
 size = 0x8
