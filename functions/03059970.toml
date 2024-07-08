@@ -1,0 +1,24 @@
+addr = 0x3059970
+size = 0x1152
+name = "?_lookupByNameImpl@BlockTypeRegistry@@CA?AULookupByNameImplReturnType@1@AEBVHashedString@@HW4LookupByNameImplResolve@1@_N@Z"
+
+[header]
+last_change = 2024-06-14T13:48:56.834767Z
+name = "?_lookupByNameImpl@BlockTypeRegistry@@CA?AULookupByNameImplReturnType@1@AEBVHashedString@@HW4LookupByNameImplResolve@1@_N@Z"
+addr = 0x3059970
+
+[header.args.0x1]
+offset = 0x1
+name = "hashed"
+type = "HashedString *"
+size = 0x8
+
+[header.args.0x2]
+offset = 0x2
+name = "data"
+size = 0x4
+
+[header.args.0x3]
+offset = 0x3
+name = "resolveType"
+size = 0x4
