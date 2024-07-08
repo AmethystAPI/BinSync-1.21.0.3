@@ -8,4 +8,15 @@ last_change = 2024-06-27T10:39:48.824230Z
 name = "__ZNK3mce4Mesh10renderMeshERNS_11MeshContextERKNS_11MaterialPtrERKNSt3__17variantIJNS6_9monostateENS_10TexturePtrENS_13ClientTextureENS_13ServerTextureEEEEjjPKNS_20IndexBufferContainerE"
 addr = 0x3859d10
 
-[header.args]
+[stack_vars.0x0]
+offset = 0x0
+name = "arg_38"
+type = "long long"
+size = 0x8
+addr = 0x3859d10
+
+[header.args.0x0]
+offset = 0x0
+name = "this"
+type = "mce::Mesh *"
+size = 0x8
