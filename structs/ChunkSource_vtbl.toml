@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.224251Z
+last_change = 2024-07-08T21:37:05.225798Z
 name = "ChunkSource_vtbl"
-size = 0xd0
+size = 0xd8
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -155,5 +155,11 @@ size = 0x8
 [members.0xc8]
 name = "getStorage"
 offset = 0xc8
+type = "const std::unordered_map<ChunkPos, std::weak_ptr<LevelChunk>> *(__fastcall *)(const ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xd0]
+name = "clearDeletedEntities"
+offset = 0xd0
 type = ""
 size = 0x8
