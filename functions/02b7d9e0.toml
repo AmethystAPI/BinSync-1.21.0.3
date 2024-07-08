@@ -1,0 +1,10 @@
+addr = 0x2b7d9e0
+size = 0x353
+name = "??$registerItemShared@VBlockItem@@FAEBVHashedString@@@ItemRegistry@@AEAA?AV?$WeakPtr@VBlockItem@@@@AEBVHashedString@@$$QEAF0@Z"
+
+[header]
+last_change = 2024-06-14T14:25:00.052623Z
+name = "??$registerItemShared@VBlockItem@@FAEBVHashedString@@@ItemRegistry@@AEAA?AV?$WeakPtr@VBlockItem@@@@AEBVHashedString@@$$QEAF0@Z"
+addr = 0x2b7d9e0
+
+[header.args]
