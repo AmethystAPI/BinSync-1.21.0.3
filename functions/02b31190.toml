@@ -1,0 +1,10 @@
+addr = 0x2b31190
+size = 0x212
+name = "?_playerChangeDimensionPrepareRegion@PlayerDimensionTransferManager@@AEAAXAEAVPlayer@@AEAVChangeDimensionRequest@@AEAVDimension@@@Z"
+
+[header]
+last_change = 2024-06-26T17:23:55.990329Z
+name = "?_playerChangeDimensionPrepareRegion@PlayerDimensionTransferManager@@AEAAXAEAVPlayer@@AEAVChangeDimensionRequest@@AEAVDimension@@@Z"
+addr = 0x2b31190
+
+[header.args]
