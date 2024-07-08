@@ -1,4 +1,4 @@
-last_change = 2024-07-08T18:22:33.318025Z
+last_change = 2024-07-08T18:22:33.361553Z
 addr = 0x9a8e0
 size = 0x1922
 
@@ -6,6 +6,86 @@ size = 0x1922
 last_change = 2024-07-08T18:22:33.318025Z
 offset = -4904
 name = "var_1320"
+type = "_QWORD[4]"
+size = 0x20
+addr = 0x9a8e0
+
+[stack_vars.-0xb00]
+last_change = 2024-07-08T18:22:33.323525Z
+offset = -2816
+name = "var_AF8"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x1368]
+last_change = 2024-07-08T18:22:33.329531Z
+offset = -4968
+name = "var_1360"
+type = "__int128"
+size = 0x10
+addr = 0x9a8e0
+
+[stack_vars.-0xac8]
+last_change = 2024-07-08T18:22:33.333635Z
+offset = -2760
+name = "var_AC0"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x1388]
+last_change = 2024-07-08T18:22:33.337893Z
+offset = -5000
+name = "var_1380"
+type = "__int128"
+size = 0x10
+addr = 0x9a8e0
+
+[stack_vars.-0xa90]
+last_change = 2024-07-08T18:22:33.341438Z
+offset = -2704
+name = "var_A88"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x13a8]
+last_change = 2024-07-08T18:22:33.345999Z
+offset = -5032
+name = "var_13A0"
+type = "char[13]"
+size = 0xd
+addr = 0x9a8e0
+
+[stack_vars.-0xa58]
+last_change = 2024-07-08T18:22:33.349998Z
+offset = -2648
+name = "var_A50"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x1508]
+last_change = 2024-07-08T18:22:33.353666Z
+offset = -5384
+name = "var_1500"
+type = "char[14]"
+size = 0xe
+addr = 0x9a8e0
+
+[stack_vars.-0xa20]
+last_change = 2024-07-08T18:22:33.357944Z
+offset = -2592
+name = "var_A18"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x13c8]
+last_change = 2024-07-08T18:22:33.361553Z
+offset = -5064
+name = "var_13C0"
 type = "_QWORD[4]"
 size = 0x20
 addr = 0x9a8e0
