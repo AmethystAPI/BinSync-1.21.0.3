@@ -1,0 +1,10 @@
+addr = 0x1620fb0
+size = 0x1171
+name = "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z"
+
+[header]
+last_change = 2024-06-13T21:24:43.893519Z
+name = "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z"
+addr = 0x1620fb0
+
+[header.args]
