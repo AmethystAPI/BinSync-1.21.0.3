@@ -52,3 +52,8 @@ size = 0x8
 addr = 0x59df328
 name = "?mKnownNamespaces@BlockTypeRegistry@@0V?$set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A"
 size = 0x8
+
+[0x57c56b0]
+addr = 0x57c56b0
+name = "?blockChange@GameEventRegistry@@3VGameEvent@@B"
+size = 0x1
