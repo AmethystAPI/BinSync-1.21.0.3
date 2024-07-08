@@ -1,0 +1,10 @@
+addr = 0x43610d0
+size = 0x1a9
+name = "?prepareHeights@OverworldGenerator@@UEAAXAEAVBlockVolume@@AEBVChunkPos@@_N@Z"
+
+[header]
+last_change = 2024-06-28T14:17:14.619225Z
+name = "?prepareHeights@OverworldGenerator@@UEAAXAEAVBlockVolume@@AEBVChunkPos@@_N@Z"
+addr = 0x43610d0
+
+[header.args]
