@@ -1,9 +1,0 @@
-addr = 0x4057130
-size = 0xed7
-
-[stack_vars.-0x13c8]
-offset = -5064
-name = "var_13A8"
-type = "char[32]"
-size = 0x20
-addr = 0x4057130
