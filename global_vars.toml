@@ -147,3 +147,9 @@ last_change = 2024-07-08T22:14:59.633022Z
 addr = 0x4e5f690
 name = "??_7WorldGenerator@@6BIPreliminarySurfaceProvider@@@"
 size = 0x8
+
+[0x4e5f6a0]
+last_change = 2024-07-08T22:15:20.716972Z
+addr = 0x4e5f6a0
+name = "??_7WorldGenerator@@6BChunkSource@@@"
+size = 0x8
