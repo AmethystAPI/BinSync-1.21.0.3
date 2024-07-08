@@ -1,0 +1,11 @@
+last_change = 2024-06-28T15:42:40.459521Z
+addr = 0x17ff0
+size = 0x10d
+
+[stack_vars.-0x50]
+last_change = 2024-06-28T15:42:40.459521Z
+offset = -80
+name = "a1"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x17ff0

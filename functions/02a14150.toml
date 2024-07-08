@@ -1,0 +1,11 @@
+last_change = 2024-06-28T11:26:25.022910Z
+addr = 0x2a14150
+size = 0x843
+
+[stack_vars.-0xf8]
+last_change = 2024-06-28T11:26:25.022910Z
+offset = -248
+name = "a1"
+type = "float"
+size = 0x4
+addr = 0x2a14150

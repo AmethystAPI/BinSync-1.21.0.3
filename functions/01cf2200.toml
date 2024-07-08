@@ -1,0 +1,11 @@
+last_change = 2024-06-28T11:25:55.433742Z
+addr = 0x1cf2200
+size = 0x19c
+
+[stack_vars.-0x128]
+last_change = 2024-06-28T11:25:55.433742Z
+offset = -296
+name = "var_120"
+type = "long long[2]"
+size = 0x10
+addr = 0x1cf2200

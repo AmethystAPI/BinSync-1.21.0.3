@@ -1,0 +1,11 @@
+last_change = 2024-06-28T11:26:25.028914Z
+addr = 0x2ad6f80
+size = 0xc2
+type = "double"
+
+[header]
+last_change = 2024-06-28T11:26:25.028914Z
+addr = 0x2ad6f80
+type = "double"
+
+[header.args]

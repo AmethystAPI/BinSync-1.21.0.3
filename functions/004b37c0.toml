@@ -1,0 +1,27 @@
+last_change = 2024-06-26T17:06:56.853669Z
+addr = 0x4b37c0
+size = 0x1260
+
+[stack_vars.-0x758]
+last_change = 2024-06-26T17:06:56.852668Z
+offset = -1880
+name = "a3"
+type = "int[4]"
+size = 0x10
+addr = 0x4b37c0
+
+[stack_vars.-0x308]
+last_change = 2024-06-26T17:06:56.849668Z
+offset = -776
+name = "a1"
+type = "long long[68]"
+size = 0x220
+addr = 0x4b37c0
+
+[stack_vars.-0x748]
+last_change = 2024-06-26T16:47:02.472813Z
+offset = -1864
+name = "var_740"
+type = "__int128"
+size = 0x10
+addr = 0x4b37c0

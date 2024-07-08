@@ -1,0 +1,11 @@
+last_change = 2024-06-26T17:15:54.665639Z
+addr = 0x8d1180
+size = 0x769
+
+[stack_vars.-0x1e8]
+last_change = 2024-06-26T17:15:54.665639Z
+offset = -488
+name = "a4"
+type = "long long[4]"
+size = 0x20
+addr = 0x8d1180

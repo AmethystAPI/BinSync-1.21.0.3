@@ -1,0 +1,11 @@
+last_change = 2024-06-28T11:25:53.864879Z
+addr = 0x1c323e0
+size = 0xf5bc
+
+[stack_vars.-0x8188]
+last_change = 2024-06-28T11:25:53.864879Z
+offset = -33160
+name = "var_8160"
+type = "char[32]"
+size = 0x20
+addr = 0x1c323e0
