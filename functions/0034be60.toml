@@ -1,0 +1,10 @@
+addr = 0x34be60
+size = 0x599
+name = "__ZN14ClientInstance15onStartJoinGameEb"
+
+[header]
+last_change = 2024-06-17T21:29:42.700513Z
+name = "__ZN14ClientInstance15onStartJoinGameEb"
+addr = 0x34be60
+
+[header.args]
