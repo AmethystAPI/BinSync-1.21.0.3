@@ -37,3 +37,8 @@ size = 0x8
 addr = 0x4e5fa10
 name = "??_7OverworldDimension@@6BSavedData@@@"
 size = 0x8
+
+[0x4e37018]
+addr = 0x4e37018
+name = "ChestBlock_vftable"
+size = 0x8
