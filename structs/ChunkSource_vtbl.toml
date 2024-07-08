@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.222174Z
+last_change = 2024-07-08T21:37:05.224251Z
 name = "ChunkSource_vtbl"
-size = 0xc8
+size = 0xd0
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -149,5 +149,11 @@ size = 0x8
 [members.0xc0]
 name = "getChunkMap"
 offset = 0xc0
+type = "const std::unordered_map<ChunkPos, std::weak_ptr<LevelChunk>> *(__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xc8]
+name = "getStorage"
+offset = 0xc8
 type = ""
 size = 0x8
