@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.189178Z
+last_change = 2024-07-08T21:37:05.190216Z
 name = "ChunkSource_vtbl"
-size = 0x10
+size = 0x18
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -11,5 +11,11 @@ size = 0x8
 [members.0x8]
 name = "shutdown"
 offset = 0x8
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x10]
+name = "isShutdownDone"
+offset = 0x10
 type = ""
 size = 0x8
