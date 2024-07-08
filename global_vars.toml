@@ -92,3 +92,8 @@ size = 0x8
 addr = 0x4e257c8
 name = "??_7BlockItem@@6B@"
 size = 0x8
+
+[0x4cf2ad8]
+addr = 0x4cf2ad8
+name = "__ZTVN3mce12TextureGroupE"
+size = 0x8
