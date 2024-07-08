@@ -117,3 +117,8 @@ size = 0x8
 addr = 0x59d63e4
 name = "?Undefined@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
 size = 0x4
+
+[0x4e2c5e8]
+addr = 0x4e2c5e8
+name = "ItemStackBase_vtable"
+size = 0x8
