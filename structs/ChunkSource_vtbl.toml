@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.215138Z
+last_change = 2024-07-08T21:37:05.217136Z
 name = "ChunkSource_vtbl"
-size = 0xa8
+size = 0xb0
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -125,5 +125,11 @@ size = 0x8
 [members.0xa0]
 name = "compact"
 offset = 0xa0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xa8]
+name = "flushPendingDiscardedChunkWrites"
+offset = 0xa8
 type = ""
 size = 0x8
