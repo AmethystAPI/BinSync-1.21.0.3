@@ -2,10 +2,12 @@ last_change = 2024-06-13T22:24:49.299541Z
 addr = 0x1458e0
 size = 0x37
 name = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@QEBD@Z"
+type = "_QWORD *"
 
 [header]
 last_change = 2024-06-13T22:24:49.299541Z
 name = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QEAA@QEBD@Z"
 addr = 0x1458e0
+type = "_QWORD *"
 
 [header.args]
