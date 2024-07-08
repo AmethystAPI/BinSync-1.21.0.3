@@ -82,3 +82,8 @@ size = 0x8
 addr = 0x57f98b8
 name = "qword_1457F98B8"
 size = 0x8
+
+[0x59fdfb8]
+addr = 0x59fdfb8
+name = "__ZN13BlockGraphics11mDummyBlockE"
+size = 0x8
