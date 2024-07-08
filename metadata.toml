@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T17:42:35.182389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN16NetEventCallback13onPlayerReadyER6Player(args=0); @0xb08870 vars=0 len=0x7a> from outer"
+last_commit_msg = "Merged in <Function: @0x1e2e070 len=0x378> from outer"
