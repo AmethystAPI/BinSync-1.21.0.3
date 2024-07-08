@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.194959Z
+last_change = 2024-07-08T21:37:05.195964Z
 name = "ChunkSource_vtbl"
-size = 0x38
+size = 0x40
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -41,5 +41,11 @@ size = 0x8
 [members.0x30]
 name = "isChunkSaved"
 offset = 0x30
+type = "bool (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *chunkPos)"
+size = 0x8
+
+[members.0x38]
+name = "createNewChunk"
+offset = 0x38
 type = ""
 size = 0x8
