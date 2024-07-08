@@ -1,0 +1,10 @@
+addr = 0x433d080
+size = 0xb9
+name = "?getTunnelThickness_1_18@CaveFeatureUtils@@YAMAEAVRandom@@@Z"
+
+[header]
+last_change = 2024-06-28T01:00:13.819474Z
+name = "?getTunnelThickness_1_18@CaveFeatureUtils@@YAMAEAVRandom@@@Z"
+addr = 0x433d080
+
+[header.args]
