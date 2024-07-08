@@ -1,0 +1,10 @@
+addr = 0x854220
+size = 0x1fe0
+name = "__Z33fixupClientSkinModelHeirarchy_1_8RN4Json5ValueE"
+
+[header]
+last_change = 2024-06-26T20:25:43.809675Z
+name = "__Z33fixupClientSkinModelHeirarchy_1_8RN4Json5ValueE"
+addr = 0x854220
+
+[header.args]
