@@ -1,11 +1,14 @@
-last_change = 2024-07-08T21:34:14.014991Z
+last_change = 2024-07-08T21:34:18.362917Z
 addr = 0x2f8f8f0
 size = 0x18
 name = "?shutdown@ChunkSource@@UEAAXXZ"
 
 [header]
-last_change = 2024-07-08T21:34:14.014991Z
+last_change = 2024-07-08T21:34:18.362917Z
 name = "?shutdown@ChunkSource@@UEAAXXZ"
 addr = 0x2f8f8f0
 
-[header.args]
+[header.args.0x0]
+offset = 0x0
+type = "ChunkSource *"
+size = 0x8
