@@ -1,9 +1,0 @@
-addr = 0x2244310
-size = 0x14f
-
-[stack_vars.-0xb8]
-offset = -184
-name = "var_A0"
-type = "long long"
-size = 0x8
-addr = 0x2244310

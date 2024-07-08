@@ -1,9 +1,0 @@
-addr = 0xd83280
-size = 0x238
-
-[stack_vars.-0x78]
-offset = -120
-name = "var_60"
-type = "long long[3]"
-size = 0x18
-addr = 0xd83280

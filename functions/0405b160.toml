@@ -1,9 +1,0 @@
-addr = 0x405b160
-size = 0x3fe
-
-[stack_vars.-0x5c8]
-offset = -1480
-name = "var_580"
-type = "char[32]"
-size = 0x20
-addr = 0x405b160

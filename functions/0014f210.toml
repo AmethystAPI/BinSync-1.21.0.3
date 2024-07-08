@@ -1,9 +1,0 @@
-addr = 0x14f210
-size = 0x244
-
-[stack_vars.-0x68]
-offset = -104
-name = "var_48"
-type = "long long[3]"
-size = 0x18
-addr = 0x14f210

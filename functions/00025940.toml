@@ -1,9 +1,0 @@
-addr = 0x25940
-size = 0x187
-
-[stack_vars.-0x50]
-offset = -80
-name = "var_50"
-type = "__int128"
-size = 0x10
-addr = 0x25940

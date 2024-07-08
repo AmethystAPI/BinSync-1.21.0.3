@@ -1,9 +1,0 @@
-addr = 0xcddb20
-size = 0x536
-
-[stack_vars.-0xe0]
-offset = -224
-name = "a1"
-type = "long long[4]"
-size = 0x20
-addr = 0xcddb20

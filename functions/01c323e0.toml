@@ -1,9 +1,0 @@
-addr = 0x1c323e0
-size = 0xf5bc
-
-[stack_vars.-0x8188]
-offset = -33160
-name = "var_8160"
-type = "char[32]"
-size = 0x20
-addr = 0x1c323e0

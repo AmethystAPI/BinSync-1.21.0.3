@@ -1,9 +1,0 @@
-addr = 0x2b5d9c0
-size = 0x978
-
-[stack_vars.-0x198]
-offset = -408
-name = "blockItemId"
-type = "short"
-size = 0x2
-addr = 0x2b5d9c0

@@ -1,9 +1,0 @@
-addr = 0x5ab970
-size = 0x672
-
-[stack_vars.-0x5a8]
-offset = -1448
-name = "var_5A0"
-type = "long long"
-size = 0x8
-addr = 0x5ab970

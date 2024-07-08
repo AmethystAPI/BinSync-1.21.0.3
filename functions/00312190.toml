@@ -1,9 +1,0 @@
-addr = 0x312190
-size = 0x9af
-
-[stack_vars.-0x378]
-offset = -888
-name = "var_370"
-type = "unsigned __int128"
-size = 0x10
-addr = 0x312190
