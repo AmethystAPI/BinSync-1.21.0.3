@@ -1,0 +1,12 @@
+addr = 0x30d4e70
+size = 0x80f
+name = "??$registerBlock@VStoneBlock@@H@BlockTypeRegistry@@SAAEAVStoneBlock@@AEBVHashedString@@$$QEAH@Z"
+type = "PSRWLOCK"
+
+[header]
+last_change = 2024-06-13T22:25:43.725066Z
+name = "??$registerBlock@VStoneBlock@@H@BlockTypeRegistry@@SAAEAVStoneBlock@@AEBVHashedString@@$$QEAH@Z"
+addr = 0x30d4e70
+type = "PSRWLOCK"
+
+[header.args]
