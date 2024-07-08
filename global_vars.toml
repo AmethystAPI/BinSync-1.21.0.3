@@ -102,3 +102,8 @@ size = 0x8
 addr = 0x57d14e0
 name = "?mBlockNameHashToStringMap@BlockTypeRegistry@@0V?$dense_map@_KVHashedString@@U?$hash@_K@std@@U?$equal_to@_K@3@V?$allocator@U?$pair@$$CB_KVHashedString@@@std@@@3@@entt@@A"
 size = 0x8
+
+[0x57e2f60]
+addr = 0x57e2f60
+name = "__ZN3mce10TexturePtr19mDefaultTextureDataE"
+size = 0x8
