@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T18:05:39.947550Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN26BlockActorRenderDispatcher30initializeBlockEntityRenderersERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI13GeometryGroupEEEENSt3__110shared_ptrIN3mce12TextureGroupEEER16BlockTessellatorRKNS1_INS3_IK28ActorResourceDefinitionGroupEEEER19ResourcePackManagerR34MinecraftGameplayGraphicsResourcesNS1_INS3_I19ResourceLoadManagerEEEERK15BaseGameVersionRK11Experiments(args=1); @0x1406930 vars=1 len=0x1064> from outer"
+last_commit_msg = "Merged in <Function: None ?readAdditionalSaveData@Mob@@MEAAXAEBVCompoundTag@@AEAVDataLoadHelper@@@Z(args=0); @0x29c6330 vars=0 len=0x7c9> from outer"

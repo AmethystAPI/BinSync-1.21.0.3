@@ -1,0 +1,10 @@
+addr = 0x29c6330
+size = 0x7c9
+name = "?readAdditionalSaveData@Mob@@MEAAXAEBVCompoundTag@@AEAVDataLoadHelper@@@Z"
+
+[header]
+last_change = 2024-06-26T16:39:01.593692Z
+name = "?readAdditionalSaveData@Mob@@MEAAXAEBVCompoundTag@@AEAVDataLoadHelper@@@Z"
+addr = 0x29c6330
+
+[header.args]
