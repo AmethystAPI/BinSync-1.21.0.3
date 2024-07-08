@@ -1,0 +1,10 @@
+addr = 0x2e0c0e0
+size = 0x249
+name = "?fromTag@ItemStack@@SA?AV1@AEBVCompoundTag@@@Z"
+
+[header]
+last_change = 2024-06-26T16:42:58.337168Z
+name = "?fromTag@ItemStack@@SA?AV1@AEBVCompoundTag@@@Z"
+addr = 0x2e0c0e0
+
+[header.args]
