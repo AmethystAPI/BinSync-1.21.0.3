@@ -1,0 +1,17 @@
+addr = 0xab8260
+size = 0x255
+name = "__ZNK20ArmorTrimTextureData25buildArmorTrimTexturePathEv"
+
+[header]
+last_change = 2024-06-27T20:29:38.264649Z
+name = "__ZNK20ArmorTrimTextureData25buildArmorTrimTexturePathEv"
+addr = 0xab8260
+
+[header.args]
+
+[stack_vars.-0x48]
+offset = -72
+name = "var_20"
+type = "long long[3]"
+size = 0x18
+addr = 0xab8260
