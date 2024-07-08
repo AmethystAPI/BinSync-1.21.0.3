@@ -62,3 +62,8 @@ size = 0x1
 addr = 0x4cff230
 name = "__ZTV20ClientNetworkHandler"
 size = 0x8
+
+[0x59d6234]
+addr = 0x59d6234
+name = "?Overworld@VanillaDimensions@@2V?$AutomaticID@VDimension@@H@@B"
+size = 0x4
