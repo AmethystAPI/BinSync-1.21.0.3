@@ -1,0 +1,63 @@
+last_change = 2024-07-08T16:51:17.658996Z
+name = "ChunkSource"
+size = 0x70
+
+[members.0x0]
+name = "baseclass_0"
+offset = 0x0
+type = "Bedrock::EnableNonOwnerReferences"
+size = 0x18
+
+[members.0x18]
+name = "mChunkSide"
+offset = 0x18
+type = "int"
+size = 0x4
+
+[members.0x20]
+name = "mLevel"
+offset = 0x20
+type = "Level *"
+size = 0x8
+
+[members.0x28]
+name = "mDimension"
+offset = 0x28
+type = "Dimension *"
+size = 0x8
+
+[members.0x30]
+name = "mParent"
+offset = 0x30
+type = "ChunkSource *"
+size = 0x8
+
+[members.0x38]
+name = "mOwnedParent"
+offset = 0x38
+type = "std::unique_ptr<ChunkSource>"
+size = 0x8
+
+[members.0x40]
+name = "mLevelChunkBuilderData"
+offset = 0x40
+type = "LevelChunkBuilderData *"
+size = 0x8
+
+[members.0x48]
+name = "mShuttingDown"
+offset = 0x48
+type = "std::atomic<bool>"
+size = 0x1
+
+[members.0x50]
+name = "mOnSaveSubscription"
+offset = 0x50
+type = "Bedrock::PubSub::Subscription"
+size = 0x10
+
+[members.0x60]
+name = "mOnLevelStorageAppSuspendSubscription"
+offset = 0x60
+type = "Bedrock::PubSub::Subscription"
+size = 0x10
