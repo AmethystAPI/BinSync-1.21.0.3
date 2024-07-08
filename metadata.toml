@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T18:05:39.947550Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ??$registerItemShared@VBlockItem@@FAEBVHashedString@@@ItemRegistry@@AEAA?AV?$WeakPtr@VBlockItem@@@@AEBVHashedString@@$$QEAF0@Z(args=0); @0x2b7d9e0 vars=0 len=0x353> from outer"
+last_commit_msg = "Merged in <Function: None __ZN13BlockGraphics21registerBlockGraphicsERNSt3__113unordered_mapI12HashedStringNS0_6vectorIN4Json5ValueENS0_9allocatorIS5_EEEENS0_4hashIS2_EENS0_8equal_toIS2_EENS6_INS0_4pairIKS2_S8_EEEEEERSE_10BlockShape(args=0); @0xa3f3f0 vars=0 len=0x239> from outer"
