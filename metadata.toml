@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T18:05:39.947550Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN20ClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerR15IClientInstanceR17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERKN7Bedrock15NonOwnerPointerI6ILevelEE(args=7); @0xaeab70 vars=3 len=0x1a1> from outer"
+last_commit_msg = "Merged in <Function: None ?loadActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@PEAVCompoundTag@@AEAVDataLoadHelper@@AEBVDimensionHeightRange@@PEBVLevelChunk@@@Z(args=0); @0x27c1170 vars=0 len=0x730> from outer"
