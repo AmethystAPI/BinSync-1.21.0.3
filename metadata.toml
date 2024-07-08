@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: long long __ZN11Tessellator5beginEib(args=0); @0x799300 vars=0 len=0x111> from freddie"
+last_commit_msg = "Merged in <Function: void __ZN13BlockGraphics25setDefaultCarriedTexturesEv(args=0); @0xa47b00 vars=0 len=0x167> from freddie"
