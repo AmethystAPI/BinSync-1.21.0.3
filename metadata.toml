@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T18:05:39.947550Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <GlobalVar: None __ZTV26LegacyClientNetworkHandler; @80734568 len=8> from outer"
+last_commit_msg = "Merged in <Enum: ActorInitializationMethod member_count=8> from outer"
