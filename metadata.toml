@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T17:42:35.182389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: @0xafa860 len=0x291> from outer"
+last_commit_msg = "Merged in <Function: None __ZN26LegacyClientNetworkHandlerC2ENSt3__18weak_ptrI23IGameConnectionListenerEER18IGameServerStartupR15IClientInstanceR19ClientNetworkSystemR12PacketSenderR17PrivateKeyManagerRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI20SoundPlayerInterfaceEEEENS0_10unique_ptrI11CertificateNS0_14default_deleteISO_EEEER17MinecraftCommandsNS0_10shared_ptrIN15ClientBlobCache5CacheEEERN6cereal13ReflectionCtxE(args=0); @0xb00860 vars=0 len=0x3d3> from outer"
