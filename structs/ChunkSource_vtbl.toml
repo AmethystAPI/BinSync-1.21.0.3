@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.209182Z
+last_change = 2024-07-08T21:37:05.210179Z
 name = "ChunkSource_vtbl"
-size = 0x88
+size = 0x90
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -101,5 +101,11 @@ size = 0x8
 [members.0x80]
 name = "deserializeActorStorageToLevelChunk"
 offset = 0x80
+type = "void (__fastcall *)(ChunkSource *__hidden this, LevelChunk *)"
+size = 0x8
+
+[members.0x88]
+name = "hintDiscardBatchBegin"
+offset = 0x88
 type = ""
 size = 0x8
