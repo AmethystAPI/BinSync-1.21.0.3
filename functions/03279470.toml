@@ -1,11 +1,11 @@
-last_change = 2024-07-08T16:51:56.216499Z
+last_change = 2024-07-08T16:52:02.074389Z
 addr = 0x3279470
 size = 0x237
-name = "sub_143279470"
+name = "??0FlatWorldGenerator@@QEAA@AEAVDimension@@IAEBVValue@Json@@@Z"
 
 [header]
-last_change = 2024-07-08T16:51:56.216499Z
-name = "sub_143279470"
+last_change = 2024-07-08T16:52:02.074389Z
+name = "??0FlatWorldGenerator@@QEAA@AEAVDimension@@IAEBVValue@Json@@@Z"
 addr = 0x3279470
 
 [header.args]
