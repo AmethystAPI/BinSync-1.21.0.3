@@ -1,0 +1,10 @@
+addr = 0x6f78a0
+size = 0x1a
+name = "__ZNK5OreUI17LevelDataBindings8Advanced21getSimulationDistanceEv"
+
+[header]
+last_change = 2024-06-20T16:40:27.975014Z
+name = "__ZNK5OreUI17LevelDataBindings8Advanced21getSimulationDistanceEv"
+addr = 0x6f78a0
+
+[header.args]
