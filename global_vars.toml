@@ -17,3 +17,8 @@ size = 0x8
 addr = 0x0
 name = "a1"
 size = 0x1
+
+[0x4e5fa08]
+addr = 0x4e5fa08
+name = "??_7OverworldDimension@@6BEnableNonOwnerReferences@Bedrock@@@"
+size = 0x8
