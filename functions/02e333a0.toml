@@ -1,0 +1,11 @@
+last_change = 2024-06-28T16:21:14.673336Z
+addr = 0x2e333a0
+size = 0xa6c
+name = "?buildSurface@Utils@VanillaSurfaceBuilders@@YAXAEBUBuildParameters@ISurfaceBuilder@@@Z"
+
+[header]
+last_change = 2024-06-28T16:21:14.673336Z
+name = "?buildSurface@Utils@VanillaSurfaceBuilders@@YAXAEBUBuildParameters@ISurfaceBuilder@@@Z"
+addr = 0x2e333a0
+
+[header.args]
