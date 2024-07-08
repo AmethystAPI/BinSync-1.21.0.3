@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-07-08T16:52:02.074389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ??0Dimension@@QEAA@AEAVILevel@@V?$AutomaticID@VDimension@@H@@VDimensionHeightRange@@AEAVScheduler@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z(args=0); @0x2fb9f40 vars=0 len=0xa47> from freddie"
+last_commit_msg = "Merged in <Function: None std::_Func_impl_no_alloc__lambda_c8ea76f62579a5f1e97f6d9ecb451fff__void_::_Do_call(args=0); @0x177a950 vars=0 len=0x9> from freddie"
