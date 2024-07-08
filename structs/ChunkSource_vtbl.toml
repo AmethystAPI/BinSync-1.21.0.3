@@ -1,6 +1,6 @@
-last_change = 2024-07-08T21:37:05.203055Z
+last_change = 2024-07-08T21:37:05.204033Z
 name = "ChunkSource_vtbl"
-size = 0x68
+size = 0x70
 
 [members.0x0]
 name = "ChunkSource_dtor_0"
@@ -77,5 +77,11 @@ size = 0x8
 [members.0x60]
 name = "postProcessMobsAt"
 offset = 0x60
+type = "void (__fastcall *)(ChunkSource *__hidden this, BlockSource *region, int chunkWestBlock, int chunkNorthBlock, Random *random)"
+size = 0x8
+
+[members.0x68]
+name = "saveLiveChunk"
+offset = 0x68
 type = ""
 size = 0x8
