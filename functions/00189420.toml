@@ -1,0 +1,10 @@
+addr = 0x189420
+size = 0x9f
+name = "__ZN14ServiceLocatorI11AppPlatformE3getEv"
+
+[header]
+last_change = 2024-06-20T16:58:48.220946Z
+name = "__ZN14ServiceLocatorI11AppPlatformE3getEv"
+addr = 0x189420
+
+[header.args]
