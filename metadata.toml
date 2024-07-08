@@ -3,4 +3,4 @@ version = "4.3.3"
 last_push_time = 2024-07-08T17:42:35.182389Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN13LevelRenderer16getBlockRendererEv(args=0); @0x13b1e50 vars=0 len=0x146> from outer"
+last_commit_msg = "Merged in <Function: None __ZNK20ArmorTrimTextureData25buildArmorTrimTexturePathEv(args=0); @0xab8260 vars=1 len=0x255> from outer"
