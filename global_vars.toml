@@ -129,3 +129,9 @@ last_change = 2024-06-25T14:24:07.992981Z
 addr = 0x59fdfb8
 name = "__ZN13BlockGraphics11mDummyBlockE"
 size = 0x8
+
+[0x4e6b4d8]
+last_change = 2024-07-08T21:32:42.673819Z
+addr = 0x4e6b4d8
+name = "??_7NetworkChunkSource@@6B@"
+size = 0x8
