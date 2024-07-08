@@ -107,3 +107,8 @@ size = 0x8
 addr = 0x57e2f60
 name = "__ZN3mce10TexturePtr19mDefaultTextureDataE"
 size = 0x8
+
+[0x59bd7e0]
+addr = 0x59bd7e0
+name = "uiFillMaterial"
+size = 0x8
