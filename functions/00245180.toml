@@ -1,0 +1,10 @@
+addr = 0x245180
+size = 0x367
+name = "?read@Packet@@UEAA?AV?$Result@XVerror_code@std@@@Bedrock@@AEAVReadOnlyBinaryStream@@@Z"
+
+[header]
+last_change = 2024-06-23T17:19:42.902062Z
+name = "?read@Packet@@UEAA?AV?$Result@XVerror_code@std@@@Bedrock@@AEAVReadOnlyBinaryStream@@@Z"
+addr = 0x245180
+
+[header.args]
