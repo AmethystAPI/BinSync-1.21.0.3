@@ -95,3 +95,10 @@ addr = 0x3279499
 func_addr = 0x3279470
 comment = "test, will this work?\n"
 decompiled = true
+
+[0x174b125]
+last_change = 2024-07-09T16:01:52.480162Z
+addr = 0x174b125
+func_addr = 0x174afe0
+comment = "<- Level::getOrCreateDimension\n"
+decompiled = true
