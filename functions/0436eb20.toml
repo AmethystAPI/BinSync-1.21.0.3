@@ -1,0 +1,11 @@
+last_change = 2024-07-09T16:39:13.144036Z
+addr = 0x436eb20
+size = 0x657
+name = "?_prepareHeights@TheEndGenerator@@AEAAXAEAVBlockVolume@@AEBVChunkPos@@_NPEAV?$vector@FV?$allocator@F@std@@@std@@H@Z"
+
+[header]
+last_change = 2024-07-09T16:39:13.144036Z
+name = "?_prepareHeights@TheEndGenerator@@AEAAXAEAVBlockVolume@@AEBVChunkPos@@_NPEAV?$vector@FV?$allocator@F@std@@@std@@H@Z"
+addr = 0x436eb20
+
+[header.args]
