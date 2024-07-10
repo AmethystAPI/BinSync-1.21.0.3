@@ -3,4 +3,4 @@ version = "4.1.6"
 last_push_time = 2024-06-28T17:06:41.032431Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ?_prepareHeights@TheEndGenerator@@AEAAXAEAVBlockVolume@@AEBVChunkPos@@_NPEAV?$vector@FV?$allocator@F@std@@@std@@H@Z(args=0); @0x436eb20 vars=0 len=0x657> from outer"
+last_commit_msg = "Merged in <Function: None setFromBlockVolume(args=0); @0x31c4590 vars=0 len=0x110> from outer"
