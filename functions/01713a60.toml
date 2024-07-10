@@ -1,0 +1,11 @@
+last_change = 2024-07-10T21:04:22.145624Z
+addr = 0x1713a60
+size = 0x6e
+name = "?write@ChangeDimensionPacket@@UEBAXAEAVBinaryStream@@@Z"
+
+[header]
+last_change = 2024-07-10T21:04:22.145624Z
+name = "?write@ChangeDimensionPacket@@UEBAXAEAVBinaryStream@@@Z"
+addr = 0x1713a60
+
+[header.args]
