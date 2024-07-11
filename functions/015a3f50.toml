@@ -1,0 +1,11 @@
+last_change = 2024-07-11T14:13:32.017316Z
+addr = 0x15a3f50
+size = 0xaf
+name = "__ZNK11LoginPacket5writeER12BinaryStream"
+
+[header]
+last_change = 2024-07-11T14:13:32.017316Z
+name = "__ZNK11LoginPacket5writeER12BinaryStream"
+addr = 0x15a3f50
+
+[header.args]
