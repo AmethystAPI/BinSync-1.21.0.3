@@ -1,0 +1,11 @@
+last_change = 2024-07-11T14:15:42.915845Z
+addr = 0x15badf0
+size = 0x35
+name = "__ZNK28RequestNetworkSettingsPacket7getNameEv"
+
+[header]
+last_change = 2024-07-11T14:15:42.915845Z
+name = "__ZNK28RequestNetworkSettingsPacket7getNameEv"
+addr = 0x15badf0
+
+[header.args]
