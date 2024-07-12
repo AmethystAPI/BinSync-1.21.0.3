@@ -127,7 +127,7 @@ name = "qword_1457E24B8"
 size = 0x8
 
 [0x57e24c0]
-last_change = 2024-07-12T17:00:59.529122Z
+last_change = 2024-07-12T17:00:59.530129Z
 addr = 0x57e24c0
-name = "xmmword_1457E24C0"
-size = 0x10
+name = ""
+size = 0x1
