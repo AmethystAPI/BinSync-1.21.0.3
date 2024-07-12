@@ -1,6 +1,14 @@
-last_change = 2024-07-12T16:09:41.600144Z
+last_change = 2024-07-12T16:40:17.332939Z
 addr = 0x15a4000
 size = 0x456
+name = "?_read@LoginPacket@@EEAA?AV?$Result@XVerror_code@std@@@Bedrock@@AEAVReadOnlyBinaryStream@@@Z"
+
+[header]
+last_change = 2024-07-12T16:40:17.332939Z
+name = "?_read@LoginPacket@@EEAA?AV?$Result@XVerror_code@std@@@Bedrock@@AEAVReadOnlyBinaryStream@@@Z"
+addr = 0x15a4000
+
+[header.args]
 
 [stack_vars.-0xa8]
 last_change = 2024-07-12T16:09:41.600144Z
