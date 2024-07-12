@@ -113,3 +113,9 @@ last_change = 2024-07-12T16:09:41.613037Z
 addr = 0x504fc78
 name = ""
 size = 0x1
+
+[0x504fc88]
+last_change = 2024-07-12T16:09:41.615501Z
+addr = 0x504fc88
+name = ""
+size = 0x10
