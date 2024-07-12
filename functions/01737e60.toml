@@ -1,0 +1,11 @@
+last_change = 2024-07-12T17:10:03.343713Z
+addr = 0x1737e60
+size = 0x1938
+name = "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVLoginPacket@@@Z"
+
+[header]
+last_change = 2024-07-12T17:10:03.343713Z
+name = "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVLoginPacket@@@Z"
+addr = 0x1737e60
+
+[header.args]
