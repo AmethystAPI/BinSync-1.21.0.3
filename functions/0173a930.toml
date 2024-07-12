@@ -1,11 +1,14 @@
-last_change = 2024-07-12T17:02:04.968384Z
+last_change = 2024-07-12T17:10:47.382344Z
 addr = 0x173a930
 size = 0x338
 name = "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVRequestNetworkSettingsPacket@@@Z"
 
 [header]
-last_change = 2024-07-12T17:02:04.968384Z
+last_change = 2024-07-12T17:10:47.382344Z
 name = "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVRequestNetworkSettingsPacket@@@Z"
 addr = 0x173a930
 
-[header.args]
+[header.args.0x2]
+offset = 0x2
+name = "requestNetworkSettingsPacket"
+size = 0x8

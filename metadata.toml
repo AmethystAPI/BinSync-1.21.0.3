@@ -1,6 +1,6 @@
 user = "tamaspapp"
 version = "4.2.1"
-last_push_time = 2024-07-12T17:10:38.912815Z
+last_push_time = 2024-07-12T17:10:47.382344Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None ?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVLoginPacket@@@Z(args=1); @0x1737e60>"
+last_commit_msg = "Updated <FuncHeader: None ?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVRequestNetworkSettingsPacket@@@Z(args=1); @0x173a930>"
