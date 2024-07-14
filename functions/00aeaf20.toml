@@ -1,10 +1,10 @@
-last_change = 2024-07-14T15:53:09.110913Z
+last_change = 2024-07-14T15:53:09.206076Z
 addr = 0xaeaf20
 size = 0x102a
 name = "__ZN20ClientNetworkHandler12onDisconnectERK17NetworkIdentifierN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEbSD_"
 
 [header]
-last_change = 2024-07-14T15:52:21.968890Z
+last_change = 2024-07-14T15:53:09.206076Z
 name = "__ZN20ClientNetworkHandler12onDisconnectERK17NetworkIdentifierN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEbSD_"
 addr = 0xaeaf20
 
@@ -28,3 +28,8 @@ addr = 0xaeaf20
 offset = 0x4
 type = "bool"
 size = 0x1
+
+[header.args.0x5]
+offset = 0x5
+type = "const std::string *"
+size = 0x8
