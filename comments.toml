@@ -109,3 +109,10 @@ addr = 0x39dc883
 func_addr = 0x39dc800
 comment = "this->m_dxgi.m_driverType = D3D_DRIVER_TYPE_NULL;\n"
 decompiled = true
+
+[0x39dc932]
+last_change = 2024-07-14T14:53:19.589527Z
+addr = 0x39dc932
+func_addr = 0x39dc800
+comment = "this->m_device = 0i64;\n"
+decompiled = true
