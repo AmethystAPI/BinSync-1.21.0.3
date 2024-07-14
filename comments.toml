@@ -97,3 +97,10 @@ addr = 0x202b77
 func_addr = 0x2012e0
 comment = "jumptable 000000014020288D cases 5,6\n"
 decompiled = false
+
+[0x202cde]
+last_change = 2024-07-14T16:16:35.472111Z
+addr = 0x202cde
+func_addr = 0x2012e0
+comment = "jumptable 000000014020288D case 7\n"
+decompiled = false
