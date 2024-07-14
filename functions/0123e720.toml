@@ -1,10 +1,10 @@
-last_change = 2024-07-14T17:27:11.957006Z
+last_change = 2024-07-14T17:27:41.722462Z
 addr = 0x123e720
 size = 0x1ddc
 name = "__ZN6Social18MultiplayerService4tickEb"
 
 [header]
-last_change = 2024-07-14T17:27:11.957006Z
+last_change = 2024-07-14T17:27:41.722462Z
 name = "__ZN6Social18MultiplayerService4tickEb"
 addr = 0x123e720
 
@@ -12,3 +12,8 @@ addr = 0x123e720
 offset = 0x0
 type = "long long"
 size = 0x8
+
+[header.args.0x1]
+offset = 0x1
+type = "bool"
+size = 0x1
