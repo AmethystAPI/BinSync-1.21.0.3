@@ -102,3 +102,10 @@ addr = 0x174b125
 func_addr = 0x174afe0
 comment = "<- Level::getOrCreateDimension\n"
 decompiled = true
+
+[0x39dc883]
+last_change = 2024-07-14T14:52:27.652273Z
+addr = 0x39dc883
+func_addr = 0x39dc800
+comment = "this->m_dxgi.m_driverType = D3D_DRIVER_TYPE_NULL;\n"
+decompiled = true
