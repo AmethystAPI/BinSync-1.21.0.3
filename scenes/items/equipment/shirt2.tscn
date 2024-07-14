@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment/Equipment.cs" id="1_6shwf"]
 [ext_resource type="Texture2D" uid="uid://xgsysg0q1dvr" path="res://sprites/items/equipment/shirt2.tres" id="2_eo0h0"]
-[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="3_iusv8"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="3_iusv8"]
 
 [sub_resource type="Animation" id="Animation_s0dlr"]
 resource_name = "RESET"

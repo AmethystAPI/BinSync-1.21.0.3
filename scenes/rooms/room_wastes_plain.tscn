@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_iscmi"]
 [ext_resource type="Resource" uid="uid://bxaqp12reo668" path="res://resources/enemy_pools/wastes_pool.tres" id="2_7yu7l"]
-[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://tileset.tres" id="3_4k2k0"]
+[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="3_4k2k0"]
 [ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_2rawn"]
 [ext_resource type="Resource" uid="uid://bt4xdxmp6ano5" path="res://resources/smart_tilesets/smart_tileset_wastes.tres" id="5_ku3ut"]
 [ext_resource type="Texture2D" uid="uid://deylyqt84cy3s" path="res://sprites/biomes/wastes/sprite_decoration_wastes_sand_patch.tres" id="7_cfjpj"]

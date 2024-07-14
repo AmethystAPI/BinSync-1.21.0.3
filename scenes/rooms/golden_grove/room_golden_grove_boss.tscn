@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/rooms/BossRoom.cs" id="1_3jnnd"]
 [ext_resource type="PackedScene" uid="uid://cg8kvs2jvqdn2" path="res://scenes/enemies/giant_slime.tscn" id="2_00xv6"]
 [ext_resource type="Resource" uid="uid://btuna1bpi61i2" path="res://resources/loot_pools/loot_pool_golden_grove.tres" id="3_5fhht"]
-[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://tileset.tres" id="3_gmkl2"]
+[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="3_gmkl2"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="4_vmsys"]
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/golden_grove/border_tree.tscn" id="7_ye4gd"]
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/golden_grove/border_bush.tscn" id="8_25sm1"]
