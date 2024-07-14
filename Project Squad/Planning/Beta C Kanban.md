@@ -6,8 +6,6 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] [[Scaling of Trinkets]] #design
-- [ ] [[Variety and Fun in Combat]] #design
 - [ ] Work on SFX #polish
 - [ ] More Music #content
 - [ ] More Trinkets #design
@@ -19,14 +17,17 @@ kanban-plugin: basic
 
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
-- [ ] [[Availability of Weapons]] #design
 - [ ] [[Transition of Biomes]] #design
+- [ ] [[Variety and Fun in Combat]] #design
+- [ ] [[Scaling of Trinkets]] #design
+- [ ] Fix bug of rooms not finishing<br>Maybe has to do with spawning entities
 
 
 ## In Progress
 
 - [ ] Windswept Wastes Biome #design
 - [ ] Unique Encounters #content
+- [ ] [[Availability of Weapons]] #design
 
 
 ## Done
