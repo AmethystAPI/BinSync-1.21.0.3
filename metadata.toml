@@ -1,6 +1,6 @@
 user = "tamaspapp"
 version = "4.2.1"
-last_push_time = 2024-07-14T22:57:08.324855Z
+last_push_time = 2024-07-14T23:20:40.472392Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None __ZNSt3__110__function6__funcIZN20PlayScreenController17_registerBindingsEvE5$_210NS_9allocatorIS3_EEFNS_12basic_stringIcNS_11char_traitsIcEENS4_IcEEEEvEEclEv(args=0); @0xdd3030>"
+last_commit_msg = "Updated <FuncHeader: None ?supports3rdPartyServers@MinecraftScreenModel@@QEBA_NXZ(args=0); @0xb303d0>"
