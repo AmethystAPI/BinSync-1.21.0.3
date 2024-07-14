@@ -6,15 +6,21 @@ kanban-plugin: basic
 
 ## Todo
 
-- [ ] Sinister Swamp Biome #design
+- [ ] [[Scaling of Trinkets]] #design
+- [ ] [[Variety and Fun in Combat]] #design
 - [ ] Work on SFX #polish
-- [ ] Steam Page #marketing
-- [ ] Biome Transitions #code
-- [ ] Chests #code
 - [ ] More Music #content
 - [ ] More Trinkets #design
 - [ ] More Weapons #design
 - [ ] More Golden Grove Enemies #design
+
+
+## Must Do
+
+- [ ] Sinister Swamp Biome #design
+- [ ] Steam Page #marketing
+- [ ] [[Availability of Weapons]] #design
+- [ ] [[Transition of Biomes]] #design
 
 
 ## In Progress

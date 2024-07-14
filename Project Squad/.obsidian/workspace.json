@@ -16,18 +16,6 @@
                 "file": "Planning/Beta C Kanban.md"
               }
             }
-          },
-          {
-            "id": "ff8b252d69f5b7d3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Marketing/Reddit Guidelines.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ]
       }
@@ -158,6 +146,26 @@
   },
   "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
+    "Design/Current Design Issues/Availability of Weapons.md",
+    "Design/Current Design Issues/Variety and Fun in Combat.md",
+    "Design/Current Design Issues/Transition of Biomes.md",
+    "Design/Current Design Issues/Scaling of Trinkets.md",
+    "Daily Notes/Day 18-6.md",
+    "Daily Notes/Day 18-5.md",
+    "Daily Notes/Day 18-1.md",
+    "Daily Notes/Beta A Playetst.md",
+    "Planning/Beta C Kanban.md",
+    "Daily Notes/Day 18-8.md",
+    "Daily Notes/Day 18-3.md",
+    "Design/Locations/Golden Grove.md",
+    "Design/Difficulty.md",
+    "Design/Enemies.md",
+    "Design/Music.md",
+    "Design/Team Work.md",
+    "Design/Trinkets.md",
+    "Design/Visuals.md",
+    "Design/Current Design Issues",
+    "Design/Current Design Issues.md",
     "Marketing/Post List.md",
     "Marketing/Client Authority.md",
     "Marketing/Reddit Guidelines.md",
@@ -165,7 +173,6 @@
     "Attachments/200w 1.gif",
     "Attachments/Pasted image 20240630225858.png",
     "Attachments/Pasted image 20240630224700.png",
-    "Planning/Beta C Kanban.md",
     "Attachments/200w.gif",
     "Attachments/Server-based-network.svg.png",
     "Attachments/Client-server-model.svg.png",
@@ -175,37 +182,18 @@
     "Devlogs/Devlog 19",
     "Planning/Beta B Kanban.md",
     "Planning/Beta B Kanban 1.md",
-    "Beta B Playtest Notes.md",
     "Attachments/PasF6D9.tmp",
-    "No Communication Notes.md",
-    "Design/Trinkets.md",
-    "Reference/Music.md",
     "Attachments/Pasted image 20240607003604.png",
     "Attachments/Pasted image 20240607003557.png",
-    "Daily Notes/Beta A Playetst.md",
-    "Design/Weapons.md",
-    "Planning/Untitled Kanban.md",
-    "Planning/Previous/Beta A Kanban.md",
-    "Design/Temples.md",
-    "Devlogs/Devlog 18/Prototyping - 18.md",
-    "Devlogs/Devlog 18/Quotes.md",
-    "Devlogs/Devlog 18/Draft 6 Revision.md",
-    "Devlogs/Devlog 18/Draft 6.md",
-    "Design/Music.md",
     "Attachments/Pasted image 20240403213019.png",
-    "Devlogs/Devlog 18/Draft 5 Revision.md",
-    "Devlogs/Devlog 18/Draft 5.md",
-    "Devlogs/Devlog 18/Draft 4.md",
     "Reference/Devlogs.canvas",
     "Attachments/Pasted image 20240316194450.png",
     "Attachments/Pasted image 20240316154618.png.import",
-    "Devlogs/Devlog 18/Draft 3.md",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
     "Attachments/PasBF2.tmp",
     "Attachments/GAw862.tmp",
     "Attachments/GBu83D.tmp",
-    "Attachments/GA580A.tmp",
     "Reference/General.canvas",
     "Reference/Locations/Golden Grove.canvas"
   ]
