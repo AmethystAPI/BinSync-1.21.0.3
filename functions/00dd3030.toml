@@ -1,13 +1,16 @@
-last_change = 2024-07-14T23:24:12.491637Z
+last_change = 2024-07-14T23:24:12.535580Z
 addr = 0xdd3030
 size = 0x891
 name = "__ZNSt3__110__function6__funcIZN20PlayScreenController17_registerBindingsEvE5$_210NS_9allocatorIS3_EEFNS_12basic_stringIcNS_11char_traitsIcEENS4_IcEEEEvEEclEv"
 type = "unsigned long long"
 
 [header]
-last_change = 2024-07-14T23:24:12.491637Z
+last_change = 2024-07-14T23:24:12.535580Z
 name = "__ZNSt3__110__function6__funcIZN20PlayScreenController17_registerBindingsEvE5$_210NS_9allocatorIS3_EEFNS_12basic_stringIcNS_11char_traitsIcEENS4_IcEEEEvEEclEv"
 addr = 0xdd3030
 type = "unsigned long long"
 
-[header.args]
+[header.args.0x1]
+offset = 0x1
+type = "unsigned long long"
+size = 0x8
