@@ -1,14 +1,12 @@
-last_change = 2024-07-14T15:52:20.453010Z
+last_change = 2024-07-14T15:52:21.968890Z
 addr = 0xaeaf20
 size = 0x102a
 name = "__ZN20ClientNetworkHandler12onDisconnectERK17NetworkIdentifierN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEbSD_"
 
 [header]
-last_change = 2024-07-14T15:39:25.776904Z
+last_change = 2024-07-14T15:52:21.968890Z
 name = "__ZN20ClientNetworkHandler12onDisconnectERK17NetworkIdentifierN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS5_11char_traitsIcEENS5_9allocatorIcEEEEbSD_"
 addr = 0xaeaf20
-
-[header.args]
 
 [stack_vars.-0x20]
 last_change = 2024-07-14T15:52:20.453010Z
@@ -17,3 +15,8 @@ name = "arg_20"
 type = "bool"
 size = 0x1
 addr = 0xaeaf20
+
+[header.args.0x4]
+offset = 0x4
+type = "bool"
+size = 0x1
