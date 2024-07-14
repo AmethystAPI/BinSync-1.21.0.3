@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4yr1lxolpdp4"
-path="res://.godot/imported/golden_grove_concept.aseprite-5f83c5a38120079b6bb75fb624c0e6cd.ctex"
+uid="uid://dqi57h63i742"
+path="res://.godot/imported/equipment.aseprite-39c7d38ade6ecbed667a5b8a31f230ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/golden_grove_concept.aseprite"
-dest_files=["res://.godot/imported/golden_grove_concept.aseprite-5f83c5a38120079b6bb75fb624c0e6cd.ctex"]
+source_file="res://sprites/items/equipment/equipment.aseprite"
+dest_files=["res://.godot/imported/equipment.aseprite-39c7d38ade6ecbed667a5b8a31f230ae.ctex"]
 
 [params]
 

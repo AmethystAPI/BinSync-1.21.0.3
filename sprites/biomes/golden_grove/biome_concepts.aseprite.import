@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btf2ngnu3up15"
-path="res://.godot/imported/room_layouts_concept.aseprite-1da27860ab2db8c39c9be78a058fc43d.ctex"
+uid="uid://cfhlxhqviav7f"
+path="res://.godot/imported/biome_concepts.aseprite-b9622fc2ac857db556647c952b45a1de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/room_layouts_concept.aseprite"
-dest_files=["res://.godot/imported/room_layouts_concept.aseprite-1da27860ab2db8c39c9be78a058fc43d.ctex"]
+source_file="res://sprites/biomes/golden_grove/biome_concepts.aseprite"
+dest_files=["res://.godot/imported/biome_concepts.aseprite-b9622fc2ac857db556647c952b45a1de.ctex"]
 
 [params]
 

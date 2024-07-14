@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuuvfrpv6figp"
-path="res://.godot/imported/stone_golem.aseprite-14489b2dacb3518bf63f1eb508fba851.ctex"
+uid="uid://dgs266kd08lom"
+path="res://.godot/imported/temple.aseprite-f97ee79437385704aab0cd78d01f4f2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/stone_golem.aseprite"
-dest_files=["res://.godot/imported/stone_golem.aseprite-14489b2dacb3518bf63f1eb508fba851.ctex"]
+source_file="res://sprites/biomes/temple.aseprite"
+dest_files=["res://.godot/imported/temple.aseprite-f97ee79437385704aab0cd78d01f4f2a.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://brsuuwfj5ppyc"]
 
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="1_8jxww"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_8jxww"]
 
 [node name="BorderBush" type="Node2D"]
 y_sort_enabled = true

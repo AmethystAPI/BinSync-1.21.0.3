@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b4r1oxxo4whc6"]
 
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="1_vepbo"]
-[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/windswept_wastes_tileset.aseprite" id="2_m18bb"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_rvd2f"]
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/biomes/wastes/windswept_wastes_tileset.aseprite" id="2_kxtpe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ilmj4"]
 resource_name = "Golen Grove Tileset"
-texture = ExtResource("1_vepbo")
+texture = ExtResource("1_rvd2f")
 0:3/0 = 0
 0:3/0/y_sort_origin = 24
 0:4/0 = 0
@@ -69,7 +69,7 @@ texture = ExtResource("1_vepbo")
 4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2mf7o"]
-texture = ExtResource("2_m18bb")
+texture = ExtResource("2_kxtpe")
 0:1/0 = 0
 0:1/0/y_sort_origin = 24
 1:1/0 = 0

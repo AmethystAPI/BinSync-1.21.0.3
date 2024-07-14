@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyf32ajmwuhjo"
-path="res://.godot/imported/golden_grove_tileset.aseprite-5c21335632d943ff003694586e37bb85.ctex"
+uid="uid://b645soy16tq3n"
+path="res://.godot/imported/slime.aseprite-2459955f3f13ef73e3d4b9459700301d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/golden_grove_tileset.aseprite"
-dest_files=["res://.godot/imported/golden_grove_tileset.aseprite-5c21335632d943ff003694586e37bb85.ctex"]
+source_file="res://sprites/enemies/slime/slime.aseprite"
+dest_files=["res://.godot/imported/slime.aseprite-2459955f3f13ef73e3d4b9459700301d.ctex"]
 
 [params]
 

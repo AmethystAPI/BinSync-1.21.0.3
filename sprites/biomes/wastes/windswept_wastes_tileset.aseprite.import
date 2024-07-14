@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1eembwigsvag"
-path="res://.godot/imported/particles.aseprite-c403140799fbe3ecc62f096831551263.ctex"
+uid="uid://baqdv2d626w1v"
+path="res://.godot/imported/windswept_wastes_tileset.aseprite-c2e8f49cd59e86a6b38a3870dfb89123.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/particles.aseprite"
-dest_files=["res://.godot/imported/particles.aseprite-c403140799fbe3ecc62f096831551263.ctex"]
+source_file="res://sprites/biomes/wastes/windswept_wastes_tileset.aseprite"
+dest_files=["res://.godot/imported/windswept_wastes_tileset.aseprite-c2e8f49cd59e86a6b38a3870dfb89123.ctex"]
 
 [params]
 

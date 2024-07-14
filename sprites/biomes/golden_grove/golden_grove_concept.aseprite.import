@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cejt0u8thpy4p"
-path="res://.godot/imported/crow.aseprite-a6342470153a9409d72977ba0722f823.ctex"
+uid="uid://c4yr1lxolpdp4"
+path="res://.godot/imported/golden_grove_concept.aseprite-a007bf7e51ee81d9acc21ddab84545bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/crow.aseprite"
-dest_files=["res://.godot/imported/crow.aseprite-a6342470153a9409d72977ba0722f823.ctex"]
+source_file="res://sprites/biomes/golden_grove/golden_grove_concept.aseprite"
+dest_files=["res://.godot/imported/golden_grove_concept.aseprite-a007bf7e51ee81d9acc21ddab84545bf.ctex"]
 
 [params]
 

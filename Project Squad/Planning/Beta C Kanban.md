@@ -27,12 +27,12 @@ kanban-plugin: basic
 
 - [ ] Windswept Wastes Biome #design
 - [ ] Unique Encounters #content
-- [ ] [[Availability of Weapons]] #design
 
 
 ## Done
 
 **Complete**
+- [x] [[Availability of Weapons]] #design
 
 
 

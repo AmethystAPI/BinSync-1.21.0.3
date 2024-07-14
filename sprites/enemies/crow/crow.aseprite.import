@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dign4aks2nwf3"
-path="res://.godot/imported/testing_tileset.aseprite-6a7b9d2fd13a12ae90c8d7009fb61cda.ctex"
+uid="uid://cejt0u8thpy4p"
+path="res://.godot/imported/crow.aseprite-673f9e0368b9f21f75249171c03c8f47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/testing_tileset.aseprite"
-dest_files=["res://.godot/imported/testing_tileset.aseprite-6a7b9d2fd13a12ae90c8d7009fb61cda.ctex"]
+source_file="res://sprites/enemies/crow/crow.aseprite"
+dest_files=["res://.godot/imported/crow.aseprite-673f9e0368b9f21f75249171c03c8f47.ctex"]
 
 [params]
 

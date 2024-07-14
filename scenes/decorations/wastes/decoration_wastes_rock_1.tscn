@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Destructable.cs" id="1_mwd8p"]
 [ext_resource type="PackedScene" uid="uid://b40i51q2a82vg" path="res://scenes/particles/destruction_pebble.tscn" id="2_8y2e4"]
 [ext_resource type="Texture2D" uid="uid://be4mpbyubiaoq" path="res://sprites/biomes/wastes/sprite_wastes_rock_1.tres" id="3_idgor"]
-[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/windswept_wastes_tileset.aseprite" id="4_t7k7e"]
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/biomes/wastes/windswept_wastes_tileset.aseprite" id="4_t7k7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfw76"]
 size = Vector2(18, 10)

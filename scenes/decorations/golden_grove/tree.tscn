@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Destructable.cs" id="1_snroy"]
 [ext_resource type="PackedScene" uid="uid://df8vafeme8j54" path="res://scenes/particles/destruction_leaf.tscn" id="2_ykgqa"]
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="3_nk0d5"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="3_nk0d5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfw76"]
 size = Vector2(26, 15)

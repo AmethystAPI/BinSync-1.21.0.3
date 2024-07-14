@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dio2s8c5qcfl3"
-path="res://.godot/imported/Projectiles.aseprite-7b440c97fd630a573e474caae46f5eec.ctex"
+uid="uid://c01h3t8pm0pm1"
+path="res://.godot/imported/player.aseprite-34b21fc2a8824be537639be2a12d21c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Projectiles.aseprite"
-dest_files=["res://.godot/imported/Projectiles.aseprite-7b440c97fd630a573e474caae46f5eec.ctex"]
+source_file="res://sprites/player/player.aseprite"
+dest_files=["res://.godot/imported/player.aseprite-34b21fc2a8824be537639be2a12d21c1.ctex"]
 
 [params]
 

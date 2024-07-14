@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfhlxhqviav7f"
-path="res://.godot/imported/biome_concepts.aseprite-3211d8f5f84d39121a176dfcdb39af61.ctex"
+uid="uid://dhl46x2h3xift"
+path="res://.godot/imported/giant_slime.aseprite-196a7b64679d2c2dea5898b2337e42aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/biome_concepts.aseprite"
-dest_files=["res://.godot/imported/biome_concepts.aseprite-3211d8f5f84d39121a176dfcdb39af61.ctex"]
+source_file="res://sprites/enemies/giant_slime/giant_slime.aseprite"
+dest_files=["res://.godot/imported/giant_slime.aseprite-196a7b64679d2c2dea5898b2337e42aa.ctex"]
 
 [params]
 

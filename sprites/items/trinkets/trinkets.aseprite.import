@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t4ih7dg6fx0g"
-path="res://.godot/imported/Weapons.aseprite-3ceaa643c8d3f3dc093413bad268e629.ctex"
+uid="uid://c2uwj1cf4pws6"
+path="res://.godot/imported/trinkets.aseprite-ac802b17f9406d383005049521818838.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Weapons.aseprite"
-dest_files=["res://.godot/imported/Weapons.aseprite-3ceaa643c8d3f3dc093413bad268e629.ctex"]
+source_file="res://sprites/items/trinkets/trinkets.aseprite"
+dest_files=["res://.godot/imported/trinkets.aseprite-ac802b17f9406d383005049521818838.ctex"]
 
 [params]
 

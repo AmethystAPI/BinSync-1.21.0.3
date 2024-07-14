@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3cnkryvldva3"
-path="res://.godot/imported/enemies_concept.aseprite-325babf096ec6ac2ae4226c80e934a25.ctex"
+uid="uid://dio2s8c5qcfl3"
+path="res://.godot/imported/projectiles.aseprite-700954157d47b2dc1c0c5949ec288229.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies_concept.aseprite"
-dest_files=["res://.godot/imported/enemies_concept.aseprite-325babf096ec6ac2ae4226c80e934a25.ctex"]
+source_file="res://sprites/items/projectiles/projectiles.aseprite"
+dest_files=["res://.godot/imported/projectiles.aseprite-700954157d47b2dc1c0c5949ec288229.ctex"]
 
 [params]
 

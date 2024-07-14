@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baqdv2d626w1v"
-path="res://.godot/imported/windswept_wastes_tileset.aseprite-1722f46cdfb36c039a55f230a1c51b4c.ctex"
+uid="uid://dyf32ajmwuhjo"
+path="res://.godot/imported/golden_grove_tileset.aseprite-2495ad4b60ce4ce23f3294f2f9090cb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/windswept_wastes_tileset.aseprite"
-dest_files=["res://.godot/imported/windswept_wastes_tileset.aseprite-1722f46cdfb36c039a55f230a1c51b4c.ctex"]
+source_file="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite"
+dest_files=["res://.godot/imported/golden_grove_tileset.aseprite-2495ad4b60ce4ce23f3294f2f9090cb5.ctex"]
 
 [params]
 

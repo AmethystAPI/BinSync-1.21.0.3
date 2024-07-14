@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b645soy16tq3n"
-path="res://.godot/imported/Slime.aseprite-4160de6c727d496e01b8d98aa8b9ec75.ctex"
+uid="uid://btf2ngnu3up15"
+path="res://.godot/imported/room_layouts_concept.aseprite-621f6e313a5dce29b2f08452950d0929.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Slime.aseprite"
-dest_files=["res://.godot/imported/Slime.aseprite-4160de6c727d496e01b8d98aa8b9ec75.ctex"]
+source_file="res://sprites/rooms/room_layouts_concept.aseprite"
+dest_files=["res://.godot/imported/room_layouts_concept.aseprite-621f6e313a5dce29b2f08452950d0929.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxyceknmdg4on"
-path="res://.godot/imported/Dungeon.aseprite-0ff3365a331a61cc694912e35f9b696d.ctex"
+uid="uid://cuuvfrpv6figp"
+path="res://.godot/imported/stone_golem.aseprite-9f8b6166b0f606c7e982af965c09d015.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Dungeon.aseprite"
-dest_files=["res://.godot/imported/Dungeon.aseprite-0ff3365a331a61cc694912e35f9b696d.ctex"]
+source_file="res://sprites/enemies/stone_golem/stone_golem.aseprite"
+dest_files=["res://.godot/imported/stone_golem.aseprite-9f8b6166b0f606c7e982af965c09d015.ctex"]
 
 [params]
 
