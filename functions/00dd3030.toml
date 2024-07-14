@@ -1,0 +1,11 @@
+last_change = 2024-07-14T22:57:08.324855Z
+addr = 0xdd3030
+size = 0x891
+name = "__ZNSt3__110__function6__funcIZN20PlayScreenController17_registerBindingsEvE5$_210NS_9allocatorIS3_EEFNS_12basic_stringIcNS_11char_traitsIcEENS4_IcEEEEvEEclEv"
+
+[header]
+last_change = 2024-07-14T22:57:08.324855Z
+name = "__ZNSt3__110__function6__funcIZN20PlayScreenController17_registerBindingsEvE5$_210NS_9allocatorIS3_EEFNS_12basic_stringIcNS_11char_traitsIcEENS4_IcEEEEvEEclEv"
+addr = 0xdd3030
+
+[header.args]
