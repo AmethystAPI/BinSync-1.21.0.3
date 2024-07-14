@@ -1,0 +1,11 @@
+last_change = 2024-07-14T23:22:56.561684Z
+addr = 0xe00530
+size = 0x5
+name = "j___ZNK20MinecraftScreenModel18isNetworkAvailableEv"
+
+[header]
+last_change = 2024-07-14T23:22:56.561684Z
+name = "j___ZNK20MinecraftScreenModel18isNetworkAvailableEv"
+addr = 0xe00530
+
+[header.args]
