@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfo055prag30g"]
 
 [ext_resource type="Script" path="res://scripts/items/equipment/Equipment.cs" id="1_p17yw"]
-[ext_resource type="Texture2D" uid="uid://cncc2rcfpicm8" path="res://sprites/equipment/shirt1.tres" id="2_m6vss"]
+[ext_resource type="Texture2D" uid="uid://cncc2rcfpicm8" path="res://sprites/items/equipment/shirt1.tres" id="2_m6vss"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="3_1p424"]
 
 [sub_resource type="Animation" id="Animation_s0dlr"]

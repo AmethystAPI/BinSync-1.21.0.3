@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/golden_grove/border_grass_tuft_1.tscn" id="9_6hri1"]
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/golden_grove/border_grass_tuft_2.tscn" id="10_kk6wo"]
 [ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/golden_grove/golden_grove_borders.tscn" id="11_kr22a"]
-[ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://Sprites/tree_border.tres" id="12_nernw"]
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://Sprites/golden_grove_tileset.aseprite" id="13_jcrae"]
+[ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/tree_border.tres" id="12_nernw"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="13_jcrae"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vl4ak"]
 atlas = ExtResource("13_jcrae")

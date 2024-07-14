@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dln8vielmlt1x"]
 
-[ext_resource type="Texture2D" uid="uid://be4mpbyubiaoq" path="res://Sprites/biomes/wastes/sprite_wastes_rock_1.tres" id="2_6nu44"]
-[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://Sprites/windswept_wastes_tileset.aseprite" id="3_u67lm"]
+[ext_resource type="Texture2D" uid="uid://be4mpbyubiaoq" path="res://sprites/biomes/wastes/sprite_wastes_rock_1.tres" id="2_6nu44"]
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/windswept_wastes_tileset.aseprite" id="3_u67lm"]
 
 [node name="Rock" type="Node2D"]
 y_sort_enabled = true

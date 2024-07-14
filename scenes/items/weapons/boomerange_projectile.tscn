@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyxw7udidplhx"]
 
 [ext_resource type="Script" path="res://scripts/BoomerangProjectile.cs" id="1_mief2"]
-[ext_resource type="Texture2D" uid="uid://bxdt2d6bhuqgi" path="res://Sprites/weapons/boomerang.tres" id="2_bv4n6"]
+[ext_resource type="Texture2D" uid="uid://bxdt2d6bhuqgi" path="res://sprites/items/weapons/boomerang.tres" id="2_bv4n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(10, 10)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pdger2vckwas"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_aoj88"]
-[ext_resource type="Texture2D" uid="uid://d3s7j5ulws1db" path="res://Sprites/projectiles/bow/projectile_bow.tres" id="2_nalb4"]
+[ext_resource type="Texture2D" uid="uid://d3s7j5ulws1db" path="res://sprites/items/projectiles/bow/projectile_bow.tres" id="2_nalb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(9, 5)

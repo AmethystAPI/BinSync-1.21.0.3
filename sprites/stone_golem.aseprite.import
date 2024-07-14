@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuuvfrpv6figp"
-path="res://.godot/imported/stone_golem.aseprite-af7a33436728bb70b74692fdf492a985.ctex"
+path="res://.godot/imported/stone_golem.aseprite-14489b2dacb3518bf63f1eb508fba851.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/stone_golem.aseprite"
-dest_files=["res://.godot/imported/stone_golem.aseprite-af7a33436728bb70b74692fdf492a985.ctex"]
+source_file="res://sprites/stone_golem.aseprite"
+dest_files=["res://.godot/imported/stone_golem.aseprite-14489b2dacb3518bf63f1eb508fba851.ctex"]
 
 [params]
 

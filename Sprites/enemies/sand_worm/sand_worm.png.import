@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://niq1c5ey06vg"
-path="res://.godot/imported/sand_worm.png-ab1282b0eff463b241a22dfa3808af5d.ctex"
+path="res://.godot/imported/sand_worm.png-bf234491ee7ec9850def30e6e5056fef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/enemies/sand_worm/sand_worm.png"
-dest_files=["res://.godot/imported/sand_worm.png-ab1282b0eff463b241a22dfa3808af5d.ctex"]
+source_file="res://sprites/enemies/sand_worm/sand_worm.png"
+dest_files=["res://.godot/imported/sand_worm.png-bf234491ee7ec9850def30e6e5056fef.ctex"]
 
 [params]
 

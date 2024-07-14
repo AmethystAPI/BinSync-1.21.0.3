@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_mu0ej"]
 [ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="2_4goc7"]
-[ext_resource type="Texture2D" uid="uid://didmjldh3h46f" path="res://Sprites/enemies/slime/slime.tres" id="2_hbhsd"]
-[ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://Sprites/enemies/medium_shadow.tres" id="3_yrvle"]
+[ext_resource type="Texture2D" uid="uid://didmjldh3h46f" path="res://sprites/enemies/slime/slime.tres" id="2_hbhsd"]
+[ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_yrvle"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_phacr"]
 [ext_resource type="Script" path="res://scripts/enemies/Idle.cs" id="5_3ytew"]
 [ext_resource type="Script" path="res://scripts/enemies/slime/SlimeJump.cs" id="6_i67rn"]
 [ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="7_8dyb3"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_j3im5"]
-[ext_resource type="Texture2D" uid="uid://8aigpuhoomet" path="res://Sprites/enemies/slime/slime_hurt.tres" id="10_th6ka"]
+[ext_resource type="Texture2D" uid="uid://8aigpuhoomet" path="res://sprites/enemies/slime/slime_hurt.tres" id="10_th6ka"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="11_7c4yd"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="11_ywes5"]
 

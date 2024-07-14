@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://baqdv2d626w1v"
-path="res://.godot/imported/windswept_wastes_tileset.aseprite-0a2d70fb0b048b92b32f003f56174016.ctex"
+path="res://.godot/imported/windswept_wastes_tileset.aseprite-1722f46cdfb36c039a55f230a1c51b4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/windswept_wastes_tileset.aseprite"
-dest_files=["res://.godot/imported/windswept_wastes_tileset.aseprite-0a2d70fb0b048b92b32f003f56174016.ctex"]
+source_file="res://sprites/windswept_wastes_tileset.aseprite"
+dest_files=["res://.godot/imported/windswept_wastes_tileset.aseprite-1722f46cdfb36c039a55f230a1c51b4c.ctex"]
 
 [params]
 

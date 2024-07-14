@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b40i51q2a82vg"]
 
 [ext_resource type="Script" path="res://scripts/DestructionPebble.cs" id="1_y45mo"]
-[ext_resource type="Texture2D" uid="uid://yybdk8wkfvb4" path="res://Sprites/particles/pebble.tres" id="2_mpuq0"]
-[ext_resource type="Texture2D" uid="uid://b7esraxflc3sr" path="res://Sprites/particles/pebble_shadow.tres" id="3_gufdg"]
+[ext_resource type="Texture2D" uid="uid://yybdk8wkfvb4" path="res://sprites/particles/pebble.tres" id="2_mpuq0"]
+[ext_resource type="Texture2D" uid="uid://b7esraxflc3sr" path="res://sprites/particles/pebble_shadow.tres" id="3_gufdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8w1g"]
 size = Vector2(4, 4)

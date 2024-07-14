@@ -31,11 +31,7 @@ public partial class RangedApproach : State, NetworkPointUser {
 
     public override void Enter() {
         if (_idleTimer > 0) {
-            float prev = _idleTimer;
-
             _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
-
-            GD.Print("Resumed idle " + prev + " with " + _idleTimer);
 
             return;
         }

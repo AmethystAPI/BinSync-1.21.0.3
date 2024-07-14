@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3cnkryvldva3"
-path="res://.godot/imported/enemies_concept.aseprite-69bab9d2c6aa2ee5cf724c14b1c5b218.ctex"
+path="res://.godot/imported/enemies_concept.aseprite-325babf096ec6ac2ae4226c80e934a25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/enemies_concept.aseprite"
-dest_files=["res://.godot/imported/enemies_concept.aseprite-69bab9d2c6aa2ee5cf724c14b1c5b218.ctex"]
+source_file="res://sprites/enemies_concept.aseprite"
+dest_files=["res://.godot/imported/enemies_concept.aseprite-325babf096ec6ac2ae4226c80e934a25.ctex"]
 
 [params]
 

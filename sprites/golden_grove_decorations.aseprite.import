@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://itursaq4j66n"
-path="res://.godot/imported/golden_grove_decorations.aseprite-99804ead723cb2f50c924fb165b2764e.ctex"
+path="res://.godot/imported/golden_grove_decorations.aseprite-2e9812649fd4990e8e041586fb831c39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/golden_grove_decorations.aseprite"
-dest_files=["res://.godot/imported/golden_grove_decorations.aseprite-99804ead723cb2f50c924fb165b2764e.ctex"]
+source_file="res://sprites/golden_grove_decorations.aseprite"
+dest_files=["res://.godot/imported/golden_grove_decorations.aseprite-2e9812649fd4990e8e041586fb831c39.ctex"]
 
 [params]
 

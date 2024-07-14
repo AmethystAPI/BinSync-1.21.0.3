@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bimmdl3utp2sq"]
 
 [ext_resource type="Script" path="res://scripts/WhipProjectile.cs" id="1_f47id"]
-[ext_resource type="Texture2D" uid="uid://df87w1g4rptic" path="res://Sprites/projectiles/sword/projectile_sword_2.tres" id="2_w5mvk"]
-[ext_resource type="Texture2D" uid="uid://decby3srw2s5h" path="res://Sprites/projectiles/sword/projectile_sword_0.tres" id="3_f0vx7"]
-[ext_resource type="Texture2D" uid="uid://ce4pu6tbgcvlg" path="res://Sprites/projectiles/sword/projectile_sword_1.tres" id="4_ygtpp"]
+[ext_resource type="Texture2D" uid="uid://df87w1g4rptic" path="res://sprites/items/projectiles/sword/projectile_sword_2.tres" id="2_w5mvk"]
+[ext_resource type="Texture2D" uid="uid://decby3srw2s5h" path="res://sprites/items/projectiles/sword/projectile_sword_0.tres" id="3_f0vx7"]
+[ext_resource type="Texture2D" uid="uid://ce4pu6tbgcvlg" path="res://sprites/items/projectiles/sword/projectile_sword_1.tres" id="4_ygtpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(4, 14)

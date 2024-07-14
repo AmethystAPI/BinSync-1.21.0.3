@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxyceknmdg4on"
-path="res://.godot/imported/Dungeon.aseprite-4121440e7aa492731fc83f5ee4ab9010.ctex"
+path="res://.godot/imported/Dungeon.aseprite-0ff3365a331a61cc694912e35f9b696d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Dungeon.aseprite"
-dest_files=["res://.godot/imported/Dungeon.aseprite-4121440e7aa492731fc83f5ee4ab9010.ctex"]
+source_file="res://sprites/Dungeon.aseprite"
+dest_files=["res://.godot/imported/Dungeon.aseprite-0ff3365a331a61cc694912e35f9b696d.ctex"]
 
 [params]
 

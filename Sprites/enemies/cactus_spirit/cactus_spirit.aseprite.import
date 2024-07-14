@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://goduuo5jivul"
-path="res://.godot/imported/cactus_spirit.aseprite-939a408792ac3812146dafd0a071b838.ctex"
+path="res://.godot/imported/cactus_spirit.aseprite-a1930a284ef7c27c0ecf6f8f0e088e05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/enemies/cactus_spirit/cactus_spirit.aseprite"
-dest_files=["res://.godot/imported/cactus_spirit.aseprite-939a408792ac3812146dafd0a071b838.ctex"]
+source_file="res://sprites/enemies/cactus_spirit/cactus_spirit.aseprite"
+dest_files=["res://.godot/imported/cactus_spirit.aseprite-a1930a284ef7c27c0ecf6f8f0e088e05.ctex"]
 
 [params]
 

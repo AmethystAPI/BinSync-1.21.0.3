@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c01h3t8pm0pm1"
-path="res://.godot/imported/Player.aseprite-7e1edc3b121affdb8c3c112c476956d5.ctex"
+path="res://.godot/imported/Player.aseprite-b2278d77ea36304e16f5cbe525021902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player.aseprite"
-dest_files=["res://.godot/imported/Player.aseprite-7e1edc3b121affdb8c3c112c476956d5.ctex"]
+source_file="res://sprites/Player.aseprite"
+dest_files=["res://.godot/imported/Player.aseprite-b2278d77ea36304e16f5cbe525021902.ctex"]
 
 [params]
 

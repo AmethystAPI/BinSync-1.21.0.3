@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqlrb4lpwi8lg"]
 
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://Sprites/golden_grove_tileset.aseprite" id="1_a4521"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/golden_grove_tileset.aseprite" id="1_a4521"]
 
 [node name="BorderGrassTuft2" type="Node2D"]
 y_sort_enabled = true

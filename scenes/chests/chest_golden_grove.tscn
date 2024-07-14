@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1c6lubkdxjhm"]
 
 [ext_resource type="Script" path="res://scripts/Chest.cs" id="1_5undn"]
-[ext_resource type="Texture2D" uid="uid://dfo1k4hxs5cth" path="res://sprites/chest/chest.tres" id="1_qbi1v"]
+[ext_resource type="Texture2D" uid="uid://dfo1k4hxs5cth" path="res://sprites/rooms/chest/chest.tres" id="1_qbi1v"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="2_m65vl"]
-[ext_resource type="Texture2D" uid="uid://cw16qhomhqidq" path="res://sprites/chest/chest_open.tres" id="2_soava"]
+[ext_resource type="Texture2D" uid="uid://cw16qhomhqidq" path="res://sprites/rooms/chest/chest_open.tres" id="2_soava"]
 [ext_resource type="Resource" uid="uid://btuna1bpi61i2" path="res://resources/loot_pools/loot_pool_golden_grove.tres" id="2_wca7x"]
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/Player.aseprite" id="5_7ifp7"]
 
