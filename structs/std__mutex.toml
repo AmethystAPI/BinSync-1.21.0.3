@@ -1,8 +1,4 @@
 name = "std::mutex"
 size = 0x50
 
-[members.0x0]
-name = "_Mutex_base"
-offset = 0x0
-type = "byte[80]"
-size = 0x50
+[members]
