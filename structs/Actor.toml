@@ -1,4 +1,20 @@
 name = "Actor"
 size = 0x21
 
-[members]
+[members.0x0]
+name = "vtable"
+offset = 0x0
+type = "_QWORD"
+size = 0x8
+
+[members.0x8]
+name = "gap8"
+offset = 0x8
+type = "_BYTE[24]"
+size = 0x18
+
+[members.0x20]
+name = "mInitMethod"
+offset = 0x20
+type = "ActorInitializationMethod"
+size = 0x1
