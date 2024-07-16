@@ -153,3 +153,9 @@ last_change = 2024-07-08T22:15:20.716972Z
 addr = 0x4e5f6a0
 name = "??_7WorldGenerator@@6BChunkSource@@@"
 size = 0x8
+
+[0x4d5bab0]
+last_change = 2024-07-16T12:01:36.811272Z
+addr = 0x4d5bab0
+name = "__ZTV24MinecraftUIRenderContext"
+size = 0x8
