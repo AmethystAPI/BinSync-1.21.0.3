@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-07-16T12:32:00.577188Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN14NinePatchLayer4drawER13ScreenContextR11Tessellatorff(args=1); @0x4d08b0 vars=0 len=0x27c> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN13HoverRenderer15_renderHoverBoxER24MinecraftUIRenderContextR15IClientInstanceR13RectangleAreaf(args=0); @0x5ada90 vars=0 len=0x30f> from freddie"
