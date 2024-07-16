@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-07-16T12:32:00.577188Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <GlobalVar: None ?mBlockLookupMap@BlockTypeRegistry@@0V?$map@VHashedString@@V?$SharedPtr@VBlockLegacy@@@@U?$less@VHashedString@@@std@@V?$allocator@U?$pair@$$CBVHashedString@@V?$SharedPtr@VBlockLegacy@@@@@std@@@4@@std@@A; @94237440 len=8> from freddie"
+last_commit_msg = "Merged in <GlobalVar: None ?mKnownNamespaces@BlockTypeRegistry@@0V?$set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A; @94237480 len=8> from freddie"
