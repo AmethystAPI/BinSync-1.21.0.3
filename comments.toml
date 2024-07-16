@@ -116,3 +116,10 @@ addr = 0x39dc932
 func_addr = 0x39dc800
 comment = "this->m_device = 0i64;\n"
 decompiled = true
+
+[0x246369]
+last_change = 2024-07-16T14:05:32.594250Z
+addr = 0x246369
+func_addr = 0x2462e0
+comment = "v8 = *(BedrockTexture::getClientHandle(SkinTexture, 0LL) + 8);\n"
+decompiled = true
