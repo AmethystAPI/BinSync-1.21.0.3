@@ -1,20 +1,4 @@
 name = "HashedString"
 size = 0x30
 
-[members.0x0]
-name = "mStrHash"
-offset = 0x0
-type = "uint64_t"
-size = 0x8
-
-[members.0x8]
-name = "mStr"
-offset = 0x8
-type = ""
-size = 0x20
-
-[members.0x28]
-name = "mLastMatch"
-offset = 0x28
-type = "HashedString *"
-size = 0x8
+[members]
