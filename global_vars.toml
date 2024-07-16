@@ -146,3 +146,8 @@ size = 0x8
 addr = 0x4e5f690
 name = "??_7WorldGenerator@@6BIPreliminarySurfaceProvider@@@"
 size = 0x8
+
+[0x4e5f6a0]
+addr = 0x4e5f6a0
+name = "??_7WorldGenerator@@6BChunkSource@@@"
+size = 0x8
