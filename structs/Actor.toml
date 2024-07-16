@@ -1,0 +1,4 @@
+name = "Actor"
+size = 0x21
+
+[members]
