@@ -1,0 +1,4 @@
+name = "ChunkSource_vtbl"
+size = 0x108
+
+[members]
