@@ -1,6 +1,14 @@
-last_change = 2024-07-16T14:04:13.060177Z
+last_change = 2024-07-16T14:04:13.269392Z
 addr = 0x2462e0
 size = 0xa10
+type = "_QWORD *"
+
+[header]
+last_change = 2024-07-16T14:04:13.269392Z
+addr = 0x2462e0
+type = "_QWORD *"
+
+[header.args]
 
 [stack_vars.-0x210]
 last_change = 2024-07-16T14:04:13.060177Z
