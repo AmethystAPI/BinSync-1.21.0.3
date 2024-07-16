@@ -141,3 +141,8 @@ size = 0x8
 addr = 0x4e5c670
 name = "??_7ChunkSource@@6B@"
 size = 0x8
+
+[0x4e5f690]
+addr = 0x4e5f690
+name = "??_7WorldGenerator@@6BIPreliminarySurfaceProvider@@@"
+size = 0x8
