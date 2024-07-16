@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-07-16T12:32:00.577188Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: void __ZN13BlockGraphics25setDefaultCarriedTexturesEv(args=0); @0xa47b00 vars=0 len=0x167> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN11LocalPlayerC2ER15IClientInstanceR5LevelRKNSt3__112basic_stringIcNS4_11char_traitsIcEENS4_9allocatorIcEEEE8GameTypebRK17NetworkIdentifier11SubClientIdN3mce4UUIDESC_SC_NS4_10unique_ptrI11CertificateNS4_14default_deleteISL_EEEER13EntityContext(args=0); @0xa72630 vars=0 len=0x72c> from freddie"
