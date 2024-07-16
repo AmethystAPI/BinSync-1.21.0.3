@@ -1,4 +1,200 @@
 name = "ChunkSource_vtbl"
 size = 0x108
 
-[members]
+[members.0x0]
+name = "ChunkSource_dtor_0"
+offset = 0x0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x8]
+name = "shutdown"
+offset = 0x8
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x10]
+name = "isShutdownDone"
+offset = 0x10
+type = "bool (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x18]
+name = "getExistingChunk"
+offset = 0x18
+type = "std::shared_ptr<LevelChunk> (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *)"
+size = 0x8
+
+[members.0x20]
+name = "getRandomChunk"
+offset = 0x20
+type = "std::shared_ptr<LevelChunk> (__fastcall *)(ChunkSource *__hidden this, Random *random)"
+size = 0x8
+
+[members.0x28]
+name = "isChunkKnown"
+offset = 0x28
+type = "bool (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *chunkPos)"
+size = 0x8
+
+[members.0x30]
+name = "isChunkSaved"
+offset = 0x30
+type = "bool (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *chunkPos)"
+size = 0x8
+
+[members.0x38]
+name = "createNewChunk"
+offset = 0x38
+type = "std::shared_ptr<LevelChunk> (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *cp, ChunkSource::LoadMode lm, bool readOnly)"
+size = 0x8
+
+[members.0x40]
+name = "getOrLoadChunk"
+offset = 0x40
+type = "std::shared_ptr<LevelChunk> (__fastcall *)(ChunkSource *__hidden this, const ChunkPos *cp, ChunkSource::LoadMode lm, bool readOnly)"
+size = 0x8
+
+[members.0x48]
+name = "postProcess"
+offset = 0x48
+type = "bool (__fastcall *)(ChunkSource *__hidden this, ChunkViewSource *neighborhood)"
+size = 0x8
+
+[members.0x50]
+name = "checkAndReplaceChunk"
+offset = 0x50
+type = "void (__fastcall *)(ChunkSource *__hidden this, ChunkViewSource *neighborhood, LevelChunk *lc)"
+size = 0x8
+
+[members.0x58]
+name = "loadChunk"
+offset = 0x58
+type = "void (__fastcall *)(ChunkSource *__hidden this, LevelChunk *lc, bool forceImmediateReplacementDataLoad)"
+size = 0x8
+
+[members.0x60]
+name = "postProcessMobsAt"
+offset = 0x60
+type = "void (__fastcall *)(ChunkSource *__hidden this, BlockSource *region, int chunkWestBlock, int chunkNorthBlock, Random *random)"
+size = 0x8
+
+[members.0x68]
+name = "saveLiveChunk"
+offset = 0x68
+type = "bool (__fastcall *)(ChunkSource *__hidden this, LevelChunk *lc)"
+size = 0x8
+
+[members.0x70]
+name = "writeEntityChunkTransfer"
+offset = 0x70
+type = "void (__fastcall *)(ChunkSource *__hidden this, LevelChunk *levelChunk)"
+size = 0x8
+
+[members.0x78]
+name = "writeEntityChunkTransfersToUnloadedChunk"
+offset = 0x78
+type = "void (__fastcall *)(ChunkSource *__hidden this, const ChunkKey *, const std::vector<ActorUnloadedChunkTransferEntry> *)"
+size = 0x8
+
+[members.0x80]
+name = "deserializeActorStorageToLevelChunk"
+offset = 0x80
+type = "void (__fastcall *)(ChunkSource *__hidden this, LevelChunk *)"
+size = 0x8
+
+[members.0x88]
+name = "hintDiscardBatchBegin"
+offset = 0x88
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x90]
+name = "hintDiscardBatchEnd"
+offset = 0x90
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x98]
+name = "acquireDiscarded"
+offset = 0x98
+type = "void (__fastcall *)(ChunkSource *__hidden this, std::unique_ptr<LevelChunk, LevelChunkFinalDeleter> ptr)"
+size = 0x8
+
+[members.0xa0]
+name = "compact"
+offset = 0xa0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xa8]
+name = "flushPendingDiscardedChunkWrites"
+offset = 0xa8
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xb0]
+name = "flushThreadBatch"
+offset = 0xb0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xb8]
+name = "isWithinWorldLimit"
+offset = 0xb8
+type = "bool (__fastcall *)(const ChunkSource *__hidden this, const ChunkPos *cp)"
+size = 0x8
+
+[members.0xc0]
+name = "getChunkMap"
+offset = 0xc0
+type = "const std::unordered_map<ChunkPos, std::weak_ptr<LevelChunk>> *(__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xc8]
+name = "getStorage"
+offset = 0xc8
+type = "const std::unordered_map<ChunkPos, std::weak_ptr<LevelChunk>> *(__fastcall *)(const ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xd0]
+name = "clearDeletedEntities"
+offset = 0xd0
+type = "void (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xd8]
+name = "canCreateViews"
+offset = 0xd8
+type = "bool (__fastcall *)(const ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xe0]
+name = "tryGetBlendingDataProvider"
+offset = 0xe0
+type = "std::unique_ptr<BlendingDataProvider> (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xe8]
+name = "loadLevelChunkMetaDataDictionary"
+offset = 0xe8
+type = "std::shared_ptr<LevelChunkMetaDataDictionary> (__fastcall *)(ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0xf0]
+name = "setLevelChunk"
+offset = 0xf0
+type = "void (__fastcall *)(ChunkSource *__hidden this, std::shared_ptr<LevelChunk>)"
+size = 0x8
+
+[members.0xf8]
+name = "canLaunchTasks"
+offset = 0xf8
+type = "bool (__fastcall *)(const ChunkSource *__hidden this)"
+size = 0x8
+
+[members.0x100]
+name = "chunkPosNeedsBlending"
+offset = 0x100
+type = ""
+size = 0x8
