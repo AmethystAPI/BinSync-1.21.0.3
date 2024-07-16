@@ -136,3 +136,8 @@ size = 0x1
 addr = 0x4e6b4d8
 name = "??_7NetworkChunkSource@@6B@"
 size = 0x8
+
+[0x4e5c670]
+addr = 0x4e5c670
+name = "??_7ChunkSource@@6B@"
+size = 0x8
