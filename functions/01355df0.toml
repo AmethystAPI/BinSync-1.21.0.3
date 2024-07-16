@@ -1,0 +1,11 @@
+last_change = 2024-07-16T18:19:16.402038Z
+addr = 0x1355df0
+size = 0x18f
+name = "__ZNK24MinecraftUIRenderContext10getTextureERK16ResourceLocationb"
+
+[header]
+last_change = 2024-07-16T18:19:16.402038Z
+name = "__ZNK24MinecraftUIRenderContext10getTextureERK16ResourceLocationb"
+addr = 0x1355df0
+
+[header.args]
