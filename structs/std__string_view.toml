@@ -1,4 +1,14 @@
 name = "std::string_view"
 size = 0x10
 
-[members]
+[members.0x0]
+name = "_Mydata"
+offset = 0x0
+type = "char *"
+size = 0x8
+
+[members.0x8]
+name = "_Mysize"
+offset = 0x8
+type = "uint64_t"
+size = 0x8
