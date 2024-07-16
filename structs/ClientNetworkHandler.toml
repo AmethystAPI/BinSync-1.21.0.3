@@ -1,4 +1,56 @@
 name = "ClientNetworkHandler"
 size = 0x48
 
-[members]
+[members.0x48]
+name = "mClientInstance"
+offset = 0x48
+type = "IClientInstance *"
+size = 0x8
+
+[members.0x50]
+name = "mGameConnectionListener"
+offset = 0x50
+type = "IGameConnectionListener *"
+size = 0x8
+
+[members.0x58]
+name = "mGameConnectionListenerUseCount"
+offset = 0x58
+type = "uint64_t"
+size = 0x8
+
+[members.0x60]
+name = "mGameStartupServer"
+offset = 0x60
+type = "IGameServerStartup *"
+size = 0x8
+
+[members.0x68]
+name = "mClientNetworkSystem"
+offset = 0x68
+type = "ClientNetworkSystem *"
+size = 0x8
+
+[members.0x70]
+name = "mPacketSender"
+offset = 0x70
+type = "PacketSender *"
+size = 0x8
+
+[members.0x78]
+name = "mPrivateKeyManager"
+offset = 0x78
+type = "PrivateKeyManager *"
+size = 0x8
+
+[members.0x80]
+name = "mMinecraftCommands"
+offset = 0x80
+type = "MinecraftCommands *"
+size = 0x8
+
+[members.0x88]
+name = "mLevel"
+offset = 0x88
+type = "_QWORD *"
+size = 0x8
