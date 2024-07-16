@@ -131,3 +131,8 @@ last_change = 2024-07-12T17:00:59.530129Z
 addr = 0x57e24c0
 name = ""
 size = 0x1
+
+[0x4e6b4d8]
+addr = 0x4e6b4d8
+name = "??_7NetworkChunkSource@@6B@"
+size = 0x8
