@@ -139,3 +139,9 @@ addr = 0x20340b
 func_addr = 0x2012e0
 comment = "jumptable 000000014020288D case 15\n"
 decompiled = false
+
+[0x174b125]
+addr = 0x174b125
+func_addr = 0x174afe0
+comment = "<- Level::getOrCreateDimension\n"
+decompiled = true
