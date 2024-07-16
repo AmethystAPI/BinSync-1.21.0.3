@@ -1,4 +1,26 @@
 name = "GeometryGroup"
 size = 0x68
 
-[members]
+[members.0x0]
+name = "field_0"
+offset = 0x0
+type = ""
+size = 0x8
+
+[members.0x8]
+name = "field_8"
+offset = 0x8
+type = ""
+size = 0x8
+
+[members.0x10]
+name = "field_10"
+offset = 0x10
+type = ""
+size = 0x8
+
+[members.0x68]
+name = "mGeometryLock"
+offset = 0x68
+type = "struct_0"
+size = 0x50
