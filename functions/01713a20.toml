@@ -1,0 +1,11 @@
+last_change = 2024-07-10T21:04:14.485585Z
+addr = 0x1713a20
+size = 0x35
+name = "?getName@ChangeDimensionPacket@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+
+[header]
+last_change = 2024-07-10T21:04:14.485585Z
+name = "?getName@ChangeDimensionPacket@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+addr = 0x1713a20
+
+[header.args]

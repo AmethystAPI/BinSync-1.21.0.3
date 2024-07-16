@@ -36,3 +36,18 @@ size = 0x8
 offset = 0xa
 name = "geometryGroup"
 size = 0x8
+
+[header.args.0x54]
+offset = 0xc
+name = "actorResourceDefGroup"
+size = 0x8
+
+[header.args.0x53]
+offset = 0xb
+name = "soundMapping"
+size = 0x8
+
+[header.args.0x52]
+offset = 0xa
+name = "geometryGroup"
+size = 0x8
