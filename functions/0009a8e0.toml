@@ -1,0 +1,80 @@
+last_change = 2024-07-08T18:22:33.361553Z
+addr = 0x9a8e0
+size = 0x1922
+
+[stack_vars.-0x1328]
+offset = -4904
+name = "var_1320"
+type = "_QWORD[4]"
+size = 0x20
+addr = 0x9a8e0
+
+[stack_vars.-0xb00]
+offset = -2816
+name = "var_AF8"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x1368]
+offset = -4968
+name = "var_1360"
+type = "__int128"
+size = 0x10
+addr = 0x9a8e0
+
+[stack_vars.-0xac8]
+offset = -2760
+name = "var_AC0"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x1388]
+offset = -5000
+name = "var_1380"
+type = "__int128"
+size = 0x10
+addr = 0x9a8e0
+
+[stack_vars.-0xa90]
+offset = -2704
+name = "var_A88"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x13a8]
+offset = -5032
+name = "var_13A0"
+type = "char[13]"
+size = 0xd
+addr = 0x9a8e0
+
+[stack_vars.-0xa58]
+offset = -2648
+name = "var_A50"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x1508]
+offset = -5384
+name = "var_1500"
+type = "char[14]"
+size = 0xe
+addr = 0x9a8e0
+
+[stack_vars.-0xa20]
+offset = -2592
+name = "var_A18"
+type = "unsigned long long[7]"
+size = 0x38
+addr = 0x9a8e0
+
+[stack_vars.-0x13c8]
+offset = -5064
+name = "var_13C0"
+type = "_QWORD[4]"
+size = 0x20
+addr = 0x9a8e0
