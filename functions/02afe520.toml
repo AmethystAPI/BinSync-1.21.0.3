@@ -1,0 +1,10 @@
+addr = 0x2afe520
+size = 0x29
+name = "?getOrCreateDimension@Level@@UEAA?AV?$WeakRef@VDimension@@@@V?$AutomaticID@VDimension@@H@@@Z"
+
+[header]
+last_change = 2024-07-09T16:01:37.268337Z
+name = "?getOrCreateDimension@Level@@UEAA?AV?$WeakRef@VDimension@@@@V?$AutomaticID@VDimension@@H@@@Z"
+addr = 0x2afe520
+
+[header.args]
