@@ -1,11 +1,12 @@
-last_change = 2024-07-16T15:10:23.243304Z
+last_change = 2024-07-16T15:10:23.245310Z
 addr = 0x37de000
 size = 0xd9
-type = "void"
 
 [header]
-last_change = 2024-07-16T15:10:23.243304Z
+last_change = 2024-07-16T15:10:23.245310Z
 addr = 0x37de000
-type = "void"
 
-[header.args]
+[header.args.0x0]
+offset = 0x0
+type = "long long"
+size = 0x8
