@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-07-16T12:32:00.577188Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN13BlockGraphics10initBlocksER19ResourcePackManagerRK11Experiments(args=0); @0xa45780 vars=0 len=0xfcc> from freddie"
+last_commit_msg = "Merged in <Function: void __ZN13BlockGraphics25setDefaultCarriedTexturesEv(args=0); @0xa47b00 vars=0 len=0x167> from freddie"
