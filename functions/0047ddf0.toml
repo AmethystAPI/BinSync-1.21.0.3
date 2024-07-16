@@ -1,0 +1,11 @@
+last_change = 2024-07-16T14:09:24.239825Z
+addr = 0x47ddf0
+size = 0x5
+name = "j___ZN3mce16TextureContainerD1Ev"
+
+[header]
+last_change = 2024-07-16T14:09:24.239825Z
+name = "j___ZN3mce16TextureContainerD1Ev"
+addr = 0x47ddf0
+
+[header.args]
