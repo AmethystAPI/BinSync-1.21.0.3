@@ -159,3 +159,9 @@ last_change = 2024-07-16T12:01:36.811272Z
 addr = 0x4d5bab0
 name = "__ZTV24MinecraftUIRenderContext"
 size = 0x8
+
+[0x4fba39c]
+last_change = 2024-07-16T14:04:06.968467Z
+addr = 0x4fba39c
+name = ""
+size = 0x4
