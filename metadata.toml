@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2024-07-16T12:32:00.577188Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN13BlockGraphics19createBlockGraphicsERK12HashedString10BlockShape(args=0); @0xa3f1e0 vars=0 len=0x201> from freddie"
+last_commit_msg = "Merged in <Function: None __ZN13BlockGraphics21registerBlockGraphicsERNSt3__113unordered_mapI12HashedStringNS0_6vectorIN4Json5ValueENS0_9allocatorIS5_EEEENS0_4hashIS2_EENS0_8equal_toIS2_EENS6_INS0_4pairIKS2_S8_EEEEEERSE_10BlockShape(args=0); @0xa3f3f0 vars=0 len=0x239> from freddie"
