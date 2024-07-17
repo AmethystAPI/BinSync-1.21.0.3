@@ -7,5 +7,5 @@
 script = ExtResource("2_e812l")
 RoomPlacer = ExtResource("1_rwrpp")
 Limit = 0
-Interval = Vector2i(3, 4)
+Interval = Vector2i(6, 8)
 Priority = 10

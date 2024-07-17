@@ -105,6 +105,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (StateMachine.CurrentState == "Dash") return false;
 
+		// TODO: DEBUG
+		return false;
+
 		return true;
 	}
 

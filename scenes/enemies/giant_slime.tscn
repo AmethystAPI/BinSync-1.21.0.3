@@ -158,7 +158,7 @@ script = ExtResource("4_o3mxe")
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("5_y4do1")
 AttackStates = PackedStringArray("Jump", "Summon")
-AttackWeights = PackedFloat32Array(1, 0.2)
+AttackWeights = PackedFloat32Array(1, 0.3)
 AnimationPlayer = NodePath("../../AnimationPlayer")
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("Visuals", "ProjectileOrigin", "Sprite", "JumpSquashAndStretch", "LandSquashAndStretch")]

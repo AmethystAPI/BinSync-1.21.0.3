@@ -11,9 +11,11 @@
             "id": "d0c68c1f6fcbb024",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Devlogs/Devlog 19/Script.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Devlogs/Devlog 19/Script.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Devlogs/Devlog 19/Script.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Devlogs/Devlog 19/Script.md"
               }
             }
           }
@@ -146,6 +148,11 @@
   },
   "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
+    "Devlogs/Devlog 19/Outline.md",
+    "Devlogs/Devlog 19/Script.md",
+    "Devlogs/Devlog 19/Goals.md",
+    "Devlogs/Devlog 19/Graph.canvas",
+    "Planning/Beta C Kanban.md",
     "Design/Current Design Issues/Availability of Weapons.md",
     "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Design/Current Design Issues/Transition of Biomes.md",
@@ -154,7 +161,6 @@
     "Daily Notes/Day 18-5.md",
     "Daily Notes/Day 18-1.md",
     "Daily Notes/Beta A Playetst.md",
-    "Planning/Beta C Kanban.md",
     "Daily Notes/Day 18-8.md",
     "Daily Notes/Day 18-3.md",
     "Design/Locations/Golden Grove.md",
@@ -177,11 +183,7 @@
     "Attachments/Server-based-network.svg.png",
     "Attachments/Client-server-model.svg.png",
     "Marketing",
-    "Devlogs/Devlog 19/Outline.md",
-    "Devlogs/Devlog 19/Graph.canvas",
     "Devlogs/Devlog 19",
-    "Planning/Beta B Kanban.md",
-    "Planning/Beta B Kanban 1.md",
     "Attachments/PasF6D9.tmp",
     "Attachments/Pasted image 20240607003604.png",
     "Attachments/Pasted image 20240607003557.png",
