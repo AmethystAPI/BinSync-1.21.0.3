@@ -6,12 +6,9 @@
 using Steamworks;
 using System;
 using System.Runtime.InteropServices;
-using UnityEngine;
 
-namespace Riptide.Transports.Steam
-{
-    public abstract class SteamPeer
-    {
+namespace Riptide.Transports.Steam {
+    public abstract class SteamPeer {
         /// <summary>The name to use when logging messages via <see cref="Utils.RiptideLogger"/>.</summary>
         public const string LogName = "STEAM";
 
@@ -19,28 +16,22 @@ namespace Riptide.Transports.Steam
 
         private readonly byte[] receiveBuffer;
 
-        protected SteamPeer()
-        {
+        protected SteamPeer() {
             receiveBuffer = new byte[Message.MaxSize + sizeof(ushort)];
         }
 
-        protected void Receive(SteamConnection fromConnection)
-        {
+        protected void Receive(SteamConnection fromConnection) {
             IntPtr[] ptrs = new IntPtr[MaxMessages]; // TODO: remove allocation?
 
             // TODO: consider using poll groups -> https://partner.steamgames.com/doc/api/ISteamNetworkingSockets#functions_poll_groups
             int messageCount = SteamNetworkingSockets.ReceiveMessagesOnConnection(fromConnection.SteamNetConnection, ptrs, MaxMessages);
-            if (messageCount > 0)
-            {
-                for (int i = 0; i < messageCount; i++)
-                {
+            if (messageCount > 0) {
+                for (int i = 0; i < messageCount; i++) {
                     SteamNetworkingMessage_t data = Marshal.PtrToStructure<SteamNetworkingMessage_t>(ptrs[i]);
 
-                    if (data.m_cbSize > 0)
-                    {
+                    if (data.m_cbSize > 0) {
                         int byteCount = data.m_cbSize;
-                        if (data.m_cbSize > receiveBuffer.Length)
-                        {
+                        if (data.m_cbSize > receiveBuffer.Length) {
                             Debug.LogWarning($"{LogName}: Can't fully handle {data.m_cbSize} bytes because it exceeds the maximum of {receiveBuffer.Length}. Data will be incomplete!");
                             byteCount = receiveBuffer.Length;
                         }
@@ -54,8 +45,7 @@ namespace Riptide.Transports.Steam
             }
         }
 
-        internal void Send(byte[] dataBuffer, int numBytes, HSteamNetConnection toConnection)
-        {
+        internal void Send(byte[] dataBuffer, int numBytes, HSteamNetConnection toConnection) {
             GCHandle handle = GCHandle.Alloc(dataBuffer, GCHandleType.Pinned);
             IntPtr pDataBuffer = handle.AddrOfPinnedObject();
 

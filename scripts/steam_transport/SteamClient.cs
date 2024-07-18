@@ -6,12 +6,9 @@
 using Steamworks;
 using System;
 using System.Threading.Tasks;
-using UnityEngine;
 
-namespace Riptide.Transports.Steam
-{
-    public class SteamClient : SteamPeer, IClient
-    {
+namespace Riptide.Transports.Steam {
+    public class SteamClient : SteamPeer, IClient {
         public event EventHandler Connected;
         public event EventHandler ConnectionFailed;
         public event EventHandler<DataReceivedEventArgs> DataReceived;
@@ -24,40 +21,32 @@ namespace Riptide.Transports.Steam
         private SteamServer localServer;
         private Callback<SteamNetConnectionStatusChangedCallback_t> connectionStatusChanged;
 
-        public SteamClient(SteamServer localServer = null)
-        {
+        public SteamClient(SteamServer localServer = null) {
             this.localServer = localServer;
         }
 
-        public void ChangeLocalServer(SteamServer newLocalServer)
-        {
+        public void ChangeLocalServer(SteamServer newLocalServer) {
             localServer = newLocalServer;
         }
 
-        public bool Connect(string hostAddress, out Connection connection, out string connectError)
-        {
+        public bool Connect(string hostAddress, out Connection connection, out string connectError) {
             connection = null;
             int port = 0;
 
-            try
-            {
+            try {
 #if UNITY_SERVER
                 SteamGameServerNetworkingUtils.InitRelayNetworkAccess();
 #else
                 SteamNetworkingUtils.InitRelayNetworkAccess();
 #endif
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 connectError = $"Couldn't connect: {ex}";
                 return false;
             }
 
             connectError = $"Invalid host address '{hostAddress}'! Expected '{LocalHostIP}' or '{LocalHostName}' for local connections, or a valid Steam ID.";
-            if (hostAddress == LocalHostIP || hostAddress == LocalHostName)
-            {
-                if (localServer == null)
-                {
+            if (hostAddress == LocalHostIP || hostAddress == LocalHostName) {
+                if (localServer == null) {
                     connectError = $"No locally running server was specified to connect to! Either pass a {nameof(SteamServer)} instance to your {nameof(SteamClient)}'s constructor or call its {nameof(SteamClient.ChangeLocalServer)} method before attempting to connect locally.";
                     connection = null;
                     return false;
@@ -68,18 +57,15 @@ namespace Riptide.Transports.Steam
             }
 
             int portSeperatorIndex = hostAddress.IndexOf(':');
-            if (portSeperatorIndex != -1)
-            {
-                if (!int.TryParse(hostAddress[(portSeperatorIndex + 1)..], out port))
-                {
+            if (portSeperatorIndex != -1) {
+                if (!int.TryParse(hostAddress[(portSeperatorIndex + 1)..], out port)) {
                     connectError = $"Couldn't connect: Failed to parse port '{hostAddress[(portSeperatorIndex + 1)..]}'";
                     return false;
                 }
                 hostAddress = hostAddress[..portSeperatorIndex];
             }
 
-            if (ulong.TryParse(hostAddress, out ulong hostId))
-            {
+            if (ulong.TryParse(hostAddress, out ulong hostId)) {
                 connection = steamConnection = TryConnect(new CSteamID(hostId), port);
                 return connection != null;
             }
@@ -87,8 +73,7 @@ namespace Riptide.Transports.Steam
             return false;
         }
 
-        private SteamConnection ConnectLocal()
-        {
+        private SteamConnection ConnectLocal() {
             Debug.Log($"{LogName}: Connecting to locally running server...");
 
             connectionStatusChanged = Callback<SteamNetConnectionStatusChangedCallback_t>.Create(OnConnectionStatusChanged);
@@ -106,10 +91,8 @@ namespace Riptide.Transports.Steam
             return new SteamConnection(playerSteamId, connectionToServer, this);
         }
 
-        private SteamConnection TryConnect(CSteamID hostId, int port)
-        {
-            try
-            {
+        private SteamConnection TryConnect(CSteamID hostId, int port) {
+            try {
                 connectionStatusChanged = Callback<SteamNetConnectionStatusChangedCallback_t>.Create(OnConnectionStatusChanged);
 
                 SteamNetworkingIdentity serverIdentity = new SteamNetworkingIdentity();
@@ -120,9 +103,7 @@ namespace Riptide.Transports.Steam
 
                 ConnectTimeout();
                 return new SteamConnection(hostId, connectionToServer, this);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 Debug.LogException(ex);
                 OnConnectionFailed();
                 return null;
@@ -138,10 +119,8 @@ namespace Riptide.Transports.Steam
                 OnConnectionFailed();
         }
 
-        private void OnConnectionStatusChanged(SteamNetConnectionStatusChangedCallback_t callback)
-        {
-            if (!callback.m_hConn.Equals(steamConnection.SteamNetConnection))
-            {
+        private void OnConnectionStatusChanged(SteamNetConnectionStatusChangedCallback_t callback) {
+            if (!callback.m_hConn.Equals(steamConnection.SteamNetConnection)) {
                 // When connecting via local loopback connection to a locally running SteamServer (aka
                 // this player is also the host), other external clients that attempt to connect seem
                 // to trigger ConnectionStatusChanged callbacks for the locally connected client. Not
@@ -150,8 +129,7 @@ namespace Riptide.Transports.Steam
                 return;
             }
 
-            switch (callback.m_info.m_eState)
-            {
+            switch (callback.m_info.m_eState) {
                 case ESteamNetworkingConnectionState.k_ESteamNetworkingConnectionState_Connected:
                     OnConnected();
                     break;
@@ -172,8 +150,7 @@ namespace Riptide.Transports.Steam
             }
         }
 
-        public void Poll()
-        {
+        public void Poll() {
             if (steamConnection != null)
                 Receive(steamConnection);
         }
@@ -185,10 +162,8 @@ namespace Riptide.Transports.Steam
         //        SteamNetworkingSockets.FlushMessagesOnConnection(connection.SteamNetConnection);
         //}
 
-        public void Disconnect()
-        {
-            if (connectionStatusChanged != null)
-            {
+        public void Disconnect() {
+            if (connectionStatusChanged != null) {
                 connectionStatusChanged.Dispose();
                 connectionStatusChanged = null;
             }
@@ -197,23 +172,19 @@ namespace Riptide.Transports.Steam
             steamConnection = null;
         }
 
-        protected virtual void OnConnected()
-        {
+        protected virtual void OnConnected() {
             Connected?.Invoke(this, EventArgs.Empty);
         }
 
-        protected virtual void OnConnectionFailed()
-        {
+        protected virtual void OnConnectionFailed() {
             ConnectionFailed?.Invoke(this, EventArgs.Empty);
         }
 
-        protected override void OnDataReceived(byte[] dataBuffer, int amount, SteamConnection fromConnection)
-        {
+        protected override void OnDataReceived(byte[] dataBuffer, int amount, SteamConnection fromConnection) {
             DataReceived?.Invoke(this, new DataReceivedEventArgs(dataBuffer, amount, fromConnection));
         }
 
-        protected virtual void OnDisconnected(DisconnectReason reason)
-        {
+        protected virtual void OnDisconnected(DisconnectReason reason) {
             Disconnected?.Invoke(this, new DisconnectedEventArgs(steamConnection, reason));
         }
     }
