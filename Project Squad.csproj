@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="steam_api64.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    
     <Content Include="steam_appid.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
