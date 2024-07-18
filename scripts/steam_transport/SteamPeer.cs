@@ -3,6 +3,7 @@
 // For additional information please see the included LICENSE.md file or view it on GitHub:
 // https://github.com/tom-weiland/RiptideSteamTransport/blob/main/LICENSE.md
 
+using Godot;
 using Steamworks;
 using System;
 using System.Runtime.InteropServices;
@@ -32,7 +33,7 @@ namespace Riptide.Transports.Steam {
                     if (data.m_cbSize > 0) {
                         int byteCount = data.m_cbSize;
                         if (data.m_cbSize > receiveBuffer.Length) {
-                            Debug.LogWarning($"{LogName}: Can't fully handle {data.m_cbSize} bytes because it exceeds the maximum of {receiveBuffer.Length}. Data will be incomplete!");
+                            GD.PushWarning($"{LogName}: Can't fully handle {data.m_cbSize} bytes because it exceeds the maximum of {receiveBuffer.Length}. Data will be incomplete!");
                             byteCount = receiveBuffer.Length;
                         }
 
@@ -51,7 +52,7 @@ namespace Riptide.Transports.Steam {
 
             EResult result = SteamNetworkingSockets.SendMessageToConnection(toConnection, pDataBuffer, (uint)numBytes, Constants.k_nSteamNetworkingSend_Unreliable, out long _);
             if (result != EResult.k_EResultOK)
-                Debug.LogWarning($"{LogName}: Failed to send {numBytes} bytes - {result}");
+                GD.PushWarning($"{LogName}: Failed to send {numBytes} bytes - {result}");
 
             handle.Free();
         }

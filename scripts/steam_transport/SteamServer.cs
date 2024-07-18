@@ -3,6 +3,7 @@
 // For additional information please see the included LICENSE.md file or view it on GitHub:
 // https://github.com/tom-weiland/RiptideSteamTransport/blob/main/LICENSE.md
 
+using Godot;
 using Steamworks;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Riptide.Transports.Steam {
                 SteamNetworkingUtils.InitRelayNetworkAccess();
 #endif
             } catch (Exception ex) {
-                Debug.LogException(ex);
+                GD.PushError(ex);
             }
 
             SteamNetworkingConfigValue_t[] options = new SteamNetworkingConfigValue_t[] { };
@@ -61,7 +62,7 @@ namespace Riptide.Transports.Steam {
                     break;
 
                 default:
-                    Debug.Log($"{LogName}: {clientSteamId}'s connection state changed - {callback.m_info.m_eState}");
+                    GD.Print($"{LogName}: {clientSteamId}'s connection state changed - {callback.m_info.m_eState}");
                     break;
             }
         }
@@ -71,13 +72,13 @@ namespace Riptide.Transports.Steam {
                 connections.Add(connection.SteamId, connection);
                 OnConnected(connection);
             } else
-                Debug.Log($"{LogName}: Connection from {connection.SteamId} could not be accepted: Already connected");
+                GD.Print($"{LogName}: Connection from {connection.SteamId} could not be accepted: Already connected");
         }
 
         private void Accept(HSteamNetConnection connection) {
             EResult result = SteamNetworkingSockets.AcceptConnection(connection);
             if (result != EResult.k_EResultOK)
-                Debug.LogWarning($"{LogName}: Connection could not be accepted: {result}");
+                GD.PushWarning($"{LogName}: Connection could not be accepted: {result}");
         }
 
         public void Close(Connection connection) {

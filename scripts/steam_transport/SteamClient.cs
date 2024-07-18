@@ -3,6 +3,7 @@
 // For additional information please see the included LICENSE.md file or view it on GitHub:
 // https://github.com/tom-weiland/RiptideSteamTransport/blob/main/LICENSE.md
 
+using Godot;
 using Steamworks;
 using System;
 using System.Threading.Tasks;
@@ -74,7 +75,7 @@ namespace Riptide.Transports.Steam {
         }
 
         private SteamConnection ConnectLocal() {
-            Debug.Log($"{LogName}: Connecting to locally running server...");
+            GD.Print($"{LogName}: Connecting to locally running server...");
 
             connectionStatusChanged = Callback<SteamNetConnectionStatusChangedCallback_t>.Create(OnConnectionStatusChanged);
             CSteamID playerSteamId = SteamUser.GetSteamID();
@@ -104,7 +105,7 @@ namespace Riptide.Transports.Steam {
                 ConnectTimeout();
                 return new SteamConnection(hostId, connectionToServer, this);
             } catch (Exception ex) {
-                Debug.LogException(ex);
+                GD.PushError(ex);
                 OnConnectionFailed();
                 return null;
             }
@@ -145,7 +146,7 @@ namespace Riptide.Transports.Steam {
                     break;
 
                 default:
-                    Debug.Log($"{LogName}: Connection state changed - {callback.m_info.m_eState} | {callback.m_info.m_szEndDebug}");
+                    GD.Print($"{LogName}: Connection state changed - {callback.m_info.m_eState} | {callback.m_info.m_szEndDebug}");
                     break;
             }
         }

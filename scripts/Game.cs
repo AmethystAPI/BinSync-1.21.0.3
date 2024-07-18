@@ -1,6 +1,7 @@
 using Godot;
 using Networking;
 using Riptide;
+using Steamworks;
 using System.Collections.Generic;
 
 public partial class Game : Node2D, NetworkPointUser {
@@ -16,6 +17,18 @@ public partial class Game : Node2D, NetworkPointUser {
 	private WorldGenerator _worldGenerator;
 
 	public override void _Ready() {
+		GD.Print("Steam running? " + SteamAPI.IsSteamRunning());
+
+		if (!SteamAPI.Init()) {
+			GD.PushError("SteamAPI.Init() failed!");
+
+			return;
+		}
+
+		GD.Print(SteamFriends.GetPersonaName());
+
+		return;
+
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(StartRpc), StartRpc);
