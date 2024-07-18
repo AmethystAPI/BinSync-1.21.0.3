@@ -1,5 +1,6 @@
 user = "tamaspapp"
 version = "4.2.1"
-last_push_time = 2024-07-16T12:32:00.577188Z
+last_push_time = 2024-07-18T09:36:21.882610Z
 last_push_artifact = -1
 last_push_artifact_type = -1
+last_commit_msg = "Updated <FuncHeader: None __ZN6Social19MultiplayerGameInfo29exportSessionPropertiesToJsonERKS0_(args=0); @0x1025f30>"
