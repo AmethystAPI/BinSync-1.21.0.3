@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c1a68gx3ebhy8"]
+
+[ext_resource type="Resource" uid="uid://bd558yb1sqa64" path="res://resources/room_placers/room_placer_golden_grove_spawn.tres" id="1_wn4x1"]
+[ext_resource type="Script" path="res://scripts/rooms/UniqueEncounter.cs" id="2_uhuui"]
+
+[resource]
+script = ExtResource("2_uhuui")
+RoomPlacer = ExtResource("1_wn4x1")
+Limit = 1
+Interval = Vector2i(0, 0)
+Priority = 1000

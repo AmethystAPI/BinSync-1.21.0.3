@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://drxruvv7scqyl"]
+
+[ext_resource type="Script" path="res://scripts/Destructable.cs" id="1_tq14m"]
+[ext_resource type="PackedScene" uid="uid://b40i51q2a82vg" path="res://scenes/particles/destruction_pebble.tscn" id="2_j0kyd"]
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/biomes/wastes/windswept_wastes_tileset.aseprite" id="3_muion"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfw76"]
+size = Vector2(18, 10)
+
+[node name="Rock" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_tq14m")
+Particle = ExtResource("2_j0kyd")
+ParticleCount = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("3_muion")
+offset = Vector2(0, -3.5)
+region_enabled = true
+region_rect = Rect2(211, 102, 10, 7)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+texture = ExtResource("3_muion")
+offset = Vector2(0, 0.5)
+region_enabled = true
+region_rect = Rect2(211, 111, 10, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_gfw76")

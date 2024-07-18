@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqlrb4lpwi8lg"]
+
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_a4521"]
+
+[node name="BorderGrassTuft2" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Grass3" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_a4521")
+offset = Vector2(0, -4)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Shadow9" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(1, 6)
+texture = ExtResource("1_a4521")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)

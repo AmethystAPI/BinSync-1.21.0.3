@@ -33,11 +33,11 @@ project/assembly_name="Project Squad"
 
 [editor]
 
-movie_writer/movie_file="D:/Devlogs/Devlog 18/Money.avi"
+movie_writer/movie_file="C:/Users/outer/OneDrive/Desktop/Project-Squad-Godot/marketing/CactusSpiritCombat.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg", "res://addons/smart_tilemap/plugin.cfg")
 
 [global_group]
 
@@ -95,4 +95,4 @@ join={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.0509804, 0.054902, 0.0705882, 1)
+environment/defaults/default_clear_color=Color(0.358, 0.371957, 0.427425, 1)

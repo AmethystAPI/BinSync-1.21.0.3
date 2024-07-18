@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://duii65kqioaqg"]
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/FaithTrinket.cs" id="1_pmqp0"]
-[ext_resource type="Texture2D" uid="uid://dwbapitnh58x8" path="res://sprites/trinkets/trinket_faith.tres" id="2_nxiye"]
+[ext_resource type="Texture2D" uid="uid://dwbapitnh58x8" path="res://sprites/items/trinkets/trinket_faith.tres" id="2_nxiye"]
 
 [node name="Faith Trinket" type="Node2D"]
 script = ExtResource("1_pmqp0")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8nft4fq0fngx"]
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/PerfumeTrinket.cs" id="1_7jkbd"]
-[ext_resource type="Texture2D" uid="uid://dvmehtji52kfr" path="res://sprites/trinkets/trinket_perfume.tres" id="3_3jrbs"]
+[ext_resource type="Texture2D" uid="uid://dvmehtji52kfr" path="res://sprites/items/trinkets/trinket_perfume.tres" id="3_3jrbs"]
 
 [node name="PerfumeTrinket" type="Node2D"]
 script = ExtResource("1_7jkbd")

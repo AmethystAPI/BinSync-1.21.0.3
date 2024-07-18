@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://d2rg14mgopocm"]
+
+[ext_resource type="Texture2D" uid="uid://baqdv2d626w1v" path="res://sprites/biomes/wastes/windswept_wastes_tileset.aseprite" id="1_rfqtc"]
+
+[resource]
+atlas = ExtResource("1_rfqtc")
+region = Rect2(204, 124, 54, 52)

@@ -1,0 +1,4 @@
+- Wholesome
+- Not doomer
+- Personal
+- Not whining

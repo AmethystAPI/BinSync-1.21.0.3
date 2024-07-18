@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6cyrpgftmxi0"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_3623f"]
-[ext_resource type="Texture2D" uid="uid://dscg0viludyf8" path="res://Sprites/projectiles/hammer/projectile_hammer_0.tres" id="3_6fu87"]
-[ext_resource type="Texture2D" uid="uid://dp6sa8y72hs4m" path="res://Sprites/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
-[ext_resource type="Texture2D" uid="uid://c58y2rdehx54r" path="res://Sprites/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
+[ext_resource type="Texture2D" uid="uid://dscg0viludyf8" path="res://sprites/items/projectiles/hammer/projectile_hammer_0.tres" id="3_6fu87"]
+[ext_resource type="Texture2D" uid="uid://dp6sa8y72hs4m" path="res://sprites/items/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
+[ext_resource type="Texture2D" uid="uid://c58y2rdehx54r" path="res://sprites/items/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(9, 14)

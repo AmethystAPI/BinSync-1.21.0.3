@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cgl8q2vlqtj32"]
+
+[ext_resource type="Resource" uid="uid://6lgr05pmvo5" path="res://resources/room_placers/room_placer_wastes_plain.tres" id="1_b0e21"]
+[ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="6_njui7"]
+
+[resource]
+script = ExtResource("6_njui7")
+RoomPlacers = [ExtResource("1_b0e21")]
+UniqueEncounters = []
+Level = 1
+Size = Vector2i(15, 20)

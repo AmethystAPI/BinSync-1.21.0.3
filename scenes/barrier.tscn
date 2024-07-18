@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cumpx0e1dwu87"]
 
 [ext_resource type="Script" path="res://scripts/Barrier.cs" id="1_722s7"]
-[ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/tree.tscn" id="2_ibqxu"]
-[ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/bush.tscn" id="3_xrpq0"]
+[ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="2_ibqxu"]
+[ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="3_xrpq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnoas"]
 size = Vector2(144, 23)

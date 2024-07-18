@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dni3c7d7m36n"]
 
-[ext_resource type="Shader" path="res://etherial.gdshader" id="1_amcfj"]
+[ext_resource type="Shader" path="res://scripts/shaders/etherial.gdshader" id="1_amcfj"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mbfg4"]
 seed = 1

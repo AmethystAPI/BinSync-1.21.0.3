@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://isshtmwf2yet" path="res://scenes/items/weapons/spear_projectile.tscn" id="2_1bn4l"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_71j08"]
 [ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_4re4j"]
-[ext_resource type="Texture2D" uid="uid://dcsgueuyq0k40" path="res://sprites/weapons/spear.tres" id="4_xpls5"]
+[ext_resource type="Texture2D" uid="uid://dcsgueuyq0k40" path="res://sprites/items/weapons/spear.tres" id="4_xpls5"]
 [ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="6_i3grg"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="7_c43qd"]
 

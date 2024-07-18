@@ -1,6 +1,6 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://n4ve0teasepu"]
 
-[ext_resource type="Texture2D" uid="uid://dhl46x2h3xift" path="res://sprites/giant_slime.aseprite" id="1_lvrw1"]
+[ext_resource type="Texture2D" uid="uid://dhl46x2h3xift" path="res://sprites/enemies/giant_slime/giant_slime.aseprite" id="1_lvrw1"]
 
 [resource]
 atlas = ExtResource("1_lvrw1")

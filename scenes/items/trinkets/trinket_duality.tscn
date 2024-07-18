@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx1vygvn5xxmn"]
 
 [ext_resource type="Script" path="res://scripts/items/trinkets/DualityTrinket.cs" id="1_3p7ga"]
-[ext_resource type="Texture2D" uid="uid://ch2rtpbqqiytu" path="res://sprites/trinkets/trinket_duality.tres" id="3_v3udi"]
+[ext_resource type="Texture2D" uid="uid://ch2rtpbqqiytu" path="res://sprites/items/trinkets/trinket_duality.tres" id="3_v3udi"]
 
 [node name="DualityTrinket" type="Node2D"]
 script = ExtResource("1_3p7ga")

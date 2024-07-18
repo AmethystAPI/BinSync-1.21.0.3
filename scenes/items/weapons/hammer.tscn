@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_ow422"]
 [ext_resource type="PackedScene" uid="uid://c6cyrpgftmxi0" path="res://scenes/items/weapons/hammer_projectile.tscn" id="2_cv6x1"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_3jr4r"]
-[ext_resource type="Texture2D" uid="uid://dh3th5witmy56" path="res://sprites/weapons/hammer.tres" id="4_asxot"]
+[ext_resource type="Texture2D" uid="uid://dh3th5witmy56" path="res://sprites/items/weapons/hammer.tres" id="4_asxot"]
 [ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="4_jhku8"]
 [ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="6_0m2cf"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="7_lqo4b"]

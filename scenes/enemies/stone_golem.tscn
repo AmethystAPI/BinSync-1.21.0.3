@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bgkrxsg6qkb8u" path="res://sprites/enemies/stone_golem/stone_golem_2.tres" id="10_q7y6b"]
 [ext_resource type="Texture2D" uid="uid://3bmbj5r1r0eg" path="res://sprites/enemies/stone_golem/stone_golem_3.tres" id="11_d053f"]
 [ext_resource type="Texture2D" uid="uid://t7wvckj3kf25" path="res://sprites/enemies/stone_golem/stone_golem_hurt.tres" id="13_c4kw3"]
-[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="14_mqesw"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="14_mqesw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(12, 9)

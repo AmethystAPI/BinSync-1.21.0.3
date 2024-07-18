@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemies/crow/Crow.cs" id="1_vkuc5"]
 [ext_resource type="Texture2D" uid="uid://b6hd8oagbgaod" path="res://sprites/enemies/crow/crow_0.tres" id="2_jc2w3"]
-[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://white.tres" id="2_u8mw0"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="2_u8mw0"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_0hng1"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="3_j21au"]
 [ext_resource type="Script" path="res://scripts/enemies/crow/CrowScared.cs" id="5_ky1qb"]

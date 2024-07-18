@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_yiae8"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_va21f"]
 [ext_resource type="PackedScene" uid="uid://d1c6lubkdxjhm" path="res://scenes/chests/chest_golden_grove.tscn" id="3_f0vel"]
-[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://tileset.tres" id="4_8ree1"]
+[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="4_8ree1"]
 [ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="5_knff2"]
 [ext_resource type="PackedScene" path="res://scenes/old_barrier.tscn" id="5_rcvrf"]
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://Sprites/golden_grove_tileset.aseprite" id="6_4rmj2"]
-[ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/bush.tscn" id="7_m6nvs"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="6_4rmj2"]
+[ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="7_m6nvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(160, 231)

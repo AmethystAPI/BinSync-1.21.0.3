@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public static PackedScene HatCosmetic;
 	public static PackedScene BodyCosmetic;
 
-	[Export] public PackedScene DefaultWeaponScene;
+	[Export] public PackedScene[] StarterWeaponScenes;
 	[Export] public Node2D Visuals;
 	[Export] public Node2D WeaponHolder;
 	[Export] public Node2D TrinketHolder;
@@ -43,6 +43,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.Register(nameof(EnterTrinketRealmRpc), EnterTrinketRealmRpc);
 		NetworkPoint.Register(nameof(LeaveTrinketRealmRpc), LeaveTrinketRealmRpc);
 		NetworkPoint.Register(nameof(EquipCosmeticRpc), EquipCosmeticRpc);
+		NetworkPoint.Register(nameof(EquipStarterItemsRpc), EquipStarterItemsRpc);
 
 		Players.Add(this);
 		AlivePlayers.Add(this);
@@ -51,14 +52,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		StateMachine = GetNode<StateMachine>("StateMachine");
 
-		EquipDefaultItems();
-
 		if (!NetworkPoint.IsOwner) return;
 
 		LocalPlayer = this;
 
 		GameUI.UpdateHealth(Health);
 
+		NetworkPoint.BounceRpcToClients(nameof(EquipStarterItemsRpc), message => message.AddString(StarterWeaponScenes[new RandomNumberGenerator().RandiRange(0, StarterWeaponScenes.Length - 1)].ResourcePath));
 		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(HatCosmetic.ResourcePath));
 		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(BodyCosmetic.ResourcePath));
 	}
@@ -105,6 +105,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (StateMachine.CurrentState == "Dash") return false;
 
+		// TODO: DEBUG
+		return false;
+
 		return true;
 	}
 
@@ -149,8 +152,11 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		});
 	}
 
-	private void EquipDefaultItems() {
-		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(DefaultWeaponScene, "Weapon");
+	private void EquipStarterItemsRpc(Message message) {
+		string path = message.GetString();
+
+		PackedScene weaponScene = ResourceLoader.Load<PackedScene>(path);
+		Weapon weapon = NetworkManager.SpawnNetworkSafe<Weapon>(weaponScene, "Weapon");
 
 		AddChild(weapon);
 

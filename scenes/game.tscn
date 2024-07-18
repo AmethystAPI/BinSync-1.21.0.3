@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=40 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/ui/game_ui.tscn" id="3_s7l32"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="4_encmg"]
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
-[ext_resource type="Shader" path="res://etherial.gdshader" id="5_4da55"]
+[ext_resource type="Shader" path="res://scripts/shaders/etherial.gdshader" id="5_4da55"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 [ext_resource type="AudioStream" uid="uid://bt3vmiqn5dhqu" path="res://music/Theme 4.wav" id="8_y68pd"]
 [ext_resource type="Script" path="res://scripts/Interactables.cs" id="9_t151n"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
-[ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://Sprites/leaf.tres" id="10_agqbr"]
+[ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://sprites/particles/leaf_dark.tres" id="10_agqbr"]
 [ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="12_tesvq"]
 [ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="13_js758"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="15_pi7jw"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="15_xrri3"]
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
+[ext_resource type="Resource" uid="uid://cgl8q2vlqtj32" path="res://resources/biomes/biome_windswept_wastes.tres" id="16_kxt7h"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
 [ext_resource type="Script" path="res://scripts/Audio.cs" id="22_ko2sk"]
 [ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/sfx_sounds_impact1.wav" id="23_8eois"]
@@ -30,7 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
 [ext_resource type="PackedScene" uid="uid://cx1vygvn5xxmn" path="res://scenes/items/trinkets/trinket_duality.tscn" id="26_7jx7d"]
 [ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
-[ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://Sprites/trinkets/trinket_swiftness.tres" id="26_dnkch"]
+[ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/items/trinkets/trinket_swiftness.tres" id="26_dnkch"]
 [ext_resource type="PackedScene" uid="uid://8nft4fq0fngx" path="res://scenes/items/trinkets/trinket_perfume.tscn" id="27_uxav1"]
 [ext_resource type="PackedScene" uid="uid://c46kocxmjw57s" path="res://scenes/items/trinkets/trinket_vampire.tscn" id="28_cergm"]
 [ext_resource type="AudioStream" uid="uid://utgbs5slm1xk" path="res://music/Theme 5.wav" id="39_gcumd"]
@@ -95,6 +96,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
+visible = false
 z_index = 9
 position = Vector2(-185, -205)
 rotation = -0.785398
@@ -108,7 +110,7 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 [node name="WorldGenerator" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
-Biomes = Array[Resource]([ExtResource("15_675tc")])
+Biomes = Array[Resource]([ExtResource("15_675tc"), ExtResource("16_kxt7h")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20

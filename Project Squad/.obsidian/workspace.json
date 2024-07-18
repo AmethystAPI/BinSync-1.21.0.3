@@ -4,41 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "60140d5c41e1845e",
-        "type": "tabs",
-        "dimension": 30.393401015228427,
-        "children": [
-          {
-            "id": "e618ae4229f15ec4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Devlogs/Devlog 19/Outline.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "46b2770a2aa71273",
         "type": "tabs",
-        "dimension": 69.60659898477158,
         "children": [
           {
             "id": "d0c68c1f6fcbb024",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Devlogs/Devlog 19/Graph.canvas",
-                "viewState": {
-                  "x": 65.91630863440307,
-                  "y": 33.82904487014086,
-                  "zoom": -0.3333333333333334
-                }
+                "file": "Devlogs/Devlog 19/Script.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -108,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Devlogs/Devlog 19/Graph.canvas",
+                "file": "Devlogs/Devlog 19/Script.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Devlogs/Devlog 19/Graph.canvas",
+                "file": "Devlogs/Devlog 19/Script.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Devlogs/Devlog 19/Graph.canvas"
+                "file": "Devlogs/Devlog 19/Script.md"
               }
             }
           }
@@ -172,52 +149,53 @@
   "active": "d0c68c1f6fcbb024",
   "lastOpenFiles": [
     "Devlogs/Devlog 19/Outline.md",
+    "Devlogs/Devlog 19/Script.md",
+    "Devlogs/Devlog 19/Goals.md",
     "Devlogs/Devlog 19/Graph.canvas",
-    "Attachments/Pasted image 20231229051305.png",
-    "Attachments/Pasted image 20231229044050.png",
-    "Attachments/Pasted image 20231229043622.png",
-    "Attachments/Pasted image 20231228222328.png",
-    "Attachments/Pasted image 20240316154618.png",
-    "Attachments/Pasted image 20240316194408.png",
-    "Attachments/Pasted image 20240316194450.png",
-    "Attachments/Pasted image 20240403213019.png",
-    "Attachments/Pasted image 20240607003557.png",
-    "Attachments/Pasted image 20240607003604.png",
     "Planning/Beta C Kanban.md",
-    "Devlogs/Devlog 19",
-    "Planning/Beta B Kanban.md",
-    "Planning/Beta B Kanban 1.md",
-    "Beta B Playtest Notes.md",
-    "Attachments/PasF6D9.tmp",
-    "No Communication Notes.md",
-    "Design/Trinkets.md",
-    "Reference/Music.md",
+    "Design/Current Design Issues/Availability of Weapons.md",
+    "Design/Current Design Issues/Variety and Fun in Combat.md",
+    "Design/Current Design Issues/Transition of Biomes.md",
+    "Design/Current Design Issues/Scaling of Trinkets.md",
+    "Daily Notes/Day 18-6.md",
+    "Daily Notes/Day 18-5.md",
+    "Daily Notes/Day 18-1.md",
     "Daily Notes/Beta A Playetst.md",
-    "Design/Weapons.md",
-    "Planning/Untitled Kanban.md",
-    "Planning/Previous/Beta A Kanban.md",
-    "Design/Temples.md",
-    "Devlogs/Devlog 18/Prototyping - 18.md",
-    "Devlogs/Devlog 18/Quotes.md",
-    "Devlogs/Devlog 18/Draft 6 Revision.md",
-    "Devlogs/Devlog 18/Draft 6.md",
+    "Daily Notes/Day 18-8.md",
+    "Daily Notes/Day 18-3.md",
+    "Design/Locations/Golden Grove.md",
+    "Design/Difficulty.md",
+    "Design/Enemies.md",
     "Design/Music.md",
-    "Devlogs/Devlog 18/Draft 5 Revision.md",
-    "Devlogs/Devlog 18/Draft 5.md",
-    "Devlogs/Devlog 18/Draft 4.md",
+    "Design/Team Work.md",
+    "Design/Trinkets.md",
+    "Design/Visuals.md",
+    "Design/Current Design Issues",
+    "Design/Current Design Issues.md",
+    "Marketing/Post List.md",
+    "Marketing/Client Authority.md",
+    "Marketing/Reddit Guidelines.md",
+    "Marketing/Notes.md",
+    "Attachments/200w 1.gif",
+    "Attachments/Pasted image 20240630225858.png",
+    "Attachments/Pasted image 20240630224700.png",
+    "Attachments/200w.gif",
+    "Attachments/Server-based-network.svg.png",
+    "Attachments/Client-server-model.svg.png",
+    "Marketing",
+    "Devlogs/Devlog 19",
+    "Attachments/PasF6D9.tmp",
+    "Attachments/Pasted image 20240607003604.png",
+    "Attachments/Pasted image 20240607003557.png",
+    "Attachments/Pasted image 20240403213019.png",
     "Reference/Devlogs.canvas",
+    "Attachments/Pasted image 20240316194450.png",
     "Attachments/Pasted image 20240316154618.png.import",
-    "Devlogs/Devlog 18/Draft 3.md",
-    "Planning/Previous/Alpha Kanban.md",
-    "Planning/Previous/Alpha.md",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
     "Attachments/PasBF2.tmp",
     "Attachments/GAw862.tmp",
     "Attachments/GBu83D.tmp",
-    "Attachments/GA580A.tmp",
-    "Attachments/Pas28E.tmp",
-    "Planning/Previous/Pre Alpha Kanban.md",
     "Reference/General.canvas",
     "Reference/Locations/Golden Grove.canvas"
   ]
