@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Riptide;
+using Riptide.Transports.Steam;
 using Riptide.Utils;
 
 namespace Networking {
@@ -14,6 +15,7 @@ namespace Networking {
     public static Action<ServerConnectedEventArgs> ClientConnected;
 
     private static NetworkManager s_Me;
+    private static SteamServer s_LocalSteamServer;
 
     private Dictionary<string, int> _nameIndexes = new Dictionary<string, int>();
 
@@ -154,11 +156,14 @@ namespace Networking {
     }
 
     public static bool Host() {
-      if (SafeMode) {
-        LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
-      } else {
-        LocalServer = new Server(new Riptide.Transports.Udp.UdpServer());
-      }
+      // if (SafeMode) {
+      //   LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
+      // } else {
+      //   LocalServer = new Server(new Riptide.Transports.Udp.UdpServer());
+      // }
+
+      s_LocalSteamServer = new SteamServer();
+      LocalServer = new Server(s_LocalSteamServer);
 
       try {
         LocalServer.Start(25566, 32, 0, false);
@@ -172,19 +177,24 @@ namespace Networking {
 
       LocalServer.ClientConnected += s_Me.OnClientConnected;
 
-      Join("127.0.0.1");
+      LocalClient = new Client(new SteamClient(s_LocalSteamServer));
+      LocalClient.Connect("localhost", 5, 0, null, false);
+
+      LocalClient.MessageReceived += s_Me.OnMessageRecieved;
 
       return true;
     }
 
     public static bool Join(string address) {
-      if (SafeMode) {
-        LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
-      } else {
-        LocalClient = new Client(new Riptide.Transports.Udp.UdpClient());
-      }
+      // if (SafeMode) {
+      //   LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
+      // } else {
+      //   LocalClient = new Client(new Riptide.Transports.Udp.UdpClient());
+      // }
 
-      if (address.Contains(":")) {
+      LocalClient = new Client(new SteamClient());
+
+      if (address.Contains(":") || address == "localhost") {
         LocalClient.Connect(address, 5, 0, null, false);
       } else {
         LocalClient.Connect(address + ":25566", 5, 0, null, false);

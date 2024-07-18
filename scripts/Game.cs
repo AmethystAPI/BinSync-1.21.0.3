@@ -17,17 +17,11 @@ public partial class Game : Node2D, NetworkPointUser {
 	private WorldGenerator _worldGenerator;
 
 	public override void _Ready() {
-		GD.Print("Steam running? " + SteamAPI.IsSteamRunning());
-
 		if (!SteamAPI.Init()) {
 			GD.PushError("SteamAPI.Init() failed!");
 
 			return;
 		}
-
-		GD.Print(SteamFriends.GetPersonaName());
-
-		return;
 
 		NetworkPoint.Setup(this);
 
@@ -44,7 +38,7 @@ public partial class Game : Node2D, NetworkPointUser {
 			Start();
 		};
 
-		if (!NetworkManager.Host()) NetworkManager.Join("127.0.0.1");
+		if (!NetworkManager.Host()) NetworkManager.Join("localhost");
 	}
 
 	public static void Start() {
