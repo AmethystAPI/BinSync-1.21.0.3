@@ -19,7 +19,8 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	public static bool DEBUG_MAIN = false;
 
-	private Callback<LobbyCreated_t> _createLobbyCallback;
+	private Callback<LobbyCreated_t> _lobbyCreatedCallback;
+	private Callback<LobbyEnter_t> _lobbyEnteredCallback;
 
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
@@ -28,7 +29,8 @@ public partial class Game : Node2D, NetworkPointUser {
 			return;
 		}
 
-		_createLobbyCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
+		_lobbyCreatedCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
+		_lobbyEnteredCallback = Callback<LobbyEnter_t>.Create(LobbyEntered);
 
 		NetworkPoint.Setup(this);
 
@@ -126,6 +128,10 @@ public partial class Game : Node2D, NetworkPointUser {
 		SteamMatchmaking.SetLobbyData((CSteamID)lobbyCreated.m_ulSteamIDLobby, "name", "Project Squad Test Lobby");
 
 		GD.Print("Set joinable!");
+	}
+
+	private void LobbyEntered(LobbyEnter_t lobbyEntered) {
+		GD.Print("Entered lobby! " + SteamMatchmaking.GetLobbyData((CSteamID)lobbyEntered.m_ulSteamIDLobby, "name"));
 	}
 
 	private void LobbiesMatched(LobbyMatchList_t lobbyMatchList, bool bIOFailure) {
