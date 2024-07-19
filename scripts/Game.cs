@@ -22,6 +22,7 @@ public partial class Game : Node2D, NetworkPointUser {
 	private Callback<LobbyCreated_t> _lobbyCreatedCallback;
 	private Callback<LobbyEnter_t> _lobbyEnteredCallback;
 	private Callback<GameLobbyJoinRequested_t> _gameLobbyJoinRequestedCallback;
+	private Callback<LobbyChatUpdate_t> _lobbyChatUpdateCallback;
 
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
@@ -33,6 +34,7 @@ public partial class Game : Node2D, NetworkPointUser {
 		_lobbyCreatedCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
 		_lobbyEnteredCallback = Callback<LobbyEnter_t>.Create(LobbyEntered);
 		_gameLobbyJoinRequestedCallback = Callback<GameLobbyJoinRequested_t>.Create(GameLobbyJoinRequested);
+		_lobbyChatUpdateCallback = Callback<LobbyChatUpdate_t>.Create(LobbyChatUpdated);
 
 		NetworkPoint.Setup(this);
 
@@ -152,5 +154,9 @@ public partial class Game : Node2D, NetworkPointUser {
 
 			GD.Print("Name: " + name);
 		}
+	}
+
+	private void LobbyChatUpdated(LobbyChatUpdate_t lobbyChatUpdate) {
+		GD.Print("Lobby Updated: " + SteamMatchmaking.GetNumLobbyMembers((CSteamID)lobbyChatUpdate.m_ulSteamIDLobby));
 	}
 }
