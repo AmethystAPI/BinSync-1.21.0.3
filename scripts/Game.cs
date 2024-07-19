@@ -32,13 +32,13 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
-			if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
+		// NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
+		// 	if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
 
-			Start();
-		};
+		// 	Start();
+		// };
 
-		if (!NetworkManager.Host()) NetworkManager.Join("localhost");
+		// if (!NetworkManager.Host()) NetworkManager.Join("localhost");
 	}
 
 	public static void Start() {
