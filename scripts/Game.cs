@@ -2,6 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 using Steamworks;
+using System;
 using System.Collections.Generic;
 
 public partial class Game : Node2D, NetworkPointUser {
@@ -19,7 +20,6 @@ public partial class Game : Node2D, NetworkPointUser {
 	public static bool DEBUG_MAIN = false;
 
 	private Callback<LobbyCreated_t> _createLobbyCallback;
-	private Callback<LobbyMatchList_t> _requestLobbyListCallback;
 
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
@@ -29,7 +29,6 @@ public partial class Game : Node2D, NetworkPointUser {
 		}
 
 		_createLobbyCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
-		_requestLobbyListCallback = Callback<LobbyMatchList_t>.Create(LobbiesMatched);
 
 		NetworkPoint.Setup(this);
 
@@ -50,7 +49,9 @@ public partial class Game : Node2D, NetworkPointUser {
 		} else {
 			GD.Print("Searching for lobbies...");
 
-			SteamMatchmaking.RequestLobbyList();
+			SteamAPICall_t handle = SteamMatchmaking.RequestLobbyList();
+			CallResult<LobbyMatchList_t> callResult = CallResult<LobbyMatchList_t>.Create(LobbiesMatched);
+			callResult.Set(handle);
 		}
 
 		// NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
@@ -122,11 +123,21 @@ public partial class Game : Node2D, NetworkPointUser {
 		GD.Print("Created lobby! " + (lobbyCreated.m_eResult == EResult.k_EResultOK));
 
 		SteamMatchmaking.SetLobbyJoinable((CSteamID)lobbyCreated.m_ulSteamIDLobby, true);
+		SteamMatchmaking.SetLobbyData((CSteamID)lobbyCreated.m_ulSteamIDLobby, "name", "Project Squad Test Lobby");
 
 		GD.Print("Set joinable!");
 	}
 
-	private void LobbiesMatched(LobbyMatchList_t lobbyMatchList) {
+	private void LobbiesMatched(LobbyMatchList_t lobbyMatchList, bool bIOFailure) {
 		GD.Print("Lobbies matched: " + lobbyMatchList.m_nLobbiesMatching);
+
+		uint count = lobbyMatchList.m_nLobbiesMatching;
+
+		for (int index = 0; index < count; index++) {
+			CSteamID lobbyId = SteamMatchmaking.GetLobbyByIndex(index);
+			string name = SteamMatchmaking.GetLobbyData(lobbyId, "name");
+
+			GD.Print("Name: " + name);
+		}
 	}
 }
