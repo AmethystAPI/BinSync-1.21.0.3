@@ -158,7 +158,7 @@ namespace Networking {
       LocalServer = new Server(s_LocalSteamServer);
 
       try {
-        LocalServer.Start(25566, 32, 0, false);
+        LocalServer.Start(0, 32, 0, false);
       } catch {
         LocalServer = null;
 
