@@ -1,13 +1,16 @@
-last_change = 2024-07-19T19:08:56.325297Z
+last_change = 2024-07-19T19:09:01.707641Z
 addr = 0x8c82a0
 size = 0xd9
 name = "__ZN3mce12TextureGroup17unloadAllTexturesEv"
 type = "double"
 
 [header]
-last_change = 2024-07-19T19:08:56.325297Z
+last_change = 2024-07-19T19:09:01.707641Z
 name = "__ZN3mce12TextureGroup17unloadAllTexturesEv"
 addr = 0x8c82a0
 type = "double"
 
-[header.args]
+[header.args.0x0]
+offset = 0x0
+type = "long long"
+size = 0x8
