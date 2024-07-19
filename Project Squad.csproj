@@ -12,8 +12,8 @@
     
     <Reference Include="Steamworks.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <!-- <HintPath>steamworks.net/Windows-x64/Steamworks.NET.dll</HintPath> -->
-      <HintPath>steamworks.net/OSX-Linux-x64/Steamworks.NET.dll</HintPath>
+      <HintPath>steamworks.net/Windows-x64/Steamworks.NET.dll</HintPath>
+      <!-- <HintPath>steamworks.net/OSX-Linux-x64/Steamworks.NET.dll</HintPath> -->
     </Reference>
   </ItemGroup>
 
