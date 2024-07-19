@@ -16,6 +16,8 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	private WorldGenerator _worldGenerator;
 
+	public static bool DEBUG_MAIN = false;
+
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
 			GD.PushError("SteamAPI.Init() failed!");
@@ -32,8 +34,13 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		GD.Print(SteamFriends.GetPersonaName());
-		// SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, 16);
+		DEBUG_MAIN = SteamFriends.GetPersonaName() == "Outer Cloud Studio";
+
+		if (DEBUG_MAIN) {
+			SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, 16);
+		} else {
+			SteamMatchmaking.RequestLobbyList();
+		}
 
 		// NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
 		// 	if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
