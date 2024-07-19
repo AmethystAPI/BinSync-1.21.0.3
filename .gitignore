@@ -1,7 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
-builds/mac
-builds/windows
-builds/*.zip
+builds
 libraries/sg-physics-2d/lib/~libsgphysics2d.windows.template_debug.x86_64.dll
 .vscode/settings.json
