@@ -19,24 +19,12 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	public static bool DEBUG_MAIN = false;
 
-	private Callback<LobbyCreated_t> _lobbyCreatedCallback;
-	private Callback<LobbyEnter_t> _lobbyEnteredCallback;
-	private Callback<GameLobbyJoinRequested_t> _gameLobbyJoinRequestedCallback;
-	private Callback<LobbyChatUpdate_t> _lobbyChatUpdateCallback;
-	private Callback<LobbyGameCreated_t> _lobbyGameCreatedCallback;
-
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
 			GD.PushError("SteamAPI.Init() failed!");
 
 			return;
 		}
-
-		_lobbyCreatedCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
-		_lobbyEnteredCallback = Callback<LobbyEnter_t>.Create(LobbyEntered);
-		_gameLobbyJoinRequestedCallback = Callback<GameLobbyJoinRequested_t>.Create(GameLobbyJoinRequested);
-		_lobbyChatUpdateCallback = Callback<LobbyChatUpdate_t>.Create(LobbyChatUpdated);
-		_lobbyGameCreatedCallback = Callback<LobbyGameCreated_t>.Create(LobbyGameCreated);
 
 		NetworkPoint.Setup(this);
 
@@ -46,21 +34,6 @@ public partial class Game : Node2D, NetworkPointUser {
 		Me = this;
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
-
-		DEBUG_MAIN = SteamFriends.GetPersonaName() == "Outer Cloud Studio";
-
-		if (DEBUG_MAIN) {
-			GD.Print("Creating lobby...");
-
-			SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, 16);
-
-		} else {
-			GD.Print("Searching for lobbies...");
-
-			SteamAPICall_t handle = SteamMatchmaking.RequestLobbyList();
-			CallResult<LobbyMatchList_t> callResult = CallResult<LobbyMatchList_t>.Create(LobbiesMatched);
-			callResult.Set(handle);
-		}
 
 		// NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
 		// 	if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
@@ -125,56 +98,5 @@ public partial class Game : Node2D, NetworkPointUser {
 		}
 
 		Room.Cleanup();
-	}
-
-	private void LobbyCreated(LobbyCreated_t lobbyCreated) {
-		GD.Print("Created lobby! " + (lobbyCreated.m_eResult == EResult.k_EResultOK));
-
-		SteamMatchmaking.SetLobbyData((CSteamID)lobbyCreated.m_ulSteamIDLobby, "name", "Project Squad Test Lobby");
-
-		GD.Print("Set joinable!");
-	}
-
-	private void LobbyEntered(LobbyEnter_t lobbyEntered) {
-		GD.Print("Entered lobby! " + SteamMatchmaking.GetLobbyData((CSteamID)lobbyEntered.m_ulSteamIDLobby, "name"));
-	}
-
-	private void GameLobbyJoinRequested(GameLobbyJoinRequested_t gameLobbyJoinRequested) {
-		GD.Print("Requested join lobby! " + SteamMatchmaking.GetLobbyData(gameLobbyJoinRequested.m_steamIDLobby, "name"));
-
-		SteamMatchmaking.JoinLobby(gameLobbyJoinRequested.m_steamIDLobby);
-	}
-
-	private void LobbiesMatched(LobbyMatchList_t lobbyMatchList, bool bIOFailure) {
-		GD.Print("Lobbies matched: " + lobbyMatchList.m_nLobbiesMatching);
-
-		uint count = lobbyMatchList.m_nLobbiesMatching;
-
-		for (int index = 0; index < count; index++) {
-			CSteamID lobbyId = SteamMatchmaking.GetLobbyByIndex(index);
-			string name = SteamMatchmaking.GetLobbyData(lobbyId, "name");
-
-			GD.Print("Name: " + name);
-		}
-	}
-
-	private void LobbyChatUpdated(LobbyChatUpdate_t lobbyChatUpdate) {
-		int playerCount = SteamMatchmaking.GetNumLobbyMembers((CSteamID)lobbyChatUpdate.m_ulSteamIDLobby);
-
-		GD.Print("Lobby Updated: " + playerCount);
-
-		NetworkManager.Host();
-
-		SteamMatchmaking.SetLobbyGameServer((CSteamID)lobbyChatUpdate.m_ulSteamIDLobby, default, default, SteamUser.GetSteamID());
-	}
-
-	private void LobbyGameCreated(LobbyGameCreated_t lobbyGameCreated) {
-		ulong serverId = lobbyGameCreated.m_ulSteamIDGameServer;
-
-		GD.Print("Lobby game created! " + serverId);
-
-		if (NetworkManager.IsHost) return;
-
-		NetworkManager.Join(serverId);
 	}
 }

@@ -4,6 +4,7 @@ using Godot;
 using Riptide;
 using Riptide.Transports.Steam;
 using Riptide.Utils;
+using Steamworks;
 
 namespace Networking {
   public partial class NetworkManager : Node {
@@ -16,11 +17,18 @@ namespace Networking {
     private static SteamServer s_LocalSteamServer;
 
     private Dictionary<string, int> _nameIndexes = new Dictionary<string, int>();
+    private Callback<LobbyCreated_t> _lobbyCreatedCallback;
+    private Callback<LobbyEnter_t> _lobbyEnteredCallback;
+    private Callback<GameLobbyJoinRequested_t> _gameLobbyJoinRequestedCallback;
 
     public override void _Ready() {
       s_Me = this;
 
       RiptideLogger.Initialize(GD.Print, GD.Print, GD.PushWarning, GD.PushError, false);
+
+      _lobbyCreatedCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
+      _lobbyEnteredCallback = Callback<LobbyEnter_t>.Create(LobbyEntered);
+      _gameLobbyJoinRequestedCallback = Callback<GameLobbyJoinRequested_t>.Create(GameLobbyJoinRequested);
     }
 
     public override void _PhysicsProcess(double delta) {
@@ -154,6 +162,10 @@ namespace Networking {
     }
 
     public static bool Host() {
+      GD.Print("Creating lobby...");
+
+      SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, 16);
+
       s_LocalSteamServer = new SteamServer();
       LocalServer = new Server(s_LocalSteamServer);
 
@@ -169,7 +181,7 @@ namespace Networking {
 
       LocalServer.ClientConnected += s_Me.OnClientConnected;
 
-      LocalClient = new Client(new SteamClient(s_LocalSteamServer));
+      LocalClient = new Client(new Riptide.Transports.Steam.SteamClient(s_LocalSteamServer));
       LocalClient.Connect("localhost", 5, 0, null, false);
 
       LocalClient.MessageReceived += s_Me.OnMessageRecieved;
@@ -177,8 +189,8 @@ namespace Networking {
       return true;
     }
 
-    public static bool Join(ulong serverId) {
-      LocalClient = new Client(new SteamClient());
+    public static bool Join(CSteamID serverId) {
+      LocalClient = new Client(new Riptide.Transports.Steam.SteamClient());
 
       LocalClient.Connect(serverId.ToString(), 5, 0, null, false);
 
@@ -237,6 +249,29 @@ namespace Networking {
 
     private void OnClientConnected(object server, ServerConnectedEventArgs eventArguments) {
       ClientConnected?.Invoke(eventArguments);
+    }
+
+    private void LobbyCreated(LobbyCreated_t lobbyCreated) {
+      GD.Print("Created lobby! " + (lobbyCreated.m_eResult == EResult.k_EResultOK));
+
+      SteamMatchmaking.SetLobbyData((CSteamID)lobbyCreated.m_ulSteamIDLobby, "name", "Project Squad Test Lobby");
+      SteamMatchmaking.SetLobbyGameServer((CSteamID)lobbyCreated.m_ulSteamIDLobby, default, default, SteamUser.GetSteamID());
+    }
+
+    private void LobbyEntered(LobbyEnter_t lobbyEntered) {
+      if (IsHost) return;
+
+      GD.Print("Entered lobby! " + SteamMatchmaking.GetLobbyData((CSteamID)lobbyEntered.m_ulSteamIDLobby, "name"));
+
+      SteamMatchmaking.GetLobbyGameServer((CSteamID)lobbyEntered.m_ulSteamIDLobby, out uint ip, out ushort port, out CSteamID serverId);
+
+      Join(serverId);
+    }
+
+    private void GameLobbyJoinRequested(GameLobbyJoinRequested_t gameLobbyJoinRequested) {
+      GD.Print("Requested join lobby! " + SteamMatchmaking.GetLobbyData(gameLobbyJoinRequested.m_steamIDLobby, "name"));
+
+      SteamMatchmaking.JoinLobby(gameLobbyJoinRequested.m_steamIDLobby);
     }
   }
 }
