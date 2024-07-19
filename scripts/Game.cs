@@ -23,6 +23,7 @@ public partial class Game : Node2D, NetworkPointUser {
 	private Callback<LobbyEnter_t> _lobbyEnteredCallback;
 	private Callback<GameLobbyJoinRequested_t> _gameLobbyJoinRequestedCallback;
 	private Callback<LobbyChatUpdate_t> _lobbyChatUpdateCallback;
+	private Callback<LobbyGameCreated_t> _lobbyGameCreatedCallback;
 
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
@@ -35,6 +36,7 @@ public partial class Game : Node2D, NetworkPointUser {
 		_lobbyEnteredCallback = Callback<LobbyEnter_t>.Create(LobbyEntered);
 		_gameLobbyJoinRequestedCallback = Callback<GameLobbyJoinRequested_t>.Create(GameLobbyJoinRequested);
 		_lobbyChatUpdateCallback = Callback<LobbyChatUpdate_t>.Create(LobbyChatUpdated);
+		_lobbyGameCreatedCallback = Callback<LobbyGameCreated_t>.Create(LobbyGameCreated);
 
 		NetworkPoint.Setup(this);
 
@@ -157,6 +159,18 @@ public partial class Game : Node2D, NetworkPointUser {
 	}
 
 	private void LobbyChatUpdated(LobbyChatUpdate_t lobbyChatUpdate) {
-		GD.Print("Lobby Updated: " + SteamMatchmaking.GetNumLobbyMembers((CSteamID)lobbyChatUpdate.m_ulSteamIDLobby));
+		int playerCount = SteamMatchmaking.GetNumLobbyMembers((CSteamID)lobbyChatUpdate.m_ulSteamIDLobby);
+
+		GD.Print("Lobby Updated: " + playerCount);
+
+		NetworkManager.Host();
+
+		SteamMatchmaking.SetLobbyGameServer((CSteamID)lobbyChatUpdate.m_ulSteamIDLobby, default, default, SteamUser.GetSteamID());
+	}
+
+	private void LobbyGameCreated(LobbyGameCreated_t lobbyGameCreated) {
+		ulong serverId = lobbyGameCreated.m_ulSteamIDGameServer;
+
+		GD.Print("Lobby game created! " + serverId);
 	}
 }
