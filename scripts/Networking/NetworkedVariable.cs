@@ -2,32 +2,25 @@ using System;
 using Godot;
 using Riptide;
 
-namespace Networking
-{
-  public class NetworkedVariable<ValueType>
-  {
-    public enum Authority
-    {
+namespace Networking {
+  public class NetworkedVariable<ValueType> {
+    public enum Authority {
       Server,
       Client
     }
 
-    public enum UpdateEvent
-    {
+    public enum UpdateEvent {
       Change,
       Manual
     }
 
     private ValueType _value;
-    public ValueType Value
-    {
-      get
-      {
+    public ValueType Value {
+      get {
         return _value;
       }
 
-      set
-      {
+      set {
         if (_updateEvent == UpdateEvent.Change && !_value.Equals(value)) SendUpdate();
 
         _value = value;
@@ -44,50 +37,43 @@ namespace Networking
     private int _lastRecievedIndex = -1;
     private int _lastSentIndex = -1;
 
-    public NetworkedVariable(ValueType intitalValue, uint minimumSendDelay = 30, Authority authority = Authority.Client, UpdateEvent updateEvent = UpdateEvent.Manual, MessageSendMode messageSendMode = MessageSendMode.Unreliable)
-    {
+    public NetworkedVariable(ValueType intitalValue, uint minimumSendDelay = 30, Authority authority = Authority.Client, UpdateEvent updateEvent = UpdateEvent.Manual, MessageSendMode messageSendMode = MessageSendMode.Unreliable) {
       _value = intitalValue;
       _minimumSendDelay = minimumSendDelay;
       _authority = authority;
       _updateEvent = updateEvent;
       _messageSendMode = messageSendMode;
 
-      if (NetworkManager.SafeMode && _minimumSendDelay < 50) _minimumSendDelay = 50;
+      // if (NetworkManager.SafeMode && _minimumSendDelay < 50) _minimumSendDelay = 50;
+      if (_minimumSendDelay < 50) _minimumSendDelay = 50;
     }
 
-    public void Register(NetworkPointUser source, string name)
-    {
+    public void Register(NetworkPointUser source, string name) {
       _source = source;
       _name = name;
     }
 
-    public void Sync()
-    {
+    public void Sync() {
       SendUpdate();
     }
 
-    private Action<Message> SetupMessage(bool propogate)
-    {
-      return (Message message) =>
-      {
+    private Action<Message> SetupMessage(bool propogate) {
+      return (Message message) => {
         message.AddBool(propogate);
 
         _lastSentIndex++;
 
         message.AddInt(_lastSentIndex);
 
-        if (typeof(ValueType) == typeof(int))
-        {
+        if (typeof(ValueType) == typeof(int)) {
           message.AddInt((int)(object)_value);
         }
 
-        if (typeof(ValueType) == typeof(float))
-        {
+        if (typeof(ValueType) == typeof(float)) {
           message.AddFloat((float)(object)_value);
         }
 
-        if (typeof(ValueType) == typeof(Vector2))
-        {
+        if (typeof(ValueType) == typeof(Vector2)) {
           Vector2 castedValue = (Vector2)(object)_value;
           message.AddFloat(castedValue.X);
           message.AddFloat(castedValue.Y);
@@ -95,8 +81,7 @@ namespace Networking
       };
     }
 
-    private void SendUpdate()
-    {
+    private void SendUpdate() {
       if (_source == null) throw new Exception("Can not send updates for a networked variable that has not been setup!");
 
       if (!_source.NetworkPoint.IsOwner) return;
@@ -107,19 +92,16 @@ namespace Networking
 
       _lastSentTick = now;
 
-      if (_authority == Authority.Server)
-      {
+      if (_authority == Authority.Server) {
         NetworkManager.SendRpcToClients(_source, _name, SetupMessage(false), _messageSendMode);
       }
 
-      if (_authority == Authority.Client)
-      {
+      if (_authority == Authority.Client) {
         NetworkManager.SendRpcToServer(_source, _name, SetupMessage(true), _messageSendMode);
       }
     }
 
-    public void ReceiveUpdate(Message message)
-    {
+    public void ReceiveUpdate(Message message) {
       bool propogate = message.GetBool();
 
       int index = message.GetInt();
@@ -129,18 +111,15 @@ namespace Networking
       _lastRecievedIndex = index;
       _lastSentIndex = Math.Max(_lastSentIndex, _lastRecievedIndex);
 
-      if (typeof(ValueType) == typeof(int))
-      {
+      if (typeof(ValueType) == typeof(int)) {
         _value = (ValueType)(object)message.GetInt();
       }
 
-      if (typeof(ValueType) == typeof(float))
-      {
+      if (typeof(ValueType) == typeof(float)) {
         _value = (ValueType)(object)message.GetFloat();
       }
 
-      if (typeof(ValueType) == typeof(Vector2))
-      {
+      if (typeof(ValueType) == typeof(Vector2)) {
         _value = (ValueType)(object)new Vector2(message.GetFloat(), message.GetFloat());
       }
 

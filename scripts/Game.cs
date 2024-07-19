@@ -172,5 +172,9 @@ public partial class Game : Node2D, NetworkPointUser {
 		ulong serverId = lobbyGameCreated.m_ulSteamIDGameServer;
 
 		GD.Print("Lobby game created! " + serverId);
+
+		if (NetworkManager.IsHost) return;
+
+		NetworkManager.Join(serverId);
 	}
 }

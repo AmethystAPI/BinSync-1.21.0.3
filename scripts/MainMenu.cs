@@ -29,7 +29,7 @@ public partial class MainMenu : Control {
 		// NetworkManager.Join("127.0.0.1");
 		// NetworkManager.Join("104.33.194.150");
 
-		NetworkManager.Join(ipAdressInput.Text);
+		// NetworkManager.Join(ipAdressInput.Text);
 
 		QueueFree();
 	}

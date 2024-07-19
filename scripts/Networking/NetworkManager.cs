@@ -7,8 +7,6 @@ using Riptide.Utils;
 
 namespace Networking {
   public partial class NetworkManager : Node {
-    public static bool SafeMode = true; // If safe mode, use tcp since portforwarding sometime's doesn't work on udp for me.
-
     public static Server LocalServer;
     public static Client LocalClient;
     public static bool IsHost => LocalServer != null;
@@ -156,12 +154,6 @@ namespace Networking {
     }
 
     public static bool Host() {
-      // if (SafeMode) {
-      //   LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
-      // } else {
-      //   LocalServer = new Server(new Riptide.Transports.Udp.UdpServer());
-      // }
-
       s_LocalSteamServer = new SteamServer();
       LocalServer = new Server(s_LocalSteamServer);
 
@@ -185,20 +177,10 @@ namespace Networking {
       return true;
     }
 
-    public static bool Join(string address) {
-      // if (SafeMode) {
-      //   LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
-      // } else {
-      //   LocalClient = new Client(new Riptide.Transports.Udp.UdpClient());
-      // }
-
+    public static bool Join(ulong serverId) {
       LocalClient = new Client(new SteamClient());
 
-      if (address.Contains(":") || address == "localhost") {
-        LocalClient.Connect(address, 5, 0, null, false);
-      } else {
-        LocalClient.Connect(address + ":25566", 5, 0, null, false);
-      }
+      LocalClient.Connect(serverId.ToString(), 5, 0, null, false);
 
       LocalClient.MessageReceived += s_Me.OnMessageRecieved;
 
