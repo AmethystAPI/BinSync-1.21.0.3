@@ -18,12 +18,18 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	public static bool DEBUG_MAIN = false;
 
+	private Callback<LobbyCreated_t> _createLobbyCallback;
+	private Callback<LobbyMatchList_t> _requestLobbyListCallback;
+
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
 			GD.PushError("SteamAPI.Init() failed!");
 
 			return;
 		}
+
+		_createLobbyCallback = Callback<LobbyCreated_t>.Create(LobbyCreated);
+		_requestLobbyListCallback = Callback<LobbyMatchList_t>.Create(LobbiesMatched);
 
 		NetworkPoint.Setup(this);
 
@@ -37,21 +43,11 @@ public partial class Game : Node2D, NetworkPointUser {
 		DEBUG_MAIN = SteamFriends.GetPersonaName() == "Outer Cloud Studio";
 
 		if (DEBUG_MAIN) {
-			Callback<LobbyCreated_t> createLobbyCallback = Callback<LobbyCreated_t>.Create(lobbyCreated => {
-				SteamMatchmaking.SetLobbyJoinable((CSteamID)lobbyCreated.m_ulSteamIDLobby, true);
-
-				GD.Print("Created lobby!");
-			});
-
 			GD.Print("Creating lobby...");
 
 			SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, 16);
 
 		} else {
-			Callback<LobbyMatchList_t> requestLobbyCallback = Callback<LobbyMatchList_t>.Create(lobbyMatchList => {
-				GD.Print("Found lobbies: " + lobbyMatchList.m_nLobbiesMatching);
-			});
-
 			GD.Print("Searching for lobbies...");
 
 			SteamMatchmaking.RequestLobbyList();
@@ -64,6 +60,10 @@ public partial class Game : Node2D, NetworkPointUser {
 		// };
 
 		// if (!NetworkManager.Host()) NetworkManager.Join("localhost");
+	}
+
+	public override void _Process(double delta) {
+		SteamAPI.RunCallbacks();
 	}
 
 	public static void Start() {
@@ -116,5 +116,17 @@ public partial class Game : Node2D, NetworkPointUser {
 		}
 
 		Room.Cleanup();
+	}
+
+	private void LobbyCreated(LobbyCreated_t lobbyCreated) {
+		GD.Print("Created lobby! " + (lobbyCreated.m_eResult == EResult.k_EResultOK));
+
+		SteamMatchmaking.SetLobbyJoinable((CSteamID)lobbyCreated.m_ulSteamIDLobby, true);
+
+		GD.Print("Set joinable!");
+	}
+
+	private void LobbiesMatched(LobbyMatchList_t lobbyMatchList) {
+		GD.Print("Lobbies matched: " + lobbyMatchList.m_nLobbiesMatching);
 	}
 }
