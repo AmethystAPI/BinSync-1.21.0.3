@@ -1,0 +1,11 @@
+last_change = 2024-07-19T19:07:54.809752Z
+addr = 0x8c82a0
+size = 0xd9
+name = "__ZN3mce12TextureGroup17unloadAllTexturesEv"
+
+[header]
+last_change = 2024-07-19T19:07:54.809752Z
+name = "__ZN3mce12TextureGroup17unloadAllTexturesEv"
+addr = 0x8c82a0
+
+[header.args]
