@@ -137,6 +137,8 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	private void GameLobbyJoinRequested(GameLobbyJoinRequested_t gameLobbyJoinRequested) {
 		GD.Print("Requested join lobby! " + SteamMatchmaking.GetLobbyData(gameLobbyJoinRequested.m_steamIDLobby, "name"));
+
+		SteamMatchmaking.JoinLobby(gameLobbyJoinRequested.m_steamIDLobby);
 	}
 
 	private void LobbiesMatched(LobbyMatchList_t lobbyMatchList, bool bIOFailure) {
