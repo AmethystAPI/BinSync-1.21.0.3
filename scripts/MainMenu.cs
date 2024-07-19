@@ -14,6 +14,10 @@ public partial class MainMenu : Control {
 	public override void _Ready() {
 		Player.HatCosmetic = HatEquipmentScenes[0];
 		Player.BodyCosmetic = BodyEquipmentScenes[0];
+
+		NetworkManager.JoinedServer += () => {
+			QueueFree();
+		};
 	}
 
 	public void Host() {

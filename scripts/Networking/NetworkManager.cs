@@ -12,6 +12,7 @@ namespace Networking {
     public static Client LocalClient;
     public static bool IsHost => LocalServer != null;
     public static Action<ServerConnectedEventArgs> ClientConnected;
+    public static Action JoinedServer;
 
     private static NetworkManager s_Me;
     private static SteamServer s_LocalSteamServer;
@@ -195,6 +196,8 @@ namespace Networking {
       LocalClient.Connect(serverId.ToString(), 5, 0, null, false);
 
       LocalClient.MessageReceived += s_Me.OnMessageRecieved;
+
+      JoinedServer?.Invoke();
 
       return true;
     }
