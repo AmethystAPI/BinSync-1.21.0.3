@@ -3,7 +3,8 @@ using Networking;
 using Riptide;
 using System.Collections.Generic;
 
-public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
+public partial class Player : CharacterBody2D, Damageable, NetworkPointUser
+{
 	public static List<Player> Players = new List<Player>();
 	public static List<Player> AlivePlayers = new List<Player>();
 	public static Player LocalPlayer;
@@ -30,7 +31,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 	private Weapon _equippedWeapon;
 
-	public override void _Ready() {
+	public override void _Ready()
+	{
 		NetworkPoint.Setup(this);
 
 		NetworkPoint.Register(nameof(_networkedPosition), _networkedPosition);
@@ -63,20 +65,24 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(BodyCosmetic.ResourcePath));
 	}
 
-	public override void _Process(double delta) {
+	public override void _Process(double delta)
+	{
 		Knockback = Knockback.Lerp(Vector2.Zero, (float)delta * 12f);
 
 		_networkedPosition.Sync();
 		_networkedVelocity.Sync();
 		_networkedFacing.Sync();
 
-		if (NetworkPoint.IsOwner) {
+		if (NetworkPoint.IsOwner)
+		{
 			if (StateMachine.CurrentState != "Hurt") Interactables.ActivateClosest(this);
 
 			_networkedPosition.Value = GlobalPosition;
 			_networkedVelocity.Value = Velocity;
 			_networkedFacing.Value = GetGlobalMousePosition() - GlobalPosition;
-		} else {
+		}
+		else
+		{
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, (float)delta * 20.0f);
 			Velocity = _networkedVelocity.Value;
 
@@ -86,7 +92,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Visuals.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
 	}
 
-	public void Heal(float health) {
+	public void Heal(float health)
+	{
 		if (!NetworkPoint.IsOwner) return;
 
 		Health += health;
@@ -96,7 +103,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		GameUI.UpdateHealth(Health);
 	}
 
-	public bool CanDamage(Projectile projectile) {
+	public bool CanDamage(Projectile projectile)
+	{
 		if (projectile.Source is Player) return false;
 
 		if (Health <= 0) return false;
@@ -106,12 +114,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		if (StateMachine.CurrentState == "Dash") return false;
 
 		// TODO: DEBUG
-		return false;
+		// return false;
 
 		return true;
 	}
 
-	public void Damage(Projectile projectile) {
+	public void Damage(Projectile projectile)
+	{
 		if (!NetworkPoint.IsOwner) return;
 
 		Health -= projectile.GetDamage();
@@ -120,7 +129,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (Health <= 0) Die();
 
-		NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
+		NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message =>
+		{
 			Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
 
 			message.AddFloat(knockback.X);
@@ -128,7 +138,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		});
 	}
 
-	public void Die() {
+	public void Die()
+	{
 		Health = 0;
 
 		GameUI.UpdateHealth(Health);
@@ -142,17 +153,21 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		_equippedWeapon.CancelShoot();
 	}
 
-	public void Revive() {
+	public void Revive()
+	{
 		NetworkPoint.BounceRpcToClients(nameof(ReviveRpc));
 	}
 
-	public void Equip(Item item) {
-		NetworkPoint.BounceRpcToClients(nameof(EquipItemRpc), message => {
+	public void Equip(Item item)
+	{
+		NetworkPoint.BounceRpcToClients(nameof(EquipItemRpc), message =>
+		{
 			message.AddString(item.GetPath());
 		});
 	}
 
-	private void EquipStarterItemsRpc(Message message) {
+	private void EquipStarterItemsRpc(Message message)
+	{
 		string path = message.GetString();
 
 		PackedScene weaponScene = ResourceLoader.Load<PackedScene>(path);
@@ -163,45 +178,54 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		if (NetworkPoint.IsOwner) Equip(weapon);
 	}
 
-	public void Cleanup() {
+	public void Cleanup()
+	{
 		Players.Remove(this);
 
 		QueueFree();
 	}
 
-	public void EnterTrinketRealm() {
+	public void EnterTrinketRealm()
+	{
 		NetworkPoint.BounceRpcToClients(nameof(EnterTrinketRealmRpc));
 	}
 
-	private void EnterTrinketRealmRpc(Message message) {
+	private void EnterTrinketRealmRpc(Message message)
+	{
 		if (NetworkPoint.IsOwner) return;
 	}
 
-	public void LeaveTrinketRealm() {
+	public void LeaveTrinketRealm()
+	{
 		NetworkPoint.BounceRpcToClients(nameof(LeaveTrinketRealmRpc));
 	}
 
-	private void LeaveTrinketRealmRpc(Message message) {
+	private void LeaveTrinketRealmRpc(Message message)
+	{
 		if (NetworkPoint.IsOwner) return;
 	}
 
-	private void DamageRpc(Message message) {
+	private void DamageRpc(Message message)
+	{
 		Knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
 		AnimationPlayer.Play("hurt");
 
-		foreach (Equipment equipment in EquippedEquipments.Values) {
+		foreach (Equipment equipment in EquippedEquipments.Values)
+		{
 			equipment.AnimationPlayer.Play("hurt");
 		}
 
 		Audio.Play("player_damage");
 	}
 
-	private void DieRpc(Message message) {
+	private void DieRpc(Message message)
+	{
 		WeaponHolder.Visible = false;
 		TrinketHolder.Visible = false;
 
-		if (!NetworkPoint.IsOwner) {
+		if (!NetworkPoint.IsOwner)
+		{
 			Health = 0;
 
 			AlivePlayers.Remove(this);
@@ -216,12 +240,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Game.Restart();
 	}
 
-	private void EquipItemRpc(Message message) {
+	private void EquipItemRpc(Message message)
+	{
 		string itemPath = message.GetString();
 
 		Item item = GetNode<Item>(itemPath);
 
-		if (item is Weapon weapon) {
+		if (item is Weapon weapon)
+		{
 			if (_equippedWeapon != null) _equippedWeapon.QueueFree();
 
 			item.GetParent().RemoveChild(item);
@@ -231,7 +257,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			_equippedWeapon = weapon;
 		}
 
-		if (item is Trinket trinket) {
+		if (item is Trinket trinket)
+		{
 			item.GetParent().RemoveChild(item);
 			TrinketHolder.AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
@@ -239,7 +266,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			EquippedTrinkets.Add(trinket);
 		}
 
-		if (item is Equipment equipment) {
+		if (item is Equipment equipment)
+		{
 			item.GetParent().RemoveChild(item);
 			EquipmentHolder.AddChild(item);
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
@@ -252,7 +280,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		item.OnEquipToPlayer(this);
 	}
 
-	private void ReviveRpc(Message message) {
+	private void ReviveRpc(Message message)
+	{
 		WeaponHolder.Visible = true;
 		TrinketHolder.Visible = true;
 
@@ -268,7 +297,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		GameUI.UpdateHealth(Health);
 	}
 
-	private void EquipCosmeticRpc(Message message) {
+	private void EquipCosmeticRpc(Message message)
+	{
 		string path = message.GetString();
 
 		PackedScene scene = ResourceLoader.Load<PackedScene>(path);

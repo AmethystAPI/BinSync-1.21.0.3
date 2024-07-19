@@ -1,8 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2phftpgxdl4w"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d2phftpgxdl4w"]
 
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="1_118dr"]
+[ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="2_dryb5"]
+[ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="3_l2e66"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_rwbs5"]
 
 [resource]
 script = ExtResource("4_rwbs5")
-EnemyScenes = Array[PackedScene]([ExtResource("1_118dr")])
+EnemyScenes = Array[PackedScene]([ExtResource("1_118dr"), ExtResource("2_dryb5"), ExtResource("3_l2e66")])
