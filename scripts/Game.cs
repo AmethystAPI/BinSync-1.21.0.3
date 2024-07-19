@@ -32,6 +32,9 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
+		GD.Print(SteamFriends.GetPersonaName());
+		// SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, 16);
+
 		// NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
 		// 	if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
 
