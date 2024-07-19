@@ -1,0 +1,11 @@
+last_change = 2024-07-19T19:00:09.557760Z
+addr = 0x1a6260
+size = 0x1c25
+name = "__ZN13MinecraftGame8initImplEv"
+
+[header]
+last_change = 2024-07-19T19:00:09.557760Z
+name = "__ZN13MinecraftGame8initImplEv"
+addr = 0x1a6260
+
+[header.args]
