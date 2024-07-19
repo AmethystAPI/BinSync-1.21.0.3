@@ -37,8 +37,23 @@ public partial class Game : Node2D, NetworkPointUser {
 		DEBUG_MAIN = SteamFriends.GetPersonaName() == "Outer Cloud Studio";
 
 		if (DEBUG_MAIN) {
-			SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, 16);
+			Callback<LobbyCreated_t> createLobbyCallback = Callback<LobbyCreated_t>.Create(lobbyCreated => {
+				SteamMatchmaking.SetLobbyJoinable((CSteamID)lobbyCreated.m_ulSteamIDLobby, true);
+
+				GD.Print("Created lobby!");
+			});
+
+			GD.Print("Creating lobby...");
+
+			SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, 16);
+
 		} else {
+			Callback<LobbyMatchList_t> requestLobbyCallback = Callback<LobbyMatchList_t>.Create(lobbyMatchList => {
+				GD.Print("Found lobbies: " + lobbyMatchList.m_nLobbiesMatching);
+			});
+
+			GD.Print("Searching for lobbies...");
+
 			SteamMatchmaking.RequestLobbyList();
 		}
 
