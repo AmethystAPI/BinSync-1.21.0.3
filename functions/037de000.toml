@@ -1,0 +1,13 @@
+addr = 0x37de000
+size = 0xd9
+name = "__ZN3mce16TextureContainer17reallocateStorageEv"
+
+[header]
+last_change = 2024-07-16T15:11:06.275830Z
+name = "__ZN3mce16TextureContainer17reallocateStorageEv"
+addr = 0x37de000
+
+[header.args.0x0]
+offset = 0x0
+type = "long long"
+size = 0x8

@@ -1,0 +1,10 @@
+addr = 0x2f8f490
+size = 0x8c
+name = "??0ChunkSource@@QEAA@PEAVDimension@@H@Z"
+
+[header]
+last_change = 2024-07-08T21:34:57.706029Z
+name = "??0ChunkSource@@QEAA@PEAVDimension@@H@Z"
+addr = 0x2f8f490
+
+[header.args]

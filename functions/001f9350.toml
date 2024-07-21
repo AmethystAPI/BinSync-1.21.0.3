@@ -1,0 +1,12 @@
+addr = 0x1f9350
+size = 0x398
+name = "__ZN13MinecraftGame29_onActiveResourcePacksChangedER19ResourcePackManagerb"
+type = "int"
+
+[header]
+last_change = 2024-07-19T19:02:50.324375Z
+name = "__ZN13MinecraftGame29_onActiveResourcePacksChangedER19ResourcePackManagerb"
+addr = 0x1f9350
+type = "int"
+
+[header.args]

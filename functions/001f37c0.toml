@@ -1,0 +1,13 @@
+addr = 0x1f37c0
+size = 0x140
+name = "__ZN13MinecraftGame24_beginReloadingResourcesEv"
+
+[header]
+last_change = 2024-07-19T19:07:44.705860Z
+name = "__ZN13MinecraftGame24_beginReloadingResourcesEv"
+addr = 0x1f37c0
+
+[header.args.0x0]
+offset = 0x0
+type = "long long"
+size = 0x8

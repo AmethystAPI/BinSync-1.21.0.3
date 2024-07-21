@@ -1,0 +1,10 @@
+addr = 0x88e890
+size = 0x12c
+name = "__ZN19ParticleEffectGroup19loadParticleEffectsER19ResourcePackManagerN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19ResourceLoadManagerEEEERKN14ParticleSystem31ParticleEffectComponentRegistryE"
+
+[header]
+last_change = 2024-07-19T19:08:34.565421Z
+name = "__ZN19ParticleEffectGroup19loadParticleEffectsER19ResourcePackManagerN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19ResourceLoadManagerEEEERKN14ParticleSystem31ParticleEffectComponentRegistryE"
+addr = 0x88e890
+
+[header.args]

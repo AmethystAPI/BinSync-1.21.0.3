@@ -1,0 +1,10 @@
+addr = 0x8c96c0
+size = 0x343
+name = "__ZN3mce12TextureGroup13uploadTextureERK16ResourceLocationRKNS_16TextureContainerENSt3__18optionalINS7_17basic_string_viewIcNS7_11char_traitsIcEEEEEE"
+
+[header]
+last_change = 2024-07-16T12:53:21.305299Z
+name = "__ZN3mce12TextureGroup13uploadTextureERK16ResourceLocationRKNS_16TextureContainerENSt3__18optionalINS7_17basic_string_viewIcNS7_11char_traitsIcEEEEEE"
+addr = 0x8c96c0
+
+[header.args]

@@ -1,0 +1,10 @@
+addr = 0xb303d0
+size = 0x72
+name = "?supports3rdPartyServers@MinecraftScreenModel@@QEBA_NXZ"
+
+[header]
+last_change = 2024-07-14T23:20:40.472392Z
+name = "?supports3rdPartyServers@MinecraftScreenModel@@QEBA_NXZ"
+addr = 0xb303d0
+
+[header.args]

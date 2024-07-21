@@ -1,0 +1,10 @@
+addr = 0x15a3f10
+size = 0x35
+name = "__ZNK11LoginPacket7getNameEv"
+
+[header]
+last_change = 2024-07-11T14:09:42.163560Z
+name = "__ZNK11LoginPacket7getNameEv"
+addr = 0x15a3f10
+
+[header.args]

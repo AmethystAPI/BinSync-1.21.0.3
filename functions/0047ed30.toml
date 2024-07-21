@@ -1,0 +1,10 @@
+addr = 0x47ed30
+size = 0xad
+name = "__ZN3mce16TextureContainerD1Ev"
+
+[header]
+last_change = 2024-07-16T14:09:24.240849Z
+name = "__ZN3mce16TextureContainerD1Ev"
+addr = 0x47ed30
+
+[header.args]

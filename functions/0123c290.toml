@@ -1,0 +1,10 @@
+addr = 0x123c290
+size = 0x150d
+name = "__ZN6Social19MultiplayerGameInfo27createFromSessionPropertiesERKN4Json5ValueE"
+
+[header]
+last_change = 2024-07-14T16:50:24.303260Z
+name = "__ZN6Social19MultiplayerGameInfo27createFromSessionPropertiesERKN4Json5ValueE"
+addr = 0x123c290
+
+[header.args]

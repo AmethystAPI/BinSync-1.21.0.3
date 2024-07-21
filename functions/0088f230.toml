@@ -1,0 +1,10 @@
+addr = 0x88f230
+size = 0x6e
+name = "__ZN19ParticleEffectGroup21unloadParticleEffectsEv"
+
+[header]
+last_change = 2024-07-19T19:08:03.075943Z
+name = "__ZN19ParticleEffectGroup21unloadParticleEffectsEv"
+addr = 0x88f230
+
+[header.args]

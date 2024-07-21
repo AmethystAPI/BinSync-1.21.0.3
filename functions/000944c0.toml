@@ -1,0 +1,9 @@
+addr = 0x944c0
+size = 0xff
+
+[stack_vars.-0x160]
+offset = -352
+name = "var_158"
+type = "unsigned long long[6]"
+size = 0x30
+addr = 0x944c0

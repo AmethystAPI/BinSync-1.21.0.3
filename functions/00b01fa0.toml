@@ -1,0 +1,10 @@
+addr = 0xb01fa0
+size = 0x170
+name = "__ZN26LegacyClientNetworkHandler6handleERK17NetworkIdentifierRK16DisconnectPacket"
+
+[header]
+last_change = 2024-07-16T12:32:00.577188Z
+name = "__ZN26LegacyClientNetworkHandler6handleERK17NetworkIdentifierRK16DisconnectPacket"
+addr = 0xb01fa0
+
+[header.args]

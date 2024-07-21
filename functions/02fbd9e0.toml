@@ -1,0 +1,10 @@
+addr = 0x2fbd9e0
+size = 0x18
+name = "?getBiomeRegistry@Dimension@@UEBAAEBVBiomeRegistry@@XZ"
+
+[header]
+last_change = 2024-07-08T21:31:07.095148Z
+name = "?getBiomeRegistry@Dimension@@UEBAAEBVBiomeRegistry@@XZ"
+addr = 0x2fbd9e0
+
+[header.args]
