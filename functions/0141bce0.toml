@@ -1,11 +1,11 @@
-last_change = 2024-07-21T22:26:17.253825Z
+last_change = 2024-07-21T22:28:35.569505Z
 addr = 0x141bce0
 size = 0x47c
-name = "__ZN24MovingBlockActorRenderer6renderER22BaseActorRenderContextR20BlockActorRenderData"
+name = "sub_14141BCE0"
 
 [header]
-last_change = 2024-07-21T22:26:17.253825Z
-name = "__ZN24MovingBlockActorRenderer6renderER22BaseActorRenderContextR20BlockActorRenderData"
+last_change = 2024-07-21T22:28:35.569505Z
+name = "sub_14141BCE0"
 addr = 0x141bce0
 
 [header.args]
