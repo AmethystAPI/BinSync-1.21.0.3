@@ -123,3 +123,10 @@ addr = 0x246369
 func_addr = 0x2462e0
 comment = "v8 = *(BedrockTexture::getClientHandle(SkinTexture, 0LL) + 8);\n"
 decompiled = true
+
+[0xa53489]
+last_change = 2024-07-21T23:07:04.416904Z
+addr = 0xa53489
+func_addr = 0xa53440
+comment = "<-\n"
+decompiled = true
