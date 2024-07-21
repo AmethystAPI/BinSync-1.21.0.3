@@ -1,0 +1,11 @@
+last_change = 2024-07-21T22:26:17.253825Z
+addr = 0x141bce0
+size = 0x47c
+name = "__ZN24MovingBlockActorRenderer6renderER22BaseActorRenderContextR20BlockActorRenderData"
+
+[header]
+last_change = 2024-07-21T22:26:17.253825Z
+name = "__ZN24MovingBlockActorRenderer6renderER22BaseActorRenderContextR20BlockActorRenderData"
+addr = 0x141bce0
+
+[header.args]
