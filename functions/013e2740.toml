@@ -1,0 +1,12 @@
+last_change = 2024-07-22T10:33:26.580215Z
+addr = 0x13e2740
+size = 0x366
+
+[header]
+last_change = 2024-07-22T10:33:26.580215Z
+addr = 0x13e2740
+
+[header.args.0x1]
+offset = 0x1
+type = "float"
+size = 0x4
