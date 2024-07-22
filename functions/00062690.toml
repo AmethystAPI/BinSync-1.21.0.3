@@ -1,9 +1,0 @@
-addr = 0x62690
-size = 0x281
-
-[stack_vars.-0x2c0]
-offset = -704
-name = "var_1B0"
-type = "_QWORD[2]"
-size = 0x10
-addr = 0x62690

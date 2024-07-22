@@ -8,10 +8,3 @@ name = "_lambda_c8ea76f62579a5f1e97f6d9ecb451fff_::operator()"
 addr = 0x174afe0
 
 [header.args]
-
-[stack_vars.-0xd8]
-offset = -216
-name = "dimensionIDStringView"
-type = "std::string_view"
-size = 0x10
-addr = 0x174afe0
