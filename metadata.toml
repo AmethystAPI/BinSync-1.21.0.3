@@ -1,6 +1,6 @@
 user = "tamaspapp"
 version = "4.2.1"
-last_push_time = 2024-07-22T11:07:39.162546Z
+last_push_time = 2024-07-22T15:20:58.130403Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Updated <FuncHeader: None __ZNK19LevelRendererPlayer6getFovEfb(args=1); @0x13e2740>"
+last_commit_msg = "Updated <FuncHeader: None ?hasEffect@Actor@@QEBA_NAEBVMobEffect@@@Z(args=0); @0x2717620>"
