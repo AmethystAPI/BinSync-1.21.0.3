@@ -6,6 +6,14 @@ kanban-plugin: basic
 
 ## Todo
 
+- [ ] Decrease Range of Bow
+- [ ] Hurting before activate causes infinite damage
+- [ ] Rooms ending
+- [ ] Look at decreasing projectile invincibility time
+- [ ] Damage numbers
+- [ ] Multiple Paths
+- [ ] Improve Title Screen
+- [ ] Screen Shake
 - [ ] Work on SFX #polish
 - [ ] More Music #content
 - [ ] More Trinkets #design
