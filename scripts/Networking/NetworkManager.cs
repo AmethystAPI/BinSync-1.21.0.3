@@ -190,10 +190,47 @@ namespace Networking {
       return true;
     }
 
+    public static bool HostLocal() {
+      LocalServer = new Server(new Riptide.Transports.Tcp.TcpServer());
+
+      try {
+        LocalServer.Start(25566, 32, 0, false);
+      } catch {
+        LocalServer = null;
+
+        return false;
+      }
+
+      LocalServer.MessageReceived += s_Me.OnMessageRecieved;
+
+      LocalServer.ClientConnected += s_Me.OnClientConnected;
+
+      LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
+      LocalClient.Connect("127.0.0.1:25566", 5, 0, null, false);
+
+      LocalClient.MessageReceived += s_Me.OnMessageRecieved;
+
+      JoinedServer?.Invoke();
+
+      return true;
+    }
+
     public static bool Join(CSteamID serverId) {
       LocalClient = new Client(new Riptide.Transports.Steam.SteamClient());
 
       LocalClient.Connect(serverId.ToString(), 5, 0, null, false);
+
+      LocalClient.MessageReceived += s_Me.OnMessageRecieved;
+
+      JoinedServer?.Invoke();
+
+      return true;
+    }
+
+    public static bool JoinLocal() {
+      LocalClient = new Client(new Riptide.Transports.Tcp.TcpClient());
+
+      LocalClient.Connect("127.0.0.1:25566", 5, 0, null, false);
 
       LocalClient.MessageReceived += s_Me.OnMessageRecieved;
 

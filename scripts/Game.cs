@@ -2,7 +2,6 @@ using Godot;
 using Networking;
 using Riptide;
 using Steamworks;
-using System;
 using System.Collections.Generic;
 
 public partial class Game : Node2D, NetworkPointUser {
@@ -35,13 +34,17 @@ public partial class Game : Node2D, NetworkPointUser {
 
 		_worldGenerator = GetNode<WorldGenerator>("WorldGenerator");
 
-		// NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
-		// 	if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
+		if (OS.HasFeature("host")) {
+			NetworkManager.HostLocal();
 
-		// 	Start();
-		// };
+			NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
+				if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
 
-		// if (!NetworkManager.Host()) NetworkManager.Join("localhost");
+				Start();
+			};
+		}
+
+		if (OS.HasFeature("client")) NetworkManager.JoinLocal();
 	}
 
 	public override void _Process(double delta) {

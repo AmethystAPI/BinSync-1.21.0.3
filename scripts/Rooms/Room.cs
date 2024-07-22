@@ -73,14 +73,10 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	public void AddEnemy() {
 		_aliveEnemies++;
-
-		GD.Print("Added Enemy! " + _aliveEnemies);
 	}
 
 	public void EnemyDied(Enemy enemy) {
 		_aliveEnemies--;
-
-		GD.Print("Enemy Died! " + _aliveEnemies);
 
 		if (_aliveEnemies != 0) return;
 
