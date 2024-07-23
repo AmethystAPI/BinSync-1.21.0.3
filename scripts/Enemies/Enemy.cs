@@ -30,7 +30,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
     NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
-    _stateMachine = GetNode<NodeStateMachine>("StateMachine");
+    // _stateMachine = GetNode<NodeStateMachine>("StateMachine");
 
     GetParent<Room>().AddEnemy();
   }
@@ -40,7 +40,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     SyncPosition((float)delta);
 
-    if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
+    // if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
   }
 
   public virtual void SyncPosition(float delta) {

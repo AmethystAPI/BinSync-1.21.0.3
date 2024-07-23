@@ -1,12 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqnxkhxuii7pt"]
+[gd_scene load_steps=9 format=3 uid="uid://dqnxkhxuii7pt"]
 
 [ext_resource type="Script" path="res://scripts/enemies/Enemy.cs" id="1_s1en6"]
 [ext_resource type="Texture2D" uid="uid://niq1c5ey06vg" path="res://sprites/enemies/sand_worm/sand_worm.png" id="2_miif3"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_3fahg"]
-[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_nrxrx"]
-[ext_resource type="Script" path="res://scripts/enemies/Idle.cs" id="5_vaajc"]
-[ext_resource type="Script" path="res://scripts/enemies/SandWormJump.cs" id="6_wgccl"]
-[ext_resource type="Script" path="res://scripts/enemies/NonInterruptingHurt.cs" id="7_kouxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(16, 13)
@@ -97,19 +93,6 @@ shape = SubResource("RectangleShape2D_75mpk")
 
 [node name="ProjectileOrigin" type="Node2D" parent="."]
 position = Vector2(0, -4)
-
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("4_nrxrx")
-DefaultState = "RangedApproach"
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_vaajc")
-
-[node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("6_wgccl")
-
-[node name="Hurt" type="Node" parent="StateMachine"]
-script = ExtResource("7_kouxf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

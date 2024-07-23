@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=31 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
@@ -8,17 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dsvinicnlgf1g" path="res://sprites/player/player.tres" id="3_n1urs"]
 [ext_resource type="Texture2D" uid="uid://c6x0s5psfao4e" path="res://sprites/player/player_hurt.tres" id="4_5v8r7"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="4_a0jon"]
-[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_jbh0c"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="5_ibym3"]
-[ext_resource type="Script" path="res://scripts/player/PlayerNormal.cs" id="5_stky2"]
 [ext_resource type="Texture2D" uid="uid://vwjfydnewrqr" path="res://sprites/player/player_run_0.tres" id="5_wli2m"]
-[ext_resource type="Script" path="res://scripts/player/PlayerTrinket.cs" id="6_8jlbs"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="6_i3kc3"]
-[ext_resource type="Script" path="res://scripts/player/PlayerDash.cs" id="6_mtedp"]
 [ext_resource type="Texture2D" uid="uid://k05kj3mpttba" path="res://sprites/player/player_angel_0.tres" id="6_pop7v"]
 [ext_resource type="Texture2D" uid="uid://cvnpfqwk65srl" path="res://sprites/player/player_run_1.tres" id="6_yvcw5"]
 [ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]
-[ext_resource type="Script" path="res://scripts/player/PlayerAngel.cs" id="7_4smh0"]
 [ext_resource type="Texture2D" uid="uid://dlwt3ei7oi0ul" path="res://sprites/player/player_angel_1.tres" id="7_uai0k"]
 [ext_resource type="Texture2D" uid="uid://biixnhfrbq7e4" path="res://sprites/player/player_awe.tres" id="11_5bhdx"]
 [ext_resource type="Texture2D" uid="uid://djqhjx7eksuj5" path="res://sprites/player/player_dash_0.tres" id="12_jajf2"]
@@ -137,7 +132,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/Normal/HurtSquashAndStretch")
+tracks/2/path = NodePath("HurtSquashAndStretch")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -250,29 +245,8 @@ visible = false
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_v6m8y")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("4_jbh0c")
-DefaultState = "Normal"
-
-[node name="Normal" type="Node" parent="StateMachine"]
-script = ExtResource("5_stky2")
-Speed = 80.0
-
-[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Normal" node_paths=PackedStringArray("Target")]
+[node name="HurtSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("6_i3kc3")
-Target = NodePath("../../../SquashAndStretchTarget")
+Target = NodePath("../SquashAndStretchTarget")
 Scale = Vector2(1.4, 0.6)
 Speed = 10.0
-
-[node name="Trinket" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer")]
-script = ExtResource("6_8jlbs")
-AnimationPlayer = NodePath("../../AnimationPlayer")
-
-[node name="Dash" type="Node" parent="StateMachine"]
-script = ExtResource("6_mtedp")
-Duration = 0.333
-Speed = 200.0
-Cooldown = 0.4
-
-[node name="Angel" type="Node" parent="StateMachine"]
-script = ExtResource("7_4smh0")

@@ -21,7 +21,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public float Health = 3f;
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 	public AnimationPlayer AnimationPlayer;
-	public NodeStateMachine StateMachine;
 	public Vector2 Knockback;
 
 	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
@@ -29,6 +28,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	private NetworkedVariable<Vector2> _networkedFacing = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private Weapon _equippedWeapon;
+
+	private StateMachine _stateMachine = new StateMachine("normal");
 
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
@@ -50,7 +51,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
-		StateMachine = GetNode<NodeStateMachine>("StateMachine");
+		_stateMachine.Add(new PlayerNormal("normal", this));
+		_stateMachine.Add(new PlayerDash("dash", this));
+		_stateMachine.Add(new PlayerAngel("angel", this));
+		_stateMachine._Ready();
 
 		if (!NetworkPoint.IsOwner) return;
 
@@ -64,6 +68,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public override void _Process(double delta) {
+		_stateMachine._Process(delta);
+
 		Knockback = Knockback.Lerp(Vector2.Zero, (float)delta * 12f);
 
 		_networkedPosition.Sync();
@@ -71,7 +77,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		_networkedFacing.Sync();
 
 		if (NetworkPoint.IsOwner) {
-			if (StateMachine.CurrentState != "Hurt") Interactables.ActivateClosest(this);
+			if (_stateMachine.CurrentState != "Hurt") Interactables.ActivateClosest(this);
 
 			_networkedPosition.Value = GlobalPosition;
 			_networkedVelocity.Value = Velocity;
@@ -84,6 +90,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		}
 
 		Visuals.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+	}
+
+	public override void _PhysicsProcess(double delta) {
+		_stateMachine._PhysicsProcess(delta);
+	}
+
+	public override void _Input(InputEvent @event) {
+		_stateMachine._Input(@event);
 	}
 
 	public void Heal(float health) {
@@ -103,7 +117,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (Knockback.Length() >= 1f) return false;
 
-		if (StateMachine.CurrentState == "Dash") return false;
+		if (_stateMachine.CurrentState == "dash") return false;
 
 		// TODO: DEBUG
 		// return false;
@@ -137,7 +151,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		NetworkPoint.BounceRpcToClients(nameof(DieRpc));
 
-		StateMachine.GoToState("Angel");
+		_stateMachine.GoToState("Angel");
 
 		_equippedWeapon.CancelShoot();
 	}
@@ -206,7 +220,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 			AlivePlayers.Remove(this);
 
-			StateMachine.GoToState("Angel");
+			_stateMachine.GoToState("Angel");
 		}
 
 		if (AlivePlayers.Count != 0) return;
@@ -257,7 +271,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		TrinketHolder.Visible = true;
 
 
-		StateMachine.GoToState("Normal");
+		_stateMachine.GoToState("Normal");
 
 		AlivePlayers.Add(this);
 

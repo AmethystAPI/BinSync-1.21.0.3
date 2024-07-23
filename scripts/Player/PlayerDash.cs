@@ -1,19 +1,22 @@
 using Godot;
 
-public partial class PlayerDash : NodeState {
-  [Export] public float Duration = 0.06f;
-  [Export] public float Speed = 700f;
-  [Export] public float Cooldown = 0.2f;
+public class PlayerDash : State {
+  [Export] public float Duration = 0.333f;
+  [Export] public float Speed = 200f;
+  [Export] public float Cooldown = 0.4f;
 
   private Player _player;
+  private Area2D _ressurectArea;
+
   private Vector2 _dashDirection;
   private float _dashTimer = 0;
-  private Area2D _ressurectArea;
   private float _cooldownTimer;
 
-  public override void _Ready() {
-    _player = GetParent().GetParent<Player>();
+  public PlayerDash(string name, Player player) : base(name) {
+    _player = player;
+  }
 
+  public override void Initialize() {
     _ressurectArea = _player.GetNode<Area2D>("RessurectArea");
   }
 
@@ -31,11 +34,15 @@ public partial class PlayerDash : NodeState {
     _dashDirection = (_player.GetGlobalMousePosition() - _player.GlobalPosition).Normalized();
   }
 
+  public override void UpdateBackground(float delta) {
+    _cooldownTimer -= delta;
+  }
+
   public override void PhsysicsUpdate(float delta) {
 
     _dashTimer -= delta;
 
-    if (_dashTimer <= 0) GoToState("Normal");
+    if (_dashTimer <= 0) GoToState("normal");
 
     if (!_player.NetworkPoint.IsOwner) return;
 
@@ -60,10 +67,6 @@ public partial class PlayerDash : NodeState {
 
   public override void Exit() {
     _cooldownTimer = Cooldown;
-  }
-
-  public override void _Process(double delta) {
-    _cooldownTimer -= (float)delta;
   }
 
   public bool CanDash() {

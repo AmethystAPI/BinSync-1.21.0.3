@@ -2,22 +2,17 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class PlayerNormal : NodeState, NetworkPointUser {
-  [Export] public float Speed = 100f;
-
-  public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+public class PlayerNormal : State {
+  private static float s_Speed = 80f;
 
   private Player _player;
-  private AnimationPlayer _animationPlayer;
 
-  public override void _Ready() {
-    NetworkPoint.Setup(this);
+  public PlayerNormal(string name, Player player) : base(name) {
+    _player = player;
+  }
 
-    NetworkPoint.Register(nameof(DashRpc), DashRpc);
-
-    _player = GetParent().GetParent<Player>();
-
-    _animationPlayer = _player.GetNode<AnimationPlayer>("AnimationPlayer");
+  public override void Initialize() {
+    _player.NetworkPoint.Register(nameof(DashRpc), DashRpc);
   }
 
   public override void PhsysicsUpdate(float delta) {
@@ -41,7 +36,7 @@ public partial class PlayerNormal : NodeState, NetworkPointUser {
 
     Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
-    float modifiedSpeed = Speed;
+    float modifiedSpeed = s_Speed;
     foreach (Trinket trinket in _player.EquippedTrinkets) {
       modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
     }
@@ -52,8 +47,8 @@ public partial class PlayerNormal : NodeState, NetworkPointUser {
   }
 
   public override void Exit() {
-    _animationPlayer.Play("RESET");
-    _animationPlayer.Advance(1f);
+    _player.AnimationPlayer.Play("RESET");
+    _player.AnimationPlayer.Advance(1f);
   }
 
   public override void OnInput(InputEvent inputEvent) {
@@ -71,16 +66,16 @@ public partial class PlayerNormal : NodeState, NetworkPointUser {
 
     if (!inputEvent.IsActionPressed("dash")) return;
 
-    if (!GetState<PlayerDash>("Dash").CanDash()) return;
+    if (!GetState<PlayerDash>("dash").CanDash()) return;
 
-    NetworkPoint.BounceRpcToClients(nameof(DashRpc));
+    _player.NetworkPoint.BounceRpcToClients(nameof(DashRpc));
 
-    GoToState("Dash");
+    GoToState("dash");
   }
 
   private void DashRpc(Message message) {
-    if (NetworkPoint.IsOwner) return;
+    if (_player.NetworkPoint.IsOwner) return;
 
-    GoToState("Dash");
+    GoToState("dash");
   }
 }

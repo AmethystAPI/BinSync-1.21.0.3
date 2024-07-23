@@ -17,11 +17,21 @@ public class State {
     return _stateMachine.GetState<StateType>(name);
   }
 
-  public virtual void Initialize(StateMachine stateMachine) {
+  public void InitializeState(StateMachine stateMachine) {
     _stateMachine = stateMachine;
+
+    Initialize();
+  }
+
+  public virtual void Initialize() {
+
   }
 
   public virtual void Enter() {
+
+  }
+
+  public virtual void UpdateBackground(float delta) {
 
   }
 

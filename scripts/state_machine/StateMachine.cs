@@ -6,20 +6,28 @@ public class StateMachine {
 
   private Dictionary<string, State> _states = new Dictionary<string, State>();
   private State _currentState;
+  private string _defaultState;
 
-  public StateMachine(string defaultState, State[] states) {
-    foreach (State state in states) {
-      _states.Add(state.Name, state);
-    }
+  public StateMachine(string defaultState) {
+    _defaultState = defaultState;
+  }
 
-    _currentState = GetState<State>(defaultState);
+  public void Add(State state) {
+    _states.Add(state.Name, state);
+
+    state.InitializeState(this);
   }
 
   public void _Ready() {
+    _currentState = GetState<State>(_defaultState);
     _currentState.Enter();
   }
 
   public void _Process(double delta) {
+    foreach (State state in _states.Values) {
+      state.UpdateBackground((float)delta);
+    }
+
     _currentState.Update((float)delta);
   }
 

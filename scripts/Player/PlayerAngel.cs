@@ -1,15 +1,14 @@
 using Godot;
 
-public partial class PlayerAngel : NodeState {
+public class PlayerAngel : State {
   private Player _player;
   private float _angelAngle;
   private float _angelSwapTimer;
   private int _angelTurn = 1;
   private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
-
-  public override void _Ready() {
-    _player = GetParent().GetParent<Player>();
+  public PlayerAngel(string name, Player player) : base(name) {
+    _player = player;
   }
 
   public override void PhsysicsUpdate(float delta) {
