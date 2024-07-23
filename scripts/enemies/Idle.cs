@@ -2,7 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class Idle : State, NetworkPointUser {
+public partial class Idle : NodeState, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
     [Export] public string AttackState = "Attack";
     [Export] public string Animation = "idle";

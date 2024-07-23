@@ -3,7 +3,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class RandomIdle : State, NetworkPointUser {
+public partial class RandomIdle : NodeState, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
     [Export] public string[] AttackStates = new string[] { "Attack" };
     [Export] public float[] AttackWeights = new float[] { 1f };

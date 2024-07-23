@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Hurt : State {
+public partial class Hurt : NodeState {
     [Export] public string ReturnState = "Idle";
     [Export] public AnimationPlayer AnimationPlayer;
     [Export] public Node2D Visuals;

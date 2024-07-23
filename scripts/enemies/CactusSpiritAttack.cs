@@ -3,7 +3,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class CactusSpiritAttack : State {
+public partial class CactusSpiritAttack : NodeState {
     [Export] public PackedScene ProjectileScene;
     [Export] public Sprite2D Sprite;
 

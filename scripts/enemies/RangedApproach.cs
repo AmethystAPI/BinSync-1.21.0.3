@@ -2,7 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class RangedApproach : State, NetworkPointUser {
+public partial class RangedApproach : NodeState, NetworkPointUser {
     [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
     [Export] public float Speed = 30;
     [Export] public float TargetDistance = 64;

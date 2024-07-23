@@ -18,7 +18,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   internal NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 
-  internal StateMachine _stateMachine;
+  internal NodeStateMachine _stateMachine;
 
   private bool _justHit;
   private float _invincibilityTimer;
@@ -30,7 +30,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
     NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
-    _stateMachine = GetNode<StateMachine>("StateMachine");
+    _stateMachine = GetNode<NodeStateMachine>("StateMachine");
 
     GetParent<Room>().AddEnemy();
   }

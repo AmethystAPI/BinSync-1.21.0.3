@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class NonInterruptingHurt : State {
+public partial class NonInterruptingHurt : NodeState {
 	[Export] public string ReturnState = "Idle";
 	[Export] public AnimationPlayer AnimationPlayer;
 	[Export] public Node2D Visuals;

@@ -1,7 +1,6 @@
 using Godot;
 
-public partial class PlayerAngel : State
-{
+public partial class PlayerAngel : NodeState {
   private Player _player;
   private float _angelAngle;
   private float _angelSwapTimer;
@@ -9,21 +8,18 @@ public partial class PlayerAngel : State
   private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _player = GetParent().GetParent<Player>();
   }
 
-  public override void PhsysicsUpdate(float delta)
-  {
+  public override void PhsysicsUpdate(float delta) {
     _player.AnimationPlayer.Play("dead");
 
     if (!_player.NetworkPoint.IsOwner) return;
 
     _angelSwapTimer -= delta;
 
-    if (_angelSwapTimer <= 0)
-    {
+    if (_angelSwapTimer <= 0) {
       _angelSwapTimer = _randomNumberGenerator.RandfRange(0.8f, 1.2f);
 
       if (_randomNumberGenerator.RandfRange(0f, 1f) < 0.5f) _angelTurn = -_angelTurn;

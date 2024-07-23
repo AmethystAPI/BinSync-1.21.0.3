@@ -2,7 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class CrowScared : State, NetworkPointUser {
+public partial class CrowScared : NodeState, NetworkPointUser {
     [Export] public float Speed = 10f;
     [Export] public float InverseInertia = 4f;
     [Export] public float FlockOffsetRange = 24f;

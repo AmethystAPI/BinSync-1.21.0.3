@@ -2,7 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class CrowAggressive : State, NetworkPointUser {
+public partial class CrowAggressive : NodeState, NetworkPointUser {
     [Export] public float Speed = 10f;
     [Export] public float InverseInertia = 4f;
     [Export] public PackedScene ProjectileScene;

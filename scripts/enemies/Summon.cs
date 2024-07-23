@@ -2,7 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class Summon : State, NetworkPointUser {
+public partial class Summon : NodeState, NetworkPointUser {
     [Export] public PackedScene[] Summons = new PackedScene[0];
     [Export] public Vector2I SummonAmmount = new Vector2I(3, 4);
 

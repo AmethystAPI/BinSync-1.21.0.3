@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class StoneGolemRoll : State {
+public partial class StoneGolemRoll : NodeState {
     [Export] public float Speed = 10f;
     [Export] public PackedScene ProjectileScene;
     [Export] public Node2D ProjectileOrigin;

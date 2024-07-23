@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class PlayerDash : State {
+public partial class PlayerDash : NodeState {
   [Export] public float Duration = 0.06f;
   [Export] public float Speed = 700f;
   [Export] public float Cooldown = 0.2f;

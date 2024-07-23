@@ -2,7 +2,7 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class PlayerNormal : State, NetworkPointUser {
+public partial class PlayerNormal : NodeState, NetworkPointUser {
   [Export] public float Speed = 100f;
 
   public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();

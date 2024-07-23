@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class SlimeJump : State {
+public partial class SlimeJump : NodeState {
     [Export] public float Speed = 10f;
     [Export] public float Duration = 0.5f;
     [Export] public float Height = 80f;

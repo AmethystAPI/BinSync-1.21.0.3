@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GenericAttack : State {
+public partial class GenericAttack : NodeState {
 	[Export] public string ReturnState = "Idle";
 
 	private Enemy _enemy;

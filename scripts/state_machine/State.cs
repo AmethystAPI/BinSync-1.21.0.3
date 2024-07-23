@@ -1,12 +1,24 @@
 using Godot;
 
-public partial class State : Node {
+public class State {
+  public string Name;
+
+  private StateMachine _stateMachine;
+
+  public State(string name) {
+    Name = name;
+  }
+
   public void GoToState(string name) {
-    GetParent<StateMachine>().GoToState(name);
+    _stateMachine.GoToState(name);
   }
 
   public StateType GetState<StateType>(string name) where StateType : State {
-    return GetParent<StateMachine>().GetState<StateType>(name);
+    return _stateMachine.GetState<StateType>(name);
+  }
+
+  public virtual void Initialize(StateMachine stateMachine) {
+    _stateMachine = stateMachine;
   }
 
   public virtual void Enter() {
