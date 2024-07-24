@@ -16,8 +16,6 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	private WorldGenerator _worldGenerator;
 
-	public static bool DEBUG_MAIN = false;
-
 	public override void _Ready() {
 		if (!SteamAPI.Init()) {
 			GD.PushError("SteamAPI.Init() failed!");

@@ -13,7 +13,21 @@ public partial class Crow : Enemy {
         base.AddStates();
 
         _stateMachine.Add(new FlockScared("scared", this) {
-            GetFlock = () => Crows.Cast<Enemy>().ToList()
+            GetFlock = () => {
+                List<Enemy> flock = Crows.Cast<Enemy>().ToList();
+
+                for (int index = 0; index < flock.Count; index++) {
+                    if (!IsInstanceValid(flock[index])) {
+                        GD.PushWarning("Invalid crow?");
+
+                        flock.RemoveAt(index);
+
+                        index--;
+                    }
+                }
+
+                return flock;
+            }
         });
 
         _stateMachine.Add(new FlyingAggressive("aggressive", this) {
