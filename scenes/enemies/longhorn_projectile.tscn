@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgj4q1bwt3gci"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_c5aif"]
+[ext_resource type="Texture2D" uid="uid://c761md5baebqd" path="res://sprites/enemies/stone_golem/stone_golem_projectile.tres" id="2_aeygr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlayw"]
+size = Vector2(4, 14)
+
+[node name="LonghornProjectile" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_c5aif")
+Speed = 0.0
+Lifetime = 2.5
+InheritBelocity = false
+Pierce = true
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_rlayw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_aeygr")
+region_rect = Rect2(20, 0, 8, 16)
