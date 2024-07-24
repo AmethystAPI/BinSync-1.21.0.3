@@ -14,7 +14,7 @@ Lifetime = 2.0
 InheritBelocity = false
 
 [node name="DamageArea" type="Area2D" parent="."]
-collision_mask = 5
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("CircleShape2D_bv6ss")
