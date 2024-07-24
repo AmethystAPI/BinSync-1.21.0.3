@@ -4,6 +4,7 @@ using Godot;
 public class DashAttack : EnemyState {
     public float Speed = 75f;
     public string ReturnState = "idle";
+    public float Variance = Mathf.Pi / 6f;
 
     public Func<Vector2, Projectile> OnDash;
 
@@ -31,7 +32,7 @@ public class DashAttack : EnemyState {
 
         _direction = (target - _enemy.GlobalPosition).Normalized();
 
-        _direction = _direction.Rotated(Random.RandfRange(-Mathf.Pi / 6f, Mathf.Pi / 6f));
+        _direction = _direction.Rotated(Random.RandfRange(-Variance, Variance));
 
         _projectile = OnDash(_direction);
 

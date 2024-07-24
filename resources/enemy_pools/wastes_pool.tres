@@ -1,8 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxaqp12reo668"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bxaqp12reo668"]
 
 [ext_resource type="PackedScene" uid="uid://b0awcwrhaggno" path="res://scenes/enemies/cactus_spirit.tscn" id="1_mnwmo"]
+[ext_resource type="PackedScene" uid="uid://dqnxkhxuii7pt" path="res://scenes/enemies/sand_worm.tscn" id="2_ddx73"]
+[ext_resource type="PackedScene" uid="uid://ldnqwd8r6ppc" path="res://scenes/enemies/longhorn.tscn" id="3_xlo5g"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_yu0xw"]
 
 [resource]
 script = ExtResource("4_yu0xw")
-EnemyScenes = Array[PackedScene]([ExtResource("1_mnwmo")])
+EnemyScenes = Array[PackedScene]([ExtResource("1_mnwmo"), ExtResource("2_ddx73"), ExtResource("3_xlo5g")])

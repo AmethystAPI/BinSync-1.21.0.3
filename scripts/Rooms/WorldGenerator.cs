@@ -35,6 +35,8 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 	}
 
 	private void SetupBiome() {
+		Game.Difficulty = NetworkManager.LocalServer.ClientCount;
+
 		Biome[] possibleBiomes = Biomes.Where(biome => biome.Level == _biomeLevel).ToArray();
 
 		_currentBiome = possibleBiomes[Game.RandomNumberGenerator.RandiRange(0, possibleBiomes.Length - 1)];
