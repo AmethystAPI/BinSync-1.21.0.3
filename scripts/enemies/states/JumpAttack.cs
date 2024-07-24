@@ -7,7 +7,7 @@ public class JumpAttack : EnemyState {
     public float Height = 16f;
     public string ReturnState = "idle";
 
-    public Action Land;
+    public Action OnLand;
 
     private Vector2 _target;
     private float _jumpTimer;
@@ -39,7 +39,7 @@ public class JumpAttack : EnemyState {
 
         if (_jumpTimer < Duration) return;
 
-        Land();
+        OnLand();
 
         GoToState(ReturnState);
     }

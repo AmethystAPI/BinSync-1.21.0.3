@@ -27,7 +27,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   internal NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 
-  protected StateMachine _stateMachine = new StateMachine("idle");
+  protected StateMachine _stateMachine;
 
   private bool _justHit;
   private float _invincibilityTimer;
@@ -42,6 +42,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     AnimationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
     HurtAnimationPlayer = GetNodeOrNull<AnimationPlayer>("HurtAnimationPlayer");
 
+    _stateMachine = new StateMachine(GetDefaultState());
     AddStates();
     _stateMachine._Ready();
 
@@ -123,6 +124,10 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     NetworkPoint.SendRpcToClients(nameof(ActivateRpc));
   }
 
+  protected virtual string GetDefaultState() {
+    return "idle";
+  }
+
   private void DamageRpc(Message message) {
     _justHit = false;
 
@@ -145,7 +150,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     _stateMachine.GoToState("dead");
   }
 
-  private void ActivateRpc(Message message) {
+  protected virtual void ActivateRpc(Message message) {
     Activated = true;
   }
 

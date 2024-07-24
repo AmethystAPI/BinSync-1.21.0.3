@@ -9,7 +9,7 @@ public partial class Slime : Enemy {
 
 		_stateMachine.Add(new Idle("idle", this));
 		_stateMachine.Add(new JumpAttack("attack", this) {
-			Land = () => {
+			OnLand = () => {
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
 				projectile.Source = this;

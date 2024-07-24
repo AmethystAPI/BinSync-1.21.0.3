@@ -17,7 +17,7 @@ public partial class StoneGolem : Enemy {
 
         _stateMachine.Add(new Idle("idle", this));
         _stateMachine.Add(new DashAttack("attack", this) {
-            Start = (direction) => {
+            OnDash = (direction) => {
                 Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
                 projectile.Source = this;

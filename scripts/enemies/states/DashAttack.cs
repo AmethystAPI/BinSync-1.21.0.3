@@ -5,7 +5,7 @@ public class DashAttack : EnemyState {
     public float Speed = 75f;
     public string ReturnState = "idle";
 
-    public Func<Vector2, Projectile> Start;
+    public Func<Vector2, Projectile> OnDash;
 
     public RandomNumberGenerator Random = new RandomNumberGenerator();
 
@@ -33,7 +33,7 @@ public class DashAttack : EnemyState {
 
         _direction = _direction.Rotated(Random.RandfRange(-Mathf.Pi / 6f, Mathf.Pi / 6f));
 
-        _projectile = Start(_direction);
+        _projectile = OnDash(_direction);
 
         float direction = (target.X > _enemy.GlobalPosition.X ? 1f : -1f) * (target.Y > _enemy.GlobalPosition.Y ? 1f : -1f);
 
