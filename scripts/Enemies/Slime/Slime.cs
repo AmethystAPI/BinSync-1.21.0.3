@@ -6,9 +6,10 @@ public partial class Slime : Enemy {
 	[Export] public Node2D JumpTransform;
 
 	public override void AddStates() {
+		base.AddStates();
+
 		_stateMachine.Add(new Idle("idle", this));
 		_stateMachine.Add(new Jump("attack", this) {
-			JumpTransform = JumpTransform,
 			Land = () => {
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
@@ -36,10 +37,6 @@ public partial class Slime : Enemy {
 			if (_networkedPosition.Value.DistanceSquaredTo(GlobalPosition) > 64) GlobalPosition = _networkedPosition.Value;
 
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 20.0f);
-		}
-
-		if (!NetworkPoint.IsOwner) {
-			GD.Print(_stateMachine.CurrentState == "attack");
 		}
 	}
 }

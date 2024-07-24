@@ -120,7 +120,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		if (_stateMachine.CurrentState == "dash") return false;
 
 		// TODO: DEBUG
-		return false;
+		// return false;
 
 		return true;
 	}
@@ -151,7 +151,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		NetworkPoint.BounceRpcToClients(nameof(DieRpc));
 
-		_stateMachine.GoToState("Angel");
+		_stateMachine.GoToState("angel");
 
 		_equippedWeapon.CancelShoot();
 	}
@@ -220,7 +220,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 			AlivePlayers.Remove(this);
 
-			_stateMachine.GoToState("Angel");
+			_stateMachine.GoToState("angel");
 		}
 
 		if (AlivePlayers.Count != 0) return;
@@ -271,7 +271,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		TrinketHolder.Visible = true;
 
 
-		_stateMachine.GoToState("Normal");
+		_stateMachine.GoToState("normal");
 
 		AlivePlayers.Add(this);
 

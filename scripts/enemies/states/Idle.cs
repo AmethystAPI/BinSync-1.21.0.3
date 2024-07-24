@@ -2,28 +2,22 @@ using Godot;
 using Networking;
 using Riptide;
 
-public class Idle : State {
+public class Idle : EnemyState {
 
     public Vector2 Interval = new Vector2(0.8f, 1.2f);
     public string AttackState = "attack";
-
-    private Enemy _enemy;
 
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
     private float _lastIdleTime;
 
-    public Idle(string name, Enemy enemy) : base(name) {
-        _enemy = enemy;
-    }
+    public Idle(string name, Enemy enemy) : base(name, enemy) { }
 
     public override void Initialize() {
         _enemy.NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
     }
 
     public override void Enter() {
-        _enemy.AnimationPlayer.Play("idle");
-
         if (_idleTimer > 0) {
             _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
 
@@ -34,6 +28,8 @@ public class Idle : State {
     }
 
     public override void Update(float delta) {
+        if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("idle");
+
         if (!NetworkManager.IsHost) return;
 
         if (!_enemy.Activated) return;
@@ -43,6 +39,12 @@ public class Idle : State {
         if (_idleTimer > 0) return;
 
         _enemy.NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
+    }
+
+    public override void PhsysicsUpdate(float delta) {
+        _enemy.Velocity = _enemy.Knockback;
+
+        _enemy.MoveAndSlide();
     }
 
     public override void Exit() {

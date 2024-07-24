@@ -9,8 +9,6 @@ public class Jump : EnemyState {
 
     public Action Land;
 
-    public Node2D JumpTransform;
-
     private Vector2 _target;
     private float _jumpTimer;
 
@@ -30,19 +28,14 @@ public class Jump : EnemyState {
         _enemy.Face(_target);
     }
 
-
-    public override void PhsysicsUpdate(float delta) {
-        _enemy.Velocity = (_target - _enemy.GlobalPosition).Normalized() * Speed;
-
-        _enemy.MoveAndSlide();
-    }
-
     public override void Update(float delta) {
+        if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("idle");
+
         _jumpTimer += delta;
 
         float height = Mathf.Pow(Mathf.Sin(_jumpTimer / Duration * Mathf.Pi), 0.75f) * Height;
 
-        JumpTransform.Position = Vector2.Up * height;
+        _enemy.VerticalTransform.Position = Vector2.Up * height;
 
         if (_jumpTimer < Duration) return;
 
@@ -51,7 +44,13 @@ public class Jump : EnemyState {
         GoToState(ReturnState);
     }
 
+    public override void PhsysicsUpdate(float delta) {
+        _enemy.Velocity = (_target - _enemy.GlobalPosition).Normalized() * Speed + _enemy.Knockback;
+
+        _enemy.MoveAndSlide();
+    }
+
     public override void Exit() {
-        JumpTransform.Position = Vector2.Zero;
+        _enemy.VerticalTransform.Position = Vector2.Zero;
     }
 }

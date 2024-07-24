@@ -11,10 +11,17 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   [Export] public float Health = 3f;
   [Export] public Node2D FacingTransform;
+  [Export] public Node2D VerticalTransform;
+  [Export] public PackedScene DeathParticle;
 
   public AnimationPlayer AnimationPlayer;
+  public AnimationPlayer HurtAnimationPlayer;
 
   public bool Activated;
+  public Vector2 Knockback;
+  public bool Dead;
+
+  public bool Hurt => Knockback.Length() >= 3.5f;
 
   public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -32,7 +39,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
     NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
-    AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+    AnimationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+    HurtAnimationPlayer = GetNodeOrNull<AnimationPlayer>("HurtAnimationPlayer");
 
     AddStates();
     _stateMachine._Ready();
@@ -46,15 +54,17 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     SyncPosition((float)delta);
 
-    if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
+    if (!Hurt) _invincibilityTimer -= (float)delta;
   }
 
   public override void _PhysicsProcess(double delta) {
+    if (!Dead) Knockback = Knockback.Lerp(Vector2.Zero, (float)delta * 12f);
+
     _stateMachine._PhysicsProcess(delta);
   }
 
   public virtual void AddStates() {
-
+    _stateMachine.Add(new Dead("dead", this));
   }
 
   public virtual void SyncPosition(float delta) {
@@ -70,7 +80,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   public virtual bool CanDamage(Projectile projectile) {
     if (!Activated && Room.Current != GetParent<Room>()) return false;
 
-    if (_stateMachine.CurrentState == "Hurt") return false;
+    if (Hurt) return false;
 
     if (_invincibilityTimer >= 0f) return false;
 
@@ -120,11 +130,19 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     SetMultiplayerAuthority(message.GetInt());
 
-    _stateMachine.GetState<Hurt>("Hurt").Knockback = new Vector2(message.GetFloat(), message.GetFloat());
+    Knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
     Health -= message.GetFloat();
 
-    _stateMachine.GoToState("Hurt");
+    HurtAnimationPlayer.Play("hurt");
+
+    if (Health > 0) return;
+
+    if (Dead) return;
+
+    Dead = true;
+
+    _stateMachine.GoToState("dead");
   }
 
   private void ActivateRpc(Message message) {
