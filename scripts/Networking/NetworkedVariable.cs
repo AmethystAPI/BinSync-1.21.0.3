@@ -30,7 +30,6 @@ namespace Networking {
     }
 
     public bool Synced = false;
-    public bool DEBUG = false;
 
     private string _name;
     private NetworkPointUser _source;

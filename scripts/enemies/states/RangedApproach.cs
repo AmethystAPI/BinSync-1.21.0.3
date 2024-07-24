@@ -2,40 +2,25 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class RangedApproach : NodeState, NetworkPointUser {
-    [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
-    [Export] public float Speed = 30;
-    [Export] public float TargetDistance = 64;
-    [Export] public float RestRange = 8;
-    [Export] public string AttackState = "Attack";
-    [Export] public string RunAnimation = "run";
-    [Export] public string IdleAnimation = "idle";
-    [Export] public AnimationPlayer AnimationPlayer;
-    [Export] public Sprite2D Sprite;
+public partial class RangedApproach
+ : EnemyState {
+    public Vector2 IdleInterval = new Vector2(1.5f, 2.5f);
+    public float Speed = 30;
+    public float TargetDistance = 64;
+    public float RestRange = 8;
+    public string AttackState = "attack";
 
-    public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
-
-    private Enemy _enemy;
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
-    private float _lastIdleTime;
     private bool _resting = false;
 
-    public override void _Ready() {
-        _enemy = GetParent().GetParent<Enemy>();
+    public RangedApproach(string name, Enemy enemy) : base(name, enemy) { }
 
-        NetworkPoint.Setup(this);
-
-        NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
+    public override void Initialize() {
+        _enemy.NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
     }
 
     public override void Enter() {
-        if (_idleTimer > 0) {
-            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
-
-            return;
-        }
-
         _idleTimer = _randomNumberGenerator.RandfRange(IdleInterval.X, IdleInterval.Y);
     }
 
@@ -48,7 +33,7 @@ public partial class RangedApproach : NodeState, NetworkPointUser {
 
         if (_idleTimer > 0) return;
 
-        NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
+        _enemy.NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
     }
 
     public override void PhsysicsUpdate(float delta) {
@@ -62,15 +47,17 @@ public partial class RangedApproach : NodeState, NetworkPointUser {
         float distance = target.DistanceTo(_enemy.GlobalPosition);
         Vector2 direction = (target - _enemy.GlobalPosition).Normalized();
 
-        Sprite.Scale = new Vector2(target.X > _enemy.GlobalPosition.X ? 1f : -1f, 1f);
+        _enemy.Face(target);
+
+        if (_enemy.Hurt) _enemy.AnimationPlayer.Stop();
 
         if (_resting) {
             if (Mathf.Abs(distance - TargetDistance) <= RestRange) {
-                _enemy.Velocity = Vector2.Zero;
+                _enemy.Velocity = _enemy.Knockback;
 
                 _enemy.MoveAndSlide();
 
-                AnimationPlayer.Play(IdleAnimation);
+                if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("idle");
 
                 return;
             }
@@ -81,24 +68,24 @@ public partial class RangedApproach : NodeState, NetworkPointUser {
         if (Mathf.Abs(distance - TargetDistance) <= 1f) {
             _resting = true;
 
-            _enemy.Velocity = Vector2.Zero;
+            _enemy.Velocity = _enemy.Knockback;
 
             _enemy.MoveAndSlide();
 
-            AnimationPlayer.Play(IdleAnimation);
+            if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("idle");
 
             return;
         }
 
-        _enemy.Velocity = direction * Speed * (distance > TargetDistance ? 1 : -1);
+        _enemy.Velocity = direction * Speed * (distance > TargetDistance ? 1 : -1) + _enemy.Knockback;
 
-        AnimationPlayer.Play(RunAnimation);
+        if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("run");
 
         _enemy.MoveAndSlide();
     }
 
     public override void Exit() {
-        _lastIdleTime = Time.GetTicksMsec();
+        _enemy.AnimationPlayer.Stop();
     }
 
     private void AttackRpc(Message message) {

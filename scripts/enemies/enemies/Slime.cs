@@ -6,8 +6,6 @@ public partial class Slime : Enemy {
 	[Export] public Node2D ProjectileOrigin;
 
 	public override void AddStates() {
-		_networkedPosition.DEBUG = true;
-
 		base.AddStates();
 
 		_stateMachine.Add(new Idle("idle", this));

@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0awcwrhaggno"]
+[gd_scene load_steps=23 format=3 uid="uid://b0awcwrhaggno"]
 
-[ext_resource type="Script" path="res://scripts/enemies/Enemy.cs" id="1_tml3d"]
+[ext_resource type="Script" path="res://scripts/enemies/enemies/CactusSpirit.cs" id="1_f8484"]
+[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="2_yw3vg"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_v2rhn"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_xya6n"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="11_0cims"]
@@ -83,48 +84,6 @@ tracks/2/keys = {
 "args": [],
 "method": &"Activate"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_pl1hr"]
-resource_name = "hurt"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("12_5pasp"), ExtResource("12_5pasp")]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HurtSquashAndStretch")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Activate"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SquashAndStretchTarget/Body:material")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("11_0cims"), null]
 }
 
 [sub_resource type="Animation" id="Animation_wv887"]
@@ -231,18 +190,98 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_4he1a"),
 "attack": SubResource("Animation_yypc7"),
-"hurt": SubResource("Animation_pl1hr"),
 "idle": SubResource("Animation_wv887"),
 "run": SubResource("Animation_hclil"),
 "telegraph_attack": SubResource("Animation_n33jn")
 }
 
-[node name="CactusSprite" type="CharacterBody2D" groups=["Enemies"]]
+[sub_resource type="Animation" id="Animation_ducc8"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_16cnt")]
+}
+
+[sub_resource type="Animation" id="Animation_hh208"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_5pasp"), ExtResource("12_5pasp")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtSquashAndStretch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Activate"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_0cims"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4egld"]
+_data = {
+"RESET": SubResource("Animation_ducc8"),
+"hurt": SubResource("Animation_hh208")
+}
+
+[node name="CactusSprite" type="CharacterBody2D" node_paths=PackedStringArray("ProjectileOrigin", "FacingTransform", "VerticalTransform") groups=["Enemies"]]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
-script = ExtResource("1_tml3d")
+script = ExtResource("1_f8484")
+ProjectileScene = null
+ProjectileOrigin = NodePath("ProjectileOrigin")
+FacingTransform = NodePath("SquashAndStretchTarget/Body")
+VerticalTransform = NodePath("SquashAndStretchTarget/Body")
+DeathParticle = ExtResource("2_yw3vg")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
 
@@ -285,4 +324,9 @@ Speed = 8.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1hjhs")
+}
+
+[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4egld")
 }
