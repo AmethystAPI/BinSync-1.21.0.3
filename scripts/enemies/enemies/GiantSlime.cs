@@ -1,17 +1,20 @@
 using Godot;
-using Networking;
 
-public partial class Slime : Enemy {
+public partial class GiantSlime : Enemy {
+	[Export] public PackedScene[] Summons = new PackedScene[0];
+	[Export] public Vector2I SummonAmmount = new Vector2I(3, 4);
 	[Export] public PackedScene ProjectileScene;
 	[Export] public Node2D ProjectileOrigin;
 
 	public override void AddStates() {
-		_networkedPosition.DEBUG = true;
-
 		base.AddStates();
 
-		_stateMachine.Add(new Idle("idle", this));
-		_stateMachine.Add(new JumpAttack("attack", this) {
+		_stateMachine.Add(new RandomIdle("idle", this) { AttackStates = new string[] { "jump", "summon" }, AttackWeights = new float[] { 1f, 0.4f } });
+
+		_stateMachine.Add(new JumpAttack("jump", this) {
+			Speed = 30f,
+			Duration = 1.5f,
+			Height = 32f,
 			OnLand = () => {
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
@@ -22,12 +25,17 @@ public partial class Slime : Enemy {
 				projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
 			}
 		});
+
+		_stateMachine.Add(new Summon("summon", this) {
+			Summons = Summons,
+			SummonAmmount = SummonAmmount
+		});
 	}
 
 	public override bool CanDamage(Projectile projectile) {
 		if (!base.CanDamage(projectile)) return false;
 
-		if (_stateMachine.CurrentState == "attack") return false;
+		if (_stateMachine.CurrentState == "jump") return false;
 
 		return true;
 	}

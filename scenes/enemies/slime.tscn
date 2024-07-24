@@ -12,8 +12,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(12, 9)
 
-[sub_resource type="Animation" id="Animation_3hqsu"]
-resource_name = "jump"
+[sub_resource type="Animation" id="Animation_8abv2"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,8 +44,8 @@ tracks/0/keys = {
 "values": [ExtResource("2_hbhsd")]
 }
 
-[sub_resource type="Animation" id="Animation_8abv2"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_3hqsu"]
+resource_name = "jump"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -139,7 +139,7 @@ script = ExtResource("1_6kkrf")
 ProjectileScene = ExtResource("2_4goc7")
 ProjectileOrigin = NodePath("ProjectileOrigin")
 FacingTransform = NodePath("SquashAndStretchTarget/Body")
-VerticalTransform = NodePath("SquashAndStretchTarget")
+VerticalTransform = NodePath("SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("11_7c4yd")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]

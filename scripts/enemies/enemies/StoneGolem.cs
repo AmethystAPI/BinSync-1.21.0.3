@@ -39,7 +39,7 @@ public partial class StoneGolem : Enemy {
     public override void SyncPosition(float delta) {
         if (NetworkPoint.IsOwner) {
             _networkedPosition.Value = GlobalPosition;
-        } else if (_stateMachine.CurrentState != "attack") {
+        } else if (_stateMachine.CurrentState != "attack" && _networkedPosition.Synced) {
             if (_networkedPosition.Value.DistanceSquaredTo(GlobalPosition) > 64) GlobalPosition = _networkedPosition.Value;
 
             GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 20.0f);

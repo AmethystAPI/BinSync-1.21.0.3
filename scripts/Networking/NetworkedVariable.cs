@@ -21,11 +21,16 @@ namespace Networking {
       }
 
       set {
+        Synced = true;
+
         if (_updateEvent == UpdateEvent.Change && !_value.Equals(value)) SendUpdate();
 
         _value = value;
       }
     }
+
+    public bool Synced = false;
+    public bool DEBUG = false;
 
     private string _name;
     private NetworkPointUser _source;
@@ -111,16 +116,20 @@ namespace Networking {
       _lastRecievedIndex = index;
       _lastSentIndex = Math.Max(_lastSentIndex, _lastRecievedIndex);
 
-      if (typeof(ValueType) == typeof(int)) {
-        _value = (ValueType)(object)message.GetInt();
-      }
+      Synced = true;
 
-      if (typeof(ValueType) == typeof(float)) {
-        _value = (ValueType)(object)message.GetFloat();
-      }
+      if (!(_authority == Authority.Client && _source.GetMultiplayerAuthority() == NetworkManager.LocalClient.Id) && !(_authority == Authority.Server && NetworkManager.IsHost)) {
+        if (typeof(ValueType) == typeof(int)) {
+          _value = (ValueType)(object)message.GetInt();
+        }
 
-      if (typeof(ValueType) == typeof(Vector2)) {
-        _value = (ValueType)(object)new Vector2(message.GetFloat(), message.GetFloat());
+        if (typeof(ValueType) == typeof(float)) {
+          _value = (ValueType)(object)message.GetFloat();
+        }
+
+        if (typeof(ValueType) == typeof(Vector2)) {
+          _value = (ValueType)(object)new Vector2(message.GetFloat(), message.GetFloat());
+        }
       }
 
       if (propogate) NetworkManager.SendRpcToClients(_source, _name, SetupMessage(false), _messageSendMode);

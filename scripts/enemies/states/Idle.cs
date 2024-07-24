@@ -9,7 +9,6 @@ public class Idle : EnemyState {
 
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
-    private float _lastIdleTime;
 
     public Idle(string name, Enemy enemy) : base(name, enemy) { }
 
@@ -18,12 +17,6 @@ public class Idle : EnemyState {
     }
 
     public override void Enter() {
-        if (_idleTimer > 0) {
-            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
-
-            return;
-        }
-
         _idleTimer = _randomNumberGenerator.RandfRange(Interval.X, Interval.Y);
     }
 
@@ -48,7 +41,7 @@ public class Idle : EnemyState {
     }
 
     public override void Exit() {
-        _lastIdleTime = Time.GetTicksMsec();
+        _enemy.AnimationPlayer.Stop();
     }
 
     private void AttackRpc(Message message) {

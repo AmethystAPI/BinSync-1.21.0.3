@@ -3,36 +3,22 @@ using Godot;
 using Networking;
 using Riptide;
 
-public partial class RandomIdle : NodeState, NetworkPointUser {
-    [Export] public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
-    [Export] public string[] AttackStates = new string[] { "Attack" };
-    [Export] public float[] AttackWeights = new float[] { 1f };
-    [Export] public string Animation = "idle";
-    [Export] public AnimationPlayer AnimationPlayer;
+public class RandomIdle : EnemyState {
+    public Vector2 IdleInterval = new Vector2(0.8f, 1.2f);
+    public string[] AttackStates = new string[] { "attack" };
+    public float[] AttackWeights = new float[] { 1f };
 
-    public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
-
-    private Enemy _enemy;
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
-    private float _lastIdleTime;
+    public RandomIdle(string name, Enemy enemy) : base(name, enemy) { }
 
-    public override void _Ready() {
-        _enemy = GetParent().GetParent<Enemy>();
 
-        NetworkPoint.Setup(this);
-
-        NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
+    public override void Initialize() {
+        _enemy.NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
     }
 
     public override void Enter() {
-        AnimationPlayer.Play(Animation);
-
-        if (_idleTimer > 0) {
-            _idleTimer -= (Time.GetTicksMsec() - _lastIdleTime) / 100f;
-
-            return;
-        }
+        _enemy.AnimationPlayer.Play("idle");
 
         _idleTimer = _randomNumberGenerator.RandfRange(IdleInterval.X, IdleInterval.Y);
     }
@@ -61,11 +47,17 @@ public partial class RandomIdle : NodeState, NetworkPointUser {
             selection -= AttackWeights[index];
         }
 
-        NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc), message => message.AddString(state));
+        _enemy.NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc), message => message.AddString(state));
+    }
+
+    public override void PhsysicsUpdate(float delta) {
+        _enemy.Velocity = _enemy.Knockback;
+
+        _enemy.MoveAndSlide();
     }
 
     public override void Exit() {
-        _lastIdleTime = Time.GetTicksMsec();
+        _enemy.AnimationPlayer.Stop();
     }
 
     private void AttackRpc(Message message) {

@@ -62,6 +62,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		GameUI.UpdateHealth(Health);
 
+		if (OS.HasFeature("host")) HatCosmetic = ResourceLoader.Load<PackedScene>("res://scenes/items/equipment/OG_hat.tscn");
+
 		NetworkPoint.BounceRpcToClients(nameof(EquipStarterItemsRpc), message => message.AddString(StarterWeaponScenes[new RandomNumberGenerator().RandiRange(0, StarterWeaponScenes.Length - 1)].ResourcePath));
 		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(HatCosmetic.ResourcePath));
 		NetworkPoint.BounceRpcToClients(nameof(EquipCosmeticRpc), message => message.AddString(BodyCosmetic.ResourcePath));

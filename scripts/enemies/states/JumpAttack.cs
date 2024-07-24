@@ -29,7 +29,7 @@ public class JumpAttack : EnemyState {
     }
 
     public override void Update(float delta) {
-        if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("idle");
+        if (!_enemy.Hurt) _enemy.AnimationPlayer.Play("jump");
 
         _jumpTimer += delta;
 

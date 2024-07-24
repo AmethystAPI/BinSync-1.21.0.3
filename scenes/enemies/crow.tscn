@@ -41,8 +41,8 @@ tracks/1/keys = {
 "values": [null]
 }
 
-[sub_resource type="Animation" id="Animation_pen70"]
-resource_name = "scared"
+[sub_resource type="Animation" id="Animation_o35v4"]
+resource_name = "aggressive"
 length = 0.250012
 loop_mode = 1
 step = 0.125
@@ -59,8 +59,8 @@ tracks/0/keys = {
 "values": [ExtResource("2_jc2w3"), ExtResource("2_jc2w3"), ExtResource("9_s3qqv")]
 }
 
-[sub_resource type="Animation" id="Animation_o35v4"]
-resource_name = "aggressive"
+[sub_resource type="Animation" id="Animation_pen70"]
+resource_name = "scared"
 length = 0.250012
 loop_mode = 1
 step = 0.125
@@ -169,7 +169,7 @@ script = ExtResource("1_qxf1c")
 ProjectileScene = ExtResource("7_mu1w5")
 ProjectileOrigin = NodePath("VisualsOrigin/SquashAndStretchTarget/Body/ProjectileOrigin")
 FacingTransform = NodePath("VisualsOrigin/SquashAndStretchTarget/Body")
-VerticalTransform = NodePath("VisualsOrigin")
+VerticalTransform = NodePath("VisualsOrigin/SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("9_hbt65")
 
 [node name="VisualsOrigin" type="Node2D" parent="."]
