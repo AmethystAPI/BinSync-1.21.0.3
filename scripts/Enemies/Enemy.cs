@@ -128,7 +128,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     return "idle";
   }
 
-  private void DamageRpc(Message message) {
+  protected virtual void DamageRpc(Message message) {
     _justHit = false;
 
     _invincibilityTimer = 0.1f;

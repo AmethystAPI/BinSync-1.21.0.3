@@ -35,8 +35,14 @@ public partial class Crow : Enemy {
         Crows.Add(this);
     }
 
-    public override void _ExitTree() {
-        if (Crows.Contains(this)) Crows.Remove(this);
+    protected override void DamageRpc(Message message) {
+        base.DamageRpc(message);
+
+        if (Dead && Crows.Contains(this)) Crows.Remove(this);
+    }
+
+    public override void _Notification(int what) {
+        if (what == NotificationPredelete && Crows.Contains(this)) Crows.Remove(this);
     }
 
     protected override string GetDefaultState() {
