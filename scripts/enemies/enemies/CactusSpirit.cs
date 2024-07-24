@@ -9,15 +9,25 @@ public partial class CactusSpirit : Enemy {
 		base.AddStates();
 
 		_stateMachine.Add(new RangedApproach("idle", this));
-		_stateMachine.Add(new JumpAttack("attack", this) {
-			OnLand = () => {
-				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
+		_stateMachine.Add(new BurstAttack("attack", this) {
+			OnPrepare = shootQueue => {
+				shootQueue.Add(0.3f);
+				shootQueue.Add(0.3f + 0.12f);
+				shootQueue.Add(0.3f + 0.12f * 2f);
+			},
+			OnShoot = direction => {
+				Projectile _projectile = ProjectileScene.Instantiate<Projectile>();
 
-				projectile.Source = this;
+				_projectile.Source = this;
 
-				GetParent().AddChild(projectile);
+				GetParent().AddChild(_projectile);
 
-				projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
+				_projectile.GlobalPosition = GlobalPosition;
+				_projectile.Position += direction * 5f;
+
+				_projectile.LookAt(_projectile.GlobalPosition + direction);
+
+				AnimationPlayer.Play("attack");
 			}
 		});
 	}
