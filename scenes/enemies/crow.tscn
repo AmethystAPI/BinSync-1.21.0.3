@@ -1,15 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctwrqefjr5llm"]
+[gd_scene load_steps=13 format=3 uid="uid://ctwrqefjr5llm"]
 
 [ext_resource type="Script" path="res://scripts/enemies/crow/Crow.cs" id="1_vkuc5"]
 [ext_resource type="Texture2D" uid="uid://b6hd8oagbgaod" path="res://sprites/enemies/crow/crow_0.tres" id="2_jc2w3"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="2_u8mw0"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_0hng1"]
-[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="3_j21au"]
-[ext_resource type="Script" path="res://scripts/enemies/crow/CrowScared.cs" id="5_ky1qb"]
-[ext_resource type="Script" path="res://scripts/enemies/crow/CrowAggressive.cs" id="6_oh67a"]
-[ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="7_fpmii"]
-[ext_resource type="PackedScene" uid="uid://bv8860143w1tl" path="res://scenes/enemies/crow_projectile.tscn" id="7_mu1w5"]
-[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_hbt65"]
 [ext_resource type="Texture2D" uid="uid://b4naejnmh5svi" path="res://sprites/enemies/crow/crow_1.tres" id="9_s3qqv"]
 [ext_resource type="Texture2D" uid="uid://erjyvt1spirj" path="res://sprites/enemies/crow/crow_hurt.tres" id="10_hpfxe"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="11_kuwtc"]
@@ -93,7 +87,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/Hurt/HurtSquashAndStretch")
+tracks/2/path = NodePath("HurtSquashAndStretch")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -142,53 +136,25 @@ position = Vector2(0, -5)
 scale = Vector2(1.00302, 1)
 shape = SubResource("RectangleShape2D_75mpk")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_j21au")
-DefaultState = "Scared"
-
-[node name="Scared" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Sprite", "EnterSquashAndStretch")]
-script = ExtResource("5_ky1qb")
-Speed = 70.0
-InverseInertia = 3.0
-AnimationPlayer = NodePath("../../AnimationPlayer")
-Sprite = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body")
-EnterSquashAndStretch = NodePath("EnterSquashAndStretch")
-
-[node name="EnterSquashAndStretch" type="Node" parent="StateMachine/Scared" node_paths=PackedStringArray("Target")]
-script = ExtResource("11_kuwtc")
-Target = NodePath("../../../VisualsOrigin/SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0
-
-[node name="Aggressive" type="Node" parent="StateMachine" node_paths=PackedStringArray("ProjectileOrigin", "Sprite", "EnterSquashAndStretch")]
-script = ExtResource("6_oh67a")
-Speed = 70.0
-InverseInertia = 2.0
-ProjectileScene = ExtResource("7_mu1w5")
-ProjectileOrigin = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body/ProjectileOrigin")
-Sprite = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body")
-EnterSquashAndStretch = NodePath("EnterSquashAndStretch")
-
-[node name="EnterSquashAndStretch" type="Node" parent="StateMachine/Aggressive" node_paths=PackedStringArray("Target")]
-script = ExtResource("11_kuwtc")
-Target = NodePath("../../../VisualsOrigin/SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0
-
-[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
-script = ExtResource("7_fpmii")
-ReturnState = "Scared"
-AnimationPlayer = NodePath("../../AnimationPlayer")
-Visuals = NodePath("../../VisualsOrigin/SquashAndStretchTarget/Body")
-DeathParticle = ExtResource("9_hbt65")
-
-[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Hurt" node_paths=PackedStringArray("Target")]
-script = ExtResource("11_kuwtc")
-Target = NodePath("../../../VisualsOrigin/SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wn2uj")
 }
+
+[node name="EnterSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("11_kuwtc")
+Target = NodePath("../VisualsOrigin/SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
+
+[node name="EnterSquashAndStretch2" type="Node" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("11_kuwtc")
+Target = NodePath("../VisualsOrigin/SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0
+
+[node name="HurtSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("11_kuwtc")
+Target = NodePath("../VisualsOrigin/SquashAndStretchTarget")
+Scale = Vector2(0.6, 1.4)
+Speed = 8.0

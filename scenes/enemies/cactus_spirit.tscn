@@ -1,14 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://b0awcwrhaggno"]
+[gd_scene load_steps=20 format=3 uid="uid://b0awcwrhaggno"]
 
 [ext_resource type="Script" path="res://scripts/enemies/Enemy.cs" id="1_tml3d"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_v2rhn"]
-[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.cs" id="4_kivvl"]
-[ext_resource type="Script" path="res://scripts/enemies/RangedApproach.cs" id="5_rk5yk"]
-[ext_resource type="Script" path="res://scripts/enemies/CactusSpiritAttack.cs" id="6_qtr8a"]
-[ext_resource type="PackedScene" uid="uid://cf1alnlwhq4yq" path="res://scenes/enemies/cactus_spirit_projectile.tscn" id="7_5teak"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_xya6n"]
-[ext_resource type="Script" path="res://scripts/enemies/Hurt.cs" id="9_e53g1"]
-[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_js0lo"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="11_0cims"]
 [ext_resource type="Texture2D" uid="uid://c1b80yawm3idc" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_hurt.tres" id="12_5pasp"]
 [ext_resource type="Texture2D" uid="uid://b5riq8s65g6x4" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_idle.tres" id="13_16cnt"]
@@ -79,7 +73,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/Attack/SquashAndStretch")
+tracks/2/path = NodePath("SquashAndStretch")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -109,7 +103,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StateMachine/Hurt/HurtSquashAndStretch")
+tracks/1/path = NodePath("HurtSquashAndStretch")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -221,7 +215,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/Attack/TelegraphSquashAndStretch")
+tracks/2/path = NodePath("TelegraphSquashAndStretch")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -270,43 +264,21 @@ shape = SubResource("RectangleShape2D_75mpk")
 [node name="ProjectileOrigin" type="Node2D" parent="."]
 position = Vector2(0, -4)
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("4_kivvl")
-DefaultState = "RangedApproach"
-
-[node name="RangedApproach" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Sprite")]
-script = ExtResource("5_rk5yk")
-IdleInterval = Vector2(1.5, 2.5)
-AnimationPlayer = NodePath("../../AnimationPlayer")
-Sprite = NodePath("../../SquashAndStretchTarget/Body")
-
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("Sprite")]
-script = ExtResource("6_qtr8a")
-ProjectileScene = ExtResource("7_5teak")
-Sprite = NodePath("../../SquashAndStretchTarget/Body")
-
-[node name="TelegraphSquashAndStretch" type="Node" parent="StateMachine/Attack" node_paths=PackedStringArray("Target")]
+[node name="TelegraphSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("8_xya6n")
-Target = NodePath("../../../SquashAndStretchTarget")
+Target = NodePath("../SquashAndStretchTarget")
 Scale = Vector2(0.6, 1.4)
 Speed = 8.0
 
-[node name="SquashAndStretch" type="Node" parent="StateMachine/Attack" node_paths=PackedStringArray("Target")]
+[node name="SquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("8_xya6n")
-Target = NodePath("../../../SquashAndStretchTarget")
+Target = NodePath("../SquashAndStretchTarget")
 Scale = Vector2(0.6, 1.4)
 Speed = 8.0
 
-[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("AnimationPlayer", "Visuals")]
-script = ExtResource("9_e53g1")
-ReturnState = "RangedApproach"
-AnimationPlayer = NodePath("../../AnimationPlayer")
-Visuals = NodePath("../../SquashAndStretchTarget/Body")
-DeathParticle = ExtResource("10_js0lo")
-
-[node name="HurtSquashAndStretch" type="Node" parent="StateMachine/Hurt" node_paths=PackedStringArray("Target")]
+[node name="HurtSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("8_xya6n")
-Target = NodePath("../../../SquashAndStretchTarget")
+Target = NodePath("../SquashAndStretchTarget")
 Scale = Vector2(0.6, 1.4)
 Speed = 8.0
 
