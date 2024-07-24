@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Networking;
@@ -12,13 +11,15 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   [Export] public float Health = 3f;
 
+  public AnimationPlayer AnimationPlayer;
+
   public bool Activated;
 
   public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
   internal NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 
-  internal NodeStateMachine _stateMachine;
+  protected StateMachine _stateMachine = new StateMachine("idle");
 
   private bool _justHit;
   private float _invincibilityTimer;
@@ -30,7 +31,10 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     NetworkPoint.Register(nameof(DamageRpc), DamageRpc);
     NetworkPoint.Register(nameof(ActivateRpc), ActivateRpc);
 
-    // _stateMachine = GetNode<NodeStateMachine>("StateMachine");
+    AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
+    AddStates();
+    _stateMachine._Ready();
 
     GetParent<Room>().AddEnemy();
   }
@@ -40,7 +44,11 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     SyncPosition((float)delta);
 
-    // if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
+    if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
+  }
+
+  public virtual void AddStates() {
+
   }
 
   public virtual void SyncPosition(float delta) {
