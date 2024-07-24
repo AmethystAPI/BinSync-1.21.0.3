@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public class Jump : EnemyState {
+public class JumpAttack : EnemyState {
     public float Speed = 30f;
     public float Duration = 0.75f;
     public float Height = 16f;
@@ -12,7 +12,7 @@ public class Jump : EnemyState {
     private Vector2 _target;
     private float _jumpTimer;
 
-    public Jump(string name, Enemy enemy) : base(name, enemy) { }
+    public JumpAttack(string name, Enemy enemy) : base(name, enemy) { }
 
     public override void Enter() {
         if (Player.AlivePlayers.Count == 0) {

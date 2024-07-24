@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cg8kvs2jvqdn2"]
 
-[ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_niwpd"]
+[ext_resource type="Script" path="res://scripts/enemies/enemies/Slime.cs" id="1_j0q85"]
 [ext_resource type="Texture2D" uid="uid://drqty4uy1t5tm" path="res://sprites/enemies/giant_slime/giant_slime.tres" id="2_2rx6r"]
 [ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="11_gw8t8"]
@@ -106,7 +106,7 @@ y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
-script = ExtResource("1_niwpd")
+script = ExtResource("1_j0q85")
 Health = 10.0
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]

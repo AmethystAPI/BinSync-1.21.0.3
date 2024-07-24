@@ -3,13 +3,12 @@ using Godot;
 public partial class Slime : Enemy {
 	[Export] public PackedScene ProjectileScene;
 	[Export] public Node2D ProjectileOrigin;
-	[Export] public Node2D JumpTransform;
 
 	public override void AddStates() {
 		base.AddStates();
 
 		_stateMachine.Add(new Idle("idle", this));
-		_stateMachine.Add(new Jump("attack", this) {
+		_stateMachine.Add(new JumpAttack("attack", this) {
 			Land = () => {
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 

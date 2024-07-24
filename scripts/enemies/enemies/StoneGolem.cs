@@ -1,7 +1,11 @@
+using Godot;
 using Networking;
 using Riptide;
 
 public partial class StoneGolem : Enemy {
+    [Export] public PackedScene ProjectileScene;
+    [Export] public Node2D ProjectileOrigin;
+
     public override void _Ready() {
         base._Ready();
 
@@ -12,15 +16,30 @@ public partial class StoneGolem : Enemy {
         base.AddStates();
 
         _stateMachine.Add(new Idle("idle", this));
-        _stateMachine.Add(new Roll("idle", this));
+        _stateMachine.Add(new DashAttack("attack", this) {
+            Start = (direction) => {
+                Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
-        if (NetworkManager.IsHost) NetworkPoint.SendRpcToClients(nameof(SetRandomSeedRpc), message => message.AddULong(_stateMachine.GetState<Roll>("attack").Random.Seed));
+                projectile.Source = this;
+
+                AddChild(projectile);
+
+                projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
+                projectile.Position += direction * 5f;
+
+                projectile.LookAt(projectile.GlobalPosition + direction);
+
+                return projectile;
+            }
+        });
+
+        if (NetworkManager.IsHost) NetworkPoint.SendRpcToClients(nameof(SetRandomSeedRpc), message => message.AddULong(_stateMachine.GetState<DashAttack>("attack").Random.Seed));
     }
 
     public override void SyncPosition(float delta) {
         if (NetworkPoint.IsOwner) {
             _networkedPosition.Value = GlobalPosition;
-        } else if (_stateMachine.CurrentState != "roll") {
+        } else if (_stateMachine.CurrentState != "attack") {
             if (_networkedPosition.Value.DistanceSquaredTo(GlobalPosition) > 64) GlobalPosition = _networkedPosition.Value;
 
             GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 20.0f);
@@ -28,6 +47,6 @@ public partial class StoneGolem : Enemy {
     }
 
     private void SetRandomSeedRpc(Message message) {
-        _stateMachine.GetState<Roll>("roll").Random.Seed = message.GetULong();
+        _stateMachine.GetState<DashAttack>("attack").Random.Seed = message.GetULong();
     }
 }

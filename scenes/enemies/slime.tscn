@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://biycaes0pxrav"]
 
-[ext_resource type="Script" path="res://scripts/enemies/slime/Slime.cs" id="1_mu0ej"]
+[ext_resource type="Script" path="res://scripts/enemies/enemies/Slime.cs" id="1_6kkrf"]
 [ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="2_4goc7"]
 [ext_resource type="Texture2D" uid="uid://didmjldh3h46f" path="res://sprites/enemies/slime/slime.tres" id="2_hbhsd"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_yrvle"]
@@ -11,6 +11,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(12, 9)
+
+[sub_resource type="Animation" id="Animation_3hqsu"]
+resource_name = "jump"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hbhsd")]
+}
 
 [sub_resource type="Animation" id="Animation_peq8v"]
 resource_name = "idle"
@@ -30,22 +46,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8abv2"]
 resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_hbhsd")]
-}
-
-[sub_resource type="Animation" id="Animation_3hqsu"]
-resource_name = "jump"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -105,10 +105,10 @@ tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_th6ka"), ExtResource("10_th6ka")]
+"values": [ExtResource("10_th6ka")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,20 +124,20 @@ tracks/1/keys = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hjhs"]
+resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_4he1a"),
 "hurt": SubResource("Animation_pl1hr")
 }
 
-[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("ProjectileOrigin", "JumpTransform", "FacingTransform", "VerticalTransform") groups=["Enemies"]]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("ProjectileOrigin", "FacingTransform", "VerticalTransform") groups=["Enemies"]]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
-script = ExtResource("1_mu0ej")
+script = ExtResource("1_6kkrf")
 ProjectileScene = ExtResource("2_4goc7")
 ProjectileOrigin = NodePath("ProjectileOrigin")
-JumpTransform = NodePath("SquashAndStretchTarget/Body")
 FacingTransform = NodePath("SquashAndStretchTarget/Body")
 VerticalTransform = NodePath("SquashAndStretchTarget")
 DeathParticle = ExtResource("11_7c4yd")
