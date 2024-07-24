@@ -5,6 +5,9 @@ public partial class DestructionPebble : CharacterBody2D {
 	[Export] public float GroundResistance = 5;
 	[Export] public Vector2 SpeedRange;
 	[Export] public float TimerFactor = 6f;
+	[Export] public Sprite2D Sprite;
+	[Export] public float Lifetime = 40f;
+	[Export] public float DecayFactor = 0.1f;
 
 	private Node2D _arcOrigin;
 	private float _heightTimer = 0f;
@@ -12,6 +15,8 @@ public partial class DestructionPebble : CharacterBody2D {
 	private float _life = 40f;
 
 	public override void _Ready() {
+		_life = Lifetime;
+
 		RandomNumberGenerator random = new RandomNumberGenerator();
 
 		Velocity = Vector2.Up.Rotated(random.RandfRange(-Mathf.Pi, Mathf.Pi)) * random.RandfRange(SpeedRange.X, SpeedRange.Y);
@@ -27,6 +32,10 @@ public partial class DestructionPebble : CharacterBody2D {
 	}
 
 	public override void _Process(double delta) {
+		if (_life <= Lifetime * DecayFactor) {
+			Sprite.Modulate = new Color(Sprite.Modulate.R, Sprite.Modulate.G, Sprite.Modulate.B, _life / (Lifetime * DecayFactor));
+		}
+
 		_heightTimer += TimerFactor * (float)delta;
 
 		_heightTimer = Mathf.Min(_heightTimer, 1f);

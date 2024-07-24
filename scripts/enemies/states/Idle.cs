@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Networking;
 using Riptide;
@@ -7,6 +8,8 @@ public class Idle : EnemyState {
     public Vector2 Interval = new Vector2(0.8f, 1.2f);
     public string AttackState = "attack";
 
+    public Action<float> Movement = null;
+
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
@@ -14,6 +17,12 @@ public class Idle : EnemyState {
 
     public override void Initialize() {
         _enemy.NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
+
+        if (Movement == null) Movement = delta => {
+            _enemy.Velocity = _enemy.Knockback;
+
+            _enemy.MoveAndSlide();
+        };
     }
 
     public override void Enter() {
@@ -35,9 +44,7 @@ public class Idle : EnemyState {
     }
 
     public override void PhsysicsUpdate(float delta) {
-        _enemy.Velocity = _enemy.Knockback;
-
-        _enemy.MoveAndSlide();
+        Movement(delta);
     }
 
     public override void Exit() {

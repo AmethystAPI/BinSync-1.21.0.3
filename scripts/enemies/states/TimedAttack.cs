@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-public class BurstAttack : EnemyState {
+public class TimedAttack : EnemyState {
     public float Duration = 1f;
     public string ReturnState = "idle";
 
@@ -13,7 +13,7 @@ public class BurstAttack : EnemyState {
     private List<float> _shootQueue = new List<float>();
     private Vector2 _direction;
 
-    public BurstAttack(string name, Enemy enemy) : base(name, enemy) { }
+    public TimedAttack(string name, Enemy enemy) : base(name, enemy) { }
 
     public override void Enter() {
         _enemy.AnimationPlayer.Play("telegraph_attack");

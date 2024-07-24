@@ -9,7 +9,7 @@ public partial class CactusSpirit : Enemy {
 		base.AddStates();
 
 		_stateMachine.Add(new RangedApproach("idle", this));
-		_stateMachine.Add(new BurstAttack("attack", this) {
+		_stateMachine.Add(new TimedAttack("attack", this) {
 			OnPrepare = shootQueue => {
 				shootQueue.Add(0.3f);
 				shootQueue.Add(0.3f + 0.12f);
