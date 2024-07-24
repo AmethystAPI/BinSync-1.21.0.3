@@ -10,6 +10,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   }
 
   [Export] public float Health = 3f;
+  [Export] public Node2D FacingTransform;
 
   public AnimationPlayer AnimationPlayer;
 
@@ -40,11 +41,16 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   }
 
   public override void _Process(double delta) {
+    _stateMachine._Process(delta);
     _networkedPosition.Sync();
 
     SyncPosition((float)delta);
 
     if (_stateMachine.CurrentState != "Hurt") _invincibilityTimer -= (float)delta;
+  }
+
+  public override void _PhysicsProcess(double delta) {
+    _stateMachine._PhysicsProcess(delta);
   }
 
   public virtual void AddStates() {
@@ -130,5 +136,13 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
       Player = player,
       Weight = GlobalPosition.DistanceTo(player.GlobalPosition) - player.EquippedTrinkets.Where(trinket => trinket is PerfumeTrinket).Count() * 48f
     }).OrderBy(target => target.Weight).ToArray();
+  }
+
+  public void Face(bool right) {
+    FacingTransform.Scale = new Vector2(right ? 1f : -1f, 1f);
+  }
+
+  public void Face(Vector2 position) {
+    FacingTransform.Scale = new Vector2(position.X > GlobalPosition.X ? 1f : -1f, 1f);
   }
 }

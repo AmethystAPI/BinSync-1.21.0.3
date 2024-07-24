@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Hurt : NodeState {
+public class Hurt : State {
     [Export] public string ReturnState = "Idle";
     [Export] public AnimationPlayer AnimationPlayer;
     [Export] public Node2D Visuals;
@@ -12,8 +12,8 @@ public partial class Hurt : NodeState {
     private bool _dead;
     private float _deadTimer;
 
-    public override void _Ready() {
-        _enemy = GetParent().GetParent<Enemy>();
+    public Hurt(string name, Enemy enemy) : base(name) {
+        _enemy = enemy;
     }
 
     public override void Enter() {

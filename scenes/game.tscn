@@ -150,10 +150,15 @@ mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_s7l32")]
+[node name="GameUI" parent="CanvasLayer" node_paths=PackedStringArray("HeartContainer") instance=ExtResource("3_s7l32")]
 mouse_filter = 2
+HeartContainer = NodePath("HeartContainer")
 
-[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("7_gnxd7")]
+[node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("hostButton", "startButton", "HatEquipmentButton", "BodyEquipmentButton") instance=ExtResource("7_gnxd7")]
+hostButton = NodePath("Host")
+startButton = NodePath("Start")
+HatEquipmentButton = NodePath("HatEquipment")
+BodyEquipmentButton = NodePath("BodyEquipment")
 
 [node name="TrinketUI" type="Control" parent="CanvasLayer"]
 visible = false

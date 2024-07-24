@@ -3,27 +3,22 @@ using Networking;
 using Riptide;
 
 public class Idle : State {
-    public static Vector2 DefaultInterval = new Vector2(0.8f, 1.2f);
 
-    public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+    public Vector2 Interval = new Vector2(0.8f, 1.2f);
+    public string AttackState = "attack";
 
     private Enemy _enemy;
-
-    private Vector2 _interval;
-    private string _attackState;
 
     private float _idleTimer = 0;
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
     private float _lastIdleTime;
 
-    public Idle(string name, Enemy enemy, string attackState, Vector2 interval) : base(name) {
+    public Idle(string name, Enemy enemy) : base(name) {
         _enemy = enemy;
-        _interval = interval;
-        _attackState = attackState;
     }
 
     public override void Initialize() {
-        NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
+        _enemy.NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
     }
 
     public override void Enter() {
@@ -35,7 +30,7 @@ public class Idle : State {
             return;
         }
 
-        _idleTimer = _randomNumberGenerator.RandfRange(_interval.X, _interval.Y);
+        _idleTimer = _randomNumberGenerator.RandfRange(Interval.X, Interval.Y);
     }
 
     public override void Update(float delta) {
@@ -47,7 +42,7 @@ public class Idle : State {
 
         if (_idleTimer > 0) return;
 
-        NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
+        _enemy.NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
     }
 
     public override void Exit() {
@@ -55,6 +50,6 @@ public class Idle : State {
     }
 
     private void AttackRpc(Message message) {
-        GoToState(_attackState);
+        GoToState(AttackState);
     }
 }
