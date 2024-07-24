@@ -1,0 +1,11 @@
+last_change = 2024-07-24T10:24:21.571063Z
+addr = 0x1a9e30
+size = 0xc3c
+
+[stack_vars.-0x428]
+last_change = 2024-07-24T10:24:21.571063Z
+offset = -1064
+name = "optionsAllocated_1"
+type = "long long *"
+size = 0x8
+addr = 0x1a9e30
