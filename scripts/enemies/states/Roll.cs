@@ -1,6 +1,6 @@
 using Godot;
 
-public class StoneGolemRoll : State {
+public class Roll : State {
     [Export] public float Speed = 10f;
     [Export] public PackedScene ProjectileScene;
     [Export] public Node2D ProjectileOrigin;
@@ -15,7 +15,7 @@ public class StoneGolemRoll : State {
     private Vector2 _direction;
     private Projectile _projectile;
 
-    public StoneGolemRoll(string name, Enemy enemy) : base(name) {
+    public Roll(string name, Enemy enemy) : base(name) {
         _enemy = enemy;
     }
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://k1sviiopk4x1"]
+[gd_scene load_steps=18 format=3 uid="uid://k1sviiopk4x1"]
 
 [ext_resource type="Script" path="res://scripts/enemies/stone_golem/StoneGolem.cs" id="1_r5e1k"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_de7bt"]
 [ext_resource type="Texture2D" uid="uid://c6vxeyr77sovq" path="res://sprites/enemies/stone_golem/stone_golem_0.tres" id="8_bkfxg"]
+[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_t223m"]
 [ext_resource type="Texture2D" uid="uid://brc0fk73qt4yu" path="res://sprites/enemies/stone_golem/stone_golem_1.tres" id="9_yp4yc"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="10_kcukc"]
 [ext_resource type="Texture2D" uid="uid://bgkrxsg6qkb8u" path="res://sprites/enemies/stone_golem/stone_golem_2.tres" id="10_q7y6b"]
@@ -146,12 +147,15 @@ _data = {
 "roll_back": SubResource("Animation_j3613")
 }
 
-[node name="StoneGolem" type="CharacterBody2D" groups=["Enemies"]]
+[node name="StoneGolem" type="CharacterBody2D" node_paths=PackedStringArray("FacingTransform", "VerticalTransform") groups=["Enemies"]]
 y_sort_enabled = true
 collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_r5e1k")
+FacingTransform = NodePath("SquashAndStretchTarget/Body")
+VerticalTransform = NodePath("SquashAndStretchTarget")
+DeathParticle = ExtResource("9_t223m")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
 

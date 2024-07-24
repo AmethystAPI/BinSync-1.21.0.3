@@ -6,8 +6,15 @@ public partial class StoneGolem : Enemy {
         base._Ready();
 
         NetworkPoint.Register(nameof(SetRandomSeedRpc), SetRandomSeedRpc);
+    }
 
-        if (NetworkManager.IsHost) NetworkPoint.SendRpcToClients(nameof(SetRandomSeedRpc), message => message.AddULong(_stateMachine.GetState<StoneGolemRoll>("Roll").Random.Seed));
+    public override void AddStates() {
+        base.AddStates();
+
+        _stateMachine.Add(new Idle("idle", this));
+        _stateMachine.Add(new Roll("idle", this));
+
+        if (NetworkManager.IsHost) NetworkPoint.SendRpcToClients(nameof(SetRandomSeedRpc), message => message.AddULong(_stateMachine.GetState<Roll>("attack").Random.Seed));
     }
 
     public override void SyncPosition(float delta) {
@@ -21,6 +28,6 @@ public partial class StoneGolem : Enemy {
     }
 
     private void SetRandomSeedRpc(Message message) {
-        _stateMachine.GetState<StoneGolemRoll>("roll").Random.Seed = message.GetULong();
+        _stateMachine.GetState<Roll>("roll").Random.Seed = message.GetULong();
     }
 }
