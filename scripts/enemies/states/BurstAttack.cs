@@ -31,6 +31,12 @@ public class BurstAttack : EnemyState {
         OnPrepare(_shootQueue);
     }
 
+    public override void PhsysicsUpdate(float delta) {
+        _enemy.Velocity = _enemy.Knockback;
+
+        _enemy.MoveAndSlide();
+    }
+
     public override void Update(float delta) {
         for (int index = 0; index < _shootQueue.Count; index++) {
             _shootQueue[index] -= (float)delta;
