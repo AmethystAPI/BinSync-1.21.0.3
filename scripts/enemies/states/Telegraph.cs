@@ -1,3 +1,5 @@
+using Godot;
+
 public class Telegraph : EnemyState {
     public float Duration = 0.5f;
     public string Animation = "telegraph_attack";
@@ -24,6 +26,9 @@ public class Telegraph : EnemyState {
     }
 
     public override void PhsysicsUpdate(float delta) {
+        Vector2 target = _enemy.GetWeightedTargets()[0].Player.GlobalPosition;
+        _enemy.Face(target);
+
         _enemy.Velocity = _enemy.Knockback;
 
         _enemy.MoveAndSlide();

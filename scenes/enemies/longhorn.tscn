@@ -201,7 +201,7 @@ DeathParticle = ExtResource("3_3m1ft")
 [node name="Body" type="Sprite2D" parent="SquashAndStretchTarget"]
 texture = ExtResource("4_kd67x")
 offset = Vector2(0, -7)
-hframes = 16
+hframes = 17
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)

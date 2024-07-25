@@ -6,7 +6,7 @@ public class DashAttack : EnemyState {
     public string ReturnState = "idle";
     public float Variance = Mathf.Pi / 6f;
 
-    public Func<Vector2, Projectile> OnDash;
+    public Func<Vector2, Vector2, Projectile> OnDash;
 
     public RandomNumberGenerator Random = new RandomNumberGenerator();
 
@@ -34,11 +34,7 @@ public class DashAttack : EnemyState {
 
         _direction = _direction.Rotated(Random.RandfRange(-Variance, Variance));
 
-        _projectile = OnDash(_direction);
-
-        float direction = (target.X > _enemy.GlobalPosition.X ? 1f : -1f) * (target.Y > _enemy.GlobalPosition.Y ? 1f : -1f);
-
-        _enemy.Face(direction >= 0);
+        _projectile = OnDash(_direction, target);
 
         if (_enemy.Hurt) {
             _enemy.AnimationPlayer.Stop();

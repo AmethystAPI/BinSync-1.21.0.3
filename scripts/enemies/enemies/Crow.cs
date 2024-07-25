@@ -46,6 +46,12 @@ public partial class Crow : Enemy {
     protected override void ActivateRpc(Message message) {
         base.ActivateRpc(message);
 
+        if (!IsInstanceValid(this)) {
+            GD.PushError("Trying to activate invalid crow!");
+
+            return;
+        }
+
         Crows.Add(this);
     }
 

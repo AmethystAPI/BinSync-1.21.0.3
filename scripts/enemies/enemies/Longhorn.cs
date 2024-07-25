@@ -17,7 +17,15 @@ public partial class Longhorn : Enemy {
 
         _stateMachine.Add(new Idle("idle", this) {
             AttackState = "telegraph_attack",
-            Interval = new Vector2(2f, 3f)
+            Interval = new Vector2(2f, 3f),
+            Movement = delta => {
+                Vector2 target = GetWeightedTargets()[0].Player.GlobalPosition;
+                Face(target);
+
+                Velocity = Knockback;
+
+                MoveAndSlide();
+            }
         });
 
         _stateMachine.Add(new Telegraph("telegraph_attack", this, "attack"));
@@ -25,7 +33,9 @@ public partial class Longhorn : Enemy {
         _stateMachine.Add(new DashAttack("attack", this) {
             Speed = 200,
             Variance = 0f,
-            OnDash = (direction) => {
+            OnDash = (direction, target) => {
+                Face(target);
+
                 Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
                 projectile.Source = this;
@@ -33,7 +43,7 @@ public partial class Longhorn : Enemy {
                 AddChild(projectile);
 
                 projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
-                projectile.Position += direction * 5f;
+                projectile.Position += direction * 12f;
 
                 projectile.LookAt(projectile.GlobalPosition + direction);
 

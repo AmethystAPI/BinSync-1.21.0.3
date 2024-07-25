@@ -17,7 +17,10 @@ public partial class StoneGolem : Enemy {
 
         _stateMachine.Add(new Idle("idle", this));
         _stateMachine.Add(new DashAttack("attack", this) {
-            OnDash = (direction) => {
+            OnDash = (direction, target) => {
+                float faceDirection = (target.X > GlobalPosition.X ? 1f : -1f) * (target.Y > GlobalPosition.Y ? 1f : -1f);
+                Face(faceDirection >= 0);
+
                 Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
                 projectile.Source = this;
