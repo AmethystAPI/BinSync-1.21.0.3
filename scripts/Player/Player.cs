@@ -120,7 +120,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
 		damageNumber.Damage = health;
-		damageNumber.Color = new Color(181f / 255f, 255f / 255f, 174f / 255f);
+		damageNumber.Color = new Color(105f / 255f, 255f / 255f, 92f / 255f);
 
 		GetParent().AddChild(damageNumber);
 

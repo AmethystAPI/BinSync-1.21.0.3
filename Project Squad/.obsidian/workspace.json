@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c98093d46f92bc37",
+        "id": "de28ed80b1dbf42d",
         "type": "tabs",
         "children": [
           {
-            "id": "cb0009846caae325",
+            "id": "486c50ffca868aa8",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -144,11 +144,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cb0009846caae325",
+  "active": "486c50ffca868aa8",
   "lastOpenFiles": [
+    "More Room Designs.md",
+    "Planning/Beta C Kanban.md",
+    "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Devlogs/Deblog 20/Outline.canvas",
     "Devlogs/Deblog 20/Ideas.md",
-    "Planning/Beta C Kanban.md",
     "Devlogs/Deblog 20",
     "No Communication Notes.md",
     "Beta B Playtest Notes.md",
@@ -157,7 +159,6 @@
     "Devlogs/Devlog 19/Goals.md",
     "Devlogs/Devlog 19/Graph.canvas",
     "Design/Current Design Issues/Availability of Weapons.md",
-    "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Design/Current Design Issues/Transition of Biomes.md",
     "Design/Current Design Issues/Scaling of Trinkets.md",
     "Daily Notes/Day 18-6.md",

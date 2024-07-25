@@ -6,6 +6,7 @@ kanban-plugin: basic
 
 ## Todo
 
+- [ ] [[Scaling of Trinkets]] #design
 - [ ] Decrease Range of Bow
 - [ ] Hurting before activate causes infinite damage
 - [ ] Rooms ending
@@ -24,24 +25,24 @@ kanban-plugin: basic
 ## Must Do
 
 - [ ] Windswept Wastes Biome - Rooms #design
+- [ ] [[Transition of Biomes]] #design
+- [ ] More Golden Grove Rooms
 - [ ] Windswept Wastes Biome - Temple #design
-- [ ] Damage Numbers
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
-- [ ] [[Transition of Biomes]] #design
-- [ ] [[Variety and Fun in Combat]] #design
-- [ ] [[Scaling of Trinkets]] #design
 
 
 ## In Progress
 
 - [ ] Fix bug of rooms not finishing<br>because enemy spawned far back
-- [ ] Fix bug of invalid crow
+- [ ] Damage Numbers
 
 
 ## Done
 
 **Complete**
+- [x] Fix bug of invalid crow
+- [x] [[Variety and Fun in Combat]] #design
 - [x] Enemy Squash and Stretch
 - [x] Screen Shake
 - [x] Unique Encounters #content
