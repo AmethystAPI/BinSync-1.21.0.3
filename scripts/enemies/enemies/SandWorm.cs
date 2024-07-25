@@ -58,6 +58,8 @@ public partial class SandWorm : Enemy {
                 shootIndex = 0;
             },
             OnShoot = direction => {
+                SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 8f);
+
                 direction = Vector2.Right.Rotated((float)-Math.PI / 4f + Mathf.Pi / 2f * shootIndex);
 
                 Projectile _projectile = ProjectileScene.Instantiate<Projectile>();

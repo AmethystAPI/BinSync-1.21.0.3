@@ -230,4 +230,4 @@ libraries = {
 
 [node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("11_vqprj")
-Target = NodePath(".")
+Target = NodePath("../SquashAndStretchTarget")

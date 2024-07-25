@@ -14,8 +14,12 @@ public partial class CactusSpirit : Enemy {
 				shootQueue.Add(0.3f);
 				shootQueue.Add(0.3f + 0.12f);
 				shootQueue.Add(0.3f + 0.12f * 2f);
+
+				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 8f);
 			},
 			OnShoot = direction => {
+				SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 8f);
+
 				Projectile _projectile = ProjectileScene.Instantiate<Projectile>();
 
 				_projectile.Source = this;

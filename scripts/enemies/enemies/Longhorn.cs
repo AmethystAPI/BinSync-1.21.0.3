@@ -28,12 +28,18 @@ public partial class Longhorn : Enemy {
             }
         });
 
-        _stateMachine.Add(new Telegraph("telegraph_attack", this, "attack"));
+        _stateMachine.Add(new Telegraph("telegraph_attack", this, "attack") {
+            OnEnter = () => {
+                SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 8f);
+            }
+        });
 
         _stateMachine.Add(new DashAttack("attack", this) {
             Speed = 200,
             Variance = 0f,
             OnDash = (direction, target) => {
+                SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 8f);
+
                 Face(target);
 
                 Projectile projectile = ProjectileScene.Instantiate<Projectile>();
@@ -48,6 +54,9 @@ public partial class Longhorn : Enemy {
                 projectile.LookAt(projectile.GlobalPosition + direction);
 
                 return projectile;
+            },
+            OnStop = () => {
+                SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 8f);
             }
         });
 

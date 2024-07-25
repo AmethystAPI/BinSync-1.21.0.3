@@ -1,8 +1,11 @@
+using System;
 using Godot;
 
 public class Telegraph : EnemyState {
     public float Duration = 0.5f;
     public string Animation = "telegraph_attack";
+
+    public Action OnEnter;
 
     private string _attackState = "attack";
     private float _timer = 0;
@@ -13,6 +16,8 @@ public class Telegraph : EnemyState {
 
     public override void Enter() {
         _timer = Duration;
+
+        OnEnter();
     }
 
     public override void Update(float delta) {
