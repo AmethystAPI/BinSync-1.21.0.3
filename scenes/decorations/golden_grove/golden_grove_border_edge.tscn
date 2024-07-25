@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbomho6lgc6tg"]
+
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_1m6i3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl4ak"]
+atlas = ExtResource("1_1m6i3")
+region = Rect2(271, 23, 1, 1)
+
+[node name="Edge" type="Sprite2D"]
+z_index = 1
+position = Vector2(113, -3)
+scale = Vector2(224, 132)
+texture = SubResource("AtlasTexture_vl4ak")
+region_rect = Rect2(0, 0, 336, 192)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dluhdh470aipx"]
+[gd_scene load_steps=4 format=3 uid="uid://dluhdh470aipx"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="1_h47jy"]
+[ext_resource type="PackedScene" uid="uid://dbomho6lgc6tg" path="res://scenes/decorations/golden_grove/golden_grove_border_edge.tscn" id="3_bbyen"]
+[ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/biomes/golden_grove/tree_border.tres" id="3_ysp01"]
 
 [node name="Borders" type="Node2D"]
 z_index = 10
@@ -12,6 +14,14 @@ MaxDistance = 150.0
 
 [node name="Origin" type="Node2D" parent="Paralax"]
 
+[node name="Sprite2D18" type="Sprite2D" parent="Paralax/Origin"]
+position = Vector2(7, 9.99996)
+texture = ExtResource("3_ysp01")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Paralax/Origin"]
+position = Vector2(22, -50)
+texture = ExtResource("3_ysp01")
+
 [node name="Paralax2" type="Node2D" parent="."]
 z_index = 1
 script = ExtResource("1_h47jy")
@@ -19,3 +29,21 @@ Factor = 0.126
 MaxDistance = 150.0
 
 [node name="Origin" type="Node2D" parent="Paralax2"]
+
+[node name="Edge3" parent="Paralax2/Origin" instance=ExtResource("3_bbyen")]
+
+[node name="Sprite2D20" type="Sprite2D" parent="Paralax2/Origin"]
+position = Vector2(10, -47)
+texture = ExtResource("3_ysp01")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Paralax2/Origin"]
+position = Vector2(22, 14)
+texture = ExtResource("3_ysp01")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Paralax2/Origin"]
+position = Vector2(12, -19)
+texture = ExtResource("3_ysp01")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Paralax2/Origin"]
+position = Vector2(14, 42)
+texture = ExtResource("3_ysp01")

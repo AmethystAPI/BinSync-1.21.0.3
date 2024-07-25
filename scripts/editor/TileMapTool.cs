@@ -1,29 +1,39 @@
-#if TOOLS
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
 [Tool]
 public partial class TileMapTool : Node {
+#if TOOLS
     [Export] public SmartTileset SmartTileset;
 
     private bool _justPressedGenerate = false;
 
+    private float _timer = 0.5f;
+
     public override void _Process(double delta) {
-        if (Input.IsKeyPressed(Key.Backslash) && _justPressedGenerate) return;
+        // if (Input.IsKeyPressed(Key.Backslash) && _justPressedGenerate) return;
 
-        if (!Input.IsKeyPressed(Key.Backslash)) {
-            _justPressedGenerate = false;
+        // if (!Input.IsKeyPressed(Key.Backslash)) {
+        //     _justPressedGenerate = false;
 
-            return;
+        //     return;
+        // }
+
+        // _justPressedGenerate = true;
+
+        _timer -= (float)delta;
+
+        if (_timer <= 0) {
+            Generate(GetParent<TileMap>());
+
+            _timer = 0.5f;
         }
-
-        _justPressedGenerate = true;
-
-        Generate(GetParent<TileMap>());
     }
 
     private void Generate(TileMap tileMap) {
+        if (SmartTileset == null) return;
+
         GD.Print("Generating...");
 
         List<string> layerNames = new List<string>();
@@ -143,5 +153,5 @@ public partial class TileMapTool : Node {
     private bool WallTileAt(int layer, Vector2I position, TileMap tileMap, Rect2I rect) {
         return tileMap.GetCellTileData(layer, position) != null || !rect.HasPoint(position);
     }
-}
 #endif
+}

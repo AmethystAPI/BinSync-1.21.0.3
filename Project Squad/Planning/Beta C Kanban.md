@@ -27,7 +27,6 @@ kanban-plugin: basic
 
 - [ ] Windswept Wastes Biome - Rooms #design
 - [ ] [[Transition of Biomes]] #design
-- [ ] More Golden Grove Rooms
 - [ ] Windswept Wastes Biome - Temple #design
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
@@ -37,6 +36,7 @@ kanban-plugin: basic
 ## In Progress
 
 - [ ] Fix bug of rooms not finishing<br>because enemy spawned far back
+- [ ] More Golden Grove Rooms
 
 
 ## Done
