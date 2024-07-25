@@ -1,10 +1,6 @@
-using Godot;
-using Networking;
-using Riptide;
-
 public class Telegraph : EnemyState {
     public float Duration = 0.5f;
-    public string Animation = "telgraph_attack";
+    public string Animation = "telegraph_attack";
 
     private string _attackState = "attack";
     private float _timer = 0;

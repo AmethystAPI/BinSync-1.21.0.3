@@ -16,8 +16,11 @@ public partial class Longhorn : Enemy {
         base.AddStates();
 
         _stateMachine.Add(new Idle("idle", this) {
+            AttackState = "telegraph_attack",
             Interval = new Vector2(2f, 3f)
         });
+
+        _stateMachine.Add(new Telegraph("telegraph_attack", this, "attack"));
 
         _stateMachine.Add(new DashAttack("attack", this) {
             Speed = 200,
