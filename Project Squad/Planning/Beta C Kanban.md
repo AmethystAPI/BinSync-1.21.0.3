@@ -23,6 +23,11 @@ kanban-plugin: basic
 
 ## Must Do
 
+- [ ] Windswept Wastes Biome - Rooms #design
+- [ ] Windswept Wastes Biome - Temple #design
+- [ ] Enemy Squash and Stretch
+- [ ] Damage Numbers
+- [ ] Screen Shake
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
 - [ ] [[Transition of Biomes]] #design
@@ -33,13 +38,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Windswept Wastes Biome #design
-- [ ] Unique Encounters #content
 
 
 ## Done
 
 **Complete**
+- [x] Unique Encounters #content
 - [x] [[Availability of Weapons]] #design
 
 

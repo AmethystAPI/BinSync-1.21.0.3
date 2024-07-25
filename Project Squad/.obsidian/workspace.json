@@ -4,41 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0a2772a4cf0af7dd",
+        "id": "c98093d46f92bc37",
         "type": "tabs",
-        "dimension": 61.611675126903556,
         "children": [
           {
-            "id": "694b19d396aed7c8",
+            "id": "cb0009846caae325",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "kanban",
               "state": {
-                "file": "Devlogs/Deblog 20/Outline.canvas",
-                "viewState": {
-                  "x": 77.61605858289141,
-                  "y": -91.6236542606848,
-                  "zoom": -0.3333333333333334
-                }
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "16cea00c6fa785f0",
-        "type": "tabs",
-        "dimension": 38.388324873096444,
-        "children": [
-          {
-            "id": "539f4e1a08219cf4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Devlogs/Deblog 20/Ideas.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -92,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 209.5
+    "width": 286.5
   },
   "right": {
     "id": "b07aa7183d4db9b0",
@@ -108,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Devlogs/Deblog 20/Outline.canvas",
+                "file": "Planning/Beta C Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Devlogs/Deblog 20/Outline.canvas",
+                "file": "Planning/Beta C Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Devlogs/Deblog 20/Outline.canvas"
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -169,10 +144,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "694b19d396aed7c8",
+  "active": "cb0009846caae325",
   "lastOpenFiles": [
-    "Devlogs/Deblog 20/Ideas.md",
     "Devlogs/Deblog 20/Outline.canvas",
+    "Devlogs/Deblog 20/Ideas.md",
     "Planning/Beta C Kanban.md",
     "Devlogs/Deblog 20",
     "No Communication Notes.md",
