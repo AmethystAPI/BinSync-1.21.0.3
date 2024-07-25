@@ -122,7 +122,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		damageNumber.Damage = health;
 		damageNumber.Color = new Color("#ffffff");
 		damageNumber.BorderColor = new Color("#00ff43");
-		GD.Print(damageNumber.BorderColor);
 
 		GetParent().AddChild(damageNumber);
 
