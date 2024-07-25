@@ -1,8 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2phftpgxdl4w"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d2phftpgxdl4w"]
 
-[ext_resource type="PackedScene" uid="uid://dqnxkhxuii7pt" path="res://scenes/enemies/sand_worm.tscn" id="1_biu6w"]
+[ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="1_2wqix"]
+[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="1_jo3nf"]
+[ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="1_whbny"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_rwbs5"]
 
 [resource]
 script = ExtResource("4_rwbs5")
-EnemyScenes = Array[PackedScene]([ExtResource("1_biu6w")])
+EnemyScenes = Array[PackedScene]([ExtResource("1_jo3nf"), ExtResource("1_whbny"), ExtResource("1_2wqix")])
