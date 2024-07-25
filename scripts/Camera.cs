@@ -23,9 +23,9 @@ public partial class Camera : Camera2D {
 			_shakeDirection = Vector2.Right.Rotated(_random.RandfRange(0f, Mathf.Pi * 2f));
 		}
 
-		_shakePosition = _shakeDirection * _shakeIntensity;
+		_shakePosition = _shakeDirection * Mathf.Pow(_shakeIntensity * 2f, 1.5f);
 
-		_shakeIntensity = MathHelper.FixedLerp(_shakeIntensity, 0f, 12f, (float)delta);
+		_shakeIntensity = MathHelper.FixedLerp(_shakeIntensity, 0f, 16f, (float)delta);
 
 		GlobalPosition = _basePosition + _shakePosition;
 	}

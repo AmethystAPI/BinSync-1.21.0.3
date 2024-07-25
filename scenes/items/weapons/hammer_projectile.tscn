@@ -36,6 +36,8 @@ Speed = 300.0
 Resistance = 7.5
 Lifetime = 0.3
 Knockback = 2.5
+ScreenShake = 1.0
+TerrainScreenShake = 0.4
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 7

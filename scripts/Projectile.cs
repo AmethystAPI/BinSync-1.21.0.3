@@ -11,6 +11,8 @@ public partial class Projectile : Node2D {
 	[Export] public bool InheritBelocity = true;
 	[Export] public bool Pierce = false;
 	[Export] public bool DestroyOnTerrain = true;
+	[Export] public float ScreenShake = 0.5f;
+	[Export] public float TerrainScreenShake = 0.3f;
 
 	public Action Destroyed;
 
@@ -49,7 +51,7 @@ public partial class Projectile : Node2D {
 			if ((body is TileMap || body is Barrier) && _invincibilityTimer <= 0) {
 				OnHit(body);
 
-				Camera.Shake(0.3f);
+				Camera.Shake(TerrainScreenShake);
 
 				if (DestroyOnTerrain) {
 					Destroyed?.Invoke();
@@ -70,7 +72,7 @@ public partial class Projectile : Node2D {
 
 			Audio.Play("projectile_hit");
 
-			Camera.Shake(0.5f);
+			Camera.Shake(ScreenShake);
 
 			OnHit(body);
 
