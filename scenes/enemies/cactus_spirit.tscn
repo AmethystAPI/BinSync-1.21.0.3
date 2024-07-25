@@ -238,6 +238,7 @@ platform_on_leave = 2
 script = ExtResource("1_f8484")
 ProjectileScene = ExtResource("2_jmahl")
 ProjectileOrigin = NodePath("ProjectileOrigin")
+Health = 5.0
 FacingTransform = NodePath("SquashAndStretchTarget/Body")
 VerticalTransform = NodePath("SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("2_yw3vg")

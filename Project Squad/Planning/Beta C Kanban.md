@@ -20,6 +20,7 @@ kanban-plugin: basic
 - [ ] More Trinkets #design
 - [ ] More Weapons #design
 - [ ] More Golden Grove Enemies #design
+- [ ] enemy points system
 
 
 ## Must Do
