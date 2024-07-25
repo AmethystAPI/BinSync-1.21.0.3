@@ -177,6 +177,7 @@ Summons = [ExtResource("12_ujy5u")]
 SummonAmmount = Vector2i(1, 2)
 ProjectileScene = ExtResource("7_eun27")
 ProjectileOrigin = NodePath("ProjectileOrigin")
+Health = 10.0
 FacingTransform = NodePath("SquashAndStretchTarget/Body")
 VerticalTransform = NodePath("SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("10_wa7k2")
