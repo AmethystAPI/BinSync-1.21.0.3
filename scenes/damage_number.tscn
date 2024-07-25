@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="3_8le1h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4f7ed"]
+resource_local_to_scene = true
 shader = ExtResource("2_l7ii6")
-shader_parameter/border_color = Color(0.989587, 0, 0.271743, 1)
+shader_parameter/border_color = Color(1, 0, 0.966667, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6jmp"]
 font = ExtResource("2_fhi6w")
