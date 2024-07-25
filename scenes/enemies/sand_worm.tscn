@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://dqnxkhxuii7pt"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/SandWorm.cs" id="1_suit1"]
+[ext_resource type="PackedScene" uid="uid://c2uo8wbugtra2" path="res://scenes/enemies/sand_worm_projectile.tscn" id="2_l57kt"]
 [ext_resource type="Texture2D" uid="uid://niq1c5ey06vg" path="res://sprites/enemies/sand_worm/sand_worm.png" id="2_miif3"]
-[ext_resource type="PackedScene" uid="uid://cf1alnlwhq4yq" path="res://scenes/enemies/cactus_spirit_projectile.tscn" id="2_xhk8f"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_3fahg"]
 [ext_resource type="PackedScene" uid="uid://ci5smkuw5uefh" path="res://scenes/particles/sand_worm_pebble.tscn" id="3_b2r8g"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="3_hu1ss"]
@@ -119,7 +119,7 @@ collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_suit1")
-ProjectileScene = ExtResource("2_xhk8f")
+ProjectileScene = ExtResource("2_l57kt")
 ProjectileOrigin = NodePath("ProjectileOrigin")
 Particle = ExtResource("3_b2r8g")
 FacingTransform = NodePath("SquashAndStretch/Body")
@@ -132,7 +132,7 @@ y_sort_enabled = true
 [node name="Body" type="Sprite2D" parent="SquashAndStretch"]
 texture = ExtResource("2_miif3")
 offset = Vector2(0, -16)
-hframes = 16
+hframes = 17
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.313726)

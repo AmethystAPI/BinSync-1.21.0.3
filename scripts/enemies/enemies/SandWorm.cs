@@ -44,12 +44,22 @@ public partial class SandWorm : Enemy {
                 }
             }
         });
+
+        float shootIndex = 0;
+
         _stateMachine.Add(new TimedAttack("attack", this) {
             Duration = 1f,
             OnPrepare = shootQueue => {
                 shootQueue.Add(0.5f);
+                shootQueue.Add(0.5f);
+                shootQueue.Add(0.5f);
+                shootQueue.Add(0.5f);
+
+                shootIndex = 0;
             },
             OnShoot = direction => {
+                direction = Vector2.Right.Rotated((float)-Math.PI / 4f + Mathf.Pi / 2f * shootIndex);
+
                 Projectile _projectile = ProjectileScene.Instantiate<Projectile>();
 
                 _projectile.Source = this;
@@ -57,9 +67,11 @@ public partial class SandWorm : Enemy {
                 GetParent().AddChild(_projectile);
 
                 _projectile.GlobalPosition = GlobalPosition;
-                _projectile.Position += direction * 5f;
+                _projectile.Position += direction * 4f;
 
                 _projectile.LookAt(_projectile.GlobalPosition + direction);
+
+                shootIndex++;
             }
         });
     }
