@@ -11,9 +11,11 @@
             "id": "486c50ffca868aa8",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Design/World Generation.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Design/World Generation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Design/World Generation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Design/World Generation.md"
               }
             }
           }
@@ -146,8 +148,8 @@
   },
   "active": "486c50ffca868aa8",
   "lastOpenFiles": [
-    "More Room Designs.md",
     "Planning/Beta C Kanban.md",
+    "More Room Designs.md",
     "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Devlogs/Deblog 20/Outline.canvas",
     "Devlogs/Deblog 20/Ideas.md",
