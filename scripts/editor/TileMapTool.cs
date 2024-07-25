@@ -10,8 +10,6 @@ public partial class TileMapTool : Node {
 
     private bool _justPressedGenerate = false;
 
-    private float _timer = 0.5f;
-
     public override void _Process(double delta) {
         // if (Input.IsKeyPressed(Key.Backslash) && _justPressedGenerate) return;
 
@@ -25,13 +23,7 @@ public partial class TileMapTool : Node {
 
         if (!Active) return;
 
-        _timer -= (float)delta;
-
-        if (_timer <= 0) {
-            Generate(GetParent<TileMap>());
-
-            _timer = 0.5f;
-        }
+        Generate(GetParent<TileMap>());
     }
 
     private void Generate(TileMap tileMap) {

@@ -7,7 +7,7 @@ y_sort_enabled = true
 
 [node name="Grass15" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(87, -39)
+position = Vector2(-7, 1)
 texture = ExtResource("1_8ksvx")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -15,7 +15,7 @@ region_rect = Rect2(123, 88, 10, 8)
 
 [node name="Grass16" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(98, -43)
+position = Vector2(4, -3)
 texture = ExtResource("1_8ksvx")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -23,7 +23,7 @@ region_rect = Rect2(134, 88, 12, 8)
 
 [node name="Grass17" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(95, -33)
+position = Vector2(1, 7)
 texture = ExtResource("1_8ksvx")
 offset = Vector2(0, -4)
 flip_h = true
@@ -33,7 +33,7 @@ region_rect = Rect2(134, 88, 12, 8)
 [node name="Shadow15" type="Sprite2D" parent="."]
 z_index = -6
 y_sort_enabled = true
-position = Vector2(87, -33)
+position = Vector2(-7, 7)
 texture = ExtResource("1_8ksvx")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -42,7 +42,7 @@ region_rect = Rect2(124, 112, 8, 4)
 [node name="Shadow16" type="Sprite2D" parent="."]
 z_index = -6
 y_sort_enabled = true
-position = Vector2(96, -27)
+position = Vector2(2, 13)
 texture = ExtResource("1_8ksvx")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -51,7 +51,7 @@ region_rect = Rect2(135, 112, 8, 4)
 [node name="Shadow17" type="Sprite2D" parent="."]
 z_index = -6
 y_sort_enabled = true
-position = Vector2(97, -37)
+position = Vector2(3, 3)
 texture = ExtResource("1_8ksvx")
 offset = Vector2(0, -4)
 region_enabled = true

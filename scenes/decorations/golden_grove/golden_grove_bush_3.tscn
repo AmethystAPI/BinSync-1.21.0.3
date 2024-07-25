@@ -8,7 +8,7 @@ y_sort_enabled = true
 
 [node name="Grass10" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(6, -118)
+position = Vector2(-10, -1)
 texture = ExtResource("1_mhmjq")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -16,7 +16,7 @@ region_rect = Rect2(123, 88, 10, 8)
 
 [node name="Grass11" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(27, -121)
+position = Vector2(11, -4)
 texture = ExtResource("1_mhmjq")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -25,7 +25,7 @@ region_rect = Rect2(134, 88, 12, 8)
 [node name="Shadow7" type="Sprite2D" parent="."]
 z_index = -6
 y_sort_enabled = true
-position = Vector2(26, -115)
+position = Vector2(10, 2)
 texture = ExtResource("1_mhmjq")
 offset = Vector2(0, -4)
 region_enabled = true
@@ -34,11 +34,10 @@ region_rect = Rect2(135, 112, 8, 4)
 [node name="Shadow2" type="Sprite2D" parent="."]
 z_index = -6
 y_sort_enabled = true
-position = Vector2(6, -112)
+position = Vector2(-10, 5)
 texture = ExtResource("1_mhmjq")
 offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(124, 112, 8, 4)
 
 [node name="Bush" parent="." instance=ExtResource("2_kpakm")]
-position = Vector2(16, -117)

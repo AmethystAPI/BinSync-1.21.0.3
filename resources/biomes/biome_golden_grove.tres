@@ -1,14 +1,21 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=13 format=3 uid="uid://domhx2cdlyijx"]
 
 [ext_resource type="Resource" uid="uid://bsx42etrb5gan" path="res://resources/room_placers/room_placer_golden_grove_large_2.tres" id="1_e6wov"]
+[ext_resource type="Resource" uid="uid://b1mtey8fgm5o5" path="res://resources/room_placers/room_placer_golden_grove_large.tres" id="1_edoet"]
+[ext_resource type="Resource" uid="uid://cjsfyxq02d5pr" path="res://resources/room_placers/room_placer_golden_grove_larger.tres" id="2_1pebj"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
+[ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/room_placer_golden_grove_plain.tres" id="4_uae2q"]
+[ext_resource type="Resource" uid="uid://bwka3vkyp1o8j" path="res://resources/room_placers/room_placer_golden_grove_plain_bottom_left.tres" id="5_ogk5h"]
+[ext_resource type="Resource" uid="uid://gbgsrxpoxttb" path="res://resources/room_placers/room_placer_golden_grove_plain_bottom_right.tres" id="6_uvxcl"]
 [ext_resource type="Resource" uid="uid://c1a68gx3ebhy8" path="res://resources/unique_encounters/unique_encounter_golden_grove_spawn.tres" id="7_dnet6"]
+[ext_resource type="Resource" uid="uid://c5jxxc7ceh6f6" path="res://resources/room_placers/room_placer_golden_grove_plain_left_top.tres" id="7_hdbgo"]
+[ext_resource type="Resource" uid="uid://c08mxw0ij40ib" path="res://resources/room_placers/room_placer_golden_grove_plain_right_top.tres" id="8_520y2"]
 [ext_resource type="Resource" uid="uid://cqm6w018x78cp" path="res://resources/unique_encounters/unique_encounter_golden_grove_temple.tres" id="8_eg8qj"]
 [ext_resource type="Resource" uid="uid://d2dfw0223vpxc" path="res://resources/unique_encounters/unique_encounter_golden_grove_boss.tres" id="8_rikje"]
 
 [resource]
 script = ExtResource("2_738dh")
-RoomPlacers = [ExtResource("1_e6wov")]
+RoomPlacers = [ExtResource("1_edoet"), ExtResource("2_1pebj"), ExtResource("1_e6wov"), ExtResource("4_uae2q"), ExtResource("5_ogk5h"), ExtResource("6_uvxcl"), ExtResource("7_hdbgo"), ExtResource("8_520y2")]
 UniqueEncounters = [ExtResource("7_dnet6"), ExtResource("8_rikje"), ExtResource("8_eg8qj")]
 Level = 0
 Size = Vector2i(16, 20)

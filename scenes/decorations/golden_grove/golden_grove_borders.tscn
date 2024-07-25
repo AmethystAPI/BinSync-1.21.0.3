@@ -31,6 +31,8 @@ MaxDistance = 150.0
 [node name="Origin" type="Node2D" parent="Paralax2"]
 
 [node name="Edge3" parent="Paralax2/Origin" instance=ExtResource("3_bbyen")]
+position = Vector2(27, -3)
+scale = Vector2(52, 132)
 
 [node name="Sprite2D20" type="Sprite2D" parent="Paralax2/Origin"]
 position = Vector2(10, -47)

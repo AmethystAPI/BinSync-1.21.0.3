@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cjsfyxq02d5pr"]
+
+[ext_resource type="PackedScene" uid="uid://dd2lq8hsrysip" path="res://scenes/rooms/golden_grove/room_golden_grove_larger.tscn" id="1_04pii"]
+[ext_resource type="Script" path="res://scripts/rooms/RoomPlacer.cs" id="2_ll7y5"]
+
+[resource]
+script = ExtResource("2_ll7y5")
+RoomScene = ExtResource("1_04pii")
+LeftConnection = false
+RightConnection = false
+TopConnection = true
+BottomConnection = true
+ExitDirection = Vector2(0, -1)

@@ -179,7 +179,7 @@ public partial class Room : Node2D, NetworkPointUser {
 
 		enemy.GlobalPosition = position;
 
-		if (position.DistanceTo(_spawnArea.GlobalPosition) > 135f) GD.PushWarning("Spawned enemy at distance " + position.DistanceTo(_spawnArea.GlobalPosition));
+		if (position.DistanceTo(_spawnArea.GlobalPosition) > 150f) GD.PushWarning("Spawned enemy at distance " + position.DistanceTo(_spawnArea.GlobalPosition));
 
 		_spawnedEnemies.Add(enemy);
 
