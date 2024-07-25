@@ -1,19 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://dqk12erbmcybk"]
+[gd_scene load_steps=18 format=3 uid="uid://dqk12erbmcybk"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_gi6ca"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_pt1k3"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="3_52e56"]
-[ext_resource type="PackedScene" uid="uid://d1c6lubkdxjhm" path="res://scenes/chests/chest_golden_grove.tscn" id="3_anbw8"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="4_cwvyt"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="7_gygfb"]
 [ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="8_kyber"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="8_rnvp4"]
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/golden_grove/border_tree.tscn" id="8_t8br0"]
-[ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/golden_grove/golden_grove_borders.tscn" id="9_3mmxp"]
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/golden_grove/border_bush.tscn" id="9_fi2kq"]
 [ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/golden_grove/border_grass_tuft_1.tscn" id="10_6ft5x"]
 [ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/biomes/golden_grove/tree_border.tres" id="10_othhs"]
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/golden_grove/border_grass_tuft_2.tscn" id="11_apmat"]
+[ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="12_pmqc8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(193, 255)
@@ -32,7 +31,6 @@ region = Rect2(271, 23, 1, 1)
 y_sort_enabled = true
 script = ExtResource("1_gi6ca")
 EnemyPool = ExtResource("2_pt1k3")
-LootChestScene = ExtResource("3_anbw8")
 ExitDirection = Vector2(0, -1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -553,10 +551,18 @@ position = Vector2(18, -10)
 [node name="Bush8" parent="Barrier" index="10"]
 position = Vector2(15, 37)
 
-[node name="Borders" parent="." instance=ExtResource("9_3mmxp")]
+[node name="Borders" type="Node2D" parent="."]
+z_index = 10
 position = Vector2(0, -6)
 
-[node name="Left" type="Node2D" parent="Borders/Paralax/Origin" index="0"]
+[node name="Paralax" type="Node2D" parent="Borders"]
+script = ExtResource("12_pmqc8")
+Factor = 0.063
+MaxDistance = 150.0
+
+[node name="Origin" type="Node2D" parent="Borders/Paralax"]
+
+[node name="Left" type="Node2D" parent="Borders/Paralax/Origin"]
 scale = Vector2(-1, 1)
 
 [node name="Sprite2D3" type="Sprite2D" parent="Borders/Paralax/Origin/Left"]
@@ -567,7 +573,7 @@ texture = ExtResource("10_othhs")
 position = Vector2(-133, -118)
 texture = ExtResource("10_othhs")
 
-[node name="Right" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
+[node name="Right" type="Node2D" parent="Borders/Paralax/Origin"]
 scale = Vector2(-1, 1)
 
 [node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Right"]
@@ -614,7 +620,15 @@ texture = ExtResource("10_othhs")
 position = Vector2(-158, 177)
 texture = ExtResource("10_othhs")
 
-[node name="Left" type="Node2D" parent="Borders/Paralax2/Origin" index="0"]
+[node name="Paralax2" type="Node2D" parent="Borders"]
+z_index = 1
+script = ExtResource("12_pmqc8")
+Factor = 0.126
+MaxDistance = 150.0
+
+[node name="Origin" type="Node2D" parent="Borders/Paralax2"]
+
+[node name="Left" type="Node2D" parent="Borders/Paralax2/Origin"]
 scale = Vector2(-1, 1)
 
 [node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left"]
@@ -640,7 +654,7 @@ texture = ExtResource("10_othhs")
 position = Vector2(-132, -146)
 texture = ExtResource("10_othhs")
 
-[node name="Right" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
+[node name="Right" type="Node2D" parent="Borders/Paralax2/Origin"]
 scale = Vector2(-1, 1)
 
 [node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right"]
@@ -741,4 +755,3 @@ position = Vector2(131, -163)
 texture = ExtResource("10_othhs")
 
 [editable path="Barrier"]
-[editable path="Borders"]

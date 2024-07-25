@@ -10,10 +10,10 @@
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="9_plwlf"]
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/golden_grove/border_tree.tscn" id="11_ej15k"]
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/golden_grove/border_bush.tscn" id="12_3b187"]
-[ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/golden_grove/golden_grove_borders.tscn" id="13_7vucr"]
 [ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/golden_grove/border_grass_tuft_1.tscn" id="13_g8yfs"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="13_tulgd"]
 [ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/biomes/golden_grove/tree_border.tres" id="14_725wg"]
+[ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="14_21873"]
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/golden_grove/border_grass_tuft_2.tscn" id="14_o30h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
@@ -459,11 +459,20 @@ visible = false
 position = Vector2(-3.5, -18)
 shape = SubResource("RectangleShape2D_b0yjj")
 
-[node name="Barrier" parent="." instance=ExtResource("6_ghlyf")]
+[node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("6_ghlyf")]
+Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
-[node name="Borders" parent="." instance=ExtResource("13_7vucr")]
+[node name="Borders" type="Node2D" parent="."]
+z_index = 10
 
-[node name="Left" type="Node2D" parent="Borders/Paralax/Origin" index="0"]
+[node name="Paralax" type="Node2D" parent="Borders"]
+script = ExtResource("14_21873")
+Factor = 0.063
+MaxDistance = 150.0
+
+[node name="Origin" type="Node2D" parent="Borders/Paralax"]
+
+[node name="Left" type="Node2D" parent="Borders/Paralax/Origin"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Borders/Paralax/Origin/Left"]
 position = Vector2(-137, -5)
@@ -485,7 +494,7 @@ texture = ExtResource("14_725wg")
 position = Vector2(-132, 121)
 texture = ExtResource("14_725wg")
 
-[node name="Right" type="Node2D" parent="Borders/Paralax/Origin" index="1"]
+[node name="Right" type="Node2D" parent="Borders/Paralax/Origin"]
 
 [node name="Sprite2D11" type="Sprite2D" parent="Borders/Paralax/Origin/Right"]
 position = Vector2(132, 116)
@@ -507,7 +516,15 @@ texture = ExtResource("14_725wg")
 position = Vector2(131, -132)
 texture = ExtResource("14_725wg")
 
-[node name="Left" type="Node2D" parent="Borders/Paralax2/Origin" index="0"]
+[node name="Paralax2" type="Node2D" parent="Borders"]
+z_index = 1
+script = ExtResource("14_21873")
+Factor = 0.126
+MaxDistance = 150.0
+
+[node name="Origin" type="Node2D" parent="Borders/Paralax2"]
+
+[node name="Left" type="Node2D" parent="Borders/Paralax2/Origin"]
 
 [node name="Edge2" type="Sprite2D" parent="Borders/Paralax2/Origin/Left"]
 z_index = 1
@@ -556,7 +573,7 @@ texture = ExtResource("14_725wg")
 position = Vector2(-134, 89)
 texture = ExtResource("14_725wg")
 
-[node name="Right" type="Node2D" parent="Borders/Paralax2/Origin" index="1"]
+[node name="Right" type="Node2D" parent="Borders/Paralax2/Origin"]
 
 [node name="Edge3" type="Sprite2D" parent="Borders/Paralax2/Origin/Right"]
 z_index = 1
@@ -604,5 +621,3 @@ texture = ExtResource("14_725wg")
 [node name="Sprite2D23" type="Sprite2D" parent="Borders/Paralax2/Origin/Right"]
 position = Vector2(131, -163)
 texture = ExtResource("14_725wg")
-
-[editable path="Borders"]
