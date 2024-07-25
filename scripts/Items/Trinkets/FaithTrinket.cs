@@ -1,7 +1,8 @@
+using System.Linq;
 using Godot;
 
 public partial class FaithTrinket : Trinket {
-  private ulong _lastTick;
+  private float timer = 2f;
 
   public override void _Process(double delta) {
     base._Process(delta);
@@ -10,16 +11,14 @@ public partial class FaithTrinket : Trinket {
 
     if (_equippingPlayer.Health <= 0) return;
 
-    ulong now = Time.GetTicksMsec();
+    timer -= (float)delta;
 
-    if (now - _lastTick < 100) return;
+    if (timer <= 0f) {
+      timer = 2f;
 
-    _lastTick = now;
-
-    foreach (Player player in Player.AlivePlayers) {
-      if (_equippingPlayer.GlobalPosition.DistanceSquaredTo(player.GlobalPosition) > 1094) continue;
-
-      player.Heal(0.03f);
+      if (GetTree().GetNodesInGroup("Enemies").Where(node => node is Node2D node2D && node2D.GlobalPosition.DistanceTo(_equippingPlayer.GlobalPosition) < 48f).Count() > 0) {
+        _equippingPlayer.Heal(0.2f);
+      }
     }
   }
 }
