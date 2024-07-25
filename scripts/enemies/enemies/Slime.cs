@@ -16,6 +16,8 @@ public partial class Slime : Enemy {
 			OnLand = () => {
 				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
+				Camera.Shake(0.2f);
+
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
 				projectile.Source = this;

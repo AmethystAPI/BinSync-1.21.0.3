@@ -138,8 +138,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		GameUI.UpdateHealth(Health);
 
-		SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
-
 		if (Health <= 0) Die();
 
 		NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
@@ -211,6 +209,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
 		AnimationPlayer.Play("hurt");
+
+		SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
+
+		Camera.Shake(2f);
 
 		foreach (Equipment equipment in EquippedEquipments.Values) {
 			equipment.AnimationPlayer.Play("hurt");

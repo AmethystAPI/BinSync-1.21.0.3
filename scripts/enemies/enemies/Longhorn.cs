@@ -57,6 +57,8 @@ public partial class Longhorn : Enemy {
             },
             OnStop = () => {
                 SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 8f);
+
+                Camera.Shake(0.4f);
             }
         });
 

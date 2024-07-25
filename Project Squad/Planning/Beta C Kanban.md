@@ -25,7 +25,6 @@ kanban-plugin: basic
 
 - [ ] Windswept Wastes Biome - Rooms #design
 - [ ] Windswept Wastes Biome - Temple #design
-- [ ] Screen Shake
 - [ ] Enemy Squash and Stretch
 - [ ] Damage Numbers
 - [ ] Sinister Swamp Biome #design
@@ -43,6 +42,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Screen Shake
 - [x] Unique Encounters #content
 - [x] [[Availability of Weapons]] #design
 

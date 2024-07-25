@@ -49,6 +49,8 @@ public partial class Projectile : Node2D {
 			if ((body is TileMap || body is Barrier) && _invincibilityTimer <= 0) {
 				OnHit(body);
 
+				Camera.Shake(0.3f);
+
 				if (DestroyOnTerrain) {
 					Destroyed?.Invoke();
 
@@ -67,6 +69,8 @@ public partial class Projectile : Node2D {
 			damageable.Damage(this);
 
 			Audio.Play("projectile_hit");
+
+			Camera.Shake(0.5f);
 
 			OnHit(body);
 

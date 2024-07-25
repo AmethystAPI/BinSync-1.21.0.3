@@ -21,6 +21,8 @@ public partial class GiantSlime : Enemy {
 			OnLand = () => {
 				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
+				Camera.Shake(2f);
+
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
 				projectile.Source = this;
