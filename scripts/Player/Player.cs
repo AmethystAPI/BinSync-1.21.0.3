@@ -120,7 +120,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
 		damageNumber.Damage = health;
-		damageNumber.Color = new Color(105f / 255f, 255f / 255f, 92f / 255f);
+		damageNumber.Color = new Color("#ffffff");
+		damageNumber.BorderColor = new Color("#00ff43");
 
 		GetParent().AddChild(damageNumber);
 
@@ -236,9 +237,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Camera.Shake(2f);
 
 		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
-		damageNumber.Damage = message.GetFloat();
+		damageNumber.Color = new Color("#ffffff");
+		damageNumber.BorderColor = new Color("#fc0045");
 
-		// if (Health <= 0f) damageNumber.Color = new Color(0f, 0f, 0f);
+		if (Health <= 0f) {
+			damageNumber.Color = new Color("#000000");
+			damageNumber.BorderColor = new Color("#ffffff");
+		}
 
 		GetParent().AddChild(damageNumber);
 

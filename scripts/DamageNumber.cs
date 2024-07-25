@@ -6,6 +6,7 @@ public partial class DamageNumber : Node2D {
 
 	public float Damage = 0;
 	public Color Color = new Color(1f, 1f, 1f);
+	public Color BorderColor = new Color(0f, 0f, 0f);
 
 	private Vector2 _velocity;
 	private float _gravity = 0f;
@@ -18,6 +19,7 @@ public partial class DamageNumber : Node2D {
 		_velocity = Vector2.Up.Rotated(random.RandfRange(-Mathf.Pi / 4f, Mathf.Pi / 4f)) * random.RandfRange(100, 150f);
 
 		Label.Modulate = Color;
+		(Label.Material as ShaderMaterial).SetShaderParameter("border_color", BorderColor);
 		Label.Text = (Mathf.Round(Damage * 5f * 100f) / 100f).ToString();
 	}
 

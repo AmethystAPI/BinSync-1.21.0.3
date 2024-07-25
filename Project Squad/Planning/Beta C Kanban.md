@@ -10,11 +10,11 @@ kanban-plugin: basic
 - [ ] Decrease Range of Bow
 - [ ] Hurting before activate causes infinite damage
 - [ ] Rooms ending
+- [ ] Mid Round Enemies
 - [ ] Look at decreasing projectile invincibility time
-- [ ] Damage numbers
-- [ ] Multiple Paths
 - [ ] Improve Title Screen
-- [ ] Screen Shake
+- [ ] Multiple Paths
+- [ ] Healthbars
 - [ ] Work on SFX #polish
 - [ ] More Music #content
 - [ ] More Trinkets #design
@@ -30,17 +30,18 @@ kanban-plugin: basic
 - [ ] Windswept Wastes Biome - Temple #design
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
+- [ ] Improve Giant Slime
 
 
 ## In Progress
 
 - [ ] Fix bug of rooms not finishing<br>because enemy spawned far back
-- [ ] Damage Numbers
 
 
 ## Done
 
 **Complete**
+- [x] Damage Numbers
 - [x] Fix bug of invalid crow
 - [x] [[Variety and Fun in Combat]] #design
 - [x] Enemy Squash and Stretch

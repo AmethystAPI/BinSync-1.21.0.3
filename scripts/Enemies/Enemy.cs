@@ -158,8 +158,13 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     DamageNumber damageNumber = _damageNumber.Instantiate<DamageNumber>();
     damageNumber.Damage = damage;
+    damageNumber.Color = new Color("#ffffff");
+    damageNumber.BorderColor = new Color("#fc0045");
 
-    // if (Health <= 0f) damageNumber.Color = new Color(0f, 0f, 0f);
+    if (Health <= 0f) {
+      damageNumber.Color = new Color("#000000");
+      damageNumber.BorderColor = new Color("#ffffff");
+    }
 
     GetParent().AddChild(damageNumber);
 

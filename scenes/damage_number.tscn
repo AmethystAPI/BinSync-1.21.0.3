@@ -5,9 +5,9 @@
 [ext_resource type="Shader" path="res://scripts/shaders/outline.gdshader" id="2_l7ii6"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="3_8le1h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwfhr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4f7ed"]
 shader = ExtResource("2_l7ii6")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/border_color = Color(0.989587, 0, 0.271743, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6jmp"]
 font = ExtResource("2_fhi6w")
@@ -26,7 +26,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="Label" type="Label" parent="Control"]
-material = SubResource("ShaderMaterial_qwfhr")
+material = SubResource("ShaderMaterial_4f7ed")
 layout_mode = 0
 offset_left = -16.0
 offset_top = -8.0
