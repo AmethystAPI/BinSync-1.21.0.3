@@ -15,6 +15,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	[Export] public Node2D WeaponHolder;
 	[Export] public Node2D TrinketHolder;
 	[Export] public Node2D EquipmentHolder;
+	[Export] public PackedScene DamageNumber;
+
+	[Export] public PackedScene[] DebugStarterTrinketScenes;
 
 	public float Health = 3f;
 	public Vector2 Knockback;
@@ -114,6 +117,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		if (Health > 3) Health = 3;
 
 		GameUI.UpdateHealth(Health);
+
+		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
+		damageNumber.Damage = health;
+		damageNumber.Color = new Color(181f / 255f, 255f / 255f, 174f / 255f);
+
+		GetParent().AddChild(damageNumber);
+
+		damageNumber.GlobalPosition = GlobalPosition + Vector2.Up * 8f;
 	}
 
 	public bool CanDamage(Projectile projectile) {
@@ -134,7 +145,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	public void Damage(Projectile projectile) {
 		if (!NetworkPoint.IsOwner) return;
 
-		Health -= projectile.GetDamage();
+		float damage = projectile.GetDamage();
+		Health -= damage;
 
 		GameUI.UpdateHealth(Health);
 
@@ -145,6 +157,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 			message.AddFloat(knockback.X);
 			message.AddFloat(knockback.Y);
+			message.AddFloat(damage);
 		});
 	}
 
@@ -181,6 +194,14 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		AddChild(weapon);
 
 		if (NetworkPoint.IsOwner) Equip(weapon);
+
+		foreach (PackedScene scene in DebugStarterTrinketScenes) {
+			Trinket trinket = NetworkManager.SpawnNetworkSafe<Trinket>(scene, "Trinket");
+
+			AddChild(trinket);
+
+			if (NetworkPoint.IsOwner) Equip(trinket);
+		}
 	}
 
 	public void Cleanup() {
@@ -213,6 +234,15 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
 		Camera.Shake(2f);
+
+		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
+		damageNumber.Damage = message.GetFloat();
+
+		// if (Health <= 0f) damageNumber.Color = new Color(0f, 0f, 0f);
+
+		GetParent().AddChild(damageNumber);
+
+		damageNumber.GlobalPosition = GlobalPosition + Vector2.Up * 8f;
 
 		foreach (Equipment equipment in EquippedEquipments.Values) {
 			equipment.AnimationPlayer.Play("hurt");

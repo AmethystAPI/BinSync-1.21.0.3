@@ -38,6 +38,8 @@ public partial class StoneGolem : Enemy {
             },
             OnStop = () => {
                 SquashAndStretch.Trigger(new Vector2(1.6f, 0.6f), 6f);
+
+                Camera.Shake(0.2f);
             }
         });
 

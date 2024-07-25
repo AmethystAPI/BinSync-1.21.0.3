@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr2fsbqb1kl4m"]
+
+[ext_resource type="Script" path="res://scripts/DamageNumber.cs" id="1_g8qpf"]
+[ext_resource type="FontFile" uid="uid://c20458h83irp3" path="res://fonts/Kenney Mini Square.ttf" id="2_fhi6w"]
+[ext_resource type="Shader" path="res://scripts/shaders/outline.gdshader" id="2_l7ii6"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="3_8le1h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwfhr"]
+shader = ExtResource("2_l7ii6")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6jmp"]
+font = ExtResource("2_fhi6w")
+font_size = 8
+shadow_size = 0
+shadow_offset = Vector2(0, 0)
+
+[node name="DamageNumber" type="Node2D" node_paths=PackedStringArray("Label", "SquashAndStretch")]
+z_index = 1
+script = ExtResource("1_g8qpf")
+Label = NodePath("Control/Label")
+SquashAndStretch = NodePath("SquashAndStretch")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="Control"]
+material = SubResource("ShaderMaterial_qwfhr")
+layout_mode = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 2.0
+pivot_offset = Vector2(16, 8)
+text = "10"
+label_settings = SubResource("LabelSettings_f6jmp")
+horizontal_alignment = 1
+
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("3_8le1h")
+Target = NodePath("..")

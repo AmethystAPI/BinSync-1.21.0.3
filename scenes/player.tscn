@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=33 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://c6x0s5psfao4e" path="res://sprites/player/player_hurt.tres" id="4_5v8r7"]
 [ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="4_a0jon"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="5_ibym3"]
+[ext_resource type="PackedScene" uid="uid://cr2fsbqb1kl4m" path="res://scenes/damage_number.tscn" id="5_ke1ch"]
 [ext_resource type="Texture2D" uid="uid://vwjfydnewrqr" path="res://sprites/player/player_run_0.tres" id="5_wli2m"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="6_i3kc3"]
 [ext_resource type="Texture2D" uid="uid://k05kj3mpttba" path="res://sprites/player/player_angel_0.tres" id="6_pop7v"]
+[ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="6_s8esm"]
 [ext_resource type="Texture2D" uid="uid://cvnpfqwk65srl" path="res://sprites/player/player_run_1.tres" id="6_yvcw5"]
 [ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]
 [ext_resource type="Texture2D" uid="uid://dlwt3ei7oi0ul" path="res://sprites/player/player_angel_1.tres" id="7_uai0k"]
@@ -188,6 +190,8 @@ Visuals = NodePath("SquashAndStretchTarget/PlayerSortOrigin")
 WeaponHolder = NodePath("WeaponHolder")
 TrinketHolder = NodePath("TrinketsHolder")
 EquipmentHolder = NodePath("SquashAndStretchTarget/PlayerSortOrigin/EquipmentHolder")
+DamageNumber = ExtResource("5_ke1ch")
+DebugStarterTrinketScenes = Array[PackedScene]([ExtResource("6_s8esm")])
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
 y_sort_enabled = true

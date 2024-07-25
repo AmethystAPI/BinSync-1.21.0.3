@@ -4,8 +4,6 @@ using Godot;
 using Riptide;
 
 public partial class Crow : Enemy {
-    public static List<Crow> Crows = new List<Crow>();
-
     [Export] public PackedScene ProjectileScene;
     [Export] public Node2D ProjectileOrigin;
 
@@ -17,18 +15,9 @@ public partial class Crow : Enemy {
                 SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 8f);
             },
             GetFlock = () => {
-                List<Enemy> flock = Crows.Cast<Enemy>().ToList();
+                Node parent = GetParent();
 
-                for (int index = 0; index < flock.Count; index++) {
-                    if (!IsInstanceValid(flock[index])) {
-                        GD.PushWarning("Invalid crow?");
-
-                        flock.RemoveAt(index);
-
-                        index--;
-                    }
-                }
-
+                List<Enemy> flock = GetTree().GetNodesInGroup("Enemies").Where(node => node.GetParent() == parent && node is Crow).Cast<Enemy>().ToList();
                 return flock;
             }
         });
@@ -46,28 +35,6 @@ public partial class Crow : Enemy {
                 return projectile;
             }
         });
-    }
-
-    protected override void ActivateRpc(Message message) {
-        base.ActivateRpc(message);
-
-        if (!IsInstanceValid(this)) {
-            GD.PushError("Trying to activate invalid crow!");
-
-            return;
-        }
-
-        Crows.Add(this);
-    }
-
-    protected override void DamageRpc(Message message) {
-        base.DamageRpc(message);
-
-        if (Dead && Crows.Contains(this)) Crows.Remove(this);
-    }
-
-    public override void _Notification(int what) {
-        if (what == NotificationPredelete && Crows.Contains(this)) Crows.Remove(this);
     }
 
     protected override string GetDefaultState() {

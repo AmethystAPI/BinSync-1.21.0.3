@@ -31,6 +31,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   protected StateMachine _stateMachine;
 
   private bool _justHit;
+  private PackedScene _damageNumber;
 
   public override void _Ready() {
     NetworkPoint.Setup(this);
@@ -48,6 +49,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     _stateMachine._Ready();
 
     GetParent<Room>().AddEnemy();
+
+    _damageNumber = ResourceLoader.Load<PackedScene>("res://scenes/damage_number.tscn");
   }
 
   public override void _Process(double delta) {
@@ -133,9 +136,11 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     Knockback = new Vector2(message.GetFloat(), message.GetFloat());
 
-    Health -= message.GetFloat();
+    float damage = message.GetFloat();
 
-    PlayHurtEffects();
+    Health -= damage;
+
+    PlayHurtEffects(damage);
 
     if (Health > 0) return;
 
@@ -146,10 +151,19 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     _stateMachine.GoToState("dead");
   }
 
-  protected virtual void PlayHurtEffects() {
+  protected virtual void PlayHurtEffects(float damage) {
     HurtAnimationPlayer.Play("hurt");
 
     SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
+
+    DamageNumber damageNumber = _damageNumber.Instantiate<DamageNumber>();
+    damageNumber.Damage = damage;
+
+    // if (Health <= 0f) damageNumber.Color = new Color(0f, 0f, 0f);
+
+    GetParent().AddChild(damageNumber);
+
+    damageNumber.GlobalPosition = GlobalPosition + Vector2.Up * 8f;
   }
 
   protected virtual void ActivateRpc(Message message) {

@@ -31,11 +31,12 @@ kanban-plugin: basic
 - [ ] [[Transition of Biomes]] #design
 - [ ] [[Variety and Fun in Combat]] #design
 - [ ] [[Scaling of Trinkets]] #design
-- [ ] Fix bug of rooms not finishing<br>Maybe has to do with spawning entities
 
 
 ## In Progress
 
+- [ ] Fix bug of rooms not finishing<br>because enemy spawned far back
+- [ ] Fix bug of invalid crow
 
 
 ## Done
