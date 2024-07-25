@@ -12,8 +12,8 @@ public partial class Paralax : Node2D {
 	}
 
 	public override void _Process(double delta) {
-		_child.Position = (GlobalPosition - Camera.Me.GlobalPosition) * Factor;
+		_child.GlobalPosition = GlobalPosition + (GlobalPosition - Camera.Me.GlobalPosition) * Factor;
 
-		if(_child.Position.Length() > MaxDistance) _child.Position = _child.Position.Normalized() * MaxDistance;
+		if (_child.Position.Length() > MaxDistance) _child.Position = _child.Position.Normalized() * MaxDistance;
 	}
 }

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsa8rwiagg24j"]
+
+[ext_resource type="Script" path="res://scripts/rooms/Decorator.cs" id="1_y0soa"]
+[ext_resource type="Resource" uid="uid://c0375lalxo7qq" path="res://resources/decoration_pools/decoration_pool_golden_grove_grass_patch.tres" id="2_yg6d7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub5gp"]
+size = Vector2(256, 288)
+
+[node name="Decorator" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_y0soa")
+DecorationPool = ExtResource("2_yg6d7")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ub5gp")
+
+[node name="Holder" type="Node2D" parent="."]
+y_sort_enabled = true

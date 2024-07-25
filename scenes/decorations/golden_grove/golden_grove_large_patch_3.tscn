@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt1k20lsoei4g"]
+
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_xb0fn"]
+
+[node name="LargePatch3" type="Node2D"]
+
+[node name="Patch8" type="Sprite2D" parent="."]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(16.0002, -6.9998)
+rotation = -1.57079
+texture = ExtResource("1_xb0fn")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch16" type="Sprite2D" parent="."]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(5.00021, 10.0002)
+rotation = -1.57079
+texture = ExtResource("1_xb0fn")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)
+
+[node name="Patch15" type="Sprite2D" parent="."]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-18.9998, -5.9998)
+rotation = -1.57079
+texture = ExtResource("1_xb0fn")
+region_enabled = true
+region_rect = Rect2(84, 4, 68, 62)

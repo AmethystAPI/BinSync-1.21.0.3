@@ -6,6 +6,7 @@ using Godot;
 public partial class TileMapTool : Node {
 #if TOOLS
     [Export] public SmartTileset SmartTileset;
+    [Export] public bool Active = false;
 
     private bool _justPressedGenerate = false;
 
@@ -22,6 +23,8 @@ public partial class TileMapTool : Node {
 
         // _justPressedGenerate = true;
 
+        if (!Active) return;
+
         _timer -= (float)delta;
 
         if (_timer <= 0) {
@@ -34,7 +37,7 @@ public partial class TileMapTool : Node {
     private void Generate(TileMap tileMap) {
         if (SmartTileset == null) return;
 
-        GD.Print("Generating...");
+        // GD.Print("Generating...");
 
         List<string> layerNames = new List<string>();
 

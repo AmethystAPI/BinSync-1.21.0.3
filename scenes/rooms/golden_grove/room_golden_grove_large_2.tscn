@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://clo5mi1yv6h0k"]
+[gd_scene load_steps=19 format=3 uid="uid://clo5mi1yv6h0k"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_g7glo"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_pd8fc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_m64oi"]
 [ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="5_h3gm6"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="6_a8bco"]
+[ext_resource type="PackedScene" uid="uid://bsa8rwiagg24j" path="res://scenes/rooms/decorator.tscn" id="6_ll81j"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="7_f86f3"]
 [ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="8_4slgq"]
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/golden_grove/border_tree.tscn" id="9_dmvjs"]
@@ -66,195 +67,74 @@ shape = SubResource("RectangleShape2D_7bjp7")
 [node name="Decorations" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="GrassPatches" type="Node2D" parent="Decorations"]
+[node name="GrassDecorator" parent="Decorations" instance=ExtResource("6_ll81j")]
 
-[node name="Patch" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
+[node name="Border" type="Node2D" parent="Decorations"]
+z_index = 9
 y_sort_enabled = true
-position = Vector2(-37, -39)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
 
-[node name="Patch9" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-72, -43)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderTree" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
+position = Vector2(-135, 11)
 
-[node name="Patch10" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-46, -77)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderTree2" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
+position = Vector2(-138, 129)
 
-[node name="Patch6" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(38, -29)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderTree3" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
+position = Vector2(140, 113)
 
-[node name="Patch13" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(81, -36)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderTree4" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
+position = Vector2(133, -143)
 
-[node name="Patch22" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(89, -7)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderBush" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
+position = Vector2(-94, 137)
 
-[node name="Patch14" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(81, -71)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderBush2" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
+position = Vector2(-120, -70)
 
-[node name="Patch21" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(114, -75)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderBush3" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
+position = Vector2(146, -82)
 
-[node name="Patch7" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(50, -63)
-rotation = -1.57079
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderBush4" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
+position = Vector2(123, 34)
 
-[node name="Patch8" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-60, 74)
-rotation = -1.57079
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderBush5" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
+position = Vector2(-121, -142)
 
-[node name="Patch15" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-95, 75)
-rotation = -1.57079
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderGrassTuft1" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
+position = Vector2(-125, -66)
 
-[node name="Patch16" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-71, 91)
-rotation = -1.57079
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(84, 4, 68, 62)
+[node name="BorderGrassTuft3" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
+position = Vector2(-112, -79)
 
-[node name="Patch2" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(39, 35)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft4" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
+position = Vector2(127, 106)
 
-[node name="Patch12" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(76, 59)
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft5" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
+position = Vector2(125, -122)
 
-[node name="Patch3" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(2, 44)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft11" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
+position = Vector2(138, -47)
 
-[node name="Patch4" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(27, 82)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft6" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
+position = Vector2(-115, -135)
 
-[node name="Patch19" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(46, 103)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft2" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
+position = Vector2(-125, -82)
 
-[node name="Patch20" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(110, 93)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft7" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
+position = Vector2(-128, -139)
 
-[node name="Patch11" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(72, 93)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft8" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
+position = Vector2(133, -128)
 
-[node name="Patch5" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-64, -5)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft9" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
+position = Vector2(129, 120)
 
-[node name="Patch17" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-91, -130)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft10" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
+position = Vector2(147, -50)
 
-[node name="Patch18" type="Sprite2D" parent="Decorations/GrassPatches"]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(35, -145)
-rotation = -3.14159
-texture = ExtResource("6_a8bco")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
+[node name="BorderGrassTuft12" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
+position = Vector2(144, -37)
 
 [node name="GrassTufts" type="Node2D" parent="Decorations"]
 y_sort_enabled = true
@@ -592,73 +472,6 @@ position = Vector2(-78, -110)
 [node name="Tree4" parent="Decorations/Destructables" instance=ExtResource("8_4slgq")]
 position = Vector2(-85, 72)
 
-[node name="Border" type="Node2D" parent="Decorations"]
-z_index = 9
-y_sort_enabled = true
-
-[node name="BorderTree" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
-position = Vector2(-135, 11)
-
-[node name="BorderTree2" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
-position = Vector2(-138, 129)
-
-[node name="BorderTree3" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
-position = Vector2(140, 113)
-
-[node name="BorderTree4" parent="Decorations/Border" instance=ExtResource("9_dmvjs")]
-position = Vector2(133, -143)
-
-[node name="BorderBush" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
-position = Vector2(-94, 137)
-
-[node name="BorderBush2" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
-position = Vector2(-120, -70)
-
-[node name="BorderBush3" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
-position = Vector2(146, -82)
-
-[node name="BorderBush4" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
-position = Vector2(123, 34)
-
-[node name="BorderBush5" parent="Decorations/Border" instance=ExtResource("10_bn23i")]
-position = Vector2(-121, -142)
-
-[node name="BorderGrassTuft1" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
-position = Vector2(-125, -66)
-
-[node name="BorderGrassTuft3" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
-position = Vector2(-112, -79)
-
-[node name="BorderGrassTuft4" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
-position = Vector2(127, 106)
-
-[node name="BorderGrassTuft5" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
-position = Vector2(125, -122)
-
-[node name="BorderGrassTuft11" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
-position = Vector2(138, -47)
-
-[node name="BorderGrassTuft6" parent="Decorations/Border" instance=ExtResource("11_56t4m")]
-position = Vector2(-115, -135)
-
-[node name="BorderGrassTuft2" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
-position = Vector2(-125, -82)
-
-[node name="BorderGrassTuft7" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
-position = Vector2(-128, -139)
-
-[node name="BorderGrassTuft8" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
-position = Vector2(133, -128)
-
-[node name="BorderGrassTuft9" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
-position = Vector2(129, 120)
-
-[node name="BorderGrassTuft10" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
-position = Vector2(147, -50)
-
-[node name="BorderGrassTuft12" parent="Decorations/Border" instance=ExtResource("12_j3n4r")]
-position = Vector2(144, -37)
-
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -18)
@@ -669,37 +482,34 @@ position = Vector2(6, 118)
 Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
 [node name="Border" type="Node2D" parent="."]
-visible = false
 
 [node name="Borders" parent="Border" instance=ExtResource("14_c66fa")]
-position = Vector2(148, 0)
+position = Vector2(159, 0)
 
 [node name="Borders2" parent="Border" instance=ExtResource("14_c66fa")]
-position = Vector2(139, -90)
+position = Vector2(150, -90)
 rotation = -0.36044
 
 [node name="Borders3" parent="Border" instance=ExtResource("14_c66fa")]
-position = Vector2(119, 106)
+position = Vector2(130, 106)
 rotation = 0.263998
 
 [node name="Borders4" parent="Border" instance=ExtResource("14_c66fa")]
-position = Vector2(-175, 0)
+position = Vector2(-152, 0)
 rotation = -3.14159
 
 [node name="Borders5" parent="Border" instance=ExtResource("14_c66fa")]
-position = Vector2(-165, -116)
+position = Vector2(-142, -116)
 rotation = -2.87979
-scale = Vector2(1, 1)
 
 [node name="Borders6" parent="Border" instance=ExtResource("14_c66fa")]
-position = Vector2(-167, 114)
+position = Vector2(-144, 114)
 rotation = 2.87979
-scale = Vector2(1, 1)
 
 [node name="Edge" parent="Border" instance=ExtResource("15_yahc6")]
 position = Vector2(272, -2)
 scale = Vector2(208, 250)
 
 [node name="Edge2" parent="Border" instance=ExtResource("15_yahc6")]
-position = Vector2(-321, -2)
+position = Vector2(-294, -2)
 scale = Vector2(208, 250)
