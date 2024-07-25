@@ -16,6 +16,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   public AnimationPlayer AnimationPlayer;
   public AnimationPlayer HurtAnimationPlayer;
+  public SquashAndStretch SquashAndStretch;
 
   public bool Activated;
   public Vector2 Knockback;
@@ -40,6 +41,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     AnimationPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
     HurtAnimationPlayer = GetNodeOrNull<AnimationPlayer>("HurtAnimationPlayer");
+    SquashAndStretch = GetNodeOrNull<SquashAndStretch>("SquashAndStretch");
 
     _stateMachine = new StateMachine(GetDefaultState());
     AddStates();
@@ -133,7 +135,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     Health -= message.GetFloat();
 
-    HurtAnimationPlayer.Play("hurt");
+    PlayHurtEffects();
 
     if (Health > 0) return;
 
@@ -142,6 +144,12 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     Dead = true;
 
     _stateMachine.GoToState("dead");
+  }
+
+  protected virtual void PlayHurtEffects() {
+    HurtAnimationPlayer.Play("hurt");
+
+    SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
   }
 
   protected virtual void ActivateRpc(Message message) {

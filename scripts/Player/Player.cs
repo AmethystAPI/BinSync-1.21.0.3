@@ -16,12 +16,15 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	[Export] public Node2D TrinketHolder;
 	[Export] public Node2D EquipmentHolder;
 
+	public float Health = 3f;
+	public Vector2 Knockback;
 	public List<Trinket> EquippedTrinkets = new List<Trinket>();
 	public Dictionary<string, Equipment> EquippedEquipments = new Dictionary<string, Equipment>();
-	public float Health = 3f;
+
 	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+
 	public AnimationPlayer AnimationPlayer;
-	public Vector2 Knockback;
+	public SquashAndStretch SquashAndStretch;
 
 	private NetworkedVariable<Vector2> _networkedPosition = new NetworkedVariable<Vector2>(Vector2.Zero);
 	private NetworkedVariable<Vector2> _networkedVelocity = new NetworkedVariable<Vector2>(Vector2.Zero);
@@ -50,6 +53,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		AlivePlayers.Add(this);
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		SquashAndStretch = GetNode<SquashAndStretch>("SquashAndStretch");
 
 		_stateMachine.Add(new PlayerNormal("normal", this));
 		_stateMachine.Add(new PlayerDash("dash", this));
@@ -133,6 +137,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Health -= projectile.GetDamage();
 
 		GameUI.UpdateHealth(Health);
+
+		SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
 		if (Health <= 0) Die();
 

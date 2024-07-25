@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Networking;
 using Riptide;
@@ -6,6 +7,8 @@ public partial class Summon : EnemyState {
     public PackedScene[] Summons = new PackedScene[0];
     public Vector2I SummonAmmount = new Vector2I(3, 4);
     public string ReturnState = "idle";
+
+    public Action OnSummon;
 
     private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
@@ -51,5 +54,7 @@ public partial class Summon : EnemyState {
         enemy.GlobalPosition = _enemy.GlobalPosition + new Vector2(message.GetFloat(), message.GetFloat());
 
         enemy.Activate();
+
+        OnSummon();
     }
 }

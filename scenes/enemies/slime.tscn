@@ -173,14 +173,6 @@ libraries = {
 "": SubResource("AnimationLibrary_1hjhs")
 }
 
-[node name="JumpSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("8_j3im5")
 Target = NodePath("../SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 4.0
-
-[node name="LandSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
-script = ExtResource("8_j3im5")
-Target = NodePath("../SquashAndStretchTarget")
-Scale = Vector2(1.4, 0.6)
-Speed = 6.0

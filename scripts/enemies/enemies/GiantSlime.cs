@@ -15,7 +15,12 @@ public partial class GiantSlime : Enemy {
 			Speed = 30f,
 			Duration = 1.5f,
 			Height = 32f,
+			OnJump = () => {
+				SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 4f);
+			},
 			OnLand = () => {
+				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
+
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
 				projectile.Source = this;
@@ -28,7 +33,10 @@ public partial class GiantSlime : Enemy {
 
 		_stateMachine.Add(new Summon("summon", this) {
 			Summons = Summons,
-			SummonAmmount = SummonAmmount
+			SummonAmmount = SummonAmmount,
+			OnSummon = () => {
+				SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 8f);
+			}
 		});
 	}
 

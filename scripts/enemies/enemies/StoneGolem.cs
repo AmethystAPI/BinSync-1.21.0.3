@@ -18,6 +18,8 @@ public partial class StoneGolem : Enemy {
         _stateMachine.Add(new Idle("idle", this));
         _stateMachine.Add(new DashAttack("attack", this) {
             OnDash = (direction, target) => {
+                SquashAndStretch.Trigger(new Vector2(0.2f, 1.4f), 6f);
+
                 float faceDirection = (target.X > GlobalPosition.X ? 1f : -1f) * (target.Y > GlobalPosition.Y ? 1f : -1f);
                 Face(faceDirection >= 0);
 
@@ -33,6 +35,9 @@ public partial class StoneGolem : Enemy {
                 projectile.LookAt(projectile.GlobalPosition + direction);
 
                 return projectile;
+            },
+            OnStop = () => {
+                SquashAndStretch.Trigger(new Vector2(1.6f, 0.6f), 6f);
             }
         });
 

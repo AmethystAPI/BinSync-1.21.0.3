@@ -10,7 +10,12 @@ public partial class Slime : Enemy {
 
 		_stateMachine.Add(new Idle("idle", this));
 		_stateMachine.Add(new JumpAttack("attack", this) {
+			OnJump = () => {
+				SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 4f);
+			},
 			OnLand = () => {
+				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
+
 				Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
 				projectile.Source = this;

@@ -12,6 +12,7 @@ public partial class FlockScared : EnemyState {
     public string AttackState = "aggressive";
 
     public Func<List<Enemy>> GetFlock;
+    public Action OnEnter;
 
 
     private Vector2 _flockOffset;
@@ -32,6 +33,8 @@ public partial class FlockScared : EnemyState {
         _scaredTimer = _randomNumberGenerator.RandfRange(ScaredInterval.X, ScaredInterval.Y);
 
         PickFlockOffset();
+
+        OnEnter();
     }
 
     public override void Update(float delta) {

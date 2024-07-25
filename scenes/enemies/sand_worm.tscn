@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqnxkhxuii7pt"]
+[gd_scene load_steps=18 format=3 uid="uid://dqnxkhxuii7pt"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/SandWorm.cs" id="1_suit1"]
 [ext_resource type="PackedScene" uid="uid://c2uo8wbugtra2" path="res://scenes/enemies/sand_worm_projectile.tscn" id="2_l57kt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ci5smkuw5uefh" path="res://scenes/particles/sand_worm_pebble.tscn" id="3_b2r8g"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="3_hu1ss"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="6_anm72"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_bj14u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(16, 13)
@@ -18,7 +19,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretch/Body:frame")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,6 +29,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_mdkgu"]
+resource_name = "attack"
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_hclil"]
 resource_name = "idle"
 length = 0.001
@@ -36,7 +41,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretch/Body:frame")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +58,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretch/Body:frame")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,10 +67,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
-
-[sub_resource type="Animation" id="Animation_mdkgu"]
-resource_name = "attack"
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hjhs"]
 _data = {
@@ -81,7 +82,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretch/Body:material")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +98,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretch/Body:material")
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -122,14 +123,14 @@ script = ExtResource("1_suit1")
 ProjectileScene = ExtResource("2_l57kt")
 ProjectileOrigin = NodePath("ProjectileOrigin")
 Particle = ExtResource("3_b2r8g")
-FacingTransform = NodePath("SquashAndStretch/Body")
-VerticalTransform = NodePath("SquashAndStretch/Body")
+FacingTransform = NodePath("SquashAndStretchTarget/Body")
+VerticalTransform = NodePath("SquashAndStretchTarget/Body")
 DeathParticle = ExtResource("3_hu1ss")
 
-[node name="SquashAndStretch" type="Node2D" parent="."]
+[node name="SquashAndStretchTarget" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Body" type="Sprite2D" parent="SquashAndStretch"]
+[node name="Body" type="Sprite2D" parent="SquashAndStretchTarget"]
 texture = ExtResource("2_miif3")
 offset = Vector2(0, -16)
 hframes = 17
@@ -157,3 +158,7 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_bf7da")
 }
+
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("8_bj14u")
+Target = NodePath("../SquashAndStretchTarget")

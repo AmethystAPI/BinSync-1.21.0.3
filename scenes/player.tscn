@@ -129,20 +129,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("5_ibym3"), null]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HurtSquashAndStretch")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Activate"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_2htce"]
 resource_name = "idle"
@@ -245,8 +231,6 @@ visible = false
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_v6m8y")
 
-[node name="HurtSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("6_i3kc3")
 Target = NodePath("../SquashAndStretchTarget")
-Scale = Vector2(1.4, 0.6)
-Speed = 10.0

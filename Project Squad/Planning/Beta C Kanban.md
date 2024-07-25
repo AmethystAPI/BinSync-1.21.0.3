@@ -25,9 +25,9 @@ kanban-plugin: basic
 
 - [ ] Windswept Wastes Biome - Rooms #design
 - [ ] Windswept Wastes Biome - Temple #design
+- [ ] Screen Shake
 - [ ] Enemy Squash and Stretch
 - [ ] Damage Numbers
-- [ ] Screen Shake
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
 - [ ] [[Transition of Biomes]] #design

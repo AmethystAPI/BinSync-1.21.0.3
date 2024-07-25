@@ -7,6 +7,7 @@ public class DashAttack : EnemyState {
     public float Variance = Mathf.Pi / 6f;
 
     public Func<Vector2, Vector2, Projectile> OnDash;
+    public Action OnStop;
 
     public RandomNumberGenerator Random = new RandomNumberGenerator();
 
@@ -56,6 +57,8 @@ public class DashAttack : EnemyState {
     }
 
     public override void Exit() {
+        OnStop();
+
         _enemy.AnimationPlayer.Stop();
 
         if (GodotObject.IsInstanceValid(_projectile)) _projectile.QueueFree();

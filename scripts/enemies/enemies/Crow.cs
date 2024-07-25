@@ -13,6 +13,9 @@ public partial class Crow : Enemy {
         base.AddStates();
 
         _stateMachine.Add(new FlockScared("scared", this) {
+            OnEnter = () => {
+                SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 8f);
+            },
             GetFlock = () => {
                 List<Enemy> flock = Crows.Cast<Enemy>().ToList();
 
@@ -32,6 +35,8 @@ public partial class Crow : Enemy {
 
         _stateMachine.Add(new FlyingAggressive("aggressive", this) {
             OnEnter = () => {
+                SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 8f);
+
                 Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
                 projectile.Source = this;

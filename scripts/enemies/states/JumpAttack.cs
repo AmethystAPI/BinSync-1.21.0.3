@@ -7,6 +7,7 @@ public class JumpAttack : EnemyState {
     public float Height = 16f;
     public string ReturnState = "idle";
 
+    public Action OnJump;
     public Action OnLand;
 
     private Vector2 _target;
@@ -26,6 +27,8 @@ public class JumpAttack : EnemyState {
         _target = _enemy.GetWeightedTargets()[0].Player.GlobalPosition;
 
         _enemy.Face(_target);
+
+        OnJump();
     }
 
     public override void Update(float delta) {

@@ -228,20 +228,6 @@ libraries = {
 "": SubResource("AnimationLibrary_uewyw")
 }
 
-[node name="StartSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("11_vqprj")
-Target = NodePath("../SquashAndStretchTarget")
-Scale = Vector2(0.2, 1.4)
-Speed = 6.0
-
-[node name="EndSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
-script = ExtResource("11_vqprj")
-Target = NodePath("../SquashAndStretchTarget")
-Scale = Vector2(1.6, 0.6)
-Speed = 6.0
-
-[node name="HurtSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
-script = ExtResource("11_vqprj")
-Target = NodePath("../SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0
+Target = NodePath(".")

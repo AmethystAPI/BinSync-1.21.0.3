@@ -139,20 +139,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("2_u8mw0"), null]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HurtSquashAndStretch")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Activate"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c4avd"]
 _data = {
@@ -205,20 +191,6 @@ libraries = {
 "": SubResource("AnimationLibrary_c4avd")
 }
 
-[node name="EnterSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("11_kuwtc")
 Target = NodePath("../VisualsOrigin/SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0
-
-[node name="EnterSquashAndStretch2" type="Node" parent="." node_paths=PackedStringArray("Target")]
-script = ExtResource("11_kuwtc")
-Target = NodePath("../VisualsOrigin/SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0
-
-[node name="HurtSquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("Target")]
-script = ExtResource("11_kuwtc")
-Target = NodePath("../VisualsOrigin/SquashAndStretchTarget")
-Scale = Vector2(0.6, 1.4)
-Speed = 8.0

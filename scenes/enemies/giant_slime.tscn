@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cg8kvs2jvqdn2"]
+[gd_scene load_steps=19 format=3 uid="uid://cg8kvs2jvqdn2"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/GiantSlime.cs" id="1_dkn0p"]
 [ext_resource type="Texture2D" uid="uid://drqty4uy1t5tm" path="res://sprites/enemies/giant_slime/giant_slime.tres" id="2_2rx6r"]
 [ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
 [ext_resource type="PackedScene" uid="uid://b01wmjm7v2unj" path="res://scenes/enemies/giant_slime_projectile.tscn" id="7_eun27"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="10_pbc86"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_wa7k2"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="11_gw8t8"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="12_ujy5u"]
@@ -212,3 +213,7 @@ libraries = {
 
 [node name="BossScaling" type="Node2D" parent="."]
 script = ExtResource("13_aeshf")
+
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("10_pbc86")
+Target = NodePath("../SquashAndStretchTarget")
