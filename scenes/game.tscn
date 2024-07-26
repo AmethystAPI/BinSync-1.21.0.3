@@ -92,7 +92,7 @@ script = ExtResource("9_t151n")
 [node name="Camera" type="Camera2D" parent="."]
 process_priority = 1
 process_physics_priority = 1
-zoom = Vector2(6, 6)
+zoom = Vector2(5, 5)
 script = ExtResource("4_encmg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
