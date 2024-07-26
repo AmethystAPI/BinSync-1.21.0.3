@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dd2lq8hsrysip"]
+[gd_scene load_steps=29 format=3 uid="uid://dd2lq8hsrysip"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_vi2rf"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_ix4xb"]
@@ -9,21 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/golden_grove/border_tree.tscn" id="7_s5r5a"]
 [ext_resource type="Resource" uid="uid://c0375lalxo7qq" path="res://resources/decoration_pools/decoration_pool_golden_grove_grass_patch.tres" id="7_v7lqt"]
 [ext_resource type="PackedScene" uid="uid://5g7p0a0qc46r" path="res://scenes/decorations/golden_grove/golden_grove_small_patch.tscn" id="8_aoivb"]
+[ext_resource type="PackedScene" uid="uid://e35ou7bqvjnd" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_4.tscn" id="8_j8cbv"]
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/golden_grove/border_bush.tscn" id="8_yrnk7"]
 [ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/golden_grove/border_grass_tuft_1.tscn" id="9_b5844"]
-[ext_resource type="PackedScene" uid="uid://bt1k20lsoei4g" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_3.tscn" id="10_47p85"]
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/golden_grove/border_grass_tuft_2.tscn" id="10_ib75t"]
 [ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="11_wjmt8"]
-[ext_resource type="PackedScene" uid="uid://e35ou7bqvjnd" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_4.tscn" id="11_x4bvy"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="12_1wgcf"]
 [ext_resource type="PackedScene" uid="uid://sl6c407vi5xm" path="res://scenes/decorations/golden_grove/golden_grove_large_patch.tscn" id="12_03npi"]
 [ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="13_2e2sa"]
 [ext_resource type="PackedScene" uid="uid://3e1eqwr3p555" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_2.tscn" id="13_nuucg"]
 [ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="14_pc7qh"]
-[ext_resource type="PackedScene" uid="uid://dluhdh470aipx" path="res://scenes/decorations/golden_grove/golden_grove_borders.tscn" id="15_8q3or"]
 [ext_resource type="PackedScene" uid="uid://0ornywv8v0tq" path="res://scenes/decorations/golden_grove/golden_grove_bush_2.tscn" id="22_o01ye"]
 [ext_resource type="PackedScene" uid="uid://bxmloq80ioivk" path="res://scenes/decorations/golden_grove/golden_grove_bush_3.tscn" id="23_iedg2"]
 [ext_resource type="PackedScene" uid="uid://bi01ycj78gfxh" path="res://scenes/decorations/golden_grove/golden_grove_grass_tuft_patch.tscn" id="24_q8r8k"]
+[ext_resource type="Script" path="res://scripts/editor/BorderTool.cs" id="25_0ug0w"]
+[ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="25_ipf5h"]
+[ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/biomes/golden_grove/tree_border.tres" id="25_jo5sn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bjp7"]
 size = Vector2(276, 254)
@@ -60,7 +61,6 @@ layer_3/tile_data = PackedInt32Array(-917500, 0, 10, -851964, 0, 11, -851963, 65
 [node name="TileMapTool" type="Node" parent="TileMap"]
 script = ExtResource("4_2ae5j")
 SmartTileset = ExtResource("5_4g3t5")
-Active = true
 
 [node name="Exit" type="Node2D" parent="."]
 position = Vector2(0, -240)
@@ -92,71 +92,58 @@ shape = SubResource("RectangleShape2D_3mg5l")
 [node name="Holder" type="Node2D" parent="Decorations/GrassDecorator"]
 y_sort_enabled = true
 
-[node name="@Sprite2D@218094" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(207.211, -138.178)
-texture = ExtResource("11_wjmt8")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
-
-[node name="LargePatch3" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_47p85")]
-position = Vector2(199.09, 131.358)
-rotation = 1.5708
-
-[node name="@Node2D@218095" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
-position = Vector2(-178.136, 69.0814)
-rotation = 1.5708
-
-[node name="@Node2D@218096" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_x4bvy")]
-position = Vector2(89.5631, -84.2881)
-
-[node name="@Sprite2D@218097" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(5.77042, 66.4841)
-rotation = -1.5708
-texture = ExtResource("11_wjmt8")
-region_enabled = true
-region_rect = Rect2(159, -1, 64, 68)
-
-[node name="@Node2D@218098" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_47p85")]
-position = Vector2(197.994, -232.441)
-
-[node name="LargePatch2" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
-position = Vector2(119.802, 86.4082)
+[node name="@Node2D@88299" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
+position = Vector2(-133.755, 32.8876)
 rotation = -1.5708
 
-[node name="@Sprite2D@218099" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+[node name="@Sprite2D@88300" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(111.061, -8.44955)
+position = Vector2(-219.852, 4.67136)
 texture = ExtResource("11_wjmt8")
 region_enabled = true
 region_rect = Rect2(159, -1, 64, 68)
 
-[node name="@Node2D@218100" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_47p85")]
-position = Vector2(181.318, 37.7318)
+[node name="@Sprite2D@88301" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(153.957, -96.3641)
 rotation = -3.14159
+texture = ExtResource("11_wjmt8")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
 
-[node name="@Node2D@218101" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
-position = Vector2(-47.5542, -183.313)
-
-[node name="@Node2D@218102" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_47p85")]
-position = Vector2(2.48917, -24.4055)
+[node name="@Node2D@88302" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
+position = Vector2(200.837, 108.424)
 rotation = -1.5708
 
-[node name="@Node2D@218103" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_x4bvy")]
-position = Vector2(-104.902, -133.394)
+[node name="LargePatch4" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_j8cbv")]
+position = Vector2(111.477, -164.741)
 rotation = 1.5708
 
-[node name="@Node2D@218104" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_x4bvy")]
-position = Vector2(-16.5508, -100.35)
+[node name="@Node2D@88303" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_j8cbv")]
+position = Vector2(-209.523, -169.279)
 rotation = 1.5708
 
-[node name="@Node2D@218105" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_47p85")]
-position = Vector2(91.1672, -234.049)
-rotation = -3.14159
+[node name="@Node2D@88304" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
+position = Vector2(16.8434, -15.2408)
+rotation = -1.5708
+
+[node name="@Sprite2D@88305" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(25.5225, 79.3335)
+rotation = 1.5708
+texture = ExtResource("11_wjmt8")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="@Node2D@88306" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
+position = Vector2(193.808, 23.8947)
+
+[node name="@Node2D@88307" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
+position = Vector2(-34.6206, -232.004)
+rotation = -1.5708
 
 [node name="Border" type="Node2D" parent="Decorations"]
 z_index = 9
@@ -307,50 +294,289 @@ position = Vector2(-71, -160)
 position = Vector2(-26, 73)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1.5, -56.5)
 shape = SubResource("RectangleShape2D_gg4k0")
 
-[node name="Barrier" parent="." node_paths=PackedStringArray("Destructables") instance=ExtResource("14_pc7qh")]
+[node name="Barrier" parent="." instance=ExtResource("14_pc7qh")]
 position = Vector2(6, 118)
-Destructables = [NodePath("Tree5"), NodePath("Tree6"), NodePath("Bush7"), NodePath("Bush6")]
 
 [node name="Border" type="Node2D" parent="."]
 
-[node name="Borders" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(243, -35)
+[node name="Paralax" type="Node2D" parent="Border"]
+script = ExtResource("25_ipf5h")
+Factor = 0.063
 
-[node name="Borders2" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(222, -127)
-rotation = -0.36044
+[node name="Origin" type="Node2D" parent="Border/Paralax"]
 
-[node name="Borders7" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(169, -189)
-rotation = -0.861435
+[node name="Paralax2" type="Node2D" parent="Border"]
+z_index = 1
+script = ExtResource("25_ipf5h")
+Factor = 0.126
 
-[node name="Borders3" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(215, 51)
-rotation = 0.519617
+[node name="Origin" type="Node2D" parent="Border/Paralax2"]
 
-[node name="Borders8" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(168, 75)
-rotation = 1.06583
+[node name="Screen" type="TileMapLayer" parent="Border/Paralax2/Origin"]
+z_index = 14
+tile_set = ExtResource("3_ci3rs")
 
-[node name="Borders4" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(-252, -59)
-rotation = -3.14159
+[node name="@Sprite2D@88308" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-280.256, -82.08)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
 
-[node name="Borders5" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(-220, -156)
-rotation = -2.79086
+[node name="@Sprite2D@88309" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-262.24, -100.096)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
 
-[node name="Borders10" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(-162, -199)
-rotation = -2.28498
+[node name="@Sprite2D@88310" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-280.256, -64.064)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
 
-[node name="Borders6" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(-231, 9)
-rotation = 2.56634
+[node name="@Sprite2D@88311" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-280.256, -46.048)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
 
-[node name="Borders9" parent="Border" instance=ExtResource("15_8q3or")]
-position = Vector2(-167, 80)
-rotation = 2.11121
+[node name="@Sprite2D@88312" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-280.256, -28.032)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88313" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-262.24, -10.016)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88314" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-262.24, -154.144)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88315" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-244.224, -172.16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88316" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-226.208, -190.176)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88317" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-262.24, -136.128)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88318" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-262.24, -118.112)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88319" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-262.24, 8)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88320" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-244.224, 26.016)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88321" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-208.192, -208.192)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88322" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-244.224, 44.032)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88323" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-226.208, 62.048)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88324" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-208.192, 80.064)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88325" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-190.176, -226.208)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88326" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-190.176, 98.08)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88327" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-172.16, -244.224)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88328" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-172.16, 116.096)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88329" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-154.144, -262.24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88330" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-154.144, 134.112)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88331" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-136.128, -262.24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88332" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-136.128, 134.112)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88333" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-118.112, 152.128)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88334" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(116.096, 152.128)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88335" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(152.128, -244.224)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88336" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(134.112, -262.24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88337" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(134.112, 134.112)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88338" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(170.144, -226.208)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88339" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(188.16, -208.192)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88340" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(188.16, 98.08)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88341" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(170.144, 116.096)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88342" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(152.128, 134.112)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88343" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(206.176, -190.176)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88344" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(206.176, 80.064)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88345" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(224.192, -172.16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88346" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(224.192, -154.144)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88347" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(224.192, -136.128)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88348" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(224.192, 62.048)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88349" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(242.208, -118.112)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88350" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(242.208, -100.096)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88351" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(242.208, 26.016)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88352" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(242.208, 44.032)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88353" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(260.224, -82.08)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88354" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(260.224, -64.064)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88355" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(260.224, -46.048)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88356" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(260.224, 8)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88357" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(278.24, -28.032)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="@Sprite2D@88358" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(278.24, -10.016)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_jo5sn")
+
+[node name="BorderTool" type="Node2D" parent="Border" node_paths=PackedStringArray("TileMap")]
+z_index = 100
+script = ExtResource("25_0ug0w")
+BorderDecoration = ExtResource("25_jo5sn")
+TileMap = NodePath("../../TileMap")

@@ -51,7 +51,7 @@ public partial class Projectile : Node2D {
 			if ((body is TileMap || body is Barrier) && _invincibilityTimer <= 0) {
 				OnHit(body);
 
-				Camera.Shake(TerrainScreenShake);
+				if (Source is Player) Camera.Shake(TerrainScreenShake);
 
 				if (DestroyOnTerrain) {
 					Destroyed?.Invoke();
