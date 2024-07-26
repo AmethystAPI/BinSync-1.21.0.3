@@ -5,6 +5,7 @@ using Godot;
 [Tool]
 public partial class BorderTool : Node2D {
     [Export] public Texture2D BorderDecoration;
+    [Export] public float Spacing = 64f;
     [Export] public TileMap TileMap;
 
     private bool _justPressedGenerate = false;
@@ -49,12 +50,14 @@ public partial class BorderTool : Node2D {
             child.QueueFree();
         }
 
-        DetectEdges();
+        BuildEdges();
+
+        PlaceDecorations();
 
         QueueRedraw();
     }
 
-    private void DetectEdges() {
+    private void BuildEdges() {
         _edgeTiles.Clear();
         _finalEdgeTiles.Clear();
         _splines.Clear();
@@ -173,18 +176,38 @@ public partial class BorderTool : Node2D {
                 spline[index] += spline[index] * 0.126f;
             }
         }
+    }
 
-        // foreach (Vector2 position in _splines) {
-        //     Sprite2D sprite = new Sprite2D() {
-        //         Texture = BorderDecoration
-        //     };
+    private void PlaceDecorations() {
+        foreach (List<Vector2> spline in _splines) {
+            float spacingTillNextDecoration = 0f;
 
-        //     _paralaxOrigin2.AddChild(sprite);
+            for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
+                Vector2 previousNode = spline[nodeIndex - 1] * 16f;
+                Vector2 nextNode = spline[nodeIndex] * 16f;
 
-        //     sprite.Position = position + Vector2.One * 8f;
-        //     sprite.Scale = Vector2.One * 0.75f;
-        //     sprite.Owner = GetOwner();
-        // }
+                float length = previousNode.DistanceTo(nextNode);
+
+                spacingTillNextDecoration -= length;
+
+                GD.Print("At node " + nodeIndex + " " + length + " " + spacingTillNextDecoration);
+
+                if (spacingTillNextDecoration > 0f) continue;
+
+                float factor = 1f + spacingTillNextDecoration / Spacing;
+
+                Sprite2D sprite = new Sprite2D() {
+                    Texture = BorderDecoration
+                };
+
+                _paralaxOrigin2.AddChild(sprite);
+
+                sprite.Position = previousNode.Lerp(nextNode, factor) + Vector2.One * 8f;
+                sprite.Owner = GetOwner();
+
+                spacingTillNextDecoration += Spacing;
+            }
+        }
     }
 
     public override void _Draw() {
