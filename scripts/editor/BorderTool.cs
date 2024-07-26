@@ -13,7 +13,7 @@ public partial class BorderTool : Node2D {
     private Node2D _paralaxOrigin2;
     private HashSet<Vector2I> _edgeTiles = new HashSet<Vector2I>();
     private HashSet<Vector2I> _finalEdgeTiles = new HashSet<Vector2I>();
-    private List<Vector2> _splinePoints = new List<Vector2>();
+    private List<List<Vector2>> _splines = new List<List<Vector2>>();
 
 #if TOOLS
     public override void _Process(double delta) {
@@ -57,7 +57,7 @@ public partial class BorderTool : Node2D {
     private void DetectEdges() {
         _edgeTiles.Clear();
         _finalEdgeTiles.Clear();
-        _splinePoints.Clear();
+        _splines.Clear();
 
         Rect2I rect = TileMap.GetUsedRect();
 
@@ -109,26 +109,82 @@ public partial class BorderTool : Node2D {
 
                 if (iteration == 1) {
                     _finalEdgeTiles.Add(position);
-                    _splinePoints.Add(new Vector2(position.X, position.Y) * 16f);
                 }
             }
         }
 
-        for (int index = 0; index < _splinePoints.Count; index++) {
-            _splinePoints[index] += _splinePoints[index] * 0.126f;
+        HashSet<Vector2I> unusedPositions = new HashSet<Vector2I>(_finalEdgeTiles);
+
+        List<Vector2> buildingSpline = new List<Vector2>();
+        List<Vector2I> positionQueue = new List<Vector2I>();
+
+        Vector2I[] possibleConnectedOffsets = new Vector2I[] { Vector2I.Up + Vector2I.Left, Vector2I.Up, Vector2I.Up + Vector2I.Right, Vector2I.Left, Vector2I.Right, Vector2I.Down + Vector2I.Left, Vector2I.Down, Vector2I.Down + Vector2I.Right };
+
+        int limitA = 0;
+
+        while (unusedPositions.Count > 0 && limitA < 10) {
+            Vector2I startPosition = unusedPositions.Where(position => {
+                int connected = 0;
+
+                foreach (Vector2I offset in possibleConnectedOffsets) {
+                    if (unusedPositions.Contains(position + offset)) connected++;
+                }
+
+                return connected == 1;
+            }).First();
+
+            unusedPositions.Remove(startPosition);
+
+            buildingSpline.Add(startPosition);
+            positionQueue.Add(startPosition);
+
+            int limitB = 0;
+
+            while (positionQueue.Count > 0 && limitB < 100) {
+                Vector2I currentPosition = positionQueue[0];
+                positionQueue.RemoveAt(0);
+
+                foreach (Vector2I offset in possibleConnectedOffsets) {
+                    if (unusedPositions.Contains(currentPosition + offset)) {
+                        unusedPositions.Remove(currentPosition + offset);
+                        buildingSpline.Add(currentPosition + offset);
+                        positionQueue.Add(currentPosition + offset);
+
+                        break;
+                    }
+                }
+
+                limitB++;
+            }
+
+            if (limitB == 100) GD.Print("FAILED: limitB");
+
+            _splines.Add(buildingSpline);
+
+            buildingSpline = new List<Vector2>();
+
+            limitA++;
         }
 
-        foreach (Vector2 position in _splinePoints) {
-            Sprite2D sprite = new Sprite2D() {
-                Texture = BorderDecoration
-            };
+        if (limitA == 10) GD.Print("FAILED: limitA");
 
-            _paralaxOrigin2.AddChild(sprite);
-
-            sprite.Position = position + Vector2.One * 8f;
-            sprite.Scale = Vector2.One * 0.75f;
-            sprite.Owner = GetOwner();
+        foreach (List<Vector2> spline in _splines) {
+            for (int index = 0; index < spline.Count; index++) {
+                spline[index] += spline[index] * 0.126f;
+            }
         }
+
+        // foreach (Vector2 position in _splines) {
+        //     Sprite2D sprite = new Sprite2D() {
+        //         Texture = BorderDecoration
+        //     };
+
+        //     _paralaxOrigin2.AddChild(sprite);
+
+        //     sprite.Position = position + Vector2.One * 8f;
+        //     sprite.Scale = Vector2.One * 0.75f;
+        //     sprite.Owner = GetOwner();
+        // }
     }
 
     public override void _Draw() {
@@ -136,8 +192,21 @@ public partial class BorderTool : Node2D {
             DrawCircle(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 4f, new Color("#00ff00"), true);
         }
 
-        foreach (Vector2 position in _splinePoints) {
-            DrawCircle(position + Vector2.One * 8f, 4f, new Color("#0000ff"), true);
+        foreach (List<Vector2> spline in _splines) {
+            Vector2 lastPosition = Vector2.Zero;
+            bool hasLast = false;
+
+            foreach (Vector2 position in spline) {
+                DrawCircle(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 4f, new Color("#0000ff"), true);
+
+                if (hasLast) {
+                    DrawLine(new Vector2(lastPosition.X, lastPosition.Y) * 16f + Vector2.One * 8f, new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, new Color("#ffffff"), 1f);
+                } else {
+                    hasLast = true;
+                }
+
+                lastPosition = position;
+            }
         }
     }
 #endif
