@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -53,6 +54,8 @@ public partial class BorderTool : Node2D {
         BuildEdges();
 
         PlaceDecorations();
+
+        PlaceScreen();
 
         QueueRedraw();
     }
@@ -173,7 +176,7 @@ public partial class BorderTool : Node2D {
 
         foreach (List<Vector2> spline in _splines) {
             for (int index = 0; index < spline.Count; index++) {
-                spline[index] += spline[index] * 0.126f;
+                spline[index] *= 1.126f;
             }
         }
     }
@@ -183,8 +186,8 @@ public partial class BorderTool : Node2D {
             float spacingTillNextDecoration = 0f;
 
             for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
-                Vector2 previousNode = spline[nodeIndex - 1] * 16f;
-                Vector2 nextNode = spline[nodeIndex] * 16f;
+                Vector2 previousNode = spline[nodeIndex - 1] * 16f + Vector2.One * 8f;
+                Vector2 nextNode = spline[nodeIndex] * 16f + Vector2.One * 8f;
 
                 float length = previousNode.DistanceTo(nextNode);
 
@@ -202,7 +205,7 @@ public partial class BorderTool : Node2D {
 
                 _paralaxOrigin2.AddChild(sprite);
 
-                sprite.Position = previousNode.Lerp(nextNode, factor) + Vector2.One * 8f;
+                sprite.Position = previousNode.Lerp(nextNode, factor);
                 sprite.Owner = GetOwner();
 
                 spacingTillNextDecoration += Spacing;
@@ -210,17 +213,55 @@ public partial class BorderTool : Node2D {
         }
     }
 
-    public override void _Draw() {
-        foreach (Vector2I position in _finalEdgeTiles) {
-            DrawCircle(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 4f, new Color("#00ff00"), true);
+    private void PlaceScreen() {
+        Rect2I rect = TileMap.GetUsedRect();
+
+        int newLeft = Mathf.FloorToInt(rect.Position.X * 1.126f) - 1;
+        int newRight = Mathf.FloorToInt(rect.End.X * 1.126f) + 1;
+        int newTop = Mathf.FloorToInt(rect.Position.Y * 1.126f) - 1;
+        int newBottom = Mathf.FloorToInt(rect.End.Y * 1.126f) + 1;
+
+        rect.Position = new Vector2I(newLeft, newTop);
+        rect.End = new Vector2I(newRight, newBottom);
+
+        for (int x = rect.Position.X; x < rect.End.X; x++) {
+            for (int y = rect.Position.Y; y < rect.End.Y; y++) {
+                Vector2I position = new Vector2I(x, y);
+
+                Vector2 rayStart = new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f;
+                Vector2 rayEnd = Vector2.Zero;
+
+                bool collided = false;
+
+                foreach (List<Vector2> spline in _splines) {
+                    for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
+                        Vector2 previousNode = spline[nodeIndex - 1] * 16f + Vector2.One * 8f;
+                        Vector2 nextNode = spline[nodeIndex] * 16f + Vector2.One * 8f;
+
+                        if (LinesIntersect(rayStart, rayEnd, previousNode, nextNode)) {
+                            collided = true;
+
+                            break;
+                        }
+                    }
+                }
+
+                if (collided) _screen.SetCell(position, 0, new Vector2I(4, 3));
+            }
         }
+    }
+
+    public override void _Draw() {
+        // foreach (Vector2I position in _finalEdgeTiles) {
+        //     DrawCircle(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 4f, new Color("#00ff00"), true);
+        // }
 
         foreach (List<Vector2> spline in _splines) {
             Vector2 lastPosition = Vector2.Zero;
             bool hasLast = false;
 
             foreach (Vector2 position in spline) {
-                DrawCircle(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 4f, new Color("#0000ff"), true);
+                // DrawCircle(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 4f, new Color("#0000ff"), true);
 
                 if (hasLast) {
                     DrawLine(new Vector2(lastPosition.X, lastPosition.Y) * 16f + Vector2.One * 8f, new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, new Color("#ffffff"), 1f);
@@ -231,6 +272,44 @@ public partial class BorderTool : Node2D {
                 lastPosition = position;
             }
         }
+    }
+
+    private bool OnSegment(Vector2 a, Vector2 b, Vector2 c) {
+        if (b.X <= Mathf.Max(a.X, c.X) && b.X >= Mathf.Min(a.X, c.X) &&
+                b.Y <= Mathf.Max(a.Y, c.Y) && b.Y >= Mathf.Min(a.Y, c.Y))
+            return true;
+
+        return false;
+    }
+
+    private int PointOrientation(Vector2 a, Vector2 b, Vector2 c) {
+        float val = (b.Y - a.Y) * (c.X - b.X) -
+                    (b.X - a.X) * (c.Y - b.Y);
+
+        if (val == 0) return 0;
+
+        return (val > 0) ? 1 : 2;
+    }
+
+    private bool LinesIntersect(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2) {
+        int o1 = PointOrientation(a1, a2, b1);
+        int o2 = PointOrientation(a1, a2, b2);
+        int o3 = PointOrientation(b1, b2, a1);
+        int o4 = PointOrientation(b1, b2, a2);
+
+
+        if (o1 != o2 && o3 != o4)
+            return true;
+
+        if (o1 == 0 && OnSegment(a1, b1, a2)) return true;
+
+        if (o2 == 0 && OnSegment(a1, b2, a2)) return true;
+
+        if (o3 == 0 && OnSegment(b1, a1, b2)) return true;
+
+        if (o4 == 0 && OnSegment(b1, a2, b2)) return true;
+
+        return false;
     }
 #endif
 }
