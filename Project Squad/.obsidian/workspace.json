@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "de28ed80b1dbf42d",
+        "id": "d32244fe0813a38e",
         "type": "tabs",
         "children": [
           {
-            "id": "486c50ffca868aa8",
+            "id": "ba0c1306aecfa667",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Devlogs/Devlog 19/What is Interesting.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Devlogs/Devlog 19/What is Interesting.md",
+                "file": "Planning/Beta C Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Devlogs/Devlog 19/What is Interesting.md",
+                "file": "Planning/Beta C Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Devlogs/Devlog 19/What is Interesting.md"
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -148,9 +146,9 @@
   },
   "active": "711274cd3592b4d7",
   "lastOpenFiles": [
+    "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Script.md",
     "Devlogs/Devlog 19/What is Interesting.md",
-    "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Graph.canvas",
     "Devlogs/Devlog 19/Goals.md",
     "Planning/Beta C Kanban.md",

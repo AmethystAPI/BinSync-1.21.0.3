@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("2_odyj5")
-Textures = [ExtResource("1_jwfw3"), ExtResource("1_jwfw3")]
-Spacings = PackedFloat32Array(64, 64)
-Variances = PackedVector2Array(0, 0, 0, 0)
-Offsets = PackedFloat32Array(0, 32)
-Layers = PackedInt32Array(1, 0)
+Textures = [ExtResource("1_jwfw3"), ExtResource("1_jwfw3"), ExtResource("1_jwfw3")]
+Spacings = PackedFloat32Array(64, 64, 64)
+Variances = PackedVector2Array(8, -8, 0, 0, -16, -12)
+Offsets = PackedFloat32Array(0, 32, 32)
+Layers = PackedInt32Array(1, 0, 1)
 Tile = Vector3i(0, 4, 3)

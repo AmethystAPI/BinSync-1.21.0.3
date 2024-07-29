@@ -221,7 +221,18 @@ public partial class BorderTool : Node2D {
                         _paralaxOrigin1.AddChild(sprite);
                     }
 
-                    sprite.Position = previousNode.Lerp(nextNode, factor);
+                    Vector2 position = previousNode.Lerp(nextNode, factor);
+
+                    Vector2 direction = (nextNode - previousNode).Normalized();
+                    Vector2 normal = new Vector2(-direction.Y, direction.X);
+
+                    Vector2 directionToOrigin = (-position).Normalized();
+
+                    if (normal.Dot(direction) >= 0) normal = normal.Rotated(Mathf.Pi);
+
+                    float varianceOffset = random.RandfRange(variance.X, variance.Y);
+
+                    sprite.Position = position + normal * varianceOffset;
                     sprite.Owner = GetOwner();
                     sprite.Rotate(random.RandiRange(0, 3) * Mathf.Pi / 2f);
 
