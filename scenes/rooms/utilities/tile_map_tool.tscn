@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bntd02jp0yaqs"]
+
+[ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="1_3hs2v"]
+[ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="2_i2vx3"]
+
+[node name="TileMapTool" type="Node"]
+script = ExtResource("1_3hs2v")
+SmartTileset = ExtResource("2_i2vx3")

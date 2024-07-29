@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://6lgr05pmvo5"]
 
-[ext_resource type="PackedScene" uid="uid://dpwyngsyoo0n7" path="res://scenes/rooms/room_wastes_plain.tscn" id="1_e3vsr"]
+[ext_resource type="PackedScene" uid="uid://dpwyngsyoo0n7" path="res://scenes/rooms/wastes/room_wastes_plain.tscn" id="1_e3vsr"]
 [ext_resource type="Script" path="res://scripts/rooms/RoomPlacer.cs" id="2_s5mxs"]
 
 [resource]

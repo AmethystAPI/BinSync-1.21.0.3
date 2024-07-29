@@ -134,7 +134,7 @@ public partial class BorderTool : Node2D {
         int limitA = 0;
 
         while (unusedPositions.Count > 0 && limitA < 10) {
-            Vector2I startPosition = unusedPositions.Where(position => {
+            List<Vector2I> startPositions = unusedPositions.Where(position => {
                 int connected = 0;
 
                 foreach (Vector2I offset in possibleConnectedOffsets) {
@@ -142,7 +142,11 @@ public partial class BorderTool : Node2D {
                 }
 
                 return connected == 1;
-            }).First();
+            }).ToList();
+
+            if (startPositions.Count == 0) break;
+
+            Vector2I startPosition = startPositions.First();
 
             unusedPositions.Remove(startPosition);
 
@@ -228,7 +232,7 @@ public partial class BorderTool : Node2D {
 
                     Vector2 directionToOrigin = (-position).Normalized();
 
-                    if (normal.Dot(direction) >= 0) normal = normal.Rotated(Mathf.Pi);
+                    if (normal.Dot(directionToOrigin) < 0) normal = normal.Rotated(Mathf.Pi);
 
                     float varianceOffset = random.RandfRange(variance.X, variance.Y);
 
@@ -257,25 +261,37 @@ public partial class BorderTool : Node2D {
             for (int y = rect.Position.Y; y < rect.End.Y; y++) {
                 Vector2I position = new Vector2I(x, y);
 
-                Vector2 rayStart = new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f;
-                Vector2 rayEnd = Vector2.Zero;
+                Vector2[] cornerOffsets = new Vector2[] { new Vector2(-2f, 2f), new Vector2(2f, 2f), new Vector2(2f, -2f), new Vector2(-2f, -2f) };
 
-                bool collided = false;
+                bool blocked = true;
 
-                foreach (List<Vector2> spline in _splines) {
-                    for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
-                        Vector2 previousNode = spline[nodeIndex - 1] * 16f + Vector2.One * 8f;
-                        Vector2 nextNode = spline[nodeIndex] * 16f + Vector2.One * 8f;
+                foreach (Vector2 cornerOffset in cornerOffsets) {
+                    Vector2 rayStart = new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f + cornerOffset;
+                    Vector2 rayEnd = Vector2.Zero;
 
-                        if (LinesIntersect(rayStart, rayEnd, previousNode, nextNode)) {
-                            collided = true;
+                    bool collided = false;
 
-                            break;
+                    foreach (List<Vector2> spline in _splines) {
+                        for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
+                            Vector2 previousNode = spline[nodeIndex - 1] * 16f + Vector2.One * 8f;
+                            Vector2 nextNode = spline[nodeIndex] * 16f + Vector2.One * 8f;
+
+                            if (LinesIntersect(rayStart, rayEnd, previousNode, nextNode)) {
+                                collided = true;
+
+                                break;
+                            }
                         }
+                    }
+
+                    if (!collided) {
+                        blocked = false;
+
+                        break;
                     }
                 }
 
-                if (collided) _screen.SetCell(position, Border.Tile.X, new Vector2I(Border.Tile.Y, Border.Tile.Z));
+                if (blocked) _screen.SetCell(position, Border.Tile.X, new Vector2I(Border.Tile.Y, Border.Tile.Z));
             }
         }
     }
@@ -294,6 +310,18 @@ public partial class BorderTool : Node2D {
 
                 if (hasLast) {
                     DrawLine(new Vector2(lastPosition.X, lastPosition.Y) * 16f + Vector2.One * 8f, new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, new Color("#ffffff"), 1f);
+
+                    Vector2 direction = (position - lastPosition).Normalized();
+                    Vector2 normal = new Vector2(-direction.Y, direction.X);
+
+                    Vector2 directionToOrigin = (-position).Normalized();
+
+
+                    Vector2 center = (new Vector2(lastPosition.X, lastPosition.Y) * 16f + Vector2.One * 8f).Lerp(new Vector2(position.X, position.Y) * 16f + Vector2.One * 8f, 0.5f);
+
+                    if (normal.Dot(directionToOrigin) < 0) normal = normal.Rotated(Mathf.Pi);
+
+                    DrawLine(center, center + normal * 4f, new Color("#aaaaff"), 1f);
                 } else {
                     hasLast = true;
                 }

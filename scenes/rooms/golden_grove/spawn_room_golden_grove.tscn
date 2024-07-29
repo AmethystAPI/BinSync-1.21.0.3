@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://dsr87fqg2bkd6"]
+[gd_scene load_steps=18 format=4 uid="uid://dsr87fqg2bkd6"]
 
 [ext_resource type="Script" path="res://scripts/rooms/SpawnRoom.cs" id="1_21dic"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_xu6l6"]
-[ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_5mnlg"]
-[ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="5_n7nxu"]
+[ext_resource type="PackedScene" uid="uid://bntd02jp0yaqs" path="res://scenes/rooms/utilities/tile_map_tool.tscn" id="4_dkqaq"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="5_yunun"]
 [ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="6_2fdge"]
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/golden_grove/border_bush.tscn" id="7_mfukd"]
@@ -48,9 +47,7 @@ layer_3/name = "Shadow"
 layer_3/z_index = -6
 layer_3/tile_data = PackedInt32Array(-196603, 0, 10, -131067, 0, 11, -393212, 0, 10, -327676, 0, 11, -196602, 65536, 11, -131066, 262144, 10, -393211, 65536, 11, -327675, 262144, 10, 131065, 65536, 11, 196601, 196608, 10, 131066, 131072, 10, 196602, 131072, 11, -196614, 65536, 11, -131078, 196608, 10, -196613, 131072, 10, -131077, 131072, 11)
 
-[node name="Node" type="Node" parent="TileMap"]
-script = ExtResource("4_5mnlg")
-SmartTileset = ExtResource("5_n7nxu")
+[node name="TileMapTool" parent="TileMap" instance=ExtResource("4_dkqaq")]
 
 [node name="Exit" type="Node2D" parent="." groups=["Rooms"]]
 position = Vector2(0, -144)
@@ -697,67 +694,65 @@ Factor = 0.063
 
 [node name="Origin" type="Node2D" parent="Border/Paralax"]
 
-[node name="@Sprite2D@26517" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80530" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(-118.112, -119.247)
 rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26518" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80531" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(-130.622, -51.5537)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26519" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80532" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(-136.128, 5.29577)
-rotation = 1.5708
+rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26520" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80533" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(-154.144, 60.0446)
-rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26521" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80534" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(-105.6, 110.592)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26522" type="Sprite2D" parent="Border/Paralax/Origin"]
-position = Vector2(-65.8964, 150.296)
-rotation = 3.14159
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26523" type="Sprite2D" parent="Border/Paralax/Origin"]
-position = Vector2(-13.2483, 119.328)
-rotation = 3.14159
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26524" type="Sprite2D" parent="Border/Paralax/Origin"]
-position = Vector2(43.6012, 116.096)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26525" type="Sprite2D" parent="Border/Paralax/Origin"]
-position = Vector2(94.1487, 102.011)
-rotation = 1.5708
+[node name="@Sprite2D@80535" type="Sprite2D" parent="Border/Paralax/Origin"]
+position = Vector2(-65.8964, 150.296)
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26526" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80536" type="Sprite2D" parent="Border/Paralax/Origin"]
+position = Vector2(-13.2483, 119.328)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80537" type="Sprite2D" parent="Border/Paralax/Origin"]
+position = Vector2(43.6012, 116.096)
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80538" type="Sprite2D" parent="Border/Paralax/Origin"]
+position = Vector2(94.1487, 102.011)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80539" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(128.781, 49.3632)
 rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26527" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80540" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(152.128, -5.38558)
-rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26528" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80541" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(134.112, -60.1344)
-rotation = 4.71239
+rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26529" type="Sprite2D" parent="Border/Paralax/Origin"]
+[node name="@Sprite2D@80542" type="Sprite2D" parent="Border/Paralax/Origin"]
 position = Vector2(116.096, -114.883)
+rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
 [node name="Paralax2" type="Node2D" parent="Border"]
@@ -769,132 +764,140 @@ Factor = 0.126
 
 [node name="Screen" type="TileMapLayer" parent="Border/Paralax2/Origin"]
 z_index = 14
-tile_map_data = PackedByteArray("AADy//T/AAAEAAMAAADy//X/AAAEAAMAAADy//b/AAAEAAMAAADy//f/AAAEAAMAAADy//j/AAAEAAMAAADy//n/AAAEAAMAAADy//r/AAAEAAMAAADy//v/AAAEAAMAAADy//z/AAAEAAMAAADy//3/AAAEAAMAAADy//7/AAAEAAMAAADy////AAAEAAMAAADy/wAAAAAEAAMAAADy/wEAAAAEAAMAAADy/wIAAAAEAAMAAADy/wMAAAAEAAMAAADy/wQAAAAEAAMAAADy/wUAAAAEAAMAAADy/wYAAAAEAAMAAADy/wcAAAAEAAMAAADy/wgAAAAEAAMAAADy/wkAAAAEAAMAAADy/woAAAAEAAMAAADy/wsAAAAEAAMAAADy/wwAAAAEAAMAAADz//T/AAAEAAMAAADz//X/AAAEAAMAAADz//b/AAAEAAMAAADz//f/AAAEAAMAAADz//j/AAAEAAMAAADz//n/AAAEAAMAAADz//r/AAAEAAMAAADz//v/AAAEAAMAAADz//z/AAAEAAMAAADz//3/AAAEAAMAAADz//7/AAAEAAMAAADz////AAAEAAMAAADz/wAAAAAEAAMAAADz/wEAAAAEAAMAAADz/wIAAAAEAAMAAADz/wMAAAAEAAMAAADz/wQAAAAEAAMAAADz/wUAAAAEAAMAAADz/wYAAAAEAAMAAADz/wcAAAAEAAMAAADz/wgAAAAEAAMAAADz/wkAAAAEAAMAAADz/woAAAAEAAMAAADz/wsAAAAEAAMAAADz/wwAAAAEAAMAAAD0//T/AAAEAAMAAAD0//X/AAAEAAMAAAD0//b/AAAEAAMAAAD0//f/AAAEAAMAAAD0//j/AAAEAAMAAAD0//n/AAAEAAMAAAD0//r/AAAEAAMAAAD0//v/AAAEAAMAAAD0//z/AAAEAAMAAAD0//3/AAAEAAMAAAD0//7/AAAEAAMAAAD0////AAAEAAMAAAD0/wAAAAAEAAMAAAD0/wEAAAAEAAMAAAD0/wIAAAAEAAMAAAD0/wMAAAAEAAMAAAD0/wQAAAAEAAMAAAD0/wUAAAAEAAMAAAD0/wYAAAAEAAMAAAD0/wcAAAAEAAMAAAD0/wgAAAAEAAMAAAD0/wkAAAAEAAMAAAD0/woAAAAEAAMAAAD0/wsAAAAEAAMAAAD0/wwAAAAEAAMAAAD1//T/AAAEAAMAAAD1//X/AAAEAAMAAAD1//b/AAAEAAMAAAD1//f/AAAEAAMAAAD1//j/AAAEAAMAAAD1//n/AAAEAAMAAAD1//r/AAAEAAMAAAD1//v/AAAEAAMAAAD1//z/AAAEAAMAAAD1//3/AAAEAAMAAAD1//7/AAAEAAMAAAD1////AAAEAAMAAAD1/wAAAAAEAAMAAAD1/wEAAAAEAAMAAAD1/wIAAAAEAAMAAAD1/wMAAAAEAAMAAAD1/wQAAAAEAAMAAAD1/wUAAAAEAAMAAAD1/wYAAAAEAAMAAAD1/wcAAAAEAAMAAAD1/wgAAAAEAAMAAAD1/wkAAAAEAAMAAAD1/woAAAAEAAMAAAD1/wsAAAAEAAMAAAD1/wwAAAAEAAMAAAD2//T/AAAEAAMAAAD2//X/AAAEAAMAAAD2//b/AAAEAAMAAAD2//f/AAAEAAMAAAD2//j/AAAEAAMAAAD2//n/AAAEAAMAAAD2//r/AAAEAAMAAAD2//v/AAAEAAMAAAD2//z/AAAEAAMAAAD2//3/AAAEAAMAAAD2//7/AAAEAAMAAAD2////AAAEAAMAAAD2/wAAAAAEAAMAAAD2/wEAAAAEAAMAAAD2/wIAAAAEAAMAAAD2/wQAAAAEAAMAAAD2/wUAAAAEAAMAAAD2/wYAAAAEAAMAAAD2/wcAAAAEAAMAAAD2/wgAAAAEAAMAAAD2/wkAAAAEAAMAAAD2/woAAAAEAAMAAAD2/wsAAAAEAAMAAAD2/wwAAAAEAAMAAAD3//X/AAAEAAMAAAD3//b/AAAEAAMAAAD3//f/AAAEAAMAAAD3//j/AAAEAAMAAAD3//n/AAAEAAMAAAD3//r/AAAEAAMAAAD3//v/AAAEAAMAAAD3//z/AAAEAAMAAAD3/wUAAAAEAAMAAAD3/wYAAAAEAAMAAAD3/wcAAAAEAAMAAAD3/wgAAAAEAAMAAAD3/wkAAAAEAAMAAAD3/woAAAAEAAMAAAD3/wsAAAAEAAMAAAD3/wwAAAAEAAMAAAD4//b/AAAEAAMAAAD4//f/AAAEAAMAAAD4//j/AAAEAAMAAAD4//n/AAAEAAMAAAD4//r/AAAEAAMAAAD4//v/AAAEAAMAAAD4/wYAAAAEAAMAAAD4/wcAAAAEAAMAAAD4/wgAAAAEAAMAAAD4/wkAAAAEAAMAAAD4/woAAAAEAAMAAAD4/wsAAAAEAAMAAAD4/wwAAAAEAAMAAAD5/wcAAAAEAAMAAAD5/wgAAAAEAAMAAAD5/wkAAAAEAAMAAAD5/woAAAAEAAMAAAD5/wsAAAAEAAMAAAD5/wwAAAAEAAMAAAD6/wgAAAAEAAMAAAD6/wkAAAAEAAMAAAD6/woAAAAEAAMAAAD6/wsAAAAEAAMAAAD6/wwAAAAEAAMAAAD7/wkAAAAEAAMAAAD7/woAAAAEAAMAAAD7/wsAAAAEAAMAAAD7/wwAAAAEAAMAAAD8/woAAAAEAAMAAAD8/wsAAAAEAAMAAAD8/wwAAAAEAAMAAAD9/wkAAAAEAAMAAAD9/woAAAAEAAMAAAD9/wsAAAAEAAMAAAD9/wwAAAAEAAMAAAD+/wgAAAAEAAMAAAD+/wkAAAAEAAMAAAD+/woAAAAEAAMAAAD+/wsAAAAEAAMAAAD+/wwAAAAEAAMAAAD//wcAAAAEAAMAAAD//wgAAAAEAAMAAAD//wkAAAAEAAMAAAD//woAAAAEAAMAAAD//wsAAAAEAAMAAAD//wwAAAAEAAMAAAAAAAcAAAAEAAMAAAAAAAgAAAAEAAMAAAAAAAkAAAAEAAMAAAAAAAoAAAAEAAMAAAAAAAsAAAAEAAMAAAAAAAwAAAAEAAMAAAABAAcAAAAEAAMAAAABAAgAAAAEAAMAAAABAAkAAAAEAAMAAAABAAoAAAAEAAMAAAABAAsAAAAEAAMAAAABAAwAAAAEAAMAAAACAAcAAAAEAAMAAAACAAgAAAAEAAMAAAACAAkAAAAEAAMAAAACAAoAAAAEAAMAAAACAAsAAAAEAAMAAAACAAwAAAAEAAMAAAADAAgAAAAEAAMAAAADAAkAAAAEAAMAAAADAAoAAAAEAAMAAAADAAsAAAAEAAMAAAADAAwAAAAEAAMAAAAEAAgAAAAEAAMAAAAEAAkAAAAEAAMAAAAEAAoAAAAEAAMAAAAEAAsAAAAEAAMAAAAEAAwAAAAEAAMAAAAFAAcAAAAEAAMAAAAFAAgAAAAEAAMAAAAFAAkAAAAEAAMAAAAFAAoAAAAEAAMAAAAFAAsAAAAEAAMAAAAFAAwAAAAEAAMAAAAGAAYAAAAEAAMAAAAGAAcAAAAEAAMAAAAGAAgAAAAEAAMAAAAGAAkAAAAEAAMAAAAGAAoAAAAEAAMAAAAGAAsAAAAEAAMAAAAGAAwAAAAEAAMAAAAHAPb/AAAEAAMAAAAHAPf/AAAEAAMAAAAHAPj/AAAEAAMAAAAHAPn/AAAEAAMAAAAHAAQAAAAEAAMAAAAHAAUAAAAEAAMAAAAHAAYAAAAEAAMAAAAHAAcAAAAEAAMAAAAHAAgAAAAEAAMAAAAHAAkAAAAEAAMAAAAHAAoAAAAEAAMAAAAHAAsAAAAEAAMAAAAHAAwAAAAEAAMAAAAIAPX/AAAEAAMAAAAIAPb/AAAEAAMAAAAIAPf/AAAEAAMAAAAIAPj/AAAEAAMAAAAIAPn/AAAEAAMAAAAIAPr/AAAEAAMAAAAIAPv/AAAEAAMAAAAIAPz/AAAEAAMAAAAIAAIAAAAEAAMAAAAIAAMAAAAEAAMAAAAIAAQAAAAEAAMAAAAIAAUAAAAEAAMAAAAIAAYAAAAEAAMAAAAIAAcAAAAEAAMAAAAIAAgAAAAEAAMAAAAIAAkAAAAEAAMAAAAIAAoAAAAEAAMAAAAIAAsAAAAEAAMAAAAIAAwAAAAEAAMAAAAJAPT/AAAEAAMAAAAJAPX/AAAEAAMAAAAJAPb/AAAEAAMAAAAJAPf/AAAEAAMAAAAJAPj/AAAEAAMAAAAJAPn/AAAEAAMAAAAJAPr/AAAEAAMAAAAJAPv/AAAEAAMAAAAJAPz/AAAEAAMAAAAJAP3/AAAEAAMAAAAJAAEAAAAEAAMAAAAJAAIAAAAEAAMAAAAJAAMAAAAEAAMAAAAJAAQAAAAEAAMAAAAJAAUAAAAEAAMAAAAJAAYAAAAEAAMAAAAJAAcAAAAEAAMAAAAJAAgAAAAEAAMAAAAJAAkAAAAEAAMAAAAJAAoAAAAEAAMAAAAJAAsAAAAEAAMAAAAJAAwAAAAEAAMAAAAKAPT/AAAEAAMAAAAKAPX/AAAEAAMAAAAKAPb/AAAEAAMAAAAKAPf/AAAEAAMAAAAKAPj/AAAEAAMAAAAKAPn/AAAEAAMAAAAKAPr/AAAEAAMAAAAKAPv/AAAEAAMAAAAKAPz/AAAEAAMAAAAKAP3/AAAEAAMAAAAKAP7/AAAEAAMAAAAKAP//AAAEAAMAAAAKAAAAAAAEAAMAAAAKAAEAAAAEAAMAAAAKAAIAAAAEAAMAAAAKAAMAAAAEAAMAAAAKAAQAAAAEAAMAAAAKAAUAAAAEAAMAAAAKAAYAAAAEAAMAAAAKAAcAAAAEAAMAAAAKAAgAAAAEAAMAAAAKAAkAAAAEAAMAAAAKAAoAAAAEAAMAAAAKAAsAAAAEAAMAAAAKAAwAAAAEAAMAAAALAPT/AAAEAAMAAAALAPX/AAAEAAMAAAALAPb/AAAEAAMAAAALAPf/AAAEAAMAAAALAPj/AAAEAAMAAAALAPn/AAAEAAMAAAALAPr/AAAEAAMAAAALAPv/AAAEAAMAAAALAPz/AAAEAAMAAAALAP3/AAAEAAMAAAALAP7/AAAEAAMAAAALAP//AAAEAAMAAAALAAAAAAAEAAMAAAALAAEAAAAEAAMAAAALAAIAAAAEAAMAAAALAAMAAAAEAAMAAAALAAQAAAAEAAMAAAALAAUAAAAEAAMAAAALAAYAAAAEAAMAAAALAAcAAAAEAAMAAAALAAgAAAAEAAMAAAALAAkAAAAEAAMAAAALAAoAAAAEAAMAAAALAAsAAAAEAAMAAAALAAwAAAAEAAMAAAAMAPT/AAAEAAMAAAAMAPX/AAAEAAMAAAAMAPb/AAAEAAMAAAAMAPf/AAAEAAMAAAAMAPj/AAAEAAMAAAAMAPn/AAAEAAMAAAAMAPr/AAAEAAMAAAAMAPv/AAAEAAMAAAAMAPz/AAAEAAMAAAAMAP3/AAAEAAMAAAAMAP7/AAAEAAMAAAAMAP//AAAEAAMAAAAMAAAAAAAEAAMAAAAMAAEAAAAEAAMAAAAMAAIAAAAEAAMAAAAMAAMAAAAEAAMAAAAMAAQAAAAEAAMAAAAMAAUAAAAEAAMAAAAMAAYAAAAEAAMAAAAMAAcAAAAEAAMAAAAMAAgAAAAEAAMAAAAMAAkAAAAEAAMAAAAMAAoAAAAEAAMAAAAMAAsAAAAEAAMAAAAMAAwAAAAEAAMAAAA=")
+tile_map_data = PackedByteArray("AADy//T/AAAEAAMAAADy//X/AAAEAAMAAADy//b/AAAEAAMAAADy//f/AAAEAAMAAADy//j/AAAEAAMAAADy//n/AAAEAAMAAADy//r/AAAEAAMAAADy//v/AAAEAAMAAADy//z/AAAEAAMAAADy//3/AAAEAAMAAADy//7/AAAEAAMAAADy////AAAEAAMAAADy/wAAAAAEAAMAAADy/wEAAAAEAAMAAADy/wIAAAAEAAMAAADy/wMAAAAEAAMAAADy/wQAAAAEAAMAAADy/wUAAAAEAAMAAADy/wYAAAAEAAMAAADy/wcAAAAEAAMAAADy/wgAAAAEAAMAAADy/wkAAAAEAAMAAADy/woAAAAEAAMAAADy/wsAAAAEAAMAAADy/wwAAAAEAAMAAADz//T/AAAEAAMAAADz//X/AAAEAAMAAADz//b/AAAEAAMAAADz//f/AAAEAAMAAADz//j/AAAEAAMAAADz//n/AAAEAAMAAADz//r/AAAEAAMAAADz//v/AAAEAAMAAADz//z/AAAEAAMAAADz//3/AAAEAAMAAADz//7/AAAEAAMAAADz////AAAEAAMAAADz/wAAAAAEAAMAAADz/wEAAAAEAAMAAADz/wIAAAAEAAMAAADz/wMAAAAEAAMAAADz/wQAAAAEAAMAAADz/wUAAAAEAAMAAADz/wYAAAAEAAMAAADz/wcAAAAEAAMAAADz/wgAAAAEAAMAAADz/wkAAAAEAAMAAADz/woAAAAEAAMAAADz/wsAAAAEAAMAAADz/wwAAAAEAAMAAAD0//T/AAAEAAMAAAD0//X/AAAEAAMAAAD0//b/AAAEAAMAAAD0//f/AAAEAAMAAAD0//j/AAAEAAMAAAD0//n/AAAEAAMAAAD0//r/AAAEAAMAAAD0//v/AAAEAAMAAAD0//z/AAAEAAMAAAD0//3/AAAEAAMAAAD0//7/AAAEAAMAAAD0////AAAEAAMAAAD0/wAAAAAEAAMAAAD0/wEAAAAEAAMAAAD0/wIAAAAEAAMAAAD0/wMAAAAEAAMAAAD0/wQAAAAEAAMAAAD0/wUAAAAEAAMAAAD0/wYAAAAEAAMAAAD0/wcAAAAEAAMAAAD0/wgAAAAEAAMAAAD0/wkAAAAEAAMAAAD0/woAAAAEAAMAAAD0/wsAAAAEAAMAAAD0/wwAAAAEAAMAAAD1//T/AAAEAAMAAAD1//X/AAAEAAMAAAD1//b/AAAEAAMAAAD1//f/AAAEAAMAAAD1//j/AAAEAAMAAAD1//n/AAAEAAMAAAD1//r/AAAEAAMAAAD1//v/AAAEAAMAAAD1//z/AAAEAAMAAAD1//3/AAAEAAMAAAD1//7/AAAEAAMAAAD1////AAAEAAMAAAD1/wAAAAAEAAMAAAD1/wEAAAAEAAMAAAD1/wIAAAAEAAMAAAD1/wMAAAAEAAMAAAD1/wQAAAAEAAMAAAD1/wUAAAAEAAMAAAD1/wYAAAAEAAMAAAD1/wcAAAAEAAMAAAD1/wgAAAAEAAMAAAD1/wkAAAAEAAMAAAD1/woAAAAEAAMAAAD1/wsAAAAEAAMAAAD1/wwAAAAEAAMAAAD2//X/AAAEAAMAAAD2//b/AAAEAAMAAAD2//f/AAAEAAMAAAD2//j/AAAEAAMAAAD2//n/AAAEAAMAAAD2//r/AAAEAAMAAAD2//v/AAAEAAMAAAD2//z/AAAEAAMAAAD2//3/AAAEAAMAAAD2//7/AAAEAAMAAAD2////AAAEAAMAAAD2/wAAAAAEAAMAAAD2/wEAAAAEAAMAAAD2/wUAAAAEAAMAAAD2/wYAAAAEAAMAAAD2/wcAAAAEAAMAAAD2/wgAAAAEAAMAAAD2/wkAAAAEAAMAAAD2/woAAAAEAAMAAAD2/wsAAAAEAAMAAAD2/wwAAAAEAAMAAAD3//b/AAAEAAMAAAD3//f/AAAEAAMAAAD3//j/AAAEAAMAAAD3//n/AAAEAAMAAAD3//r/AAAEAAMAAAD3//v/AAAEAAMAAAD3/wYAAAAEAAMAAAD3/wcAAAAEAAMAAAD3/wgAAAAEAAMAAAD3/wkAAAAEAAMAAAD3/woAAAAEAAMAAAD3/wsAAAAEAAMAAAD3/wwAAAAEAAMAAAD4/wcAAAAEAAMAAAD4/wgAAAAEAAMAAAD4/wkAAAAEAAMAAAD4/woAAAAEAAMAAAD4/wsAAAAEAAMAAAD4/wwAAAAEAAMAAAD5/wgAAAAEAAMAAAD5/wkAAAAEAAMAAAD5/woAAAAEAAMAAAD5/wsAAAAEAAMAAAD5/wwAAAAEAAMAAAD6/wkAAAAEAAMAAAD6/woAAAAEAAMAAAD6/wsAAAAEAAMAAAD6/wwAAAAEAAMAAAD7/woAAAAEAAMAAAD7/wsAAAAEAAMAAAD7/wwAAAAEAAMAAAD8/woAAAAEAAMAAAD8/wsAAAAEAAMAAAD8/wwAAAAEAAMAAAD9/woAAAAEAAMAAAD9/wsAAAAEAAMAAAD9/wwAAAAEAAMAAAD+/wkAAAAEAAMAAAD+/woAAAAEAAMAAAD+/wsAAAAEAAMAAAD+/wwAAAAEAAMAAAD//wgAAAAEAAMAAAD//wkAAAAEAAMAAAD//woAAAAEAAMAAAD//wsAAAAEAAMAAAD//wwAAAAEAAMAAAAAAAgAAAAEAAMAAAAAAAkAAAAEAAMAAAAAAAoAAAAEAAMAAAAAAAsAAAAEAAMAAAAAAAwAAAAEAAMAAAABAAgAAAAEAAMAAAABAAkAAAAEAAMAAAABAAoAAAAEAAMAAAABAAsAAAAEAAMAAAABAAwAAAAEAAMAAAACAAgAAAAEAAMAAAACAAkAAAAEAAMAAAACAAoAAAAEAAMAAAACAAsAAAAEAAMAAAACAAwAAAAEAAMAAAADAAkAAAAEAAMAAAADAAoAAAAEAAMAAAADAAsAAAAEAAMAAAADAAwAAAAEAAMAAAAEAAkAAAAEAAMAAAAEAAoAAAAEAAMAAAAEAAsAAAAEAAMAAAAEAAwAAAAEAAMAAAAFAAgAAAAEAAMAAAAFAAkAAAAEAAMAAAAFAAoAAAAEAAMAAAAFAAsAAAAEAAMAAAAFAAwAAAAEAAMAAAAGAAcAAAAEAAMAAAAGAAgAAAAEAAMAAAAGAAkAAAAEAAMAAAAGAAoAAAAEAAMAAAAGAAsAAAAEAAMAAAAGAAwAAAAEAAMAAAAHAAYAAAAEAAMAAAAHAAcAAAAEAAMAAAAHAAgAAAAEAAMAAAAHAAkAAAAEAAMAAAAHAAoAAAAEAAMAAAAHAAsAAAAEAAMAAAAHAAwAAAAEAAMAAAAIAPb/AAAEAAMAAAAIAPf/AAAEAAMAAAAIAPj/AAAEAAMAAAAIAPn/AAAEAAMAAAAIAAQAAAAEAAMAAAAIAAUAAAAEAAMAAAAIAAYAAAAEAAMAAAAIAAcAAAAEAAMAAAAIAAgAAAAEAAMAAAAIAAkAAAAEAAMAAAAIAAoAAAAEAAMAAAAIAAsAAAAEAAMAAAAIAAwAAAAEAAMAAAAJAPX/AAAEAAMAAAAJAPb/AAAEAAMAAAAJAPf/AAAEAAMAAAAJAPj/AAAEAAMAAAAJAPn/AAAEAAMAAAAJAPr/AAAEAAMAAAAJAPv/AAAEAAMAAAAJAPz/AAAEAAMAAAAJAAIAAAAEAAMAAAAJAAMAAAAEAAMAAAAJAAQAAAAEAAMAAAAJAAUAAAAEAAMAAAAJAAYAAAAEAAMAAAAJAAcAAAAEAAMAAAAJAAgAAAAEAAMAAAAJAAkAAAAEAAMAAAAJAAoAAAAEAAMAAAAJAAsAAAAEAAMAAAAJAAwAAAAEAAMAAAAKAPT/AAAEAAMAAAAKAPX/AAAEAAMAAAAKAPb/AAAEAAMAAAAKAPf/AAAEAAMAAAAKAPj/AAAEAAMAAAAKAPn/AAAEAAMAAAAKAPr/AAAEAAMAAAAKAPv/AAAEAAMAAAAKAPz/AAAEAAMAAAAKAP3/AAAEAAMAAAAKAP7/AAAEAAMAAAAKAP//AAAEAAMAAAAKAAAAAAAEAAMAAAAKAAEAAAAEAAMAAAAKAAIAAAAEAAMAAAAKAAMAAAAEAAMAAAAKAAQAAAAEAAMAAAAKAAUAAAAEAAMAAAAKAAYAAAAEAAMAAAAKAAcAAAAEAAMAAAAKAAgAAAAEAAMAAAAKAAkAAAAEAAMAAAAKAAoAAAAEAAMAAAAKAAsAAAAEAAMAAAAKAAwAAAAEAAMAAAALAPT/AAAEAAMAAAALAPX/AAAEAAMAAAALAPb/AAAEAAMAAAALAPf/AAAEAAMAAAALAPj/AAAEAAMAAAALAPn/AAAEAAMAAAALAPr/AAAEAAMAAAALAPv/AAAEAAMAAAALAPz/AAAEAAMAAAALAP3/AAAEAAMAAAALAP7/AAAEAAMAAAALAP//AAAEAAMAAAALAAAAAAAEAAMAAAALAAEAAAAEAAMAAAALAAIAAAAEAAMAAAALAAMAAAAEAAMAAAALAAQAAAAEAAMAAAALAAUAAAAEAAMAAAALAAYAAAAEAAMAAAALAAcAAAAEAAMAAAALAAgAAAAEAAMAAAALAAkAAAAEAAMAAAALAAoAAAAEAAMAAAALAAsAAAAEAAMAAAALAAwAAAAEAAMAAAAMAPT/AAAEAAMAAAAMAPX/AAAEAAMAAAAMAPb/AAAEAAMAAAAMAPf/AAAEAAMAAAAMAPj/AAAEAAMAAAAMAPn/AAAEAAMAAAAMAPr/AAAEAAMAAAAMAPv/AAAEAAMAAAAMAPz/AAAEAAMAAAAMAP3/AAAEAAMAAAAMAP7/AAAEAAMAAAAMAP//AAAEAAMAAAAMAAAAAAAEAAMAAAAMAAEAAAAEAAMAAAAMAAIAAAAEAAMAAAAMAAMAAAAEAAMAAAAMAAQAAAAEAAMAAAAMAAUAAAAEAAMAAAAMAAYAAAAEAAMAAAAMAAcAAAAEAAMAAAAMAAgAAAAEAAMAAAAMAAkAAAAEAAMAAAAMAAoAAAAEAAMAAAAMAAsAAAAEAAMAAAAMAAwAAAAEAAMAAAD2//T/AAAEAAMAAAD3//X/AAAEAAMAAAD3//z/AAAEAAMAAAAEAAgAAAAEAAMAAAAFAAcAAAAEAAMAAAAGAAYAAAAEAAMAAAAHAAUAAAAEAAMAAAAIAPX/AAAEAAMAAAAIAAMAAAAEAAMAAAAJAPT/AAAEAAMAAAAJAP3/AAAEAAMAAAAJAAEAAAAEAAMAAAD2/wQAAAAEAAMAAAD3/wUAAAAEAAMAAAD4/wYAAAAEAAMAAAD5/wcAAAAEAAMAAAD6/wgAAAAEAAMAAAD7/wkAAAAEAAMAAAD9/wkAAAAEAAMAAAD+/wgAAAAEAAMAAAD//wcAAAAEAAMAAAAAAAcAAAAEAAMAAAABAAcAAAAEAAMAAAACAAcAAAAEAAMAAAADAAgAAAAEAAMAAAAHAPb/AAAEAAMAAAAHAPf/AAAEAAMAAAAHAPj/AAAEAAMAAAAHAPn/AAAEAAMAAAAHAAQAAAAEAAMAAAAIAPr/AAAEAAMAAAA=")
 tile_set = ExtResource("9_m773q")
 
-[node name="@Sprite2D@26503" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-110.725, -141.2)
+[node name="@Sprite2D@80516" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-115.492, -141.2)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26504" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-123.601, -84.35)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26505" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-141.462, -29.6012)
+[node name="@Sprite2D@80517" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-114.923, -84.35)
 rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26506" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-151.025, 35.2716)
-rotation = 3.14159
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26507" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-135.72, 79.3211)
+[node name="@Sprite2D@80518" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-143.148, -29.6012)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26508" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-87.2435, 131.939)
+[node name="@Sprite2D@80519" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-145.385, 40.9113)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26509" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-31.4669, 140.813)
-rotation = 3.14159
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26510" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(21.6487, 120.609)
+[node name="@Sprite2D@80520" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-131.87, 75.4708)
 rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26511" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(72.0494, 119.616)
-rotation = 4.71239
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26512" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(113.596, 81.7549)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26513" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(135.729, 27.4107)
-rotation = 3.14159
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26514" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(146.117, -27.3381)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26515" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(126.984, -96.653)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26516" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(110.22, -149.78)
-rotation = 3.14159
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26530" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-130.336, -119.247)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26531" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-139.919, -60.8503)
+[node name="@Sprite2D@80521" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-88.6031, 133.299)
 rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26532" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-149.469, 5.29577)
-rotation = 1.5708
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26533" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-168.305, 60.0446)
+[node name="@Sprite2D@80522" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-32.8051, 139.475)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26534" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-115.802, 120.794)
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26535" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-75.8064, 160.206)
+[node name="@Sprite2D@80523" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(21.6487, 108.298)
 rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26536" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(-4.47978, 128.097)
-rotation = 1.5708
-texture = ExtResource("8_0vhrf")
-
-[node name="@Sprite2D@26537" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(43.6012, 129.936)
+[node name="@Sprite2D@80524" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(70.3899, 117.956)
 rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26538" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(104.318, 112.181)
+[node name="@Sprite2D@80525" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(108.592, 76.751)
+rotation = 1.5708
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26539" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(138.34, 58.9221)
+[node name="@Sprite2D@80526" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(129.431, 27.4107)
+rotation = 4.71239
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26540" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(164.129, -5.38558)
+[node name="@Sprite2D@80527" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(159.796, -27.3381)
 rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26541" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(148.215, -60.1344)
+[node name="@Sprite2D@80528" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(128.034, -97.7032)
+rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
-[node name="@Sprite2D@26542" type="Sprite2D" parent="Border/Paralax2/Origin"]
-position = Vector2(129.71, -114.883)
+[node name="@Sprite2D@80529" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(119.209, -149.78)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80543" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-133.776, -119.247)
+rotation = 3.14159
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80544" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-141.465, -62.3964)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80545" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-149.73, 5.29577)
+rotation = 1.5708
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80546" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-169.683, 60.0446)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80547" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-115.069, 120.061)
+rotation = 1.5708
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80548" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-74.9823, 159.382)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80549" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(-3.11724, 129.459)
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80550" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(43.6012, 130.406)
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80551" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(104.366, 112.229)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80552" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(139.718, 60.3009)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80553" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(167.904, -5.38558)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80554" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(146.303, -60.1344)
+rotation = 4.71239
+texture = ExtResource("8_0vhrf")
+
+[node name="@Sprite2D@80555" type="Sprite2D" parent="Border/Paralax2/Origin"]
+position = Vector2(128.519, -114.883)
+rotation = 3.14159
 texture = ExtResource("8_0vhrf")
 
 [node name="BorderTool" type="Node2D" parent="Border" node_paths=PackedStringArray("TileMap")]
