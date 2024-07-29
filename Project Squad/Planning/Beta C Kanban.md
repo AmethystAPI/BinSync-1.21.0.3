@@ -27,7 +27,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Windswept Wastes Biome - Rooms #design
 - [ ] [[Transition of Biomes]] #design
 - [ ] Windswept Wastes Biome - Temple #design
 - [ ] Sinister Swamp Biome #design
@@ -38,12 +37,13 @@ kanban-plugin: basic
 ## In Progress
 
 - [ ] Fix bug of rooms not finishing<br>because enemy spawned far back
-- [ ] More Golden Grove Rooms
 
 
 ## Done
 
 **Complete**
+- [x] Windswept Wastes Biome - Rooms #design
+- [x] More Golden Grove Rooms
 - [x] Damage Numbers
 - [x] Fix bug of invalid crow
 - [x] [[Variety and Fun in Combat]] #design
