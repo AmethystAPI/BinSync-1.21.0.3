@@ -5,8 +5,7 @@ using Godot;
 
 [Tool]
 public partial class BorderTool : Node2D {
-    [Export] public Texture2D BorderDecoration;
-    [Export] public float Spacing = 64f;
+    [Export] public Border Border;
     [Export] public TileMap TileMap;
 
     private bool _justPressedGenerate = false;
@@ -42,6 +41,12 @@ public partial class BorderTool : Node2D {
         _paralaxOrigin2 = GetParent().GetNode<Node2D>("Paralax2/Origin");
 
         foreach (Node child in GetChildren()) {
+            child.QueueFree();
+        }
+
+        foreach (Node child in _paralaxOrigin1.GetChildren()) {
+            if (child.Name == "Screen") continue;
+
             child.QueueFree();
         }
 
@@ -182,33 +187,46 @@ public partial class BorderTool : Node2D {
     }
 
     private void PlaceDecorations() {
-        foreach (List<Vector2> spline in _splines) {
-            float spacingTillNextDecoration = 0f;
+        RandomNumberGenerator random = new RandomNumberGenerator();
 
-            for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
-                Vector2 previousNode = spline[nodeIndex - 1] * 16f + Vector2.One * 8f;
-                Vector2 nextNode = spline[nodeIndex] * 16f + Vector2.One * 8f;
+        for (int decorationIndex = 0; decorationIndex < Border.Textures.Length; decorationIndex++) {
+            Texture2D texture = Border.Textures[decorationIndex];
+            float spacing = Border.Spacings[decorationIndex];
+            Vector2 variance = Border.Variances[decorationIndex];
+            float offset = Border.Offsets[decorationIndex];
+            int layer = Border.Layers[decorationIndex];
 
-                float length = previousNode.DistanceTo(nextNode);
+            foreach (List<Vector2> spline in _splines) {
+                float spacingTillNextDecoration = offset;
 
-                spacingTillNextDecoration -= length;
+                for (int nodeIndex = 1; nodeIndex < spline.Count; nodeIndex++) {
+                    Vector2 previousNode = spline[nodeIndex - 1] * 16f + Vector2.One * 8f;
+                    Vector2 nextNode = spline[nodeIndex] * 16f + Vector2.One * 8f;
 
-                GD.Print("At node " + nodeIndex + " " + length + " " + spacingTillNextDecoration);
+                    float length = previousNode.DistanceTo(nextNode);
 
-                if (spacingTillNextDecoration > 0f) continue;
+                    spacingTillNextDecoration -= length;
 
-                float factor = 1f + spacingTillNextDecoration / Spacing;
+                    if (spacingTillNextDecoration > 0f) continue;
 
-                Sprite2D sprite = new Sprite2D() {
-                    Texture = BorderDecoration
-                };
+                    float factor = 1f + spacingTillNextDecoration / spacing;
 
-                _paralaxOrigin2.AddChild(sprite);
+                    Sprite2D sprite = new Sprite2D() {
+                        Texture = texture
+                    };
 
-                sprite.Position = previousNode.Lerp(nextNode, factor);
-                sprite.Owner = GetOwner();
+                    if (layer == 1) {
+                        _paralaxOrigin2.AddChild(sprite);
+                    } else {
+                        _paralaxOrigin1.AddChild(sprite);
+                    }
 
-                spacingTillNextDecoration += Spacing;
+                    sprite.Position = previousNode.Lerp(nextNode, factor);
+                    sprite.Owner = GetOwner();
+                    sprite.Rotate(random.RandiRange(0, 3) * Mathf.Pi / 2f);
+
+                    spacingTillNextDecoration += spacing;
+                }
             }
         }
     }
@@ -246,7 +264,7 @@ public partial class BorderTool : Node2D {
                     }
                 }
 
-                if (collided) _screen.SetCell(position, 0, new Vector2I(4, 3));
+                if (collided) _screen.SetCell(position, Border.Tile.X, new Vector2I(Border.Tile.Y, Border.Tile.Z));
             }
         }
     }

@@ -11,9 +11,11 @@
             "id": "486c50ffca868aa8",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Devlogs/Devlog 19/What is Interesting.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Devlogs/Devlog 19/What is Interesting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Devlogs/Devlog 19/What is Interesting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Devlogs/Devlog 19/What is Interesting.md"
               }
             }
           }
@@ -144,10 +146,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "486c50ffca868aa8",
+  "active": "711274cd3592b4d7",
   "lastOpenFiles": [
-    "Beta B Playtest Notes.md",
+    "Devlogs/Devlog 19/Script.md",
+    "Devlogs/Devlog 19/What is Interesting.md",
+    "Devlogs/Devlog 19/Outline.md",
+    "Devlogs/Devlog 19/Graph.canvas",
+    "Devlogs/Devlog 19/Goals.md",
     "Planning/Beta C Kanban.md",
+    "Beta B Playtest Notes.md",
     "Design/World Generation.md",
     "More Room Designs.md",
     "Design/Current Design Issues/Variety and Fun in Combat.md",
@@ -155,10 +162,6 @@
     "Devlogs/Deblog 20/Ideas.md",
     "Devlogs/Deblog 20",
     "No Communication Notes.md",
-    "Devlogs/Devlog 19/Script.md",
-    "Devlogs/Devlog 19/Outline.md",
-    "Devlogs/Devlog 19/Goals.md",
-    "Devlogs/Devlog 19/Graph.canvas",
     "Design/Current Design Issues/Availability of Weapons.md",
     "Design/Current Design Issues/Transition of Biomes.md",
     "Design/Current Design Issues/Scaling of Trinkets.md",
@@ -174,7 +177,6 @@
     "Design/Music.md",
     "Design/Team Work.md",
     "Design/Trinkets.md",
-    "Design/Visuals.md",
     "Design/Current Design Issues",
     "Attachments/200w 1.gif",
     "Attachments/Pasted image 20240630225858.png",
