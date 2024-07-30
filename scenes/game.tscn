@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=41 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
 [ext_resource type="Resource" uid="uid://domhx2cdlyijx" path="res://resources/biomes/biome_golden_grove.tres" id="15_675tc"]
+[ext_resource type="Resource" uid="uid://dw1yvgf28xey3" path="res://resources/biomes/biome_swamp.tres" id="15_dudfb"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="15_pi7jw"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="15_xrri3"]
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
@@ -110,7 +111,7 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 [node name="WorldGenerator" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
-Biomes = Array[Resource]([ExtResource("15_675tc"), ExtResource("16_kxt7h")])
+Biomes = Array[Resource]([ExtResource("15_675tc"), ExtResource("16_kxt7h"), ExtResource("15_dudfb")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20

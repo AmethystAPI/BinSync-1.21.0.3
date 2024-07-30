@@ -13,11 +13,11 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas",
+                "file": "Reference/Locations/Sinister Swamp.canvas",
                 "viewState": {
-                  "x": 2243.7257479180407,
-                  "y": 188.85581425914503,
-                  "zoom": 0.3333333333333334
+                  "x": 1315.2394590635959,
+                  "y": 796.4506136632085,
+                  "zoom": 1
                 }
               }
             }
@@ -88,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas",
+                "file": "Reference/Locations/Sinister Swamp.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas",
+                "file": "Reference/Locations/Sinister Swamp.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/Locations/Golden Grove.canvas"
+                "file": "Reference/Locations/Sinister Swamp.canvas"
               }
             }
           }
@@ -151,12 +151,29 @@
   },
   "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
-    "Attachments/savanne-zwischen-wueste-und-wald-giraffe-blog-natucate.webp.import",
-    "Attachments/1000_F_254727239_PCZI4b4gbaJh1E3l5AfJcKApMbdX8KIN.jpg.import",
-    "Attachments/Untitled 2.jpg.import",
-    "Attachments/savanne-zwischen-wueste-und-wald-giraffe-blog-natucate.webp",
-    "Attachments/1000_F_254727239_PCZI4b4gbaJh1E3l5AfJcKApMbdX8KIN.jpg",
-    "Attachments/Untitled 2.jpg",
+    "Attachments/shutterstock_2331893385.jpg",
+    "New Text Document.txt",
+    "Attachments/8c6106e834492441bb72785f5dd67d32.jpg.import",
+    "Attachments/361b32fed25e375486b48c6f61b0b5a5.jpg.import",
+    "Attachments/GSnKNHva8AALQFh.png.import",
+    "Attachments/54a0a4bac0759751618dc34cb49df884.jpg.import",
+    "Attachments/76b097eb128e946aed8dfd951c4c8b70.jpg.import",
+    "Attachments/thumb_720_450_Swamp_Featured_xl_55847560_(Custom).jpg.import",
+    "Attachments/e56f0284cbd8b0e81196dca93d97c9fa.jpg.import",
+    "Attachments/louisiana-swamp.jpg.import",
+    "Attachments/F-5L__CWMAAulQ7.png.import",
+    "Attachments/F7gupOhWYAEmj_W.png",
+    "Attachments/F7gulmgWgAABxqs.png",
+    "Attachments/F-5L__CWMAAulQ7.png",
+    "Attachments/GSnKNHva8AALQFh.png",
+    "Attachments/54a0a4bac0759751618dc34cb49df884.jpg",
+    "Attachments/f9326aa4c888716b5199ed28a6d779f5.jpg",
+    "Attachments/e56f0284cbd8b0e81196dca93d97c9fa.jpg",
+    "Attachments/76b097eb128e946aed8dfd951c4c8b70.jpg",
+    "Attachments/8c6106e834492441bb72785f5dd67d32.jpg",
+    "Attachments/361b32fed25e375486b48c6f61b0b5a5.jpg",
+    "Reference/Locations/Golden Grove.canvas",
+    "Reference/Locations/Sinister Swamp.canvas",
     "Planning/Beta C Kanban.md",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Script.md",
@@ -169,7 +186,6 @@
     "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Devlogs/Deblog 20/Outline.canvas",
     "Devlogs/Deblog 20/Ideas.md",
-    "Devlogs/Deblog 20",
     "No Communication Notes.md",
     "Design/Current Design Issues/Availability of Weapons.md",
     "Design/Current Design Issues/Transition of Biomes.md",
@@ -185,22 +201,7 @@
     "Design/Enemies.md",
     "Design/Music.md",
     "Design/Team Work.md",
-    "Design/Current Design Issues",
-    "Attachments/200w 1.gif",
-    "Attachments/Pasted image 20240630225858.png",
-    "Attachments/Pasted image 20240630224700.png",
-    "Attachments/200w.gif",
-    "Attachments/Server-based-network.svg.png",
-    "Attachments/Client-server-model.svg.png",
-    "Marketing",
-    "Devlogs/Devlog 19",
-    "Attachments/PasF6D9.tmp",
-    "Attachments/Pasted image 20240607003604.png",
     "Reference/Devlogs.canvas",
-    "Attachments/Pasted image 20240316154618.png.import",
-    "Attachments/PasC24.tmp",
-    "Attachments/PasC13.tmp",
-    "Reference/General.canvas",
-    "Reference/Locations/Golden Grove.canvas"
+    "Reference/General.canvas"
   ]
 }

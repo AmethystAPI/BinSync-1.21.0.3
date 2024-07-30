@@ -75,7 +75,8 @@ public partial class TileMapToolEditorUI : Control {
 
 				Button button = new Button() {
 					CustomMinimumSize = new Vector2(32f, 32f),
-					Position = tilePosition * 32f
+					Position = tilePosition * 32f,
+					Modulate = new Color("#ffffff55")
 				};
 
 				_tileButtonsHolder.AddChild(button);

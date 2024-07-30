@@ -9,38 +9,38 @@ kanban-plugin: basic
 - [ ] [[Scaling of Trinkets]] #design
 - [ ] Decrease Range of Bow
 - [ ] Hurting before activate causes infinite damage
-- [ ] Rooms ending
 - [ ] Mid Round Enemies
-- [ ] Look at decreasing projectile invincibility time
 - [ ] Improve Title Screen
+- [ ] Look at decreasing projectile invincibility time
 - [ ] Multiple Paths
-- [ ] Healthbars
-- [ ] Work on SFX #polish
 - [ ] More Music #content
 - [ ] More Trinkets #design
 - [ ] More Weapons #design
 - [ ] More Golden Grove Enemies #design
 - [ ] enemy points system
 - [ ] Players not counted as dead
-- [ ] Potential delay on interactions
 
 
 ## Must Do
 
-- [ ] [[Transition of Biomes]] #design
-- [ ] Sinister Swamp Biome #design
-- [ ] Steam Page #marketing
 - [ ] Improve Giant Slime
+- [ ] Steam Page #marketing
+- [ ] Healthbars
+- [ ] Rooms ending
+- [ ] Work on SFX #polish
+- [ ] Potential delay on interactions
 
 
 ## In Progress
 
-- [ ] Fix bug of rooms not finishing<br>because enemy spawned far back
+- [ ] Sinister Swamp Biome #design
 
 
 ## Done
 
 **Complete**
+- [x] Fix bug of rooms not finishing<br>because enemy spawned far back
+- [x] [[Transition of Biomes]] #design
 - [x] Windswept Wastes Biome - Temple #design
 - [x] Windswept Wastes Biome - Rooms #design
 - [x] More Golden Grove Rooms

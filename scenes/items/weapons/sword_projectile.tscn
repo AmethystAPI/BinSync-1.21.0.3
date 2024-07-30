@@ -43,7 +43,7 @@ position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("5_vsqnk")
+texture = ExtResource("3_wsr12")
 region_rect = Rect2(37, 7, 18, 18)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

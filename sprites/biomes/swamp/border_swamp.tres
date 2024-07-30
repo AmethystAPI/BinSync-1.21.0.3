@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://uej8ak456riq"]
+
+[ext_resource type="Texture2D" uid="uid://dv2vfwljb5x2x" path="res://sprites/biomes/swamp/swamp.aseprite" id="1_upn1m"]
+
+[resource]
+atlas = ExtResource("1_upn1m")
+region = Rect2(117, 6, 50, 50)

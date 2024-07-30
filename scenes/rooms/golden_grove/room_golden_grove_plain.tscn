@@ -49,7 +49,7 @@ layer_3/name = "Shadow"
 layer_3/z_index = -6
 layer_3/tile_data = PackedInt32Array(-4, 131072, 11, 65531, 131072, 10, 131067, 131072, 11, -327677, 0, 10, -262141, 0, 11, -5, 196608, 10, 65530, 65536, 11, 131066, 196608, 10, -65541, 65536, 11, -65540, 131072, 10, -327676, 65536, 11, -262140, 262144, 10, -196604, 0, 10, -131068, 0, 11, -196603, 65536, 11, -131067, 262144, 10, 262147, 0, 10, 327684, 262144, 10, 262148, 65536, 11, 327683, 0, 11)
 
-[node name="Node" type="Node" parent="TileMap"]
+[node name="TileMapTool" type="Node" parent="TileMap"]
 script = ExtResource("4_p0bsb")
 SmartTileset = ExtResource("5_3gwuh")
 

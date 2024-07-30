@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://welc4axv6svv"]
+
+[ext_resource type="Script" path="res://scripts/rooms/SmartTileset.cs" id="1_bmjyh"]
+
+[resource]
+script = ExtResource("1_bmjyh")
+SourceId = 2
+RoofsTopLeft = PackedVector2Array(1, 1)
+RoofsTop = PackedVector2Array(2, 1)
+RoofsTopRight = PackedVector2Array(3, 1)
+RoofsLeft = PackedVector2Array(1, 2)
+RoofsMiddle = PackedVector2Array(2, 2)
+RoofsRight = PackedVector2Array(3, 2)
+RoofsBottomLeft = PackedVector2Array(1, 3)
+RoofsBottom = PackedVector2Array(2, 3)
+RoofsBottomRight = PackedVector2Array(3, 3)
+RoofsInsideTopLeft = PackedVector2Array(2, 4)
+RoofsInsideTopRight = PackedVector2Array(3, 4)
+RoofsInsideBottomLeft = PackedVector2Array(2, 5)
+RoofsInsideBottomRight = PackedVector2Array(3, 5)
+WallsLeft = PackedVector2Array(0, 7)
+WallsMiddle = PackedVector2Array(1, 7, 2, 7)
+WallsRight = PackedVector2Array(3, 7)
+WallsInsideLeft = PackedVector2Array(5, 7)
+WallsInsideRight = PackedVector2Array(6, 7)
+WallHidden = Vector2(5, 5)
+ShadowLeft = Vector2(0, 9)
+ShadowMiddle = Vector2(1, 9)
+ShadowRight = Vector2(3, 9)
+ShadowInsideLeft = Vector2(5, 8)
+ShadowInsideRight = Vector2(6, 8)
+Floor = Vector2(5, 1)

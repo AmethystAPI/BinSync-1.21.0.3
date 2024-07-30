@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://0ch4iruifftw"]
 
-[ext_resource type="Resource" uid="uid://b1bih4n81x1qx" path="res://resources/room_placers/room_placer_golden_grove_wastes_transition.tres" id="1_1n2ux"]
+[ext_resource type="Resource" uid="uid://b1bih4n81x1qx" path="res://resources/room_placers/wastes/room_placer_golden_grove_wastes_transition.tres" id="1_1n2ux"]
 [ext_resource type="Script" path="res://scripts/rooms/UniqueEncounter.cs" id="2_2gmvf"]
 
 [resource]

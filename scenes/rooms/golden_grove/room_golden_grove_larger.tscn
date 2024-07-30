@@ -94,59 +94,76 @@ shape = SubResource("RectangleShape2D_3mg5l")
 [node name="Holder" type="Node2D" parent="Decorations/GrassDecorator"]
 y_sort_enabled = true
 
-[node name="LargePatch2" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
-position = Vector2(-6.53098, 107.31)
-
-[node name="@Node2D@37753" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("9_8qmhb")]
-position = Vector2(-185.233, -179.174)
-rotation = 1.5708
-
-[node name="@Node2D@37754" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("9_8qmhb")]
-position = Vector2(196.922, -171.84)
-rotation = -3.14159
-
-[node name="@Node2D@37755" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
-position = Vector2(6.82111, -168.211)
-
-[node name="@Node2D@37756" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
-position = Vector2(-184.335, -47.3937)
+[node name="@Node2D@33205" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
+position = Vector2(-117.447, -103.96)
 rotation = -1.5708
 
-[node name="LargePatch" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
-position = Vector2(104.856, -23.0599)
-rotation = 1.5708
+[node name="@Node2D@33206" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
+position = Vector2(8.7825, -86.9444)
 
-[node name="@Node2D@37757" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_j8cbv")]
-position = Vector2(170.773, 45.8481)
-rotation = -3.14159
+[node name="LargePatch4" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_j8cbv")]
+position = Vector2(4.21704, 122.233)
 
-[node name="@Node2D@37758" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_j8cbv")]
-position = Vector2(-210.905, 33.7441)
-rotation = 1.5708
-
-[node name="@Sprite2D@37759" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+[node name="SmallPatch" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(104.021, -200.12)
+position = Vector2(4.64355, -180.367)
 texture = ExtResource("11_wjmt8")
 region_enabled = true
 region_rect = Rect2(159, -1, 64, 68)
 
-[node name="@Node2D@37760" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
-position = Vector2(-102.855, -163.59)
-rotation = 1.5708
-
-[node name="@Node2D@37761" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
-position = Vector2(-64.4018, 35.8016)
-rotation = -1.5708
-
-[node name="@Node2D@37762" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
-position = Vector2(133.029, -122.266)
+[node name="@Node2D@33207" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
+position = Vector2(195.714, -100.155)
 rotation = -3.14159
 
-[node name="@Node2D@37763" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("9_8qmhb")]
-position = Vector2(189.866, -49.6169)
+[node name="@Node2D@33208" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
+position = Vector2(101.398, -75.0337)
+
+[node name="@Node2D@33209" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("12_03npi")]
+position = Vector2(-147.953, -208.273)
+rotation = -1.5708
+
+[node name="@Sprite2D@33210" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-57.1704, -49.133)
+rotation = -3.14159
+texture = ExtResource("11_wjmt8")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="@Node2D@33211" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_j8cbv")]
+position = Vector2(-70.8728, 105.767)
+
+[node name="@Sprite2D@33212" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(122.542, -171.791)
 rotation = 1.5708
+texture = ExtResource("11_wjmt8")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="LargePatch3" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("9_8qmhb")]
+position = Vector2(15.4698, -4.3954)
+rotation = -3.14159
+
+[node name="@Node2D@33213" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
+position = Vector2(172.394, 75.4934)
+rotation = 1.5708
+
+[node name="@Node2D@33214" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_nuucg")]
+position = Vector2(-214.199, -169.346)
+rotation = -3.14159
+
+[node name="@Sprite2D@33215" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_aoivb")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(204.697, -205.694)
+rotation = -3.14159
+texture = ExtResource("11_wjmt8")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
 
 [node name="Border" type="Node2D" parent="Decorations"]
 z_index = 9

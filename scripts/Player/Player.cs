@@ -137,8 +137,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (_stateMachine.CurrentState == "dash") return false;
 
-		// TODO: DEBUG
-		return false;
+		// DEBUG
+		// return false;
 
 		return true;
 	}

@@ -57,8 +57,8 @@ public partial class SimpleWeapon : Weapon {
       trinket.ModifyProjectile(this, projectile);
     }
 
-    // TODO: DEBUG
-    projectile.Damage = 999f;
+    // DEBUG
+    // projectile.Damage = 999f;
 
     Audio.Play("weapon_shoot");
   }

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=8 format=3 uid="uid://cgl8q2vlqtj32"]
 
-[ext_resource type="Resource" uid="uid://6lgr05pmvo5" path="res://resources/room_placers/room_placer_wastes_plain.tres" id="1_b0e21"]
-[ext_resource type="Resource" uid="uid://bs20tynxkn3fe" path="res://resources/room_placers/room_placer_wastes_large.tres" id="2_ugo12"]
-[ext_resource type="Resource" uid="uid://dn14gv6i2aaly" path="res://resources/room_placers/room_placer_wastes_bottom_right.tres" id="3_ayxfd"]
-[ext_resource type="Resource" uid="uid://r1hn3wb6by3w" path="res://resources/room_placers/room_placer_wastes_left_top.tres" id="4_hjekg"]
+[ext_resource type="Resource" uid="uid://6lgr05pmvo5" path="res://resources/room_placers/wastes/room_placer_wastes_plain.tres" id="1_b0e21"]
+[ext_resource type="Resource" uid="uid://bs20tynxkn3fe" path="res://resources/room_placers/wastes/room_placer_wastes_large.tres" id="2_ugo12"]
+[ext_resource type="Resource" uid="uid://dn14gv6i2aaly" path="res://resources/room_placers/wastes/room_placer_wastes_bottom_right.tres" id="3_ayxfd"]
+[ext_resource type="Resource" uid="uid://r1hn3wb6by3w" path="res://resources/room_placers/wastes/room_placer_wastes_left_top.tres" id="4_hjekg"]
 [ext_resource type="Resource" uid="uid://kn2pj2ttbeop" path="res://resources/unique_encounters/unique_encounter_wastes_temple.tres" id="5_oiscj"]
 [ext_resource type="Resource" uid="uid://0ch4iruifftw" path="res://resources/unique_encounters/unique_encounter_golden_grove_wastes_transition.tres" id="6_m15jt"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="6_njui7"]
