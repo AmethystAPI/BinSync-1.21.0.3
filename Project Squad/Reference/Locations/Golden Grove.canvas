@@ -16,7 +16,10 @@
 		{"id":"05f309e22c2d7e33","type":"file","file":"Attachments/GA0Uat-XYAAmPp9.png","x":1038,"y":-76,"width":400,"height":226},
 		{"id":"f897ba69ed1cdeb1","type":"file","file":"Attachments/GA5kUMrW4AAGSLG.png","x":1038,"y":187,"width":400,"height":226},
 		{"id":"eca816cd3557fb93","type":"text","text":"# Style","x":978,"y":-473,"width":250,"height":60},
-		{"id":"48c676bceac7d00b","type":"file","file":"Attachments/Pasted image 20231228222328.png","x":578,"y":-333,"width":400,"height":225}
+		{"id":"48c676bceac7d00b","type":"file","file":"Attachments/Pasted image 20231228222328.png","x":578,"y":-333,"width":400,"height":225},
+		{"id":"026633ed82ea5ece","type":"file","file":"Attachments/Untitled 2.jpg","x":1760,"y":-76,"width":400,"height":246},
+		{"id":"35ea52ab3257c306","x":2200,"y":-76,"width":400,"height":267,"type":"file","file":"Attachments/savanne-zwischen-wueste-und-wald-giraffe-blog-natucate.webp"},
+		{"id":"bac3f72307dca9a5","type":"file","file":"Attachments/1000_F_254727239_PCZI4b4gbaJh1E3l5AfJcKApMbdX8KIN.jpg","x":1760,"y":220,"width":400,"height":265}
 	],
 	"edges":[]
 }

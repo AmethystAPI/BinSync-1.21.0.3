@@ -28,7 +28,6 @@ kanban-plugin: basic
 ## Must Do
 
 - [ ] [[Transition of Biomes]] #design
-- [ ] Windswept Wastes Biome - Temple #design
 - [ ] Sinister Swamp Biome #design
 - [ ] Steam Page #marketing
 - [ ] Improve Giant Slime
@@ -42,6 +41,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Windswept Wastes Biome - Temple #design
 - [x] Windswept Wastes Biome - Rooms #design
 - [x] More Golden Grove Rooms
 - [x] Damage Numbers

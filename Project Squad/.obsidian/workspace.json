@@ -11,9 +11,14 @@
             "id": "ba0c1306aecfa667",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "canvas",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Reference/Locations/Golden Grove.canvas",
+                "viewState": {
+                  "x": 2104.73653036808,
+                  "y": 247.8839023233328,
+                  "zoom": -0.3333333333333332
+                }
               }
             }
           }
@@ -83,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Reference/Locations/Golden Grove.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Reference/Locations/Golden Grove.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Reference/Locations/Golden Grove.canvas"
               }
             }
           }
@@ -144,14 +149,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "711274cd3592b4d7",
+  "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Attachments/savanne-zwischen-wueste-und-wald-giraffe-blog-natucate.webp",
+    "Attachments/1000_F_254727239_PCZI4b4gbaJh1E3l5AfJcKApMbdX8KIN.jpg",
+    "Attachments/Untitled 2.jpg",
+    "Planning/Beta C Kanban.md",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Script.md",
     "Devlogs/Devlog 19/What is Interesting.md",
     "Devlogs/Devlog 19/Graph.canvas",
     "Devlogs/Devlog 19/Goals.md",
-    "Planning/Beta C Kanban.md",
     "Beta B Playtest Notes.md",
     "Design/World Generation.md",
     "More Room Designs.md",
@@ -174,7 +182,6 @@
     "Design/Enemies.md",
     "Design/Music.md",
     "Design/Team Work.md",
-    "Design/Trinkets.md",
     "Design/Current Design Issues",
     "Attachments/200w 1.gif",
     "Attachments/Pasted image 20240630225858.png",
@@ -187,9 +194,7 @@
     "Attachments/PasF6D9.tmp",
     "Attachments/Pasted image 20240607003604.png",
     "Attachments/Pasted image 20240607003557.png",
-    "Attachments/Pasted image 20240403213019.png",
     "Reference/Devlogs.canvas",
-    "Attachments/Pasted image 20240316194450.png",
     "Attachments/Pasted image 20240316154618.png.import",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
