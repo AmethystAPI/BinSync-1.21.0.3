@@ -15,9 +15,9 @@
               "state": {
                 "file": "Reference/Locations/Golden Grove.canvas",
                 "viewState": {
-                  "x": 2104.73653036808,
-                  "y": 247.8839023233328,
-                  "zoom": -0.3333333333333332
+                  "x": 2243.7257479180407,
+                  "y": 188.85581425914503,
+                  "zoom": 0.3333333333333334
                 }
               }
             }
@@ -151,6 +151,9 @@
   },
   "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Attachments/savanne-zwischen-wueste-und-wald-giraffe-blog-natucate.webp.import",
+    "Attachments/1000_F_254727239_PCZI4b4gbaJh1E3l5AfJcKApMbdX8KIN.jpg.import",
+    "Attachments/Untitled 2.jpg.import",
     "Attachments/savanne-zwischen-wueste-und-wald-giraffe-blog-natucate.webp",
     "Attachments/1000_F_254727239_PCZI4b4gbaJh1E3l5AfJcKApMbdX8KIN.jpg",
     "Attachments/Untitled 2.jpg",
@@ -193,13 +196,10 @@
     "Devlogs/Devlog 19",
     "Attachments/PasF6D9.tmp",
     "Attachments/Pasted image 20240607003604.png",
-    "Attachments/Pasted image 20240607003557.png",
     "Reference/Devlogs.canvas",
     "Attachments/Pasted image 20240316154618.png.import",
     "Attachments/PasC24.tmp",
     "Attachments/PasC13.tmp",
-    "Attachments/PasBF2.tmp",
-    "Attachments/GAw862.tmp",
     "Reference/General.canvas",
     "Reference/Locations/Golden Grove.canvas"
   ]
