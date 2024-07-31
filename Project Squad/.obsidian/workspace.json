@@ -11,14 +11,11 @@
             "id": "ba0c1306aecfa667",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas",
-                "viewState": {
-                  "x": 1315.2394590635959,
-                  "y": 796.4506136632085,
-                  "zoom": 1
-                }
+                "file": "Design/Enemies.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas",
+                "file": "Design/Enemies.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas",
+                "file": "Design/Enemies.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas"
+                "file": "Design/Enemies.md"
               }
             }
           }
@@ -151,6 +148,7 @@
   },
   "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Reference/Locations/Sinister Swamp.canvas",
     "Attachments/shutterstock_2331893385.jpg",
     "New Text Document.txt",
     "Attachments/8c6106e834492441bb72785f5dd67d32.jpg.import",
@@ -171,9 +169,7 @@
     "Attachments/e56f0284cbd8b0e81196dca93d97c9fa.jpg",
     "Attachments/76b097eb128e946aed8dfd951c4c8b70.jpg",
     "Attachments/8c6106e834492441bb72785f5dd67d32.jpg",
-    "Attachments/361b32fed25e375486b48c6f61b0b5a5.jpg",
     "Reference/Locations/Golden Grove.canvas",
-    "Reference/Locations/Sinister Swamp.canvas",
     "Planning/Beta C Kanban.md",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Script.md",

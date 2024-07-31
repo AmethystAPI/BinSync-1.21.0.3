@@ -36,8 +36,10 @@ public partial class Game : Node2D, NetworkPointUser {
 			NetworkManager.HostLocal();
 
 			NetworkManager.ClientConnected += (ServerConnectedEventArgs eventArguments) => {
-				if (!OS.HasFeature("single")) {
-					if (NetworkManager.LocalServer.ClientCount != 2 || eventArguments.Client != NetworkManager.LocalServer.Clients[1]) return;
+				if (!NetworkManager.IsHost) return;
+
+				if (!OS.HasFeature("single_player")) {
+					if (NetworkManager.LocalServer.ClientCount != 2) return;
 				}
 
 				Start();

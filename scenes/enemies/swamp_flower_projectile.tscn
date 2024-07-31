@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkbc2sdc7wnk8"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_kt4xq"]
+[ext_resource type="Texture2D" uid="uid://cyff4t1v1my0v" path="res://sprites/enemies/swamp_flower.png" id="2_12nsc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv6ss"]
+radius = 4.12311
+
+[node name="CactusProjectile" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_kt4xq")
+Speed = 40.0
+Resistance = 1.0
+Lifetime = 2.0
+InheritBelocity = false
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_bv6ss")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_12nsc")
+region_enabled = true
+region_rect = Rect2(106, 10, 12, 12)

@@ -16,10 +16,10 @@ public class Idle : EnemyState {
     public Idle(string name, Enemy enemy) : base(name, enemy) { }
 
     public override void Initialize() {
-        _enemy.NetworkPoint.Register(nameof(AttackRpc), AttackRpc);
+        _enemy.NetworkPoint.Register(Name + nameof(AttackRpc), AttackRpc);
 
         if (Movement == null) Movement = delta => {
-            _enemy.Velocity = _enemy.Knockback;
+            _enemy.Velocity = _enemy.Knockback * (1f - _enemy.KnockbackResistance);
 
             _enemy.MoveAndSlide();
         };
@@ -40,7 +40,7 @@ public class Idle : EnemyState {
 
         if (_idleTimer > 0) return;
 
-        _enemy.NetworkPoint.SendRpcToClientsFast(nameof(AttackRpc));
+        _enemy.NetworkPoint.SendRpcToClientsFast(Name + nameof(AttackRpc));
     }
 
     public override void PhsysicsUpdate(float delta) {

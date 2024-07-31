@@ -32,7 +32,7 @@ public class TimedAttack : EnemyState {
     }
 
     public override void PhsysicsUpdate(float delta) {
-        _enemy.Velocity = _enemy.Knockback;
+        _enemy.Velocity = _enemy.Knockback * (1f - _enemy.KnockbackResistance);
 
         _enemy.MoveAndSlide();
     }

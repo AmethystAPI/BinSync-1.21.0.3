@@ -10,6 +10,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   }
 
   [Export] public float Health = 3f;
+  [Export] public float KnockbackResistance = 0f;
   [Export] public Node2D FacingTransform;
   [Export] public Node2D VerticalTransform;
   [Export] public PackedScene DeathParticle;
