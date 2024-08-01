@@ -10,10 +10,10 @@ public partial class Slime : Enemy {
 
 		_stateMachine.Add(new Idle("idle", this));
 		_stateMachine.Add(new JumpAttack("attack", this) {
-			OnJump = () => {
+			OnJump = direction => {
 				SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 4f);
 			},
-			OnLand = () => {
+			OnLand = direction => {
 				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
 				Camera.Shake(0.2f);

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cq6et30t0eqc0"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cq6et30t0eqc0"]
 
 [ext_resource type="PackedScene" uid="uid://cjbg2o4u22hyt" path="res://scenes/enemies/swamp_flower.tscn" id="1_7om5a"]
+[ext_resource type="PackedScene" uid="uid://bg2aer84qp5hq" path="res://scenes/enemies/frog.tscn" id="2_gc260"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_ws7xn"]
 
 [resource]
 script = ExtResource("4_ws7xn")
-EnemyScenes = Array[PackedScene]([ExtResource("1_7om5a")])
+EnemyScenes = Array[PackedScene]([ExtResource("1_7om5a"), ExtResource("2_gc260")])

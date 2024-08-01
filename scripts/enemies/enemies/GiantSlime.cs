@@ -15,10 +15,10 @@ public partial class GiantSlime : Enemy {
 			Speed = 30f,
 			Duration = 1.5f,
 			Height = 32f,
-			OnJump = () => {
+			OnJump = direction => {
 				SquashAndStretch.Trigger(new Vector2(0.6f, 1.4f), 4f);
 			},
-			OnLand = () => {
+			OnLand = direction => {
 				SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
 				Camera.Shake(2f);

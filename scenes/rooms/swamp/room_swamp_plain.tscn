@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bas22uvipqrut"]
+[gd_scene load_steps=16 format=4 uid="uid://bas22uvipqrut"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_ahh6e"]
 [ext_resource type="Resource" uid="uid://cq6et30t0eqc0" path="res://resources/enemy_pools/enemy_pool_swamp.tres" id="2_qhiys"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_0dond"]
 [ext_resource type="Resource" uid="uid://welc4axv6svv" path="res://resources/smart_tilesets/smart_tileset_swamp.tres" id="5_hqcgd"]
 [ext_resource type="Resource" uid="uid://t5c116ycf8f1" path="res://resources/decoration_pools/decoration_pool_swamp_patch.tres" id="7_j8sj8"]
-[ext_resource type="PackedScene" uid="uid://bcp1vy54v05b6" path="res://scenes/decorations/swamp/swamp_small_patch.tscn" id="8_kgpvd"]
-[ext_resource type="Texture2D" uid="uid://dv2vfwljb5x2x" path="res://sprites/biomes/swamp/swamp.aseprite" id="9_m2m04"]
 [ext_resource type="Script" path="res://scripts/rooms/Decorator.cs" id="10_p8btj"]
 [ext_resource type="Script" path="res://scripts/editor/BorderTool.cs" id="10_rtpm1"]
 [ext_resource type="Resource" uid="uid://cr7i6i23ld3d5" path="res://resources/borders/border_swamp.tres" id="11_wqygr"]
@@ -81,57 +79,6 @@ shape = SubResource("RectangleShape2D_dhixv")
 
 [node name="Holder" type="Node2D" parent="Decorations/GrassDecorator"]
 y_sort_enabled = true
-
-[node name="SmallPatch" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_kgpvd")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(62.3953, -127.363)
-rotation = 1.5708
-texture = ExtResource("9_m2m04")
-region_enabled = true
-region_rect = Rect2(193, 66, 61, 60)
-
-[node name="@Sprite2D@17336" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_kgpvd")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(14.436, -57.7031)
-rotation = 1.5708
-texture = ExtResource("9_m2m04")
-region_enabled = true
-region_rect = Rect2(193, 66, 61, 60)
-
-[node name="@Sprite2D@17337" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_kgpvd")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-35.7315, 91.0702)
-texture = ExtResource("9_m2m04")
-region_enabled = true
-region_rect = Rect2(193, 66, 61, 60)
-
-[node name="@Sprite2D@17338" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_kgpvd")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(45.7597, 50.2722)
-texture = ExtResource("9_m2m04")
-region_enabled = true
-region_rect = Rect2(193, 66, 61, 60)
-
-[node name="@Sprite2D@17339" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_kgpvd")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-53.1011, -99.6118)
-texture = ExtResource("9_m2m04")
-region_enabled = true
-region_rect = Rect2(193, 66, 61, 60)
-
-[node name="@Sprite2D@17340" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("8_kgpvd")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-90.9028, 23.4808)
-rotation = 1.5708
-texture = ExtResource("9_m2m04")
-region_enabled = true
-region_rect = Rect2(193, 66, 61, 60)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="."]
 visible = false

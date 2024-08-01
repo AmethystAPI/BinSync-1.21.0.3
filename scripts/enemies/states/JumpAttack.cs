@@ -7,8 +7,8 @@ public class JumpAttack : EnemyState {
     public float Height = 16f;
     public string ReturnState = "idle";
 
-    public Action OnJump;
-    public Action OnLand;
+    public Action<Vector2> OnJump;
+    public Action<Vector2> OnLand;
 
     private Vector2 _target;
     private float _jumpTimer;
@@ -28,7 +28,7 @@ public class JumpAttack : EnemyState {
 
         _enemy.Face(_target);
 
-        OnJump();
+        OnJump?.Invoke((_target - _enemy.GlobalPosition).Normalized());
     }
 
     public override void Update(float delta) {
@@ -42,7 +42,7 @@ public class JumpAttack : EnemyState {
 
         if (_jumpTimer < Duration) return;
 
-        OnLand();
+        OnLand((_target - _enemy.GlobalPosition).Normalized());
 
         GoToState(ReturnState);
     }
