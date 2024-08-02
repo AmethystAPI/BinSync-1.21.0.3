@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyff4t1v1my0v"
-path="res://.godot/imported/swamp_flower.png-389ba9cb0498b7c0db247902d0d6da59.ctex"
+uid="uid://dyjssam5ndqo1"
+path="res://.godot/imported/goblin.png-1b6e86046eac60441cec84c1f2854803.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/swamp_flower.png"
-dest_files=["res://.godot/imported/swamp_flower.png-389ba9cb0498b7c0db247902d0d6da59.ctex"]
+source_file="res://sprites/enemies/goblin/goblin.png"
+dest_files=["res://.godot/imported/goblin.png-1b6e86046eac60441cec84c1f2854803.ctex"]
 
 [params]
 

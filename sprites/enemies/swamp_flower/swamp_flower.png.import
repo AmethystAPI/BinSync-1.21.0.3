@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu6dj65ufmu43"
-path="res://.godot/imported/swamp_flower.aseprite-3c201ad6ff506ea1074471ab8ecf6522.ctex"
+uid="uid://cyff4t1v1my0v"
+path="res://.godot/imported/swamp_flower.png-d85d71533fbf2b8b40b54604cbbaef13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/swamp_flower.aseprite"
-dest_files=["res://.godot/imported/swamp_flower.aseprite-3c201ad6ff506ea1074471ab8ecf6522.ctex"]
+source_file="res://sprites/enemies/swamp_flower/swamp_flower.png"
+dest_files=["res://.godot/imported/swamp_flower.png-d85d71533fbf2b8b40b54604cbbaef13.ctex"]
 
 [params]
 
