@@ -23,8 +23,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Fix game not resetting
-- [ ] Rooms ending
 - [ ] boss healthbar
 - [ ] Work on SFX #polish
 - [ ] Polish Swamp
@@ -33,12 +31,14 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Potential delay on interactions
+- [ ] Rooms ending
 
 
 ## Done
 
 **Complete**
+- [x] Fix game not resetting
+- [x] Potential delay on interactions
 - [x] Healthbars
 - [x] Improve Giant Slime
 - [x] Sinister Swamp Biome #design

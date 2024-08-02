@@ -26,6 +26,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	private Barrier _barrier;
 	private Area2D _activateArea;
 	private CollisionShape2D _spawnArea;
+	public PackedScene _roomClearEffect;
 
 	public void Load() {
 		Entrance = GetNodeOrNull<Node2D>("Entrance");
@@ -49,6 +50,8 @@ public partial class Room : Node2D, NetworkPointUser {
 		if (_activateArea != null) _activateArea.BodyEntered += BodyEnteredActivateArea;
 
 		s_Rooms.Add(this);
+
+		_roomClearEffect = ResourceLoader.Load<PackedScene>("res://scenes/rooms/room_clear_effect.tscn");
 
 		if (!NetworkManager.IsHost) return;
 
@@ -79,8 +82,6 @@ public partial class Room : Node2D, NetworkPointUser {
 		_aliveEnemies--;
 
 		if (_aliveEnemies != 0) return;
-
-		if (!NetworkManager.IsHost) return;
 
 		Complete(enemy);
 	}
@@ -185,6 +186,15 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	protected virtual void Complete(Enemy enemy = null) {
+		if (enemy != null) {
+			Node2D roomClearEffect = _roomClearEffect.Instantiate<Node2D>();
+			AddChild(roomClearEffect);
+			roomClearEffect.GlobalPosition = enemy.GlobalPosition;
+			Delay.Execute(1f, () => {
+				roomClearEffect.QueueFree();
+			});
+		}
+
 		if (!NetworkManager.IsHost) return;
 
 		_completed = true;
