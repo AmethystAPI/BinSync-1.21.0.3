@@ -54,7 +54,6 @@ layer_3/tile_data = PackedInt32Array(-4, 131073, 9, 65531, 131073, 8, 131067, 13
 
 [node name="TileMapTool" parent="TileMap" instance=ExtResource("4_eyerf")]
 SmartTileset = ExtResource("5_lv2q3")
-Active = true
 
 [node name="Exit" type="Node2D" parent="."]
 position = Vector2(0, -144)

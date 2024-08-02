@@ -29,12 +29,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] boss healthbar
+- [ ] Some music
 
 
 ## Done
 
 **Complete**
+- [x] boss healthbar
 - [x] Work on SFX #polish
 - [x] Rooms ending
 - [x] Fix game not resetting

@@ -12,5 +12,5 @@
 script = ExtResource("6_njui7")
 RoomPlacers = [ExtResource("1_b0e21"), ExtResource("2_ugo12"), ExtResource("3_ayxfd"), ExtResource("4_hjekg")]
 UniqueEncounters = [ExtResource("5_oiscj"), ExtResource("6_m15jt")]
-Level = 1
-Size = Vector2i(16, 999999)
+Level = 2
+Size = Vector2i(999999, 999999)
