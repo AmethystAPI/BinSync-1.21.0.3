@@ -22,6 +22,8 @@ namespace Networking {
     private Callback<LobbyEnter_t> _lobbyEnteredCallback;
     private Callback<GameLobbyJoinRequested_t> _gameLobbyJoinRequestedCallback;
 
+    private float _delay = 0.1f;
+
     public override void _Ready() {
       s_Me = this;
 
@@ -61,6 +63,10 @@ namespace Networking {
       messageBuilder?.Invoke(message);
 
       LocalClient.Send(message);
+
+      // Delay.Execute(s_Me._delay, () => {
+      //   LocalClient.Send(message);
+      // });
     }
 
     public static void SendRpcToClients(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
@@ -73,6 +79,10 @@ namespace Networking {
       messageBuilder?.Invoke(message);
 
       LocalServer.SendToAll(message);
+
+      // Delay.Execute(s_Me._delay, () => {
+      //   LocalServer.SendToAll(message);
+      // });
     }
 
     public static void SendRpcToClientsFast(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
@@ -108,6 +118,10 @@ namespace Networking {
         if (client.Id == LocalClient.Id) continue;
 
         LocalServer.Send(message, client.Id);
+
+        // Delay.Execute(s_Me._delay, () => {
+        //   LocalServer.Send(message, client.Id);
+        // });
       }
 
       s_Me.HandleMessage(localMessage);
@@ -126,6 +140,10 @@ namespace Networking {
       messageBuilder?.Invoke(message);
 
       LocalClient.Send(message);
+
+      // Delay.Execute(s_Me._delay, () => {
+      //   LocalClient.Send(message);
+      // });
     }
 
     public static void BounceRpcToClientsFast(NetworkPointUser source, string name, Action<Message> messageBuilder = null, MessageSendMode messageSendMode = MessageSendMode.Reliable) {
@@ -158,6 +176,10 @@ namespace Networking {
       }
 
       LocalClient.Send(message);
+
+      // Delay.Execute(s_Me._delay, () => {
+      //   LocalClient.Send(message);
+      // });
 
       s_Me.HandleMessage(localMessage);
     }
@@ -280,6 +302,18 @@ namespace Networking {
             LocalServer.Send(relayMessage, connection.Id);
           }
         }
+
+        // Delay.Execute(s_Me._delay, () => {
+        //   if (eventArguments.MessageId == 1) {
+        //     LocalServer.SendToAll(relayMessage);
+        //   } else {
+        //     foreach (Connection connection in LocalServer.Clients) {
+        //       if (connection == eventArguments.FromConnection) continue;
+
+        //       LocalServer.Send(relayMessage, connection.Id);
+        //     }
+        //   }
+        // });
 
         return;
       }
