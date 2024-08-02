@@ -166,7 +166,7 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		if (Health <= 0) Die();
 
-		NetworkPoint.BounceRpcToClients(nameof(DamageRpc), message => {
+		NetworkPoint.BounceRpcToClientsFast(nameof(DamageRpc), message => {
 			Vector2 knockback = projectile.GlobalTransform.BasisXform(Vector2.Right) * 200f * projectile.Knockback;
 
 			message.AddFloat(knockback.X);
@@ -247,12 +247,15 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 10f);
 
-		Camera.Shake(2f);
-
 		float damage = message.GetFloat();
 
+		if (NetworkPoint.IsOwner) {
+			Camera.Shake(2f);
+		} else {
+			Health -= damage;
+		}
+
 		_healthBar.Modulate = new Color("#ffffffff");
-		Health -= damage;
 
 		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
 		damageNumber.Damage = damage;
@@ -280,8 +283,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		TrinketHolder.Visible = false;
 
 		if (!NetworkPoint.IsOwner) {
-			Health = 0;
-
 			AlivePlayers.Remove(this);
 
 			_stateMachine.GoToState("angel");
