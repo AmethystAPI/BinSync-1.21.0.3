@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cg8kvs2jvqdn2"]
+[gd_scene load_steps=20 format=3 uid="uid://cg8kvs2jvqdn2"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/GiantSlime.cs" id="1_dkn0p"]
 [ext_resource type="Texture2D" uid="uid://drqty4uy1t5tm" path="res://sprites/enemies/giant_slime/giant_slime.tres" id="2_2rx6r"]
 [ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
+[ext_resource type="PackedScene" uid="uid://bmrtl4q0opchd" path="res://scenes/enemies/giant_slime_burst_projectile.tscn" id="4_8p5sq"]
 [ext_resource type="PackedScene" uid="uid://b01wmjm7v2unj" path="res://scenes/enemies/giant_slime_projectile.tscn" id="7_eun27"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="10_pbc86"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_wa7k2"]
@@ -176,6 +177,7 @@ script = ExtResource("1_dkn0p")
 Summons = [ExtResource("12_ujy5u")]
 SummonAmmount = Vector2i(1, 2)
 ProjectileScene = ExtResource("7_eun27")
+BurstProjectileScene = ExtResource("4_8p5sq")
 ProjectileOrigin = NodePath("ProjectileOrigin")
 Health = 10.0
 FacingTransform = NodePath("SquashAndStretchTarget/Body")

@@ -4,6 +4,7 @@ public partial class GiantSlime : Enemy {
 	[Export] public PackedScene[] Summons = new PackedScene[0];
 	[Export] public Vector2I SummonAmmount = new Vector2I(3, 4);
 	[Export] public PackedScene ProjectileScene;
+	[Export] public PackedScene BurstProjectileScene;
 	[Export] public Node2D ProjectileOrigin;
 
 	public override void AddStates() {
@@ -30,6 +31,21 @@ public partial class GiantSlime : Enemy {
 				GetParent().AddChild(projectile);
 
 				projectile.GlobalPosition = ProjectileOrigin.GlobalPosition;
+
+				for (int index = 0; index < 8; index++) {
+					Vector2 projectileDirection = Vector2.Right.Rotated(Mathf.Pi / 4f * index);
+
+					Projectile _projectile = BurstProjectileScene.Instantiate<Projectile>();
+
+					_projectile.Source = this;
+
+					GetParent().AddChild(_projectile);
+
+					_projectile.GlobalPosition = GlobalPosition;
+					_projectile.Position += projectileDirection * 5f;
+
+					_projectile.LookAt(_projectile.GlobalPosition + projectileDirection);
+				}
 			}
 		});
 
