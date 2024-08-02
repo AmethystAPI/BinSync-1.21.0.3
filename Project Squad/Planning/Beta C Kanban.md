@@ -23,7 +23,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] boss healthbar
 - [ ] Work on SFX #polish
 - [ ] Polish Swamp
 - [ ] Steam Page #marketing
@@ -31,12 +30,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Rooms ending
+- [ ] boss healthbar
 
 
 ## Done
 
 **Complete**
+- [x] Rooms ending
 - [x] Fix game not resetting
 - [x] Potential delay on interactions
 - [x] Healthbars

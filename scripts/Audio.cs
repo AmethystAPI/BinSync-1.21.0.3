@@ -76,6 +76,7 @@ public partial class Audio : Node {
             Attenuation = 0f,
             MaxDistance = 9999999999999999f,
             PanningStrength = 0f,
+            Bus = "Music"
         };
 
         Me._musicInstances.Add(new MusicInstance() {
