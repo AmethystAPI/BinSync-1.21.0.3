@@ -37,6 +37,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 	private StateMachine _stateMachine = new StateMachine("normal");
 
+	private Control _healthBar;
+	private ColorRect _healthBarFill;
+
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
@@ -57,6 +60,11 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		SquashAndStretch = GetNode<SquashAndStretch>("SquashAndStretch");
+
+		_healthBar = GetNode<Control>("HealthBar");
+		_healthBarFill = _healthBar.GetNode<ColorRect>("Fill");
+
+		_healthBar.Modulate = new Color("#ffffff00");
 
 		_stateMachine.Add(new PlayerNormal("normal", this));
 		_stateMachine.Add(new PlayerDash("dash", this));
@@ -99,6 +107,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		}
 
 		Visuals.Scale = _networkedFacing.Value.X >= 0 ? Vector2.One : new Vector2(-1, 1);
+
+		_healthBarFill.Scale = MathHelper.FixedLerp(_healthBarFill.Scale, new Vector2(Health / 3f, 1f), 8f, (float)delta);
+		_healthBar.Modulate = MathHelper.FixedLerp(_healthBar.Modulate, Health < 3f ? new Color("#ffffffff") : new Color("#ffffff00"), 8f, (float)delta);
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -150,6 +161,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		Health -= damage;
 
 		GameUI.UpdateHealth(Health);
+
+		_healthBar.Modulate = new Color("#ffffffff");
 
 		if (Health <= 0) Die();
 
@@ -236,8 +249,13 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		Camera.Shake(2f);
 
+		float damage = message.GetFloat();
+
+		_healthBar.Modulate = new Color("#ffffffff");
+		Health -= damage;
+
 		DamageNumber damageNumber = DamageNumber.Instantiate<DamageNumber>();
-		damageNumber.Damage = message.GetFloat();
+		damageNumber.Damage = damage;
 		damageNumber.Color = new Color("#ffffff");
 		damageNumber.BorderColor = new Color("#fc0045");
 

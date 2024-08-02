@@ -23,13 +23,13 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Improve Giant Slime
-- [ ] Steam Page #marketing
 - [ ] Healthbars
 - [ ] Rooms ending
 - [ ] Work on SFX #polish
 - [ ] Potential delay on interactions
 - [ ] Polish Swamp
+- [ ] Steam Page #marketing
+- [ ] Fix game not resetting
 
 
 ## In Progress
@@ -39,6 +39,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Improve Giant Slime
 - [x] Sinister Swamp Biome #design
 - [x] Fix bug of rooms not finishing<br>because enemy spawned far back
 - [x] [[Transition of Biomes]] #design

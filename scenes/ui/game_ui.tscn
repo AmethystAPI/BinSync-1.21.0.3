@@ -21,6 +21,7 @@ HalfHeart = ExtResource("4_0km4p")
 EmptyHeart = ExtResource("5_gdr0m")
 
 [node name="HeartContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 8.0
 offset_top = 8.0
