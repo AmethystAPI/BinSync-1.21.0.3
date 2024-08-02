@@ -40,6 +40,8 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	private Control _healthBar;
 	private ColorRect _healthBarFill;
 
+	private bool _justRevived = false;
+
 	public override void _Ready() {
 		NetworkPoint.Setup(this);
 
@@ -180,8 +182,6 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 		GameUI.UpdateHealth(Health);
 
-		AlivePlayers.Remove(this);
-
 		NetworkPoint.BounceRpcToClients(nameof(DieRpc));
 
 		_stateMachine.GoToState("angel");
@@ -190,6 +190,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	public void Revive() {
+		if (_justRevived) return;
+
+		_justRevived = true;
+
 		NetworkPoint.BounceRpcToClients(nameof(ReviveRpc));
 	}
 
@@ -282,11 +286,9 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		WeaponHolder.Visible = false;
 		TrinketHolder.Visible = false;
 
-		if (!NetworkPoint.IsOwner) {
-			AlivePlayers.Remove(this);
+		AlivePlayers.Remove(this);
 
-			_stateMachine.GoToState("angel");
-		}
+		if (!NetworkPoint.IsOwner) _stateMachine.GoToState("angel");
 
 		if (AlivePlayers.Count != 0) return;
 
@@ -332,15 +334,16 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	}
 
 	private void ReviveRpc(Message message) {
+		_justRevived = false;
+
 		WeaponHolder.Visible = true;
 		TrinketHolder.Visible = true;
 
-
 		_stateMachine.GoToState("normal");
 
-		AlivePlayers.Add(this);
+		if (!AlivePlayers.Contains(this)) AlivePlayers.Add(this);
 
-		Health = 1;
+		Health = 3;
 
 		if (!NetworkPoint.IsOwner) return;
 
