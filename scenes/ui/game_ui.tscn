@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3cnd2s2rm7d4" path="res://sprites/ui/heart_half.tres" id="4_0km4p"]
 [ext_resource type="Texture2D" uid="uid://682dc64042pn" path="res://sprites/ui/heart_empty.tres" id="5_gdr0m"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("HeartContainer")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("HeartContainer", "BossHealthBar", "BossHealthBarFill")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,36 @@ HeartContainer = NodePath("HeartContainer")
 FullHeart = ExtResource("3_x3hjj")
 HalfHeart = ExtResource("4_0km4p")
 EmptyHeart = ExtResource("5_gdr0m")
+BossHealthBar = NodePath("ScaledUI/BossHealthBar")
+BossHealthBarFill = NodePath("ScaledUI/BossHealthBar/Fill")
+
+[node name="ScaledUI" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.25
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+
+[node name="BossHealthBar" type="ColorRect" parent="ScaledUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 57.0
+offset_top = 4.0
+offset_right = -56.0
+offset_bottom = 8.0
+grow_horizontal = 2
+color = Color(0.407778, 0.221152, 0.645833, 1)
+
+[node name="Fill" type="ColorRect" parent="ScaledUI/BossHealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.631399, 0.342429, 1, 1)
 
 [node name="HeartContainer" type="HBoxContainer" parent="."]
 visible = false

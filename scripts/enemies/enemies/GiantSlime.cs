@@ -1,4 +1,5 @@
 using Godot;
+using Riptide;
 
 public partial class GiantSlime : Enemy {
 	[Export] public PackedScene[] Summons = new PackedScene[0];
@@ -58,6 +59,12 @@ public partial class GiantSlime : Enemy {
 		});
 	}
 
+	public override void _Process(double delta) {
+		base._Process(delta);
+
+		GameUI.UpdateBossHealthBar(Health);
+	}
+
 	public override bool CanDamage(Projectile projectile) {
 		if (!base.CanDamage(projectile)) return false;
 
@@ -74,5 +81,19 @@ public partial class GiantSlime : Enemy {
 
 			GlobalPosition = GlobalPosition.Lerp(_networkedPosition.Value, delta * 20.0f);
 		}
+	}
+
+	protected override void ActivateRpc(Message message) {
+		base.ActivateRpc(message);
+
+		GameUI.SetBossHealthBarMax(Health);
+		GameUI.UpdateBossHealthBar(Health);
+		GameUI.ShowBossHealthBar();
+	}
+
+	protected override void DamageRpc(Message message) {
+		base.DamageRpc(message);
+
+		if (Dead) GameUI.HideBossHealthBar();
 	}
 }

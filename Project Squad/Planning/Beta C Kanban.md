@@ -23,7 +23,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Work on SFX #polish
 - [ ] Polish Swamp
 - [ ] Steam Page #marketing
 
@@ -36,6 +35,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Work on SFX #polish
 - [x] Rooms ending
 - [x] Fix game not resetting
 - [x] Potential delay on interactions
