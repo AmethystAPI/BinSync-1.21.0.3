@@ -58,7 +58,7 @@ public partial class Spear : Weapon {
   }
 
   private void Shoot() {
-    NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
+    NetworkPoint.BounceRpcToClientsFast(nameof(ShootRpc));
   }
 
   private void ShootRpc(Message message) {

@@ -32,7 +32,7 @@ public partial class SimpleWeapon : Weapon {
 
     _shootTimer = Delay;
 
-    NetworkPoint.BounceRpcToClients(nameof(ShootRpc));
+    NetworkPoint.BounceRpcToClientsFast(nameof(ShootRpc));
   }
 
   public override void CancelShoot() {

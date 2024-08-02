@@ -89,7 +89,6 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
     if (!(projectile.Source is Player)) return false;
 
-
     return true;
   }
 
