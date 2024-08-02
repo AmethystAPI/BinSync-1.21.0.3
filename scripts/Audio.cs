@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +12,8 @@ public partial class Audio : Node {
     }
 
     public static Audio Me;
+
+    private static RandomNumberGenerator s_Random = new();
 
     [Export] public AudioStream[] Sounds = new AudioStream[0];
     [Export] public string[] SoundIds = new string[0];
@@ -92,9 +93,13 @@ public partial class Audio : Node {
     }
 
     public static void Play(string id) {
+        var ids = Me.SoundIds.Select((soundId, index) => (soundId, index)).Where((data, index) => data.soundId == id).ToList();
+
+        int index = ids[s_Random.RandiRange(0, ids.Count - 1)].index;
+
         AudioStreamPlayer2D audio = new AudioStreamPlayer2D() {
-            Stream = Me.Sounds[Me.SoundIds.ToList().IndexOf(id)],
-            VolumeDb = Me.SoundVolumes[Me.SoundIds.ToList().IndexOf(id)] + new RandomNumberGenerator().RandfRange(-1f, 1f),
+            Stream = Me.Sounds[index],
+            VolumeDb = Me.SoundVolumes[index] + new RandomNumberGenerator().RandfRange(-1f, 1f),
             PitchScale = new RandomNumberGenerator().RandfRange(0.9f, 1.1f),
             Attenuation = 0f,
             MaxDistance = 9999999999999999f,

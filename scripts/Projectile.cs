@@ -70,8 +70,6 @@ public partial class Projectile : Node2D {
 
 			damageable.Damage(this);
 
-			Audio.Play("projectile_hit");
-
 			Camera.Shake(ScreenShake);
 
 			OnHit(body);

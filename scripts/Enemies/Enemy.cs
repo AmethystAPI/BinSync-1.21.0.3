@@ -132,6 +132,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   protected virtual void DamageRpc(Message message) {
     _justHit = false;
 
+    Audio.Play("enemy_damage");
+
     SetMultiplayerAuthority(message.GetInt());
 
     Knockback = new Vector2(message.GetFloat(), message.GetFloat());

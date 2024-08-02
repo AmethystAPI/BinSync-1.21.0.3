@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=40 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -7,7 +7,10 @@
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="4_encmg"]
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
 [ext_resource type="Shader" path="res://scripts/shaders/etherial.gdshader" id="5_4da55"]
+[ext_resource type="AudioStream" uid="uid://dey6knsoqrxff" path="res://sfx/combined/hurt_1.wav" id="6_c3uc0"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
+[ext_resource type="AudioStream" uid="uid://clof1mxacmnvy" path="res://sfx/combined/swing_1.wav" id="7_yuo4k"]
+[ext_resource type="AudioStream" uid="uid://dm71qtyxmxx5" path="res://sfx/combined/swing_2.wav" id="8_6wno2"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 [ext_resource type="AudioStream" uid="uid://bt3vmiqn5dhqu" path="res://music/Theme 4.wav" id="8_y68pd"]
 [ext_resource type="Script" path="res://scripts/Interactables.cs" id="9_t151n"]
@@ -24,10 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
 [ext_resource type="Script" path="res://scripts/Audio.cs" id="22_ko2sk"]
-[ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/sfx_sounds_impact1.wav" id="23_8eois"]
-[ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/death_1.wav" id="24_0d0le"]
-[ext_resource type="AudioStream" uid="uid://cu08ot2vuhs46" path="res://sfx/hurt.wav" id="25_4ymc8"]
-[ext_resource type="AudioStream" uid="uid://cn0404ityj1ib" path="res://sfx/swing2.wav" id="25_jarow"]
+[ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/library/sfx_sounds_impact1.wav" id="23_8eois"]
+[ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/library/death_1.wav" id="24_0d0le"]
 [ext_resource type="PackedScene" uid="uid://cx1vygvn5xxmn" path="res://scenes/items/trinkets/trinket_duality.tscn" id="26_7jx7d"]
 [ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
 [ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/items/trinkets/trinket_swiftness.tres" id="26_dnkch"]
@@ -75,9 +76,9 @@ PlayerScene = ExtResource("2_nxqs3")
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("22_ko2sk")
-Sounds = [ExtResource("23_8eois"), ExtResource("24_0d0le"), ExtResource("25_4ymc8"), ExtResource("25_jarow")]
-SoundIds = PackedStringArray("player_damage", "enemy_die", "projectile_hit", "weapon_shoot")
-SoundVolumes = PackedFloat32Array(-4, 0, -8, -12)
+Sounds = [ExtResource("23_8eois"), ExtResource("24_0d0le"), ExtResource("6_c3uc0"), ExtResource("7_yuo4k"), ExtResource("8_6wno2"), ExtResource("24_0d0le")]
+SoundIds = PackedStringArray("player_damage", "enemy_die", "enemy_damage", "weapon_shoot", "weapon_shoot", "destructable_hit")
+SoundVolumes = PackedFloat32Array(-4, 0, -7, -18, -18, 0)
 MusicTracks = [ExtResource("8_y68pd"), ExtResource("39_gcumd")]
 MusicTrackIds = PackedStringArray("golden_grove", "boss")
 MusicTrackVolumes = PackedFloat32Array(0, 0)

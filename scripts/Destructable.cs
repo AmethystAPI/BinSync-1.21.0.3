@@ -4,6 +4,7 @@ public partial class Destructable : Node2D, Damageable {
 	[Export] public PackedScene Particle;
 	[Export] public int ParticleCount = 6;
 	[Export] public bool Invincible = false;
+	[Export] public string SoundEffect = "destructable_hit";
 
 	public bool CanDamage(Projectile projectile) {
 		return !Invincible;
@@ -16,6 +17,8 @@ public partial class Destructable : Node2D, Damageable {
 
 			node.GlobalPosition = GlobalPosition;
 		}
+
+		Audio.Play(SoundEffect);
 
 		QueueFree();
 	}
