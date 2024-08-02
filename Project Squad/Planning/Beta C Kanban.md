@@ -29,16 +29,17 @@ kanban-plugin: basic
 - [ ] Rooms ending
 - [ ] Work on SFX #polish
 - [ ] Potential delay on interactions
+- [ ] Polish Swamp
 
 
 ## In Progress
 
-- [ ] Sinister Swamp Biome #design
 
 
 ## Done
 
 **Complete**
+- [x] Sinister Swamp Biome #design
 - [x] Fix bug of rooms not finishing<br>because enemy spawned far back
 - [x] [[Transition of Biomes]] #design
 - [x] Windswept Wastes Biome - Temple #design

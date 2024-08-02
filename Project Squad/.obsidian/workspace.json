@@ -11,11 +11,9 @@
             "id": "ba0c1306aecfa667",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Design/Enemies.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Enemies.md",
+                "file": "Planning/Beta C Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Enemies.md",
+                "file": "Planning/Beta C Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Enemies.md"
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -148,6 +146,7 @@
   },
   "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Design/Enemies.md",
     "Reference/Locations/Sinister Swamp.canvas",
     "Attachments/shutterstock_2331893385.jpg",
     "New Text Document.txt",
@@ -194,7 +193,6 @@
     "Daily Notes/Day 18-3.md",
     "Design/Locations/Golden Grove.md",
     "Design/Difficulty.md",
-    "Design/Enemies.md",
     "Design/Music.md",
     "Design/Team Work.md",
     "Reference/Devlogs.canvas",
