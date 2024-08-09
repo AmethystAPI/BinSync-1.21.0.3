@@ -11,14 +11,9 @@
             "id": "ba0c1306aecfa667",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "kanban",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas",
-                "viewState": {
-                  "x": 749.7436591967252,
-                  "y": 225.2161426377794,
-                  "zoom": 0.6666666666666667
-                }
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -88,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas",
+                "file": "Planning/Beta C Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas",
+                "file": "Planning/Beta C Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reference/Locations/Sinister Swamp.canvas"
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -151,9 +146,9 @@
   },
   "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Reference/Locations/Sinister Swamp.canvas",
     "Planning/Beta C Kanban.md",
     "Design/Enemies.md",
-    "Reference/Locations/Sinister Swamp.canvas",
     "Attachments/shutterstock_2331893385.jpg",
     "New Text Document.txt",
     "Attachments/8c6106e834492441bb72785f5dd67d32.jpg.import",

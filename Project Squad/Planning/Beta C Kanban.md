@@ -22,7 +22,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Polish Swamp
 - [ ] Steam Page #marketing
 
 
@@ -34,6 +33,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Polish Swamp
 - [x] boss healthbar
 - [x] Work on SFX #polish
 - [x] Rooms ending
