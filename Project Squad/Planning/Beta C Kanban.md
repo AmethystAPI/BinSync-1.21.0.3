@@ -18,7 +18,6 @@ kanban-plugin: basic
 - [ ] More Weapons #design
 - [ ] More Golden Grove Enemies #design
 - [ ] enemy points system
-- [ ] Players not counted as dead
 
 
 ## Must Do

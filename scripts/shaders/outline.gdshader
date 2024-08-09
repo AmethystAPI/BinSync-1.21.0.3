@@ -12,7 +12,7 @@ void fragment() {
 	if(COLOR.a == 0.0) {
 		ivec2 size = textureSize(TEXTURE, 0);
 	vec2 pixelUV = 1.0f / vec2(size);
-	
+
 	float alpha = texture(TEXTURE, vec2(UV.x + pixelUV.x, UV.y)).a;
 	alpha = max(alpha, texture(TEXTURE, vec2(UV.x - pixelUV.x, UV.y)).a);
 	alpha = max(alpha, texture(TEXTURE, vec2(UV.x, UV.y + pixelUV.y)).a);

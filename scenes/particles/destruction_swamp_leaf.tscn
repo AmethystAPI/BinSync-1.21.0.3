@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://wk3aial2y23v"]
+
+[ext_resource type="Script" path="res://scripts/DestructionLeaf.cs" id="1_tfb4r"]
+[ext_resource type="Texture2D" uid="uid://dv2vfwljb5x2x" path="res://sprites/biomes/swamp/swamp.aseprite" id="2_ubqev"]
+[ext_resource type="Texture2D" uid="uid://c7yjlgddqtys0" path="res://sprites/particles/leaf_shadow.tres" id="3_bruqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8w1g"]
+size = Vector2(4, 4)
+
+[node name="DestructionLeaf" type="CharacterBody2D"]
+position = Vector2(0, -44)
+collision_layer = 0
+collision_mask = 2
+motion_mode = 1
+slide_on_ceiling = false
+platform_on_leave = 2
+script = ExtResource("1_tfb4r")
+Resistance = 4.0
+SpeedRange = Vector2(20, 100)
+
+[node name="FloatOrigin" type="Node2D" parent="."]
+
+[node name="SwingOrigin" type="Node2D" parent="FloatOrigin"]
+position = Vector2(0, -8)
+
+[node name="Sprite" type="Sprite2D" parent="FloatOrigin/SwingOrigin"]
+position = Vector2(0, 8)
+texture = ExtResource("2_ubqev")
+region_enabled = true
+region_rect = Rect2(243, 136, 7, 7)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+position = Vector2(0, 3)
+texture = ExtResource("3_bruqo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_f8w1g")
