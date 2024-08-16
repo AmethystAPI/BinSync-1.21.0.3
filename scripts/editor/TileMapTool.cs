@@ -131,12 +131,12 @@ public partial class TileMapTool : Node {
 
             if (down && !downRight && right) {
                 tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowInsideLeft);
-                tileMap.SetCell(shadowLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle);
+                tileMap.SetCell(shadowLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle + Vector2I.Up);
             }
 
             if (down && !downLeft && left) {
                 tileMap.SetCell(shadowLayer, position + Vector2I.Down, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowInsideRight);
-                tileMap.SetCell(shadowLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle);
+                tileMap.SetCell(shadowLayer, position, SmartTileset.SourceId, (Vector2I)SmartTileset.ShadowMiddle + Vector2I.Up);
             }
         }
     }

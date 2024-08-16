@@ -18,13 +18,10 @@ kanban-plugin: basic
 - [ ] More Weapons #design
 - [ ] More Golden Grove Enemies #design
 - [ ] enemy points system
-- [ ] Players not counted as dead
 
 
 ## Must Do
 
-- [ ] Polish Swamp
-- [ ] Polish!
 - [ ] Steam Page #marketing
 
 
@@ -36,6 +33,7 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] Polish Swamp
 - [x] boss healthbar
 - [x] Work on SFX #polish
 - [x] Rooms ending
