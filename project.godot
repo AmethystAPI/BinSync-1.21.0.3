@@ -24,8 +24,8 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=600
-window/size/window_height_override=480
+window/size/window_width_override=480
+window/size/window_height_override=360
 
 [dotnet]
 
@@ -33,7 +33,7 @@ project/assembly_name="Project Squad"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/outer/OneDrive/Desktop/Project-Squad-Godot/marketing/CactusSpiritCombat.avi"
+movie_writer/movie_file="C:/Users/liamh/Desktop/Godot/Projects/Project Squad/marketing/stars.png"
 
 [editor_plugins]
 

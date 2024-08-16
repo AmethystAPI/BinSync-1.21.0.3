@@ -1,0 +1,22 @@
+<Project Sdk="Godot.NET.Sdk/4.3.0-beta.3">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>ProjectSquad</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="RiptideNetworking.Riptide" Version="2.1.2" />
+    <Reference Include="Steamworks.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>steamworks.net/Windows-x64/Steamworks.NET.dll</HintPath>
+      <!-- <HintPath>steamworks.net/OSX-Linux-x64/Steamworks.NET.dll</HintPath> -->
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="steam_appid.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

@@ -24,6 +24,7 @@ kanban-plugin: basic
 ## Must Do
 
 - [ ] Polish Swamp
+- [ ] Polish!
 - [ ] Steam Page #marketing
 
 

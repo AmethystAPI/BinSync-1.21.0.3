@@ -11,9 +11,11 @@
             "id": "ba0c1306aecfa667",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Reference/Music.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -63,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -83,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Reference/Music.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Reference/Music.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Reference/Music.md"
               }
             }
           }
@@ -146,6 +149,7 @@
   },
   "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Planning/Beta C Kanban.md",
     "Design/Enemies.md",
     "Reference/Locations/Sinister Swamp.canvas",
     "Attachments/shutterstock_2331893385.jpg",
@@ -169,7 +173,6 @@
     "Attachments/76b097eb128e946aed8dfd951c4c8b70.jpg",
     "Attachments/8c6106e834492441bb72785f5dd67d32.jpg",
     "Reference/Locations/Golden Grove.canvas",
-    "Planning/Beta C Kanban.md",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Script.md",
     "Devlogs/Devlog 19/What is Interesting.md",
