@@ -58,7 +58,7 @@ public partial class SimpleWeapon : Weapon {
     }
 
     // DEBUG
-    // projectile.Damage = 999f;
+    projectile.Damage = 999f;
 
     Audio.Play("weapon_shoot");
   }

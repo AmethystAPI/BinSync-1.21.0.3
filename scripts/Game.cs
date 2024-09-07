@@ -51,6 +51,10 @@ public partial class Game : Node2D, NetworkPointUser {
 
 	public override void _Process(double delta) {
 		SteamAPI.RunCallbacks();
+
+		if (Input.IsActionJustPressed("fullscreen")) {
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		}
 	}
 
 	public static void Start() {
