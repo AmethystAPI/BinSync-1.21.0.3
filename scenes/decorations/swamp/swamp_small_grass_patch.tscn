@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccn8md35qhvny"]
+
+[ext_resource type="Texture2D" uid="uid://dv2vfwljb5x2x" path="res://sprites/biomes/swamp/swamp.aseprite" id="1_dbhxl"]
+
+[node name="SmallPatch" type="Sprite2D"]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(0, -2)
+texture = ExtResource("1_dbhxl")
+region_enabled = true
+region_rect = Rect2(261, 1, 58, 60)
