@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bas22uvipqrut"]
+[gd_scene load_steps=25 format=4 uid="uid://bas22uvipqrut"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_ahh6e"]
 [ext_resource type="Resource" uid="uid://cq6et30t0eqc0" path="res://resources/enemy_pools/enemy_pool_swamp.tres" id="2_qhiys"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://scripts/editor/BorderTool.cs" id="10_rtpm1"]
 [ext_resource type="PackedScene" uid="uid://ccn8md35qhvny" path="res://scenes/decorations/swamp/swamp_small_grass_patch.tscn" id="11_q7feq"]
 [ext_resource type="Resource" uid="uid://cr7i6i23ld3d5" path="res://resources/borders/border_swamp.tres" id="11_wqygr"]
-[ext_resource type="PackedScene" uid="uid://ceyxc2hgi5y04" path="res://scenes/decorations/swamp/swamp_small_patch_2.tscn" id="12_kyj3e"]
 [ext_resource type="Script" path="res://scripts/Barrier.cs" id="13_adjvr"]
 [ext_resource type="Texture2D" uid="uid://uej8ak456riq" path="res://sprites/biomes/swamp/border_swamp.tres" id="14_bvrhp"]
 [ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="14_xt7p5"]
@@ -60,7 +59,6 @@ layer_3/tile_data = PackedInt32Array(-327676, 2, 8, -262140, 2, 9, -196603, 2, 9
 [node name="TileMapTool" type="Node" parent="TileMap"]
 script = ExtResource("4_0dond")
 SmartTileset = ExtResource("5_hqcgd")
-Active = true
 
 [node name="Exit" type="Node2D" parent="."]
 position = Vector2(0, -144)
@@ -92,49 +90,41 @@ shape = SubResource("RectangleShape2D_dhixv")
 [node name="Holder" type="Node2D" parent="Decorations/GrassDecorator"]
 y_sort_enabled = true
 
-[node name="@Sprite2D@32445" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_q7feq")]
+[node name="SmallPatch" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_ncrt5")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(-62.4092, 35.1794)
-rotation = -1.5708
-texture = ExtResource("9_lx6k6")
-region_enabled = true
-region_rect = Rect2(261, 1, 58, 60)
-
-[node name="@Sprite2D@32446" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_q7feq")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(41.1337, 121.701)
-rotation = -1.5708
-texture = ExtResource("9_lx6k6")
-region_enabled = true
-region_rect = Rect2(261, 1, 58, 60)
-
-[node name="@Sprite2D@32447" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_ncrt5")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(63.1729, -74.2374)
+position = Vector2(96.8377, 77.2052)
 rotation = -3.14159
 texture = ExtResource("9_lx6k6")
 region_enabled = true
 region_rect = Rect2(188, 8, 62, 49)
 
-[node name="@Sprite2D@32448" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_q7feq")]
+[node name="@Sprite2D@42028" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_ncrt5")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(-41.7553, -111.816)
+position = Vector2(23.0577, -86.0812)
+rotation = -3.14159
 texture = ExtResource("9_lx6k6")
 region_enabled = true
-region_rect = Rect2(261, 1, 58, 60)
+region_rect = Rect2(188, 8, 62, 49)
 
-[node name="@Sprite2D@32449" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_q7feq")]
+[node name="@Sprite2D@42029" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("11_q7feq")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(32.2663, 41.1522)
+position = Vector2(102.379, -64.2129)
 rotation = -1.5708
 texture = ExtResource("9_lx6k6")
 region_enabled = true
 region_rect = Rect2(261, 1, 58, 60)
+
+[node name="@Sprite2D@42030" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("10_ncrt5")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-65.1329, -30.8973)
+rotation = -3.14159
+texture = ExtResource("9_lx6k6")
+region_enabled = true
+region_rect = Rect2(188, 8, 62, 49)
 
 [node name="DirtDecorator" type="Node2D" parent="Decorations"]
 y_sort_enabled = true
@@ -149,49 +139,49 @@ shape = SubResource("RectangleShape2D_dhixv")
 [node name="Holder" type="Node2D" parent="Decorations/DirtDecorator"]
 y_sort_enabled = true
 
-[node name="SmallPatch" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("12_kyj3e")]
+[node name="@Sprite2D@42031" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("8_8ar4w")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(-48.5506, -40.5409)
-rotation = 1.5708
-texture = ExtResource("9_lx6k6")
-region_enabled = true
-region_rect = Rect2(120, 73, 62, 49)
-
-[node name="@Sprite2D@32450" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("12_kyj3e")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(90.9846, 16.831)
-rotation = -1.5708
-texture = ExtResource("9_lx6k6")
-region_enabled = true
-region_rect = Rect2(120, 73, 62, 49)
-
-[node name="@Sprite2D@32451" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("12_kyj3e")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-13.0853, 25.7239)
-texture = ExtResource("9_lx6k6")
-region_enabled = true
-region_rect = Rect2(120, 73, 62, 49)
-
-[node name="@Sprite2D@32452" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("8_8ar4w")]
-z_index = -9
-y_sort_enabled = true
-position = Vector2(-102.929, 84.5328)
+position = Vector2(-75.1187, -45.8163)
 rotation = -1.5708
 texture = ExtResource("9_lx6k6")
 region_enabled = true
 region_rect = Rect2(193, 66, 61, 60)
 
-[node name="@Sprite2D@32453" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("12_kyj3e")]
+[node name="@Sprite2D@42032" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("8_8ar4w")]
 z_index = -9
 y_sort_enabled = true
-position = Vector2(93.7802, 114.081)
-rotation = -3.14159
+position = Vector2(97.0712, 9.88387)
+rotation = 1.5708
 texture = ExtResource("9_lx6k6")
 region_enabled = true
-region_rect = Rect2(120, 73, 62, 49)
+region_rect = Rect2(193, 66, 61, 60)
+
+[node name="@Sprite2D@42033" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("8_8ar4w")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-49.8761, 32.9299)
+texture = ExtResource("9_lx6k6")
+region_enabled = true
+region_rect = Rect2(193, 66, 61, 60)
+
+[node name="@Sprite2D@42034" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("8_8ar4w")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(18.8871, -30.065)
+rotation = -1.5708
+texture = ExtResource("9_lx6k6")
+region_enabled = true
+region_rect = Rect2(193, 66, 61, 60)
+
+[node name="@Sprite2D@42035" type="Sprite2D" parent="Decorations/DirtDecorator/Holder" instance=ExtResource("8_8ar4w")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(67.701, 101.101)
+rotation = -1.5708
+texture = ExtResource("9_lx6k6")
+region_enabled = true
+region_rect = Rect2(193, 66, 61, 60)
 
 [node name="Tree" parent="Decorations" instance=ExtResource("15_ooxkg")]
 position = Vector2(-46, -14)
