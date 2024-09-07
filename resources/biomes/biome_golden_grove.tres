@@ -18,4 +18,5 @@ script = ExtResource("2_738dh")
 RoomPlacers = [ExtResource("2_1pebj"), ExtResource("2_sjtb6"), ExtResource("3_gw2vn"), ExtResource("4_x2utj"), ExtResource("5_msj3t"), ExtResource("6_5rpk3"), ExtResource("7_l30r3"), ExtResource("8_g1jlr")]
 UniqueEncounters = [ExtResource("7_dnet6"), ExtResource("8_rikje"), ExtResource("8_eg8qj")]
 Level = 0
-Size = Vector2i(2, 2)
+Size = Vector2i(16, 16)
+Color = Color(0.356863, 0.141176, 0.0823529, 1)

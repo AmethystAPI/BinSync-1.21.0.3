@@ -14,3 +14,4 @@ RoomPlacers = [ExtResource("1_b0e21"), ExtResource("2_ugo12"), ExtResource("3_ay
 UniqueEncounters = [ExtResource("5_oiscj"), ExtResource("6_m15jt")]
 Level = 2
 Size = Vector2i(999999, 999999)
+Color = Color(0.337255, 0.12549, 0.0509804, 1)

@@ -50,6 +50,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 		_uniqueEncounterStates = _uniqueEncounterStates.OrderByDescending(state => state.Source.Priority).ToList();
 
 		_roomsTillNewBiome = Game.RandomNumberGenerator.RandiRange(_currentBiome.Size.X, _currentBiome.Size.Y);
+
+		// TODO: do this better
+		GetParent().GetNode<ColorRect>("Background/ColorRect").Color = _currentBiome.Color;
 	}
 
 	private RoomPlacer SelectRoom(Room sourceRoom) {
