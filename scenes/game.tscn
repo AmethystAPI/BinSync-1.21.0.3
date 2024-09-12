@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://clof1mxacmnvy" path="res://sfx/combined/swing_1.wav" id="7_yuo4k"]
 [ext_resource type="AudioStream" uid="uid://dm71qtyxmxx5" path="res://sfx/combined/swing_2.wav" id="8_6wno2"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
-[ext_resource type="AudioStream" uid="uid://bt3vmiqn5dhqu" path="res://music/Theme 4.wav" id="8_y68pd"]
+[ext_resource type="AudioStream" uid="uid://b73n6u24fe7kl" path="res://music/Theme 7.wav" id="9_47kig"]
 [ext_resource type="Script" path="res://scripts/Interactables.cs" id="9_t151n"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
 [ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://sprites/particles/leaf_dark.tres" id="10_agqbr"]
@@ -144,9 +144,9 @@ script = ExtResource("22_ko2sk")
 Sounds = [ExtResource("23_8eois"), ExtResource("24_0d0le"), ExtResource("6_c3uc0"), ExtResource("7_yuo4k"), ExtResource("8_6wno2"), ExtResource("24_0d0le")]
 SoundIds = PackedStringArray("player_damage", "enemy_die", "enemy_damage", "weapon_shoot", "weapon_shoot", "destructable_hit")
 SoundVolumes = PackedFloat32Array(-4, 0, -7, -18, -18, 0)
-MusicTracks = [ExtResource("8_y68pd"), ExtResource("39_gcumd")]
+MusicTracks = [ExtResource("9_47kig"), ExtResource("39_gcumd")]
 MusicTrackIds = PackedStringArray("golden_grove", "boss")
-MusicTrackVolumes = PackedFloat32Array(0, 0)
+MusicTrackVolumes = PackedFloat32Array(-8, 0)
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("3_ix04k")

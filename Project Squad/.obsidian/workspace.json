@@ -18,24 +18,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "31c8093b2c315a4d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "092f065fab8389ea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Design/Improve Title Screen.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -101,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design/Improve Title Screen.md",
+                "file": "Planning/Beta C Kanban.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Design/Improve Title Screen.md",
+                "file": "Planning/Beta C Kanban.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Design/Improve Title Screen.md"
+                "file": "Planning/Beta C Kanban.md"
               }
             }
           }
@@ -162,11 +144,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "092f065fab8389ea",
+  "active": "ba0c1306aecfa667",
   "lastOpenFiles": [
+    "Design/Improve Title Screen.md",
     "Attachments/Astral-Chain03132021-122123-59475_thumb.jpg",
     "Planning/Beta C Kanban.md",
-    "Design/Improve Title Screen.md",
     "Reference/Music.md",
     "Reference/Locations/Sinister Swamp.canvas",
     "Design/Enemies.md",
@@ -189,7 +171,6 @@
     "Attachments/f9326aa4c888716b5199ed28a6d779f5.jpg",
     "Attachments/e56f0284cbd8b0e81196dca93d97c9fa.jpg",
     "Attachments/76b097eb128e946aed8dfd951c4c8b70.jpg",
-    "Attachments/8c6106e834492441bb72785f5dd67d32.jpg",
     "Reference/Locations/Golden Grove.canvas",
     "Devlogs/Devlog 19/Outline.md",
     "Devlogs/Devlog 19/Script.md",

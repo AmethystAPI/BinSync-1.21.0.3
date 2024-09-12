@@ -25,13 +25,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] [[Improve Title Screen]]
-- [ ] Some music
 
 
 ## Done
 
 **Complete**
+- [x] [[Improve Title Screen]]
+- [x] Some music
 - [x] Steam Page #marketing
 - [x] Polish Swamp
 - [x] boss healthbar
