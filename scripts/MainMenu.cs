@@ -1,10 +1,11 @@
 using System;
 using Godot;
 using Networking;
+using Steamworks;
 
 public partial class MainMenu : Control {
-	[Export] public Button hostButton;
-	[Export] public Button startButton;
+	[Export] public Control StartControls;
+	[Export] public Control LobbyControls;
 	[Export] public Button HatEquipmentButton;
 	[Export] public Button BodyEquipmentButton;
 
@@ -16,14 +17,24 @@ public partial class MainMenu : Control {
 		Player.BodyCosmetic = BodyEquipmentScenes[0];
 
 		NetworkManager.JoinedServer += () => {
-			QueueFree();
+			Visible = false;
 		};
 	}
 
 	public void Host() {
 		NetworkManager.Host();
 
-		hostButton.QueueFree();
+		StartControls.Visible = false;
+		LobbyControls.Visible = true;
+	}
+
+	public void Join() {
+		SteamFriends.ActivateGameOverlay("friends");
+	}
+
+	public void Invite() {
+		GD.Print(NetworkManager.CurrentLobby);
+		SteamFriends.ActivateGameOverlayInviteDialog(NetworkManager.CurrentLobby);
 	}
 
 	public void Start() {
@@ -31,7 +42,7 @@ public partial class MainMenu : Control {
 
 		Game.Start();
 
-		QueueFree();
+		Visible = false;
 	}
 
 	public void NextHatEquipment() {

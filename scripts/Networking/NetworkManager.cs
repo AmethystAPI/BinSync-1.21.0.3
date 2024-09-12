@@ -13,6 +13,7 @@ namespace Networking {
     public static bool IsHost => LocalServer != null;
     public static Action<ServerConnectedEventArgs> ClientConnected;
     public static Action JoinedServer;
+    public static CSteamID CurrentLobby;
 
     private static NetworkManager s_Me;
     private static SteamServer s_LocalSteamServer;
@@ -330,6 +331,8 @@ namespace Networking {
 
       SteamMatchmaking.SetLobbyData((CSteamID)lobbyCreated.m_ulSteamIDLobby, "name", "Project Squad Test Lobby");
       SteamMatchmaking.SetLobbyGameServer((CSteamID)lobbyCreated.m_ulSteamIDLobby, default, default, SteamUser.GetSteamID());
+
+      CurrentLobby = (CSteamID)lobbyCreated.m_ulSteamIDLobby;
     }
 
     private void LobbyEntered(LobbyEnter_t lobbyEntered) {
@@ -338,6 +341,8 @@ namespace Networking {
       GD.Print("Entered lobby! " + SteamMatchmaking.GetLobbyData((CSteamID)lobbyEntered.m_ulSteamIDLobby, "name"));
 
       SteamMatchmaking.GetLobbyGameServer((CSteamID)lobbyEntered.m_ulSteamIDLobby, out uint ip, out ushort port, out CSteamID serverId);
+
+      CurrentLobby = (CSteamID)lobbyEntered.m_ulSteamIDLobby;
 
       Join(serverId);
     }

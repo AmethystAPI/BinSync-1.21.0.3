@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpb2vij815fs3"]
+[gd_scene load_steps=13 format=3 uid="uid://dpb2vij815fs3"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_rc6ko"]
 [ext_resource type="PackedScene" uid="uid://cv663jsc3lwub" path="res://scenes/items/equipment/hair1.tscn" id="2_rx0vu"]
@@ -6,8 +6,96 @@
 [ext_resource type="PackedScene" uid="uid://bfo055prag30g" path="res://scenes/items/equipment/shirt1.tscn" id="4_m04t5"]
 [ext_resource type="PackedScene" uid="uid://bppjdyp3rbk0k" path="res://scenes/items/equipment/shirt2.tscn" id="5_aeuqm"]
 [ext_resource type="PackedScene" uid="uid://27aa74633x5c" path="res://scenes/items/equipment/shirt3.tscn" id="6_rpp7x"]
+[ext_resource type="Texture2D" uid="uid://4ksrq52k170u" path="res://sprites/promo/steamPageStuff.aseprite" id="7_ecgaj"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("hostButton", "startButton", "HatEquipmentButton", "BodyEquipmentButton")]
+[sub_resource type="Shader" id="Shader_jjjwg"]
+code = "shader_type canvas_item;
+
+uniform vec3 color: source_color;
+uniform vec3 color2: source_color;
+uniform vec3 star_color: source_color;
+uniform sampler3D noise;
+uniform vec2 size;
+
+vec3 get_nebula_value(float offset, vec2 uv, float time) {
+	float t = texture(noise, vec3(mod(uv / 1.5, 1.0), mod(time  * 0.08, 1.0))).r;
+	
+	return mix(color, color2, t);
+}
+
+float get_distortion(vec2 uv, float slice) {
+	return texture(noise, vec3(mod(uv, 1.0), mod(slice, 1.0))).r - 0.5;
+}
+
+float random (vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+float star_value(float offset, vec2 uv, float time) {
+	float distortion = get_distortion(uv, time * 0.06);
+	
+	vec2 sample_position = floor(
+		(
+			vec2(
+				uv.x + time * 0.008, uv.y - time * 0.008
+			) + distortion * 0.04
+		) * 300.0 + offset
+	) / 300.0;
+		
+	float threshold = 0.004;
+	
+	return max(0, random(sample_position) - 1.0 + threshold) / threshold;
+}
+
+void fragment() {
+	vec2 corrected_uv = UV * size / 300.0;
+	
+	float distortion = get_distortion(corrected_uv / 2.0, TIME * 0.05);
+	
+	vec2 distorted_uv = corrected_uv + distortion;
+	
+	float offset = 50.0;
+	float limit = 400.0;
+	float transition_speed = 0.2;
+
+	float time_base = floor(TIME * transition_speed) * offset;
+
+	float star_value1 = star_value(mod(time_base, limit), corrected_uv, TIME);
+	float star_value2 = star_value(mod(time_base + offset, limit), corrected_uv, TIME);
+
+	vec3 nebula_value = get_nebula_value(0.0, corrected_uv, TIME);
+	
+	//COLOR = vec4(nebula_value, 1.0);	
+	
+	float mixed_value = mix(star_value1, star_value2, mod(TIME * transition_speed, 1.0));
+	
+	COLOR = vec4(mix(nebula_value, star_color, mixed_value), COLOR.a);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p0g1i"]
+seed = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_or4pi"]
+width = 128
+height = 128
+depth = 128
+seamless = true
+seamless_blend_skirt = 0.2
+noise = SubResource("FastNoiseLite_p0g1i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt2mq"]
+shader = SubResource("Shader_jjjwg")
+shader_parameter/color = Color(0.0392157, 0.0235294, 0.0862745, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/star_color = Color(0.741176, 0.796078, 1, 1)
+shader_parameter/size = Vector2(480, 270)
+shader_parameter/noise = SubResource("NoiseTexture3D_or4pi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdgbu"]
+atlas = ExtResource("7_ecgaj")
+region = Rect2(18, 50, 100, 16)
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("StartControls", "LobbyControls", "HatEquipmentButton", "BodyEquipmentButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,44 +103,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rc6ko")
-hostButton = NodePath("Host")
-startButton = NodePath("Start")
+StartControls = NodePath("StartControls")
+LobbyControls = NodePath("LobbyControls")
 HatEquipmentButton = NodePath("HatEquipment")
 BodyEquipmentButton = NodePath("BodyEquipment")
 HatEquipmentScenes = Array[PackedScene]([ExtResource("2_rx0vu"), ExtResource("3_qf61c")])
 BodyEquipmentScenes = Array[PackedScene]([ExtResource("4_m04t5"), ExtResource("5_aeuqm"), ExtResource("6_rpp7x")])
 
-[node name="Host" type="Button" parent="."]
+[node name="Stars" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bt2mq")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -22.0
-offset_right = 20.0
-offset_bottom = 9.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-text = "Host"
-
-[node name="Start" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = 35.0
-offset_right = 21.0
-offset_bottom = 66.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-text = "Start"
+mouse_filter = 2
 
 [node name="HatEquipment" type="Button" parent="."]
 auto_translate_mode = 1
@@ -84,7 +150,118 @@ grow_vertical = 0
 pivot_offset = Vector2(400, 40)
 text = "Orange Shirt"
 
-[connection signal="pressed" from="Host" to="." method="Host"]
-[connection signal="pressed" from="Start" to="." method="Start"]
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -130.0
+offset_right = 219.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bdgbu")
+stretch_mode = 4
+
+[node name="StartControls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="StartControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -15.5
+offset_right = -9.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Host Game"
+
+[node name="Join" type="Button" parent="StartControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -15.5
+offset_right = 101.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Join Game"
+
+[node name="LobbyControls" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="LobbyControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -15.0
+offset_right = -7.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Start Game"
+
+[node name="Invite" type="Button" parent="LobbyControls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -15.0
+offset_right = 121.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Invite Friends"
+
 [connection signal="pressed" from="HatEquipment" to="." method="NextHatEquipment"]
 [connection signal="pressed" from="BodyEquipment" to="." method="NextBodyEquipment"]
+[connection signal="pressed" from="StartControls/Host" to="." method="Host"]
+[connection signal="pressed" from="StartControls/Join" to="." method="Join"]
+[connection signal="pressed" from="LobbyControls/Start" to="." method="Start"]
+[connection signal="pressed" from="LobbyControls/Invite" to="." method="Invite"]

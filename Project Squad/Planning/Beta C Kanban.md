@@ -10,7 +10,6 @@ kanban-plugin: basic
 - [ ] Decrease Range of Bow
 - [ ] Hurting before activate causes infinite damage
 - [ ] Mid Round Enemies
-- [ ] Improve Title Screen
 - [ ] Look at decreasing projectile invincibility time
 - [ ] Multiple Paths
 - [ ] More Music #content
@@ -22,17 +21,18 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Steam Page #marketing
 
 
 ## In Progress
 
+- [ ] [[Improve Title Screen]]
 - [ ] Some music
 
 
 ## Done
 
 **Complete**
+- [x] Steam Page #marketing
 - [x] Polish Swamp
 - [x] boss healthbar
 - [x] Work on SFX #polish

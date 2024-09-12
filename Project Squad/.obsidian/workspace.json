@@ -18,6 +18,24 @@
             }
           }
         ]
+      },
+      {
+        "id": "31c8093b2c315a4d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "092f065fab8389ea",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design/Improve Title Screen.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -83,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Design/Improve Title Screen.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta C Kanban.md",
+                "file": "Design/Improve Title Screen.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta C Kanban.md"
+                "file": "Design/Improve Title Screen.md"
               }
             }
           }
@@ -144,10 +162,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba0c1306aecfa667",
+  "active": "092f065fab8389ea",
   "lastOpenFiles": [
-    "Reference/Locations/Sinister Swamp.canvas",
+    "Attachments/Astral-Chain03132021-122123-59475_thumb.jpg",
     "Planning/Beta C Kanban.md",
+    "Design/Improve Title Screen.md",
+    "Reference/Music.md",
+    "Reference/Locations/Sinister Swamp.canvas",
     "Design/Enemies.md",
     "Attachments/shutterstock_2331893385.jpg",
     "New Text Document.txt",
@@ -193,8 +214,6 @@
     "Daily Notes/Day 18-3.md",
     "Design/Locations/Golden Grove.md",
     "Design/Difficulty.md",
-    "Design/Music.md",
-    "Design/Team Work.md",
     "Reference/Devlogs.canvas",
     "Reference/General.canvas"
   ]

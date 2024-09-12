@@ -86,3 +86,7 @@ Timestream
 		- synth Arpegio loop with volume moving up and down
 		- *Would need a little more beat for a battle theme*
 - https://www.youtube.com/watch?v=rU0RJcpn9tA&t=64s
+
+
+https://x.com/robotmeadow/status/1831504820026364080
+https://x.com/MoA_E_/status/1826949906655056038

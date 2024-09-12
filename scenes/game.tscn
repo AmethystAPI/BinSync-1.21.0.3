@@ -51,7 +51,7 @@ angular_velocity_min = -63.68
 angular_velocity_max = 63.69
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="Shader" id="Shader_jjjwg"]
+[sub_resource type="Shader" id="Shader_vg51j"]
 code = "shader_type canvas_item;
 
 uniform vec3 color: source_color;
@@ -118,7 +118,7 @@ void fragment() {
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_or4pi"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xgrkg"]
 width = 128
 height = 128
 depth = 128
@@ -127,12 +127,12 @@ seamless_blend_skirt = 0.2
 noise = SubResource("FastNoiseLite_yfm5y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1o6u"]
-shader = SubResource("Shader_jjjwg")
+shader = SubResource("Shader_vg51j")
 shader_parameter/color = Color(0.0392157, 0.0235294, 0.0862745, 1)
 shader_parameter/color2 = Color(0, 0, 0, 1)
 shader_parameter/star_color = Color(0.741176, 0.796078, 1, 1)
 shader_parameter/size = Vector2(1400, 1400)
-shader_parameter/noise = SubResource("NoiseTexture3D_or4pi")
+shader_parameter/noise = SubResource("NoiseTexture3D_xgrkg")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
