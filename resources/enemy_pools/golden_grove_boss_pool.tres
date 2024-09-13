@@ -6,3 +6,4 @@
 [resource]
 script = ExtResource("4_kvs3g")
 EnemyScenes = Array[PackedScene]([ExtResource("1_tfwqw")])
+Points = PackedFloat32Array(1)

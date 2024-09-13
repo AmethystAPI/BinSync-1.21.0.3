@@ -18,6 +18,24 @@
             }
           }
         ]
+      },
+      {
+        "id": "572fc6b32d4060f5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a24bc709527142ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tasks/Polish Weapons.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -146,8 +164,10 @@
   },
   "active": "e3f54504f3a14609",
   "lastOpenFiles": [
-    "Design/Current Design Issues/Scaling of Trinkets.md",
+    "Tasks/Polish Weapons.md",
+    "Tasks",
     "Planning/Beta D.md",
+    "Design/Current Design Issues/Scaling of Trinkets.md",
     "Planning/Beta C Kanban.md",
     "Planning/Beta B Kanban.md",
     "Design/Improve Title Screen.md",
@@ -165,7 +185,6 @@
     "Attachments/thumb_720_450_Swamp_Featured_xl_55847560_(Custom).jpg.import",
     "Attachments/e56f0284cbd8b0e81196dca93d97c9fa.jpg.import",
     "Attachments/louisiana-swamp.jpg.import",
-    "Attachments/F-5L__CWMAAulQ7.png.import",
     "Attachments/F7gupOhWYAEmj_W.png",
     "Attachments/F7gulmgWgAABxqs.png",
     "Attachments/F-5L__CWMAAulQ7.png",
@@ -194,8 +213,6 @@
     "Daily Notes/Day 18-1.md",
     "Daily Notes/Beta A Playetst.md",
     "Daily Notes/Day 18-8.md",
-    "Daily Notes/Day 18-3.md",
-    "Design/Locations/Golden Grove.md",
     "Reference/Devlogs.canvas",
     "Reference/General.canvas"
   ]

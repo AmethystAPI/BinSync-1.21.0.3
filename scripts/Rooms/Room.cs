@@ -156,16 +156,20 @@ public partial class Room : Node2D, NetworkPointUser {
 				spawnPoint = GetRandomPointInSpawnArea();
 			}
 
+			int selectedEnemyIndex = new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1);
+
 			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message => {
 				message.AddFloat(spawnPoint.X);
 				message.AddFloat(spawnPoint.Y);
 
-				message.AddInt(new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1));
+				message.AddInt(selectedEnemyIndex);
 
 				message.AddBool(activated);
 			});
 
-			points--;
+			points -= EnemyPool.Points[selectedEnemyIndex];
+
+			if (EnemyPool.Points[selectedEnemyIndex] == 0) points -= 1;
 		}
 	}
 

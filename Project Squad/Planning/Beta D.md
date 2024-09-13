@@ -8,13 +8,13 @@ kanban-plugin: basic
 
 - [ ] More Music #content
 - [ ] More Weapons #design
+- [ ] Fix swamp barrier
+- [ ] Projectiles should pierce decorations
 
 
 ## Must Do
 
-- [ ] Hurting before activate causes infinite damage
-- [ ] enemy points system
-- [ ] Polish Weapons
+- [ ] [[Polish Weapons]]
 - [ ] Mid Round Enemies
 - [ ] Legendary Trinkets
 - [ ] [[Scaling of Trinkets]] #design
@@ -41,8 +41,10 @@ kanban-plugin: basic
 ## Done
 
 **Complete**
+- [x] enemy points system
 - [x] Decrease Range of Bow
 - [x] Look at decreasing projectile invincibility time
+- [x] Hurting before activate causes infinite damage
 
 
 ***

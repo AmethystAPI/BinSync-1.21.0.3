@@ -35,7 +35,6 @@ Damage = 2.0
 Speed = 300.0
 Resistance = 7.5
 Lifetime = 0.3
-Invincibilitytime = 0.1
 Knockback = 2.5
 ScreenShake = 1.0
 TerrainScreenShake = 0.4
