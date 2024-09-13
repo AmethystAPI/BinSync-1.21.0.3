@@ -10,6 +10,7 @@ size = Vector2(9, 5)
 script = ExtResource("1_aoj88")
 Speed = 300.0
 Lifetime = 0.3
+Invincibilitytime = 0.1
 Knockback = 0.8
 
 [node name="DamageArea" type="Area2D" parent="."]

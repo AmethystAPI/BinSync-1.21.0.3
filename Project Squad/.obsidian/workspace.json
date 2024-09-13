@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d32244fe0813a38e",
+        "id": "592089fbb660b052",
         "type": "tabs",
         "children": [
           {
-            "id": "ba0c1306aecfa667",
+            "id": "e3f54504f3a14609",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -144,10 +144,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba0c1306aecfa667",
+  "active": "e3f54504f3a14609",
   "lastOpenFiles": [
-    "Planning/Beta C Kanban.md",
+    "Design/Current Design Issues/Scaling of Trinkets.md",
     "Planning/Beta D.md",
+    "Planning/Beta C Kanban.md",
     "Planning/Beta B Kanban.md",
     "Design/Improve Title Screen.md",
     "Attachments/Astral-Chain03132021-122123-59475_thumb.jpg",
@@ -188,7 +189,6 @@
     "No Communication Notes.md",
     "Design/Current Design Issues/Availability of Weapons.md",
     "Design/Current Design Issues/Transition of Biomes.md",
-    "Design/Current Design Issues/Scaling of Trinkets.md",
     "Daily Notes/Day 18-6.md",
     "Daily Notes/Day 18-5.md",
     "Daily Notes/Day 18-1.md",

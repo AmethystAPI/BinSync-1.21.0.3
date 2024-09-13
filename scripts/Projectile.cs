@@ -6,7 +6,7 @@ public partial class Projectile : Node2D {
 	[Export] public float Speed = 200f;
 	[Export] public float Resistance = 0f;
 	[Export] public float Lifetime = 5f;
-	[Export] public float Invincibilitytime = 0.2f;
+	[Export] public float Invincibilitytime = 0.1f;
 	[Export] public float Knockback = 1f;
 	[Export] public bool InheritBelocity = true;
 	[Export] public bool Pierce = false;

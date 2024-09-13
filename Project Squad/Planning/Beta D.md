@@ -12,16 +12,18 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] [[Scaling of Trinkets]] #design
 - [ ] Look at decreasing projectile invincibility time
 - [ ] Hurting before activate causes infinite damage
 - [ ] enemy points system
 - [ ] Polish Weapons
 - [ ] Mid Round Enemies
 - [ ] Legendary Trinkets
+- [ ] [[Scaling of Trinkets]] #design
 - [ ] More Trinkets #design
 - [ ] More Golden Grove Enemies #design
 - [ ] Multiple Paths
+- [ ] Cleanup Borders
+- [ ] Location transitions
 
 
 ## In Progress
