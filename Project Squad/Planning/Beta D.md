@@ -12,7 +12,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Look at decreasing projectile invincibility time
 - [ ] Hurting before activate causes infinite damage
 - [ ] enemy points system
 - [ ] Polish Weapons
@@ -24,6 +23,15 @@ kanban-plugin: basic
 - [ ] Multiple Paths
 - [ ] Cleanup Borders
 - [ ] Location transitions
+- [ ] Alternate roll controls
+- [ ] Cleanup screenshake
+- [ ] Normalize camera offset
+- [ ] Interact prompt for alter
+- [ ] Drop swapped weapons
+- [ ] Prevent Back Tracking
+- [ ] Rework Sacrafice
+- [ ] Options Menu
+- [ ] Finish State
 
 
 ## In Progress
@@ -34,6 +42,7 @@ kanban-plugin: basic
 
 **Complete**
 - [x] Decrease Range of Bow
+- [x] Look at decreasing projectile invincibility time
 
 
 ***
