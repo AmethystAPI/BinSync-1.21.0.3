@@ -11,22 +11,6 @@
             "id": "e3f54504f3a14609",
             "type": "leaf",
             "state": {
-              "type": "kanban",
-              "state": {
-                "file": "Planning/Beta D.md"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "572fc6b32d4060f5",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a24bc709527142ab",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
                 "file": "Tasks/Polish Weapons.md",
@@ -101,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Planning/Beta D.md",
+                "file": "Tasks/Polish Weapons.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Planning/Beta D.md",
+                "file": "Tasks/Polish Weapons.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Planning/Beta D.md"
+                "file": "Tasks/Polish Weapons.md"
               }
             }
           }
@@ -164,9 +148,9 @@
   },
   "active": "e3f54504f3a14609",
   "lastOpenFiles": [
+    "Planning/Beta D.md",
     "Tasks/Polish Weapons.md",
     "Tasks",
-    "Planning/Beta D.md",
     "Design/Current Design Issues/Scaling of Trinkets.md",
     "Planning/Beta C Kanban.md",
     "Planning/Beta B Kanban.md",

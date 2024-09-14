@@ -14,7 +14,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] [[Polish Weapons]]
 - [ ] Mid Round Enemies
 - [ ] Legendary Trinkets
 - [ ] [[Scaling of Trinkets]] #design
@@ -24,7 +23,6 @@ kanban-plugin: basic
 - [ ] Cleanup Borders
 - [ ] Location transitions
 - [ ] Alternate roll controls
-- [ ] Cleanup screenshake
 - [ ] Normalize camera offset
 - [ ] Interact prompt for alter
 - [ ] Drop swapped weapons
@@ -36,11 +34,13 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] [[Polish Weapons]]
 
 
 ## Done
 
 **Complete**
+- [x] Cleanup screenshake
 - [x] enemy points system
 - [x] Decrease Range of Bow
 - [x] Look at decreasing projectile invincibility time

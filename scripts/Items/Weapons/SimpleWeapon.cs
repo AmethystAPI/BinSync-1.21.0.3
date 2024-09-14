@@ -8,6 +8,9 @@ public partial class SimpleWeapon : Weapon {
 
   [Export] public PackedScene ProjectileScene;
   [Export] public float Delay = 0.25f;
+  [Export] public SquashAndStretch SquashAndStretch;
+  [Export] public Vector2 SquashAndStretchScale = new Vector2(2f, 0.4f);
+  [Export] public float SquashAndStretchSpeed = 12f;
 
   private float _shootTimer;
 
@@ -33,6 +36,8 @@ public partial class SimpleWeapon : Weapon {
     _shootTimer = Delay;
 
     NetworkPoint.BounceRpcToClientsFast(nameof(ShootRpc));
+
+    Camera.Shake(0.2f);
   }
 
   public override void CancelShoot() {
@@ -59,6 +64,8 @@ public partial class SimpleWeapon : Weapon {
 
     // DEBUG
     // projectile.Damage = 999f;
+
+    if (SquashAndStretch != null) SquashAndStretch.Trigger(SquashAndStretchScale, SquashAndStretchSpeed);
 
     Audio.Play("weapon_shoot");
   }

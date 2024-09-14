@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnsnl644enbf0"]
+[gd_scene load_steps=9 format=3 uid="uid://dnsnl644enbf0"]
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_wcney"]
 [ext_resource type="PackedScene" uid="uid://pdger2vckwas" path="res://scenes/items/weapons/bow_projectile.tscn" id="2_1h1w5"]
 [ext_resource type="Script" path="res://scripts/CustomYSort.cs" id="3_gyb2f"]
 [ext_resource type="Texture2D" uid="uid://c2dkyfxvw6kix" path="res://sprites/items/weapons/bow.tres" id="3_s865s"]
+[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="5_uvfid"]
 [ext_resource type="Script" path="res://scripts/HighlightInteractable.cs" id="5_xdjfu"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="6_uffu1"]
 
@@ -12,11 +13,12 @@ shader = ExtResource("6_uffu1")
 shader_parameter/outline_color = Color(0.0941176, 0.0784314, 0.145098, 1)
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
 
-[node name="Bow" type="Node2D" groups=["Interactables"]]
+[node name="Bow" type="Node2D" node_paths=PackedStringArray("SquashAndStretch") groups=["Interactables"]]
 y_sort_enabled = true
 script = ExtResource("1_wcney")
 ProjectileScene = ExtResource("2_1h1w5")
 Delay = 0.3
+SquashAndStretch = NodePath("Held/CustomYSort/SquashAndStretch")
 
 [node name="Held" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -28,6 +30,10 @@ Offset = 8.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Held/CustomYSort"]
 texture = ExtResource("3_s865s")
+
+[node name="SquashAndStretch" type="Node2D" parent="Held/CustomYSort" node_paths=PackedStringArray("Target")]
+script = ExtResource("5_uvfid")
+Target = NodePath("../Sprite2D")
 
 [node name="Pickup" type="Node2D" parent="."]
 y_sort_enabled = true

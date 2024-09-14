@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ce4pu6tbgcvlg"]
 
-[ext_resource type="Texture2D" uid="uid://dio2s8c5qcfl3" path="res://sprites/items/projectiles/projectiles.aseprite" id="1_pxqi7"]
+[ext_resource type="Texture2D" uid="uid://ctpaiixt5ewi2" path="res://sprites/items/projectiles/sword/sword_projectile.png" id="1_pk8oc"]
 
 [resource]
-atlas = ExtResource("1_pxqi7")
-region = Rect2(69, 7, 18, 18)
+atlas = ExtResource("1_pk8oc")
+region = Rect2(32, 0, 32, 32)

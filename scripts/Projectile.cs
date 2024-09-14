@@ -23,9 +23,11 @@ public partial class Projectile : Node2D {
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
 	private float _invincibilityTimer;
+	private Node2D _persistentVisuals;
 
 	public override void _Ready() {
 		_damageArea = GetNode<Area2D>("DamageArea");
+		_persistentVisuals = GetNodeOrNull<Node2D>("PersistentVisuals");
 
 		_lifetimeTimer = Lifetime;
 		_invincibilityTimer = Invincibilitytime;
@@ -41,6 +43,8 @@ public partial class Projectile : Node2D {
 
 		Destroyed?.Invoke();
 
+		HandlePersistentVisuals();
+
 		QueueFree();
 	}
 
@@ -55,6 +59,8 @@ public partial class Projectile : Node2D {
 
 				if (DestroyOnTerrain) {
 					Destroyed?.Invoke();
+
+					HandlePersistentVisuals();
 
 					QueueFree();
 				}
@@ -76,6 +82,8 @@ public partial class Projectile : Node2D {
 
 			if (!Pierce) {
 				Destroyed?.Invoke();
+
+				HandlePersistentVisuals();
 
 				QueueFree();
 
@@ -102,5 +110,16 @@ public partial class Projectile : Node2D {
 
 	public virtual float GetDamage() {
 		return Damage;
+	}
+
+	private void HandlePersistentVisuals() {
+		if (_persistentVisuals == null) return;
+
+		Vector2 position = _persistentVisuals.GlobalPosition;
+
+		RemoveChild(_persistentVisuals);
+		GetParent().AddChild(_persistentVisuals);
+
+		_persistentVisuals.GlobalPosition = position;
 	}
 }
