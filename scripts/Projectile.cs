@@ -13,6 +13,8 @@ public partial class Projectile : Node2D {
 	[Export] public bool DestroyOnTerrain = true;
 	[Export] public float ScreenShake = 0.5f;
 	[Export] public float TerrainScreenShake = 0.3f;
+	[Export] public PackedScene HitEffectScene;
+	[Export] public PackedScene HitFlashScene;
 
 	public Action Destroyed;
 
@@ -62,6 +64,8 @@ public partial class Projectile : Node2D {
 
 					HandlePersistentVisuals();
 
+					SpawnHitEffect(Rotation);
+
 					QueueFree();
 				}
 
@@ -84,6 +88,8 @@ public partial class Projectile : Node2D {
 				Destroyed?.Invoke();
 
 				HandlePersistentVisuals();
+
+				SpawnHitEffect(Rotation);
 
 				QueueFree();
 
@@ -121,5 +127,20 @@ public partial class Projectile : Node2D {
 		GetParent().AddChild(_persistentVisuals);
 
 		_persistentVisuals.GlobalPosition = position;
+	}
+
+	private void SpawnHitEffect(float rotation) {
+		if (HitEffectScene != null) {
+			Node2D hitEffect = HitEffectScene.Instantiate<Node2D>();
+			Source.GetParent().AddChild(hitEffect);
+			hitEffect.GlobalPosition = GlobalPosition;
+		}
+
+		if (HitFlashScene != null) {
+			Node2D hitFlash = HitFlashScene.Instantiate<Node2D>();
+			Source.GetParent().AddChild(hitFlash);
+			hitFlash.GlobalPosition = GlobalPosition;
+			hitFlash.Rotation = rotation;
+		}
 	}
 }

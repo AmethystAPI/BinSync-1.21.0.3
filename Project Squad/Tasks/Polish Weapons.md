@@ -1,6 +1,6 @@
 Effects:
 - [ ] trails
-- [ ] hit flash
-- [ ] dust
-- [ ] better particle
-- [ ] stationary melee
+- [x] hit flash
+- [x] dust
+- [x] better particle
+- [x] ~~stationary melee~~

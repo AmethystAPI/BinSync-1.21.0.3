@@ -18,7 +18,8 @@ public partial class Destructable : Node2D, Damageable {
 			node.GlobalPosition = GlobalPosition;
 		}
 
-		Audio.Play(SoundEffect);
+		if (SoundEffect != null)
+			Audio.Play(SoundEffect);
 
 		QueueFree();
 	}

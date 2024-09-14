@@ -11,6 +11,7 @@ public partial class Barrier : StaticBody2D {
 			if (!(node is Destructable)) continue;
 
 			((Destructable)node).Invincible = false;
+			((Destructable)node).SoundEffect = null;
 		}
 
 		foreach (Destructable destructable in Destructables) {

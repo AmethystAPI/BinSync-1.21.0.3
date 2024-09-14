@@ -11,6 +11,7 @@ public partial class SimpleWeapon : Weapon {
   [Export] public SquashAndStretch SquashAndStretch;
   [Export] public Vector2 SquashAndStretchScale = new Vector2(2f, 0.4f);
   [Export] public float SquashAndStretchSpeed = 12f;
+  [Export] public float ProjectileOffset = 6f;
 
   private float _shootTimer;
 
@@ -49,7 +50,7 @@ public partial class SimpleWeapon : Weapon {
 
     Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
-    projectile.GlobalPosition = GlobalPosition;
+    projectile.GlobalPosition = GlobalPosition + Vector2.Right.Rotated(Rotation) * ProjectileOffset;
     projectile.Rotation = Rotation;
 
     projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());

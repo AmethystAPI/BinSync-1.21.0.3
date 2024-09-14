@@ -2,7 +2,7 @@ using Godot;
 using Riptide;
 
 public class PlayerNormal : State {
-  private static float s_Speed = 80f;
+  private static float s_Speed = 90f;
 
   private Player _player;
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://e4kggo328so6"]
+
+[ext_resource type="Texture2D" uid="uid://ye50md8n8do0" path="res://sprites/items/projectiles/sword/projectile_sword_flash.tres" id="1_dmsb6"]
+[ext_resource type="Script" path="res://scripts/FreeAfterDelay.cs" id="2_aotps"]
+
+[node name="HitFlash" type="Sprite2D"]
+texture = ExtResource("1_dmsb6")
+script = ExtResource("2_aotps")
+Timer = 0.1
