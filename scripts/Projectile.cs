@@ -15,6 +15,9 @@ public partial class Projectile : Node2D {
 	[Export] public float TerrainScreenShake = 0.3f;
 	[Export] public PackedScene HitEffectScene;
 	[Export] public PackedScene HitFlashScene;
+	[Export] public PackedScene TrailEffectScene;
+	[Export] public float TrailEffectSpacing;
+	[Export] public Vector2 TrailEffectOffset;
 
 	public Action Destroyed;
 
@@ -25,27 +28,41 @@ public partial class Projectile : Node2D {
 	private Area2D _damageArea;
 	private float _lifetimeTimer;
 	private float _invincibilityTimer;
-	private Node2D _persistentVisuals;
+	private Vector2 _lastPosition;
+	private float _distanceTillNewTrailEffect;
 
 	public override void _Ready() {
 		_damageArea = GetNode<Area2D>("DamageArea");
-		_persistentVisuals = GetNodeOrNull<Node2D>("PersistentVisuals");
 
 		_lifetimeTimer = Lifetime;
 		_invincibilityTimer = Invincibilitytime;
 
 		Velocity = Speed;
+
+		_lastPosition = GlobalPosition;
+		_distanceTillNewTrailEffect = TrailEffectSpacing;
 	}
 
 	public override void _Process(double delta) {
 		_lifetimeTimer -= (float)delta;
 		_invincibilityTimer -= (float)delta;
 
+		_distanceTillNewTrailEffect -= _lastPosition.DistanceTo(GlobalPosition);
+
+		if (_distanceTillNewTrailEffect <= 0 && TrailEffectScene != null) {
+			_distanceTillNewTrailEffect += TrailEffectSpacing;
+
+			Node2D trailEffect = TrailEffectScene.Instantiate<Node2D>();
+			Source.GetParent().AddChild(trailEffect);
+			trailEffect.GlobalPosition = GlobalPosition;
+			trailEffect.GlobalPosition += TrailEffectOffset.Rotated(Rotation);
+		}
+
+		_lastPosition = GlobalPosition;
+
 		if (_lifetimeTimer > 0) return;
 
 		Destroyed?.Invoke();
-
-		HandlePersistentVisuals();
 
 		QueueFree();
 	}
@@ -61,8 +78,6 @@ public partial class Projectile : Node2D {
 
 				if (DestroyOnTerrain) {
 					Destroyed?.Invoke();
-
-					HandlePersistentVisuals();
 
 					SpawnHitEffect(Rotation);
 
@@ -86,8 +101,6 @@ public partial class Projectile : Node2D {
 
 			if (!Pierce) {
 				Destroyed?.Invoke();
-
-				HandlePersistentVisuals();
 
 				SpawnHitEffect(Rotation);
 
@@ -116,17 +129,6 @@ public partial class Projectile : Node2D {
 
 	public virtual float GetDamage() {
 		return Damage;
-	}
-
-	private void HandlePersistentVisuals() {
-		if (_persistentVisuals == null) return;
-
-		Vector2 position = _persistentVisuals.GlobalPosition;
-
-		RemoveChild(_persistentVisuals);
-		GetParent().AddChild(_persistentVisuals);
-
-		_persistentVisuals.GlobalPosition = position;
 	}
 
 	private void SpawnHitEffect(float rotation) {

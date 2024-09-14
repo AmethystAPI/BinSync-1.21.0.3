@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctiprt23ln82j"]
+
+[ext_resource type="Texture2D" uid="uid://grb7obfukwyd" path="res://sprites/particles/dust_0.tres" id="1_djvcj"]
+[ext_resource type="Script" path="res://scripts/AnimatedParticle.cs" id="2_vhhpx"]
+[ext_resource type="Texture2D" uid="uid://d0yu0f1ps3b8s" path="res://sprites/particles/dust_1.tres" id="3_4y8r0"]
+[ext_resource type="Texture2D" uid="uid://dmg1nun3w4cn6" path="res://sprites/particles/dust_2.tres" id="4_xhur8"]
+
+[sub_resource type="Curve" id="Curve_fuuei"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.63027, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6o12v"]
+curve = SubResource("Curve_fuuei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_svtod"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1.825
+damping_max = 1.825
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_6o12v")
+
+[node name="DustTrail" type="GPUParticles2D"]
+y_sort_enabled = true
+position = Vector2(-2, 0)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_svtod")
+texture = ExtResource("1_djvcj")
+lifetime = 0.2
+one_shot = true
+script = ExtResource("2_vhhpx")
+Textures = [ExtResource("1_djvcj"), ExtResource("3_4y8r0"), ExtResource("4_xhur8")]
+FPS = 12.0
+
+[connection signal="ready" from="." to="." method="set_emitting" binds= [true]]

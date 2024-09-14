@@ -10,6 +10,7 @@ kanban-plugin: basic
 - [ ] More Weapons #design
 - [ ] Fix swamp barrier
 - [ ] Projectiles should pierce decorations
+- [ ] Fix desynced cosmetic animations
 
 
 ## Must Do

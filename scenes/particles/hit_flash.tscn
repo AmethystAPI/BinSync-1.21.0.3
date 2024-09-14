@@ -5,5 +5,7 @@
 
 [node name="HitFlash" type="Sprite2D"]
 texture = ExtResource("1_dmsb6")
+
+[node name="DelayedFree" type="Node2D" parent="."]
 script = ExtResource("2_aotps")
 Timer = 0.1

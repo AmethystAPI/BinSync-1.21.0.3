@@ -1,28 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://pdger2vckwas"]
+[gd_scene load_steps=6 format=3 uid="uid://pdger2vckwas"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_aoj88"]
+[ext_resource type="PackedScene" uid="uid://ctiprt23ln82j" path="res://scenes/particles/dust_trail.tscn" id="2_kq5ao"]
 [ext_resource type="Texture2D" uid="uid://d3s7j5ulws1db" path="res://sprites/items/projectiles/bow/projectile_bow.tres" id="2_nalb4"]
-[ext_resource type="Texture2D" uid="uid://grb7obfukwyd" path="res://sprites/particles/dust_0.tres" id="3_5ql76"]
-[ext_resource type="Texture2D" uid="uid://d0yu0f1ps3b8s" path="res://sprites/particles/dust_1.tres" id="4_3ciyu"]
-[ext_resource type="Script" path="res://scripts/AnimatedParticle.cs" id="4_fet5q"]
-[ext_resource type="Texture2D" uid="uid://dmg1nun3w4cn6" path="res://sprites/particles/dust_2.tres" id="5_rx81n"]
-
-[sub_resource type="Curve" id="Curve_fuuei"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.63027, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_6o12v"]
-curve = SubResource("Curve_fuuei")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_svtod"]
-particle_flag_disable_z = true
-angle_min = -720.0
-angle_max = 720.0
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-damping_min = 1.825
-damping_max = 1.825
-scale_curve = SubResource("CurveTexture_6o12v")
+[ext_resource type="PackedScene" uid="uid://bui482a6r6fhc" path="res://scenes/particles/hit_dust.tscn" id="2_omvun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(9, 5)
@@ -32,18 +13,10 @@ script = ExtResource("1_aoj88")
 Speed = 300.0
 Lifetime = 0.3
 Knockback = 0.8
-
-[node name="PersistentVisuals" type="Node2D" parent="."]
-
-[node name="Dust" type="GPUParticles2D" parent="PersistentVisuals"]
-position = Vector2(-2, 0)
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_svtod")
-texture = ExtResource("3_5ql76")
-lifetime = 0.4
-script = ExtResource("4_fet5q")
-Textures = [ExtResource("3_5ql76"), ExtResource("4_3ciyu"), ExtResource("5_rx81n")]
-FPS = 12.0
+HitEffectScene = ExtResource("2_omvun")
+TrailEffectScene = ExtResource("2_kq5ao")
+TrailEffectSpacing = 8.0
+TrailEffectOffset = Vector2(-2, 0)
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 7
