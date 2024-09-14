@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6cyrpgftmxi0"]
+[gd_scene load_steps=13 format=3 uid="uid://c6cyrpgftmxi0"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_3623f"]
+[ext_resource type="PackedScene" uid="uid://bui482a6r6fhc" path="res://scenes/particles/hit_dust.tscn" id="2_sl565"]
+[ext_resource type="PackedScene" uid="uid://e4kggo328so6" path="res://scenes/particles/hit_flash.tscn" id="3_3fm6m"]
 [ext_resource type="Texture2D" uid="uid://dscg0viludyf8" path="res://sprites/items/projectiles/hammer/projectile_hammer_0.tres" id="3_6fu87"]
-[ext_resource type="Texture2D" uid="uid://dp6sa8y72hs4m" path="res://sprites/items/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
-[ext_resource type="Texture2D" uid="uid://c58y2rdehx54r" path="res://sprites/items/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
+[ext_resource type="Texture2D" uid="uid://pvvtt154fvs4" path="res://sprites/items/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
+[ext_resource type="Texture2D" uid="uid://61r8rvophaur" path="res://sprites/items/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
+[ext_resource type="Texture2D" uid="uid://ua5qvdsg8hoq" path="res://sprites/items/projectiles/hammer/projectile_hammer_3.tres" id="5_jdv6o"]
+[ext_resource type="Texture2D" uid="uid://ennsm1jo4c0x" path="res://sprites/items/projectiles/hammer/projectile_hammer_4.tres" id="6_0aahj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um2iy"]
 size = Vector2(9, 14)
@@ -11,6 +15,7 @@ size = Vector2(9, 14)
 [sub_resource type="Animation" id="Animation_18hcp"]
 resource_name = "projectile_hammer"
 length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,26 +23,44 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_6fu87"), ExtResource("4_thqoo"), ExtResource("5_3p21b")]
+"values": [ExtResource("3_6fu87"), ExtResource("4_thqoo"), ExtResource("5_3p21b"), ExtResource("5_jdv6o"), ExtResource("6_0aahj"), null]
+}
+
+[sub_resource type="Animation" id="Animation_wqu5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_thqoo")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hl88a"]
 _data = {
+"RESET": SubResource("Animation_wqu5t"),
 "projectile_hammer": SubResource("Animation_18hcp")
 }
 
 [node name="HammerProjectile" type="Node2D"]
 script = ExtResource("1_3623f")
 Damage = 2.0
-Speed = 300.0
+Speed = 250.0
 Resistance = 7.5
 Lifetime = 0.3
 Knockback = 2.5
 ScreenShake = 1.0
 TerrainScreenShake = 0.4
+HitEffectScene = ExtResource("2_sl565")
+HitFlashScene = ExtResource("3_3fm6m")
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_mask = 7
@@ -47,7 +70,7 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_um2iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("5_3p21b")
+texture = ExtResource("4_thqoo")
 region_rect = Rect2(7, 40, 13, 16)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

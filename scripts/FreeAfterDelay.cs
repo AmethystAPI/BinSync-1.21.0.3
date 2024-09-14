@@ -6,6 +6,6 @@ public partial class FreeAfterDelay : Node2D {
 	public override void _Process(double delta) {
 		Timer -= (float)delta;
 
-		if (Timer <= 0f) QueueFree();
+		if (Timer <= 0f) GetParent().QueueFree();
 	}
 }

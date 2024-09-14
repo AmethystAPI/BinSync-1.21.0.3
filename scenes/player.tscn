@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
-[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="2_y1oik"]
+[ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="2_nrjqc"]
 [ext_resource type="Texture2D" uid="uid://dhicxntgn4jgr" path="res://sprites/player/player_run_2.tres" id="3_2g3ik"]
 [ext_resource type="Texture2D" uid="uid://dsvinicnlgf1g" path="res://sprites/player/player.tres" id="3_n1urs"]
 [ext_resource type="Texture2D" uid="uid://c6x0s5psfao4e" path="res://sprites/player/player_hurt.tres" id="4_5v8r7"]
@@ -183,7 +183,7 @@ collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xr8oe")
-StarterWeaponScenes = Array[PackedScene]([ExtResource("2_y1oik")])
+StarterWeaponScenes = Array[PackedScene]([ExtResource("2_nrjqc")])
 Visuals = NodePath("SquashAndStretchTarget/PlayerSortOrigin")
 WeaponHolder = NodePath("WeaponHolder")
 TrinketHolder = NodePath("TrinketsHolder")
