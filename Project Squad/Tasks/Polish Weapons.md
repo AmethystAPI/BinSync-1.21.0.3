@@ -1,5 +1,5 @@
 Effects:
-- [ ] trails
+- [x] trails
 - [x] hit flash
 - [x] dust
 - [x] better particle

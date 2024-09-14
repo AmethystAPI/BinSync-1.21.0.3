@@ -15,7 +15,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Mid Round Enemies
 - [ ] Legendary Trinkets
 - [ ] [[Scaling of Trinkets]] #design
 - [ ] More Trinkets #design
@@ -35,12 +34,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] [[Polish Weapons]]
+- [ ] Mid Round Enemies
 
 
 ## Done
 
 **Complete**
+- [x] [[Polish Weapons]]
 - [x] Cleanup screenshake
 - [x] enemy points system
 - [x] Decrease Range of Bow

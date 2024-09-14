@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "592089fbb660b052",
+        "id": "2a4b3708a21378b2",
         "type": "tabs",
         "children": [
           {
-            "id": "e3f54504f3a14609",
+            "id": "9212622828d5e71a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Tasks/Polish Weapons.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta D.md"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Tasks/Polish Weapons.md",
+                "file": "Planning/Beta D.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tasks/Polish Weapons.md",
+                "file": "Planning/Beta D.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tasks/Polish Weapons.md"
+                "file": "Planning/Beta D.md"
               }
             }
           }
@@ -146,18 +144,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e3f54504f3a14609",
+  "active": "9212622828d5e71a",
   "lastOpenFiles": [
-    "Planning/Beta D.md",
+    "Planning/Beta C Kanban.md",
+    "Reference/Locations/Sinister Swamp.canvas",
     "Tasks/Polish Weapons.md",
+    "Planning/Beta D.md",
     "Tasks",
     "Design/Current Design Issues/Scaling of Trinkets.md",
-    "Planning/Beta C Kanban.md",
     "Planning/Beta B Kanban.md",
     "Design/Improve Title Screen.md",
     "Attachments/Astral-Chain03132021-122123-59475_thumb.jpg",
     "Reference/Music.md",
-    "Reference/Locations/Sinister Swamp.canvas",
     "Design/Enemies.md",
     "Attachments/shutterstock_2331893385.jpg",
     "New Text Document.txt",
