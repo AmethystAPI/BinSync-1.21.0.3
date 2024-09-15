@@ -22,6 +22,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   public bool Activated;
   public Vector2 Knockback;
   public bool Dead;
+  public float Points;
 
   public bool Hurt => Knockback.Length() >= 3.5f;
 
@@ -48,8 +49,6 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     _stateMachine = new StateMachine(GetDefaultState());
     AddStates();
     _stateMachine._Ready();
-
-    GetParent<Room>().AddEnemy();
 
     _damageNumber = ResourceLoader.Load<PackedScene>("res://scenes/damage_number.tscn");
   }

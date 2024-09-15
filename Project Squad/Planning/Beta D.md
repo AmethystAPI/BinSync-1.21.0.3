@@ -34,12 +34,12 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Mid Round Enemies
 
 
 ## Done
 
 **Complete**
+- [x] Mid Round Enemies
 - [x] [[Polish Weapons]]
 - [x] Cleanup screenshake
 - [x] enemy points system

@@ -26,7 +26,12 @@ public partial class Room : Node2D, NetworkPointUser {
 	private Barrier _barrier;
 	private Area2D _activateArea;
 	private CollisionShape2D _spawnArea;
-	public PackedScene _roomClearEffect;
+	private PackedScene _roomClearEffect;
+	private float _pointsTillNextRound;
+	private List<List<int>> _rounds = new List<List<int>>();
+	private float _pointsPerRound;
+	private float _pointsCollected;
+	private List<Node2D> _spawningEnemies = new List<Node2D>();
 
 	public void Load() {
 		Entrance = GetNodeOrNull<Node2D>("Entrance");
@@ -66,12 +71,20 @@ public partial class Room : Node2D, NetworkPointUser {
 
 	}
 
-	public static void Cleanup() {
+	public static void CleanupAll() {
 		foreach (Room room in s_Rooms) {
-			room.QueueFree();
+			room.Cleanup();
 		}
 
 		s_Rooms.Clear();
+	}
+
+	public void Cleanup() {
+		foreach (Node2D node in _spawnedEnemies) {
+			node.QueueFree();
+		}
+
+		QueueFree();
 	}
 
 	public void AddEnemy() {
@@ -81,7 +94,20 @@ public partial class Room : Node2D, NetworkPointUser {
 	public void EnemyDied(Enemy enemy) {
 		_aliveEnemies--;
 
-		if (_aliveEnemies != 0) return;
+		_pointsCollected += enemy.Points;
+
+		if (_pointsCollected >= _pointsPerRound * 0.8f && _rounds.Count > 0) {
+			_pointsCollected -= _pointsCollected;
+
+			List<int> round = _rounds[0];
+			_rounds.RemoveAt(0);
+
+			SpawnEnemiesFromRound(round, true, true);
+
+			return;
+		}
+
+		if (_rounds.Count != 0 || _aliveEnemies != 0) return;
 
 		Complete(enemy);
 	}
@@ -136,6 +162,12 @@ public partial class Room : Node2D, NetworkPointUser {
 		return position;
 	}
 
+	private Vector2 GetRandomPointAroundPlayer() {
+		Player player = Player.Players[Game.RandomNumberGenerator.RandiRange(0, Player.AlivePlayers.Count - 1)];
+
+		return player.GlobalPosition + Vector2.Right * Game.RandomNumberGenerator.RandfRange(-64, 64) + Vector2.Up * Game.RandomNumberGenerator.RandfRange(-64, 64);
+	}
+
 	private Godot.Collections.Array<Godot.Collections.Dictionary> DetectSpawnOverlap(Vector2 position) {
 		return GetWorld2D().DirectSpaceState.IntersectShape(new PhysicsShapeQueryParameters2D {
 			Shape = new CircleShape2D() {
@@ -149,44 +181,104 @@ public partial class Room : Node2D, NetworkPointUser {
 	public void SpawnEnemies(float points, bool activated = false) {
 		if (_spawnArea == null) return;
 
-		while (points > 0) {
-			Vector2 spawnPoint = GetRandomPointInSpawnArea();
+		int rounds = Mathf.FloorToInt(Mathf.Pow(points / 4f, 0.8f));
+		if (rounds < 1) rounds = 1;
+		_pointsPerRound = points / rounds;
+		_pointsCollected = 0;
 
-			while (DetectSpawnOverlap(spawnPoint).Count > 0) {
-				spawnPoint = GetRandomPointInSpawnArea();
+		while (points > 0) {
+			float pointsForThisRound = _pointsPerRound;
+
+			List<int> round = new List<int>();
+
+			while (pointsForThisRound > 0) {
+				int selectedEnemyIndex = new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1);
+
+				round.Add(selectedEnemyIndex);
+
+				points -= EnemyPool.Points[selectedEnemyIndex];
+				pointsForThisRound -= EnemyPool.Points[selectedEnemyIndex];
+
+				if (EnemyPool.Points[selectedEnemyIndex] == 0) points -= 1;
+				if (EnemyPool.Points[selectedEnemyIndex] == 0) pointsForThisRound -= 1;
 			}
 
-			int selectedEnemyIndex = new RandomNumberGenerator().RandiRange(0, EnemyPool.EnemyScenes.Length - 1);
+			_rounds.Add(round);
+		}
+
+		List<int> firstRound = _rounds[0];
+		_rounds.RemoveAt(0);
+
+		SpawnEnemiesFromRound(firstRound, false, activated);
+	}
+
+	private void SpawnEnemiesFromRound(List<int> round, bool spawnAroundPlayers = false, bool activated = false) {
+		foreach (int enemyTypeIndex in round) {
+			Vector2 spawnPoint = spawnAroundPlayers ? GetRandomPointAroundPlayer() : GetRandomPointInSpawnArea();
+
+			while (DetectSpawnOverlap(spawnPoint).Count > 0) {
+				spawnPoint = spawnAroundPlayers ? GetRandomPointAroundPlayer() : GetRandomPointInSpawnArea();
+			}
+
+			AddEnemy();
 
 			NetworkPoint.SendRpcToClients(nameof(SpawnEnemyRpc), message => {
+				message.AddBool(spawnAroundPlayers);
+				message.AddFloat(EnemyPool.Points[enemyTypeIndex]);
 				message.AddFloat(spawnPoint.X);
 				message.AddFloat(spawnPoint.Y);
 
-				message.AddInt(selectedEnemyIndex);
+				message.AddInt(enemyTypeIndex);
 
 				message.AddBool(activated);
 			});
-
-			points -= EnemyPool.Points[selectedEnemyIndex];
-
-			if (EnemyPool.Points[selectedEnemyIndex] == 0) points -= 1;
 		}
 	}
 
 	private void SpawnEnemyRpc(Message message) {
+		bool spawnInstantly = !message.GetBool();
+		float points = message.GetFloat();
 		Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
 		int enemySceneIndex = message.GetInt();
 		bool activated = message.GetBool();
 
 		Enemy enemy = NetworkManager.SpawnNetworkSafe<Enemy>(EnemyPool.EnemyScenes[enemySceneIndex], "Enemy");
+		enemy.Points = points;
 
-		AddChild(enemy);
+		if (enemy.Points == 0) enemy.Points = 0;
 
-		enemy.GlobalPosition = position;
+		if (spawnInstantly) {
+			AddChild(enemy);
 
-		_spawnedEnemies.Add(enemy);
+			enemy.GlobalPosition = position;
 
-		if (activated) enemy.Activate();
+			_spawnedEnemies.Add(enemy);
+
+			if (activated) enemy.Activate();
+		} else {
+			PackedScene spawnDustScene = ResourceLoader.Load<PackedScene>("res://scenes/particles/spawn_dust.tscn");
+			Node2D spawnDust = spawnDustScene.Instantiate<Node2D>();
+
+			AddChild(spawnDust);
+
+			spawnDust.GlobalPosition = position;
+
+			_spawningEnemies.Add(enemy);
+
+			Delay.Execute(1, () => {
+				if (!IsInstanceValid(this)) return;
+
+				AddChild(enemy);
+
+				enemy.GlobalPosition = position;
+
+				_spawnedEnemies.Add(enemy);
+
+				if (activated) enemy.Activate();
+
+				_spawningEnemies.Remove(enemy);
+			});
+		}
 	}
 
 	protected virtual void Complete(Enemy enemy = null) {

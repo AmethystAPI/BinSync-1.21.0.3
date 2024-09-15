@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://co8nkjn1dvrkd"]
+
+[ext_resource type="Texture2D" uid="uid://grb7obfukwyd" path="res://sprites/particles/dust_0.tres" id="1_82y7e"]
+[ext_resource type="Script" path="res://scripts/FreeAfterDelay.cs" id="3_oikvj"]
+
+[sub_resource type="Gradient" id="Gradient_fwf55"]
+colors = PackedColorArray(0.270833, 0.270833, 0.270833, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bwmuj"]
+gradient = SubResource("Gradient_fwf55")
+
+[sub_resource type="Curve" id="Curve_vay5l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.21387, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nxbjy"]
+curve = SubResource("Curve_vay5l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uxh1k"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 16.0
+emission_ring_inner_radius = 0.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+spread = 35.095
+initial_velocity_min = 21.48
+initial_velocity_max = 21.48
+gravity = Vector3(0, 0, 0)
+damping_min = 1.825
+damping_max = 1.825
+scale_curve = SubResource("CurveTexture_nxbjy")
+color_ramp = SubResource("GradientTexture1D_bwmuj")
+
+[node name="SpawnDust" type="GPUParticles2D"]
+modulate = Color(1, 0, 0.160784, 1)
+y_sort_enabled = true
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_uxh1k")
+texture = ExtResource("1_82y7e")
+one_shot = true
+
+[node name="FreeAfterDelay" type="Node2D" parent="."]
+script = ExtResource("3_oikvj")
+Timer = 2.0
+
+[connection signal="ready" from="." to="." method="set_emitting" binds= [true]]
