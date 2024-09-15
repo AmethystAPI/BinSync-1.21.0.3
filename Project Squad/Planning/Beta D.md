@@ -11,13 +11,12 @@ kanban-plugin: basic
 - [ ] Fix swamp barrier
 - [ ] Projectiles should pierce decorations
 - [ ] Fix desynced cosmetic animations
+- [ ] Improve death
 
 
 ## Must Do
 
-- [ ] More Golden Grove Enemies #design
 - [ ] Multiple Paths
-- [ ] Cleanup Borders
 - [ ] Location transitions
 - [ ] Alternate roll controls
 - [ ] Normalize camera offset
@@ -33,11 +32,13 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Cleanup Borders
 
 
 ## Done
 
 **Complete**
+- [x] More Golden Grove Enemies #design
 - [x] Artifacts
 - [x] Mid Round Enemies
 - [x] [[Polish Weapons]]

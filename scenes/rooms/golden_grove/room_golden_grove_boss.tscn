@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://meuasfpwjf68"]
+[gd_scene load_steps=22 format=4 uid="uid://meuasfpwjf68"]
 
 [ext_resource type="Script" path="res://scripts/rooms/BossRoom.cs" id="1_3jnnd"]
 [ext_resource type="PackedScene" uid="uid://cg8kvs2jvqdn2" path="res://scenes/enemies/giant_slime.tscn" id="2_00xv6"]
@@ -15,7 +15,8 @@
 [ext_resource type="Resource" uid="uid://c0375lalxo7qq" path="res://resources/decoration_pools/decoration_pool_golden_grove_grass_patch.tres" id="11_d0f3o"]
 [ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/biomes/golden_grove/tree_border.tres" id="12_nernw"]
 [ext_resource type="PackedScene" uid="uid://3e1eqwr3p555" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_2.tscn" id="13_kaik0"]
-[ext_resource type="PackedScene" uid="uid://e35ou7bqvjnd" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_4.tscn" id="14_ffhl5"]
+[ext_resource type="PackedScene" uid="uid://5g7p0a0qc46r" path="res://scenes/decorations/golden_grove/golden_grove_small_patch.tscn" id="14_w1tn8"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="15_101bw"]
 [ext_resource type="Script" path="res://scripts/editor/BorderTool.cs" id="15_hbxud"]
 [ext_resource type="Resource" uid="uid://denv0q3hkyct5" path="res://resources/borders/border_golden_grove.tres" id="16_xdyw4"]
 
@@ -51,7 +52,6 @@ layer_3/z_index = -6
 layer_3/tile_data = PackedInt32Array(-4, 131072, 11, 65531, 131072, 10, 131067, 131072, 11, -327677, 0, 10, -262141, 0, 11, -5, 196608, 10, 65530, 65536, 10, 131066, 196608, 10, -65541, 65536, 10, -65540, 131072, 10, -327676, 65536, 10, -262140, 262144, 10, -196604, 0, 10, -131068, 0, 11, -196603, 65536, 10, -131067, 262144, 10)
 
 [node name="TileMapTool" parent="TileMap" instance=ExtResource("4_t4kud")]
-Active = true
 
 [node name="Exit" type="Node2D" parent="."]
 position = Vector2(0, -144)
@@ -143,20 +143,20 @@ shape = SubResource("RectangleShape2D_2rvvk")
 [node name="Holder" type="Node2D" parent="Decorations/GrassDecorator"]
 y_sort_enabled = true
 
-[node name="@Node2D@17419" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_kaik0")]
-position = Vector2(58.1338, 30.6313)
+[node name="LargePatch2" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_kaik0")]
+position = Vector2(35.1153, 52.9972)
+
+[node name="SmallPatch" type="Sprite2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("14_w1tn8")]
+z_index = -9
+y_sort_enabled = true
+position = Vector2(-8.64931, -52.2547)
+texture = ExtResource("15_101bw")
+region_enabled = true
+region_rect = Rect2(159, -1, 64, 68)
+
+[node name="@Node2D@193992" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_kaik0")]
+position = Vector2(81.3764, -78.1805)
 rotation = -3.14159
-
-[node name="@Node2D@17420" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("13_kaik0")]
-position = Vector2(-28.4107, 2.37414)
-rotation = 1.5708
-
-[node name="LargePatch4" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("14_ffhl5")]
-position = Vector2(-36.3604, -123.72)
-
-[node name="@Node2D@17421" type="Node2D" parent="Decorations/GrassDecorator/Holder" instance=ExtResource("14_ffhl5")]
-position = Vector2(82.6554, -90.9926)
-rotation = 1.5708
 
 [node name="ActivateArea" type="Area2D" parent="."]
 visible = false
