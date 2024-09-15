@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c46kocxmjw57s"]
 
-[ext_resource type="Script" path="res://scripts/items/trinkets/VampireTrinket.cs" id="1_e0vud"]
+[ext_resource type="Script" path="res://scripts/items/trinkets/Trinket.cs" id="1_q58yv"]
 [ext_resource type="Texture2D" uid="uid://bquckj5a8wjkr" path="res://sprites/items/trinkets/trinket_vampire.tres" id="3_dmoyw"]
 
 [node name="VampireTrinket" type="Node2D"]
-script = ExtResource("1_e0vud")
+script = ExtResource("1_q58yv")
+Id = "vampire"
 Icon = ExtResource("3_dmoyw")
 Description = "Heal on damage"
 

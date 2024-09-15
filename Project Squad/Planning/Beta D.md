@@ -15,7 +15,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] Legendary Trinkets
 - [ ] [[Scaling of Trinkets]] #design
 - [ ] More Trinkets #design
 - [ ] More Golden Grove Enemies #design
@@ -34,6 +33,7 @@ kanban-plugin: basic
 
 ## In Progress
 
+- [ ] Artifacts
 
 
 ## Done

@@ -181,7 +181,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	public void SpawnEnemies(float points, bool activated = false) {
 		if (_spawnArea == null) return;
 
-		int rounds = Mathf.FloorToInt(Mathf.Pow(points / 4f, 0.8f));
+		int rounds = Mathf.FloorToInt(Mathf.Pow(points / 2f, 0.8f));
 		if (rounds < 1) rounds = 1;
 		_pointsPerRound = points / rounds;
 		_pointsCollected = 0;

@@ -11,25 +11,19 @@ public partial class DamageNumber : Node2D {
 	private Vector2 _velocity;
 	private float _gravity = 0f;
 
-	private bool _updated = false;
-
 	public override void _Ready() {
 		SquashAndStretch.Trigger(new Vector2(1.4f, 0.6f), 6f);
 
 		RandomNumberGenerator random = new RandomNumberGenerator();
 
 		_velocity = Vector2.Up.Rotated(random.RandfRange(-Mathf.Pi / 4f, Mathf.Pi / 4f)) * random.RandfRange(100, 150f);
+
+		Label.Modulate = Color;
+		(Label.Material as ShaderMaterial).SetShaderParameter("border_color", BorderColor);
+		Label.Text = (Mathf.Round(Damage * 5f * 100f) / 100f).ToString();
 	}
 
 	public override void _Process(double delta) {
-		if (!_updated) {
-			Label.Modulate = Color;
-			(Label.Material as ShaderMaterial).SetShaderParameter("border_color", BorderColor);
-			Label.Text = (Mathf.Round(Damage * 5f * 100f) / 100f).ToString();
-
-			_updated = true;
-		}
-
 		_velocity = MathHelper.FixedLerp(_velocity, Vector2.Zero, 4f, (float)delta);
 		_gravity += (float)delta * 100f;
 

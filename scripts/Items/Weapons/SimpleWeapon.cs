@@ -48,23 +48,27 @@ public partial class SimpleWeapon : Weapon {
   private void ShootRpc(Message message) {
     EmitSignal(SignalName.Shoot);
 
-    Projectile projectile = ProjectileScene.Instantiate<Projectile>();
+    int dualProjectiles = _equippingPlayer.GetTrinketCount("duality");
 
-    projectile.GlobalPosition = GlobalPosition + Vector2.Right.Rotated(Rotation) * ProjectileOffset;
-    projectile.Rotation = Rotation;
+    for (int index = 0; index < 1 + dualProjectiles; index++) {
+      Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
-    projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
-    projectile.Source = _equippingPlayer;
-    projectile.InheritedVelocity = _equippingPlayer.Velocity;
+      float rotationOffset = Mathf.Pi * 2f / (1 + dualProjectiles) * index;
 
-    _equippingPlayer.GetParent().AddChild(projectile);
+      projectile.GlobalPosition = GlobalPosition + Vector2.Right.Rotated(Rotation + rotationOffset) * ProjectileOffset;
+      projectile.Rotation = Rotation + rotationOffset;
 
-    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets) {
-      trinket.ModifyProjectile(this, projectile);
+      projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
+      projectile.Source = _equippingPlayer;
+      projectile.InheritedVelocity = _equippingPlayer.Velocity;
+
+      _equippingPlayer.GetParent().AddChild(projectile);
+
+      Trinket.ModifyProjectile(this, projectile);
+
+      // DEBUG
+      // projectile.Damage = 999f;
     }
-
-    // DEBUG
-    // projectile.Damage = 999f;
 
     if (SquashAndStretch != null) SquashAndStretch.Trigger(SquashAndStretchScale, SquashAndStretchSpeed);
 

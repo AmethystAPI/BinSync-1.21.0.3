@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqbq373kspp30"]
 
-[ext_resource type="Script" path="res://scripts/items/trinkets/StrengthTrinket.cs" id="1_xs6gt"]
+[ext_resource type="Script" path="res://scripts/items/trinkets/Trinket.cs" id="1_xs6gt"]
 [ext_resource type="Texture2D" uid="uid://j3ngqcvqstyy" path="res://sprites/items/trinkets/trinket_strength.tres" id="2_87ncs"]
 
 [node name="StrengthTrinket" type="Node2D"]
 script = ExtResource("1_xs6gt")
+Id = "strength"
 Icon = ExtResource("2_87ncs")
 Description = "Double Damage"
 

@@ -5,6 +5,7 @@
 
 [node name="Faith Trinket" type="Node2D"]
 script = ExtResource("1_pmqp0")
+Id = "faith"
 Icon = ExtResource("2_nxiye")
 Description = "Heals You And Allies"
 

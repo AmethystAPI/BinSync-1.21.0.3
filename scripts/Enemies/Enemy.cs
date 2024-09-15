@@ -99,8 +99,12 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     _justHit = true;
 
     if (projectile.Source is Player player) {
-      foreach (Trinket trinket in player.EquippedTrinkets) {
-        trinket.HitEnemy(this, projectile);
+      RandomNumberGenerator random = new RandomNumberGenerator();
+
+      for (int iteration = 0; iteration < player.GetTrinketCount("vampire"); iteration++) {
+        if (random.RandiRange(1, 7) != 7) continue;
+
+        player.Heal(projectile.Damage * 0.2f);
       }
     }
 
@@ -179,7 +183,7 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
   public WeightedTarget[] GetWeightedTargets() {
     return Player.AlivePlayers.Select(player => new WeightedTarget {
       Player = player,
-      Weight = GlobalPosition.DistanceTo(player.GlobalPosition) - player.EquippedTrinkets.Where(trinket => trinket is PerfumeTrinket).Count() * 48f
+      Weight = GlobalPosition.DistanceTo(player.GlobalPosition) - player.GetTrinketCount("perfume") * 48f
     }).OrderBy(target => target.Weight).ToArray();
   }
 

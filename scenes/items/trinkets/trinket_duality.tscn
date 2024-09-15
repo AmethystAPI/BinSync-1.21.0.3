@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx1vygvn5xxmn"]
 
-[ext_resource type="Script" path="res://scripts/items/trinkets/DualityTrinket.cs" id="1_3p7ga"]
+[ext_resource type="Script" path="res://scripts/items/trinkets/Trinket.cs" id="1_v7hcy"]
 [ext_resource type="Texture2D" uid="uid://ch2rtpbqqiytu" path="res://sprites/items/trinkets/trinket_duality.tres" id="3_v3udi"]
 
 [node name="DualityTrinket" type="Node2D"]
-script = ExtResource("1_3p7ga")
+script = ExtResource("1_v7hcy")
+Id = "duality"
 Icon = ExtResource("3_v3udi")
-Description = "You shoot an extra projectile backwards"
+Description = "Shoot an additional bullet"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_v3udi")

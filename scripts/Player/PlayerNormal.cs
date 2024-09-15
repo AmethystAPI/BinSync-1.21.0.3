@@ -35,10 +35,7 @@ public class PlayerNormal : State {
 
     Vector2 movement = Vector2.Right * Input.GetAxis("move_left", "move_right") + Vector2.Up * Input.GetAxis("move_down", "move_up");
 
-    float modifiedSpeed = s_Speed;
-    foreach (Trinket trinket in _player.EquippedTrinkets) {
-      modifiedSpeed = trinket.ModifySpeed(modifiedSpeed);
-    }
+    float modifiedSpeed = s_Speed + 20.0f * _player.GetTrinketCount("swiftness");
 
     _player.Velocity = movement.Normalized() * modifiedSpeed + _player.Knockback;
 

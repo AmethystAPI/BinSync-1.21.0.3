@@ -62,19 +62,23 @@ public partial class Spear : Weapon {
   }
 
   private void ShootRpc(Message message) {
-    Projectile projectile = ProjectileScene.Instantiate<Projectile>();
+    int dualProjectiles = _equippingPlayer.GetTrinketCount("duality");
 
-    projectile.GlobalPosition = GlobalPosition;
-    projectile.Rotation = Rotation;
+    for (int index = 0; index < 1 + dualProjectiles; index++) {
+      Projectile projectile = ProjectileScene.Instantiate<Projectile>();
 
-    projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
-    projectile.Source = _equippingPlayer;
-    projectile.InheritedVelocity = _equippingPlayer.Velocity;
+      float rotationOffset = Mathf.Pi * 2f / (1 + dualProjectiles) * index;
 
-    _equippingPlayer.GetParent().AddChild(projectile);
+      projectile.GlobalPosition = GlobalPosition;
+      projectile.Rotation = Rotation + rotationOffset;
 
-    foreach (Trinket trinket in _equippingPlayer.EquippedTrinkets) {
-      trinket.ModifyProjectile(this, projectile);
+      projectile.SetMultiplayerAuthority(GetMultiplayerAuthority());
+      projectile.Source = _equippingPlayer;
+      projectile.InheritedVelocity = _equippingPlayer.Velocity;
+
+      _equippingPlayer.GetParent().AddChild(projectile);
+
+      Trinket.ModifyProjectile(this, projectile);
     }
   }
 }

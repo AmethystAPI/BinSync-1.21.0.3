@@ -14,10 +14,12 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	[Export] public Node2D Visuals;
 	[Export] public Node2D WeaponHolder;
 	[Export] public Node2D TrinketHolder;
+	[Export] public Node2D ArtifactHolder;
 	[Export] public Node2D EquipmentHolder;
 	[Export] public PackedScene DamageNumber;
 
 	[Export] public PackedScene[] DebugStarterTrinketScenes;
+	[Export] public PackedScene DebugStarterArtifactScene;
 
 	public float Health = 3f;
 	public Vector2 Knockback;
@@ -34,9 +36,11 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 	private NetworkedVariable<Vector2> _networkedFacing = new NetworkedVariable<Vector2>(Vector2.Zero);
 
 	private Weapon _equippedWeapon;
+	private Artifact _equippedArtifact;
 
 	private StateMachine _stateMachine = new StateMachine("normal");
 
+	private Dictionary<string, int> EquippedTrinketTypeCounts = new Dictionary<string, int>();
 	private Control _healthBar;
 	private ColorRect _healthBarFill;
 
@@ -220,12 +224,26 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 
 			if (NetworkPoint.IsOwner) Equip(trinket);
 		}
+
+		if (DebugStarterArtifactScene != null) {
+			Artifact artifact = NetworkManager.SpawnNetworkSafe<Artifact>(DebugStarterArtifactScene, "Artifact");
+
+			AddChild(artifact);
+
+			if (NetworkPoint.IsOwner) Equip(artifact);
+		}
 	}
 
 	public void Cleanup() {
 		Players.Remove(this);
 
 		QueueFree();
+	}
+
+	public int GetTrinketCount(string type) {
+		if (!EquippedTrinketTypeCounts.ContainsKey(type)) return 0;
+
+		return EquippedTrinketTypeCounts[type];
 	}
 
 	public void EnterTrinketRealm() {
@@ -318,6 +336,12 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
 
 			EquippedTrinkets.Add(trinket);
+
+			if (EquippedTrinketTypeCounts.ContainsKey(trinket.Id)) {
+				EquippedTrinketTypeCounts[trinket.Id]++;
+			} else {
+				EquippedTrinketTypeCounts.Add(trinket.Id, 1);
+			}
 		}
 
 		if (item is Equipment equipment) {
@@ -328,6 +352,16 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 			if (EquippedEquipments.ContainsKey(equipment.Slot)) EquippedEquipments[equipment.Slot].QueueFree();
 
 			EquippedEquipments[equipment.Slot] = equipment;
+		}
+
+		if (item is Artifact artifact) {
+			if (_equippedArtifact != null) _equippedArtifact.QueueFree();
+
+			item.GetParent().RemoveChild(item);
+			ArtifactHolder.AddChild(item);
+			item.SetMultiplayerAuthority(GetMultiplayerAuthority());
+
+			_equippedArtifact = artifact;
 		}
 
 		item.OnEquipToPlayer(this);
