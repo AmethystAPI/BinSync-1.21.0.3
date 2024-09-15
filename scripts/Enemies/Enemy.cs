@@ -154,6 +154,8 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     Dead = true;
 
     _stateMachine.GoToState("dead");
+
+    Die();
   }
 
   protected virtual void PlayHurtEffects(float damage) {
@@ -178,6 +180,10 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
 
   protected virtual void ActivateRpc(Message message) {
     Activated = true;
+  }
+
+  protected virtual void Die() {
+
   }
 
   public WeightedTarget[] GetWeightedTargets() {
