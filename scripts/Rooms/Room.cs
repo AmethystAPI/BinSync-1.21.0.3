@@ -80,7 +80,7 @@ public partial class Room : Node2D, NetworkPointUser {
 	}
 
 	public void Cleanup() {
-		foreach (Node2D node in _spawnedEnemies) {
+		foreach (Node2D node in _spawningEnemies) {
 			node.QueueFree();
 		}
 
