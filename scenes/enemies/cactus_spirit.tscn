@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://b0awcwrhaggno"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/CactusSpirit.cs" id="1_f8484"]
-[ext_resource type="PackedScene" uid="uid://cf1alnlwhq4yq" path="res://scenes/enemies/cactus_spirit_projectile.tscn" id="2_jmahl"]
+[ext_resource type="PackedScene" uid="uid://cf1alnlwhq4yq" path="res://scenes/enemies/projectiles/cactus_spirit_projectile.tscn" id="2_jmahl"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="2_yw3vg"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_v2rhn"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_xya6n"]

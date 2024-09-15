@@ -1,8 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://01apx66cyccg"]
+[gd_scene load_steps=33 format=3 uid="uid://01apx66cyccg"]
 
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player/player.aseprite" id="1_82yba"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_xr8oe"]
+[ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="2_nrjqc"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="2_odi8k"]
+[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="2_y1oik"]
 [ext_resource type="Texture2D" uid="uid://dhicxntgn4jgr" path="res://sprites/player/player_run_2.tres" id="3_2g3ik"]
 [ext_resource type="Texture2D" uid="uid://dsvinicnlgf1g" path="res://sprites/player/player.tres" id="3_n1urs"]
 [ext_resource type="Texture2D" uid="uid://c6x0s5psfao4e" path="res://sprites/player/player_hurt.tres" id="4_5v8r7"]
@@ -11,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://vwjfydnewrqr" path="res://sprites/player/player_run_0.tres" id="5_wli2m"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="6_i3kc3"]
 [ext_resource type="Texture2D" uid="uid://k05kj3mpttba" path="res://sprites/player/player_angel_0.tres" id="6_pop7v"]
-[ext_resource type="PackedScene" uid="uid://eqdaogfawyb5" path="res://scenes/items/artifacts/artifact_severed_heart.tscn" id="6_rrxms"]
 [ext_resource type="Texture2D" uid="uid://cvnpfqwk65srl" path="res://sprites/player/player_run_1.tres" id="6_yvcw5"]
 [ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]
 [ext_resource type="Texture2D" uid="uid://dlwt3ei7oi0ul" path="res://sprites/player/player_angel_1.tres" id="7_uai0k"]
@@ -184,7 +185,7 @@ collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xr8oe")
-StarterWeaponScenes = Array[PackedScene]([ExtResource("2_odi8k")])
+StarterWeaponScenes = Array[PackedScene]([ExtResource("2_nrjqc"), ExtResource("2_odi8k"), ExtResource("2_y1oik")])
 Visuals = NodePath("SquashAndStretchTarget/PlayerSortOrigin")
 WeaponHolder = NodePath("WeaponHolder")
 TrinketHolder = NodePath("TrinketsHolder")
@@ -192,7 +193,6 @@ ArtifactHolder = NodePath("ArtifactHolder")
 EquipmentHolder = NodePath("SquashAndStretchTarget/PlayerSortOrigin/EquipmentHolder")
 DamageNumber = ExtResource("5_ke1ch")
 DebugStarterTrinketScenes = Array[PackedScene]([])
-DebugStarterArtifactScene = ExtResource("6_rrxms")
 
 [node name="SquashAndStretchTarget" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b6hd8oagbgaod" path="res://sprites/enemies/crow/crow_0.tres" id="2_jc2w3"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="2_u8mw0"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_0hng1"]
-[ext_resource type="PackedScene" uid="uid://bv8860143w1tl" path="res://scenes/enemies/crow_projectile.tscn" id="7_mu1w5"]
+[ext_resource type="PackedScene" uid="uid://bv8860143w1tl" path="res://scenes/enemies/projectiles/crow_projectile.tscn" id="7_mu1w5"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_hbt65"]
 [ext_resource type="Texture2D" uid="uid://b4naejnmh5svi" path="res://sprites/enemies/crow/crow_1.tres" id="9_s3qqv"]
 [ext_resource type="Texture2D" uid="uid://erjyvt1spirj" path="res://sprites/enemies/crow/crow_hurt.tres" id="10_hpfxe"]

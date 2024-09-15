@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://biycaes0pxrav"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/Slime.cs" id="1_6kkrf"]
-[ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/slime_projectile.tscn" id="2_4goc7"]
+[ext_resource type="PackedScene" uid="uid://dq15cgoix34cv" path="res://scenes/enemies/projectiles/slime_projectile.tscn" id="2_4goc7"]
 [ext_resource type="Texture2D" uid="uid://didmjldh3h46f" path="res://sprites/enemies/slime/slime.tres" id="2_hbhsd"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_yrvle"]
 [ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="8_j3im5"]

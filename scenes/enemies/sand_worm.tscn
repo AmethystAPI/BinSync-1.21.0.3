@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dqnxkhxuii7pt"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/SandWorm.cs" id="1_suit1"]
-[ext_resource type="PackedScene" uid="uid://c2uo8wbugtra2" path="res://scenes/enemies/sand_worm_projectile.tscn" id="2_l57kt"]
+[ext_resource type="PackedScene" uid="uid://c2uo8wbugtra2" path="res://scenes/enemies/projectiles/sand_worm_projectile.tscn" id="2_l57kt"]
 [ext_resource type="Texture2D" uid="uid://niq1c5ey06vg" path="res://sprites/enemies/sand_worm/sand_worm.png" id="2_miif3"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_3fahg"]
 [ext_resource type="PackedScene" uid="uid://ci5smkuw5uefh" path="res://scenes/particles/sand_worm_pebble.tscn" id="3_b2r8g"]

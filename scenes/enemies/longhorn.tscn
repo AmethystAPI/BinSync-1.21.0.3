@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://ldnqwd8r6ppc"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/Longhorn.cs" id="1_xow25"]
-[ext_resource type="PackedScene" uid="uid://dgj4q1bwt3gci" path="res://scenes/enemies/longhorn_projectile.tscn" id="2_fwk24"]
+[ext_resource type="PackedScene" uid="uid://dgj4q1bwt3gci" path="res://scenes/enemies/projectiles/longhorn_projectile.tscn" id="2_fwk24"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="3_3m1ft"]
 [ext_resource type="Texture2D" uid="uid://cjkmsm5vg4erl" path="res://sprites/enemies/longhorn/longhorn.png" id="4_kd67x"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="5_rayee"]

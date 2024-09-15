@@ -15,8 +15,6 @@ kanban-plugin: basic
 
 ## Must Do
 
-- [ ] [[Scaling of Trinkets]] #design
-- [ ] More Trinkets #design
 - [ ] More Golden Grove Enemies #design
 - [ ] Multiple Paths
 - [ ] Cleanup Borders
@@ -29,16 +27,18 @@ kanban-plugin: basic
 - [ ] Rework Sacrafice
 - [ ] Options Menu
 - [ ] Finish State
+- [ ] More Trinkets #design
+- [ ] [[Scaling of Trinkets]] #design
 
 
 ## In Progress
 
-- [ ] Artifacts
 
 
 ## Done
 
 **Complete**
+- [x] Artifacts
 - [x] Mid Round Enemies
 - [x] [[Polish Weapons]]
 - [x] Cleanup screenshake

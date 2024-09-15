@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bg2aer84qp5hq"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/Frog.cs" id="1_fc16d"]
-[ext_resource type="PackedScene" uid="uid://bkbc2sdc7wnk8" path="res://scenes/enemies/swamp_flower_projectile.tscn" id="2_b0xqs"]
+[ext_resource type="PackedScene" uid="uid://bkbc2sdc7wnk8" path="res://scenes/enemies/projectiles/swamp_flower_projectile.tscn" id="2_b0xqs"]
 [ext_resource type="PackedScene" uid="uid://d32figfqedxfd" path="res://scenes/enemies/swamp_flower_projectile_large.tscn" id="3_p6i0l"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="4_jm6oy"]
 [ext_resource type="Texture2D" uid="uid://cpbcv4axu3vfv" path="res://sprites/enemies/frog/frog.png" id="5_2wwk6"]

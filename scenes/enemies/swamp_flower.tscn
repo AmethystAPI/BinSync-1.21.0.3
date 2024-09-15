@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://cjbg2o4u22hyt"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemies/SwampFlower.cs" id="1_85mgc"]
-[ext_resource type="PackedScene" uid="uid://bkbc2sdc7wnk8" path="res://scenes/enemies/swamp_flower_projectile.tscn" id="2_1htr2"]
+[ext_resource type="PackedScene" uid="uid://bkbc2sdc7wnk8" path="res://scenes/enemies/projectiles/swamp_flower_projectile.tscn" id="2_1htr2"]
 [ext_resource type="PackedScene" uid="uid://d32figfqedxfd" path="res://scenes/enemies/swamp_flower_projectile_large.tscn" id="3_eef6p"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="3_picut"]
 [ext_resource type="Texture2D" uid="uid://cyff4t1v1my0v" path="res://sprites/enemies/swamp_flower/swamp_flower.png" id="4_anw82"]
