@@ -12,14 +12,13 @@ kanban-plugin: basic
 - [ ] Projectiles should pierce decorations
 - [ ] Fix desynced cosmetic animations
 - [ ] Improve death
+- [ ] Improve enemy projectiles
 
 
 ## Must Do
 
-- [ ] Multiple Paths
 - [ ] Location transitions
 - [ ] Alternate roll controls
-- [ ] Normalize camera offset
 - [ ] Interact prompt for alter
 - [ ] Drop swapped weapons
 - [ ] Prevent Back Tracking
@@ -32,12 +31,14 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Cleanup Borders
+- [ ] Multiple Paths
 
 
 ## Done
 
 **Complete**
+- [x] Normalize camera offset
+- [x] Cleanup Borders
 - [x] More Golden Grove Enemies #design
 - [x] Artifacts
 - [x] Mid Round Enemies
