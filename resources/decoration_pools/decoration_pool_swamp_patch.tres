@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://t5c116ycf8f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp1vy54v05b6" path="res://scenes/decorations/swamp/swamp_small_patch.tscn" id="1_usg8p"]
-[ext_resource type="PackedScene" uid="uid://ceyxc2hgi5y04" path="res://scenes/decorations/swamp/swamp_small_patch_2.tscn" id="2_r5u8w"]
+[ext_resource type="PackedScene" path="res://scenes/decorations/swamp/swamp_small_patch_2.tscn" id="2_r5u8w"]
 [ext_resource type="Script" path="res://scripts/rooms/DecorationPool.cs" id="6_s11da"]
 
 [resource]

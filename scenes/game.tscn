@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/ui/game_ui.tscn" id="3_s7l32"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="4_encmg"]
 [ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
+[ext_resource type="Shader" path="res://scripts/shaders/etherial.gdshader" id="5_4da55"]
 [ext_resource type="AudioStream" uid="uid://dey6knsoqrxff" path="res://sfx/combined/hurt_1.wav" id="6_c3uc0"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="AudioStream" uid="uid://clof1mxacmnvy" path="res://sfx/combined/swing_1.wav" id="7_yuo4k"]
 [ext_resource type="AudioStream" uid="uid://dm71qtyxmxx5" path="res://sfx/combined/swing_2.wav" id="8_6wno2"]
 [ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
-[ext_resource type="AudioStream" uid="uid://b73n6u24fe7kl" path="res://music/Theme 7.wav" id="9_47kig"]
+[ext_resource type="AudioStream" uid="uid://bt3vmiqn5dhqu" path="res://music/Theme 4.wav" id="8_y68pd"]
 [ext_resource type="Script" path="res://scripts/Interactables.cs" id="9_t151n"]
 [ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
 [ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://sprites/particles/leaf_dark.tres" id="10_agqbr"]
@@ -51,74 +52,10 @@ angular_velocity_min = -63.68
 angular_velocity_max = 63.69
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="Shader" id="Shader_vg51j"]
-code = "shader_type canvas_item;
-
-uniform vec3 color: source_color;
-uniform vec3 color2: source_color;
-uniform vec3 star_color: source_color;
-uniform sampler3D noise;
-uniform vec2 size;
-
-vec3 get_nebula_value(float offset, vec2 uv, float time) {
-	float t = texture(noise, vec3(mod(uv / 1.5, 1.0), mod(time  * 0.08, 1.0))).r;
-	
-	return mix(color, color2, t);
-}
-
-float get_distortion(vec2 uv, float slice) {
-	return texture(noise, vec3(mod(uv, 1.0), mod(slice, 1.0))).r - 0.5;
-}
-
-float random (vec2 st) {
-    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
-}
-
-float star_value(float offset, vec2 uv, float time) {
-	float distortion = get_distortion(uv, time * 0.06);
-	
-	vec2 sample_position = floor(
-		(
-			vec2(
-				uv.x + time * 0.008, uv.y - time * 0.008
-			) + distortion * 0.04
-		) * 300.0 + offset
-	) / 300.0;
-		
-	float threshold = 0.004;
-	
-	return max(0, random(sample_position) - 1.0 + threshold) / threshold;
-}
-
-void fragment() {
-	vec2 corrected_uv = UV * size / 300.0;
-	
-	float distortion = get_distortion(corrected_uv / 2.0, TIME * 0.05);
-	
-	vec2 distorted_uv = corrected_uv + distortion;
-	
-	float offset = 50.0;
-	float limit = 400.0;
-	float transition_speed = 0.2;
-
-	float time_base = floor(TIME * transition_speed) * offset;
-
-	float star_value1 = star_value(mod(time_base, limit), corrected_uv, TIME);
-	float star_value2 = star_value(mod(time_base + offset, limit), corrected_uv, TIME);
-
-	vec3 nebula_value = get_nebula_value(0.0, corrected_uv, TIME);
-	
-	//COLOR = vec4(nebula_value, 1.0);	
-	
-	float mixed_value = mix(star_value1, star_value2, mod(TIME * transition_speed, 1.0));
-	
-	COLOR = vec4(mix(nebula_value, star_color, mixed_value), COLOR.a);
-}"
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_yfm5y"]
 seed = 1
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xgrkg"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_or4pi"]
 width = 128
 height = 128
 depth = 128
@@ -127,12 +64,12 @@ seamless_blend_skirt = 0.2
 noise = SubResource("FastNoiseLite_yfm5y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1o6u"]
-shader = SubResource("Shader_vg51j")
+shader = ExtResource("5_4da55")
 shader_parameter/color = Color(0.0392157, 0.0235294, 0.0862745, 1)
 shader_parameter/color2 = Color(0, 0, 0, 1)
 shader_parameter/star_color = Color(0.741176, 0.796078, 1, 1)
-shader_parameter/size = Vector2(1400, 1400)
-shader_parameter/noise = SubResource("NoiseTexture3D_xgrkg")
+shader_parameter/size = Vector2(1920, 1080)
+shader_parameter/noise = SubResource("NoiseTexture3D_or4pi")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -144,9 +81,9 @@ script = ExtResource("22_ko2sk")
 Sounds = [ExtResource("23_8eois"), ExtResource("24_0d0le"), ExtResource("6_c3uc0"), ExtResource("7_yuo4k"), ExtResource("8_6wno2"), ExtResource("24_0d0le")]
 SoundIds = PackedStringArray("player_damage", "enemy_die", "enemy_damage", "weapon_shoot", "weapon_shoot", "destructable_hit")
 SoundVolumes = PackedFloat32Array(-4, 0, -7, -18, -18, 0)
-MusicTracks = [ExtResource("9_47kig"), ExtResource("39_gcumd")]
+MusicTracks = [ExtResource("8_y68pd"), ExtResource("39_gcumd")]
 MusicTrackIds = PackedStringArray("golden_grove", "boss")
-MusicTrackVolumes = PackedFloat32Array(-8, 0)
+MusicTrackVolumes = PackedFloat32Array(0, 0)
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("3_ix04k")
@@ -205,6 +142,7 @@ mouse_filter = 2
 layer = -128
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
+modulate = Color(0.356863, 0.141176, 0.0823529, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
