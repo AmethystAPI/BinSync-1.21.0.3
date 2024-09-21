@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ctv1d1okq4gwm"]
+
+[ext_resource type="Script" path="res://addons/room_tool/RoomLayout.cs" id="1_fud1d"]
+
+[resource]
+script = ExtResource("1_fud1d")
+Connections = PackedVector2Array(0, 128, 0, -144)
+TopLeftBound = Vector2(-192, -144)
+BottomRightBound = Vector2(192, 128)

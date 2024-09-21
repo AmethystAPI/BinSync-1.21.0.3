@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cpwcc0fx0uvd0"]
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.4, 0.4)
+
+[node name="ModeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 122.0
+text = "Mode: Entrance"
