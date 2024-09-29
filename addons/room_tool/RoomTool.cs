@@ -1,7 +1,6 @@
 #if TOOLS
 using Godot;
 using Godot.Collections;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,9 +12,10 @@ public partial class RoomTool : EditorPlugin {
 		Bounds
 	}
 
-	private HashSet<Vector2> _connections = new HashSet<Vector2>();
+	private HashSet<RoomLayout.Connection> _connections = new HashSet<RoomLayout.Connection>();
 	private List<Vector2> _bounds = new List<Vector2>();
 	private Mode _mode = Mode.Connections;
+	private Vector2 _direction = Vector2.Right;
 	private string _selectedPath;
 
 	private RoomLayoutGizmo _roomLayoutGizmo;
@@ -27,7 +27,7 @@ public partial class RoomTool : EditorPlugin {
 		if (_bounds.Count < 2) return;
 
 		RoomLayout roomLayout = new RoomLayout();
-		roomLayout.Connections = _connections.ToArray();
+		roomLayout.SetConnections(_connections.ToArray());
 		roomLayout.TopLeftBound = new Vector2(Mathf.Min(_bounds[0].X, _bounds[1].X), Mathf.Min(_bounds[0].Y, _bounds[1].Y));
 		roomLayout.BottomRightBound = new Vector2(Mathf.Max(_bounds[0].X, _bounds[1].X), Mathf.Max(_bounds[0].Y, _bounds[1].Y));
 
@@ -91,7 +91,7 @@ public partial class RoomTool : EditorPlugin {
 		if (ResourceLoader.Exists(GetRoomLayoutPath())) {
 			RoomLayout roomLayout = ResourceLoader.Load<RoomLayout>(GetRoomLayoutPath());
 
-			_connections = new HashSet<Vector2>(roomLayout.Connections);
+			_connections = new HashSet<RoomLayout.Connection>(roomLayout.GetConnections());
 			_bounds = new List<Vector2>() { roomLayout.TopLeftBound, roomLayout.BottomRightBound };
 		}
 
@@ -125,7 +125,10 @@ public partial class RoomTool : EditorPlugin {
 				Vector2 position = _roomLayoutGizmo.GetViewportTransform().AffineInverse() * mouseEvent.Position;
 
 				if (_mode == Mode.Connections) {
-					_connections.Add((position / 16f).Round());
+					_connections.Add(new RoomLayout.Connection {
+						Location = (position / 16f).Round(),
+						Direction = _direction
+					});
 				}
 
 				if (_mode == Mode.Bounds) {
@@ -144,8 +147,13 @@ public partial class RoomTool : EditorPlugin {
 				Vector2 position = _roomLayoutGizmo.GetViewportTransform().AffineInverse() * mouseEvent.Position;
 
 				if (_mode == Mode.Connections) {
-					if (_connections.Contains((position / 16f).Round()))
-						_connections.Remove((position / 16f).Round());
+					RoomLayout.Connection connection = new RoomLayout.Connection {
+						Location = (position / 16f).Round(),
+						Direction = _direction
+					};
+
+					if (_connections.Contains(connection))
+						_connections.Remove(connection);
 				}
 
 				if (_mode == Mode.Bounds) {
@@ -162,15 +170,23 @@ public partial class RoomTool : EditorPlugin {
 		}
 
 		if (@event is InputEventKey keyEvent) {
-			if (keyEvent.Keycode != Key.F) return false;
+			if (keyEvent.Keycode != Key.F && keyEvent.Keycode != Key.E) return false;
 			if (!keyEvent.Pressed) return true;
 
-			if (_mode == Mode.Connections) {
-				_mode = Mode.Bounds;
-				_gui.GetNode<Label>("ModeLabel").Text = "Mode: Bounds";
-			} else if (_mode == Mode.Bounds) {
-				_mode = Mode.Connections;
-				_gui.GetNode<Label>("ModeLabel").Text = "Mode: Connections";
+			if (keyEvent.Keycode == Key.F) {
+				if (_mode == Mode.Connections) {
+					_mode = Mode.Bounds;
+					_gui.GetNode<Label>("ModeLabel").Text = "Mode: Bounds";
+				} else if (_mode == Mode.Bounds) {
+					_mode = Mode.Connections;
+					_gui.GetNode<Label>("ModeLabel").Text = "Mode: Connections";
+				}
+			}
+
+			if (keyEvent.Keycode == Key.E) {
+				_direction = new Vector2(_direction.Y, -_direction.X);
+
+				UpdateGizmo();
 			}
 
 			return true;
@@ -182,6 +198,7 @@ public partial class RoomTool : EditorPlugin {
 	private void UpdateGizmo() {
 		_roomLayoutGizmo.Connections = _connections;
 		_roomLayoutGizmo.Bounds = _bounds;
+		_roomLayoutGizmo.Direction = _direction;
 
 		_roomLayoutGizmo.QueueRedraw();
 	}
