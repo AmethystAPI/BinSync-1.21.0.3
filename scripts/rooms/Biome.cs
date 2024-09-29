@@ -18,6 +18,14 @@ public partial class Biome : Resource {
         return ResourceLoader.Load<RoomLayout>(layoutPath);
     }
 
+    public RoomLayout GetSpawnRoomLayout(int index) {
+        PackedScene room = SpawnRooms[index];
+
+        string layoutPath = GetRoomLayoutPath(room.ResourcePath);
+
+        return ResourceLoader.Load<RoomLayout>(layoutPath);
+    }
+
     private string GetRoomLayoutPath(string path) {
         string relativePath = path.Substring("res://content/rooms/".Length);
         string fileName = Path.GetFileName(relativePath);
