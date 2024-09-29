@@ -31,6 +31,21 @@ public partial class RoomTool : EditorPlugin {
 		roomLayout.TopLeftBound = new Vector2(Mathf.Min(_bounds[0].X, _bounds[1].X), Mathf.Min(_bounds[0].Y, _bounds[1].Y));
 		roomLayout.BottomRightBound = new Vector2(Mathf.Max(_bounds[0].X, _bounds[1].X), Mathf.Max(_bounds[0].Y, _bounds[1].Y));
 
+		List<Vector2> walls = new List<Vector2>();
+
+		TileMapLayer wallsLayer = _roomLayoutGizmo.GetParent().GetNode<TileMapLayer>("Walls");
+		for (int x = Mathf.FloorToInt(roomLayout.TopLeftBound.X / 16f); x < Mathf.FloorToInt(roomLayout.BottomRightBound.X / 16f); x++) {
+			for (int y = Mathf.FloorToInt(roomLayout.TopLeftBound.Y / 16f); y < Mathf.FloorToInt(roomLayout.BottomRightBound.Y / 16f); y++) {
+				TileData tileData = wallsLayer.GetCellTileData(new Vector2I(x, y));
+
+				if (tileData == null) continue;
+
+				walls.Add(new Vector2(x, y));
+			}
+		}
+
+		roomLayout.Walls = walls.ToArray();
+
 		if (ResourceLoader.Exists(GetRoomLayoutPath()))
 			File.Delete(ProjectSettings.GlobalizePath(GetRoomLayoutPath()));
 
