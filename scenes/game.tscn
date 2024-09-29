@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=43 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://dw1yvgf28xey3" path="res://resources/biomes/biome_swamp.tres" id="17_byv53"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
 [ext_resource type="Resource" uid="uid://cgl8q2vlqtj32" path="res://resources/biomes/biome_windswept_wastes.tres" id="18_v3p4i"]
+[ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="19_4ko6j"]
 [ext_resource type="Script" path="res://scripts/Audio.cs" id="22_ko2sk"]
 [ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/library/sfx_sounds_impact1.wav" id="23_8eois"]
 [ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/library/death_1.wav" id="24_0d0le"]
@@ -94,7 +95,7 @@ script = ExtResource("9_t151n")
 [node name="Camera" type="Camera2D" parent="."]
 process_priority = 1
 process_physics_priority = 1
-zoom = Vector2(5, 5)
+zoom = Vector2(2, 2)
 script = ExtResource("4_encmg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
@@ -113,6 +114,9 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 y_sort_enabled = true
 script = ExtResource("4_x66nk")
 Biomes = Array[Resource]([ExtResource("15_6wava"), ExtResource("17_byv53"), ExtResource("18_v3p4i")])
+
+[node name="Walls" type="TileMapLayer" parent="WorldGenerator"]
+tile_set = ExtResource("19_4ko6j")
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20

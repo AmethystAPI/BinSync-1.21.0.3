@@ -34,8 +34,8 @@ public partial class RoomTool : EditorPlugin {
 		List<Vector2> walls = new List<Vector2>();
 
 		TileMapLayer wallsLayer = _roomLayoutGizmo.GetParent().GetNode<TileMapLayer>("Walls");
-		for (int x = Mathf.FloorToInt(roomLayout.TopLeftBound.X / 16f); x < Mathf.FloorToInt(roomLayout.BottomRightBound.X / 16f); x++) {
-			for (int y = Mathf.FloorToInt(roomLayout.TopLeftBound.Y / 16f); y < Mathf.FloorToInt(roomLayout.BottomRightBound.Y / 16f); y++) {
+		for (int x = (int)roomLayout.TopLeftBound.X; x < (int)roomLayout.BottomRightBound.X; x++) {
+			for (int y = (int)roomLayout.TopLeftBound.Y; y < (int)roomLayout.BottomRightBound.Y; y++) {
 				TileData tileData = wallsLayer.GetCellTileData(new Vector2I(x, y));
 
 				if (tileData == null) continue;
@@ -125,11 +125,11 @@ public partial class RoomTool : EditorPlugin {
 				Vector2 position = _roomLayoutGizmo.GetViewportTransform().AffineInverse() * mouseEvent.Position;
 
 				if (_mode == Mode.Connections) {
-					_connections.Add((position / 16f).Round() * 16f);
+					_connections.Add((position / 16f).Round());
 				}
 
 				if (_mode == Mode.Bounds) {
-					_bounds.Add((position / 16f).Round() * 16f);
+					_bounds.Add((position / 16f).Round());
 
 					if (_bounds.Count > 2) _bounds.RemoveAt(0);
 				}
@@ -144,13 +144,13 @@ public partial class RoomTool : EditorPlugin {
 				Vector2 position = _roomLayoutGizmo.GetViewportTransform().AffineInverse() * mouseEvent.Position;
 
 				if (_mode == Mode.Connections) {
-					if (_connections.Contains((position / 16f).Round() * 16f))
-						_connections.Remove((position / 16f).Round() * 16f);
+					if (_connections.Contains((position / 16f).Round()))
+						_connections.Remove((position / 16f).Round());
 				}
 
 				if (_mode == Mode.Bounds) {
-					if (_bounds.Contains((position / 16f).Round() * 16f))
-						_bounds.Remove((position / 16f).Round() * 16f);
+					if (_bounds.Contains((position / 16f).Round()))
+						_bounds.Remove((position / 16f).Round());
 				}
 
 				EditorInterface.Singleton.MarkSceneAsUnsaved();

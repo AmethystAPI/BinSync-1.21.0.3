@@ -1,9 +1,7 @@
-[gd_resource type="Resource" load_steps=15 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=16 format=3 uid="uid://domhx2cdlyijx"]
 
-[ext_resource type="Resource" uid="uid://ctv1d1okq4gwm" path="res://generated/rooms/room_layout_room_golden_grove_plain.tres" id="1_4mdu5"]
 [ext_resource type="Resource" uid="uid://cjsfyxq02d5pr" path="res://resources/room_placers/golden_grove/room_placer_golden_grove_larger.tres" id="2_1pebj"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
-[ext_resource type="Resource" uid="uid://bs4t7xmom1efc" path="res://generated/rooms/room_layout_room_golden_grove_spawn.tres" id="2_bgjde"]
 [ext_resource type="Resource" uid="uid://b1mtey8fgm5o5" path="res://resources/room_placers/golden_grove/room_placer_golden_grove_large.tres" id="2_sjtb6"]
 [ext_resource type="Resource" uid="uid://cxjlmqc8lrkdi" path="res://resources/room_placers/golden_grove/room_placer_golden_grove_plain.tres" id="3_gw2vn"]
 [ext_resource type="Resource" uid="uid://bsx42etrb5gan" path="res://resources/room_placers/golden_grove/room_placer_golden_grove_large_2.tres" id="4_x2utj"]
@@ -14,10 +12,14 @@
 [ext_resource type="Resource" uid="uid://cqm6w018x78cp" path="res://resources/unique_encounters/unique_encounter_golden_grove_temple.tres" id="8_eg8qj"]
 [ext_resource type="Resource" uid="uid://c08mxw0ij40ib" path="res://resources/room_placers/golden_grove/room_placer_golden_grove_plain_right_top.tres" id="8_g1jlr"]
 [ext_resource type="Resource" uid="uid://d2dfw0223vpxc" path="res://resources/unique_encounters/unique_encounter_golden_grove_boss.tres" id="8_rikje"]
+[ext_resource type="PackedScene" uid="uid://co2o42vdmdcna" path="res://content/rooms/room_golden_grove_plain.tscn" id="9_x7ql1"]
+[ext_resource type="PackedScene" uid="uid://x8o862epxy8u" path="res://content/rooms/room_golden_grove_spawn.tscn" id="10_1mm5d"]
+[ext_resource type="PackedScene" uid="uid://c1wmer7gcmqyi" path="res://content/rooms/room_golden_grove_twist.tscn" id="10_n6cq5"]
 
 [resource]
 script = ExtResource("2_738dh")
-RoomLayouts = [ExtResource("1_4mdu5"), ExtResource("2_bgjde")]
+Rooms = [ExtResource("9_x7ql1"), ExtResource("10_n6cq5")]
+SpawnRooms = [ExtResource("10_1mm5d")]
 RoomPlacers = [ExtResource("2_1pebj"), ExtResource("2_sjtb6"), ExtResource("3_gw2vn"), ExtResource("4_x2utj"), ExtResource("5_msj3t"), ExtResource("6_5rpk3"), ExtResource("7_l30r3"), ExtResource("8_g1jlr")]
 UniqueEncounters = [ExtResource("7_dnet6"), ExtResource("8_rikje"), ExtResource("8_eg8qj")]
 Level = 0
