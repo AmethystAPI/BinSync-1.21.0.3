@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("2_pg8kv")
+Rooms = []
+SpawnRooms = []
 RoomPlacers = [ExtResource("1_t5p8u")]
 UniqueEncounters = [ExtResource("2_muhf3")]
 Level = 1

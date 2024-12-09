@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cxjlmqc8lrkdi"]
 
-[ext_resource type="PackedScene" uid="uid://co2o42vdmdcna" path="res://scenes/rooms/golden_grove/room_golden_grove_plain.tscn" id="1_lmvtd"]
+[ext_resource type="PackedScene" uid="uid://co2o42vdmdcna" path="res://content/rooms/room_golden_grove_plain.tscn" id="1_lmvtd"]
 [ext_resource type="Script" path="res://scripts/rooms/RoomPlacer.cs" id="2_a0nxf"]
 
 [resource]
