@@ -72,32 +72,19 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
         Stack<RoomPlacement> placedRooms = new Stack<RoomPlacement>();
         placedRooms.Push(spawnRoomPlacement);
 
-        bool result = TryPlaceRooms(Biomes[0], placedRooms, lastConnection, 6);
+        bool result = TryPlaceRooms(Biomes[0], placedRooms, lastConnection, 24);
 
         GD.Print(result);
 
         foreach (RoomPlacement placement in placedRooms) {
             PlaceRoom(placement);
         }
-
-        // for (int index = 0; index < 5; index++) {
-        //     RoomLayout roomLayout = Biomes[0].GetRoomLayout(Game.RandomNumberGenerator.RandiRange(0, Biomes[0].Rooms.Length - 1));
-
-        //     List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
-        //     RoomLayout.Connection targetConnection = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y)).First();
-        //     connections.Remove(targetConnection);
-
-        //     Vector2 placeLocation = lastConnection.Location - targetConnection.Location;
-
-        //     PlaceRoomLayout(roomLayout, new Vector2I((int)placeLocation.X, (int)placeLocation.Y));
-
-        //     lastConnection = connections[0];
-        //     lastConnection.Location += placeLocation;
-        // }
     }
 
     private bool TryPlaceRooms(Biome biome, Stack<RoomPlacement> placedRooms, RoomLayout.Connection lastConnection, int roomsToPlace) {
         List<RoomLayout> roomLayouts = new List<RoomLayout>(biome.RoomLayouts).OrderBy(item => _random.Randf()).ToList();
+
+        if (roomsToPlace == 1) roomLayouts = new List<RoomLayout>(biome.FinalRoomLayouts).OrderBy(item => _random.Randf()).ToList();
 
         foreach (RoomLayout roomLayout in roomLayouts) {
             List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
@@ -132,12 +119,12 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             placedRooms.Push(placement);
 
+            if (roomsToPlace == 1) return true;
+
             RoomLayout.Connection nextConnection = new RoomLayout.Connection {
                 Location = connections[0].Location + placeLocation,
                 Direction = connections[0].Direction
             };
-
-            if (roomsToPlace == 1) return true;
 
             bool result = TryPlaceRooms(biome, placedRooms, nextConnection, roomsToPlace - 1);
 

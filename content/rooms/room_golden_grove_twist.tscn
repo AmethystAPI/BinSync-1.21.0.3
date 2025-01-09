@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dn5kpkh0m0ybh" path="res://resources/tilesets/room_tileset.tres" id="1_vx6u5"]
 
-[node name="GoldenGroveRoomPlain" type="Node2D" groups=["Rooms"]]
+[node name="Room" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
 
 [node name="Walls" type="TileMapLayer" parent="."]

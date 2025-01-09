@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://domhx2cdlyijx"]
 
+[ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
 [ext_resource type="PackedScene" uid="uid://cp3sbf5tqfwat" path="res://content/rooms/room_golden_grove_turn_down_left.tscn" id="1_pq0s4"]
 [ext_resource type="PackedScene" uid="uid://bqwrpkp6iq417" path="res://content/rooms/room_golden_grove_turn_down_right.tscn" id="2_5yeab"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
@@ -13,6 +14,7 @@
 script = ExtResource("2_738dh")
 Rooms = [ExtResource("1_pq0s4"), ExtResource("2_5yeab"), ExtResource("3_dpu1i"), ExtResource("4_q54pw"), ExtResource("9_hyx7r"), ExtResource("10_n6cq5")]
 SpawnRooms = [ExtResource("10_1mm5d")]
+FinalRooms = [ExtResource("1_7g6sj")]
 Level = 0
 Size = Vector2i(16, 16)
 Color = Color(0, 0, 0, 0)
