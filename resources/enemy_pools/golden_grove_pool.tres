@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=7 format=3 uid="uid://d2phftpgxdl4w"]
 
-[ext_resource type="PackedScene" uid="uid://b2auyilx3m3pm" path="res://scenes/enemies/log_spirit.tscn" id="1_1lhi7"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/log_spirit.tscn" id="1_1lhi7"]
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="1_2wqix"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="1_jo3nf"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="1_whbny"]
 [ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_rwbs5"]
-[ext_resource type="PackedScene" uid="uid://bl1157e2fe1th" path="res://scenes/enemies/slimeball.tscn" id="5_043nn"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slimeball.tscn" id="5_043nn"]
 
 [resource]
 script = ExtResource("4_rwbs5")

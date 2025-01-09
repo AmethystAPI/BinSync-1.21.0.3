@@ -6,54 +6,156 @@ using System.Data;
 using System.Linq;
 
 public partial class WorldGenerator : Node2D, NetworkPointUser {
-	private static WorldGenerator s_Me;
+    private struct RoomPlacement {
+        public RoomLayout RoomLayout;
+        public Vector2I Location;
 
-	[Export] public Biome[] Biomes;
+        public Vector2 GetTopLeftBound() {
+            return Location + RoomLayout.TopLeftBound;
+        }
 
-	public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
+        public Vector2 GetBottomRightBound() {
+            return Location + RoomLayout.BottomRightBound;
+        }
 
-	private TileMapLayer _wallsTileMapLayer;
+        public bool Intersects(RoomPlacement otherRoom) {
+            if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
 
-	public override void _Ready() {
-		s_Me = this;
+            if (otherRoom.GetBottomRightBound().X > GetTopLeftBound().X && otherRoom.GetBottomRightBound().X <= GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
 
-		NetworkPoint.Setup(this);
+            if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetBottomRightBound().Y > GetTopLeftBound().Y && otherRoom.GetBottomRightBound().Y <= GetBottomRightBound().Y) return true;
 
-		_wallsTileMapLayer = GetNode<TileMapLayer>("Walls");
-	}
+            if (otherRoom.GetBottomRightBound().X > GetTopLeftBound().X && otherRoom.GetBottomRightBound().X <= GetBottomRightBound().X && otherRoom.GetBottomRightBound().Y > GetTopLeftBound().Y && otherRoom.GetBottomRightBound().Y <= GetBottomRightBound().Y) return true;
 
-	public void Start() {
-		RoomLayout.Connection lastConnection;
+            return false;
+        }
+    }
 
-		RoomLayout spawnRoomLayout = Biomes[0].GetSpawnRoomLayout(0);
+    private static WorldGenerator s_Me;
 
-		Vector2 spawnRoomPlaceLocation = -((spawnRoomLayout.BottomRightBound - spawnRoomLayout.TopLeftBound) / 2f).Floor();
-		lastConnection = spawnRoomLayout.GetConnections()[0];
-		lastConnection.Location += spawnRoomPlaceLocation;
+    [Export] public Biome[] Biomes;
 
-		PlaceRoomLayout(spawnRoomLayout, (Vector2I)spawnRoomPlaceLocation);
+    public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-		for (int index = 0; index < 5; index++) {
-			RoomLayout roomLayout = Biomes[0].GetRoomLayout(Game.RandomNumberGenerator.RandiRange(0, Biomes[0].Rooms.Length - 1));
+    private TileMapLayer _wallsTileMapLayer;
 
-			List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
-			RoomLayout.Connection targetConnection = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y)).First();
-			connections.Remove(targetConnection);
+    private RandomNumberGenerator _random;
 
-			Vector2 placeLocation = lastConnection.Location - targetConnection.Location;
+    public override void _Ready() {
+        s_Me = this;
 
-			PlaceRoomLayout(roomLayout, new Vector2I((int)placeLocation.X, (int)placeLocation.Y));
+        NetworkPoint.Setup(this);
 
-			lastConnection = connections[0];
-			lastConnection.Location += placeLocation;
-		}
-	}
+        _wallsTileMapLayer = GetNode<TileMapLayer>("Walls");
+    }
 
-	private void PlaceRoomLayout(RoomLayout roomLayout, Vector2I location) {
-		foreach (Vector2 tileLocation in roomLayout.Walls) {
-			Vector2I realTileLocation = location + new Vector2I((int)tileLocation.X, (int)tileLocation.Y) - new Vector2I((int)roomLayout.TopLeftBound.X, (int)roomLayout.TopLeftBound.Y);
+    public void Start() {
+        _random = new RandomNumberGenerator();
 
-			_wallsTileMapLayer.SetCell(realTileLocation, 0, new Vector2I(3, 0));
-		}
-	}
+        foreach (Biome biome in Biomes) {
+            biome.Load();
+        }
+
+        RoomLayout.Connection lastConnection;
+
+        RoomLayout spawnRoomLayout = Biomes[0].SpawnRoomLayouts[0];
+
+        Vector2 spawnRoomPlaceLocation = -((spawnRoomLayout.BottomRightBound - spawnRoomLayout.TopLeftBound) / 2f).Floor();
+        lastConnection = spawnRoomLayout.GetConnections()[0];
+        lastConnection.Location += spawnRoomPlaceLocation;
+
+        RoomPlacement spawnRoomPlacement = new RoomPlacement {
+            RoomLayout = spawnRoomLayout,
+            Location = new Vector2I((int)spawnRoomPlaceLocation.X, (int)spawnRoomPlaceLocation.Y)
+        };
+
+        Stack<RoomPlacement> placedRooms = new Stack<RoomPlacement>();
+        placedRooms.Push(spawnRoomPlacement);
+
+        bool result = TryPlaceRooms(Biomes[0], placedRooms, lastConnection, 6);
+
+        GD.Print(result);
+
+        foreach (RoomPlacement placement in placedRooms) {
+            PlaceRoom(placement);
+        }
+
+        // for (int index = 0; index < 5; index++) {
+        //     RoomLayout roomLayout = Biomes[0].GetRoomLayout(Game.RandomNumberGenerator.RandiRange(0, Biomes[0].Rooms.Length - 1));
+
+        //     List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
+        //     RoomLayout.Connection targetConnection = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y)).First();
+        //     connections.Remove(targetConnection);
+
+        //     Vector2 placeLocation = lastConnection.Location - targetConnection.Location;
+
+        //     PlaceRoomLayout(roomLayout, new Vector2I((int)placeLocation.X, (int)placeLocation.Y));
+
+        //     lastConnection = connections[0];
+        //     lastConnection.Location += placeLocation;
+        // }
+    }
+
+    private bool TryPlaceRooms(Biome biome, Stack<RoomPlacement> placedRooms, RoomLayout.Connection lastConnection, int roomsToPlace) {
+        List<RoomLayout> roomLayouts = new List<RoomLayout>(biome.RoomLayouts).OrderBy(item => _random.Randf()).ToList();
+
+        foreach (RoomLayout roomLayout in roomLayouts) {
+            List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
+            var validConnections = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y));
+
+            if (validConnections.Count() == 0) continue;
+
+            RoomLayout.Connection targetConnection = validConnections.First();
+
+            connections.Remove(targetConnection);
+
+            Vector2 placeLocation = lastConnection.Location - targetConnection.Location;
+
+            RoomPlacement placement = new RoomPlacement {
+                RoomLayout = roomLayout,
+                Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y)
+            };
+
+            bool valid = true;
+
+            foreach (RoomPlacement otherRoom in placedRooms) {
+                if (!otherRoom.Intersects(placement)) continue;
+
+                valid = false;
+
+                break;
+            }
+
+            if (!valid) continue;
+
+            GD.Print("Found one valid placement! " + roomsToPlace);
+
+            placedRooms.Push(placement);
+
+            RoomLayout.Connection nextConnection = new RoomLayout.Connection {
+                Location = connections[0].Location + placeLocation,
+                Direction = connections[0].Direction
+            };
+
+            if (roomsToPlace == 1) return true;
+
+            bool result = TryPlaceRooms(biome, placedRooms, nextConnection, roomsToPlace - 1);
+
+            if (result) return true;
+
+            GD.Print("Couldn't find a placement! " + roomsToPlace);
+
+            placedRooms.Pop();
+        }
+
+        return false;
+    }
+
+    private void PlaceRoom(RoomPlacement placement) {
+        foreach (Vector2 tileLocation in placement.RoomLayout.Walls) {
+            Vector2I realTileLocation = placement.Location + new Vector2I((int)tileLocation.X, (int)tileLocation.Y) - new Vector2I((int)placement.RoomLayout.TopLeftBound.X, (int)placement.RoomLayout.TopLeftBound.Y);
+
+            _wallsTileMapLayer.SetCell(realTileLocation, 0, new Vector2I(3, 0));
+        }
+    }
 }

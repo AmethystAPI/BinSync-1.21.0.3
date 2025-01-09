@@ -1,29 +1,35 @@
+using System.Collections.Generic;
 using System.IO;
 using Godot;
 
 public partial class Biome : Resource {
     [Export] public PackedScene[] Rooms = new PackedScene[0];
     [Export] public PackedScene[] SpawnRooms = new PackedScene[0];
-    [Export] public RoomPlacer[] RoomPlacers = new RoomPlacer[0];
-    [Export] public UniqueEncounter[] UniqueEncounters = new UniqueEncounter[0];
     [Export] public int Level = 0;
     [Export] public Vector2I Size = new Vector2I(15, 20);
     [Export] public Color Color;
 
-    public RoomLayout GetRoomLayout(int index) {
-        PackedScene room = Rooms[index];
+    public List<RoomLayout> RoomLayouts = new List<RoomLayout>();
+    public List<RoomLayout> SpawnRoomLayouts = new List<RoomLayout>();
 
-        string layoutPath = GetRoomLayoutPath(room.ResourcePath);
+    private bool _loaded = false;
 
-        return ResourceLoader.Load<RoomLayout>(layoutPath);
-    }
+    public void Load() {
+        if (_loaded) throw new System.Exception("Biome already loaded!");
 
-    public RoomLayout GetSpawnRoomLayout(int index) {
-        PackedScene room = SpawnRooms[index];
+        foreach (PackedScene room in Rooms) {
+            string layoutPath = GetRoomLayoutPath(room.ResourcePath);
 
-        string layoutPath = GetRoomLayoutPath(room.ResourcePath);
+            RoomLayouts.Add(ResourceLoader.Load<RoomLayout>(layoutPath));
+        }
 
-        return ResourceLoader.Load<RoomLayout>(layoutPath);
+        foreach (PackedScene room in SpawnRooms) {
+            string layoutPath = GetRoomLayoutPath(room.ResourcePath);
+
+            SpawnRoomLayouts.Add(ResourceLoader.Load<RoomLayout>(layoutPath));
+        }
+
+        _loaded = true;
     }
 
     private string GetRoomLayoutPath(string path) {
