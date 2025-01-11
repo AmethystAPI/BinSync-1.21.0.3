@@ -235,15 +235,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
             List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
             var validConnections = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y));
 
-            if (validConnections.Count() == 0) {
-                GD.Print("BRANCH: NO VALID CONNECTIONS! " + roomsToPlace);
-
-                GD.Print(roomLayout.ResourcePath);
-                GD.Print(connections[0].Direction);
-                GD.Print(lastConnection.Direction);
-
-                continue;
-            }
+            if (validConnections.Count() == 0) continue;
 
             RoomLayout.Connection targetConnection = validConnections.First();
 
@@ -270,11 +262,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 break;
             }
 
-            if (!valid) {
-                GD.Print("BRANCH: COLLISION WITH MAIN! " + roomsToPlace);
-
-                continue;
-            }
+            if (!valid) continue;
 
             foreach (RoomPlacement otherRoom in branchPlacedRooms) {
                 if (!otherRoom.Intersects(placement)) continue;
@@ -284,11 +272,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 break;
             }
 
-            if (!valid) {
-                GD.Print("BRANCH: COLLISION WITH BRANCH! " + roomsToPlace);
-
-                continue;
-            }
+            if (!valid) continue;
 
             GD.Print(roomLayout.ResourcePath);
             GD.Print("BRANCH: Found one valid placement! " + roomsToPlace);
