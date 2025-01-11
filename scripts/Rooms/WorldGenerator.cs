@@ -6,19 +6,11 @@ using System.Data;
 using System.Linq;
 
 public partial class WorldGenerator : Node2D, NetworkPointUser {
-    private struct RoomPlacement {
+    private class RoomPlacement {
         public RoomLayout RoomLayout;
         public Vector2I Location;
 
-        public Vector2 GetTopLeftBound() {
-            return Location + RoomLayout.TopLeftBound;
-        }
-
-        public Vector2 GetBottomRightBound() {
-            return Location + RoomLayout.BottomRightBound;
-        }
-
-        public bool Intersects(RoomPlacement otherRoom) {
+        public virtual bool Intersects(RoomPlacement otherRoom) {
             if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
 
             if (otherRoom.GetBottomRightBound().X > GetTopLeftBound().X && otherRoom.GetBottomRightBound().X <= GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
@@ -26,6 +18,30 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
             if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetBottomRightBound().Y > GetTopLeftBound().Y && otherRoom.GetBottomRightBound().Y <= GetBottomRightBound().Y) return true;
 
             if (otherRoom.GetBottomRightBound().X > GetTopLeftBound().X && otherRoom.GetBottomRightBound().X <= GetBottomRightBound().X && otherRoom.GetBottomRightBound().Y > GetTopLeftBound().Y && otherRoom.GetBottomRightBound().Y <= GetBottomRightBound().Y) return true;
+
+            return false;
+        }
+
+        protected Vector2 GetTopLeftBound() {
+            return Location + RoomLayout.TopLeftBound;
+        }
+
+        protected Vector2 GetBottomRightBound() {
+            return Location + RoomLayout.BottomRightBound;
+        }
+    }
+
+    private class BranchedRoomPlacement : RoomPlacement {
+        public List<Stack<RoomPlacement>> BranchRoomPlacements;
+
+        public override bool Intersects(RoomPlacement otherRoom) {
+            if (base.Intersects(otherRoom)) return true;
+
+            foreach (Stack<RoomPlacement> branchStack in BranchRoomPlacements) {
+                foreach (RoomPlacement roomPlacement in branchStack) {
+                    if (roomPlacement.Intersects(otherRoom)) return true;
+                }
+            }
 
             return false;
         }
@@ -72,7 +88,9 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
         Stack<RoomPlacement> placedRooms = new Stack<RoomPlacement>();
         placedRooms.Push(spawnRoomPlacement);
 
-        bool result = TryPlaceRooms(Biomes[0], placedRooms, lastConnection, 24);
+        int size = _random.RandiRange(Biomes[0].Size.X, Biomes[0].Size.Y);
+
+        bool result = TryPlaceRooms(Biomes[0], placedRooms, lastConnection, size - 1, size, 0);
 
         GD.Print(result);
 
@@ -81,8 +99,30 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
         }
     }
 
-    private bool TryPlaceRooms(Biome biome, Stack<RoomPlacement> placedRooms, RoomLayout.Connection lastConnection, int roomsToPlace) {
+    private bool TryPlaceRooms(Biome biome, Stack<RoomPlacement> placedRooms, RoomLayout.Connection lastConnection, int roomsToPlace, int size, int branches) {
         List<RoomLayout> roomLayouts = new List<RoomLayout>(biome.RoomLayouts).OrderBy(item => _random.Randf()).ToList();
+
+        int roomIndex = size - roomsToPlace;
+
+        bool mustBranch = branches < biome.BranchRanges.Length && biome.BranchRanges.Any(range => range.Y == roomIndex);
+
+        if (mustBranch) {
+            roomLayouts = roomLayouts.Where(layout => layout.GetConnectionCount() > 2).ToList();
+
+            GD.Print("Must place branch " + roomIndex);
+        } else {
+            bool couldBranch = branches < biome.BranchRanges.Length && biome.BranchRanges[branches..biome.BranchRanges.Length].Any(range => roomIndex >= range.X);
+
+            if (couldBranch) {
+                roomLayouts = roomLayouts.OrderByDescending(layout => layout.GetConnectionCount() <= 2 ? 1 : -1).ToList();
+
+                GD.Print("Can place branch " + roomIndex);
+            } else {
+                roomLayouts = roomLayouts.Where(layout => layout.GetConnectionCount() <= 2).ToList();
+
+                GD.Print("Can not place branch " + roomIndex);
+            }
+        }
 
         if (roomsToPlace == 1) roomLayouts = new List<RoomLayout>(biome.FinalRoomLayouts).OrderBy(item => _random.Randf()).ToList();
 
@@ -115,27 +155,80 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             if (!valid) continue;
 
-            GD.Print("Found one valid placement! " + roomsToPlace);
+            GD.Print("Found one valid placement! " + roomIndex);
 
             placedRooms.Push(placement);
 
             if (roomsToPlace == 1) return true;
+
+
+            connections = connections.OrderBy(item => _random.Randf()).ToList();
 
             RoomLayout.Connection nextConnection = new RoomLayout.Connection {
                 Location = connections[0].Location + placeLocation,
                 Direction = connections[0].Direction
             };
 
-            bool result = TryPlaceRooms(biome, placedRooms, nextConnection, roomsToPlace - 1);
+            connections.RemoveAt(0);
+
+            if (connections.Count > 0) {
+                BranchedRoomPlacement branchedRoomPlacement = new BranchedRoomPlacement {
+                    RoomLayout = placement.RoomLayout,
+                    Location = placement.Location,
+                    BranchRoomPlacements = new List<Stack<RoomPlacement>>()
+                };
+
+                bool branchesValid = true;
+
+                foreach (RoomLayout.Connection localBranchConnection in connections) {
+                    Stack<RoomPlacement> branchStack = new Stack<RoomPlacement>();
+
+                    RoomLayout.Connection branchConnection = new RoomLayout.Connection {
+                        Location = localBranchConnection.Location + placeLocation,
+                        Direction = localBranchConnection.Direction
+                    };
+
+                    bool branchResult = TryPlaceBranchRooms(biome, placedRooms, branchStack, branchConnection, _random.RandiRange(biome.BranchSize.X, biome.BranchSize.Y));
+
+                    if (!branchResult) {
+                        valid = false;
+
+                        break;
+                    }
+
+                    branchedRoomPlacement.BranchRoomPlacements.Add(branchStack);
+                }
+
+                if (!branchesValid) {
+                    GD.Print("Didn't find valid placements with branches " + roomIndex);
+
+                    continue;
+                }
+
+                branches++;
+
+                placedRooms.Pop();
+                placedRooms.Push(branchedRoomPlacement);
+
+                GD.Print("Found valid placements with branches " + roomIndex);
+            }
+
+            bool result = TryPlaceRooms(biome, placedRooms, nextConnection, roomsToPlace - 1, size, branches);
 
             if (result) return true;
 
-            GD.Print("Couldn't find a placement! " + roomsToPlace);
+            GD.Print("Couldn't find a placement! " + roomIndex);
 
             placedRooms.Pop();
+
+            if (connections.Count > 0) branches--;
         }
 
         return false;
+    }
+
+    private bool TryPlaceBranchRooms(Biome biome, Stack<RoomPlacement> placedRooms, Stack<RoomPlacement> branchPlacedRooms, RoomLayout.Connection lastConnection, int roomsToPlace) {
+        return true;
     }
 
     private void PlaceRoom(RoomPlacement placement) {

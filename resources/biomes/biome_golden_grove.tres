@@ -1,20 +1,21 @@
-[gd_resource type="Resource" load_steps=10 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://domhx2cdlyijx"]
 
 [ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
-[ext_resource type="PackedScene" uid="uid://cp3sbf5tqfwat" path="res://content/rooms/room_golden_grove_turn_down_left.tscn" id="1_pq0s4"]
-[ext_resource type="PackedScene" uid="uid://bqwrpkp6iq417" path="res://content/rooms/room_golden_grove_turn_down_right.tscn" id="2_5yeab"]
+[ext_resource type="PackedScene" uid="uid://beqecpclw00yu" path="res://content/rooms/room_golden_grove_branch_end_right.tscn" id="1_ar7sx"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
-[ext_resource type="PackedScene" uid="uid://chigyx814f8pv" path="res://content/rooms/room_golden_grove_turn_up_left.tscn" id="3_dpu1i"]
-[ext_resource type="PackedScene" uid="uid://g7ndguwjt3wv" path="res://content/rooms/room_golden_grove_turn_up_right.tscn" id="4_q54pw"]
+[ext_resource type="PackedScene" uid="uid://dvk2gaueca40q" path="res://content/rooms/room_golden_grove_branch.tscn" id="3_n6ebb"]
+[ext_resource type="PackedScene" uid="uid://ffl8gx6uilep" path="res://content/rooms/room_golden_grove_horizontal.tscn" id="4_wn2uy"]
 [ext_resource type="PackedScene" uid="uid://b5ju8m1wplhot" path="res://content/rooms/room_golden_grove_plain.tscn" id="9_hyx7r"]
 [ext_resource type="PackedScene" uid="uid://x8o862epxy8u" path="res://content/rooms/room_golden_grove_spawn.tscn" id="10_1mm5d"]
-[ext_resource type="PackedScene" uid="uid://c1wmer7gcmqyi" path="res://content/rooms/room_golden_grove_twist.tscn" id="10_n6cq5"]
 
 [resource]
 script = ExtResource("2_738dh")
-Rooms = [ExtResource("1_pq0s4"), ExtResource("2_5yeab"), ExtResource("3_dpu1i"), ExtResource("4_q54pw"), ExtResource("9_hyx7r"), ExtResource("10_n6cq5")]
+Rooms = [ExtResource("9_hyx7r"), ExtResource("3_n6ebb"), ExtResource("4_wn2uy")]
 SpawnRooms = [ExtResource("10_1mm5d")]
 FinalRooms = [ExtResource("1_7g6sj")]
+FinalBranchRooms = [ExtResource("1_ar7sx")]
+BranchRanges = PackedVector2Array(1, 3)
 Level = 0
-Size = Vector2i(16, 16)
+Size = Vector2i(5, 5)
+BranchSize = Vector2i(3, 5)
 Color = Color(0, 0, 0, 0)

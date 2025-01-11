@@ -27,6 +27,10 @@ public partial class RoomLayout : Resource {
         return connections;
     }
 
+    public int GetConnectionCount() {
+        return ConnectionLocations.Length;
+    }
+
     public void SetConnections(Connection[] connections) {
         ConnectionLocations = new Vector2[connections.Length];
         ConnectionDirections = new Vector2[connections.Length];
