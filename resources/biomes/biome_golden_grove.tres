@@ -22,6 +22,6 @@ FinalRooms = [ExtResource("1_7g6sj")]
 FinalBranchRooms = [ExtResource("1_ar7sx"), ExtResource("1_fymg1")]
 BranchRanges = PackedVector2Array(1, 1)
 Level = 0
-Size = Vector2i(3, 3)
+Size = Vector2i(4, 4)
 BranchSize = Vector2i(3, 3)
 Color = Color(0, 0, 0, 0)

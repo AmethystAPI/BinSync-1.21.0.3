@@ -155,7 +155,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             if (!valid) continue;
 
-            GD.Print("Found one valid placement! " + roomIndex);
+            GD.Print("Found one valid placement! " + roomIndex + " " + roomLayout.ResourcePath);
 
             placedRooms.Push(placement);
 
@@ -186,6 +186,8 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                         Location = localBranchConnection.Location + placeLocation,
                         Direction = localBranchConnection.Direction
                     };
+
+                    GD.Print("Branching in direction " + branchConnection.Direction);
 
                     bool branchResult = TryPlaceBranchRooms(biome, placedRooms, branchStack, branchConnection, _random.RandiRange(biome.BranchSize.X, biome.BranchSize.Y));
 
@@ -243,10 +245,6 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             Vector2 placeLocation = lastConnection.Location - targetConnection.Location;
 
-            GD.Print(lastConnection.Location);
-            GD.Print(targetConnection.Location);
-            GD.Print(placeLocation);
-
             RoomPlacement placement = new RoomPlacement {
                 RoomLayout = roomLayout,
                 Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y)
@@ -274,8 +272,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             if (!valid) continue;
 
-            GD.Print(roomLayout.ResourcePath);
-            GD.Print("BRANCH: Found one valid placement! " + roomsToPlace);
+            GD.Print("BRANCH: Found one valid placement! " + roomsToPlace + " " + roomLayout.ResourcePath);
 
             branchPlacedRooms.Push(placement);
 
