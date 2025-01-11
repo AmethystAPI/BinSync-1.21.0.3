@@ -82,7 +82,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
     public void Start() {
         _random = new RandomNumberGenerator();
-        _random.Seed = 2;
+        // _random.Seed = 2;
 
         foreach (Biome biome in Biomes) {
             biome.Load();
@@ -196,65 +196,90 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 Direction = connections[0].Direction
             };
 
-            connections.RemoveAt(0);
+            if (connections.Count > 1) {
+                bool nextConnectionValid = false;
 
-            if (connections.Count > 0) {
-                BranchedRoomPlacement branchedRoomPlacement = new BranchedRoomPlacement {
-                    RoomLayout = placement.RoomLayout,
-                    Location = placement.Location,
-                    BranchRoomPlacements = new List<Stack<RoomPlacement>>()
-                };
+                for (int nextConnectionIndex = 0; nextConnectionIndex < connections.Count; nextConnectionIndex++) {
+                    GD.Print("Attempting next connection index " + nextConnection);
 
-                bool branchesValid = true;
-
-                foreach (RoomLayout.Connection localBranchConnection in connections) {
-                    Stack<RoomPlacement> branchStack = new Stack<RoomPlacement>();
-
-                    RoomLayout.Connection branchConnection = new RoomLayout.Connection {
-                        Location = localBranchConnection.Location + placeLocation,
-                        Direction = localBranchConnection.Direction
+                    nextConnection = new RoomLayout.Connection {
+                        Location = connections[nextConnectionIndex].Location + placeLocation,
+                        Direction = connections[nextConnectionIndex].Direction
                     };
 
-                    GD.Print("Branching in direction " + branchConnection.Direction);
+                    BranchedRoomPlacement branchedRoomPlacement = new BranchedRoomPlacement {
+                        RoomLayout = placement.RoomLayout,
+                        Location = placement.Location,
+                        BranchRoomPlacements = new List<Stack<RoomPlacement>>()
+                    };
 
-                    bool branchResult = TryPlaceBranchRooms(biome, placedRooms, branchStack, branchConnection, _random.RandiRange(biome.BranchSize.X, biome.BranchSize.Y));
+                    bool branchesValid = true;
 
-                    GD.Print("Got branch result " + branchResult);
+                    for (int localBranchConnectionIndex = 0; localBranchConnectionIndex < connections.Count; localBranchConnectionIndex++) {
+                        if (localBranchConnectionIndex == nextConnectionIndex) continue;
 
-                    if (!branchResult) {
-                        branchesValid = false;
+                        RoomLayout.Connection localBranchConnection = connections[localBranchConnectionIndex];
 
-                        break;
+                        Stack<RoomPlacement> branchStack = new Stack<RoomPlacement>();
+
+                        RoomLayout.Connection branchConnection = new RoomLayout.Connection {
+                            Location = localBranchConnection.Location + placeLocation,
+                            Direction = localBranchConnection.Direction
+                        };
+
+                        GD.Print("Branching in direction " + branchConnection.Direction);
+
+                        bool branchResult = TryPlaceBranchRooms(biome, placedRooms, branchStack, branchConnection, _random.RandiRange(biome.BranchSize.X, biome.BranchSize.Y));
+
+                        GD.Print("Got branch result " + branchResult);
+
+                        if (!branchResult) {
+                            branchesValid = false;
+
+                            break;
+                        }
+
+                        branchedRoomPlacement.BranchRoomPlacements.Add(branchStack);
                     }
 
-                    branchedRoomPlacement.BranchRoomPlacements.Add(branchStack);
+                    GD.Print("Branches valid " + branchesValid);
+
+                    if (!branchesValid) {
+                        GD.Print("NO VALID BRANCHES");
+
+                        continue;
+                    }
+
+                    nextConnectionValid = true;
+
+                    branches++;
+
+                    placedRooms.Pop();
+                    placedRooms.Push(branchedRoomPlacement);
+
+                    GD.Print("Found valid placements with branches");
+
+                    break;
                 }
 
-                GD.Print("Branches valid " + branchesValid);
+                if (!nextConnectionValid) {
+                    GD.Print("NO VALID BRANCHES IN ALL CONNECTIONS");
 
-                if (!branchesValid) {
-                    GD.Print("NO VALID BRANCHES " + roomIndex);
+                    placedRooms.Pop();
 
                     continue;
                 }
-
-                branches++;
-
-                placedRooms.Pop();
-                placedRooms.Push(branchedRoomPlacement);
-
-                GD.Print("Found valid placements with branches");
             }
 
             bool result = TryPlaceRooms(biome, placedRooms, nextConnection, roomsToPlace - 1, size, branches);
 
             if (result) return true;
 
-            GD.Print("xxxxxxxxxxxxxxx Couldn't find a placement! " + roomIndex);
+            if (connections.Count > 1) branches--;
 
             placedRooms.Pop();
 
-            if (connections.Count > 0) branches--;
+            GD.Print("xxxxxxxxxxxxxxx Couldn't find a placement! " + roomIndex + " " + branches);
         }
 
         return false;
