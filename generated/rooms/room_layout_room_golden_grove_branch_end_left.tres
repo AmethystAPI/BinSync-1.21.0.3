@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cwmhnee7j1ne0"]
+
+[ext_resource type="Script" path="res://addons/room_tool/RoomLayout.cs" id="1_tyo12"]
+
+[resource]
+script = ExtResource("1_tyo12")
+ConnectionLocations = PackedVector2Array(8, 0)
+ConnectionDirections = PackedVector2Array(1, 0)
+Walls = PackedVector2Array(0, -6, 0, -5, 0, -4, 0, -3, 0, -2, 0, -1, 0, 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 1, -6, 1, -5, 1, 4, 1, 5, 2, -6, 2, -5, 2, 4, 2, 5, 3, -6, 3, -5, 3, 4, 3, 5, 4, -6, 4, -5, 4, 4, 4, 5, 5, -6, 5, -5, 5, 4, 5, 5, 6, -6, 6, -5, 6, 4, 6, 5, 7, -6, 7, -5, 7, 4, 7, 5)
+TopLeftBound = Vector2(0, -6)
+BottomRightBound = Vector2(8, 6)

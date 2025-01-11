@@ -1,10 +1,11 @@
-[gd_resource type="Resource" load_steps=14 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=15 format=3 uid="uid://domhx2cdlyijx"]
 
 [ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
 [ext_resource type="PackedScene" uid="uid://beqecpclw00yu" path="res://content/rooms/room_golden_grove_branch_end_right.tscn" id="1_ar7sx"]
 [ext_resource type="PackedScene" uid="uid://b68sh4bk3r2xu" path="res://content/rooms/room_golden_grove_branch_end_up.tscn" id="1_fymg1"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
 [ext_resource type="PackedScene" uid="uid://dvk2gaueca40q" path="res://content/rooms/room_golden_grove_branch.tscn" id="3_n6ebb"]
+[ext_resource type="PackedScene" uid="uid://dd7sl7urrrec2" path="res://content/rooms/room_golden_grove_branch_end_left.tscn" id="3_njlk0"]
 [ext_resource type="PackedScene" uid="uid://ffl8gx6uilep" path="res://content/rooms/room_golden_grove_horizontal.tscn" id="4_wn2uy"]
 [ext_resource type="PackedScene" uid="uid://cp3sbf5tqfwat" path="res://content/rooms/room_golden_grove_turn_down_left.tscn" id="7_u3vyy"]
 [ext_resource type="PackedScene" uid="uid://bqwrpkp6iq417" path="res://content/rooms/room_golden_grove_turn_down_right.tscn" id="8_248k2"]
@@ -19,9 +20,9 @@ script = ExtResource("2_738dh")
 Rooms = [ExtResource("9_hyx7r"), ExtResource("3_n6ebb"), ExtResource("4_wn2uy"), ExtResource("7_u3vyy"), ExtResource("8_248k2"), ExtResource("9_ulnol"), ExtResource("10_rtn0c"), ExtResource("11_tl4kh")]
 SpawnRooms = [ExtResource("10_1mm5d")]
 FinalRooms = [ExtResource("1_7g6sj")]
-FinalBranchRooms = [ExtResource("1_ar7sx"), ExtResource("1_fymg1")]
-BranchRanges = PackedVector2Array(1, 1)
+FinalBranchRooms = [ExtResource("1_ar7sx"), ExtResource("1_fymg1"), ExtResource("3_njlk0")]
+BranchRanges = PackedVector2Array(1, 3, 4, 8, 9, 13)
 Level = 0
-Size = Vector2i(4, 4)
-BranchSize = Vector2i(3, 3)
+Size = Vector2i(16, 16)
+BranchSize = Vector2i(3, 5)
 Color = Color(0, 0, 0, 0)
