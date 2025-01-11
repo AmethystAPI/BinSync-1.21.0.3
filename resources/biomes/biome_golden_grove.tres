@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=15 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=16 format=3 uid="uid://domhx2cdlyijx"]
 
 [ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
 [ext_resource type="PackedScene" uid="uid://beqecpclw00yu" path="res://content/rooms/room_golden_grove_branch_end_right.tscn" id="1_ar7sx"]
@@ -14,10 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://x8o862epxy8u" path="res://content/rooms/room_golden_grove_spawn.tscn" id="10_1mm5d"]
 [ext_resource type="PackedScene" uid="uid://g7ndguwjt3wv" path="res://content/rooms/room_golden_grove_turn_up_right.tscn" id="10_rtn0c"]
 [ext_resource type="PackedScene" uid="uid://c1wmer7gcmqyi" path="res://content/rooms/room_golden_grove_twist.tscn" id="11_tl4kh"]
+[ext_resource type="PackedScene" uid="uid://bdyh4cord6apk" path="res://content/rooms/room_golden_grove_branch_left.tscn" id="13_isw6w"]
 
 [resource]
 script = ExtResource("2_738dh")
-Rooms = [ExtResource("9_hyx7r"), ExtResource("3_n6ebb"), ExtResource("4_wn2uy"), ExtResource("7_u3vyy"), ExtResource("8_248k2"), ExtResource("9_ulnol"), ExtResource("10_rtn0c"), ExtResource("11_tl4kh")]
+Rooms = [ExtResource("9_hyx7r"), ExtResource("3_n6ebb"), ExtResource("4_wn2uy"), ExtResource("7_u3vyy"), ExtResource("8_248k2"), ExtResource("9_ulnol"), ExtResource("10_rtn0c"), ExtResource("11_tl4kh"), ExtResource("13_isw6w")]
 SpawnRooms = [ExtResource("10_1mm5d")]
 FinalRooms = [ExtResource("1_7g6sj")]
 FinalBranchRooms = [ExtResource("1_ar7sx"), ExtResource("1_fymg1"), ExtResource("3_njlk0")]

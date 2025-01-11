@@ -19,14 +19,24 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             if (otherRoom.GetBottomRightBound().X > GetTopLeftBound().X && otherRoom.GetBottomRightBound().X <= GetBottomRightBound().X && otherRoom.GetBottomRightBound().Y > GetTopLeftBound().Y && otherRoom.GetBottomRightBound().Y <= GetBottomRightBound().Y) return true;
 
+
+            if (GetTopLeftBound().X >= otherRoom.GetTopLeftBound().X && GetTopLeftBound().X < otherRoom.GetBottomRightBound().X && GetTopLeftBound().Y >= otherRoom.GetTopLeftBound().Y && GetTopLeftBound().Y < otherRoom.GetBottomRightBound().Y) return true;
+
+            if (GetBottomRightBound().X > otherRoom.GetTopLeftBound().X && GetBottomRightBound().X <= otherRoom.GetBottomRightBound().X && GetTopLeftBound().Y >= otherRoom.GetTopLeftBound().Y && GetTopLeftBound().Y < otherRoom.GetBottomRightBound().Y) return true;
+
+            if (GetTopLeftBound().X >= otherRoom.GetTopLeftBound().X && GetTopLeftBound().X < otherRoom.GetBottomRightBound().X && GetBottomRightBound().Y > otherRoom.GetTopLeftBound().Y && GetBottomRightBound().Y <= otherRoom.GetBottomRightBound().Y) return true;
+
+            if (GetBottomRightBound().X > otherRoom.GetTopLeftBound().X && GetBottomRightBound().X <= otherRoom.GetBottomRightBound().X && GetBottomRightBound().Y > otherRoom.GetTopLeftBound().Y && GetBottomRightBound().Y <= otherRoom.GetBottomRightBound().Y) return true;
+
+
             return false;
         }
 
-        protected Vector2 GetTopLeftBound() {
+        public Vector2 GetTopLeftBound() {
             return Location + RoomLayout.TopLeftBound;
         }
 
-        protected Vector2 GetBottomRightBound() {
+        public Vector2 GetBottomRightBound() {
             return Location + RoomLayout.BottomRightBound;
         }
     }
@@ -37,8 +47,13 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
         public override bool Intersects(RoomPlacement otherRoom) {
             if (base.Intersects(otherRoom)) return true;
 
+            // GD.Print("Checking for collisions in branch placement " + Location);
+
+
             foreach (Stack<RoomPlacement> branchStack in BranchRoomPlacements) {
                 foreach (RoomPlacement roomPlacement in branchStack) {
+                    // GD.Print(roomPlacement.GetTopLeftBound() + " " + roomPlacement.GetBottomRightBound() + " " + otherRoom.GetTopLeftBound() + " " + otherRoom.GetBottomRightBound() + " " + roomPlacement.RoomLayout.ResourcePath.Substring("res://generated/rooms/".Length));
+
                     if (roomPlacement.Intersects(otherRoom)) return true;
                 }
             }
@@ -67,6 +82,7 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
     public void Start() {
         _random = new RandomNumberGenerator();
+        _random.Seed = 2;
 
         foreach (Biome biome in Biomes) {
             biome.Load();
@@ -104,6 +120,8 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
         int roomIndex = size - roomsToPlace;
 
+        GD.Print("=============================== " + roomIndex);
+
         bool mustBranch = branches < biome.BranchRanges.Length && biome.BranchRanges.Any(range => range.Y == roomIndex);
 
         if (mustBranch) {
@@ -127,10 +145,16 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
         if (roomsToPlace == 1) roomLayouts = new List<RoomLayout>(biome.FinalRoomLayouts).OrderBy(item => _random.Randf()).ToList();
 
         foreach (RoomLayout roomLayout in roomLayouts) {
+            GD.Print("---------- " + roomLayout.ResourcePath.Substring("res://generated/rooms/".Length));
+
             List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
             var validConnections = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y));
 
-            if (validConnections.Count() == 0) continue;
+            if (validConnections.Count() == 0) {
+                GD.Print("NO VALID CONNECTIONS!");
+
+                continue;
+            }
 
             RoomLayout.Connection targetConnection = validConnections.First();
 
@@ -153,9 +177,13 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 break;
             }
 
-            if (!valid) continue;
+            if (!valid) {
+                GD.Print("COLLIDES!");
 
-            GD.Print("Found one valid placement! " + roomIndex + " " + roomLayout.ResourcePath);
+                continue;
+            }
+
+            GD.Print("Found one valid placement!");
 
             placedRooms.Push(placement);
 
@@ -191,8 +219,10 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
                     bool branchResult = TryPlaceBranchRooms(biome, placedRooms, branchStack, branchConnection, _random.RandiRange(biome.BranchSize.X, biome.BranchSize.Y));
 
+                    GD.Print("Got branch result " + branchResult);
+
                     if (!branchResult) {
-                        valid = false;
+                        branchesValid = false;
 
                         break;
                     }
@@ -200,8 +230,10 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                     branchedRoomPlacement.BranchRoomPlacements.Add(branchStack);
                 }
 
+                GD.Print("Branches valid " + branchesValid);
+
                 if (!branchesValid) {
-                    GD.Print("Didn't find valid placements with branches " + roomIndex);
+                    GD.Print("NO VALID BRANCHES " + roomIndex);
 
                     continue;
                 }
@@ -211,14 +243,14 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 placedRooms.Pop();
                 placedRooms.Push(branchedRoomPlacement);
 
-                GD.Print("Found valid placements with branches " + roomIndex);
+                GD.Print("Found valid placements with branches");
             }
 
             bool result = TryPlaceRooms(biome, placedRooms, nextConnection, roomsToPlace - 1, size, branches);
 
             if (result) return true;
 
-            GD.Print("Couldn't find a placement! " + roomIndex);
+            GD.Print("xxxxxxxxxxxxxxx Couldn't find a placement! " + roomIndex);
 
             placedRooms.Pop();
 
@@ -233,11 +265,19 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
         if (roomsToPlace == 1) roomLayouts = new List<RoomLayout>(biome.FinalBranchRoomLayouts).OrderBy(item => _random.Randf()).ToList();
 
+        GD.Print("BRANCH: =============================== " + roomsToPlace);
+
         foreach (RoomLayout roomLayout in roomLayouts) {
+            GD.Print("BRANCH: ---------- " + roomLayout.ResourcePath.Substring("res://generated/rooms/".Length));
+
             List<RoomLayout.Connection> connections = roomLayout.GetConnections().ToList();
             var validConnections = connections.Where(connection => connection.Direction == new Vector2(-lastConnection.Direction.X, -lastConnection.Direction.Y));
 
-            if (validConnections.Count() == 0) continue;
+            if (validConnections.Count() == 0) {
+                GD.Print("BRANCH: NO VALID CONNECTIONS!");
+
+                continue;
+            }
 
             RoomLayout.Connection targetConnection = validConnections.First();
 
@@ -260,7 +300,11 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 break;
             }
 
-            if (!valid) continue;
+            if (!valid) {
+                GD.Print("BRANCH: COLLIDES MAIN!");
+
+                continue;
+            }
 
             foreach (RoomPlacement otherRoom in branchPlacedRooms) {
                 if (!otherRoom.Intersects(placement)) continue;
@@ -270,9 +314,13 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
                 break;
             }
 
-            if (!valid) continue;
+            if (!valid) {
+                GD.Print("BRANCH: COLLIDES BRANCH!");
 
-            GD.Print("BRANCH: Found one valid placement! " + roomsToPlace + " " + roomLayout.ResourcePath);
+                continue;
+            }
+
+            GD.Print("BRANCH: Found one valid placement!");
 
             branchPlacedRooms.Push(placement);
 
@@ -287,10 +335,12 @@ public partial class WorldGenerator : Node2D, NetworkPointUser {
 
             if (result) return true;
 
-            GD.Print("BRANCH: Couldn't find a placement! " + roomsToPlace);
+            GD.Print("BRANCH: xxxxxxxxxxxxxxx Couldn't find a placement! " + roomsToPlace);
 
             branchPlacedRooms.Pop();
         }
+
+        GD.Print("BRANCH: xxxxxxxxxxxxxxx Exiting " + roomsToPlace + " with fail");
 
         return false;
     }
