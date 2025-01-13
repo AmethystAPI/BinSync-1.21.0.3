@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Networking;
+using Riptide;
 
 public partial class World : Node2D, NetworkPointUser {
     public static World Me;
@@ -19,6 +20,10 @@ public partial class World : Node2D, NetworkPointUser {
 
     public override void _Ready() {
         Me = this;
+
+        NetworkPoint.Setup(this);
+
+        NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 
         WallsTileMapLayer = GetNode<TileMapLayer>("Walls");
 
@@ -123,4 +128,29 @@ public partial class World : Node2D, NetworkPointUser {
     //         }
     //     }
     // }
+
+    public void SpawnEnemyRpc(Message message) {
+        Vector2 position = new Vector2(message.GetFloat(), message.GetFloat());
+        string enemyScenePath = message.GetString();
+        string loadedRoomId = message.GetString();
+
+        Enemy enemy = NetworkManager.SpawnNetworkSafe<Enemy>(ResourceLoader.Load<PackedScene>(enemyScenePath), "Enemy");
+
+        PackedScene spawnDustScene = ResourceLoader.Load<PackedScene>("res://scenes/particles/spawn_dust.tscn");
+        Node2D spawnDust = spawnDustScene.Instantiate<Node2D>();
+
+        AddChild(spawnDust);
+
+        spawnDust.GlobalPosition = position;
+
+        Delay.Execute(1, () => {
+            if (!IsInstanceValid(this)) return;
+
+            AddChild(enemy);
+
+            enemy.GlobalPosition = position;
+
+            enemy.Activate();
+        });
+    }
 }
