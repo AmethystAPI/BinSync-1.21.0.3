@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=42 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://domhx2cdlyijx" path="res://resources/biomes/biome_golden_grove.tres" id="15_6wava"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="15_pi7jw"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="15_xrri3"]
+[ext_resource type="Script" path="res://scripts/World.cs" id="15_yq2ru"]
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="19_4ko6j"]
@@ -93,7 +94,7 @@ script = ExtResource("9_t151n")
 [node name="Camera" type="Camera2D" parent="."]
 process_priority = 1
 process_physics_priority = 1
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
@@ -108,13 +109,16 @@ lifetime = 30.0
 preprocess = 30.0
 visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 
-[node name="WorldGenerator" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
+script = ExtResource("15_yq2ru")
+
+[node name="Walls" type="TileMapLayer" parent="World"]
+tile_set = ExtResource("19_4ko6j")
+
+[node name="WorldGenerator" type="Node" parent="."]
 script = ExtResource("4_x66nk")
 Biomes = Array[Resource]([ExtResource("15_6wava")])
-
-[node name="Walls" type="TileMapLayer" parent="WorldGenerator"]
-tile_set = ExtResource("19_4ko6j")
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20

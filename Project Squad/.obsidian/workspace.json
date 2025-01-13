@@ -11,12 +11,14 @@
             "id": "cc92eb0e5f12a6d6",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Planning/Beta D.md"
+                "file": "Design/New Worldgen.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Beta D"
+              "icon": "lucide-file",
+              "title": "New Worldgen"
             }
           }
         ]
@@ -158,11 +160,12 @@
   },
   "active": "cc92eb0e5f12a6d6",
   "lastOpenFiles": [
+    "Planning/Beta D.md",
+    "Design/New Worldgen.md",
     "Reference/General.canvas",
     "Reference/Devlogs.canvas",
     "Design/World Generation.md",
     "Design/World Generation 1.md",
-    "Planning/Beta D.md",
     "Planning/Beta C Kanban.md",
     "Reference/Locations/Sinister Swamp.canvas",
     "Tasks/Polish Weapons.md",

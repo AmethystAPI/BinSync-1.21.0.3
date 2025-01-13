@@ -31,12 +31,13 @@ kanban-plugin: basic
 
 ## In Progress
 
-- [ ] Multiple Paths
+- [ ] [[Design/New Worldgen]]
 
 
 ## Done
 
 **Complete**
+- [x] Multiple Paths
 - [x] Normalize camera offset
 - [x] Cleanup Borders
 - [x] More Golden Grove Enemies #design
