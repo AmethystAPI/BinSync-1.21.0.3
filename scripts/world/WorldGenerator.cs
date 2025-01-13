@@ -6,8 +6,16 @@ using System.Linq;
 
 public partial class WorldGenerator : Node, NetworkPointUser {
     public class RoomPlacement {
+        public enum RoomType {
+            None,
+            Spawn,
+            Final,
+            Loot
+        }
+
         public RoomLayout RoomLayout;
         public Vector2I Location;
+        public RoomType Type = RoomType.None;
 
         public virtual bool Intersects(RoomPlacement otherRoom) {
             if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
@@ -82,7 +90,8 @@ public partial class WorldGenerator : Node, NetworkPointUser {
 
         RoomPlacement spawnRoomPlacement = new RoomPlacement {
             RoomLayout = spawnRoomLayout,
-            Location = new Vector2I((int)spawnRoomPlaceLocation.X, (int)spawnRoomPlaceLocation.Y)
+            Location = new Vector2I((int)spawnRoomPlaceLocation.X, (int)spawnRoomPlaceLocation.Y),
+            Type = RoomPlacement.RoomType.Spawn
         };
 
         Stack<RoomPlacement> placedRooms = new Stack<RoomPlacement>();
@@ -148,6 +157,8 @@ public partial class WorldGenerator : Node, NetworkPointUser {
                 RoomLayout = roomLayout,
                 Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y)
             };
+
+            if (roomsToPlace == 1) placement.Type = RoomPlacement.RoomType.Final;
 
             bool valid = true;
 
@@ -296,6 +307,8 @@ public partial class WorldGenerator : Node, NetworkPointUser {
                 RoomLayout = roomLayout,
                 Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y)
             };
+
+            if (roomsToPlace == 1) placement.Type = RoomPlacement.RoomType.Loot;
 
             bool valid = true;
 

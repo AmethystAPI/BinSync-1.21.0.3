@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://scripts/networking/NetworkManager.cs" id="3_ix04k"]
 [ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/ui/game_ui.tscn" id="3_s7l32"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="4_encmg"]
-[ext_resource type="Script" path="res://scripts/rooms/WorldGenerator.cs" id="4_x66nk"]
 [ext_resource type="Shader" path="res://scripts/shaders/etherial.gdshader" id="5_4da55"]
 [ext_resource type="AudioStream" uid="uid://dey6knsoqrxff" path="res://sfx/combined/hurt_1.wav" id="6_c3uc0"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
@@ -22,11 +21,12 @@
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
 [ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
 [ext_resource type="Resource" uid="uid://domhx2cdlyijx" path="res://resources/biomes/biome_golden_grove.tres" id="15_6wava"]
+[ext_resource type="Script" path="res://scripts/world/World.cs" id="15_fxnfr"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="15_pi7jw"]
 [ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="15_xrri3"]
-[ext_resource type="Script" path="res://scripts/World.cs" id="15_yq2ru"]
 [ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
 [ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
+[ext_resource type="Script" path="res://scripts/world/WorldGenerator.cs" id="18_7d1a5"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="19_4ko6j"]
 [ext_resource type="Script" path="res://scripts/Audio.cs" id="22_ko2sk"]
 [ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/library/sfx_sounds_impact1.wav" id="23_8eois"]
@@ -94,7 +94,6 @@ script = ExtResource("9_t151n")
 [node name="Camera" type="Camera2D" parent="."]
 process_priority = 1
 process_physics_priority = 1
-zoom = Vector2(4, 4)
 script = ExtResource("4_encmg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera"]
@@ -111,14 +110,14 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
-script = ExtResource("15_yq2ru")
+script = ExtResource("15_fxnfr")
 Biomes = Array[Resource]([ExtResource("15_6wava")])
 
 [node name="Walls" type="TileMapLayer" parent="World"]
 tile_set = ExtResource("19_4ko6j")
 
 [node name="WorldGenerator" type="Node" parent="."]
-script = ExtResource("4_x66nk")
+script = ExtResource("18_7d1a5")
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20
