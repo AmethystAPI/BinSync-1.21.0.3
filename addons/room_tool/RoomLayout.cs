@@ -13,6 +13,7 @@ public partial class RoomLayout : Resource {
     [Export] public Vector2[] Walls;
     [Export] public Vector2 TopLeftBound;
     [Export] public Vector2 BottomRightBound;
+    [Export] public Vector2[] SpawnLocations;
 
     public Connection[] GetConnections() {
         Connection[] connections = new Connection[ConnectionLocations == null ? 0 : ConnectionLocations.Length];

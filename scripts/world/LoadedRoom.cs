@@ -56,8 +56,6 @@ public class LoadedRoom {
     private void Activate() {
         _activated = true;
 
-        GD.Print("Room activated! " + RoomPlacement.Location);
-
         SpawnEnemies(4f);
     }
 
@@ -96,10 +94,6 @@ public class LoadedRoom {
         foreach (int enemyTypeIndex in round) {
             Vector2 spawnPoint = spawnAroundPlayers ? GetRandomPointAroundPlayer() : GetRandomPointInSpawnArea();
 
-            // while (DetectSpawnOverlap(spawnPoint).Count > 0) {
-            //     spawnPoint = spawnAroundPlayers ? GetRandomPointAroundPlayer() : GetRandomPointInSpawnArea();
-            // }
-
             _world.NetworkPoint.SendRpcToClients(nameof(World.SpawnEnemyRpc), message => {
                 message.AddFloat(spawnPoint.X);
                 message.AddFloat(spawnPoint.Y);
@@ -112,13 +106,7 @@ public class LoadedRoom {
     }
 
     private Vector2 GetRandomPointInSpawnArea() {
-        Vector2 position = RoomPlacement.Location * 16;
-
-        // RectangleShape2D shape = _spawnArea.Shape as RectangleShape2D;
-
-        // position += Vector2.Right * Game.RandomNumberGenerator.RandfRange(-shape.Size.X / 2, shape.Size.X / 2) + Vector2.Up * Game.RandomNumberGenerator.RandfRange(-shape.Size.Y / 2, shape.Size.Y / 2);
-
-        return position;
+        return (RoomPlacement.Location + RoomPlacement.RoomLayout.SpawnLocations[Game.RandomNumberGenerator.RandiRange(0, RoomPlacement.RoomLayout.SpawnLocations.Length - 1)]) * 16f;
     }
 
     private Vector2 GetRandomPointAroundPlayer() {
