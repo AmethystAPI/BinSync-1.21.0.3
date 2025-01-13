@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=16 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=17 format=3 uid="uid://domhx2cdlyijx"]
 
 [ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
 [ext_resource type="PackedScene" uid="uid://beqecpclw00yu" path="res://content/rooms/room_golden_grove_branch_end_right.tscn" id="1_ar7sx"]
 [ext_resource type="PackedScene" uid="uid://b68sh4bk3r2xu" path="res://content/rooms/room_golden_grove_branch_end_up.tscn" id="1_fymg1"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/enemy_pool_golden_grove.tres" id="1_wy0iy"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
 [ext_resource type="PackedScene" uid="uid://dvk2gaueca40q" path="res://content/rooms/room_golden_grove_branch.tscn" id="3_n6ebb"]
 [ext_resource type="PackedScene" uid="uid://dd7sl7urrrec2" path="res://content/rooms/room_golden_grove_branch_end_left.tscn" id="3_njlk0"]
@@ -27,3 +28,4 @@ Level = 0
 Size = Vector2i(16, 16)
 BranchSize = Vector2i(3, 5)
 Color = Color(0, 0, 0, 0)
+EnemyPool = ExtResource("1_wy0iy")

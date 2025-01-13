@@ -58,8 +58,6 @@ public partial class WorldGenerator : Node, NetworkPointUser {
 
     public static WorldGenerator Me;
 
-    [Export] public Biome[] Biomes;
-
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
     private RandomNumberGenerator _random;
@@ -70,17 +68,13 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         NetworkPoint.Setup(this);
     }
 
-    public Stack<RoomPlacement> Generate(ulong seed) {
+    public Stack<RoomPlacement> Generate(ulong seed, Biome biome) {
         _random = new RandomNumberGenerator();
         _random.Seed = seed;
 
-        foreach (Biome biome in Biomes) {
-            biome.Load();
-        }
-
         RoomLayout.Connection lastConnection;
 
-        RoomLayout spawnRoomLayout = Biomes[0].SpawnRoomLayouts[0];
+        RoomLayout spawnRoomLayout = biome.SpawnRoomLayouts[0];
 
         Vector2 spawnRoomPlaceLocation = Vector2.Zero;
         lastConnection = spawnRoomLayout.GetConnections()[0];
@@ -94,11 +88,11 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         Stack<RoomPlacement> placedRooms = new Stack<RoomPlacement>();
         placedRooms.Push(spawnRoomPlacement);
 
-        int size = _random.RandiRange(Biomes[0].Size.X, Biomes[0].Size.Y);
+        int size = _random.RandiRange(biome.Size.X, biome.Size.Y);
 
-        bool result = TryPlaceRooms(Biomes[0], placedRooms, lastConnection, size - 1, size, 0);
+        bool result = TryPlaceRooms(biome, placedRooms, lastConnection, size - 1, size, 0);
 
-        GD.Print(result);
+        if (!result) return Generate(seed + 1, biome);
 
         return placedRooms;
     }

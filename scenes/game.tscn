@@ -112,13 +112,13 @@ visibility_rect = Rect2(-153.485, 137.97, 278, 284.645)
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("15_yq2ru")
+Biomes = Array[Resource]([ExtResource("15_6wava")])
 
 [node name="Walls" type="TileMapLayer" parent="World"]
 tile_set = ExtResource("19_4ko6j")
 
 [node name="WorldGenerator" type="Node" parent="."]
 script = ExtResource("4_x66nk")
-Biomes = Array[Resource]([ExtResource("15_6wava")])
 
 [node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
 z_index = 20

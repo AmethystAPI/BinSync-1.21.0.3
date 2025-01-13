@@ -6,17 +6,24 @@ using Networking;
 public partial class World : Node2D, NetworkPointUser {
     public static World Me;
 
+    [Export] public Biome[] Biomes;
+
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
-    private TileMapLayer _wallsTileMapLayer;
-
+    private Biome _activeBiome;
     private List<WorldGenerator.RoomPlacement> _unloadedRoomPlacements = new List<WorldGenerator.RoomPlacement>();
     private Dictionary<WorldGenerator.RoomPlacement, float> _loadedRoomPlacements = new Dictionary<WorldGenerator.RoomPlacement, float>();
+
+    private TileMapLayer _wallsTileMapLayer;
 
     public override void _Ready() {
         Me = this;
 
         _wallsTileMapLayer = GetNode<TileMapLayer>("Walls");
+
+        foreach (Biome biome in Biomes) {
+            biome.Load();
+        }
     }
 
     public override void _Process(double delta) {
@@ -30,7 +37,9 @@ public partial class World : Node2D, NetworkPointUser {
     public static void Start() {
         Me._loadedRoomPlacements = new Dictionary<WorldGenerator.RoomPlacement, float>();
 
-        Stack<WorldGenerator.RoomPlacement> roomPlacements = WorldGenerator.Me.Generate(Game.Seed);
+        Me._activeBiome = Me.Biomes[0];
+
+        Stack<WorldGenerator.RoomPlacement> roomPlacements = WorldGenerator.Me.Generate(Game.Seed, Me._activeBiome);
 
         foreach (WorldGenerator.RoomPlacement roomPlacement in roomPlacements) {
             Me._unloadedRoomPlacements.Add(roomPlacement);

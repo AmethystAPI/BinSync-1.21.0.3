@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://dsr87fqg2bkd6"]
 
 [ext_resource type="Script" path="res://scripts/rooms/SpawnRoom.cs" id="1_21dic"]
-[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_xu6l6"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/enemy_pool_golden_grove.tres" id="2_xu6l6"]
 [ext_resource type="PackedScene" uid="uid://bntd02jp0yaqs" path="res://scenes/rooms/utilities/tile_map_tool.tscn" id="4_dkqaq"]
 [ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="5_yunun"]
 [ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="6_2fdge"]

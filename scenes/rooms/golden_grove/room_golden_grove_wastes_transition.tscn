@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://dr12w1vaiilr"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_u7k1g"]
-[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/golden_grove_pool.tres" id="2_xiiws"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/enemy_pool_golden_grove.tres" id="2_xiiws"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="3_c6lfa"]
 [ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_65ygs"]
 [ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="5_qdhgv"]
