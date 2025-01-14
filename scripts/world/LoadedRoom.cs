@@ -11,6 +11,9 @@ public class LoadedRoom {
     private bool _activated = false;
     private List<List<int>> _rounds = new List<List<int>>();
     private float _pointsPerRound;
+    private Node2D _room;
+    private List<Node2D> _barriers = new List<Node2D>();
+    private int _spawnedEnemies = 0;
 
     public LoadedRoom(WorldGenerator.RoomPlacement roomPlacement, World world, Biome biome) {
         Id = Guid.NewGuid().ToString();
@@ -26,9 +29,39 @@ public class LoadedRoom {
 
             _world.WallsTileMapLayer.SetCell(realTileLocation, 0, new Vector2I(3, 0));
         }
+
+        _room = new Node2D();
+        _world.AddChild(_room);
+        _room.GlobalPosition = RoomPlacement.Location * 16;
+
+        if (RoomPlacement.Type == WorldGenerator.RoomPlacement.RoomType.Spawn) return;
+
+        PackedScene barrierScene = ResourceLoader.Load<PackedScene>("res://scenes/rooms/barrier.tscn");
+
+        _barriers = new List<Node2D>();
+        foreach (RoomLayout.Connection connection in RoomPlacement.RoomLayout.GetConnections()) {
+            if (connection.Equals(RoomPlacement.EntranceConnection)) continue;
+
+            Node2D barrier = barrierScene.Instantiate<Node2D>();
+            _barriers.Add(barrier);
+
+            _room.AddChild(barrier);
+
+            RectangleShape2D shape = barrier.GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D;
+
+            if (connection.Direction == Vector2.Right || connection.Direction == Vector2.Left) {
+                shape.Size = new Vector2(32, 16 * 8);
+            } else {
+                shape.Size = new Vector2(16 * 8, 32);
+            }
+
+            barrier.Position = connection.Location * 16;
+        }
     }
 
     public void Unload() {
+        _room.QueueFree();
+
         foreach (Vector2 tileLocation in RoomPlacement.RoomLayout.Walls) {
             Vector2I realTileLocation = RoomPlacement.Location + new Vector2I((int)tileLocation.X, (int)tileLocation.Y);
 
@@ -53,10 +86,32 @@ public class LoadedRoom {
         }
     }
 
+    public void AddEnemy(Enemy enemy) {
+        enemy.OnDied += () => RemoveEnemy(enemy);
+        enemy.OnSummonedEnemy += enemy => {
+            _spawnedEnemies++;
+
+            AddEnemy(enemy);
+        };
+    }
+    public void RemoveEnemy(Enemy enemy) {
+        _spawnedEnemies--;
+
+        if (_spawnedEnemies > 0) return;
+
+        Complete();
+    }
+
     private void Activate() {
         _activated = true;
 
         SpawnEnemies(4f);
+    }
+
+    private void Complete() {
+        foreach (Node2D barrier in _barriers) {
+            barrier.QueueFree();
+        }
     }
 
     private void SpawnEnemies(float points, bool activated = false) {
@@ -93,6 +148,8 @@ public class LoadedRoom {
     private void SpawnEnemiesFromRound(List<int> round, bool spawnAroundPlayers = false, bool activated = false) {
         foreach (int enemyTypeIndex in round) {
             Vector2 spawnPoint = spawnAroundPlayers ? GetRandomPointAroundPlayer() : GetRandomPointInSpawnArea();
+
+            _spawnedEnemies++;
 
             _world.NetworkPoint.SendRpcToClients(nameof(World.SpawnEnemyRpc), message => {
                 message.AddFloat(spawnPoint.X);

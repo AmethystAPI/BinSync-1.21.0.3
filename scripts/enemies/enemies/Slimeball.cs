@@ -77,5 +77,7 @@ public partial class Slimeball : Enemy {
         enemy.GlobalPosition = GlobalPosition + new Vector2(message.GetFloat(), message.GetFloat());
 
         enemy.Activate();
+
+        OnSummonedEnemy?.Invoke(enemy);
     }
 }

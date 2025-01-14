@@ -58,5 +58,7 @@ public partial class Summon : EnemyState {
         enemy.Activate();
 
         OnSummon();
+
+        _enemy.OnSummonedEnemy?.Invoke(enemy);
     }
 }

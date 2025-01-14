@@ -6,3 +6,12 @@ rooms unloaded after three minutes of new player proximity
 When rooms loaded in, enemies are spawned. Enemies can spawn as long as not too close to wall. Enemies spawn based on difficulty.
 
 Rooms that have not been cleared yet spawn in with barriers on exit. These barriers clear when enemies are cleared. If a room unloads the enemies inside unload, but only enemies within room.
+
+- [ ] Game difficulty scaling
+- [ ] Barriers
+- [ ] Paralax decoration
+- [ ] Decorations
+- [ ] Room visual construction
+- [ ] Rounds
+- [ ] Loot rooms
+- [ ] Boss room

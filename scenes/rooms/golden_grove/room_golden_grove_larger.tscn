@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://sl6c407vi5xm" path="res://scenes/decorations/golden_grove/golden_grove_large_patch.tscn" id="12_03npi"]
 [ext_resource type="PackedScene" uid="uid://b6c7c27i4b7x8" path="res://scenes/decorations/golden_grove/tree.tscn" id="13_2e2sa"]
 [ext_resource type="PackedScene" uid="uid://3e1eqwr3p555" path="res://scenes/decorations/golden_grove/golden_grove_large_patch_2.tscn" id="13_nuucg"]
-[ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="14_pc7qh"]
+[ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/golden_grove_barrier.tscn" id="14_pc7qh"]
 [ext_resource type="PackedScene" uid="uid://0ornywv8v0tq" path="res://scenes/decorations/golden_grove/golden_grove_bush_2.tscn" id="22_o01ye"]
 [ext_resource type="PackedScene" uid="uid://bxmloq80ioivk" path="res://scenes/decorations/golden_grove/golden_grove_bush_3.tscn" id="23_iedg2"]
 [ext_resource type="PackedScene" uid="uid://bi01ycj78gfxh" path="res://scenes/decorations/golden_grove/golden_grove_grass_tuft_patch.tscn" id="24_q8r8k"]

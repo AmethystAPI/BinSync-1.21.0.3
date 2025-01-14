@@ -16,6 +16,7 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         public RoomLayout RoomLayout;
         public Vector2I Location;
         public RoomType Type = RoomType.None;
+        public RoomLayout.Connection EntranceConnection;
 
         public virtual bool Intersects(RoomPlacement otherRoom) {
             if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
@@ -155,7 +156,8 @@ public partial class WorldGenerator : Node, NetworkPointUser {
 
             RoomPlacement placement = new RoomPlacement {
                 RoomLayout = roomLayout,
-                Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y)
+                Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y),
+                EntranceConnection = targetConnection
             };
 
             if (roomsToPlace == 1) placement.Type = RoomPlacement.RoomType.Final;
@@ -203,7 +205,8 @@ public partial class WorldGenerator : Node, NetworkPointUser {
                     BranchedRoomPlacement branchedRoomPlacement = new BranchedRoomPlacement {
                         RoomLayout = placement.RoomLayout,
                         Location = placement.Location,
-                        BranchRoomPlacements = new List<Stack<RoomPlacement>>()
+                        EntranceConnection = placement.EntranceConnection,
+                        BranchRoomPlacements = new List<Stack<RoomPlacement>>(),
                     };
 
                     bool branchesValid = true;
@@ -305,7 +308,8 @@ public partial class WorldGenerator : Node, NetworkPointUser {
 
             RoomPlacement placement = new RoomPlacement {
                 RoomLayout = roomLayout,
-                Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y)
+                Location = new Vector2I((int)placeLocation.X, (int)placeLocation.Y),
+                EntranceConnection = targetConnection
             };
 
             if (roomsToPlace == 1) placement.Type = RoomPlacement.RoomType.Loot;

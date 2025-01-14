@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://brsuuwfj5ppyc" path="res://scenes/decorations/golden_grove/border_bush.tscn" id="10_bn23i"]
 [ext_resource type="PackedScene" uid="uid://hkpdk6j7nmwf" path="res://scenes/decorations/golden_grove/border_grass_tuft_1.tscn" id="11_56t4m"]
 [ext_resource type="PackedScene" uid="uid://dqlrb4lpwi8lg" path="res://scenes/decorations/golden_grove/border_grass_tuft_2.tscn" id="12_j3n4r"]
-[ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/barrier.tscn" id="13_edbgm"]
+[ext_resource type="PackedScene" uid="uid://cumpx0e1dwu87" path="res://scenes/golden_grove_barrier.tscn" id="13_edbgm"]
 [ext_resource type="Script" path="res://scripts/rooms/Paralax.cs" id="15_v8muw"]
 [ext_resource type="Texture2D" uid="uid://q8w05kax16eb" path="res://sprites/biomes/golden_grove/tree_border.tres" id="16_aq1vg"]
 [ext_resource type="Script" path="res://scripts/editor/BorderTool.cs" id="17_ku5ip"]
