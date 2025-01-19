@@ -112,7 +112,7 @@ public class LoadableRoom {
     private void Activate() {
         _activated = true;
 
-        SpawnEnemies(1f);
+        SpawnEnemies(Game.Difficulty);
     }
 
     private void Complete() {
@@ -121,6 +121,8 @@ public class LoadableRoom {
         foreach (Node2D barrier in _barriers) {
             barrier.QueueFree();
         }
+
+        Game.IncreaseDifficulty();
     }
 
     private void SpawnEnemies(float points, bool activated = false) {
