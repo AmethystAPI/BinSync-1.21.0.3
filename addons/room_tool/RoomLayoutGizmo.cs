@@ -6,6 +6,7 @@ public partial class RoomLayoutGizmo : Node2D {
     public HashSet<RoomLayout.Connection> Connections = new HashSet<RoomLayout.Connection>();
     public List<Vector2> Bounds = new List<Vector2>();
     public Vector2 Direction = Vector2.Right;
+    public List<Vector2> SpawnLocations = new List<Vector2>();
 
     public override void _Process(double delta) {
         QueueRedraw();
@@ -22,6 +23,10 @@ public partial class RoomLayoutGizmo : Node2D {
 
         foreach (Vector2 bound in Bounds) {
             DrawCircle(bound * 16f, 2f, new Color("orange"));
+        }
+
+        foreach (Vector2 spawnLocation in SpawnLocations) {
+            DrawRect(new Rect2(spawnLocation * 16f, 16f, 16f), new Color(0, 0, 1, 0.2f));
         }
     }
 }

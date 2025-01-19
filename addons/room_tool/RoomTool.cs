@@ -14,6 +14,7 @@ public partial class RoomTool : EditorPlugin {
 
     private HashSet<RoomLayout.Connection> _connections = new HashSet<RoomLayout.Connection>();
     private List<Vector2> _bounds = new List<Vector2>();
+    private List<Vector2> _spawnLocations = new List<Vector2>();
     private Mode _mode = Mode.Connections;
     private Vector2 _direction = Vector2.Right;
     private string _selectedPath;
@@ -47,12 +48,15 @@ public partial class RoomTool : EditorPlugin {
         roomLayout.Walls = walls.ToArray();
 
         roomLayout.SpawnLocations = CalculateSpawnLocations(roomLayout).ToArray();
+        _spawnLocations = new List<Vector2>(roomLayout.SpawnLocations);
 
         if (ResourceLoader.Exists(GetRoomLayoutPath()))
             File.Delete(ProjectSettings.GlobalizePath(GetRoomLayoutPath()));
 
         ResourceSaver.Save(roomLayout, GetRoomLayoutPath());
         roomLayout.TakeOverPath(GetRoomLayoutPath());
+
+        UpdateGizmo();
     }
 
     public override void _EnterTree() {
@@ -201,6 +205,7 @@ public partial class RoomTool : EditorPlugin {
         _roomLayoutGizmo.Connections = _connections;
         _roomLayoutGizmo.Bounds = _bounds;
         _roomLayoutGizmo.Direction = _direction;
+        _roomLayoutGizmo.SpawnLocations = _spawnLocations;
 
         _roomLayoutGizmo.QueueRedraw();
     }
@@ -274,6 +279,16 @@ public partial class RoomTool : EditorPlugin {
                 spawnLocations.Add(location + offset);
             }
         }
+
+        spawnLocations = spawnLocations.Where(spawnLocation => {
+            if (spawnLocation.X == roomLayout.TopLeftBound.X) return false;
+            if (spawnLocation.Y == roomLayout.TopLeftBound.Y) return false;
+
+            if (spawnLocation.X == roomLayout.BottomRightBound.X - 1) return false;
+            if (spawnLocation.Y == roomLayout.BottomRightBound.Y - 1) return false;
+
+            return true;
+        }).ToList();
 
         GD.Print("Calculated " + spawnLocations.Count + " spawn locations");
 
