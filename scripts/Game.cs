@@ -85,8 +85,6 @@ public partial class Game : Node2D, NetworkPointUser {
 
     public static void IncreaseDifficulty() {
         Difficulty += Mathf.Sqrt(Player.Players.Count) / 2f;
-
-        Difficulty = 10;
     }
 
     private void StartRpc(Message message) {
