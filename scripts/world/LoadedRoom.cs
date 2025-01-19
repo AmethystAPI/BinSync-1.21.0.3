@@ -12,6 +12,7 @@ public class LoadableRoom {
     private bool _activated = false;
     private List<List<int>> _rounds = new List<List<int>>();
     private float _pointsPerRound;
+    private float _nextRoundTimer;
     private Node2D _room;
     private List<Node2D> _barriers = new List<Node2D>();
     private int _spawnedEnemies = 0;
@@ -76,21 +77,33 @@ public class LoadableRoom {
         _spawnedEnemies = 0;
     }
 
-    public void Update() {
+    public void Update(float delta) {
         if (RoomPlacement.Type != WorldGenerator.RoomPlacement.RoomType.None) return;
 
-        if (_activated) return;
+        if (!_activated) {
+            foreach (Player player in Player.AlivePlayers) {
+                if (player.GlobalPosition.X < RoomPlacement.GetTopLeftBound().X * 16) continue;
+                if (player.GlobalPosition.X > RoomPlacement.GetBottomRightBound().X * 16) continue;
+                if (player.GlobalPosition.Y < RoomPlacement.GetTopLeftBound().Y * 16) continue;
+                if (player.GlobalPosition.Y > RoomPlacement.GetBottomRightBound().Y * 16) continue;
 
-        foreach (Player player in Player.AlivePlayers) {
-            if (player.GlobalPosition.X < RoomPlacement.GetTopLeftBound().X * 16) continue;
-            if (player.GlobalPosition.X > RoomPlacement.GetBottomRightBound().X * 16) continue;
-            if (player.GlobalPosition.Y < RoomPlacement.GetTopLeftBound().Y * 16) continue;
-            if (player.GlobalPosition.Y > RoomPlacement.GetBottomRightBound().Y * 16) continue;
+                Activate();
 
-            Activate();
+                break;
+            }
 
-            break;
+            return;
         }
+
+        _nextRoundTimer -= delta;
+
+        if (_nextRoundTimer > 0) return;
+        if (_rounds.Count == 0) return;
+
+        SpawnEnemiesFromRound(_rounds[0], true, true);
+        _rounds.RemoveAt(0);
+
+        _nextRoundTimer = Mathf.Pow(_pointsPerRound * 8, 0.8f);
     }
 
     public void AddEnemy(Enemy enemy) {
@@ -105,6 +118,7 @@ public class LoadableRoom {
         _spawnedEnemies--;
 
         if (_spawnedEnemies > 0) return;
+        if (_rounds.Count > 0) return;
 
         Complete();
     }
@@ -127,8 +141,11 @@ public class LoadableRoom {
 
     private void SpawnEnemies(float points, bool activated = false) {
         int rounds = Mathf.FloorToInt(Mathf.Pow(points / 2f, 0.8f));
+
         if (rounds < 1) rounds = 1;
         _pointsPerRound = points / rounds;
+
+        _nextRoundTimer = Mathf.Pow(_pointsPerRound * 8, 0.8f);
 
         while (points > 0) {
             float pointsForThisRound = _pointsPerRound;

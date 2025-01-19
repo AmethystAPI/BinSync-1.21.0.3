@@ -92,7 +92,7 @@ public partial class World : Node2D, NetworkPointUser {
             _loadedRooms[room] -= delta;
 
             if (_loadedRooms[room] > 0) {
-                room.Update();
+                room.Update(delta);
 
                 continue;
             }
