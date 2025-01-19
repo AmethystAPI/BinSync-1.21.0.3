@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-public class LoadedRoom {
+public class LoadableRoom {
     public WorldGenerator.RoomPlacement RoomPlacement;
     public string Id;
+    public bool Cleared = false;
 
     private World _world;
     private Biome _biome;
@@ -15,7 +16,7 @@ public class LoadedRoom {
     private List<Node2D> _barriers = new List<Node2D>();
     private int _spawnedEnemies = 0;
 
-    public LoadedRoom(WorldGenerator.RoomPlacement roomPlacement, World world, Biome biome) {
+    public LoadableRoom(WorldGenerator.RoomPlacement roomPlacement, World world, Biome biome) {
         Id = Guid.NewGuid().ToString();
 
         RoomPlacement = roomPlacement;
@@ -38,7 +39,8 @@ public class LoadedRoom {
 
         PackedScene barrierScene = ResourceLoader.Load<PackedScene>("res://scenes/rooms/barrier.tscn");
 
-        _barriers = new List<Node2D>();
+        if (Cleared) return;
+
         foreach (RoomLayout.Connection connection in RoomPlacement.RoomLayout.GetConnections()) {
             if (connection.Equals(RoomPlacement.EntranceConnection)) continue;
 
@@ -67,6 +69,11 @@ public class LoadedRoom {
 
             _world.WallsTileMapLayer.SetCell(realTileLocation, -1);
         }
+
+        _activated = false;
+        _rounds = new List<List<int>>();
+        _barriers = new List<Node2D>();
+        _spawnedEnemies = 0;
     }
 
     public void Update() {
@@ -105,10 +112,12 @@ public class LoadedRoom {
     private void Activate() {
         _activated = true;
 
-        SpawnEnemies(4f);
+        SpawnEnemies(1f);
     }
 
     private void Complete() {
+        Cleared = true;
+
         foreach (Node2D barrier in _barriers) {
             barrier.QueueFree();
         }

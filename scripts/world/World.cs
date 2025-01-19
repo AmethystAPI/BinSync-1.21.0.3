@@ -14,8 +14,8 @@ public partial class World : Node2D, NetworkPointUser {
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
     private Biome _activeBiome;
-    private List<WorldGenerator.RoomPlacement> _unloadedRoomPlacements = new List<WorldGenerator.RoomPlacement>();
-    private Dictionary<LoadedRoom, float> _loadedRooms = new Dictionary<LoadedRoom, float>();
+    private List<LoadableRoom> _unloadedRooms = new List<LoadableRoom>();
+    private Dictionary<LoadableRoom, float> _loadedRooms = new Dictionary<LoadableRoom, float>();
 
     public override void _Ready() {
         Me = this;
@@ -40,19 +40,19 @@ public partial class World : Node2D, NetworkPointUser {
     }
 
     public static void Start() {
-        Me._loadedRooms = new Dictionary<LoadedRoom, float>();
+        Me._loadedRooms = new Dictionary<LoadableRoom, float>();
 
         Me._activeBiome = Me.Biomes[0];
 
         Stack<WorldGenerator.RoomPlacement> roomPlacements = WorldGenerator.Me.Generate(Game.Seed, Me._activeBiome);
 
         foreach (WorldGenerator.RoomPlacement roomPlacement in roomPlacements) {
-            Me._unloadedRoomPlacements.Add(roomPlacement);
+            Me._unloadedRooms.Add(new LoadableRoom(roomPlacement, Me, Me._activeBiome));
 
             if (roomPlacement is WorldGenerator.BranchedRoomPlacement branchedRoomPlacement) {
                 foreach (Stack<WorldGenerator.RoomPlacement> branches in branchedRoomPlacement.BranchRoomPlacements) {
                     foreach (WorldGenerator.RoomPlacement branchRoomPlacement in branches) {
-                        Me._unloadedRoomPlacements.Add(branchRoomPlacement);
+                        Me._unloadedRooms.Add(new LoadableRoom(branchRoomPlacement, Me, Me._activeBiome));
                     }
                 }
             }
@@ -62,36 +62,33 @@ public partial class World : Node2D, NetworkPointUser {
     }
 
     private void Load(Vector2 location) {
-        List<LoadedRoom> loadedRooms = _loadedRooms.Keys.ToList();
+        List<LoadableRoom> loadedRooms = _loadedRooms.Keys.ToList();
 
-        foreach (LoadedRoom room in loadedRooms) {
+        foreach (LoadableRoom room in loadedRooms) {
             if (location.DistanceTo(room.RoomPlacement.Location * 16) > 600) continue;
             // if (location.DistanceTo(room.RoomPlacement.Location * 16) > 100) continue;
 
             _loadedRooms[room] = 10;
         }
 
-        for (int index = 0; index < _unloadedRoomPlacements.Count; index++) {
-            WorldGenerator.RoomPlacement roomPlacement = _unloadedRoomPlacements[index];
+        for (int index = 0; index < _unloadedRooms.Count; index++) {
+            LoadableRoom loadableRoom = _unloadedRooms[index];
 
-            if (location.DistanceTo(roomPlacement.Location * 16) > 600) continue;
-            // if (location.DistanceTo(roomPlacement.Location * 16) > 100) continue;
+            if (location.DistanceTo(loadableRoom.RoomPlacement.Location * 16) > 600) continue;
 
-            _unloadedRoomPlacements.RemoveAt(index);
+            _unloadedRooms.RemoveAt(index);
             index--;
 
-            LoadedRoom loadedRoom = new LoadedRoom(roomPlacement, this, _activeBiome);
+            _loadedRooms.Add(loadableRoom, 10);
 
-            _loadedRooms.Add(loadedRoom, 10);
-
-            loadedRoom.Load();
+            loadableRoom.Load();
         }
     }
 
     private void Unload(float delta) {
-        List<LoadedRoom> loadedRooms = _loadedRooms.Keys.ToList();
+        List<LoadableRoom> loadedRooms = _loadedRooms.Keys.ToList();
 
-        foreach (LoadedRoom room in loadedRooms) {
+        foreach (LoadableRoom room in loadedRooms) {
             _loadedRooms[room] -= delta;
 
             if (_loadedRooms[room] > 0) {
@@ -101,14 +98,13 @@ public partial class World : Node2D, NetworkPointUser {
             }
 
             _loadedRooms.Remove(room);
-
-            _unloadedRoomPlacements.Add(room.RoomPlacement);
+            _unloadedRooms.Add(room);
 
             room.Unload();
         }
     }
 
-    private LoadedRoom GetRoom(string Id) {
+    private LoadableRoom GetRoom(string Id) {
         return _loadedRooms.Keys.ToList().Find(room => room.Id == Id);
     }
 
@@ -146,7 +142,7 @@ public partial class World : Node2D, NetworkPointUser {
 
         spawnDust.GlobalPosition = position;
 
-        LoadedRoom room = GetRoom(roomId);
+        LoadableRoom room = GetRoom(roomId);
         room.AddEnemy(enemy);
 
         Delay.Execute(1, () => {
