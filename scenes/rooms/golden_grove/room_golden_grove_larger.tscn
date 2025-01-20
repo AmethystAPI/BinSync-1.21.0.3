@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_vi2rf"]
 [ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/enemy_pool_golden_grove.tres" id="2_ix4xb"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="3_ci3rs"]
-[ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_2ae5j"]
+[ext_resource type="Script" path="res://addons/smart_tilemap/TileMapTool.cs" id="4_2ae5j"]
 [ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="5_4g3t5"]
 [ext_resource type="Script" path="res://scripts/rooms/Decorator.cs" id="6_pukne"]
 [ext_resource type="PackedScene" uid="uid://ddmiba6pv6nbs" path="res://scenes/decorations/golden_grove/border_tree.tscn" id="7_s5r5a"]

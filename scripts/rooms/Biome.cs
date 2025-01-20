@@ -13,6 +13,7 @@ public partial class Biome : Resource {
     [Export] public Vector2I BranchSize = new Vector2I(3, 5);
     [Export] public Color Color;
     [Export] public EnemyPool EnemyPool;
+    [Export] public SmartTileset Tileset;
 
     public List<RoomLayout> RoomLayouts = new List<RoomLayout>();
     public List<RoomLayout> SpawnRoomLayouts = new List<RoomLayout>();

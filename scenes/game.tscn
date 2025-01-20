@@ -117,6 +117,21 @@ Biomes = Array[Resource]([ExtResource("15_6wava")])
 [node name="Walls" type="TileMapLayer" parent="World"]
 tile_set = ExtResource("19_4ko6j")
 
+[node name="Roofs" type="TileMapLayer" parent="World"]
+z_index = 1
+tile_set = ExtResource("19_4ko6j")
+collision_enabled = false
+
+[node name="Shadows" type="TileMapLayer" parent="World"]
+z_index = -1
+tile_set = ExtResource("19_4ko6j")
+collision_enabled = false
+
+[node name="Floors" type="TileMapLayer" parent="World"]
+z_index = -2
+tile_set = ExtResource("19_4ko6j")
+collision_enabled = false
+
 [node name="WorldGenerator" type="Node" parent="."]
 script = ExtResource("18_7d1a5")
 

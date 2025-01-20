@@ -29,7 +29,20 @@ public class LoadableRoom {
         foreach (Vector2 tileLocation in RoomPlacement.RoomLayout.Walls) {
             Vector2I realTileLocation = RoomPlacement.Location + new Vector2I((int)tileLocation.X, (int)tileLocation.Y);
 
-            _world.WallsTileMapLayer.SetCell(realTileLocation, 0, new Vector2I(3, 0));
+            SmartTileset.Tile wallTile = _biome.Tileset.GetWallTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+            SmartTileset.Tile? optionalRoofTile = _biome.Tileset.GetRoofTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+            (SmartTileset.Tile? optionalShadowTile, SmartTileset.Tile? optionalShadowUpperTile) = _biome.Tileset.GetShadowTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+
+            _world.WallsTileMapLayer.SetCell(realTileLocation, wallTile.Source, wallTile.Location);
+            if (optionalRoofTile is SmartTileset.Tile roofTile) _world.RoofsTileMapLayer.SetCell(realTileLocation, roofTile.Source, roofTile.Location);
+            if (optionalShadowTile is SmartTileset.Tile shadowTile) _world.ShadowsTileMapLayer.SetCell(realTileLocation + Vector2I.Down, shadowTile.Source, shadowTile.Location);
+            if (optionalShadowUpperTile is SmartTileset.Tile shadowUpperTile) _world.ShadowsTileMapLayer.SetCell(realTileLocation, shadowUpperTile.Source, shadowUpperTile.Location);
+        }
+
+        for (int x = (int)RoomPlacement.GetTopLeftBound().X; x < (int)RoomPlacement.GetBottomRightBound().X; x++) {
+            for (int y = (int)RoomPlacement.GetTopLeftBound().Y; y < (int)RoomPlacement.GetBottomRightBound().Y; y++) {
+                _world.FloorsTileMapLayer.SetCell(new Vector2I(x, y), _biome.Tileset.SourceId, (Vector2I)_biome.Tileset.Floor);
+            }
         }
 
         _room = new Node2D();
@@ -69,6 +82,15 @@ public class LoadableRoom {
             Vector2I realTileLocation = RoomPlacement.Location + new Vector2I((int)tileLocation.X, (int)tileLocation.Y);
 
             _world.WallsTileMapLayer.SetCell(realTileLocation, -1);
+            _world.RoofsTileMapLayer.SetCell(realTileLocation, -1);
+            _world.ShadowsTileMapLayer.SetCell(realTileLocation + Vector2I.Down, -1);
+            _world.ShadowsTileMapLayer.SetCell(realTileLocation, -1);
+        }
+
+        for (int x = (int)RoomPlacement.GetTopLeftBound().X; x < (int)RoomPlacement.GetBottomRightBound().X; x++) {
+            for (int y = (int)RoomPlacement.GetTopLeftBound().Y; y < (int)RoomPlacement.GetBottomRightBound().Y; y++) {
+                _world.FloorsTileMapLayer.SetCell(new Vector2I(x, y), -1);
+            }
         }
 
         _activated = false;

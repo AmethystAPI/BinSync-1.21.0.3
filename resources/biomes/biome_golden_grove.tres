@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=17 format=3 uid="uid://domhx2cdlyijx"]
+[gd_resource type="Resource" load_steps=18 format=3 uid="uid://domhx2cdlyijx"]
 
 [ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
 [ext_resource type="PackedScene" uid="uid://beqecpclw00yu" path="res://content/rooms/room_golden_grove_branch_end_right.tscn" id="1_ar7sx"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://g7ndguwjt3wv" path="res://content/rooms/room_golden_grove_turn_up_right.tscn" id="10_rtn0c"]
 [ext_resource type="PackedScene" uid="uid://c1wmer7gcmqyi" path="res://content/rooms/room_golden_grove_twist.tscn" id="11_tl4kh"]
 [ext_resource type="PackedScene" uid="uid://bdyh4cord6apk" path="res://content/rooms/room_golden_grove_branch_left.tscn" id="13_isw6w"]
+[ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="16_5nvfl"]
 
 [resource]
 script = ExtResource("2_738dh")
@@ -29,3 +30,4 @@ Size = Vector2i(16, 16)
 BranchSize = Vector2i(3, 5)
 Color = Color(0, 0, 0, 0)
 EnemyPool = ExtResource("1_wy0iy")
+Tileset = ExtResource("16_5nvfl")

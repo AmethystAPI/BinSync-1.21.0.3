@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://cw6agc6kpymil"]
 
-[ext_resource type="Script" path="res://scripts/rooms/SmartTileset.cs" id="1_8mx1j"]
+[ext_resource type="Script" path="res://addons/smart_tilemap/SmartTileset.cs" id="1_8mx1j"]
 
 [resource]
 script = ExtResource("1_8mx1j")

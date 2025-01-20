@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/rooms/Room.cs" id="1_3ccyh"]
 [ext_resource type="Resource" uid="uid://bxaqp12reo668" path="res://resources/enemy_pools/wastes_pool.tres" id="2_1dew4"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="3_lgd08"]
-[ext_resource type="Script" path="res://scripts/editor/TileMapTool.cs" id="4_4xak8"]
+[ext_resource type="Script" path="res://addons/smart_tilemap/TileMapTool.cs" id="4_4xak8"]
 [ext_resource type="Resource" uid="uid://bt4xdxmp6ano5" path="res://resources/smart_tilesets/smart_tileset_wastes.tres" id="5_5wsbw"]
 [ext_resource type="PackedScene" uid="uid://bo7kdp3xm40yq" path="res://scenes/decorations/wastes/decoration_wastes_rock_1.tscn" id="6_hvdff"]
 [ext_resource type="PackedScene" uid="uid://xn3thy4qqqsd" path="res://scenes/decorations/wastes/decoration_wastes_rock_2.tscn" id="7_cbpl2"]

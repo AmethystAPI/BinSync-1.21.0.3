@@ -12,6 +12,6 @@ Rooms that have not been cleared yet spawn in with barriers on exit. These barri
 - [x] Barriers
 - [ ] Paralax decoration
 - [ ] Decorations
-- [ ] Room visual construction
+- [x] Room visual construction
 - [ ] Loot rooms
 - [ ] Boss room

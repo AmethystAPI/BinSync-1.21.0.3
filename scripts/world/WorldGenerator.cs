@@ -47,6 +47,17 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         public Vector2 GetBottomRightBound() {
             return Location + RoomLayout.BottomRightBound;
         }
+
+        public bool IsTileWallOrBounds(Vector2I location) {
+            if (RoomLayout.Walls.Contains(location - Location)) return true;
+
+            if (location.X < GetTopLeftBound().X) return true;
+            if (location.Y < GetTopLeftBound().Y) return true;
+            if (location.X >= GetBottomRightBound().X) return true;
+            if (location.Y >= GetBottomRightBound().Y) return true;
+
+            return false;
+        }
     }
 
     public class BranchedRoomPlacement : RoomPlacement {

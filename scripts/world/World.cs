@@ -10,6 +10,9 @@ public partial class World : Node2D, NetworkPointUser {
     [Export] public Biome[] Biomes;
 
     public TileMapLayer WallsTileMapLayer;
+    public TileMapLayer RoofsTileMapLayer;
+    public TileMapLayer ShadowsTileMapLayer;
+    public TileMapLayer FloorsTileMapLayer;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -25,6 +28,9 @@ public partial class World : Node2D, NetworkPointUser {
         NetworkPoint.Register(nameof(SpawnEnemyRpc), SpawnEnemyRpc);
 
         WallsTileMapLayer = GetNode<TileMapLayer>("Walls");
+        RoofsTileMapLayer = GetNode<TileMapLayer>("Roofs");
+        ShadowsTileMapLayer = GetNode<TileMapLayer>("Shadows");
+        FloorsTileMapLayer = GetNode<TileMapLayer>("Floors");
 
         foreach (Biome biome in Biomes) {
             biome.Load();
@@ -66,7 +72,6 @@ public partial class World : Node2D, NetworkPointUser {
 
         foreach (LoadableRoom room in loadedRooms) {
             if (location.DistanceTo(room.RoomPlacement.Location * 16) > 600) continue;
-            // if (location.DistanceTo(room.RoomPlacement.Location * 16) > 100) continue;
 
             _loadedRooms[room] = 10;
         }
