@@ -115,20 +115,23 @@ script = ExtResource("15_fxnfr")
 Biomes = Array[Resource]([ExtResource("15_6wava")])
 
 [node name="Walls" type="TileMapLayer" parent="World"]
+y_sort_enabled = true
 tile_set = ExtResource("19_4ko6j")
 
 [node name="Roofs" type="TileMapLayer" parent="World"]
-z_index = 1
+y_sort_enabled = true
 tile_set = ExtResource("19_4ko6j")
 collision_enabled = false
 
 [node name="Shadows" type="TileMapLayer" parent="World"]
-z_index = -1
+z_index = -6
+y_sort_enabled = true
 tile_set = ExtResource("19_4ko6j")
 collision_enabled = false
 
 [node name="Floors" type="TileMapLayer" parent="World"]
-z_index = -2
+z_index = -10
+y_sort_enabled = true
 tile_set = ExtResource("19_4ko6j")
 collision_enabled = false
 
