@@ -1,13 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0uys71lfin26"]
 
-[ext_resource type="Script" path="res://addons/smart_tilemap/Tiles/SmartShadowTile.cs" id="1_j4cxr"]
+[ext_resource type="Script" path="res://addons/smart_tilemap/Tiles/SmartShadowTile.cs" id="1_knjhp"]
 
 [resource]
-script = ExtResource("1_j4cxr")
-ShadowLeft = Vector2(0, 0)
-ShadowMiddle = Vector2(0, 0)
-ShadowRight = Vector2(0, 0)
-ShadowInsideLeft = Vector2(0, 0)
-ShadowInsideRight = Vector2(0, 0)
+script = ExtResource("1_knjhp")
+ShadowCenter = Vector2(1, 8)
 Id = "shadows"
 Source = 0

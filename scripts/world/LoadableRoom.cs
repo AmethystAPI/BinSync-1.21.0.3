@@ -41,13 +41,13 @@ public class LoadableRoom {
 
             SmartTile.Tile? possibleWallTile = wallTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
             SmartTile.Tile? possibleRoofTile = roofTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
-            // SmartTile.Tile? possibleShadowTile = shadowTile.GetTile(realTileLocation + Vector2I.Down, RoomPlacement.IsTileWallOrBounds);
-            // SmartTile.Tile? possibleUpperShadowTile = shadowTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+            SmartTile.Tile? possibleShadowTile = shadowTile.GetTile(realTileLocation + Vector2I.Down, RoomPlacement.IsTileWallOrBounds);
+            SmartTile.Tile? possibleUpperShadowTile = shadowTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
 
             if (possibleWallTile is SmartTile.Tile wallTileData) _world.WallsTileMapLayer.SetCell(realTileLocation, wallTileData.Source, wallTileData.Location);
             if (possibleRoofTile is SmartTile.Tile roofTileData) _world.RoofsTileMapLayer.SetCell(realTileLocation, roofTileData.Source, roofTileData.Location);
-            // if (possibleShadowTile is SmartTile.Tile shadowTileData) _world.ShadowsTileMapLayer.SetCell(realTileLocation, shadowTileData.Source, shadowTileData.Location);
-            // if (possibleUpperShadowTile is SmartTile.Tile upperShadowTileData) _world.ShadowsTileMapLayer.SetCell(realTileLocation, upperShadowTileData.Source, upperShadowTileData.Location);
+            if (possibleShadowTile is SmartTile.Tile shadowTileData) _world.ShadowsTileMapLayer.SetCell(realTileLocation + Vector2I.Down, shadowTileData.Source, shadowTileData.Location);
+            if (possibleUpperShadowTile is SmartTile.Tile upperShadowTileData) _world.ShadowsTileMapLayer.SetCell(realTileLocation, upperShadowTileData.Source, upperShadowTileData.Location);
         }
 
         for (int x = (int)RoomPlacement.GetTopLeftBound().X; x < (int)RoomPlacement.GetBottomRightBound().X; x++) {
