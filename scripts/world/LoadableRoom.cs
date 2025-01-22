@@ -26,22 +26,35 @@ public class LoadableRoom {
     }
 
     public void Load() {
+        SmartTile wallTile = _biome.Tileset.GetTile("walls");
+        SmartTile roofTile = _biome.Tileset.GetTile("roofs");
+        SmartTile shadowTile = _biome.Tileset.GetTile("shadows");
+        SmartTile floorTile = _biome.Tileset.GetTile("floors");
+
+        _biome.Tileset.Apply(_world.WallsTileMapLayer);
+        _biome.Tileset.Apply(_world.RoofsTileMapLayer);
+        _biome.Tileset.Apply(_world.FloorsTileMapLayer);
+        _biome.Tileset.Apply(_world.ShadowsTileMapLayer);
+
         foreach (Vector2 tileLocation in RoomPlacement.RoomLayout.Walls) {
             Vector2I realTileLocation = RoomPlacement.Location + new Vector2I((int)tileLocation.X, (int)tileLocation.Y);
 
-            SmartTileset.Tile wallTile = _biome.Tileset.GetWallTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
-            SmartTileset.Tile? optionalRoofTile = _biome.Tileset.GetRoofTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
-            (SmartTileset.Tile? optionalShadowTile, SmartTileset.Tile? optionalShadowUpperTile) = _biome.Tileset.GetShadowTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+            SmartTile.Tile? possibleWallTile = wallTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+            SmartTile.Tile? possibleRoofTile = roofTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
+            // SmartTile.Tile? possibleShadowTile = shadowTile.GetTile(realTileLocation + Vector2I.Down, RoomPlacement.IsTileWallOrBounds);
+            // SmartTile.Tile? possibleUpperShadowTile = shadowTile.GetTile(realTileLocation, RoomPlacement.IsTileWallOrBounds);
 
-            _world.WallsTileMapLayer.SetCell(realTileLocation, wallTile.Source, wallTile.Location);
-            if (optionalRoofTile is SmartTileset.Tile roofTile) _world.RoofsTileMapLayer.SetCell(realTileLocation, roofTile.Source, roofTile.Location);
-            if (optionalShadowTile is SmartTileset.Tile shadowTile) _world.ShadowsTileMapLayer.SetCell(realTileLocation + Vector2I.Down, shadowTile.Source, shadowTile.Location);
-            if (optionalShadowUpperTile is SmartTileset.Tile shadowUpperTile) _world.ShadowsTileMapLayer.SetCell(realTileLocation, shadowUpperTile.Source, shadowUpperTile.Location);
+            if (possibleWallTile is SmartTile.Tile wallTileData) _world.WallsTileMapLayer.SetCell(realTileLocation, wallTileData.Source, wallTileData.Location);
+            if (possibleRoofTile is SmartTile.Tile roofTileData) _world.RoofsTileMapLayer.SetCell(realTileLocation, roofTileData.Source, roofTileData.Location);
+            // if (possibleShadowTile is SmartTile.Tile shadowTileData) _world.ShadowsTileMapLayer.SetCell(realTileLocation, shadowTileData.Source, shadowTileData.Location);
+            // if (possibleUpperShadowTile is SmartTile.Tile upperShadowTileData) _world.ShadowsTileMapLayer.SetCell(realTileLocation, upperShadowTileData.Source, upperShadowTileData.Location);
         }
 
         for (int x = (int)RoomPlacement.GetTopLeftBound().X; x < (int)RoomPlacement.GetBottomRightBound().X; x++) {
             for (int y = (int)RoomPlacement.GetTopLeftBound().Y; y < (int)RoomPlacement.GetBottomRightBound().Y; y++) {
-                _world.FloorsTileMapLayer.SetCell(new Vector2I(x, y), _biome.Tileset.SourceId, (Vector2I)_biome.Tileset.Floor);
+                SmartTile.Tile? possibleTile = floorTile.GetTile(new Vector2I(x, y), RoomPlacement.IsTileWallOrBounds);
+
+                if (possibleTile is SmartTile.Tile tile) _world.FloorsTileMapLayer.SetCell(new Vector2I(x, y), tile.Source, tile.Location);
             }
         }
 

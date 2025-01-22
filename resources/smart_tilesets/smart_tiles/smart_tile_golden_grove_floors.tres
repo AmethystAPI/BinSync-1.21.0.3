@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bu4cafte8l4wg"]
+
+[ext_resource type="Script" path="res://addons/smart_tilemap/Tiles/SmartSimpleTile.cs" id="1_7leeo"]
+
+[resource]
+script = ExtResource("1_7leeo")
+SimpleTile = Vector2(4, 0)
+Id = "floors"
+Source = 0
