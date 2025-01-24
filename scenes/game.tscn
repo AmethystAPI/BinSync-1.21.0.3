@@ -135,6 +135,12 @@ y_sort_enabled = true
 tile_set = ExtResource("19_4ko6j")
 collision_enabled = false
 
+[node name="Grass" type="TileMapLayer" parent="World"]
+z_index = -9
+y_sort_enabled = true
+tile_set = ExtResource("19_4ko6j")
+collision_enabled = false
+
 [node name="WorldGenerator" type="Node" parent="."]
 script = ExtResource("18_7d1a5")
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://64a3cgxqnakl"]
+
+[ext_resource type="Script" path="res://addons/smart_tilemap/Tiles/SmartHalfShiftTile.cs" id="1_qljqr"]
+
+[resource]
+script = ExtResource("1_qljqr")
+Center = Vector2(1, 10)
+Id = "grass"
+Source = 0

@@ -17,37 +17,35 @@ public partial class SmartHalfShiftTile : SmartTile {
     private Vector2 InsideTopRight = new Vector2(3, -1);
     private Vector2 InsideBottomLeft = new Vector2(2, 0);
     private Vector2 InsideBottomRight = new Vector2(3, 0);
+    private Vector2 DiagonalTopLeftBottomRight = new Vector2(2, 1);
+    private Vector2 DiagonalTopRightBottomLeft = new Vector2(3, 1);
 
     protected override Vector2? GetTileLocation(Vector2I location, Func<Vector2I, bool> isTile) {
-        bool right = isTile(location + Vector2I.Right);
-        bool left = isTile(location + Vector2I.Left);
-        bool up = isTile(location + Vector2I.Up);
-        bool down = isTile(location + Vector2I.Down);
-
         bool center = isTile(location);
-
-        bool upRight = isTile(location + Vector2I.Up + Vector2I.Right);
-        bool upLeft = isTile(location + Vector2I.Up + Vector2I.Left);
+        bool right = isTile(location + Vector2I.Right);
+        bool down = isTile(location + Vector2I.Down);
         bool downRight = isTile(location + Vector2I.Down + Vector2I.Right);
-        bool downLeft = isTile(location + Vector2I.Down + Vector2I.Left);
 
-        // if (left && up && !upLeft) return Center + InsideBottomRight;
-        // if (!left && !up && !upLeft) return Center + TopLeft;
+        if (center && right && down && downRight) return Center;
 
-        // if (right && up && !upRight) return Center + InsideBottomLeft;
-        // if (!right && !up && !upRight) return Center + TopRight;
+        if (!center && !downRight && down && right) return Center + DiagonalTopRightBottomLeft;
+        if (center && downRight && !down && !right) return Center + DiagonalTopLeftBottomRight;
 
-        // if (left && down && !downLeft) return Center + InsideTopRight;
-        // if (!left && !down && !downLeft) return Center + BottomLeft;
+        if (center && right && !downRight && down) return Center + InsideTopLeft;
+        if (center && right && downRight && !down) return Center + InsideTopRight;
+        if (!center && right && downRight && down) return Center + InsideBottomRight;
+        if (center && !right && downRight && down) return Center + InsideBottomLeft;
 
-        // if (right && down && !downRight) return Center + InsideTopLeft;
-        // if (!right && !down && !downRight) return Center + BottomRight;
+        if (down && downRight) return Center + Top;
+        if (center && right) return Center + Bottom;
+        if (center && down) return Center + Right;
+        if (right && downRight) return Center + Left;
 
-        if (center && left) return Center + Top;
-        if (!center && up && upLeft) return Center + Bottom;
-        if (!right) return Center + Right;
-        if (!left) return Center + Left;
+        if (center) return Center + BottomRight;
+        if (right) return Center + BottomLeft;
+        if (downRight) return Center + TopLeft;
+        if (down) return Center + TopRight;
 
-        return Center;
+        return null;
     }
 }

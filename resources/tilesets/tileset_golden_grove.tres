@@ -102,6 +102,8 @@ texture = ExtResource("1_glbis")
 0:7/0 = 0
 3:8/0 = 0
 4:8/0 = 0
+3:11/0 = 0
+4:11/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 2

@@ -13,6 +13,7 @@ public partial class World : Node2D, NetworkPointUser {
     public TileMapLayer RoofsTileMapLayer;
     public TileMapLayer ShadowsTileMapLayer;
     public TileMapLayer FloorsTileMapLayer;
+    public TileMapLayer GrassTileMapLayer;
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
@@ -31,6 +32,7 @@ public partial class World : Node2D, NetworkPointUser {
         RoofsTileMapLayer = GetNode<TileMapLayer>("Roofs");
         ShadowsTileMapLayer = GetNode<TileMapLayer>("Shadows");
         FloorsTileMapLayer = GetNode<TileMapLayer>("Floors");
+        GrassTileMapLayer = GetNode<TileMapLayer>("Grass");
 
         foreach (Biome biome in Biomes) {
             biome.Load();
