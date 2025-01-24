@@ -48,4 +48,8 @@ public partial class SmartHalfShiftTile : SmartTile {
 
         return null;
     }
+
+    protected override Vector2I GetCenter() {
+        return (Vector2I)Center;
+    }
 }

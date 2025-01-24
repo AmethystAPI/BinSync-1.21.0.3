@@ -54,4 +54,8 @@ public partial class SmartRoofTile : SmartTile {
     private bool IsTileRoofOrBounds(Vector2I location, Func<Vector2I, bool> isWallTile) {
         return isWallTile(location) && isWallTile(location + Vector2I.Down);
     }
+
+    protected override Vector2I GetCenter() {
+        return (Vector2I)RoofCenter;
+    }
 }

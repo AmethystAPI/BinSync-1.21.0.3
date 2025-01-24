@@ -39,4 +39,8 @@ public partial class SmartShadowTile : SmartTile {
 
         return null;
     }
+
+    protected override Vector2I GetCenter() {
+        return (Vector2I)ShadowCenter;
+    }
 }

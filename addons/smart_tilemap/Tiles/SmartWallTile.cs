@@ -34,4 +34,8 @@ public partial class SmartWallTile : SmartTile {
 
         return WallCenter + WallHidden;
     }
+
+    protected override Vector2I GetCenter() {
+        return (Vector2I)WallCenter;
+    }
 }

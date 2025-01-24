@@ -10,18 +10,35 @@ public partial class SmartTile : Resource {
 
     [Export] public string Id;
     [Export] public int Source;
+    [Export] public SmartTileModifier[] Modifiers;
 
     protected virtual Vector2? GetTileLocation(Vector2I location, Func<Vector2I, bool> isTile) {
         return null;
     }
 
-    public virtual Tile? GetTile(Vector2I location, Func<Vector2I, bool> isTile) {
+    protected virtual Vector2I GetCenter() {
+        return Vector2I.Zero;
+    }
+
+    protected Vector2I ApplyModifiers(Vector2I location) {
+        Vector2I center = GetCenter();
+
+        if (Modifiers != null) {
+            foreach (SmartTileModifier smartTileModifier in Modifiers) {
+                location = smartTileModifier.Modify(center, location);
+            }
+        }
+
+        return location;
+    }
+
+    public Tile? GetTile(Vector2I location, Func<Vector2I, bool> isTile) {
         Vector2? possibleTileLocation = GetTileLocation(location, isTile);
 
         if (!(possibleTileLocation is Vector2 tileLocation)) return null;
 
         return new Tile {
-            Location = (Vector2I)tileLocation,
+            Location = ApplyModifiers((Vector2I)tileLocation),
             Source = Source,
         };
     }

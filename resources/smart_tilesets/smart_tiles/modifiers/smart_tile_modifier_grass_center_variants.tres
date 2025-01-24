@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RandomVariantModifier" load_steps=2 format=3 uid="uid://c3iww4hryx0f5"]
+
+[ext_resource type="Script" path="res://addons/smart_tilemap/Tiles/Modifiers/RandomVariantModifier.cs" id="1_6f5u3"]
+
+[resource]
+script = ExtResource("1_6f5u3")
+Target = Vector2(0, 0)
+Variants = PackedVector2Array(-1, 2, 0, 2, 1, 2)
