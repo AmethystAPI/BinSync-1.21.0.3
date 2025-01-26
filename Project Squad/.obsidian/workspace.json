@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Design/New Worldgen.md",
+                "file": "Beta C Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "New Worldgen"
+              "title": "Beta C Notes"
             }
           }
         ]
@@ -158,11 +158,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "711274cd3592b4d7",
+  "active": "cadd755dc22b724a",
   "lastOpenFiles": [
-    "Design/New Worldgen.md",
-    "Untitled.md",
+    "Planning/Beta C Kanban.md",
+    "Beta C Notes.md",
+    "Beta B Playtest Notes.md",
     "Planning/Beta D.md",
+    "Design/New Worldgen.md",
     "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Design/Current Design Issues/Transition of Biomes.md",
     "Design/Current Design Issues/Scaling of Trinkets.md",
@@ -171,13 +173,11 @@
     "Design/Enemies.md",
     "Design/Improve Title Screen.md",
     "Design/Music.md",
-    "Beta B Playtest Notes.md",
     "Reference/Devlogs.canvas",
     "Reference/Locations/Golden Grove.canvas",
     "Reference/General.canvas",
     "Design/World Generation.md",
     "Design/World Generation 1.md",
-    "Planning/Beta C Kanban.md",
     "Reference/Locations/Sinister Swamp.canvas",
     "Tasks/Polish Weapons.md",
     "Tasks",

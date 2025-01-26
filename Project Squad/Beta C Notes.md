@@ -1,0 +1,7 @@
+- Bird hitbox doesn't cover top of sprite
+- Projectile hitbox should encompass glow
+- Be able to choose weapon
+- Work on UI
+	- Add some sprite work to main menu
+	- Add a lobby screen
+- Add death transition

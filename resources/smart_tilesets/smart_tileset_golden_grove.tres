@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=8 format=3 uid="uid://cw6agc6kpymil"]
 
 [ext_resource type="Script" path="res://addons/smart_tilemap/SmartTileset.cs" id="1_8mx1j"]
-[ext_resource type="TileSet" uid="uid://byrce4kf3yw3d" path="res://resources/tilesets/tileset_golden_grove.tres" id="1_v60i1"]
+[ext_resource type="TileSet" uid="uid://bldl3gm3xo1wv" path="res://resources/tilesets/tileset_golden_grove.tres" id="1_v60i1"]
 [ext_resource type="Resource" uid="uid://4vdbrf2yde6x" path="res://resources/smart_tilesets/smart_tiles/smart_tile_golden_grove_walls.tres" id="2_rk0ux"]
 [ext_resource type="Resource" uid="uid://1nd4bf3tt7cs" path="res://resources/smart_tilesets/smart_tiles/smart_tile_golden_grove_roofs.tres" id="3_1l8e3"]
 [ext_resource type="Resource" uid="uid://bu4cafte8l4wg" path="res://resources/smart_tilesets/smart_tiles/smart_tile_golden_grove_floors.tres" id="4_fkjm3"]
