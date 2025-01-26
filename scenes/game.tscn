@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cmcc8d5h27qfv"]
+[gd_scene load_steps=28 format=3 uid="uid://cmcc8d5h27qfv"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_sq6vk"]
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
@@ -10,32 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]
 [ext_resource type="AudioStream" uid="uid://clof1mxacmnvy" path="res://sfx/combined/swing_1.wav" id="7_yuo4k"]
 [ext_resource type="AudioStream" uid="uid://dm71qtyxmxx5" path="res://sfx/combined/swing_2.wav" id="8_6wno2"]
-[ext_resource type="PackedScene" uid="uid://duii65kqioaqg" path="res://scenes/items/trinkets/trinket_faith.tscn" id="8_88fnx"]
 [ext_resource type="AudioStream" uid="uid://bt3vmiqn5dhqu" path="res://music/Theme 4.wav" id="8_y68pd"]
 [ext_resource type="Script" path="res://scripts/Interactables.cs" id="9_t151n"]
-[ext_resource type="Script" path="res://scripts/TrinketRealm.cs" id="9_vc1vq"]
 [ext_resource type="Texture2D" uid="uid://c1q4etprb2fu8" path="res://sprites/particles/leaf_dark.tres" id="10_agqbr"]
-[ext_resource type="PackedScene" uid="uid://dnsnl644enbf0" path="res://scenes/items/weapons/bow.tscn" id="12_tesvq"]
-[ext_resource type="PackedScene" uid="uid://c2ch8e83mu0et" path="res://scenes/items/trinkets/swiftness_trinket.tscn" id="13_2ai8n"]
-[ext_resource type="PackedScene" uid="uid://bb261ce2j3ht2" path="res://scenes/items/weapons/hammer.tscn" id="13_js758"]
 [ext_resource type="Script" path="res://scripts/Delay.cs" id="13_l8fec"]
-[ext_resource type="PackedScene" uid="uid://dqbq373kspp30" path="res://scenes/items/trinkets/strength_trinket.tscn" id="13_tgw0v"]
 [ext_resource type="Resource" uid="uid://domhx2cdlyijx" path="res://resources/biomes/biome_golden_grove.tres" id="15_6wava"]
 [ext_resource type="Script" path="res://scripts/world/World.cs" id="15_fxnfr"]
-[ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://scenes/enemies/slime.tscn" id="15_pi7jw"]
-[ext_resource type="PackedScene" uid="uid://cyh55k213w7y7" path="res://scenes/items/weapons/sword.tscn" id="15_xrri3"]
-[ext_resource type="PackedScene" uid="uid://k1sviiopk4x1" path="res://scenes/enemies/stone_golem.tscn" id="16_a1dbg"]
-[ext_resource type="PackedScene" uid="uid://ctwrqefjr5llm" path="res://scenes/enemies/crow.tscn" id="17_yoxty"]
 [ext_resource type="Script" path="res://scripts/world/WorldGenerator.cs" id="18_7d1a5"]
 [ext_resource type="TileSet" uid="uid://b4r1oxxo4whc6" path="res://resources/tilesets/tileset.tres" id="19_4ko6j"]
 [ext_resource type="Script" path="res://scripts/Audio.cs" id="22_ko2sk"]
 [ext_resource type="AudioStream" uid="uid://cx0s4ifhqsfxk" path="res://sfx/library/sfx_sounds_impact1.wav" id="23_8eois"]
 [ext_resource type="AudioStream" uid="uid://d4k7170tc0for" path="res://sfx/library/death_1.wav" id="24_0d0le"]
-[ext_resource type="PackedScene" uid="uid://cx1vygvn5xxmn" path="res://scenes/items/trinkets/trinket_duality.tscn" id="26_7jx7d"]
-[ext_resource type="PackedScene" uid="uid://blcvj0wy4dq8w" path="res://scenes/items/weapons/spear.tscn" id="26_74k7n"]
 [ext_resource type="Texture2D" uid="uid://bi33f1wk8abo6" path="res://sprites/items/trinkets/trinket_swiftness.tres" id="26_dnkch"]
-[ext_resource type="PackedScene" uid="uid://8nft4fq0fngx" path="res://scenes/items/trinkets/trinket_perfume.tscn" id="27_uxav1"]
-[ext_resource type="PackedScene" uid="uid://c46kocxmjw57s" path="res://scenes/items/trinkets/trinket_vampire.tscn" id="28_cergm"]
 [ext_resource type="AudioStream" uid="uid://utgbs5slm1xk" path="res://music/Theme 5.wav" id="39_gcumd"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jo6wf"]
@@ -144,20 +130,10 @@ collision_enabled = false
 [node name="WorldGenerator" type="Node" parent="."]
 script = ExtResource("18_7d1a5")
 
-[node name="TrinketRealm" type="Node2D" parent="." node_paths=PackedStringArray("TrinketBackground", "Icon", "Description", "DifficultyLabel", "AcceptButton", "SacraficeButton", "UI")]
+[node name="TrinketRealm" type="Node2D" parent="."]
+visible = false
 z_index = 20
 y_sort_enabled = true
-script = ExtResource("9_vc1vq")
-TrinketScenes = [ExtResource("13_tgw0v"), ExtResource("13_2ai8n"), ExtResource("8_88fnx"), ExtResource("26_7jx7d"), ExtResource("27_uxav1"), ExtResource("28_cergm")]
-WeaponScenes = [ExtResource("12_tesvq"), ExtResource("13_js758"), ExtResource("15_xrri3"), ExtResource("26_74k7n")]
-TrinketBackground = NodePath("Stars")
-EnemyScenes = [ExtResource("15_pi7jw"), ExtResource("16_a1dbg"), ExtResource("17_yoxty")]
-Icon = NodePath("../CanvasLayer/TrinketUI/Icon")
-Description = NodePath("../CanvasLayer/TrinketUI/Description")
-DifficultyLabel = NodePath("../CanvasLayer/TrinketUI/Difficulty")
-AcceptButton = NodePath("../CanvasLayer/TrinketUI/Accept")
-SacraficeButton = NodePath("../CanvasLayer/TrinketUI/Sacrafice")
-UI = NodePath("../CanvasLayer/TrinketUI")
 
 [node name="Stars" type="ColorRect" parent="TrinketRealm"]
 modulate = Color(1, 1, 1, 0)

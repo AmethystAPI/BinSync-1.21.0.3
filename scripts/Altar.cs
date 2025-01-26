@@ -25,7 +25,5 @@ public partial class Altar : Node2D, NetworkPointUser, Interactable {
 		_activated = true;
 
 		player.EnterTrinketRealm();
-
-		TrinketRealm.EnterTrinketRealm(this);
 	}
 }

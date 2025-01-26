@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Godot;
 
 public partial class Barrier : StaticBody2D {

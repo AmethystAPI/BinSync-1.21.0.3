@@ -24,8 +24,6 @@ public partial class Summon : EnemyState {
             int amount = _randomNumberGenerator.RandiRange(SummonAmmount.X, SummonAmmount.Y);
 
             for (int i = 0; i < amount; i++) {
-                Room.Current.AddEnemy();
-
                 _enemy.NetworkPoint.SendRpcToClientsFast(nameof(SummonRpc), message => {
                     message.AddString(Summons[_randomNumberGenerator.RandiRange(0, Summons.Length - 1)].ResourcePath);
 

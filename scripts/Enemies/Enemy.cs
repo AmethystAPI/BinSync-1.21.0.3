@@ -86,8 +86,6 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
     }
 
     public virtual bool CanDamage(Projectile projectile) {
-        if (!Activated && Room.Current != GetParent<Room>()) return false;
-
         if (Hurt) return false;
 
         if (!(projectile.Source is Player)) return false;
