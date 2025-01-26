@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Godot;
@@ -7,6 +8,8 @@ public class AssetManager {
 
     public static void Register(string id, object value) {
         GD.Print("[Assets] Registered " + id);
+
+        s_Assets.Add(id, value);
     }
 
     public static T Get<T>(string id) {
@@ -30,6 +33,14 @@ public class AssetManager {
             }
 
             entryName = content.GetNext();
+        }
+    }
+
+    public static void DebugAssets() {
+        GD.Print("Registered assets:");
+
+        foreach (string id in s_Assets.Keys) {
+            GD.Print(id);
         }
     }
 }
