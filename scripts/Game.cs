@@ -23,6 +23,8 @@ public partial class Game : Node2D, NetworkPointUser {
             return;
         }
 
+        Assets.Load();
+
         NetworkPoint.Setup(this);
 
         NetworkPoint.Register(nameof(StartRpc), StartRpc);
