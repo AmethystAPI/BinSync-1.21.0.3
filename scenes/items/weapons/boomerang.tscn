@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_xkutt"]
 [ext_resource type="PackedScene" uid="uid://dyxw7udidplhx" path="res://scenes/items/weapons/boomerange_projectile.tscn" id="2_8q7c8"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_xyy7f"]
-[ext_resource type="Script" path="res://scripts/visual/CustomYSort.cs" id="4_2i0e6"]
+[ext_resource type="Script" path="res://scripts/visuals/CustomYSort.cs" id="4_2i0e6"]
 [ext_resource type="Texture2D" uid="uid://bxdt2d6bhuqgi" path="res://sprites/items/weapons/boomerang.tres" id="4_3y6u1"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="6_84oor"]
 [ext_resource type="Script" path="res://scripts/interactables/HighlightInteractable.cs" id="6_ccsp6"]

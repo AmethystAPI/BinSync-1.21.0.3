@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_wcney"]
 [ext_resource type="PackedScene" uid="uid://pdger2vckwas" path="res://scenes/items/weapons/bow_projectile.tscn" id="2_1h1w5"]
-[ext_resource type="Script" path="res://scripts/visual/CustomYSort.cs" id="3_gyb2f"]
+[ext_resource type="Script" path="res://scripts/visuals/CustomYSort.cs" id="3_gyb2f"]
 [ext_resource type="Texture2D" uid="uid://c2dkyfxvw6kix" path="res://sprites/items/weapons/bow.tres" id="3_s865s"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="5_uvfid"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="5_uvfid"]
 [ext_resource type="Script" path="res://scripts/interactables/HighlightInteractable.cs" id="5_xdjfu"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="6_uffu1"]
 

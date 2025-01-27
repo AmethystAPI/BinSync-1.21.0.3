@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci5smkuw5uefh"]
 
-[ext_resource type="Script" path="res://scripts/visual/particles/DestructionPebble.cs" id="1_kub7x"]
+[ext_resource type="Script" path="res://scripts/visuals/particles/DestructionPebble.cs" id="1_kub7x"]
 [ext_resource type="Texture2D" uid="uid://yybdk8wkfvb4" path="res://sprites/particles/pebble.tres" id="2_eul4y"]
 [ext_resource type="Texture2D" uid="uid://b7esraxflc3sr" path="res://sprites/particles/pebble_shadow.tres" id="3_kov4x"]
 

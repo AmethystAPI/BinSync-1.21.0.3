@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_hbt65"]
 [ext_resource type="Texture2D" uid="uid://b4naejnmh5svi" path="res://sprites/enemies/crow/crow_1.tres" id="9_s3qqv"]
 [ext_resource type="Texture2D" uid="uid://erjyvt1spirj" path="res://sprites/enemies/crow/crow_hurt.tres" id="10_hpfxe"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="11_kuwtc"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="11_kuwtc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(16, 14)

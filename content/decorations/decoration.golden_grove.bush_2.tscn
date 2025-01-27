@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://caj7t46v4f7ds"]
+
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_w68oe"]
+[ext_resource type="PackedScene" uid="uid://by3m0xgldgo6h" path="res://scenes/decorations/golden_grove/bush.tscn" id="2_cmq48"]
+
+[node name="Bush_2" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Grass6" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(9, 4)
+texture = ExtResource("1_w68oe")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Shadow11" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(8, 10)
+texture = ExtResource("1_w68oe")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
+
+[node name="Bush2" parent="." instance=ExtResource("2_cmq48")]

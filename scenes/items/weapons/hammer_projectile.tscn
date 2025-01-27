@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://c6cyrpgftmxi0"]
 
-[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_3623f"]
+[ext_resource type="Script" path="res://scripts/projectiles/Projectile.cs" id="1_3623f"]
 [ext_resource type="PackedScene" uid="uid://bui482a6r6fhc" path="res://scenes/particles/hit_dust.tscn" id="2_sl565"]
 [ext_resource type="PackedScene" uid="uid://e4kggo328so6" path="res://scenes/particles/hit_flash.tscn" id="3_3fm6m"]
 [ext_resource type="Texture2D" uid="uid://dscg0viludyf8" path="res://sprites/items/projectiles/hammer/projectile_hammer_0.tres" id="3_6fu87"]
-[ext_resource type="Texture2D" uid="uid://pvvtt154fvs4" path="res://sprites/items/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
-[ext_resource type="Texture2D" uid="uid://61r8rvophaur" path="res://sprites/items/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
+[ext_resource type="Texture2D" uid="uid://dp6sa8y72hs4m" path="res://sprites/items/projectiles/hammer/projectile_hammer_1.tres" id="4_thqoo"]
+[ext_resource type="Texture2D" uid="uid://c58y2rdehx54r" path="res://sprites/items/projectiles/hammer/projectile_hammer_2.tres" id="5_3p21b"]
 [ext_resource type="Texture2D" uid="uid://ua5qvdsg8hoq" path="res://sprites/items/projectiles/hammer/projectile_hammer_3.tres" id="5_jdv6o"]
 [ext_resource type="Texture2D" uid="uid://ennsm1jo4c0x" path="res://sprites/items/projectiles/hammer/projectile_hammer_4.tres" id="6_0aahj"]
 

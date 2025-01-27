@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cf1alnlwhq4yq" path="res://content/enemies/projectiles/cactus_spirit_projectile.tscn" id="2_jmahl"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="2_yw3vg"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="3_v2rhn"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="8_xya6n"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="8_xya6n"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="11_0cims"]
 [ext_resource type="Texture2D" uid="uid://c1b80yawm3idc" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_hurt.tres" id="12_5pasp"]
 [ext_resource type="Texture2D" uid="uid://b5riq8s65g6x4" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_idle.tres" id="13_16cnt"]

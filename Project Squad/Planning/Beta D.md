@@ -13,6 +13,7 @@ kanban-plugin: basic
 - [ ] Fix desynced cosmetic animations
 - [ ] Improve death
 - [ ] Improve enemy projectiles
+- [ ] Improve random sources for worldgen
 
 
 ## Must Do

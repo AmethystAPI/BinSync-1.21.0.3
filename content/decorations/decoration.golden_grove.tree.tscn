@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6c7c27i4b7x8"]
+[gd_scene load_steps=5 format=3 uid="uid://bts585r45v1yk"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/Destructable.cs" id="1_snroy"]
-[ext_resource type="PackedScene" uid="uid://df8vafeme8j54" path="res://scenes/particles/destruction_leaf.tscn" id="2_ykgqa"]
-[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="3_nk0d5"]
+[ext_resource type="Script" path="res://scripts/projectiles/Destructable.cs" id="1_ght2y"]
+[ext_resource type="PackedScene" uid="uid://df8vafeme8j54" path="res://scenes/particles/destruction_leaf.tscn" id="2_bt0im"]
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="3_50wy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfw76"]
 size = Vector2(26, 15)
@@ -11,14 +11,14 @@ size = Vector2(26, 15)
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_snroy")
-Particle = ExtResource("2_ykgqa")
+script = ExtResource("1_ght2y")
+Particle = ExtResource("2_bt0im")
 ParticleCount = 12
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 8)
-texture = ExtResource("3_nk0d5")
+texture = ExtResource("3_50wy4")
 offset = Vector2(0, -15)
 region_enabled = true
 region_rect = Rect2(170, 137, 26, 34)
@@ -27,7 +27,7 @@ region_rect = Rect2(170, 137, 26, 34)
 z_index = -6
 y_sort_enabled = true
 position = Vector2(0, 6)
-texture = ExtResource("3_nk0d5")
+texture = ExtResource("3_50wy4")
 offset = Vector2(0, -8)
 region_enabled = true
 region_rect = Rect2(202, 143, 28, 28)

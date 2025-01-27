@@ -17,6 +17,7 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         public Vector2I Location;
         public RoomType Type = RoomType.None;
         public RoomLayout.Connection EntranceConnection;
+        public List<DecorationPlacement> Decorations = new List<DecorationPlacement>();
 
         public virtual bool Intersects(RoomPlacement otherRoom) {
             if (otherRoom.GetTopLeftBound().X >= GetTopLeftBound().X && otherRoom.GetTopLeftBound().X < GetBottomRightBound().X && otherRoom.GetTopLeftBound().Y >= GetTopLeftBound().Y && otherRoom.GetTopLeftBound().Y < GetBottomRightBound().Y) return true;
@@ -58,6 +59,14 @@ public partial class WorldGenerator : Node, NetworkPointUser {
 
             return false;
         }
+
+        public int GetWidth() {
+            return (int)(RoomLayout.BottomRightBound.X - RoomLayout.TopLeftBound.X);
+        }
+
+        public int GetHeight() {
+            return (int)(RoomLayout.BottomRightBound.Y - RoomLayout.TopLeftBound.Y);
+        }
     }
 
     public class BranchedRoomPlacement : RoomPlacement {
@@ -74,6 +83,11 @@ public partial class WorldGenerator : Node, NetworkPointUser {
 
             return false;
         }
+    }
+
+    public struct DecorationPlacement {
+        public PackedScene Scene;
+        public Vector2I Location;
     }
 
     public static WorldGenerator Me;
@@ -114,6 +128,10 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         bool result = TryPlaceRooms(biome, placedRooms, lastConnection, size - 1, size, 0);
 
         if (!result) return Generate(seed + 1, biome);
+
+        foreach (RoomPlacement roomPlacement in placedRooms) {
+            GenerateDecorations(roomPlacement, biome);
+        }
 
         return placedRooms;
     }
@@ -380,5 +398,19 @@ public partial class WorldGenerator : Node, NetworkPointUser {
         return false;
     }
 
+    private void GenerateDecorations(RoomPlacement roomPlacement, Biome biome) {
+        List<DecorationPlacement> decorations = new List<DecorationPlacement>();
 
+        List<Vector2I> openDecorationLocations = new List<Vector2I>();
+
+        foreach (Vector2 location in roomPlacement.RoomLayout.SpawnLocations) {
+            openDecorationLocations.Add((Vector2I)(location + roomPlacement.Location));
+        }
+
+        foreach (Decoration decoration in biome.Decorations) {
+            decorations.AddRange(decoration.Generate(roomPlacement, openDecorationLocations));
+        }
+
+        roomPlacement.Decorations = decorations;
+    }
 }

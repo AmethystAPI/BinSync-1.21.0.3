@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8hderslnh1rd" path="res://sprites/enemies/log_spirit/log_spirit.png" id="4_4a6wg"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="5_0bddm"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="6_ilhk2"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="8_80fbo"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="8_80fbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(12, 9)

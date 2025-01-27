@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bgg04u0yi86gl" path="res://scenes/items/weapons/sword_projectile.tscn" id="2_cwddm"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_18ogc"]
 [ext_resource type="Texture2D" uid="uid://bpp7fxsmgxs0v" path="res://sprites/items/weapons/sword.tres" id="4_bbk84"]
-[ext_resource type="Script" path="res://scripts/visual/CustomYSort.cs" id="4_w0o7s"]
+[ext_resource type="Script" path="res://scripts/visuals/CustomYSort.cs" id="4_w0o7s"]
 [ext_resource type="Script" path="res://scripts/interactables/HighlightInteractable.cs" id="6_jc1qe"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="7_yq77b"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1ynrrhll0vog"]
 
-[ext_resource type="Script" path="res://scripts/Destructable.cs" id="1_jwfm4"]
+[ext_resource type="Script" path="res://scripts/projectiles/Destructable.cs" id="1_jwfm4"]
 [ext_resource type="PackedScene" uid="uid://wk3aial2y23v" path="res://scenes/particles/destruction_swamp_leaf.tscn" id="2_4rjbe"]
 [ext_resource type="Texture2D" uid="uid://dv2vfwljb5x2x" path="res://sprites/biomes/swamp/swamp.aseprite" id="3_262yt"]
 

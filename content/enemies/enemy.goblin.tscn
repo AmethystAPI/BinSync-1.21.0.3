@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dyjssam5ndqo1" path="res://sprites/enemies/goblin/goblin.png" id="5_w135q"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="6_4hf2a"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="7_3r64l"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="8_kwa8g"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="8_kwa8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(10, 9)

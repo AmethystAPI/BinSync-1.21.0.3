@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmrtl4q0opchd"]
 
-[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_rtkni"]
+[ext_resource type="Script" path="res://scripts/projectiles/Projectile.cs" id="1_rtkni"]
 [ext_resource type="Texture2D" uid="uid://cyff4t1v1my0v" path="res://sprites/enemies/swamp_flower/swamp_flower.png" id="2_fm1ge"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpqck"]

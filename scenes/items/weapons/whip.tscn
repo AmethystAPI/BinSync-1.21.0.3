@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/items/weapons/SimpleWeapon.cs" id="1_r2rnh"]
 [ext_resource type="PackedScene" uid="uid://bimmdl3utp2sq" path="res://scenes/items/weapons/whip_projectile.tscn" id="2_sdjgr"]
 [ext_resource type="Script" path="res://scripts/items/weapons/SwingHandle.cs" id="3_f3s4r"]
-[ext_resource type="Script" path="res://scripts/visual/CustomYSort.cs" id="4_8nuc2"]
+[ext_resource type="Script" path="res://scripts/visuals/CustomYSort.cs" id="4_8nuc2"]
 [ext_resource type="Texture2D" uid="uid://5606od1o2e5o" path="res://sprites/items/weapons/whip.tres" id="4_u7ct0"]
 [ext_resource type="Script" path="res://scripts/interactables/HighlightInteractable.cs" id="6_rb388"]
 [ext_resource type="Shader" path="res://scripts/shaders/highlight.gdshader" id="7_6drkp"]

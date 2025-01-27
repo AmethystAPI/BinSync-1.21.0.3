@@ -14,6 +14,7 @@ public partial class Biome {
     public Color Color;
     public EnemyPool EnemyPool;
     public SmartTileset Tileset;
+    public Decoration[] Decorations = new Decoration[0];
 
     public List<RoomLayout> RoomLayouts = new List<RoomLayout>();
     public List<RoomLayout> SpawnRoomLayouts = new List<RoomLayout>();

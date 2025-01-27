@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjkmsm5vg4erl" path="res://sprites/enemies/longhorn/longhorn.png" id="4_kd67x"]
 [ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="5_rayee"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="10_rxn63"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="11_vqprj"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="11_vqprj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(12, 9)

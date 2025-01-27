@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ci5smkuw5uefh" path="res://scenes/particles/sand_worm_pebble.tscn" id="3_b2r8g"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="3_hu1ss"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="6_anm72"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="8_bj14u"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="8_bj14u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(16, 13)

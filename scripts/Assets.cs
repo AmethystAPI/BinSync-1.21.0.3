@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 public class Assets {
@@ -80,7 +81,35 @@ public class Assets {
                     new EnemyPool.Entry(AssetManager.GetScene("enemy.crow"), 0.3f),
                     new EnemyPool.Entry(AssetManager.GetScene("enemy.log_spirit"), 2f),
                 }
-            }
+            },
+            Decorations = new Decoration[] {
+                new Decoration {
+                    Generate = (roomPlacement, openDecorationLocations) => {
+                        RandomNumberGenerator random = new RandomNumberGenerator();
+
+                        PackedScene treeScene = AssetManager.GetScene("decoration.golden_grove.tree");
+
+                        int amount = (int)(openDecorationLocations.Count * 0.03f);
+
+                        List<WorldGenerator.DecorationPlacement> placements = new List<WorldGenerator.DecorationPlacement>();
+
+                        for(int index = 0; index < amount; index++) {
+                            int randomLocationIndex = random.RandiRange(0, openDecorationLocations.Count - 1);
+
+                            Vector2I location = openDecorationLocations[randomLocationIndex];
+
+                            openDecorationLocations.Remove(location);
+
+                            placements.Add(new WorldGenerator.DecorationPlacement {
+                                Location = location,
+                                Scene = treeScene
+                            });
+                        }
+
+                        return placements;
+                    }
+                }
+            },
         });
     }
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6vxeyr77sovq" path="res://sprites/enemies/stone_golem/stone_golem_0.tres" id="8_bkfxg"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_t223m"]
 [ext_resource type="Texture2D" uid="uid://brc0fk73qt4yu" path="res://sprites/enemies/stone_golem/stone_golem_1.tres" id="9_yp4yc"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="10_kcukc"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="10_kcukc"]
 [ext_resource type="Texture2D" uid="uid://bgkrxsg6qkb8u" path="res://sprites/enemies/stone_golem/stone_golem_2.tres" id="10_q7y6b"]
 [ext_resource type="Texture2D" uid="uid://3bmbj5r1r0eg" path="res://sprites/enemies/stone_golem/stone_golem_3.tres" id="11_d053f"]
 [ext_resource type="Texture2D" uid="uid://t7wvckj3kf25" path="res://sprites/enemies/stone_golem/stone_golem_hurt.tres" id="13_c4kw3"]

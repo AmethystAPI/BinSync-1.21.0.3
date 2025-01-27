@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bui482a6r6fhc"]
 
 [ext_resource type="Texture2D" uid="uid://grb7obfukwyd" path="res://sprites/particles/dust_0.tres" id="1_r06a5"]
-[ext_resource type="Script" path="res://scripts/visual/particles/AnimatedParticle.cs" id="2_4mwip"]
+[ext_resource type="Script" path="res://scripts/visuals/particles/AnimatedParticle.cs" id="2_4mwip"]
 [ext_resource type="Texture2D" uid="uid://d0yu0f1ps3b8s" path="res://sprites/particles/dust_1.tres" id="3_r66mo"]
 [ext_resource type="Texture2D" uid="uid://dmg1nun3w4cn6" path="res://sprites/particles/dust_2.tres" id="4_gthy2"]
 

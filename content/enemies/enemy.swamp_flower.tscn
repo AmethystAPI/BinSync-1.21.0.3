@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyff4t1v1my0v" path="res://sprites/enemies/swamp_flower/swamp_flower.png" id="4_anw82"]
 [ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="5_vleao"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="12_cv88w"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="13_kg4pm"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="13_kg4pm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
 size = Vector2(10, 9)

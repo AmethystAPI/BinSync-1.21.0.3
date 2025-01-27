@@ -17,6 +17,7 @@ public class LoadableRoom {
     private List<Node2D> _barriers = new List<Node2D>();
     private int _spawnedEnemies = 0;
 
+
     public LoadableRoom(WorldGenerator.RoomPlacement roomPlacement, World world, Biome biome) {
         Id = Guid.NewGuid().ToString();
 
@@ -73,8 +74,18 @@ public class LoadableRoom {
         }
 
         _room = new Node2D();
+        _room.YSortEnabled = true;
+
         _world.AddChild(_room);
         _room.GlobalPosition = RoomPlacement.Location * 16;
+
+        foreach (WorldGenerator.DecorationPlacement decorationPlacement in RoomPlacement.Decorations) {
+            Node2D decoration = decorationPlacement.Scene.Instantiate<Node2D>();
+
+            _room.AddChild(decoration);
+
+            decoration.GlobalPosition = decorationPlacement.Location * 16 + Vector2.One * 8f;
+        }
 
         if (RoomPlacement.Type == WorldGenerator.RoomPlacement.RoomType.Spawn) return;
 
@@ -163,6 +174,7 @@ public class LoadableRoom {
             AddEnemy(enemy);
         };
     }
+
     public void RemoveEnemy(Enemy enemy) {
         _spawnedEnemies--;
 

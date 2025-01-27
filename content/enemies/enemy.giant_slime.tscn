@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://n4ve0teasepu" path="res://sprites/enemies/giant_slime/giant_slime_shadow.tres" id="3_ykkpa"]
 [ext_resource type="PackedScene" uid="uid://bmrtl4q0opchd" path="res://content/enemies/projectiles/giant_slime_burst_projectile.tscn" id="4_8p5sq"]
 [ext_resource type="PackedScene" uid="uid://b01wmjm7v2unj" path="res://content/enemies/projectiles/giant_slime_projectile.tscn" id="7_eun27"]
-[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="10_pbc86"]
+[ext_resource type="Script" path="res://scripts/visuals/SquashAndStretch.cs" id="10_pbc86"]
 [ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="10_wa7k2"]
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="11_gw8t8"]
 [ext_resource type="PackedScene" uid="uid://biycaes0pxrav" path="res://content/enemies/enemy.slime.tscn" id="12_ujy5u"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgj4q1bwt3gci"]
 
-[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_c5aif"]
+[ext_resource type="Script" path="res://scripts/projectiles/Projectile.cs" id="1_c5aif"]
 [ext_resource type="Texture2D" uid="uid://cjkmsm5vg4erl" path="res://sprites/enemies/longhorn/longhorn.png" id="2_lbc0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlayw"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://01apx66cyccg" path="res://scenes/player.tscn" id="2_nxqs3"]
 [ext_resource type="Script" path="res://scripts/networking/NetworkManager.cs" id="3_ix04k"]
 [ext_resource type="PackedScene" uid="uid://c5284u6x7my5h" path="res://scenes/ui/game_ui.tscn" id="3_s7l32"]
-[ext_resource type="Script" path="res://scripts/visual/Camera.cs" id="4_encmg"]
+[ext_resource type="Script" path="res://scripts/visuals/Camera.cs" id="4_encmg"]
 [ext_resource type="Shader" path="res://scripts/shaders/etherial.gdshader" id="5_4da55"]
 [ext_resource type="AudioStream" uid="uid://dey6knsoqrxff" path="res://sfx/combined/hurt_1.wav" id="6_c3uc0"]
 [ext_resource type="PackedScene" uid="uid://dpb2vij815fs3" path="res://scenes/ui/main_menu.tscn" id="7_gnxd7"]

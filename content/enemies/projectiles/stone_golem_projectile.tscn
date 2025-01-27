@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://df2khkichl32g"]
 
-[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_o5l7s"]
+[ext_resource type="Script" path="res://scripts/projectiles/Projectile.cs" id="1_o5l7s"]
 [ext_resource type="Texture2D" uid="uid://c761md5baebqd" path="res://sprites/enemies/stone_golem/stone_golem_projectile.tres" id="2_kq27k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlayw"]

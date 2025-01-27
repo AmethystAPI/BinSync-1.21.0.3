@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b01wmjm7v2unj"]
 
-[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_4yej3"]
+[ext_resource type="Script" path="res://scripts/projectiles/Projectile.cs" id="1_4yej3"]
 [ext_resource type="Texture2D" uid="uid://djb3apjd6nutg" path="res://sprites/enemies/giant_slime/giant_slime_projectile.tres" id="2_l6ww8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpqck"]

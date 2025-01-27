@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://df8vafeme8j54"]
 
-[ext_resource type="Script" path="res://scripts/DestructionLeaf.cs" id="1_7fgje"]
+[ext_resource type="Script" path="res://scripts/visuals/particles/DestructionLeaf.cs" id="1_7fgje"]
 [ext_resource type="Texture2D" uid="uid://bjup07cwjy7q3" path="res://sprites/particles/leaf.tres" id="2_1qa22"]
 [ext_resource type="Texture2D" uid="uid://c7yjlgddqtys0" path="res://sprites/particles/leaf_shadow.tres" id="3_upa46"]
 
