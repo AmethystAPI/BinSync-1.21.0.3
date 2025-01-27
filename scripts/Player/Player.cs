@@ -179,6 +179,10 @@ public partial class Player : CharacterBody2D, Damageable, NetworkPointUser {
 		});
 	}
 
+	public bool IsEphemeral(Projectile projectile) {
+		return false;
+	}
+
 	public void Die() {
 		Health = 0;
 

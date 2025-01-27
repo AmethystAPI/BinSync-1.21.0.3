@@ -122,6 +122,10 @@ public partial class Enemy : CharacterBody2D, Damageable, NetworkPointUser {
         });
     }
 
+    public bool IsEphemeral(Projectile projectile) {
+        return false;
+    }
+
     public void Activate() {
         if (!NetworkManager.IsHost) return;
 

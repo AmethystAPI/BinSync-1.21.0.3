@@ -99,7 +99,7 @@ public partial class Projectile : Node2D {
 
             OnHit(body);
 
-            if (!Pierce) {
+            if (!Pierce && !damageable.IsEphemeral(this)) {
                 Destroyed?.Invoke();
 
                 SpawnHitEffect(Rotation);

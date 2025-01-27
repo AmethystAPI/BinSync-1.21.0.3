@@ -4,6 +4,7 @@ public partial class Destructable : Node2D, Damageable {
 	[Export] public PackedScene Particle;
 	[Export] public int ParticleCount = 6;
 	[Export] public bool Invincible = false;
+	[Export] public bool Ephemeral = true;
 	[Export] public string SoundEffect = "destructable_hit";
 
 	public bool CanDamage(Projectile projectile) {
@@ -22,5 +23,9 @@ public partial class Destructable : Node2D, Damageable {
 			Audio.Play(SoundEffect);
 
 		QueueFree();
+	}
+
+	public bool IsEphemeral(Projectile projectile) {
+		return Ephemeral;
 	}
 }
