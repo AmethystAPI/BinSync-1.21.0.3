@@ -94,6 +94,14 @@ public partial class RoomTool : EditorPlugin {
         _gui = ResourceLoader.Load<PackedScene>("res://addons/room_tool/gui.tscn").Instantiate<Control>();
         node.AddChild(_gui);
 
+        _connections = new HashSet<RoomLayout.Connection>();
+        _bounds = new List<Vector2>();
+        _spawnLocations = new List<Vector2>();
+        _mode = Mode.Bounds;
+        _direction = Vector2.Right;
+
+        _gui.GetNode<Label>("ModeLabel").Text = "Mode: Bounds";
+
         if (ResourceLoader.Exists(GetRoomLayoutPath())) {
             RoomLayout roomLayout = ResourceLoader.Load<RoomLayout>(GetRoomLayoutPath());
 
@@ -214,7 +222,7 @@ public partial class RoomTool : EditorPlugin {
         string relativePath = _selectedPath.Substring("res://content/rooms/".Length);
         string fileName = Path.GetFileName(relativePath);
         string relativeFolders = relativePath.Substring(0, relativePath.Length - fileName.Length);
-        string saveRelativePath = relativeFolders + "room_layout_" + Path.GetFileNameWithoutExtension(relativePath) + ".tres";
+        string saveRelativePath = relativeFolders + "room_layout." + Path.GetFileNameWithoutExtension(relativePath) + ".tres";
 
         return "res://generated/rooms/" + saveRelativePath;
     }

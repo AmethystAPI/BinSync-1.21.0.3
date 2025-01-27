@@ -9,19 +9,37 @@ public class Assets {
     }
 
     public static void CreateBiomes() {
-        AssetManager.Register("biome_golden_grove", new Biome() {
+        AssetManager.Register("biome.golden_grove", new Biome() {
             Rooms = new PackedScene[] {
-                AssetManager.GetScene("room_golden_grove_twist")
+                AssetManager.GetScene("room.golden_grove.twist"),
+                AssetManager.GetScene("room.golden_grove.turn_up_right"),
+                AssetManager.GetScene("room.golden_grove.turn_up_left"),
+                AssetManager.GetScene("room.golden_grove.turn_down_right"),
+                AssetManager.GetScene("room.golden_grove.turn_down_left"),
+                AssetManager.GetScene("room.golden_grove.plain"),
+                AssetManager.GetScene("room.golden_grove.horizontal"),
+                AssetManager.GetScene("room.golden_grove.branch"),
+                AssetManager.GetScene("room.golden_grove.branch_left"),
             },
             SpawnRooms = new PackedScene[] {
-                 AssetManager.GetScene("room_golden_grove_spawn")
+                 AssetManager.GetScene("room.golden_grove.spawn")
             },
             FinalRooms = new PackedScene[] {
-                AssetManager.GetScene("room_golden_grove_final")
+                AssetManager.GetScene("room.golden_grove.final")
+            },
+            FinalBranchRooms = new PackedScene[] {
+                AssetManager.GetScene("room.golden_grove.branch_end_left"),
+                AssetManager.GetScene("room.golden_grove.branch_end_right"),
+                AssetManager.GetScene("room.golden_grove.branch_end_up"),
+            },
+            BranchRanges = new Vector2[] {
+                new Vector2(1, 3),
+                new Vector2(4, 8),
+                new Vector2(9, 13),
             },
             Color = new Color("#8a361e"),
             Tileset = new SmartTileset {
-                TileSet = AssetManager.Get<TileSet>("tileset_golden_grove"),
+                TileSet = AssetManager.Get<TileSet>("tileset.golden_grove"),
                 Tiles = new SmartTile[] {
                     new SmartWallTile() {
                         Id = "walls",
@@ -57,10 +75,10 @@ public class Assets {
             },
             EnemyPool = new EnemyPool {
                 Entries = new EnemyPool.Entry[] {
-                    new EnemyPool.Entry(AssetManager.GetScene("enemy_slime"), 1f),
-                    new EnemyPool.Entry(AssetManager.GetScene("enemy_stone_golem"), 1f),
-                    new EnemyPool.Entry(AssetManager.GetScene("enemy_crow"), 0.3f),
-                    new EnemyPool.Entry(AssetManager.GetScene("enemy_log_spirit"), 2f),
+                    new EnemyPool.Entry(AssetManager.GetScene("enemy.slime"), 1f),
+                    new EnemyPool.Entry(AssetManager.GetScene("enemy.stone_golem"), 1f),
+                    new EnemyPool.Entry(AssetManager.GetScene("enemy.crow"), 0.3f),
+                    new EnemyPool.Entry(AssetManager.GetScene("enemy.log_spirit"), 2f),
                 }
             }
         });

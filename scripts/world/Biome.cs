@@ -56,7 +56,7 @@ public partial class Biome {
         string relativePath = path.Substring("res://content/rooms/".Length);
         string fileName = Path.GetFileName(relativePath);
         string relativeFolders = relativePath.Substring(0, relativePath.Length - fileName.Length);
-        string saveRelativePath = relativeFolders + "room_layout_" + Path.GetFileNameWithoutExtension(relativePath) + ".tres";
+        string saveRelativePath = relativeFolders + "room_layout." + Path.GetFileNameWithoutExtension(relativePath) + ".tres";
 
         return "res://generated/rooms/" + saveRelativePath;
     }

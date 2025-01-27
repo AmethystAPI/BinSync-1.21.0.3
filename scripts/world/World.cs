@@ -33,7 +33,7 @@ public partial class World : Node2D, NetworkPointUser {
         FloorsTileMapLayer = GetNode<TileMapLayer>("Floors");
         GrassTileMapLayer = GetNode<TileMapLayer>("Grass");
 
-        _biomes = new Biome[] { AssetManager.Get<Biome>("biome_golden_grove") };
+        _biomes = new Biome[] { AssetManager.Get<Biome>("biome.golden_grove") };
 
         foreach (Biome biome in _biomes) {
             biome.Load();
