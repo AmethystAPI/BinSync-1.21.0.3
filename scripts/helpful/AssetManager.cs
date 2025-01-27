@@ -15,6 +15,10 @@ public class AssetManager {
         return (T)s_Assets[id];
     }
 
+    public static PackedScene GetScene(string id) {
+        return (PackedScene)s_Assets[id];
+    }
+
     public static void Load(string path) {
         using DirAccess content = DirAccess.Open(path);
 
