@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://1nd4bf3tt7cs"]
-
-[ext_resource type="Script" path="res://addons/smart_tilemap/Tiles/SmartRoofTile.cs" id="1_b0sb3"]
-
-[resource]
-script = ExtResource("1_b0sb3")
-RoofCenter = Vector2(1, 1)
-Id = "roofs"
-Source = 0

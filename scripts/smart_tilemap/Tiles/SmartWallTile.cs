@@ -1,9 +1,8 @@
 using System;
 using Godot;
 
-[Tool]
 public partial class SmartWallTile : SmartTile {
-    [Export] public Vector2 WallCenter;
+    public Vector2 WallCenter;
 
     private Vector2 WallLeft = new Vector2(-1, 0);
     private Vector2 WallRight = new Vector2(1, 0);

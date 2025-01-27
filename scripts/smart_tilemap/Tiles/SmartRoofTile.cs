@@ -1,9 +1,8 @@
 using System;
 using Godot;
 
-[Tool]
 public partial class SmartRoofTile : SmartTile {
-    [Export] public Vector2 RoofCenter;
+    public Vector2 RoofCenter;
 
     private Vector2 RoofTopLeft = new Vector2(-1, -1);
     private Vector2 RoofTop = new Vector2(0, -1);

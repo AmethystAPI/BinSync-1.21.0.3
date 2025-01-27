@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://welc4axv6svv"]
-
-[ext_resource type="Script" path="res://addons/smart_tilemap/SmartTileset.cs" id="1_bmjyh"]
-
-[resource]
-script = ExtResource("1_bmjyh")
-Tiles = null

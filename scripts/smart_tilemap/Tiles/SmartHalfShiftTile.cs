@@ -1,9 +1,8 @@
 using System;
 using Godot;
 
-[Tool]
 public partial class SmartHalfShiftTile : SmartTile {
-    [Export] public Vector2 Center;
+    public Vector2 Center;
 
     private Vector2 TopLeft = new Vector2(-1, -1);
     private Vector2 Top = new Vector2(0, -1);

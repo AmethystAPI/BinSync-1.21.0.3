@@ -1,16 +1,16 @@
 using System;
 using Godot;
 
-[Tool]
-public partial class SmartTile : Resource {
+public partial class SmartTile {
     public struct Tile {
         public int Source;
         public Vector2I Location;
     }
 
-    [Export] public string Id;
-    [Export] public int Source;
-    [Export] public SmartTileModifier[] Modifiers;
+    public string Id;
+    public int Source;
+    public delegate Vector2I Modifier(Vector2I center, Vector2I location);
+    public Modifier[] Modifiers;
 
     protected virtual Vector2? GetTileLocation(Vector2I location, Func<Vector2I, bool> isTile) {
         return null;
@@ -24,8 +24,8 @@ public partial class SmartTile : Resource {
         Vector2I center = GetCenter();
 
         if (Modifiers != null) {
-            foreach (SmartTileModifier smartTileModifier in Modifiers) {
-                location = smartTileModifier.Modify(center, location);
+            foreach (Modifier smartTileModifier in Modifiers) {
+                location = smartTileModifier(center, location);
             }
         }
 

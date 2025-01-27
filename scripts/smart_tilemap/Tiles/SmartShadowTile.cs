@@ -1,9 +1,8 @@
 using System;
 using Godot;
 
-[Tool]
 public partial class SmartShadowTile : SmartTile {
-    [Export] public Vector2 ShadowCenter;
+    public Vector2 ShadowCenter;
 
     private Vector2 ShadowLeft = new Vector2(-1, 0);
     private Vector2 ShadowRight = new Vector2(1, 0);

@@ -12,10 +12,14 @@ public class AssetManager {
     }
 
     public static T Get<T>(string id) {
+        if (!s_Assets.ContainsKey(id)) throw new System.Exception("Tried to get asset but there is no asset registered with id " + id);
+
         return (T)s_Assets[id];
     }
 
     public static PackedScene GetScene(string id) {
+        if (!s_Assets.ContainsKey(id)) throw new System.Exception("Tried to get scene but there is no asset registered with id " + id);
+
         return (PackedScene)s_Assets[id];
     }
 
