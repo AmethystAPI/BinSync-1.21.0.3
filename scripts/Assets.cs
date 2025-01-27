@@ -75,6 +75,7 @@ public class Assets {
         return (Vector2I center, Vector2I location) => {
             if (seedCache != Game.Seed) {
                 random.Seed = Game.Seed;
+                seedCache = Game.Seed;
             }
 
             if (location == center + target) {
