@@ -1,0 +1,216 @@
+[gd_scene load_steps=21 format=3 uid="uid://k1sviiopk4x1"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemies/StoneGolem.cs" id="1_twfel"]
+[ext_resource type="Texture2D" uid="uid://cxg1dlera11ar" path="res://sprites/enemies/medium_shadow.tres" id="3_de7bt"]
+[ext_resource type="PackedScene" uid="uid://df2khkichl32g" path="res://content/enemies/projectiles/stone_golem_projectile.tscn" id="6_m7cgh"]
+[ext_resource type="Texture2D" uid="uid://c6vxeyr77sovq" path="res://sprites/enemies/stone_golem/stone_golem_0.tres" id="8_bkfxg"]
+[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="9_t223m"]
+[ext_resource type="Texture2D" uid="uid://brc0fk73qt4yu" path="res://sprites/enemies/stone_golem/stone_golem_1.tres" id="9_yp4yc"]
+[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="10_kcukc"]
+[ext_resource type="Texture2D" uid="uid://bgkrxsg6qkb8u" path="res://sprites/enemies/stone_golem/stone_golem_2.tres" id="10_q7y6b"]
+[ext_resource type="Texture2D" uid="uid://3bmbj5r1r0eg" path="res://sprites/enemies/stone_golem/stone_golem_3.tres" id="11_d053f"]
+[ext_resource type="Texture2D" uid="uid://t7wvckj3kf25" path="res://sprites/enemies/stone_golem/stone_golem_hurt.tres" id="13_c4kw3"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="14_mqesw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
+size = Vector2(12, 9)
+
+[sub_resource type="Animation" id="Animation_einas"]
+resource_name = "RESET"
+length = 0.001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_bkfxg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_l1tma"]
+resource_name = "dash"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_bkfxg"), ExtResource("9_yp4yc"), ExtResource("10_q7y6b"), ExtResource("11_d053f")]
+}
+
+[sub_resource type="Animation" id="Animation_j3613"]
+resource_name = "dash_back"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_bkfxg"), ExtResource("11_d053f"), ExtResource("10_q7y6b"), ExtResource("9_yp4yc")]
+}
+
+[sub_resource type="Animation" id="Animation_vcocc"]
+resource_name = "idle"
+length = 0.001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_bkfxg")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c4lnd"]
+_data = {
+"RESET": SubResource("Animation_einas"),
+"dash": SubResource("Animation_l1tma"),
+"dash_back": SubResource("Animation_j3613"),
+"idle": SubResource("Animation_vcocc")
+}
+
+[sub_resource type="Animation" id="Animation_4im7u"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_bkfxg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_xml5x"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_c4kw3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("14_mqesw"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uewyw"]
+_data = {
+"RESET": SubResource("Animation_4im7u"),
+"hurt": SubResource("Animation_xml5x")
+}
+
+[node name="StoneGolem" type="CharacterBody2D" node_paths=PackedStringArray("ProjectileOrigin", "FacingTransform", "VerticalTransform") groups=["Enemies"]]
+y_sort_enabled = true
+collision_mask = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_twfel")
+ProjectileScene = ExtResource("6_m7cgh")
+ProjectileOrigin = NodePath("ProjectileOrigin")
+Health = 6.0
+FacingTransform = NodePath("SquashAndStretchTarget/Body")
+VerticalTransform = NodePath("SquashAndStretchTarget/Body")
+DeathParticle = ExtResource("9_t223m")
+
+[node name="SquashAndStretchTarget" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="SquashAndStretchTarget"]
+texture = ExtResource("8_bkfxg")
+offset = Vector2(0, -7)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -6
+position = Vector2(0, 4)
+texture = ExtResource("3_de7bt")
+offset = Vector2(0, -5)
+region_rect = Rect2(34, 8, 12, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_75mpk")
+
+[node name="ProjectileOrigin" type="Node2D" parent="."]
+position = Vector2(0, -6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c4lnd")
+}
+
+[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uewyw")
+}
+
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("10_kcukc")
+Target = NodePath("../SquashAndStretchTarget")

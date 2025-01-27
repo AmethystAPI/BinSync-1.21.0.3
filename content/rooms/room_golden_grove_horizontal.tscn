@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://ffl8gx6uilep"]
 
-[ext_resource type="TileSet" uid="uid://dn5kpkh0m0ybh" path="res://resources/tilesets/room_tileset.tres" id="1_otd2j"]
+[ext_resource type="TileSet" uid="uid://dn5kpkh0m0ybh" path="res://content/tilesets/room_editor_tileset.tres" id="1_otd2j"]
 
 [node name="Room" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5284u6x7my5h"]
 
-[ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_s3uii"]
+[ext_resource type="Script" path="res://scripts/ui/GameUI.cs" id="1_s3uii"]
 [ext_resource type="PackedScene" uid="uid://djn536tuel8oh" path="res://scenes/ui/heart.tscn" id="2_yg705"]
 [ext_resource type="Texture2D" uid="uid://cq0vyunbicqh0" path="res://sprites/ui/heart_full.tres" id="3_x3hjj"]
 [ext_resource type="Texture2D" uid="uid://c3cnd2s2rm7d4" path="res://sprites/ui/heart_half.tres" id="4_0km4p"]

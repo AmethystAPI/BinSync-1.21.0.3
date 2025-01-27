@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b01wmjm7v2unj"]
+
+[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_4yej3"]
+[ext_resource type="Texture2D" uid="uid://djb3apjd6nutg" path="res://sprites/enemies/giant_slime/giant_slime_projectile.tres" id="2_l6ww8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpqck"]
+radius = 28.0
+
+[node name="SlimeProjectile" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_4yej3")
+Speed = 0.0
+Lifetime = 0.2
+InheritBelocity = false
+Pierce = true
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_gpqck")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+texture = ExtResource("2_l6ww8")
+region_rect = Rect2(2, 18, 28, 28)

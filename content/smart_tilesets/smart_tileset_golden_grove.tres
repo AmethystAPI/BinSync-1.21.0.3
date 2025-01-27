@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://cw6agc6kpymil"]
+
+[ext_resource type="Script" path="res://addons/smart_tilemap/SmartTileset.cs" id="1_8mx1j"]
+[ext_resource type="TileSet" uid="uid://byrce4kf3yw3d" path="res://content/tilesets/tileset_golden_grove.tres" id="1_v60i1"]
+[ext_resource type="Resource" uid="uid://4vdbrf2yde6x" path="res://content/smart_tilesets/smart_tiles/smart_tile_golden_grove_walls.tres" id="2_rk0ux"]
+[ext_resource type="Resource" uid="uid://1nd4bf3tt7cs" path="res://content/smart_tilesets/smart_tiles/smart_tile_golden_grove_roofs.tres" id="3_1l8e3"]
+[ext_resource type="Resource" uid="uid://bu4cafte8l4wg" path="res://content/smart_tilesets/smart_tiles/smart_tile_golden_grove_floors.tres" id="4_fkjm3"]
+[ext_resource type="Resource" uid="uid://d0uys71lfin26" path="res://content/smart_tilesets/smart_tiles/smart_tile_golden_grove_shadows.tres" id="5_367pj"]
+[ext_resource type="Resource" uid="uid://64a3cgxqnakl" path="res://content/smart_tilesets/smart_tiles/smart_tile_golden_grove_grass.tres" id="6_nu707"]
+
+[resource]
+script = ExtResource("1_8mx1j")
+Tiles = [ExtResource("2_rk0ux"), ExtResource("3_1l8e3"), ExtResource("4_fkjm3"), ExtResource("5_367pj"), ExtResource("6_nu707")]
+TileSet = ExtResource("1_v60i1")

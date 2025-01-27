@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cr2fsbqb1kl4m"]
 
-[ext_resource type="Script" path="res://scripts/DamageNumber.cs" id="1_g8qpf"]
+[ext_resource type="Script" path="res://scripts/visual/particles/DamageNumber.cs" id="1_g8qpf"]
 [ext_resource type="FontFile" uid="uid://c20458h83irp3" path="res://fonts/Kenney Mini Square.ttf" id="2_fhi6w"]
 [ext_resource type="Shader" path="res://scripts/shaders/outline.gdshader" id="2_l7ii6"]
-[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="3_8le1h"]
+[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="3_8le1h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4f7ed"]
 resource_local_to_scene = true

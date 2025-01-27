@@ -16,14 +16,16 @@ public partial class Game : Node2D, NetworkPointUser {
 
     private WorldGenerator _worldGenerator;
 
+    public override void _EnterTree() {
+        Assets.Load();
+    }
+
     public override void _Ready() {
         if (!SteamAPI.Init()) {
             GD.PushError("SteamAPI.Init() failed!");
 
             return;
         }
-
-        Assets.Load();
 
         NetworkPoint.Setup(this);
 

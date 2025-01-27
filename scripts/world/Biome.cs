@@ -2,18 +2,18 @@ using System.Collections.Generic;
 using System.IO;
 using Godot;
 
-public partial class Biome : Resource {
-    [Export] public PackedScene[] Rooms = new PackedScene[0];
-    [Export] public PackedScene[] SpawnRooms = new PackedScene[0];
-    [Export] public PackedScene[] FinalRooms = new PackedScene[0];
-    [Export] public PackedScene[] FinalBranchRooms = new PackedScene[0];
-    [Export] public Vector2[] BranchRanges = new Vector2[0];
-    [Export] public int Level = 0;
-    [Export] public Vector2I Size = new Vector2I(15, 20);
-    [Export] public Vector2I BranchSize = new Vector2I(3, 5);
-    [Export] public Color Color;
-    [Export] public EnemyPool EnemyPool;
-    [Export] public SmartTileset Tileset;
+public partial class Biome {
+    public PackedScene[] Rooms = new PackedScene[0];
+    public PackedScene[] SpawnRooms = new PackedScene[0];
+    public PackedScene[] FinalRooms = new PackedScene[0];
+    public PackedScene[] FinalBranchRooms = new PackedScene[0];
+    public Vector2[] BranchRanges = new Vector2[0];
+    public int Level = 0;
+    public Vector2I Size = new Vector2I(15, 20);
+    public Vector2I BranchSize = new Vector2I(3, 5);
+    public Color Color;
+    public EnemyPool EnemyPool;
+    public SmartTileset Tileset;
 
     public List<RoomLayout> RoomLayouts = new List<RoomLayout>();
     public List<RoomLayout> SpawnRoomLayouts = new List<RoomLayout>();

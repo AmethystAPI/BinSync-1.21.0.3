@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dpb2vij815fs3"]
 
-[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_rc6ko"]
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_rc6ko"]
 [ext_resource type="PackedScene" uid="uid://cv663jsc3lwub" path="res://scenes/items/equipment/hair1.tscn" id="2_rx0vu"]
 [ext_resource type="PackedScene" uid="uid://4ylk2aoq7at6" path="res://scenes/items/equipment/OG_hat.tscn" id="3_qf61c"]
 [ext_resource type="PackedScene" uid="uid://bfo055prag30g" path="res://scenes/items/equipment/shirt1.tscn" id="4_m04t5"]

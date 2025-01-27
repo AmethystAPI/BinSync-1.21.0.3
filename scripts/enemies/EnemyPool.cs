@@ -1,6 +1,7 @@
 using Godot;
 
-public partial class EnemyPool : Resource {
-    [Export] public PackedScene[] EnemyScenes;
-    [Export] public float[] Points;
+public partial class EnemyPool {
+    public record Entry(PackedScene Scene, float Points);
+
+    public Entry[] Entries;
 }

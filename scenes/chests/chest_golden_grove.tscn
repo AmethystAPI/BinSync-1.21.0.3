@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Chest.cs" id="1_5undn"]
 [ext_resource type="Texture2D" uid="uid://dfo1k4hxs5cth" path="res://sprites/rooms/chest/chest.tres" id="1_qbi1v"]
-[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="2_m65vl"]
+[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="2_m65vl"]
 [ext_resource type="Texture2D" uid="uid://cw16qhomhqidq" path="res://sprites/rooms/chest/chest_open.tres" id="2_soava"]
 [ext_resource type="Resource" uid="uid://btuna1bpi61i2" path="res://resources/loot_pools/loot_pool_golden_grove.tres" id="2_wca7x"]
 [ext_resource type="Texture2D" uid="uid://c01h3t8pm0pm1" path="res://sprites/player/player.aseprite" id="5_7ifp7"]

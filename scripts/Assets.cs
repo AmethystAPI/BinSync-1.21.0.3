@@ -20,6 +20,15 @@ public class Assets {
                 AssetManager.Get<PackedScene>("room_golden_grove_final")
             },
             Color = new Color("#8a361e"),
+            Tileset = AssetManager.Get<SmartTileset>("smart_tileset_golden_grove"),
+            EnemyPool = new EnemyPool {
+                Entries = new EnemyPool.Entry[] {
+                    new EnemyPool.Entry(AssetManager.Get<PackedScene>("enemy_slime"), 1f),
+                    new EnemyPool.Entry(AssetManager.Get<PackedScene>("enemy_stone_golem"), 1f),
+                    new EnemyPool.Entry(AssetManager.Get<PackedScene>("enemy_crow"), 0.3f),
+                    new EnemyPool.Entry(AssetManager.Get<PackedScene>("enemy_log_spirit"), 2f),
+                }
+            }
         });
     }
 }

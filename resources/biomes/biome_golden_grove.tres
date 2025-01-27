@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ur7ou1ej4kh" path="res://content/rooms/room_golden_grove_final.tscn" id="1_7g6sj"]
 [ext_resource type="PackedScene" uid="uid://beqecpclw00yu" path="res://content/rooms/room_golden_grove_branch_end_right.tscn" id="1_ar7sx"]
 [ext_resource type="PackedScene" uid="uid://b68sh4bk3r2xu" path="res://content/rooms/room_golden_grove_branch_end_up.tscn" id="1_fymg1"]
-[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://resources/enemy_pools/enemy_pool_golden_grove.tres" id="1_wy0iy"]
+[ext_resource type="Resource" uid="uid://d2phftpgxdl4w" path="res://content/enemy_pools/enemy_pool_golden_grove.tres" id="1_wy0iy"]
 [ext_resource type="Script" path="res://scripts/rooms/Biome.cs" id="2_738dh"]
 [ext_resource type="PackedScene" uid="uid://dvk2gaueca40q" path="res://content/rooms/room_golden_grove_branch.tscn" id="3_n6ebb"]
 [ext_resource type="PackedScene" uid="uid://dd7sl7urrrec2" path="res://content/rooms/room_golden_grove_branch_end_left.tscn" id="3_njlk0"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://g7ndguwjt3wv" path="res://content/rooms/room_golden_grove_turn_up_right.tscn" id="10_rtn0c"]
 [ext_resource type="PackedScene" uid="uid://c1wmer7gcmqyi" path="res://content/rooms/room_golden_grove_twist.tscn" id="11_tl4kh"]
 [ext_resource type="PackedScene" uid="uid://bdyh4cord6apk" path="res://content/rooms/room_golden_grove_branch_left.tscn" id="13_isw6w"]
-[ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://resources/smart_tilesets/smart_tileset_golden_grove.tres" id="16_5nvfl"]
+[ext_resource type="Resource" uid="uid://cw6agc6kpymil" path="res://content/smart_tilesets/smart_tileset_golden_grove.tres" id="16_5nvfl"]
 
 [resource]
 script = ExtResource("2_738dh")

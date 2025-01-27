@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Beta C Notes.md",
+                "file": "Design/New Worldgen.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Beta C Notes"
+              "title": "New Worldgen"
             }
           }
         ]
@@ -160,10 +160,10 @@
   },
   "active": "cadd755dc22b724a",
   "lastOpenFiles": [
-    "Planning/Beta C Kanban.md",
-    "Beta C Notes.md",
-    "Beta B Playtest Notes.md",
     "Planning/Beta D.md",
+    "Beta C Notes.md",
+    "Planning/Beta C Kanban.md",
+    "Beta B Playtest Notes.md",
     "Design/New Worldgen.md",
     "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Design/Current Design Issues/Transition of Biomes.md",

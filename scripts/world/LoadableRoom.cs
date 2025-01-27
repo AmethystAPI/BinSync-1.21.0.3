@@ -202,15 +202,15 @@ public class LoadableRoom {
             List<int> round = new List<int>();
 
             while (pointsForThisRound > 0) {
-                int selectedEnemyIndex = new RandomNumberGenerator().RandiRange(0, _biome.EnemyPool.EnemyScenes.Length - 1);
+                int selectedEnemyIndex = new RandomNumberGenerator().RandiRange(0, _biome.EnemyPool.Entries.Length - 1);
 
                 round.Add(selectedEnemyIndex);
 
-                points -= _biome.EnemyPool.Points[selectedEnemyIndex];
-                pointsForThisRound -= _biome.EnemyPool.Points[selectedEnemyIndex];
+                points -= _biome.EnemyPool.Entries[selectedEnemyIndex].Points;
+                pointsForThisRound -= _biome.EnemyPool.Entries[selectedEnemyIndex].Points;
 
-                if (_biome.EnemyPool.Points[selectedEnemyIndex] == 0) points -= 1;
-                if (_biome.EnemyPool.Points[selectedEnemyIndex] == 0) pointsForThisRound -= 1;
+                if (_biome.EnemyPool.Entries[selectedEnemyIndex].Points == 0) points -= 1;
+                if (_biome.EnemyPool.Entries[selectedEnemyIndex].Points == 0) pointsForThisRound -= 1;
             }
 
             _rounds.Add(round);
@@ -232,7 +232,7 @@ public class LoadableRoom {
                 message.AddFloat(spawnPoint.X);
                 message.AddFloat(spawnPoint.Y);
 
-                message.AddString(_biome.EnemyPool.EnemyScenes[enemyTypeIndex].ResourcePath);
+                message.AddString(_biome.EnemyPool.Entries[enemyTypeIndex].Scene.ResourcePath);
 
                 message.AddString(Id);
             });

@@ -7,8 +7,6 @@ using Riptide;
 public partial class World : Node2D, NetworkPointUser {
     public static World Me;
 
-    [Export] public Biome[] Biomes;
-
     public TileMapLayer WallsTileMapLayer;
     public TileMapLayer RoofsTileMapLayer;
     public TileMapLayer ShadowsTileMapLayer;
@@ -17,6 +15,7 @@ public partial class World : Node2D, NetworkPointUser {
 
     public NetworkPoint NetworkPoint { get; set; } = new NetworkPoint();
 
+    private Biome[] _biomes;
     private Biome _activeBiome;
     private List<LoadableRoom> _unloadedRooms = new List<LoadableRoom>();
     private Dictionary<LoadableRoom, float> _loadedRooms = new Dictionary<LoadableRoom, float>();
@@ -34,7 +33,9 @@ public partial class World : Node2D, NetworkPointUser {
         FloorsTileMapLayer = GetNode<TileMapLayer>("Floors");
         GrassTileMapLayer = GetNode<TileMapLayer>("Grass");
 
-        foreach (Biome biome in Biomes) {
+        _biomes = new Biome[] { AssetManager.Get<Biome>("biome_golden_grove") };
+
+        foreach (Biome biome in _biomes) {
             biome.Load();
         }
     }
@@ -50,7 +51,7 @@ public partial class World : Node2D, NetworkPointUser {
     public static void Start() {
         Me._loadedRooms = new Dictionary<LoadableRoom, float>();
 
-        Me._activeBiome = Me.Biomes[0];
+        Me._activeBiome = Me._biomes[0];
 
         Stack<WorldGenerator.RoomPlacement> roomPlacements = WorldGenerator.Me.Generate(Game.Seed, Me._activeBiome);
 

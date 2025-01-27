@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dx5c3dp3lhqct"]
-
-[ext_resource type="PackedScene" uid="uid://cg8kvs2jvqdn2" path="res://scenes/enemies/giant_slime.tscn" id="1_tfwqw"]
-[ext_resource type="Script" path="res://scripts/rooms/EnemyPool.cs" id="4_kvs3g"]
-
-[resource]
-script = ExtResource("4_kvs3g")
-EnemyScenes = Array[PackedScene]([ExtResource("1_tfwqw")])
-Points = PackedFloat32Array(1)

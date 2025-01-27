@@ -11,7 +11,7 @@
 [ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="5_ibym3"]
 [ext_resource type="PackedScene" uid="uid://cr2fsbqb1kl4m" path="res://scenes/damage_number.tscn" id="5_ke1ch"]
 [ext_resource type="Texture2D" uid="uid://vwjfydnewrqr" path="res://sprites/player/player_run_0.tres" id="5_wli2m"]
-[ext_resource type="Script" path="res://scripts/SquashAndStretch.cs" id="6_i3kc3"]
+[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="6_i3kc3"]
 [ext_resource type="Texture2D" uid="uid://k05kj3mpttba" path="res://sprites/player/player_angel_0.tres" id="6_pop7v"]
 [ext_resource type="Texture2D" uid="uid://cvnpfqwk65srl" path="res://sprites/player/player_run_1.tres" id="6_yvcw5"]
 [ext_resource type="Texture2D" uid="uid://e5pkiral7yej" path="res://sprites/player/player_run_3.tres" id="7_0cf8b"]

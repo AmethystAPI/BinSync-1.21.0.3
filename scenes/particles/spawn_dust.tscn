@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://co8nkjn1dvrkd"]
 
 [ext_resource type="Texture2D" uid="uid://grb7obfukwyd" path="res://sprites/particles/dust_0.tres" id="1_82y7e"]
-[ext_resource type="Script" path="res://scripts/FreeAfterDelay.cs" id="3_oikvj"]
+[ext_resource type="Script" path="res://scripts/helpful/FreeAfterDelay.cs" id="3_oikvj"]
 
 [sub_resource type="Gradient" id="Gradient_fwf55"]
 colors = PackedColorArray(0.270833, 0.270833, 0.270833, 1, 1, 1, 1, 1)

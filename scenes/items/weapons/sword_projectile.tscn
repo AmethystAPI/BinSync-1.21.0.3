@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bgg04u0yi86gl"]
 
-[ext_resource type="Script" path="res://scripts/Projectile.cs" id="1_1r6bq"]
+[ext_resource type="Script" path="res://scripts/items/weapons/projectiles/Projectile.cs" id="1_1r6bq"]
 [ext_resource type="PackedScene" uid="uid://bui482a6r6fhc" path="res://scenes/particles/hit_dust.tscn" id="2_5507b"]
 [ext_resource type="PackedScene" uid="uid://e4kggo328so6" path="res://scenes/particles/hit_flash.tscn" id="3_aop5b"]
 [ext_resource type="Texture2D" uid="uid://decby3srw2s5h" path="res://sprites/items/projectiles/sword/projectile_sword_0.tres" id="3_wsr12"]

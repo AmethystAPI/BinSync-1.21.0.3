@@ -1,0 +1,185 @@
+[gd_scene load_steps=18 format=3 uid="uid://cjbg2o4u22hyt"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemies/SwampFlower.cs" id="1_85mgc"]
+[ext_resource type="PackedScene" uid="uid://bkbc2sdc7wnk8" path="res://content/enemies/projectiles/swamp_flower_projectile.tscn" id="2_1htr2"]
+[ext_resource type="PackedScene" uid="uid://d32figfqedxfd" path="res://content/enemies/projectiles/swamp_flower_projectile_large.tscn" id="3_eef6p"]
+[ext_resource type="PackedScene" uid="uid://gy88aluvvwj2" path="res://scenes/particles/death_dust.tscn" id="3_picut"]
+[ext_resource type="Texture2D" uid="uid://cyff4t1v1my0v" path="res://sprites/enemies/swamp_flower/swamp_flower.png" id="4_anw82"]
+[ext_resource type="Texture2D" uid="uid://baras1vr16e8p" path="res://sprites/enemies/cactus_spirit/sprite_cactus_spirit_shadow.tres" id="5_vleao"]
+[ext_resource type="Material" uid="uid://b24jrbb127ayp" path="res://scripts/shaders/white.tres" id="12_cv88w"]
+[ext_resource type="Script" path="res://scripts/visual/SquashAndStretch.cs" id="13_kg4pm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75mpk"]
+size = Vector2(10, 9)
+
+[sub_resource type="Animation" id="Animation_4he1a"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yypc7"]
+resource_name = "attack"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_wv887"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n33jn"]
+resource_name = "telegraph_attack"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hjhs"]
+_data = {
+"RESET": SubResource("Animation_4he1a"),
+"attack": SubResource("Animation_yypc7"),
+"idle": SubResource("Animation_wv887"),
+"telegraph_attack": SubResource("Animation_n33jn")
+}
+
+[sub_resource type="Animation" id="Animation_ducc8"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hh208"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SquashAndStretchTarget/Body:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_cv88w"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretchTarget/Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4egld"]
+_data = {
+"RESET": SubResource("Animation_ducc8"),
+"hurt": SubResource("Animation_hh208")
+}
+
+[node name="SwampFlower" type="CharacterBody2D" node_paths=PackedStringArray("ProjectileOrigin", "FacingTransform", "VerticalTransform") groups=["Enemies"]]
+y_sort_enabled = true
+collision_mask = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_85mgc")
+ProjectileScene = ExtResource("2_1htr2")
+LargeProjectileScene = ExtResource("3_eef6p")
+ProjectileOrigin = NodePath("ProjectileOrigin")
+Health = 5.0
+KnockbackResistance = 1.0
+FacingTransform = NodePath("SquashAndStretchTarget/Body")
+VerticalTransform = NodePath("SquashAndStretchTarget/Body")
+DeathParticle = ExtResource("3_picut")
+
+[node name="SquashAndStretchTarget" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="SquashAndStretchTarget"]
+texture = ExtResource("4_anw82")
+offset = Vector2(0, -4)
+hframes = 5
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -6
+texture = ExtResource("5_vleao")
+region_rect = Rect2(32, 8, 16, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_75mpk")
+
+[node name="ProjectileOrigin" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1hjhs")
+}
+
+[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4egld")
+}
+
+[node name="SquashAndStretch" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("13_kg4pm")
+Target = NodePath("../SquashAndStretchTarget")
