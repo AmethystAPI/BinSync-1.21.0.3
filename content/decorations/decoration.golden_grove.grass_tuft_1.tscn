@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg1cbih58d8dv"]
+
+[ext_resource type="Texture2D" uid="uid://dyf32ajmwuhjo" path="res://sprites/biomes/golden_grove/golden_grove_tileset.aseprite" id="1_h7044"]
+
+[node name="BorderGrassTuft1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Grass7" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 6)
+texture = ExtResource("1_h7044")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(123, 88, 10, 8)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(0, 12)
+texture = ExtResource("1_h7044")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(124, 112, 8, 4)
+
+[node name="Grass8" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(8, 1)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_h7044")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(123, 88, 10, 8)
+
+[node name="Shadow2" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(8, 7)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_h7044")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(124, 112, 8, 4)
+
+[node name="Grass3" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-5, -1)
+texture = ExtResource("1_h7044")
+offset = Vector2(0, -4)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(134, 88, 12, 8)
+
+[node name="Shadow9" type="Sprite2D" parent="."]
+z_index = -6
+y_sort_enabled = true
+position = Vector2(-4, 5)
+texture = ExtResource("1_h7044")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(135, 112, 8, 4)
