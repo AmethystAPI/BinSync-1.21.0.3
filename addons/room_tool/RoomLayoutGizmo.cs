@@ -7,12 +7,16 @@ public partial class RoomLayoutGizmo : Node2D {
     public List<Vector2> Bounds = new List<Vector2>();
     public Vector2 Direction = Vector2.Right;
     public List<Vector2> SpawnLocations = new List<Vector2>();
+    public List<Vector2> EdgeLocations = new List<Vector2>();
+    public List<int> EdgeDistances = new List<int>();
 
     public override void _Process(double delta) {
         QueueRedraw();
     }
 
     public override void _Draw() {
+        ZIndex = 100;
+
         DrawCircle((GetGlobalMousePosition() / 16f).Round() * 16f, 2f, new Color(0f, 0f, 0f, 0.5f));
         DrawLine((GetGlobalMousePosition() / 16f).Round() * 16f, ((GetGlobalMousePosition() / 16f).Round() + Direction) * 16f, new Color(0f, 0f, 0f, 0.5f), 2f);
 
@@ -27,6 +31,10 @@ public partial class RoomLayoutGizmo : Node2D {
 
         foreach (Vector2 spawnLocation in SpawnLocations) {
             DrawRect(new Rect2(spawnLocation * 16f, 16f, 16f), new Color(0, 0, 1, 0.2f));
+        }
+
+        for(int index = 0; index < EdgeLocations.Count; index++) {
+            DrawRect(new Rect2(EdgeLocations[index] * 16f, 16f, 16f), new Color(0, 1, 0, 0.8f * (1f - EdgeDistances[index] / 20f)));
         }
     }
 }

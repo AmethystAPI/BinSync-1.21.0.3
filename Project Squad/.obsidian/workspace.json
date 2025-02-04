@@ -11,14 +11,12 @@
             "id": "cadd755dc22b724a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "Design/New Worldgen.md",
-                "mode": "source",
-                "source": false
+                "file": "Planning/Beta D.md"
               },
-              "icon": "lucide-file",
-              "title": "New Worldgen"
+              "icon": "lucide-trello",
+              "title": "Beta D"
             }
           }
         ]
@@ -160,10 +158,15 @@
   },
   "active": "cadd755dc22b724a",
   "lastOpenFiles": [
-    "Planning/Beta D.md",
-    "Design/New Worldgen.md",
-    "Beta C Notes.md",
     "Planning/Beta C Kanban.md",
+    "Planning/Beta D.md",
+    "Planning/Beta B Kanban.md",
+    "Planning/Previous/Pre Alpha Kanban.md",
+    "Planning/Previous/Beta A Kanban.md",
+    "Planning/Previous/Alpha Kanban.md",
+    "Planning/Previous/Alpha.md",
+    "Beta C Notes.md",
+    "Design/New Worldgen.md",
     "Beta B Playtest Notes.md",
     "Design/Current Design Issues/Variety and Fun in Combat.md",
     "Design/Current Design Issues/Transition of Biomes.md",
@@ -181,7 +184,6 @@
     "Reference/Locations/Sinister Swamp.canvas",
     "Tasks/Polish Weapons.md",
     "Tasks",
-    "Planning/Beta B Kanban.md",
     "Attachments/Astral-Chain03132021-122123-59475_thumb.jpg",
     "Reference/Music.md",
     "Attachments/shutterstock_2331893385.jpg",
@@ -207,10 +209,6 @@
     "Devlogs/Devlog 19/What is Interesting.md",
     "Devlogs/Devlog 19/Graph.canvas",
     "Devlogs/Devlog 19/Goals.md",
-    "More Room Designs.md",
-    "Devlogs/Deblog 20/Outline.canvas",
-    "Devlogs/Deblog 20/Ideas.md",
-    "No Communication Notes.md",
-    "Daily Notes/Day 18-6.md"
+    "Devlogs/Deblog 20/Outline.canvas"
   ]
 }

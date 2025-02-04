@@ -1,6 +1,7 @@
 #if TOOLS
 using Godot;
 using Godot.Collections;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,8 @@ public partial class RoomTool : EditorPlugin {
     private HashSet<RoomLayout.Connection> _connections = new HashSet<RoomLayout.Connection>();
     private List<Vector2> _bounds = new List<Vector2>();
     private List<Vector2> _spawnLocations = new List<Vector2>();
+    private List<Vector2> _edgeLocations = new List<Vector2>();
+    private List<int> _edgeDistances = new List<int>();
     private Mode _mode = Mode.Connections;
     private Vector2 _direction = Vector2.Right;
     private string _selectedPath;
@@ -49,6 +52,14 @@ public partial class RoomTool : EditorPlugin {
 
         roomLayout.SpawnLocations = CalculateSpawnLocations(roomLayout).ToArray();
         _spawnLocations = new List<Vector2>(roomLayout.SpawnLocations);
+
+        (List<Vector2> edgeLocations, List<int> edgeDistances) = CalculateSpawnEdgeField(roomLayout);
+
+        roomLayout.EdgeFieldPosition = edgeLocations.ToArray();
+        roomLayout.EdgeFieldDistance = edgeDistances.ToArray();
+
+        _edgeLocations = edgeLocations;
+        _edgeDistances = edgeDistances;
 
         if (ResourceLoader.Exists(GetRoomLayoutPath()))
             File.Delete(ProjectSettings.GlobalizePath(GetRoomLayoutPath()));
@@ -97,6 +108,8 @@ public partial class RoomTool : EditorPlugin {
         _connections = new HashSet<RoomLayout.Connection>();
         _bounds = new List<Vector2>();
         _spawnLocations = new List<Vector2>();
+        _edgeLocations = new List<Vector2>();
+        _edgeLocations = new List<Vector2>();
         _mode = Mode.Bounds;
         _direction = Vector2.Right;
 
@@ -214,6 +227,8 @@ public partial class RoomTool : EditorPlugin {
         _roomLayoutGizmo.Bounds = _bounds;
         _roomLayoutGizmo.Direction = _direction;
         _roomLayoutGizmo.SpawnLocations = _spawnLocations;
+        _roomLayoutGizmo.EdgeLocations = _edgeLocations;
+        _roomLayoutGizmo.EdgeDistances = _edgeDistances;
 
         _roomLayoutGizmo.QueueRedraw();
     }
@@ -301,6 +316,129 @@ public partial class RoomTool : EditorPlugin {
         GD.Print("Calculated " + spawnLocations.Count + " spawn locations");
 
         return spawnLocations;
+    }
+
+    private bool LocationIsEmpty(Vector2 location, RoomLayout roomLayout) {
+        if (location.X < roomLayout.TopLeftBound.X) return false;
+        if (location.Y < roomLayout.TopLeftBound.Y) return false;
+        if (location.X >= roomLayout.BottomRightBound.X) return false;
+        if (location.Y >= roomLayout.BottomRightBound.Y) return false;
+
+        if (roomLayout.Walls.Contains(location)) return false;
+
+        return true;
+    }
+
+    private bool LocationTouchingWalls(Vector2 location, RoomLayout roomLayout) {
+        if (location.X < roomLayout.TopLeftBound.X) return true;
+        if (location.Y < roomLayout.TopLeftBound.Y) return true;
+        if (location.X >= roomLayout.BottomRightBound.X) return true;
+        if (location.Y >= roomLayout.BottomRightBound.Y) return true;
+
+        List<Vector2> offsets = new List<Vector2>() {
+            Vector2.Up + Vector2.Left, Vector2.Up, Vector2.Up + Vector2.Right,
+            Vector2.Left, Vector2.Right,
+            Vector2.Down + Vector2.Left, Vector2.Down, Vector2.Down + Vector2.Right
+        };
+
+        foreach (Vector2 offset in offsets) {
+            if (roomLayout.Walls.Contains(location + offset)) return true;
+        }
+
+        return false;
+    }
+
+    private bool LocationIsValidEdge(Vector2 location, RoomLayout roomLayout) {
+        if (location.X < roomLayout.TopLeftBound.X) return true;
+        if (location.Y < roomLayout.TopLeftBound.Y) return true;
+        if (location.X >= roomLayout.BottomRightBound.X) return true;
+        if (location.Y >= roomLayout.BottomRightBound.Y) return true;
+
+        if (roomLayout.Walls.Contains(location)) return true;
+
+        return false;
+    }
+
+    private (List<Vector2>, List<int>) CalculateSpawnEdgeField(RoomLayout roomLayout) {
+        List<Vector2> inRoomLocations = new List<Vector2>();
+        List<Vector2> inRoomLocationsToCheck = new List<Vector2>();
+
+        RoomLayout.Connection[] connections = roomLayout.GetConnections();
+
+        foreach (RoomLayout.Connection connection in connections) {
+            if (connection.Direction == Vector2.Right) {
+                inRoomLocationsToCheck.Add(connection.Location + Vector2.Left);
+                inRoomLocations.Add(connection.Location + Vector2.Left);
+            } else if (connection.Direction == Vector2.Left) {
+                inRoomLocationsToCheck.Add(connection.Location);
+                inRoomLocations.Add(connection.Location);
+            } else if (connection.Direction == Vector2.Up) {
+                inRoomLocationsToCheck.Add(connection.Location);
+                inRoomLocations.Add(connection.Location);
+            } else if (connection.Direction == Vector2.Down) {
+                inRoomLocationsToCheck.Add(connection.Location + Vector2.Up);
+                inRoomLocations.Add(connection.Location + Vector2.Up);
+            }
+        }
+
+        List<Vector2> offsets = new List<Vector2>() { Vector2.Left, Vector2.Right, Vector2.Up, Vector2.Down };
+
+        while (inRoomLocationsToCheck.Count > 0) {
+            Vector2 location = inRoomLocationsToCheck[0];
+            inRoomLocationsToCheck.RemoveAt(0);
+
+            foreach (Vector2 offset in offsets) {
+                if (!LocationIsEmpty(location + offset, roomLayout)) continue;
+
+                if (inRoomLocations.Contains(location + offset)) continue;
+
+                inRoomLocationsToCheck.Add(location + offset);
+                inRoomLocations.Add(location + offset);
+            }
+        }
+
+        List<Vector2> floodQueue = inRoomLocations.Where(location => LocationTouchingWalls(location, roomLayout)).ToList();
+        List<int> floodQueueDistances = new List<int>();
+
+        foreach(Vector2 location in floodQueue) { 
+            floodQueueDistances.Add(0);
+        }
+
+        List<Vector2> edgeLocations = new List<Vector2>();
+        List<int> edgeDistances = new List<int>();
+
+        while(floodQueue.Count > 0) {
+            Vector2 location = floodQueue[0];
+            floodQueue.RemoveAt(0);
+            int distance = floodQueueDistances[0];
+            floodQueueDistances.RemoveAt(0);
+
+            int neighborDistance = distance + 1;
+
+            if(distance >= 20) continue;
+
+            foreach (Vector2 offset in offsets) {
+                if (!LocationIsValidEdge(location + offset, roomLayout)) continue;
+
+                int index = edgeLocations.IndexOf(location + offset);
+
+                if (index != -1) {
+                    edgeDistances[index] = Math.Min(edgeDistances[index], neighborDistance);
+
+                    continue;
+                }
+
+                edgeLocations.Add(location + offset);
+                edgeDistances.Add(neighborDistance);
+                
+                floodQueue.Add(location + offset);
+                floodQueueDistances.Add(neighborDistance);
+            }
+        }
+
+        GD.Print("Found " + edgeLocations.Count + " edges!");
+
+        return (edgeLocations, edgeDistances);
     }
 }
 #endif
