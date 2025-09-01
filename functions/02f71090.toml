@@ -1,0 +1,10 @@
+addr = 0x2f71090
+size = 0x570
+name = "__ZN9LevelData12setGeneratorE13GeneratorType"
+
+[header]
+last_change = 2024-06-20T16:56:48.222067Z
+name = "__ZN9LevelData12setGeneratorE13GeneratorType"
+addr = 0x2f71090
+
+[header.args]
