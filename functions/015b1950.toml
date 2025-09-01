@@ -1,0 +1,10 @@
+addr = 0x15b1950
+size = 0xe
+name = "__ZNK28RequestNetworkSettingsPacket5writeER12BinaryStream"
+
+[header]
+last_change = 2024-07-11T14:18:27.230822Z
+name = "__ZNK28RequestNetworkSettingsPacket5writeER12BinaryStream"
+addr = 0x15b1950
+
+[header.args]
