@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2025-09-01T04:03:30.519890Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None ??$make_shared@VOverworldDimension@@AEAVILevel@@AEAVScheduler@@@std@@YA?AV?$shared_ptr@VOverworldDimension@@@0@AEAVILevel@@AEAVScheduler@@@Z(args=0); @0x409d000 vars=0 len=0x150> from bravo"
+last_commit_msg = "Merged in <Function: None __ZN7OptionsC2EbNSt3__110unique_ptrI20OptionValueInterfaceNS0_14default_deleteIS2_EEEEbbRKNS0_8weak_ptrI8IOptionsEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI24IAdvancedGraphicsOptionsEEEE(args=0); @0x97a800 vars=0 len=0x9bf> from bravo"
