@@ -1,0 +1,12 @@
+addr = 0x2f8f910
+size = 0x1a
+name = "?isShutdownDone@ChunkSource@@UEAA_NXZ"
+type = "bool"
+
+[header]
+last_change = 2024-07-08T21:37:29.512895Z
+name = "?isShutdownDone@ChunkSource@@UEAA_NXZ"
+addr = 0x2f8f910
+type = "bool"
+
+[header.args]
