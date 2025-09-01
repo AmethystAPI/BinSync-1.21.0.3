@@ -1,0 +1,10 @@
+addr = 0x2e33f20
+size = 0x62c
+name = "?_buildSurface@Utils@VanillaSurfaceBuilders@@YAXAEBUSurfaceMaterialBlocks@@PEBVBlock@@AEBUSurfaceMaterialAdjustmentEvaluated@@AEAVRandom@@AEAVBlockVolume@@AEBVBlockPos@@FH_NW4WaterLevelStrategy@ISurfaceBuilder@@HAEBVHeightmapWrapper@@_N@Z"
+
+[header]
+last_change = 2024-06-28T16:22:43.931888Z
+name = "?_buildSurface@Utils@VanillaSurfaceBuilders@@YAXAEBUSurfaceMaterialBlocks@@PEBVBlock@@AEBUSurfaceMaterialAdjustmentEvaluated@@AEAVRandom@@AEAVBlockVolume@@AEBVBlockPos@@FH_NW4WaterLevelStrategy@ISurfaceBuilder@@HAEBVHeightmapWrapper@@_N@Z"
+addr = 0x2e33f20
+
+[header.args]
