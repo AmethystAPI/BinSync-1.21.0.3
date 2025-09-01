@@ -1,0 +1,13 @@
+addr = 0x13e2740
+size = 0x366
+name = "__ZNK19LevelRendererPlayer6getFovEfb"
+
+[header]
+last_change = 2024-07-22T11:07:39.162546Z
+name = "__ZNK19LevelRendererPlayer6getFovEfb"
+addr = 0x13e2740
+
+[header.args.0x1]
+offset = 0x1
+type = "float"
+size = 0x4
