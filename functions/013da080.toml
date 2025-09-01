@@ -1,0 +1,10 @@
+addr = 0x13da080
+size = 0x11c
+name = "__ZN19LevelRendererPlayer6reinitERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE"
+
+[header]
+last_change = 2024-06-27T20:57:16.961421Z
+name = "__ZN19LevelRendererPlayer6reinitERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK12TextureAtlasEEEE"
+addr = 0x13da080
+
+[header.args]
