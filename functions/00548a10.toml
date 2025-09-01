@@ -1,0 +1,11 @@
+last_change = 2025-09-01T03:53:41.850878Z
+addr = 0x548a10
+size = 0x11a
+name = "__ZN16ScreenController10bindStringERK10StringHashRKNSt3__18functionIFNS3_12basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEvEEERKNS4_IFbvEEE"
+
+[header]
+last_change = 2025-09-01T03:53:41.850878Z
+name = "__ZN16ScreenController10bindStringERK10StringHashRKNSt3__18functionIFNS3_12basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEEvEEERKNS4_IFbvEEE"
+addr = 0x548a10
+
+[header.args]
