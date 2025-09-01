@@ -1,0 +1,10 @@
+addr = 0xb00c40
+size = 0x34
+name = "__ZN20ClientNetworkHandlerD0Ev"
+
+[header]
+last_change = 2024-06-23T20:21:40.647503Z
+name = "__ZN20ClientNetworkHandlerD0Ev"
+addr = 0xb00c40
+
+[header.args]
