@@ -1,0 +1,10 @@
+addr = 0x25e320
+size = 0x5
+name = "j_??1ItemStackBase@@UEAA@XZ"
+
+[header]
+last_change = 2024-06-26T16:43:42.171294Z
+name = "j_??1ItemStackBase@@UEAA@XZ"
+addr = 0x25e320
+
+[header.args]
