@@ -1,0 +1,10 @@
+addr = 0x43614a0
+size = 0x40e
+name = "?buildSurfaces@OverworldGenerator@@QEAAXAEAUThreadData@1@AEAVBlockVolume@@AEAVLevelChunk@@AEBVChunkPos@@AEBVSurfaceLevelCache@@@Z"
+
+[header]
+last_change = 2024-06-28T14:49:09.547407Z
+name = "?buildSurfaces@OverworldGenerator@@QEAAXAEAUThreadData@1@AEAVBlockVolume@@AEAVLevelChunk@@AEBVChunkPos@@AEBVSurfaceLevelCache@@@Z"
+addr = 0x43614a0
+
+[header.args]
