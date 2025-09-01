@@ -3,4 +3,4 @@ version = "4.2.1"
 last_push_time = 2025-09-01T04:03:30.519890Z
 last_push_artifact = -1
 last_push_artifact_type = -1
-last_commit_msg = "Merged in <Function: None __ZN6Social19MultiplayerGameInfo29exportSessionPropertiesToJsonERKS0_(args=0); @0x1025f30 vars=0 len=0x905> from bravo"
+last_commit_msg = "Merged in <Function: None ?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVRequestNetworkSettingsPacket@@@Z(args=1); @0x173a930 vars=0 len=0x338> from bravo"
