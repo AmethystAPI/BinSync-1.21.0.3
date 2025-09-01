@@ -1,0 +1,10 @@
+addr = 0x4361440
+size = 0x57
+name = "?getBiomeArea@OverworldGenerator@@UEBA?AVBiomeArea@@AEBVBoundingBox@@I@Z"
+
+[header]
+last_change = 2024-06-28T01:01:55.659156Z
+name = "?getBiomeArea@OverworldGenerator@@UEBA?AVBiomeArea@@AEBVBoundingBox@@I@Z"
+addr = 0x4361440
+
+[header.args]
