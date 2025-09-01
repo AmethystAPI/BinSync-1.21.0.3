@@ -1,0 +1,30 @@
+addr = 0x1e730
+size = 0xcc8
+
+[stack_vars.-0x468]
+offset = -1128
+name = "var_450"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
+
+[stack_vars.-0x498]
+offset = -1176
+name = "var_480"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
+
+[stack_vars.-0x4c8]
+offset = -1224
+name = "var_4B0"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
+
+[stack_vars.-0x4f8]
+offset = -1272
+name = "var_4E0"
+type = "_QWORD[2]"
+size = 0x10
+addr = 0x1e730
