@@ -1,0 +1,11 @@
+last_change = 2025-09-01T04:03:30.519890Z
+addr = 0x3f0ba20
+size = 0x14fc
+name = "__ZN23VanillaGameModuleClient23initializeResourceStackEPK11ExperimentsRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI23IResourcePackRepositoryEEEER17ResourcePackStackRK15BaseGameVersionN16GameModuleClient20ResourceLoadingPhaseEb"
+
+[header]
+last_change = 2025-09-01T04:03:30.519890Z
+name = "__ZN23VanillaGameModuleClient23initializeResourceStackEPK11ExperimentsRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerI23IResourcePackRepositoryEEEER17ResourcePackStackRK15BaseGameVersionN16GameModuleClient20ResourceLoadingPhaseEb"
+addr = 0x3f0ba20
+
+[header.args]
