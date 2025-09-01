@@ -1,0 +1,9 @@
+addr = 0x3e144f0
+size = 0x0
+name = "__ZN4Util6formatEPKcz"
+
+[header]
+name = "__ZN4Util6formatEPKcz"
+addr = 0x3e144f0
+
+[header.args]
