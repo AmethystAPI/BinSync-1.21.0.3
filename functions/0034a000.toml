@@ -1,0 +1,10 @@
+addr = 0x34a000
+size = 0x1261
+name = "__ZN14ClientInstance4initERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIN4Core15FilePathManagerEEEEER13NetworkSystemR5TimerSD_RKNS1_INS3_IN6Social12IUserManagerEEEEEiR14IGameModuleApp"
+
+[header]
+last_change = 2024-06-17T21:28:53.546416Z
+name = "__ZN14ClientInstance4initERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIN4Core15FilePathManagerEEEEER13NetworkSystemR5TimerSD_RKNS1_INS3_IN6Social12IUserManagerEEEEEiR14IGameModuleApp"
+addr = 0x34a000
+
+[header.args]
