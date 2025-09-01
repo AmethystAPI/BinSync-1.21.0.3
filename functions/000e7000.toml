@@ -1,0 +1,10 @@
+addr = 0xe7000
+size = 0x2f
+name = "VanillaBlockTypeIds::_dynamic_initializer_for__CoralFanHang__"
+
+[header]
+last_change = 2024-06-28T16:53:06.582792Z
+name = "VanillaBlockTypeIds::_dynamic_initializer_for__CoralFanHang__"
+addr = 0xe7000
+
+[header.args]
