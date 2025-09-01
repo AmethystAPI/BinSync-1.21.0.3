@@ -1,0 +1,11 @@
+last_change = 2025-09-01T04:00:50.949428Z
+addr = 0x4010e30
+size = 0x16ce
+name = "__ZNK21VanillaInPackagePacks8getPacksE8PackType"
+
+[header]
+last_change = 2025-09-01T04:00:50.949428Z
+name = "__ZNK21VanillaInPackagePacks8getPacksE8PackType"
+addr = 0x4010e30
+
+[header.args]
