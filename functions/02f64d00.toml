@@ -8,4 +8,7 @@ last_change = 2024-06-20T01:08:11.826889Z
 name = "?_registerRules@GameRules@@AEAAXXZ"
 addr = 0x2f64d00
 
-[header.args]
+[header.args.0x0]
+offset = 0x0
+name = "this"
+size = 0x8
