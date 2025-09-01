@@ -1,0 +1,10 @@
+addr = 0x14bd80
+size = 0x35
+name = "__ZNK11AppPlatform19getFeedbackHelpLinkEv"
+
+[header]
+last_change = 2024-06-20T17:40:32.489890Z
+name = "__ZNK11AppPlatform19getFeedbackHelpLinkEv"
+addr = 0x14bd80
+
+[header.args]
