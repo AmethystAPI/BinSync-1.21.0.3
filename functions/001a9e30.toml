@@ -1,0 +1,9 @@
+addr = 0x1a9e30
+size = 0xc3c
+
+[stack_vars.-0x428]
+offset = -1064
+name = "optionsAllocated_1"
+type = "long long *"
+size = 0x8
+addr = 0x1a9e30
