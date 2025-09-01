@@ -1,0 +1,10 @@
+addr = 0xace510
+size = 0x547
+name = "__ZN11SkinnedMesh13constructMeshER22BaseActorRenderContextRK16MaterialVariants"
+
+[header]
+last_change = 2024-06-26T22:17:02.374781Z
+name = "__ZN11SkinnedMesh13constructMeshER22BaseActorRenderContextRK16MaterialVariants"
+addr = 0xace510
+
+[header.args]
