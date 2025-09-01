@@ -1,0 +1,20 @@
+addr = 0x4331e20
+size = 0x1d4
+name = "??0OverworldDimension@@QEAA@AEAVILevel@@AEAVScheduler@@@Z"
+
+[header]
+last_change = 2024-06-29T16:06:38.837887Z
+name = "??0OverworldDimension@@QEAA@AEAVILevel@@AEAVScheduler@@@Z"
+addr = 0x4331e20
+
+[header.args.0x1]
+offset = 0x1
+name = "level"
+type = "ILevel *"
+size = 0x8
+
+[header.args.0x2]
+offset = 0x2
+name = "scheduler"
+type = "Scheduler *"
+size = 0x8
