@@ -1,0 +1,10 @@
+addr = 0x913580
+size = 0x9
+name = "__ZN3mce12TextureGroupD0Ev"
+
+[header]
+last_change = 2024-06-27T20:42:54.645060Z
+name = "__ZN3mce12TextureGroupD0Ev"
+addr = 0x913580
+
+[header.args]
