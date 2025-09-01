@@ -1,0 +1,10 @@
+addr = 0x8cf700
+size = 0x164
+name = "__ZNK21ActorRenderDispatcher11getRendererERK12HashedString"
+
+[header]
+last_change = 2024-07-16T14:04:02.237489Z
+name = "__ZNK21ActorRenderDispatcher11getRendererERK12HashedString"
+addr = 0x8cf700
+
+[header.args]
